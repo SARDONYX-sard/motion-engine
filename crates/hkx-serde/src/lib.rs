@@ -8,8 +8,13 @@ mod helpers;
 mod hk_types;
 mod parse_rpt;
 
-use crate::{generators::rust::generate_code, parse_rpt::parse_class};
+use crate::{
+    generators::rust::{generate_code, has_life_time},
+    parse_rpt::parse_class,
+};
 use convert_case::{Case, Casing};
+use generators::rust::generate_class_params;
+use indexmap::IndexMap;
 
 pub fn generate_classes() {
     let output_dir = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
@@ -23,6 +28,7 @@ pub fn generate_classes() {
         .join("hkxcmd_help")
         .join("rpt");
 
+    let mut sig_class_map = IndexMap::new();
     let mut mod_indexes = Vec::new();
     let entries = jwalk::WalkDir::new(rpt_dir);
 
@@ -69,15 +75,33 @@ pub fn generate_classes() {
 
         let content = std::fs::read_to_string(path).unwrap();
         let (remain, class) = parse_class(&content).unwrap();
+
+        let life_time = if has_life_time(&class.members) {
+            "<'a>"
+        } else {
+            ""
+        };
+        sig_class_map.insert(
+            class.signature,
+            (class.name.to_case(Case::Pascal), life_time),
+        );
+
         tracing::debug!("remain = {:?}", remain);
         tracing::debug!("class = {:?}", class);
 
-        let rust_file = output_dir.join(format!("{file_stem}.rs"));
         let rust_code = generate_code(&class);
+        let rust_file = output_dir.join(format!("{file_stem}.rs"));
         std::fs::write(rust_file, rust_code).unwrap();
     }
 
+    mod_indexes.push("pub mod class_params;".into());
     std::fs::write(output_dir.join("mod.rs"), mod_indexes.join("\n")).unwrap();
+
+    std::fs::write(
+        output_dir.join("class_params.rs"),
+        generate_class_params(sig_class_map),
+    )
+    .unwrap();
 }
 
 #[cfg(test)]

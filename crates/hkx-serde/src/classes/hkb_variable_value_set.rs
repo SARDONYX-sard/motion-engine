@@ -73,7 +73,7 @@ impl HkbVariableValueSet<'_> {
 /// In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
 /// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbVariableValueSetHkParam<'a> {
     /// # Information on fields in the original C++ class

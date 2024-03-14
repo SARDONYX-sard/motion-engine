@@ -6,6 +6,16 @@ use crate::{
 use convert_case::{Case, Casing};
 use indexmap::IndexMap;
 
+pub fn has_life_time(vec: &Vec<MemberInfo>) -> bool {
+    for m in vec {
+        let (_input, ty) = parse_cpp_type(&m.type_name).unwrap();
+        if ty.as_ref().contains("'a") {
+            return true;
+        }
+    }
+    false
+}
+
 pub fn generate_code(class: &ClassInfo) -> String {
     let mut rust_code = String::new();
     let ClassInfo {
@@ -15,21 +25,19 @@ pub fn generate_code(class: &ClassInfo) -> String {
         vtable,
         parent,
         version,
+        members,
         ..
     } = &class;
-    let rust_struct_name = class_name.to_case(Case::Pascal);
 
-    // Parent class information
+    let rust_enum_class_name = class_name.to_case(Case::Pascal);
+
+    let life_time = if has_life_time(members) { "<'a>" } else { "" };
+
     let parent_default = ("None".into(), 0);
     let (parent_name, parent_signature) = (parent.as_ref()).unwrap_or(&parent_default);
 
-    // As long as everything is exported when mod.rs is automatically generated,
-    // each structure and enum must be given a unique name.
-    let hkparam_name = format!("{rust_struct_name}HkParam");
-
-    // Struct definition
     rust_code.push_str(&format!(
-        r#"//! A Rust structure that implements a serializer/deserializer corresponding to `{class_name}`, a class defined in C++
+        r#"//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `{class_name}`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -39,48 +47,78 @@ use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{{Deserialize, Serialize}};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `{class_name}`
 ///
-/// # Information on the original C++ class
-/// -    size: {size}
-/// -  vtable: {vtable}
-/// -  parent: {parent_name}/`{parent_signature:x}`(Non prefix hex signature)
-/// - version: {version}
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct {rust_struct_name}<'a> {{
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"{class_name}"`: The original C++ class name.
-    #[serde(default = "{rust_struct_name}::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0x{signature:x}`: Unique value of this class.
-    #[serde(default = "{rust_struct_name}::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<{hkparam_name}<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<{hkparam_name}<'a>>
-}}
-"#,
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
+///
+/// # C++ Class Info
+/// -      size: {size}
+/// -    vtable: {vtable}
+/// -    parent: `{parent_name}`/`0x{parent_signature:x}`
+/// - signature: `0x{signature:x}`
+/// -   version: {version}
+#[derive(Debug, Clone, PartialEq, Serialize)]
+#[serde(tag = "@name")]
+pub enum {rust_enum_class_name}{life_time} {{
+"#
     ));
 
+    let mut field = IndexMap::new();
+    for member in &class.members {
+        let MemberInfo {
+            name: member_name,
+            type_name,
+            offset,
+            flags,
+            ..
+        } = &member;
+
+        let mut skip_serializing_attr = String::new();
+        if flags.contains(FlagValues::SERIALIZE_IGNORED) {
+            skip_serializing_attr.push_str(", skip_serializing")
+        }
+        let flags = flags.human_readable();
+
+        let (_, rust_type) = parse_cpp_type(type_name).unwrap();
+
+        // Enum tag name
+        let tag_name = member_name.to_case(Case::Pascal);
+        rust_code.push_str(&format!(
+            r#"    /// # C++ Class Fields Info
+    /// -   name:`"{member_name}"`
+    /// -   type: `{type_name}`
+    /// - offset: {offset}
+    /// -  flags: `{flags}`
+    #[serde(rename = "{member_name}"{skip_serializing_attr})]
+    {tag_name}({rust_type}),
+"#
+        ));
+        field.insert(member_name, (tag_name, rust_type));
+    }
+
+    let life_time = if has_life_time(members) { "<'de>" } else { "" };
+    rust_code.push_str(&format!(
+        r#"}}
+
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
+impl_deserialize_for_internally_tagged_enum! {{
+    {rust_enum_class_name}{life_time}, "@name",
+"#
+    )); // Env C++ field enum
+    for (member_name, (tag_name, rust_type)) in field {
+        rust_code.push_str(&format!(
+            r#"    ("{member_name}" => {tag_name}({rust_type})),
+"#
+        ));
+    }
+    rust_code.push_str("}\n");
+
+    let life_time = if has_life_time(members) { "<'_>" } else { "" };
     rust_code.push_str(&format!(
         r#"
-impl {rust_struct_name}<'_> {{
+impl {rust_enum_class_name}{life_time} {{
     /// Return `"{class_name}"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
     #[inline]
     pub fn class_name() -> Cow<'static, str> {{
         "{class_name}".into()
@@ -95,71 +133,11 @@ impl {rust_struct_name}<'_> {{
 "#
     ));
 
-    rust_code.push_str(&format!(
-        r#"
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
-///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
-#[serde(tag = "@name")]
-pub enum {hkparam_name}<'a> {{
-"#
-    ));
-
-    let mut field = IndexMap::new();
-    // Member definitions
-    for member in &class.members {
-        let mut skip_serializing_attr = String::new();
-        if member.flags.contains(FlagValues::SERIALIZE_IGNORED) {
-            skip_serializing_attr.push_str(", skip_serializing")
-        }
-        let flags = member.flags.human_readable();
-
-        let MemberInfo {
-            name: member_name,
-            type_name,
-            offset,
-            ..
-        } = &member;
-        let (_, rust_type) = parse_cpp_type(type_name).unwrap();
-
-        // Enum tag name
-        let tag_name = member_name.to_case(Case::Pascal);
-        rust_code.push_str(&format!(
-            r#"    /// # Field information in the original C++ class
-    /// -   name:`"{member_name}"`
-    /// -   type: `{type_name}`
-    /// - offset: {offset}
-    /// -  flags: `{flags}`
-    #[serde(rename = "{member_name}"{skip_serializing_attr})]
-    {tag_name}({rust_type}),
-"#
-        ));
-        field.insert(member_name, (tag_name, rust_type));
-    }
-
-    rust_code.push_str(&format!(
-        r#"}}
-
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
-impl_deserialize_for_internally_tagged_enum! {{
-    {hkparam_name}<'de>, "@name",
-"#
-    )); // Env C++ field enum
-    for (member_name, (tag_name, rust_type)) in field {
-        rust_code.push_str(&format!(
-            r#"    ("{member_name}" => {tag_name}({rust_type})),
-"#
-        ));
-    }
-    rust_code.push_str("}\n");
-
     // field Type Enum definitions(If exists)
     for (enum_name, enum_info) in &class.enums {
         rust_code.push_str(&format!(
             r#"
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum {enum_name} {{
 "#
         ));
@@ -228,70 +206,7 @@ mod tests {
 
         let generated_code = generate_code(&class);
 
-        let expected_code = r#"use super::*;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
-
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkbBehaviorGraphStringData<'a> {
-    #[serde(borrow)]
-    #[serde(rename = "@name")]
-    /// #0106
-    pub name: Cow<'a, str>,
-    #[serde(borrow)]
-    #[serde(default = "HkbBehaviorGraphStringData::class_name")]
-    #[serde(rename = "@class")]
-    /// "hkbBehaviorGraphStringData"
-    pub class: Cow<'a, str>,
-    #[serde(borrow)]
-    #[serde(default = "HkbBehaviorGraphStringData::signature")]
-    #[serde(rename = "@signature")]
-    /// Fixed value unique to each class: `0xc713064e`
-    pub signature: Cow<'a, str>,
-    /// The `"hkparam"` field containing the hkcstring vector
-    pub hkparam: Vec<HkParam<'a>>,
-}
-
-impl HkbBehaviorGraphStringData<'_> {
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkbBehaviorGraphStringData".into()
-    }
-
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0xc713064e".into()
-    }
-}
-
-#[allow(clippy::enum_variant_names)]
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub enum Names {
-    #[default]
-    EventNames,
-    AttributeNames,
-    VariableNames,
-    CharacterPropertyNames,
-}
-
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkparam")]
-pub struct HkParam<'a> {
-    #[serde(rename = "@name")]
-    /// `"eventNames"` | `"attributeNames"` | `"variableNames"` | `"characterPropertyNames"`
-    pub name: Names,
-    #[serde(rename = "@numelements")]
-    /// `self.hkcstrings.len()`
-    pub numelements: usize,
-    #[serde(borrow)]
-    #[serde(default)]
-    #[serde(rename = "hkcstring")]
-    pub hkcstrings: Vec<Cow<'a, str>>,
-}
-"#;
-
+        let expected_code = r#""#;
         assert_eq!(generated_code, expected_code);
     }
 }

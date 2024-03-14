@@ -8,7 +8,7 @@ mod transform;
 mod vector3;
 mod vector4;
 
-pub use hk_array::{HkArrayClass, HkArrayClassParam, HkArrayRef, HkArrayVector};
+pub use hk_array::{HkArrayClass, HkArrayClassParam, HkArrayRef, HkArrayStringPtr, HkArrayVector};
 pub use matrix3::Matrix3;
 pub use matrix4::Matrix4;
 pub use primitive::Primitive;

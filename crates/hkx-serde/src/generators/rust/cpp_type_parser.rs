@@ -15,20 +15,26 @@ type IResult<I, O, E = nom::error::VerboseError<I>> = Result<(I, O), nom::Err<E>
 /// C++ type to Rust type conversion
 pub fn parse_cpp_type(input: &str) -> IResult<&str, Cow<'_, str>> {
     match input {
-        input if input.starts_with("struct") => parse_struct_type(input),
+        input if input.ends_with('*') => Ok(("", "Cow<'a, str>".into())),
+
+        "char*" | "hkBool" | "hkChar" | "hkHalf" | "hkInt16" | "hkInt32" | "hkInt8" | "hkReal"
+        | "hkUint16" | "hkUint32" | "hkUint64" | "hkUint8" | "hkUlong" | "hkVariant" | "void" => {
+            parse_primitive_type(input)
+        }
+        "hkMatrix3" | "hkMatrix4" | "hkQsTransform" | "hkQuaternion" | "hkRotation"
+        | "hkTransform" | "hkVector4" => parse_vector(input),
+
+        input if input.starts_with("hkArray&lt;") || input.starts_with("hkSimpleArray&lt;") => {
+            parse_hk_array_type(input)
+        }
         input if input.starts_with("enum") => parse_enum_type(input),
         input if input.starts_with("flag") => parse_flags_type(input),
-        input if input.ends_with('*') => Ok(("", "Cow<'a, str>".into())),
-        input => alt((
-            parse_array_type,
-            parse_struct_type,
-            parse_hk_array_type,
-            parse_primitive_type,
-            parse_vector,
-        ))(input),
+        input if input.ends_with(']') => parse_array_type(input),
+        input => parse_struct_type(input),
     }
 }
 
+/// primitive
 fn parse_primitive_type(input: &str) -> IResult<&str, Cow<'_, str>> {
     map(
         alt((
@@ -53,6 +59,7 @@ fn parse_primitive_type(input: &str) -> IResult<&str, Cow<'_, str>> {
     )(input)
 }
 
+/// vector
 fn parse_vector(input: &str) -> IResult<&str, Cow<'_, str>> {
     map(
         alt((
@@ -70,66 +77,77 @@ fn parse_vector(input: &str) -> IResult<&str, Cow<'_, str>> {
 
 /// Has limit array. like `[3]`
 fn parse_array_type(input: &str) -> IResult<&str, Cow<'_, str>> {
-    let (input, base_type) = alt((parse_struct_type, parse_primitive_type))(input)?;
+    let (input, base_type) = alt((parse_primitive_type, parse_vector, parse_struct_type))(input)?;
 
     fn parse_array_len(input: &str) -> IResult<&str, usize> {
         let (input, _) = tag("[")(input)?;
-        let (input, dimensions) = map_res(digit1, str::parse)(input)?;
+        let (input, size) = map_res(digit1, str::parse)(input)?;
         let (input, _) = tag("]")(input)?;
-        Ok((input, dimensions))
+        Ok((input, size))
     }
-    let (input, dimensions) = parse_array_len(input)?;
-    Ok((input, format!("[{}; {}]", base_type, dimensions).into()))
-}
 
-fn parse_generics(input: &str) -> IResult<&str, Cow<'_, str>> {
-    // NOTE: struct pointer in generics are not prefixed.
-    let (input, generics) = alt((parse_cpp_type, parse_generics_struct_type))(input)?;
-    Ok((input, generics))
+    let (input, size) = parse_array_len(input)?;
+    Ok((input, format!("[{}; {}]", base_type, size).into()))
 }
 
 /// Convert to [`Vec`] since `hkArray` has no length limit.
 fn parse_hk_array_type(input: &str) -> IResult<&str, Cow<'_, str>> {
-    let (input, _) = alt((tag("hkArray"), tag("hkSimpleArray")))(input)?;
-    let (input, _) = tag("&lt;")(input)?;
+    let (input, _) = alt((tag("hkArray&lt;"), tag("hkSimpleArray&lt;")))(input)?;
     let (input, generics) = take_while(|c| c != '&')(input)?;
-    let (_, generics) = parse_generics(generics)?;
-    let (input, _) = tag("&gt;")(input)?;
 
-    Ok((input, format!("Vec<{generics}>",).into()))
+    let (_, array_type) = match generics {
+        "char*" | "hkBool" | "hkChar" | "hkHalf" | "hkInt16" | "hkInt32" | "hkInt8" | "hkReal"
+        | "hkUint16" | "hkUint32" | "hkUint64" | "hkUint8" | "hkUlong" | "hkVariant" | "void" => {
+            let (input, v) = parse_primitive_type(generics)?;
+            Ok((input, format!("HkArrayRef<{v}>").into()))
+        }
+
+        "hkStringPtr" => Ok((input, "HkArrayStringPtr<'a>".into())),
+
+        "hkMatrix3" | "hkMatrix4" | "hkQsTransform" | "hkQuaternion" | "hkRotation"
+        | "hkTransform" | "hkVector4" => {
+            let (input, v) = parse_vector(generics)?;
+            Ok((input, format!("HkArrayVector<{v}>").into()))
+        }
+
+        s if s.ends_with('*') => Ok(("", "HkArrayRef<Cow<'a, str>>".into())),
+
+        s if s.starts_with("enum") => {
+            let (input, e) = parse_enum_type(s)?;
+            Ok((input, format!("HkArrayPrimitive<{e}>").into()))
+        }
+
+        s if s.starts_with("flag") => {
+            let (input, e) = parse_flags_type(s)?;
+            Ok((input, format!("HkArrayPrimitive<{e}>").into()))
+        }
+
+        any => {
+            let (input, class) = parse_struct_type(any)?;
+            Ok((input, format!("HkArrayClass<{class}>").into()))
+        }
+    }?;
+
+    let (input, _) = tag("&gt;")(input)?;
+    Ok((input, array_type))
 }
 
+/// struct
+fn parse_struct_type(input: &str) -> IResult<&str, Cow<'_, str>> {
+    let (input, _) = opt(tag("struct"))(input)?;
+
+    let (input, struct_name) = take_while(|c| c != '[' && c != '*')(input)?;
+    let struct_name = struct_name.to_case(convert_case::Case::Pascal);
+    let (input, _is_ptr) = opt(char('*'))(input)?;
+
+    Ok((input, struct_name.into()))
+}
+
+/// enum
 fn parse_enum_type(input: &str) -> IResult<&str, Cow<'_, str>> {
     let (input, _) = tag("enum")(input)?;
     let (input, _) = space1(input)?;
     Ok(("", input.to_case(Case::Pascal).into()))
-}
-
-fn parse_generics_struct_type(input: &str) -> IResult<&str, Cow<'_, str>> {
-    parse_struct_type_core(input, true)
-}
-
-fn parse_struct_type(input: &str) -> IResult<&str, Cow<'_, str>> {
-    parse_struct_type_core(input, false)
-}
-
-fn parse_struct_type_core(input: &str, is_generics: bool) -> IResult<&str, Cow<'_, str>> {
-    let mut input = input;
-    if !is_generics {
-        let res = tag("struct")(input)?;
-        let res = space1(res.0)?;
-        input = res.0;
-    }
-
-    let (input, struct_name) = take_while(|c| c != '[' && c != '*')(input)?;
-    let struct_name = struct_name.to_case(convert_case::Case::Pascal);
-    let (input, is_ptr) = opt(char('*'))(input)?;
-
-    if is_ptr.is_some() {
-        Ok((input, "Cow<'a, str>".into()))
-    } else {
-        Ok((input, struct_name.into()))
-    }
 }
 
 /// enum bit flags
@@ -140,6 +158,8 @@ fn parse_flags_type(input: &str) -> IResult<&str, Cow<'_, str>> {
 }
 
 /// Generate rust code that mapping between C++ and rust types.
+///
+/// `rpt_dir`: rpt files dir by `hkxcmd Report ./assets/help`
 pub fn generate_all_mapping_types(rpt_dir: impl AsRef<Path>) -> String {
     let mut types = std::collections::HashMap::new();
     for entry in jwalk::WalkDir::new(rpt_dir).into_iter() {
@@ -190,7 +210,7 @@ pub const HK_TYPES: [(&str, &str); {types_len}] = {types:#?};"
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::generators::rust::generated::hk_types::HK_TYPES;
+    use crate::generators::rust::generated_types::HK_TYPES;
     use crate::helpers::tracing::init_tracing;
     use pretty_assertions::assert_eq;
 
@@ -198,7 +218,7 @@ mod tests {
     fn should_parse_array() {
         let input = "hkArray&lt;BSBoneSwitchGeneratorBoneData*&gt;";
         let (_, rust_array) = parse_hk_array_type(input).unwrap();
-        assert_eq!(rust_array, "Vec<Box<BsBoneSwitchGeneratorBoneData>>");
+        assert_eq!(rust_array, "HkArrayClass<BsBoneSwitchGeneratorBoneData>");
     }
 
     #[test]
@@ -241,14 +261,11 @@ mod tests {
             .join("hkxcmd_help")
             .join("rpt");
 
-        let output_dir = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        let output_file = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
             .join("src")
             .join("generators")
             .join("rust")
-            .join("generated");
-        std::fs::create_dir_all(&output_dir).unwrap();
-        let output_file = output_dir.join("hk_types.rs");
-
+            .join("generated_types.rs");
         std::fs::write(output_file, generate_all_mapping_types(rpt_dir)).unwrap();
     }
 }

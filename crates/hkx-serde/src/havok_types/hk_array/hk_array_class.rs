@@ -7,7 +7,6 @@ use serde::{Deserialize, Serialize};
 /// e.g. `wordVariableValues` field of `hkbVariableValueSet` class
 ///
 /// # XML Example
-///
 /// ```xml
 /// <hkparam name="variantVariableValues" numelements="2">
 ///     <hkobject>
@@ -17,6 +16,15 @@ use serde::{Deserialize, Serialize};
 ///         <hkparam name="another_class_field">#0064</hkparam>
 ///     </hkobject>
 /// </hkparam>
+/// ```
+///
+/// # Note
+/// The `name` attribute is required for `hkparam` but is not included in this structure.
+/// This is because the value of the `name` attribute corresponds to a C++ field name,
+/// and the processing must be changed according to the value.
+/// And to do that, we need the parent enum that wraps this structure.
+///
+/// In summary, the parent enum determines and retrieves the `name` attribute, so it is not included in this structure.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 #[serde(rename = "hkparam")]
 pub struct HkArrayClass<T> {

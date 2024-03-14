@@ -1,10 +1,12 @@
 mod hk_array_class;
 mod hk_array_ref;
+mod hk_array_string_ptr;
 mod hk_array_vector;
 
 use crate::helpers::float::cpp_to_rust_float_str;
 pub use hk_array_class::{HkArrayClass, HkArrayClassParam};
 pub use hk_array_ref::HkArrayRef;
+pub use hk_array_string_ptr::HkArrayStringPtr;
 pub use hk_array_vector::HkArrayVector;
 use std::borrow::Cow;
 

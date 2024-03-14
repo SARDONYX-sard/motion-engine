@@ -1,3 +1,4 @@
+use crate::havok_types::HkArrayStringPtr;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
@@ -52,45 +53,65 @@ impl HkbBehaviorGraphStringData<'_> {
 pub enum HkbBehaviorGraphStringDataHkparam<'a> {
     /// `"eventNames"`
     #[serde(rename = "eventNames")]
-    Event(HkArray<'a>),
+    Event(HkArrayStringPtr<'a>),
     /// `"attributeNames"`
     #[serde(rename = "attributeNames")]
-    Attribute(HkArray<'a>),
+    Attribute(HkArrayStringPtr<'a>),
     /// `"variableNames"`
     #[serde(rename = "variableNames")]
-    Variable(HkArray<'a>),
+    Variable(HkArrayStringPtr<'a>),
     /// `"characterPropertyNames"`
     #[serde(rename = "characterPropertyNames")]
-    CharacterProperty(HkArray<'a>),
+    CharacterProperty(HkArrayStringPtr<'a>),
 }
 
 impl_deserialize_for_internally_tagged_enum! {
     HkbBehaviorGraphStringDataHkparam<'de>, "@name",
-    ("eventNames"    => Event(HkArray)),
-    ("attributeNames" => Attribute(HkArray)),
-    ("variableNames"  => Variable(HkArray)),
-    ("characterPropertyNames" => CharacterProperty(HkArray)),
-}
-
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-pub struct HkArray<'a> {
-    #[serde(rename = "@numelements")]
-    /// `self.hkcstrings.len()`
-    pub numelements: usize,
-    #[serde(default, borrow)]
-    #[serde(rename = "hkcstring")]
-    pub hkcstrings: Vec<Cow<'a, str>>,
+    ("eventNames"    => Event(HkArrayStringPtr)),
+    ("attributeNames" => Attribute(HkArrayStringPtr)),
+    ("variableNames"  => Variable(HkArrayStringPtr)),
+    ("characterPropertyNames" => CharacterProperty(HkArrayStringPtr)),
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;
-    use quick_xml::de;
 
     #[test]
-    fn should_serde() {
-        let _xml_str = "\
+    fn should_serialize() {
+        let data = HkbBehaviorGraphStringData {
+            name: "#0085".into(),
+            class: "hkbBehaviorGraphStringData".into(),
+            signature: "0xc713064e".into(),
+            hkparams: vec![
+                HkbBehaviorGraphStringDataHkparam::Event(
+                    vec![
+                        "cannedTurnRight90Flee",
+                        "cannedTurnRight180Flee",
+                        "cannedTurnLeft90Flee",
+                        "cannedTurnLeft180Flee",
+                    ]
+                    .into(),
+                ),
+                HkbBehaviorGraphStringDataHkparam::Attribute(Default::default()),
+                HkbBehaviorGraphStringDataHkparam::Variable(
+                    vec![
+                        "blendDefault",
+                        "blendFast",
+                        "blendSlow",
+                        "Direction",
+                        "IsBlocking",
+                        "Speed",
+                    ]
+                    .into(),
+                ),
+                HkbBehaviorGraphStringDataHkparam::CharacterProperty(Default::default()),
+            ],
+        };
+        let serialized = quick_xml::se::to_string(&data).unwrap();
+
+        let expected = "\
 <hkobject name=\"#0085\" class=\"hkbBehaviorGraphStringData\" signature=\"0xc713064e\">\
     <hkparam name=\"eventNames\" numelements=\"4\">\
       <hkcstring>cannedTurnRight90Flee</hkcstring>\
@@ -110,60 +131,46 @@ mod tests {
     <hkparam name=\"characterPropertyNames\" numelements=\"0\"/>\
 </hkobject>\
 ";
+        assert_eq!(serialized, expected);
+    }
 
-        let xml_str = std::fs::read_to_string(
-            std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-                .join("..")
-                .join("crates/hkx-serde/assets")
-                .join("dummy.xml"),
-        )
-        .unwrap()
-        .replace('\n', "")
-        .replace(" />", "/>")
-        .replace("> <", "><")
-        .replace(">  <", "><")
-        .replace(">   <", "><")
-        .replace(">    <", "><");
-        let deserialized: HkbBehaviorGraphStringData = de::from_str(&xml_str).unwrap();
+    #[test]
+    fn should_deserialize() {
+        let xml_path = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+            .join("assets")
+            .join("dummy.xml");
+        let xml_str = std::fs::read_to_string(xml_path).unwrap();
+        let deserialized: HkbBehaviorGraphStringData = quick_xml::de::from_str(&xml_str).unwrap();
+
         let expected = HkbBehaviorGraphStringData {
             name: "#0085".into(),
             class: "hkbBehaviorGraphStringData".into(),
             signature: "0xc713064e".into(),
             hkparams: vec![
-                HkbBehaviorGraphStringDataHkparam::Event(HkArray {
-                    numelements: 4,
-                    hkcstrings: vec![
-                        "cannedTurnRight90Flee".into(),
-                        "cannedTurnRight180Flee".into(),
-                        "cannedTurnLeft90Flee".into(),
-                        "cannedTurnLeft180Flee".into(),
-                    ],
-                }),
-                HkbBehaviorGraphStringDataHkparam::Attribute(HkArray {
-                    numelements: 0,
-                    hkcstrings: vec![],
-                }),
-                HkbBehaviorGraphStringDataHkparam::Variable(HkArray {
-                    numelements: 6,
-                    hkcstrings: vec![
-                        "blendDefault".into(),
-                        "blendFast".into(),
-                        "blendSlow".into(),
-                        "Direction".into(),
-                        "IsBlocking".into(),
-                        "Speed".into(),
-                    ],
-                }),
-                HkbBehaviorGraphStringDataHkparam::CharacterProperty(HkArray {
-                    numelements: 0,
-                    hkcstrings: vec![],
-                }),
+                HkbBehaviorGraphStringDataHkparam::Event(
+                    vec![
+                        "cannedTurnRight90Flee",
+                        "cannedTurnRight180Flee",
+                        "cannedTurnLeft90Flee",
+                        "cannedTurnLeft180Flee",
+                    ]
+                    .into(),
+                ),
+                HkbBehaviorGraphStringDataHkparam::Attribute(Default::default()),
+                HkbBehaviorGraphStringDataHkparam::Variable(
+                    vec![
+                        "blendDefault",
+                        "blendFast",
+                        "blendSlow",
+                        "Direction",
+                        "IsBlocking",
+                        "Speed",
+                    ]
+                    .into(),
+                ),
+                HkbBehaviorGraphStringDataHkparam::CharacterProperty(Default::default()),
             ],
         };
-
         assert_eq!(deserialized, expected);
-
-        let serialized = quick_xml::se::to_string(&deserialized).unwrap();
-        assert_eq!(serialized, xml_str);
     }
 }

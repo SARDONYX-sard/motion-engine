@@ -114,25 +114,6 @@ impl_deserialize_for_internally_tagged_enum! {{
     }
     rust_code.push_str("}\n");
 
-    let life_time = if has_life_time(members) { "<'_>" } else { "" };
-    rust_code.push_str(&format!(
-        r#"
-impl {rust_enum_class_name}{life_time} {{
-    /// Return `"{class_name}"`, which is the name of this C++ class.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {{
-        "{class_name}".into()
-    }}
-
-    /// Return `"0x{signature:x}"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {{
-        "0x{signature:x}".into()
-    }}
-}}
-"#
-    ));
-
     // field Type Enum definitions(If exists)
     for (enum_name, enum_info) in &class.enums {
         rust_code.push_str(&format!(

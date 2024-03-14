@@ -5,6 +5,12 @@ pub fn generate_class_params(sig_struct_map: IndexMap<u32, (String, &str)>) -> S
 
     class_params.push_str(
         r#"
+use super::*;
+use crate::classes::Class;
+use serde::de::{self, Deserializer, MapAccess, Visitor};
+use serde::{Deserialize, Serialize};
+use std::borrow::Cow;
+
 /// Pattern enumeration of all C++ havok class fields.
 ///
 /// In XML, these are the fields of the attribute `hkparam`
@@ -19,8 +25,14 @@ pub enum ClassParams<'a> {
     );
 
     for (sig, (struct_name, life_time)) in &sig_struct_map {
+        let bound = if !life_time.is_empty() {
+            format!("\n    #[serde(bound(deserialize = \"Vec<{struct_name}{life_time}>: Deserialize<'de>\"))]")
+        } else {
+            "".into()
+        };
+
         class_params.push_str(&format!(
-            r#"    #[serde(rename = "0x{sig}")]
+            r#"    #[serde(rename = "0x{sig:x}")]{bound}
     {struct_name}(Vec<{struct_name}{life_time}>),
 
 "#
@@ -51,7 +63,7 @@ impl<'a> Serialize for Class<'a> {{
     for (sig, (struct_name, _life_time)) in &sig_struct_map {
         class_params.push_str(&format!(
             r#"
-            "{sig}" => {{
+            "0x{sig:x}" => {{
                 if let ClassParams::{struct_name}(ref params) = self.hkparams {{
                     state.serialize_field("hkparam", params)?;
                 }}
@@ -126,9 +138,8 @@ impl<'de> Deserialize<'de> for Class<'de> {
 
     for (sig, (struct_name, _life_time)) in &sig_struct_map {
         class_params.push_str(&format!(
-            r#"                                    "{sig}" => {{
-                                                        ClassParams::{struct_name}(map.next_value()?);
-                                                        class = Some("{struct_name}".into());
+            r#"                                    "0x{sig:x}" => {{
+                                                        ClassParams::{struct_name}(map.next_value()?)
                                                     }},
 "#
         ));

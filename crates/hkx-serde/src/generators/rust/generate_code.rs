@@ -107,6 +107,7 @@ impl_deserialize_for_internally_tagged_enum! {{
 "#
     )); // Env C++ field enum
     for (member_name, (tag_name, rust_type)) in field {
+        let rust_type = rust_type.replace("'a", "'de");
         rust_code.push_str(&format!(
             r#"    ("{member_name}" => {tag_name}({rust_type})),
 "#

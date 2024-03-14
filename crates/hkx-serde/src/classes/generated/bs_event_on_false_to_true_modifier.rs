@@ -1,147 +1,105 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `BSEventOnFalseToTrueModifier`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `BSEventOnFalseToTrueModifier`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `BSEventOnFalseToTrueModifier`
 ///
-/// # Information on the original C++ class
-/// -    size: 84
-/// -  vtable: true
-/// -  parent: hkbModifier/`96ec5ced`(Non prefix hex signature)
-/// - version: 1
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct BsEventOnFalseToTrueModifier<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"BSEventOnFalseToTrueModifier"`: The original C++ class name.
-    #[serde(default = "BsEventOnFalseToTrueModifier::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0x81d0777a`: Unique value of this class.
-    #[serde(default = "BsEventOnFalseToTrueModifier::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<BsEventOnFalseToTrueModifierHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<BsEventOnFalseToTrueModifierHkParam<'a>>
-}
-
-impl BsEventOnFalseToTrueModifier<'_> {
-    /// Return `"BSEventOnFalseToTrueModifier"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "BSEventOnFalseToTrueModifier".into()
-    }
-
-    /// Return `"0x81d0777a"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0x81d0777a".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 84
+/// -    vtable: true
+/// -    parent: `hkbModifier`/`0x96ec5ced`
+/// - signature: `0x81d0777a`
+/// -   version: 1
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum BsEventOnFalseToTrueModifierHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum BsEventOnFalseToTrueModifier {
+    /// # C++ Class Fields Info
     /// -   name:`"bEnableEvent1"`
     /// -   type: `hkBool`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "bEnableEvent1")]
     BEnableEvent1(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"bVariableToTest1"`
     /// -   type: `hkBool`
     /// - offset: 45
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "bVariableToTest1")]
     BVariableToTest1(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"EventToSend1"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "EventToSend1")]
     EventToSend1(HkbEventProperty),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"bEnableEvent2"`
     /// -   type: `hkBool`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "bEnableEvent2")]
     BEnableEvent2(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"bVariableToTest2"`
     /// -   type: `hkBool`
     /// - offset: 57
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "bVariableToTest2")]
     BVariableToTest2(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"EventToSend2"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "EventToSend2")]
     EventToSend2(HkbEventProperty),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"bEnableEvent3"`
     /// -   type: `hkBool`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "bEnableEvent3")]
     BEnableEvent3(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"bVariableToTest3"`
     /// -   type: `hkBool`
     /// - offset: 69
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "bVariableToTest3")]
     BVariableToTest3(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"EventToSend3"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "EventToSend3")]
     EventToSend3(HkbEventProperty),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"bSlot1ActivatedLastFrame"`
     /// -   type: `hkBool`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "bSlot1ActivatedLastFrame", skip_serializing)]
     BSlot1ActivatedLastFrame(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"bSlot2ActivatedLastFrame"`
     /// -   type: `hkBool`
     /// - offset: 81
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "bSlot2ActivatedLastFrame", skip_serializing)]
     BSlot2ActivatedLastFrame(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"bSlot3ActivatedLastFrame"`
     /// -   type: `hkBool`
     /// - offset: 82
@@ -150,10 +108,9 @@ pub enum BsEventOnFalseToTrueModifierHkParam<'a> {
     BSlot3ActivatedLastFrame(Primitive<bool>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    BsEventOnFalseToTrueModifierHkParam<'de>, "@name",
+    BsEventOnFalseToTrueModifier, "@name",
     ("bEnableEvent1" => BEnableEvent1(Primitive<bool>)),
     ("bVariableToTest1" => BVariableToTest1(Primitive<bool>)),
     ("EventToSend1" => EventToSend1(HkbEventProperty)),

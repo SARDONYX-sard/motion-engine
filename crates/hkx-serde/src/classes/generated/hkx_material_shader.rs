@@ -1,126 +1,83 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkxMaterialShader`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkxMaterialShader`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkxMaterialShader`
 ///
-/// # Information on the original C++ class
-/// -    size: 40
-/// -  vtable: true
-/// -  parent: hkReferencedObject/`3b1c1113`(Non prefix hex signature)
-/// - version: 1
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkxMaterialShader<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkxMaterialShader"`: The original C++ class name.
-    #[serde(default = "HkxMaterialShader::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0x28515eff`: Unique value of this class.
-    #[serde(default = "HkxMaterialShader::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkxMaterialShaderHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkxMaterialShaderHkParam<'a>>
-}
-
-impl HkxMaterialShader<'_> {
-    /// Return `"hkxMaterialShader"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkxMaterialShader".into()
-    }
-
-    /// Return `"0x28515eff"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0x28515eff".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 40
+/// -    vtable: true
+/// -    parent: `hkReferencedObject`/`0x3b1c1113`
+/// - signature: `0x28515eff`
+/// -   version: 1
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkxMaterialShaderHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkxMaterialShader<'a> {
+    /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum ShaderType`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
     Type(ShaderType),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"vertexEntryName"`
     /// -   type: `hkStringPtr`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertexEntryName")]
     VertexEntryName(Primitive<Cow<'a, str>>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"geomEntryName"`
     /// -   type: `hkStringPtr`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "geomEntryName")]
     GeomEntryName(Primitive<Cow<'a, str>>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"pixelEntryName"`
     /// -   type: `hkStringPtr`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "pixelEntryName")]
     PixelEntryName(Primitive<Cow<'a, str>>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "data")]
-    Data(Vec<Primitive<u8>>),
+    Data(HkArrayRef<Primitive<u8>>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkxMaterialShaderHkParam<'de>, "@name",
-    ("name" => Name(Primitive<Cow<'a, str>>)),
+    HkxMaterialShader<'de>, "@name",
+    ("name" => Name(Primitive<Cow<'de, str>>)),
     ("type" => Type(ShaderType)),
-    ("vertexEntryName" => VertexEntryName(Primitive<Cow<'a, str>>)),
-    ("geomEntryName" => GeomEntryName(Primitive<Cow<'a, str>>)),
-    ("pixelEntryName" => PixelEntryName(Primitive<Cow<'a, str>>)),
-    ("data" => Data(Vec<Primitive<u8>>)),
+    ("vertexEntryName" => VertexEntryName(Primitive<Cow<'de, str>>)),
+    ("geomEntryName" => GeomEntryName(Primitive<Cow<'de, str>>)),
+    ("pixelEntryName" => PixelEntryName(Primitive<Cow<'de, str>>)),
+    ("data" => Data(HkArrayRef<Primitive<u8>>)),
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum ShaderType {
     #[serde(rename = "EFFECT_TYPE_INVALID")]
     EffectTypeInvalid = 0,

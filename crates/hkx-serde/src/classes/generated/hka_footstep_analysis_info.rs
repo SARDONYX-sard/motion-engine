@@ -1,161 +1,119 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkaFootstepAnalysisInfo`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkaFootstepAnalysisInfo`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkaFootstepAnalysisInfo`
 ///
-/// # Information on the original C++ class
-/// -    size: 152
-/// -  vtable: true
-/// -  parent: hkReferencedObject/`3b1c1113`(Non prefix hex signature)
-/// - version: 1
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkaFootstepAnalysisInfo<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkaFootstepAnalysisInfo"`: The original C++ class name.
-    #[serde(default = "HkaFootstepAnalysisInfo::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0x824faf75`: Unique value of this class.
-    #[serde(default = "HkaFootstepAnalysisInfo::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkaFootstepAnalysisInfoHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkaFootstepAnalysisInfoHkParam<'a>>
-}
-
-impl HkaFootstepAnalysisInfo<'_> {
-    /// Return `"hkaFootstepAnalysisInfo"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkaFootstepAnalysisInfo".into()
-    }
-
-    /// Return `"0x824faf75"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0x824faf75".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 152
+/// -    vtable: true
+/// -    parent: `hkReferencedObject`/`0x3b1c1113`
+/// - signature: `0x824faf75`
+/// -   version: 1
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkaFootstepAnalysisInfoHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkaFootstepAnalysisInfo {
+    /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkArray&lt;hkChar&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "name")]
-    Name(Vec<Primitive<char>>),
-    /// # Field information in the original C++ class
+    Name(HkArrayRef<Primitive<char>>),
+    /// # C++ Class Fields Info
     /// -   name:`"nameStrike"`
     /// -   type: `hkArray&lt;hkChar&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "nameStrike")]
-    NameStrike(Vec<Primitive<char>>),
-    /// # Field information in the original C++ class
+    NameStrike(HkArrayRef<Primitive<char>>),
+    /// # C++ Class Fields Info
     /// -   name:`"nameLift"`
     /// -   type: `hkArray&lt;hkChar&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "nameLift")]
-    NameLift(Vec<Primitive<char>>),
-    /// # Field information in the original C++ class
+    NameLift(HkArrayRef<Primitive<char>>),
+    /// # C++ Class Fields Info
     /// -   name:`"nameLock"`
     /// -   type: `hkArray&lt;hkChar&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "nameLock")]
-    NameLock(Vec<Primitive<char>>),
-    /// # Field information in the original C++ class
+    NameLock(HkArrayRef<Primitive<char>>),
+    /// # C++ Class Fields Info
     /// -   name:`"nameUnlock"`
     /// -   type: `hkArray&lt;hkChar&gt;`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "nameUnlock")]
-    NameUnlock(Vec<Primitive<char>>),
-    /// # Field information in the original C++ class
+    NameUnlock(HkArrayRef<Primitive<char>>),
+    /// # C++ Class Fields Info
     /// -   name:`"minPos"`
     /// -   type: `hkArray&lt;hkReal&gt;`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "minPos")]
-    MinPos(Vec<Primitive<f32>>),
-    /// # Field information in the original C++ class
+    MinPos(HkArrayRef<Primitive<f32>>),
+    /// # C++ Class Fields Info
     /// -   name:`"maxPos"`
     /// -   type: `hkArray&lt;hkReal&gt;`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "maxPos")]
-    MaxPos(Vec<Primitive<f32>>),
-    /// # Field information in the original C++ class
+    MaxPos(HkArrayRef<Primitive<f32>>),
+    /// # C++ Class Fields Info
     /// -   name:`"minVel"`
     /// -   type: `hkArray&lt;hkReal&gt;`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "minVel")]
-    MinVel(Vec<Primitive<f32>>),
-    /// # Field information in the original C++ class
+    MinVel(HkArrayRef<Primitive<f32>>),
+    /// # C++ Class Fields Info
     /// -   name:`"maxVel"`
     /// -   type: `hkArray&lt;hkReal&gt;`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "maxVel")]
-    MaxVel(Vec<Primitive<f32>>),
-    /// # Field information in the original C++ class
+    MaxVel(HkArrayRef<Primitive<f32>>),
+    /// # C++ Class Fields Info
     /// -   name:`"allBonesDown"`
     /// -   type: `hkArray&lt;hkReal&gt;`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "allBonesDown")]
-    AllBonesDown(Vec<Primitive<f32>>),
-    /// # Field information in the original C++ class
+    AllBonesDown(HkArrayRef<Primitive<f32>>),
+    /// # C++ Class Fields Info
     /// -   name:`"anyBonesDown"`
     /// -   type: `hkArray&lt;hkReal&gt;`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "anyBonesDown")]
-    AnyBonesDown(Vec<Primitive<f32>>),
-    /// # Field information in the original C++ class
+    AnyBonesDown(HkArrayRef<Primitive<f32>>),
+    /// # C++ Class Fields Info
     /// -   name:`"posTol"`
     /// -   type: `hkReal`
     /// - offset: 140
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "posTol")]
     PosTol(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"velTol"`
     /// -   type: `hkReal`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "velTol")]
     VelTol(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"duration"`
     /// -   type: `hkReal`
     /// - offset: 148
@@ -164,21 +122,20 @@ pub enum HkaFootstepAnalysisInfoHkParam<'a> {
     Duration(Primitive<f32>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkaFootstepAnalysisInfoHkParam<'de>, "@name",
-    ("name" => Name(Vec<Primitive<char>>)),
-    ("nameStrike" => NameStrike(Vec<Primitive<char>>)),
-    ("nameLift" => NameLift(Vec<Primitive<char>>)),
-    ("nameLock" => NameLock(Vec<Primitive<char>>)),
-    ("nameUnlock" => NameUnlock(Vec<Primitive<char>>)),
-    ("minPos" => MinPos(Vec<Primitive<f32>>)),
-    ("maxPos" => MaxPos(Vec<Primitive<f32>>)),
-    ("minVel" => MinVel(Vec<Primitive<f32>>)),
-    ("maxVel" => MaxVel(Vec<Primitive<f32>>)),
-    ("allBonesDown" => AllBonesDown(Vec<Primitive<f32>>)),
-    ("anyBonesDown" => AnyBonesDown(Vec<Primitive<f32>>)),
+    HkaFootstepAnalysisInfo, "@name",
+    ("name" => Name(HkArrayRef<Primitive<char>>)),
+    ("nameStrike" => NameStrike(HkArrayRef<Primitive<char>>)),
+    ("nameLift" => NameLift(HkArrayRef<Primitive<char>>)),
+    ("nameLock" => NameLock(HkArrayRef<Primitive<char>>)),
+    ("nameUnlock" => NameUnlock(HkArrayRef<Primitive<char>>)),
+    ("minPos" => MinPos(HkArrayRef<Primitive<f32>>)),
+    ("maxPos" => MaxPos(HkArrayRef<Primitive<f32>>)),
+    ("minVel" => MinVel(HkArrayRef<Primitive<f32>>)),
+    ("maxVel" => MaxVel(HkArrayRef<Primitive<f32>>)),
+    ("allBonesDown" => AllBonesDown(HkArrayRef<Primitive<f32>>)),
+    ("anyBonesDown" => AnyBonesDown(HkArrayRef<Primitive<f32>>)),
     ("posTol" => PosTol(Primitive<f32>)),
     ("velTol" => VelTol(Primitive<f32>)),
     ("duration" => Duration(Primitive<f32>)),

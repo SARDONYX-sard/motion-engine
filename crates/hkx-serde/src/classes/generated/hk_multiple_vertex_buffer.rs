@@ -1,140 +1,98 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkMultipleVertexBuffer`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkMultipleVertexBuffer`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkMultipleVertexBuffer`
 ///
-/// # Information on the original C++ class
-/// -    size: 324
-/// -  vtable: true
-/// -  parent: hkMeshVertexBuffer/`534b08c8`(Non prefix hex signature)
-/// - version: 0
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkMultipleVertexBuffer<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkMultipleVertexBuffer"`: The original C++ class name.
-    #[serde(default = "HkMultipleVertexBuffer::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0xde3ab602`: Unique value of this class.
-    #[serde(default = "HkMultipleVertexBuffer::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkMultipleVertexBufferHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkMultipleVertexBufferHkParam<'a>>
-}
-
-impl HkMultipleVertexBuffer<'_> {
-    /// Return `"hkMultipleVertexBuffer"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkMultipleVertexBuffer".into()
-    }
-
-    /// Return `"0xde3ab602"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0xde3ab602".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 324
+/// -    vtable: true
+/// -    parent: `hkMeshVertexBuffer`/`0x534b08c8`
+/// - signature: `0xde3ab602`
+/// -   version: 0
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkMultipleVertexBufferHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkMultipleVertexBuffer<'a> {
+    /// # C++ Class Fields Info
     /// -   name:`"vertexFormat"`
     /// -   type: `struct hkVertexFormat`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertexFormat")]
     VertexFormat(HkVertexFormat),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"lockedElements"`
     /// -   type: `hkArray&lt;struct hkMultipleVertexBufferLockedElement&gt;`
     /// - offset: 268
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "lockedElements")]
-    LockedElements(Vec<HkMultipleVertexBufferLockedElement>),
-    /// # Field information in the original C++ class
+    LockedElements(HkArrayClass<HkMultipleVertexBufferLockedElement>),
+    /// # C++ Class Fields Info
     /// -   name:`"lockedBuffer"`
     /// -   type: `struct hkMemoryMeshVertexBuffer*`
     /// - offset: 280
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "lockedBuffer")]
     LockedBuffer(Cow<'a, str>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"elementInfos"`
     /// -   type: `hkArray&lt;struct hkMultipleVertexBufferElementInfo&gt;`
     /// - offset: 284
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "elementInfos")]
-    ElementInfos(Vec<HkMultipleVertexBufferElementInfo>),
-    /// # Field information in the original C++ class
+    ElementInfos(HkArrayClass<HkMultipleVertexBufferElementInfo>),
+    /// # C++ Class Fields Info
     /// -   name:`"vertexBufferInfos"`
     /// -   type: `hkArray&lt;struct hkMultipleVertexBufferVertexBufferInfo&gt;`
     /// - offset: 296
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertexBufferInfos")]
-    VertexBufferInfos(Vec<HkMultipleVertexBufferVertexBufferInfo>),
-    /// # Field information in the original C++ class
+    VertexBufferInfos(HkArrayClass<HkMultipleVertexBufferVertexBufferInfo>),
+    /// # C++ Class Fields Info
     /// -   name:`"numVertices"`
     /// -   type: `hkInt32`
     /// - offset: 308
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "numVertices")]
     NumVertices(Primitive<i32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"isLocked"`
     /// -   type: `hkBool`
     /// - offset: 312
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "isLocked")]
     IsLocked(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"updateCount"`
     /// -   type: `hkUint32`
     /// - offset: 316
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "updateCount")]
     UpdateCount(Primitive<u32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"writeLock"`
     /// -   type: `hkBool`
     /// - offset: 320
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "writeLock")]
     WriteLock(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"isSharable"`
     /// -   type: `hkBool`
     /// - offset: 321
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "isSharable")]
     IsSharable(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"constructionComplete"`
     /// -   type: `hkBool`
     /// - offset: 322
@@ -143,15 +101,14 @@ pub enum HkMultipleVertexBufferHkParam<'a> {
     ConstructionComplete(Primitive<bool>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkMultipleVertexBufferHkParam<'de>, "@name",
+    HkMultipleVertexBuffer<'de>, "@name",
     ("vertexFormat" => VertexFormat(HkVertexFormat)),
-    ("lockedElements" => LockedElements(Vec<HkMultipleVertexBufferLockedElement>)),
-    ("lockedBuffer" => LockedBuffer(Cow<'a, str>)),
-    ("elementInfos" => ElementInfos(Vec<HkMultipleVertexBufferElementInfo>)),
-    ("vertexBufferInfos" => VertexBufferInfos(Vec<HkMultipleVertexBufferVertexBufferInfo>)),
+    ("lockedElements" => LockedElements(HkArrayClass<HkMultipleVertexBufferLockedElement>)),
+    ("lockedBuffer" => LockedBuffer(Cow<'de, str>)),
+    ("elementInfos" => ElementInfos(HkArrayClass<HkMultipleVertexBufferElementInfo>)),
+    ("vertexBufferInfos" => VertexBufferInfos(HkArrayClass<HkMultipleVertexBufferVertexBufferInfo>)),
     ("numVertices" => NumVertices(Primitive<i32>)),
     ("isLocked" => IsLocked(Primitive<bool>)),
     ("updateCount" => UpdateCount(Primitive<u32>)),

@@ -1,105 +1,63 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkbSequenceInternalState`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbSequenceInternalState`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkbSequenceInternalState`
 ///
-/// # Information on the original C++ class
-/// -    size: 64
-/// -  vtable: true
-/// -  parent: hkReferencedObject/`3b1c1113`(Non prefix hex signature)
-/// - version: 0
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkbSequenceInternalState<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkbSequenceInternalState"`: The original C++ class name.
-    #[serde(default = "HkbSequenceInternalState::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0x419b9a05`: Unique value of this class.
-    #[serde(default = "HkbSequenceInternalState::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkbSequenceInternalStateHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkbSequenceInternalStateHkParam<'a>>
-}
-
-impl HkbSequenceInternalState<'_> {
-    /// Return `"hkbSequenceInternalState"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkbSequenceInternalState".into()
-    }
-
-    /// Return `"0x419b9a05"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0x419b9a05".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 64
+/// -    vtable: true
+/// -    parent: `hkReferencedObject`/`0x3b1c1113`
+/// - signature: `0x419b9a05`
+/// -   version: 0
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbSequenceInternalStateHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkbSequenceInternalState {
+    /// # C++ Class Fields Info
     /// -   name:`"nextSampleEvents"`
     /// -   type: `hkArray&lt;hkInt32&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "nextSampleEvents")]
-    NextSampleEvents(Vec<Primitive<i32>>),
-    /// # Field information in the original C++ class
+    NextSampleEvents(HkArrayRef<Primitive<i32>>),
+    /// # C++ Class Fields Info
     /// -   name:`"nextSampleReals"`
     /// -   type: `hkArray&lt;hkInt32&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "nextSampleReals")]
-    NextSampleReals(Vec<Primitive<i32>>),
-    /// # Field information in the original C++ class
+    NextSampleReals(HkArrayRef<Primitive<i32>>),
+    /// # C++ Class Fields Info
     /// -   name:`"nextSampleBools"`
     /// -   type: `hkArray&lt;hkInt32&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "nextSampleBools")]
-    NextSampleBools(Vec<Primitive<i32>>),
-    /// # Field information in the original C++ class
+    NextSampleBools(HkArrayRef<Primitive<i32>>),
+    /// # C++ Class Fields Info
     /// -   name:`"nextSampleInts"`
     /// -   type: `hkArray&lt;hkInt32&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "nextSampleInts")]
-    NextSampleInts(Vec<Primitive<i32>>),
-    /// # Field information in the original C++ class
+    NextSampleInts(HkArrayRef<Primitive<i32>>),
+    /// # C++ Class Fields Info
     /// -   name:`"time"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "time")]
     Time(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"isEnabled"`
     /// -   type: `hkBool`
     /// - offset: 60
@@ -108,14 +66,13 @@ pub enum HkbSequenceInternalStateHkParam<'a> {
     IsEnabled(Primitive<bool>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbSequenceInternalStateHkParam<'de>, "@name",
-    ("nextSampleEvents" => NextSampleEvents(Vec<Primitive<i32>>)),
-    ("nextSampleReals" => NextSampleReals(Vec<Primitive<i32>>)),
-    ("nextSampleBools" => NextSampleBools(Vec<Primitive<i32>>)),
-    ("nextSampleInts" => NextSampleInts(Vec<Primitive<i32>>)),
+    HkbSequenceInternalState, "@name",
+    ("nextSampleEvents" => NextSampleEvents(HkArrayRef<Primitive<i32>>)),
+    ("nextSampleReals" => NextSampleReals(HkArrayRef<Primitive<i32>>)),
+    ("nextSampleBools" => NextSampleBools(HkArrayRef<Primitive<i32>>)),
+    ("nextSampleInts" => NextSampleInts(HkArrayRef<Primitive<i32>>)),
     ("time" => Time(Primitive<f32>)),
     ("isEnabled" => IsEnabled(Primitive<bool>)),
 }

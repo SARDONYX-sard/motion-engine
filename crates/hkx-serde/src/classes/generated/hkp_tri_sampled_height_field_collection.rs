@@ -1,98 +1,56 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkpTriSampledHeightFieldCollection`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpTriSampledHeightFieldCollection`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkpTriSampledHeightFieldCollection`
 ///
-/// # Information on the original C++ class
-/// -    size: 64
-/// -  vtable: true
-/// -  parent: hkpShapeCollection/`e8c3991d`(Non prefix hex signature)
-/// - version: 0
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkpTriSampledHeightFieldCollection<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkpTriSampledHeightFieldCollection"`: The original C++ class name.
-    #[serde(default = "HkpTriSampledHeightFieldCollection::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0xc291ddde`: Unique value of this class.
-    #[serde(default = "HkpTriSampledHeightFieldCollection::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkpTriSampledHeightFieldCollectionHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkpTriSampledHeightFieldCollectionHkParam<'a>>
-}
-
-impl HkpTriSampledHeightFieldCollection<'_> {
-    /// Return `"hkpTriSampledHeightFieldCollection"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkpTriSampledHeightFieldCollection".into()
-    }
-
-    /// Return `"0xc291ddde"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0xc291ddde".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 64
+/// -    vtable: true
+/// -    parent: `hkpShapeCollection`/`0xe8c3991d`
+/// - signature: `0xc291ddde`
+/// -   version: 0
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpTriSampledHeightFieldCollectionHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkpTriSampledHeightFieldCollection<'a> {
+    /// # C++ Class Fields Info
     /// -   name:`"heightfield"`
     /// -   type: `struct hkpSampledHeightFieldShape*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "heightfield")]
     Heightfield(Cow<'a, str>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"childSize"`
     /// -   type: `hkInt32`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "childSize", skip_serializing)]
     ChildSize(Primitive<i32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"radius"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "radius")]
     Radius(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"weldingInfo"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "weldingInfo")]
-    WeldingInfo(Vec<Primitive<u16>>),
-    /// # Field information in the original C++ class
+    WeldingInfo(HkArrayRef<Primitive<u16>>),
+    /// # C++ Class Fields Info
     /// -   name:`"triangleExtrusion"`
     /// -   type: `hkVector4`
     /// - offset: 48
@@ -101,13 +59,12 @@ pub enum HkpTriSampledHeightFieldCollectionHkParam<'a> {
     TriangleExtrusion(Vector4<f32>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpTriSampledHeightFieldCollectionHkParam<'de>, "@name",
-    ("heightfield" => Heightfield(Cow<'a, str>)),
+    HkpTriSampledHeightFieldCollection<'de>, "@name",
+    ("heightfield" => Heightfield(Cow<'de, str>)),
     ("childSize" => ChildSize(Primitive<i32>)),
     ("radius" => Radius(Primitive<f32>)),
-    ("weldingInfo" => WeldingInfo(Vec<Primitive<u16>>)),
+    ("weldingInfo" => WeldingInfo(HkArrayRef<Primitive<u16>>)),
     ("triangleExtrusion" => TriangleExtrusion(Vector4<f32>)),
 }

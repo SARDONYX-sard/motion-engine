@@ -1,91 +1,49 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkaRagdollInstance`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkaRagdollInstance`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkaRagdollInstance`
 ///
-/// # Information on the original C++ class
-/// -    size: 48
-/// -  vtable: true
-/// -  parent: hkReferencedObject/`3b1c1113`(Non prefix hex signature)
-/// - version: 0
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkaRagdollInstance<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkaRagdollInstance"`: The original C++ class name.
-    #[serde(default = "HkaRagdollInstance::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0x154948e8`: Unique value of this class.
-    #[serde(default = "HkaRagdollInstance::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkaRagdollInstanceHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkaRagdollInstanceHkParam<'a>>
-}
-
-impl HkaRagdollInstance<'_> {
-    /// Return `"hkaRagdollInstance"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkaRagdollInstance".into()
-    }
-
-    /// Return `"0x154948e8"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0x154948e8".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 48
+/// -    vtable: true
+/// -    parent: `hkReferencedObject`/`0x3b1c1113`
+/// - signature: `0x154948e8`
+/// -   version: 0
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkaRagdollInstanceHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkaRagdollInstance<'a> {
+    /// # C++ Class Fields Info
     /// -   name:`"rigidBodies"`
     /// -   type: `hkArray&lt;hkpRigidBody*&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rigidBodies")]
-    RigidBodies(Vec<Cow<'a, str>>),
-    /// # Field information in the original C++ class
+    RigidBodies(HkArrayRef<Cow<'a, str>>),
+    /// # C++ Class Fields Info
     /// -   name:`"constraints"`
     /// -   type: `hkArray&lt;hkpConstraintInstance*&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "constraints")]
-    Constraints(Vec<Cow<'a, str>>),
-    /// # Field information in the original C++ class
+    Constraints(HkArrayRef<Cow<'a, str>>),
+    /// # C++ Class Fields Info
     /// -   name:`"boneToRigidBodyMap"`
     /// -   type: `hkArray&lt;hkInt32&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "boneToRigidBodyMap")]
-    BoneToRigidBodyMap(Vec<Primitive<i32>>),
-    /// # Field information in the original C++ class
+    BoneToRigidBodyMap(HkArrayRef<Primitive<i32>>),
+    /// # C++ Class Fields Info
     /// -   name:`"skeleton"`
     /// -   type: `struct hkaSkeleton*`
     /// - offset: 44
@@ -94,12 +52,11 @@ pub enum HkaRagdollInstanceHkParam<'a> {
     Skeleton(Cow<'a, str>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkaRagdollInstanceHkParam<'de>, "@name",
-    ("rigidBodies" => RigidBodies(Vec<Cow<'a, str>>)),
-    ("constraints" => Constraints(Vec<Cow<'a, str>>)),
-    ("boneToRigidBodyMap" => BoneToRigidBodyMap(Vec<Primitive<i32>>)),
-    ("skeleton" => Skeleton(Cow<'a, str>)),
+    HkaRagdollInstance<'de>, "@name",
+    ("rigidBodies" => RigidBodies(HkArrayRef<Cow<'de, str>>)),
+    ("constraints" => Constraints(HkArrayRef<Cow<'de, str>>)),
+    ("boneToRigidBodyMap" => BoneToRigidBodyMap(HkArrayRef<Primitive<i32>>)),
+    ("skeleton" => Skeleton(Cow<'de, str>)),
 }

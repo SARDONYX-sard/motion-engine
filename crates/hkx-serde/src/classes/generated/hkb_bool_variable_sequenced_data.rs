@@ -1,77 +1,35 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkbBoolVariableSequencedData`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbBoolVariableSequencedData`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkbBoolVariableSequencedData`
 ///
-/// # Information on the original C++ class
-/// -    size: 24
-/// -  vtable: true
-/// -  parent: hkbSequencedData/`da8c7d7d`(Non prefix hex signature)
-/// - version: 0
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkbBoolVariableSequencedData<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkbBoolVariableSequencedData"`: The original C++ class name.
-    #[serde(default = "HkbBoolVariableSequencedData::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0x37416fce`: Unique value of this class.
-    #[serde(default = "HkbBoolVariableSequencedData::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkbBoolVariableSequencedDataHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkbBoolVariableSequencedDataHkParam<'a>>
-}
-
-impl HkbBoolVariableSequencedData<'_> {
-    /// Return `"hkbBoolVariableSequencedData"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkbBoolVariableSequencedData".into()
-    }
-
-    /// Return `"0x37416fce"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0x37416fce".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 24
+/// -    vtable: true
+/// -    parent: `hkbSequencedData`/`0xda8c7d7d`
+/// - signature: `0x37416fce`
+/// -   version: 0
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbBoolVariableSequencedDataHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkbBoolVariableSequencedData {
+    /// # C++ Class Fields Info
     /// -   name:`"samples"`
     /// -   type: `hkArray&lt;struct hkbBoolVariableSequencedDataSample&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "samples")]
-    Samples(Vec<HkbBoolVariableSequencedDataSample>),
-    /// # Field information in the original C++ class
+    Samples(HkArrayClass<HkbBoolVariableSequencedDataSample>),
+    /// # C++ Class Fields Info
     /// -   name:`"variableIndex"`
     /// -   type: `hkInt32`
     /// - offset: 20
@@ -80,10 +38,9 @@ pub enum HkbBoolVariableSequencedDataHkParam<'a> {
     VariableIndex(Primitive<i32>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbBoolVariableSequencedDataHkParam<'de>, "@name",
-    ("samples" => Samples(Vec<HkbBoolVariableSequencedDataSample>)),
+    HkbBoolVariableSequencedData, "@name",
+    ("samples" => Samples(HkArrayClass<HkbBoolVariableSequencedDataSample>)),
     ("variableIndex" => VariableIndex(Primitive<i32>)),
 }

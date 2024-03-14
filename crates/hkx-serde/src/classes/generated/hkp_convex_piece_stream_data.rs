@@ -1,97 +1,54 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkpConvexPieceStreamData`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpConvexPieceStreamData`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkpConvexPieceStreamData`
 ///
-/// # Information on the original C++ class
-/// -    size: 44
-/// -  vtable: true
-/// -  parent: hkReferencedObject/`3b1c1113`(Non prefix hex signature)
-/// - version: 0
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkpConvexPieceStreamData<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkpConvexPieceStreamData"`: The original C++ class name.
-    #[serde(default = "HkpConvexPieceStreamData::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0xa5bd1d6e`: Unique value of this class.
-    #[serde(default = "HkpConvexPieceStreamData::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkpConvexPieceStreamDataHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkpConvexPieceStreamDataHkParam<'a>>
-}
-
-impl HkpConvexPieceStreamData<'_> {
-    /// Return `"hkpConvexPieceStreamData"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkpConvexPieceStreamData".into()
-    }
-
-    /// Return `"0xa5bd1d6e"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0xa5bd1d6e".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 44
+/// -    vtable: true
+/// -    parent: `hkReferencedObject`/`0x3b1c1113`
+/// - signature: `0xa5bd1d6e`
+/// -   version: 0
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpConvexPieceStreamDataHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkpConvexPieceStreamData {
+    /// # C++ Class Fields Info
     /// -   name:`"convexPieceStream"`
     /// -   type: `hkArray&lt;hkUint32&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "convexPieceStream")]
-    ConvexPieceStream(Vec<Primitive<u32>>),
-    /// # Field information in the original C++ class
+    ConvexPieceStream(HkArrayRef<Primitive<u32>>),
+    /// # C++ Class Fields Info
     /// -   name:`"convexPieceOffsets"`
     /// -   type: `hkArray&lt;hkUint32&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "convexPieceOffsets")]
-    ConvexPieceOffsets(Vec<Primitive<u32>>),
-    /// # Field information in the original C++ class
+    ConvexPieceOffsets(HkArrayRef<Primitive<u32>>),
+    /// # C++ Class Fields Info
     /// -   name:`"convexPieceSingleTriangles"`
     /// -   type: `hkArray&lt;hkUint32&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "convexPieceSingleTriangles")]
-    ConvexPieceSingleTriangles(Vec<Primitive<u32>>),
+    ConvexPieceSingleTriangles(HkArrayRef<Primitive<u32>>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpConvexPieceStreamDataHkParam<'de>, "@name",
-    ("convexPieceStream" => ConvexPieceStream(Vec<Primitive<u32>>)),
-    ("convexPieceOffsets" => ConvexPieceOffsets(Vec<Primitive<u32>>)),
-    ("convexPieceSingleTriangles" => ConvexPieceSingleTriangles(Vec<Primitive<u32>>)),
+    HkpConvexPieceStreamData, "@name",
+    ("convexPieceStream" => ConvexPieceStream(HkArrayRef<Primitive<u32>>)),
+    ("convexPieceOffsets" => ConvexPieceOffsets(HkArrayRef<Primitive<u32>>)),
+    ("convexPieceSingleTriangles" => ConvexPieceSingleTriangles(HkArrayRef<Primitive<u32>>)),
 }

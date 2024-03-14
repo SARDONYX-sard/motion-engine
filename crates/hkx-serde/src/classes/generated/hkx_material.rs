@@ -1,150 +1,107 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkxMaterial`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkxMaterial`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkxMaterial`
 ///
-/// # Information on the original C++ class
-/// -    size: 144
-/// -  vtable: true
-/// -  parent: hkxAttributeHolder/`7468cc44`(Non prefix hex signature)
-/// - version: 1
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkxMaterial<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkxMaterial"`: The original C++ class name.
-    #[serde(default = "HkxMaterial::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0x2954537a`: Unique value of this class.
-    #[serde(default = "HkxMaterial::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkxMaterialHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkxMaterialHkParam<'a>>
-}
-
-impl HkxMaterial<'_> {
-    /// Return `"hkxMaterial"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkxMaterial".into()
-    }
-
-    /// Return `"0x2954537a"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0x2954537a".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 144
+/// -    vtable: true
+/// -    parent: `hkxAttributeHolder`/`0x7468cc44`
+/// - signature: `0x2954537a`
+/// -   version: 1
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkxMaterialHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkxMaterial<'a> {
+    /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"stages"`
     /// -   type: `hkArray&lt;struct hkxMaterialTextureStage&gt;`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "stages")]
-    Stages(Vec<HkxMaterialTextureStage>),
-    /// # Field information in the original C++ class
+    Stages(HkArrayClass<HkxMaterialTextureStage>),
+    /// # C++ Class Fields Info
     /// -   name:`"diffuseColor"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "diffuseColor")]
     DiffuseColor(Vector4<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"ambientColor"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "ambientColor")]
     AmbientColor(Vector4<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"specularColor"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "specularColor")]
     SpecularColor(Vector4<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"emissiveColor"`
     /// -   type: `hkVector4`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "emissiveColor")]
     EmissiveColor(Vector4<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"subMaterials"`
     /// -   type: `hkArray&lt;hkxMaterial*&gt;`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "subMaterials")]
-    SubMaterials(Vec<Cow<'a, str>>),
-    /// # Field information in the original C++ class
+    SubMaterials(HkArrayRef<Cow<'a, str>>),
+    /// # C++ Class Fields Info
     /// -   name:`"extraData"`
     /// -   type: `struct hkReferencedObject*`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "extraData")]
     ExtraData(Cow<'a, str>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"properties"`
     /// -   type: `hkArray&lt;struct hkxMaterialProperty&gt;`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "properties")]
-    Properties(Vec<HkxMaterialProperty>),
+    Properties(HkArrayClass<HkxMaterialProperty>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkxMaterialHkParam<'de>, "@name",
-    ("name" => Name(Primitive<Cow<'a, str>>)),
-    ("stages" => Stages(Vec<HkxMaterialTextureStage>)),
+    HkxMaterial<'de>, "@name",
+    ("name" => Name(Primitive<Cow<'de, str>>)),
+    ("stages" => Stages(HkArrayClass<HkxMaterialTextureStage>)),
     ("diffuseColor" => DiffuseColor(Vector4<f32>)),
     ("ambientColor" => AmbientColor(Vector4<f32>)),
     ("specularColor" => SpecularColor(Vector4<f32>)),
     ("emissiveColor" => EmissiveColor(Vector4<f32>)),
-    ("subMaterials" => SubMaterials(Vec<Cow<'a, str>>)),
-    ("extraData" => ExtraData(Cow<'a, str>)),
-    ("properties" => Properties(Vec<HkxMaterialProperty>)),
+    ("subMaterials" => SubMaterials(HkArrayRef<Cow<'de, str>>)),
+    ("extraData" => ExtraData(Cow<'de, str>)),
+    ("properties" => Properties(HkArrayClass<HkxMaterialProperty>)),
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum TextureType {
     #[serde(rename = "TEX_UNKNOWN")]
     TexUnknown = 0,
@@ -174,7 +131,7 @@ pub enum TextureType {
     TexNotexported = 12,
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum PropertyKey {
     #[serde(rename = "PROPERTY_MTL_TYPE_BLEND")]
     PropertyMtlTypeBlend = 1,

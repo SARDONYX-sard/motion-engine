@@ -1,110 +1,67 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkbAuxiliaryNodeInfo`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbAuxiliaryNodeInfo`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkbAuxiliaryNodeInfo`
 ///
-/// # Information on the original C++ class
-/// -    size: 28
-/// -  vtable: true
-/// -  parent: hkReferencedObject/`3b1c1113`(Non prefix hex signature)
-/// - version: 1
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkbAuxiliaryNodeInfo<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkbAuxiliaryNodeInfo"`: The original C++ class name.
-    #[serde(default = "HkbAuxiliaryNodeInfo::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0xca0888ca`: Unique value of this class.
-    #[serde(default = "HkbAuxiliaryNodeInfo::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkbAuxiliaryNodeInfoHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkbAuxiliaryNodeInfoHkParam<'a>>
-}
-
-impl HkbAuxiliaryNodeInfo<'_> {
-    /// Return `"hkbAuxiliaryNodeInfo"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkbAuxiliaryNodeInfo".into()
-    }
-
-    /// Return `"0xca0888ca"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0xca0888ca".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 28
+/// -    vtable: true
+/// -    parent: `hkReferencedObject`/`0x3b1c1113`
+/// - signature: `0xca0888ca`
+/// -   version: 1
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbAuxiliaryNodeInfoHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkbAuxiliaryNodeInfo<'a> {
+    /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum NodeType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
     Type(NodeType),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"depth"`
     /// -   type: `hkUint8`
     /// - offset: 9
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "depth")]
     Depth(Primitive<u8>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"referenceBehaviorName"`
     /// -   type: `hkStringPtr`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "referenceBehaviorName")]
     ReferenceBehaviorName(Primitive<Cow<'a, str>>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"selfTransitionNames"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "selfTransitionNames")]
-    SelfTransitionNames(Vec<Primitive<Cow<'a, str>>>),
+    SelfTransitionNames(HkArrayStringPtr<'a>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbAuxiliaryNodeInfoHkParam<'de>, "@name",
+    HkbAuxiliaryNodeInfo<'de>, "@name",
     ("type" => Type(NodeType)),
     ("depth" => Depth(Primitive<u8>)),
-    ("referenceBehaviorName" => ReferenceBehaviorName(Primitive<Cow<'a, str>>)),
-    ("selfTransitionNames" => SelfTransitionNames(Vec<Primitive<Cow<'a, str>>>)),
+    ("referenceBehaviorName" => ReferenceBehaviorName(Primitive<Cow<'de, str>>)),
+    ("selfTransitionNames" => SelfTransitionNames(HkArrayStringPtr<'de>)),
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum NodeType {
     #[serde(rename = "NODE_TYPE_UNKNOWN")]
     NodeTypeUnknown = 0,

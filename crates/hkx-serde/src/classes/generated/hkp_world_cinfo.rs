@@ -1,462 +1,420 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkpWorldCinfo`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpWorldCinfo`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkpWorldCinfo`
 ///
-/// # Information on the original C++ class
-/// -    size: 240
-/// -  vtable: true
-/// -  parent: hkReferencedObject/`3b1c1113`(Non prefix hex signature)
-/// - version: 11
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkpWorldCinfo<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkpWorldCinfo"`: The original C++ class name.
-    #[serde(default = "HkpWorldCinfo::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0xa5255445`: Unique value of this class.
-    #[serde(default = "HkpWorldCinfo::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkpWorldCinfoHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkpWorldCinfoHkParam<'a>>
-}
-
-impl HkpWorldCinfo<'_> {
-    /// Return `"hkpWorldCinfo"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkpWorldCinfo".into()
-    }
-
-    /// Return `"0xa5255445"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0xa5255445".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 240
+/// -    vtable: true
+/// -    parent: `hkReferencedObject`/`0x3b1c1113`
+/// - signature: `0xa5255445`
+/// -   version: 11
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpWorldCinfoHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkpWorldCinfo<'a> {
+    /// # C++ Class Fields Info
     /// -   name:`"gravity"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "gravity")]
     Gravity(Vector4<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"broadPhaseQuerySize"`
     /// -   type: `hkInt32`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "broadPhaseQuerySize")]
     BroadPhaseQuerySize(Primitive<i32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"contactRestingVelocity"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "contactRestingVelocity")]
     ContactRestingVelocity(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"broadPhaseBorderBehaviour"`
     /// -   type: `enum BroadPhaseBorderBehaviour`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "broadPhaseBorderBehaviour")]
     BroadPhaseBorderBehaviour(BroadPhaseBorderBehaviour),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"mtPostponeAndSortBroadPhaseBorderCallbacks"`
     /// -   type: `hkBool`
     /// - offset: 41
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "mtPostponeAndSortBroadPhaseBorderCallbacks")]
     MtPostponeAndSortBroadPhaseBorderCallbacks(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"broadPhaseWorldAabb"`
     /// -   type: `struct hkAabb`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "broadPhaseWorldAabb")]
     BroadPhaseWorldAabb(HkAabb),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"useKdTree"`
     /// -   type: `hkBool`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "useKdTree")]
     UseKdTree(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"useMultipleTree"`
     /// -   type: `hkBool`
     /// - offset: 81
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "useMultipleTree")]
     UseMultipleTree(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"treeUpdateType"`
     /// -   type: `enum TreeUpdateType`
     /// - offset: 82
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "treeUpdateType")]
     TreeUpdateType(TreeUpdateType),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"autoUpdateKdTree"`
     /// -   type: `hkBool`
     /// - offset: 83
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "autoUpdateKdTree")]
     AutoUpdateKdTree(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"collisionTolerance"`
     /// -   type: `hkReal`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "collisionTolerance")]
     CollisionTolerance(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"collisionFilter"`
     /// -   type: `struct hkpCollisionFilter*`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "collisionFilter")]
     CollisionFilter(Cow<'a, str>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"convexListFilter"`
     /// -   type: `struct hkpConvexListFilter*`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "convexListFilter")]
     ConvexListFilter(Cow<'a, str>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"expectedMaxLinearVelocity"`
     /// -   type: `hkReal`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "expectedMaxLinearVelocity")]
     ExpectedMaxLinearVelocity(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"sizeOfToiEventQueue"`
     /// -   type: `hkInt32`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "sizeOfToiEventQueue")]
     SizeOfToiEventQueue(Primitive<i32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"expectedMinPsiDeltaTime"`
     /// -   type: `hkReal`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "expectedMinPsiDeltaTime")]
     ExpectedMinPsiDeltaTime(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"memoryWatchDog"`
     /// -   type: `struct hkWorldMemoryAvailableWatchDog*`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "memoryWatchDog")]
     MemoryWatchDog(Cow<'a, str>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"broadPhaseNumMarkers"`
     /// -   type: `hkInt32`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "broadPhaseNumMarkers")]
     BroadPhaseNumMarkers(Primitive<i32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"contactPointGeneration"`
     /// -   type: `enum ContactPointGeneration`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "contactPointGeneration")]
     ContactPointGeneration(ContactPointGeneration),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"allowToSkipConfirmedCallbacks"`
     /// -   type: `hkBool`
     /// - offset: 117
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "allowToSkipConfirmedCallbacks")]
     AllowToSkipConfirmedCallbacks(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"useHybridBroadphase"`
     /// -   type: `hkBool`
     /// - offset: 118
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "useHybridBroadphase")]
     UseHybridBroadphase(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"solverTau"`
     /// -   type: `hkReal`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "solverTau")]
     SolverTau(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"solverDamp"`
     /// -   type: `hkReal`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "solverDamp")]
     SolverDamp(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"solverIterations"`
     /// -   type: `hkInt32`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "solverIterations")]
     SolverIterations(Primitive<i32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"solverMicrosteps"`
     /// -   type: `hkInt32`
     /// - offset: 132
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "solverMicrosteps")]
     SolverMicrosteps(Primitive<i32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"maxConstraintViolation"`
     /// -   type: `hkReal`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "maxConstraintViolation")]
     MaxConstraintViolation(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"forceCoherentConstraintOrderingInSolver"`
     /// -   type: `hkBool`
     /// - offset: 140
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "forceCoherentConstraintOrderingInSolver")]
     ForceCoherentConstraintOrderingInSolver(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"snapCollisionToConvexEdgeThreshold"`
     /// -   type: `hkReal`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "snapCollisionToConvexEdgeThreshold")]
     SnapCollisionToConvexEdgeThreshold(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"snapCollisionToConcaveEdgeThreshold"`
     /// -   type: `hkReal`
     /// - offset: 148
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "snapCollisionToConcaveEdgeThreshold")]
     SnapCollisionToConcaveEdgeThreshold(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"enableToiWeldRejection"`
     /// -   type: `hkBool`
     /// - offset: 152
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "enableToiWeldRejection")]
     EnableToiWeldRejection(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"enableDeprecatedWelding"`
     /// -   type: `hkBool`
     /// - offset: 153
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "enableDeprecatedWelding")]
     EnableDeprecatedWelding(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"iterativeLinearCastEarlyOutDistance"`
     /// -   type: `hkReal`
     /// - offset: 156
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "iterativeLinearCastEarlyOutDistance")]
     IterativeLinearCastEarlyOutDistance(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"iterativeLinearCastMaxIterations"`
     /// -   type: `hkInt32`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "iterativeLinearCastMaxIterations")]
     IterativeLinearCastMaxIterations(Primitive<i32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"deactivationNumInactiveFramesSelectFlag0"`
     /// -   type: `hkUint8`
     /// - offset: 164
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "deactivationNumInactiveFramesSelectFlag0")]
     DeactivationNumInactiveFramesSelectFlag0(Primitive<u8>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"deactivationNumInactiveFramesSelectFlag1"`
     /// -   type: `hkUint8`
     /// - offset: 165
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "deactivationNumInactiveFramesSelectFlag1")]
     DeactivationNumInactiveFramesSelectFlag1(Primitive<u8>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"deactivationIntegrateCounter"`
     /// -   type: `hkUint8`
     /// - offset: 166
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "deactivationIntegrateCounter")]
     DeactivationIntegrateCounter(Primitive<u8>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"shouldActivateOnRigidBodyTransformChange"`
     /// -   type: `hkBool`
     /// - offset: 167
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "shouldActivateOnRigidBodyTransformChange")]
     ShouldActivateOnRigidBodyTransformChange(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"deactivationReferenceDistance"`
     /// -   type: `hkReal`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "deactivationReferenceDistance")]
     DeactivationReferenceDistance(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"toiCollisionResponseRotateNormal"`
     /// -   type: `hkReal`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "toiCollisionResponseRotateNormal")]
     ToiCollisionResponseRotateNormal(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"maxSectorsPerMidphaseCollideTask"`
     /// -   type: `hkInt32`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "maxSectorsPerMidphaseCollideTask")]
     MaxSectorsPerMidphaseCollideTask(Primitive<i32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"maxSectorsPerNarrowphaseCollideTask"`
     /// -   type: `hkInt32`
     /// - offset: 180
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "maxSectorsPerNarrowphaseCollideTask")]
     MaxSectorsPerNarrowphaseCollideTask(Primitive<i32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"processToisMultithreaded"`
     /// -   type: `hkBool`
     /// - offset: 184
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "processToisMultithreaded")]
     ProcessToisMultithreaded(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"maxEntriesPerToiMidphaseCollideTask"`
     /// -   type: `hkInt32`
     /// - offset: 188
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "maxEntriesPerToiMidphaseCollideTask")]
     MaxEntriesPerToiMidphaseCollideTask(Primitive<i32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"maxEntriesPerToiNarrowphaseCollideTask"`
     /// -   type: `hkInt32`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "maxEntriesPerToiNarrowphaseCollideTask")]
     MaxEntriesPerToiNarrowphaseCollideTask(Primitive<i32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"maxNumToiCollisionPairsSinglethreaded"`
     /// -   type: `hkInt32`
     /// - offset: 196
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "maxNumToiCollisionPairsSinglethreaded")]
     MaxNumToiCollisionPairsSinglethreaded(Primitive<i32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"numToisTillAllowedPenetrationSimplifiedToi"`
     /// -   type: `hkReal`
     /// - offset: 200
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "numToisTillAllowedPenetrationSimplifiedToi")]
     NumToisTillAllowedPenetrationSimplifiedToi(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"numToisTillAllowedPenetrationToi"`
     /// -   type: `hkReal`
     /// - offset: 204
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "numToisTillAllowedPenetrationToi")]
     NumToisTillAllowedPenetrationToi(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"numToisTillAllowedPenetrationToiHigher"`
     /// -   type: `hkReal`
     /// - offset: 208
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "numToisTillAllowedPenetrationToiHigher")]
     NumToisTillAllowedPenetrationToiHigher(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"numToisTillAllowedPenetrationToiForced"`
     /// -   type: `hkReal`
     /// - offset: 212
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "numToisTillAllowedPenetrationToiForced")]
     NumToisTillAllowedPenetrationToiForced(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"enableDeactivation"`
     /// -   type: `hkBool`
     /// - offset: 216
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "enableDeactivation")]
     EnableDeactivation(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"simulationType"`
     /// -   type: `enum SimulationType`
     /// - offset: 217
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "simulationType")]
     SimulationType(SimulationType),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"enableSimulationIslands"`
     /// -   type: `hkBool`
     /// - offset: 218
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "enableSimulationIslands")]
     EnableSimulationIslands(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"minDesiredIslandSize"`
     /// -   type: `hkUint32`
     /// - offset: 220
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "minDesiredIslandSize")]
     MinDesiredIslandSize(Primitive<u32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"processActionsInSingleThread"`
     /// -   type: `hkBool`
     /// - offset: 224
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "processActionsInSingleThread")]
     ProcessActionsInSingleThread(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"allowIntegrationOfIslandsWithoutConstraintsInASeparateJob"`
     /// -   type: `hkBool`
     /// - offset: 225
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "allowIntegrationOfIslandsWithoutConstraintsInASeparateJob")]
     AllowIntegrationOfIslandsWithoutConstraintsInASeparateJob(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"frameMarkerPsiSnap"`
     /// -   type: `hkReal`
     /// - offset: 228
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "frameMarkerPsiSnap")]
     FrameMarkerPsiSnap(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"fireCollisionCallbacks"`
     /// -   type: `hkBool`
     /// - offset: 232
@@ -465,10 +423,9 @@ pub enum HkpWorldCinfoHkParam<'a> {
     FireCollisionCallbacks(Primitive<bool>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpWorldCinfoHkParam<'de>, "@name",
+    HkpWorldCinfo<'de>, "@name",
     ("gravity" => Gravity(Vector4<f32>)),
     ("broadPhaseQuerySize" => BroadPhaseQuerySize(Primitive<i32>)),
     ("contactRestingVelocity" => ContactRestingVelocity(Primitive<f32>)),
@@ -480,12 +437,12 @@ impl_deserialize_for_internally_tagged_enum! {
     ("treeUpdateType" => TreeUpdateType(TreeUpdateType)),
     ("autoUpdateKdTree" => AutoUpdateKdTree(Primitive<bool>)),
     ("collisionTolerance" => CollisionTolerance(Primitive<f32>)),
-    ("collisionFilter" => CollisionFilter(Cow<'a, str>)),
-    ("convexListFilter" => ConvexListFilter(Cow<'a, str>)),
+    ("collisionFilter" => CollisionFilter(Cow<'de, str>)),
+    ("convexListFilter" => ConvexListFilter(Cow<'de, str>)),
     ("expectedMaxLinearVelocity" => ExpectedMaxLinearVelocity(Primitive<f32>)),
     ("sizeOfToiEventQueue" => SizeOfToiEventQueue(Primitive<i32>)),
     ("expectedMinPsiDeltaTime" => ExpectedMinPsiDeltaTime(Primitive<f32>)),
-    ("memoryWatchDog" => MemoryWatchDog(Cow<'a, str>)),
+    ("memoryWatchDog" => MemoryWatchDog(Cow<'de, str>)),
     ("broadPhaseNumMarkers" => BroadPhaseNumMarkers(Primitive<i32>)),
     ("contactPointGeneration" => ContactPointGeneration(ContactPointGeneration)),
     ("allowToSkipConfirmedCallbacks" => AllowToSkipConfirmedCallbacks(Primitive<bool>)),
@@ -528,7 +485,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("fireCollisionCallbacks" => FireCollisionCallbacks(Primitive<bool>)),
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum SolverType {
     #[serde(rename = "SOLVER_TYPE_INVALID")]
     SolverTypeInvalid = 0,
@@ -554,7 +511,7 @@ pub enum SolverType {
     SolverTypeMaxId = 10,
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum SimulationType {
     #[serde(rename = "SIMULATION_TYPE_INVALID")]
     SimulationTypeInvalid = 0,
@@ -566,7 +523,7 @@ pub enum SimulationType {
     SimulationTypeMultithreaded = 3,
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum ContactPointGeneration {
     #[serde(rename = "CONTACT_POINT_ACCEPT_ALWAYS")]
     ContactPointAcceptAlways = 0,
@@ -576,7 +533,7 @@ pub enum ContactPointGeneration {
     ContactPointRejectMany = 2,
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum BroadPhaseBorderBehaviour {
     #[serde(rename = "BROADPHASE_BORDER_ASSERT")]
     BroadphaseBorderAssert = 0,
@@ -588,7 +545,7 @@ pub enum BroadPhaseBorderBehaviour {
     BroadphaseBorderDoNothing = 3,
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum TreeUpdateType {
     #[serde(rename = "REBUILD_ACTIVE")]
     RebuildActive = 0,

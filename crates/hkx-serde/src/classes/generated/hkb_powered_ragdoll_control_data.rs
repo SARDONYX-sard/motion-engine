@@ -1,98 +1,56 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkbPoweredRagdollControlData`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbPoweredRagdollControlData`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkbPoweredRagdollControlData`
 ///
-/// # Information on the original C++ class
-/// -    size: 32
-/// -  vtable: false
-/// -  parent: None/`0`(Non prefix hex signature)
-/// - version: 3
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkbPoweredRagdollControlData<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkbPoweredRagdollControlData"`: The original C++ class name.
-    #[serde(default = "HkbPoweredRagdollControlData::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0xf5ba21b`: Unique value of this class.
-    #[serde(default = "HkbPoweredRagdollControlData::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkbPoweredRagdollControlDataHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkbPoweredRagdollControlDataHkParam<'a>>
-}
-
-impl HkbPoweredRagdollControlData<'_> {
-    /// Return `"hkbPoweredRagdollControlData"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkbPoweredRagdollControlData".into()
-    }
-
-    /// Return `"0xf5ba21b"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0xf5ba21b".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 32
+/// -    vtable: false
+/// -    parent: `None`/`0x0`
+/// - signature: `0xf5ba21b`
+/// -   version: 3
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbPoweredRagdollControlDataHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkbPoweredRagdollControlData {
+    /// # C++ Class Fields Info
     /// -   name:`"maxForce"`
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | ALIGN16`
     #[serde(rename = "maxForce")]
     MaxForce(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"tau"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "tau")]
     Tau(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"damping"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "damping")]
     Damping(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"proportionalRecoveryVelocity"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "proportionalRecoveryVelocity")]
     ProportionalRecoveryVelocity(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"constantRecoveryVelocity"`
     /// -   type: `hkReal`
     /// - offset: 16
@@ -101,10 +59,9 @@ pub enum HkbPoweredRagdollControlDataHkParam<'a> {
     ConstantRecoveryVelocity(Primitive<f32>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbPoweredRagdollControlDataHkParam<'de>, "@name",
+    HkbPoweredRagdollControlData, "@name",
     ("maxForce" => MaxForce(Primitive<f32>)),
     ("tau" => Tau(Primitive<f32>)),
     ("damping" => Damping(Primitive<f32>)),

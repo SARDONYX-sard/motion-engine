@@ -1,121 +1,78 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkpStorageMeshShapeSubpartStorage`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpStorageMeshShapeSubpartStorage`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkpStorageMeshShapeSubpartStorage`
 ///
-/// # Information on the original C++ class
-/// -    size: 80
-/// -  vtable: true
-/// -  parent: hkReferencedObject/`3b1c1113`(Non prefix hex signature)
-/// - version: 0
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkpStorageMeshShapeSubpartStorage<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkpStorageMeshShapeSubpartStorage"`: The original C++ class name.
-    #[serde(default = "HkpStorageMeshShapeSubpartStorage::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0xbf27438`: Unique value of this class.
-    #[serde(default = "HkpStorageMeshShapeSubpartStorage::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkpStorageMeshShapeSubpartStorageHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkpStorageMeshShapeSubpartStorageHkParam<'a>>
-}
-
-impl HkpStorageMeshShapeSubpartStorage<'_> {
-    /// Return `"hkpStorageMeshShapeSubpartStorage"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkpStorageMeshShapeSubpartStorage".into()
-    }
-
-    /// Return `"0xbf27438"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0xbf27438".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 80
+/// -    vtable: true
+/// -    parent: `hkReferencedObject`/`0x3b1c1113`
+/// - signature: `0xbf27438`
+/// -   version: 0
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpStorageMeshShapeSubpartStorageHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkpStorageMeshShapeSubpartStorage {
+    /// # C++ Class Fields Info
     /// -   name:`"vertices"`
     /// -   type: `hkArray&lt;hkReal&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertices")]
-    Vertices(Vec<Primitive<f32>>),
-    /// # Field information in the original C++ class
+    Vertices(HkArrayRef<Primitive<f32>>),
+    /// # C++ Class Fields Info
     /// -   name:`"indices16"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "indices16")]
-    Indices16(Vec<Primitive<u16>>),
-    /// # Field information in the original C++ class
+    Indices16(HkArrayRef<Primitive<u16>>),
+    /// # C++ Class Fields Info
     /// -   name:`"indices32"`
     /// -   type: `hkArray&lt;hkUint32&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "indices32")]
-    Indices32(Vec<Primitive<u32>>),
-    /// # Field information in the original C++ class
+    Indices32(HkArrayRef<Primitive<u32>>),
+    /// # C++ Class Fields Info
     /// -   name:`"materialIndices"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "materialIndices")]
-    MaterialIndices(Vec<Primitive<u8>>),
-    /// # Field information in the original C++ class
+    MaterialIndices(HkArrayRef<Primitive<u8>>),
+    /// # C++ Class Fields Info
     /// -   name:`"materials"`
     /// -   type: `hkArray&lt;hkUint32&gt;`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "materials")]
-    Materials(Vec<Primitive<u32>>),
-    /// # Field information in the original C++ class
+    Materials(HkArrayRef<Primitive<u32>>),
+    /// # C++ Class Fields Info
     /// -   name:`"materialIndices16"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "materialIndices16")]
-    MaterialIndices16(Vec<Primitive<u16>>),
+    MaterialIndices16(HkArrayRef<Primitive<u16>>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpStorageMeshShapeSubpartStorageHkParam<'de>, "@name",
-    ("vertices" => Vertices(Vec<Primitive<f32>>)),
-    ("indices16" => Indices16(Vec<Primitive<u16>>)),
-    ("indices32" => Indices32(Vec<Primitive<u32>>)),
-    ("materialIndices" => MaterialIndices(Vec<Primitive<u8>>)),
-    ("materials" => Materials(Vec<Primitive<u32>>)),
-    ("materialIndices16" => MaterialIndices16(Vec<Primitive<u16>>)),
+    HkpStorageMeshShapeSubpartStorage, "@name",
+    ("vertices" => Vertices(HkArrayRef<Primitive<f32>>)),
+    ("indices16" => Indices16(HkArrayRef<Primitive<u16>>)),
+    ("indices32" => Indices32(HkArrayRef<Primitive<u32>>)),
+    ("materialIndices" => MaterialIndices(HkArrayRef<Primitive<u8>>)),
+    ("materials" => Materials(HkArrayRef<Primitive<u32>>)),
+    ("materialIndices16" => MaterialIndices16(HkArrayRef<Primitive<u16>>)),
 }

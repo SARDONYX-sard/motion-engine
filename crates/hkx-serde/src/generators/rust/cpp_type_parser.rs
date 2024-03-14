@@ -146,14 +146,14 @@ fn parse_struct_type(input: &str) -> IResult<&str, Cow<'_, str>> {
 fn parse_enum_type(input: &str) -> IResult<&str, Cow<'_, str>> {
     let (input, _) = tag("enum")(input)?;
     let (input, _) = space1(input)?;
-    Ok(("", input.to_case(Case::Pascal).into()))
+    Ok(("", format!("Primitive<{}>", input.to_case(Case::Pascal)).into()))
 }
 
 /// enum bit flags
 fn parse_flags_type(input: &str) -> IResult<&str, Cow<'_, str>> {
     let (input, _) = tag("flags")(input)?;
     let (input, _) = space1(input)?;
-    Ok(("", input.to_case(Case::Pascal).into()))
+    Ok(("", format!("Primitive<{}>", input.to_case(Case::Pascal)).into()))
 }
 
 /// Generate rust code that mapping between C++ and rust types.

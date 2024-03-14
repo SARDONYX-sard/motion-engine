@@ -2031,3 +2031,5 @@ use hkx_vertex_selection_channel::*;
 
 mod hkx_vertex_vector_data_channel;
 use hkx_vertex_vector_data_channel::*;
+
+pub mod class_params;

@@ -1,147 +1,105 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkbBlendingTransitionEffect`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbBlendingTransitionEffect`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkbBlendingTransitionEffect`
 ///
-/// # Information on the original C++ class
-/// -    size: 88
-/// -  vtable: true
-/// -  parent: hkbTransitionEffect/`945da157`(Non prefix hex signature)
-/// - version: 1
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkbBlendingTransitionEffect<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkbBlendingTransitionEffect"`: The original C++ class name.
-    #[serde(default = "HkbBlendingTransitionEffect::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0xfd8584fe`: Unique value of this class.
-    #[serde(default = "HkbBlendingTransitionEffect::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkbBlendingTransitionEffectHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkbBlendingTransitionEffectHkParam<'a>>
-}
-
-impl HkbBlendingTransitionEffect<'_> {
-    /// Return `"hkbBlendingTransitionEffect"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkbBlendingTransitionEffect".into()
-    }
-
-    /// Return `"0xfd8584fe"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0xfd8584fe".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 88
+/// -    vtable: true
+/// -    parent: `hkbTransitionEffect`/`0x945da157`
+/// - signature: `0xfd8584fe`
+/// -   version: 1
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbBlendingTransitionEffectHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkbBlendingTransitionEffect<'a> {
+    /// # C++ Class Fields Info
     /// -   name:`"duration"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "duration")]
     Duration(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"toGeneratorStartTimeFraction"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "toGeneratorStartTimeFraction")]
     ToGeneratorStartTimeFraction(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `flags FlagBits`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "flags")]
     Flags(FlagBits),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"endMode"`
     /// -   type: `enum EndMode`
     /// - offset: 54
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "endMode")]
     EndMode(EndMode),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"blendCurve"`
     /// -   type: `enum BlendCurve`
     /// - offset: 55
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "blendCurve")]
     BlendCurve(BlendCurve),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"fromGenerator"`
     /// -   type: `void*`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "fromGenerator", skip_serializing)]
-    FromGenerator(()),
-    /// # Field information in the original C++ class
+    FromGenerator(Cow<'a, str>),
+    /// # C++ Class Fields Info
     /// -   name:`"toGenerator"`
     /// -   type: `void*`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "toGenerator", skip_serializing)]
-    ToGenerator(()),
-    /// # Field information in the original C++ class
+    ToGenerator(Cow<'a, str>),
+    /// # C++ Class Fields Info
     /// -   name:`"characterPoseAtBeginningOfTransition"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "characterPoseAtBeginningOfTransition", skip_serializing)]
-    CharacterPoseAtBeginningOfTransition(Vec<()>),
-    /// # Field information in the original C++ class
+    CharacterPoseAtBeginningOfTransition(HkArrayRef<()>),
+    /// # C++ Class Fields Info
     /// -   name:`"timeRemaining"`
     /// -   type: `hkReal`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "timeRemaining", skip_serializing)]
     TimeRemaining(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"timeInTransition"`
     /// -   type: `hkReal`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "timeInTransition", skip_serializing)]
     TimeInTransition(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"applySelfTransition"`
     /// -   type: `hkBool`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "applySelfTransition", skip_serializing)]
     ApplySelfTransition(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"initializeCharacterPose"`
     /// -   type: `hkBool`
     /// - offset: 85
@@ -150,25 +108,24 @@ pub enum HkbBlendingTransitionEffectHkParam<'a> {
     InitializeCharacterPose(Primitive<bool>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbBlendingTransitionEffectHkParam<'de>, "@name",
+    HkbBlendingTransitionEffect<'de>, "@name",
     ("duration" => Duration(Primitive<f32>)),
     ("toGeneratorStartTimeFraction" => ToGeneratorStartTimeFraction(Primitive<f32>)),
     ("flags" => Flags(FlagBits)),
     ("endMode" => EndMode(EndMode)),
     ("blendCurve" => BlendCurve(BlendCurve)),
-    ("fromGenerator" => FromGenerator(())),
-    ("toGenerator" => ToGenerator(())),
-    ("characterPoseAtBeginningOfTransition" => CharacterPoseAtBeginningOfTransition(Vec<()>)),
+    ("fromGenerator" => FromGenerator(Cow<'de, str>)),
+    ("toGenerator" => ToGenerator(Cow<'de, str>)),
+    ("characterPoseAtBeginningOfTransition" => CharacterPoseAtBeginningOfTransition(HkArrayRef<()>)),
     ("timeRemaining" => TimeRemaining(Primitive<f32>)),
     ("timeInTransition" => TimeInTransition(Primitive<f32>)),
     ("applySelfTransition" => ApplySelfTransition(Primitive<bool>)),
     ("initializeCharacterPose" => InitializeCharacterPose(Primitive<bool>)),
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum FlagBits {
     #[serde(rename = "FLAG_NONE")]
     FlagNone = 0,
@@ -180,7 +137,7 @@ pub enum FlagBits {
     FlagIgnoreToWorldFromModel = 4,
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum EndMode {
     #[serde(rename = "END_MODE_NONE")]
     EndModeNone = 0,

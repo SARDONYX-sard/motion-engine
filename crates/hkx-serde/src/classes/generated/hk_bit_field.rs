@@ -1,77 +1,35 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkBitField`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkBitField`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkBitField`
 ///
-/// # Information on the original C++ class
-/// -    size: 16
-/// -  vtable: false
-/// -  parent: None/`0`(Non prefix hex signature)
-/// - version: 0
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkBitField<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkBitField"`: The original C++ class name.
-    #[serde(default = "HkBitField::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0xda41bd9b`: Unique value of this class.
-    #[serde(default = "HkBitField::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkBitFieldHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkBitFieldHkParam<'a>>
-}
-
-impl HkBitField<'_> {
-    /// Return `"hkBitField"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkBitField".into()
-    }
-
-    /// Return `"0xda41bd9b"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0xda41bd9b".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 16
+/// -    vtable: false
+/// -    parent: `None`/`0x0`
+/// - signature: `0xda41bd9b`
+/// -   version: 0
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkBitFieldHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkBitField {
+    /// # C++ Class Fields Info
     /// -   name:`"words"`
     /// -   type: `hkArray&lt;hkUint32&gt;`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "words")]
-    Words(Vec<Primitive<u32>>),
-    /// # Field information in the original C++ class
+    Words(HkArrayRef<Primitive<u32>>),
+    /// # C++ Class Fields Info
     /// -   name:`"numBits"`
     /// -   type: `hkInt32`
     /// - offset: 12
@@ -80,10 +38,9 @@ pub enum HkBitFieldHkParam<'a> {
     NumBits(Primitive<i32>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkBitFieldHkParam<'de>, "@name",
-    ("words" => Words(Vec<Primitive<u32>>)),
+    HkBitField, "@name",
+    ("words" => Words(HkArrayRef<Primitive<u32>>)),
     ("numBits" => NumBits(Primitive<i32>)),
 }

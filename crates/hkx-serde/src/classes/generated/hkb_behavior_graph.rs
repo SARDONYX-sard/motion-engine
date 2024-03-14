@@ -1,273 +1,231 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkbBehaviorGraph`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbBehaviorGraph`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkbBehaviorGraph`
 ///
-/// # Information on the original C++ class
-/// -    size: 176
-/// -  vtable: true
-/// -  parent: hkbGenerator/`d68aefc`(Non prefix hex signature)
-/// - version: 1
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkbBehaviorGraph<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkbBehaviorGraph"`: The original C++ class name.
-    #[serde(default = "HkbBehaviorGraph::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0xb1218f86`: Unique value of this class.
-    #[serde(default = "HkbBehaviorGraph::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkbBehaviorGraphHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkbBehaviorGraphHkParam<'a>>
-}
-
-impl HkbBehaviorGraph<'_> {
-    /// Return `"hkbBehaviorGraph"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkbBehaviorGraph".into()
-    }
-
-    /// Return `"0xb1218f86"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0xb1218f86".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 176
+/// -    vtable: true
+/// -    parent: `hkbGenerator`/`0xd68aefc`
+/// - signature: `0xb1218f86`
+/// -   version: 1
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbBehaviorGraphHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkbBehaviorGraph<'a> {
+    /// # C++ Class Fields Info
     /// -   name:`"variableMode"`
     /// -   type: `enum VariableMode`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "variableMode")]
     VariableMode(VariableMode),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"uniqueIdPool"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "uniqueIdPool", skip_serializing)]
-    UniqueIdPool(Vec<()>),
-    /// # Field information in the original C++ class
+    UniqueIdPool(HkArrayRef<()>),
+    /// # C++ Class Fields Info
     /// -   name:`"idToStateMachineTemplateMap"`
     /// -   type: `void*`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "idToStateMachineTemplateMap", skip_serializing)]
-    IdToStateMachineTemplateMap(()),
-    /// # Field information in the original C++ class
+    IdToStateMachineTemplateMap(Cow<'a, str>),
+    /// # C++ Class Fields Info
     /// -   name:`"mirroredExternalIdMap"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "mirroredExternalIdMap", skip_serializing)]
-    MirroredExternalIdMap(Vec<()>),
-    /// # Field information in the original C++ class
+    MirroredExternalIdMap(HkArrayRef<()>),
+    /// # C++ Class Fields Info
     /// -   name:`"pseudoRandomGenerator"`
     /// -   type: `void*`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "pseudoRandomGenerator", skip_serializing)]
-    PseudoRandomGenerator(()),
-    /// # Field information in the original C++ class
+    PseudoRandomGenerator(Cow<'a, str>),
+    /// # C++ Class Fields Info
     /// -   name:`"rootGenerator"`
     /// -   type: `struct hkbGenerator*`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rootGenerator")]
     RootGenerator(Cow<'a, str>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `struct hkbBehaviorGraphData*`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "data")]
     Data(Cow<'a, str>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"rootGeneratorClone"`
     /// -   type: `void*`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "rootGeneratorClone", skip_serializing)]
-    RootGeneratorClone(()),
-    /// # Field information in the original C++ class
+    RootGeneratorClone(Cow<'a, str>),
+    /// # C++ Class Fields Info
     /// -   name:`"activeNodes"`
     /// -   type: `void*`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "activeNodes", skip_serializing)]
-    ActiveNodes(()),
-    /// # Field information in the original C++ class
+    ActiveNodes(Cow<'a, str>),
+    /// # C++ Class Fields Info
     /// -   name:`"activeNodeTemplateToIndexMap"`
     /// -   type: `void*`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "activeNodeTemplateToIndexMap", skip_serializing)]
-    ActiveNodeTemplateToIndexMap(()),
-    /// # Field information in the original C++ class
+    ActiveNodeTemplateToIndexMap(Cow<'a, str>),
+    /// # C++ Class Fields Info
     /// -   name:`"activeNodesChildrenIndices"`
     /// -   type: `void*`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "activeNodesChildrenIndices", skip_serializing)]
-    ActiveNodesChildrenIndices(()),
-    /// # Field information in the original C++ class
+    ActiveNodesChildrenIndices(Cow<'a, str>),
+    /// # C++ Class Fields Info
     /// -   name:`"globalTransitionData"`
     /// -   type: `void*`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "globalTransitionData", skip_serializing)]
-    GlobalTransitionData(()),
-    /// # Field information in the original C++ class
+    GlobalTransitionData(Cow<'a, str>),
+    /// # C++ Class Fields Info
     /// -   name:`"eventIdMap"`
     /// -   type: `void*`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "eventIdMap", skip_serializing)]
-    EventIdMap(()),
-    /// # Field information in the original C++ class
+    EventIdMap(Cow<'a, str>),
+    /// # C++ Class Fields Info
     /// -   name:`"attributeIdMap"`
     /// -   type: `void*`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "attributeIdMap", skip_serializing)]
-    AttributeIdMap(()),
-    /// # Field information in the original C++ class
+    AttributeIdMap(Cow<'a, str>),
+    /// # C++ Class Fields Info
     /// -   name:`"variableIdMap"`
     /// -   type: `void*`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "variableIdMap", skip_serializing)]
-    VariableIdMap(()),
-    /// # Field information in the original C++ class
+    VariableIdMap(Cow<'a, str>),
+    /// # C++ Class Fields Info
     /// -   name:`"characterPropertyIdMap"`
     /// -   type: `void*`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "characterPropertyIdMap", skip_serializing)]
-    CharacterPropertyIdMap(()),
-    /// # Field information in the original C++ class
+    CharacterPropertyIdMap(Cow<'a, str>),
+    /// # C++ Class Fields Info
     /// -   name:`"variableValueSet"`
     /// -   type: `void*`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "variableValueSet", skip_serializing)]
-    VariableValueSet(()),
-    /// # Field information in the original C++ class
+    VariableValueSet(Cow<'a, str>),
+    /// # C++ Class Fields Info
     /// -   name:`"nodeTemplateToCloneMap"`
     /// -   type: `void*`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "nodeTemplateToCloneMap", skip_serializing)]
-    NodeTemplateToCloneMap(()),
-    /// # Field information in the original C++ class
+    NodeTemplateToCloneMap(Cow<'a, str>),
+    /// # C++ Class Fields Info
     /// -   name:`"nodeCloneToTemplateMap"`
     /// -   type: `void*`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "nodeCloneToTemplateMap", skip_serializing)]
-    NodeCloneToTemplateMap(()),
-    /// # Field information in the original C++ class
+    NodeCloneToTemplateMap(Cow<'a, str>),
+    /// # C++ Class Fields Info
     /// -   name:`"stateListenerTemplateToCloneMap"`
     /// -   type: `void*`
     /// - offset: 132
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "stateListenerTemplateToCloneMap", skip_serializing)]
-    StateListenerTemplateToCloneMap(()),
-    /// # Field information in the original C++ class
+    StateListenerTemplateToCloneMap(Cow<'a, str>),
+    /// # C++ Class Fields Info
     /// -   name:`"nodePartitionInfo"`
     /// -   type: `void*`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "nodePartitionInfo", skip_serializing)]
-    NodePartitionInfo(()),
-    /// # Field information in the original C++ class
+    NodePartitionInfo(Cow<'a, str>),
+    /// # C++ Class Fields Info
     /// -   name:`"numIntermediateOutputs"`
     /// -   type: `hkInt32`
     /// - offset: 140
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "numIntermediateOutputs", skip_serializing)]
     NumIntermediateOutputs(Primitive<i32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"jobs"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "jobs", skip_serializing)]
-    Jobs(Vec<()>),
-    /// # Field information in the original C++ class
+    Jobs(HkArrayRef<Cow<'a, str>>),
+    /// # C++ Class Fields Info
     /// -   name:`"allPartitionMemory"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 156
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "allPartitionMemory", skip_serializing)]
-    AllPartitionMemory(Vec<()>),
-    /// # Field information in the original C++ class
+    AllPartitionMemory(HkArrayRef<Cow<'a, str>>),
+    /// # C++ Class Fields Info
     /// -   name:`"numStaticNodes"`
     /// -   type: `hkInt16`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "numStaticNodes", skip_serializing)]
     NumStaticNodes(Primitive<i16>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"nextUniqueId"`
     /// -   type: `hkInt16`
     /// - offset: 170
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "nextUniqueId", skip_serializing)]
     NextUniqueId(Primitive<i16>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"isActive"`
     /// -   type: `hkBool`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "isActive", skip_serializing)]
     IsActive(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"isLinked"`
     /// -   type: `hkBool`
     /// - offset: 173
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "isLinked", skip_serializing)]
     IsLinked(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"updateActiveNodes"`
     /// -   type: `hkBool`
     /// - offset: 174
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "updateActiveNodes", skip_serializing)]
     UpdateActiveNodes(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"stateOrTransitionChanged"`
     /// -   type: `hkBool`
     /// - offset: 175
@@ -276,34 +234,33 @@ pub enum HkbBehaviorGraphHkParam<'a> {
     StateOrTransitionChanged(Primitive<bool>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbBehaviorGraphHkParam<'de>, "@name",
+    HkbBehaviorGraph<'de>, "@name",
     ("variableMode" => VariableMode(VariableMode)),
-    ("uniqueIdPool" => UniqueIdPool(Vec<()>)),
-    ("idToStateMachineTemplateMap" => IdToStateMachineTemplateMap(())),
-    ("mirroredExternalIdMap" => MirroredExternalIdMap(Vec<()>)),
-    ("pseudoRandomGenerator" => PseudoRandomGenerator(())),
-    ("rootGenerator" => RootGenerator(Cow<'a, str>)),
-    ("data" => Data(Cow<'a, str>)),
-    ("rootGeneratorClone" => RootGeneratorClone(())),
-    ("activeNodes" => ActiveNodes(())),
-    ("activeNodeTemplateToIndexMap" => ActiveNodeTemplateToIndexMap(())),
-    ("activeNodesChildrenIndices" => ActiveNodesChildrenIndices(())),
-    ("globalTransitionData" => GlobalTransitionData(())),
-    ("eventIdMap" => EventIdMap(())),
-    ("attributeIdMap" => AttributeIdMap(())),
-    ("variableIdMap" => VariableIdMap(())),
-    ("characterPropertyIdMap" => CharacterPropertyIdMap(())),
-    ("variableValueSet" => VariableValueSet(())),
-    ("nodeTemplateToCloneMap" => NodeTemplateToCloneMap(())),
-    ("nodeCloneToTemplateMap" => NodeCloneToTemplateMap(())),
-    ("stateListenerTemplateToCloneMap" => StateListenerTemplateToCloneMap(())),
-    ("nodePartitionInfo" => NodePartitionInfo(())),
+    ("uniqueIdPool" => UniqueIdPool(HkArrayRef<()>)),
+    ("idToStateMachineTemplateMap" => IdToStateMachineTemplateMap(Cow<'de, str>)),
+    ("mirroredExternalIdMap" => MirroredExternalIdMap(HkArrayRef<()>)),
+    ("pseudoRandomGenerator" => PseudoRandomGenerator(Cow<'de, str>)),
+    ("rootGenerator" => RootGenerator(Cow<'de, str>)),
+    ("data" => Data(Cow<'de, str>)),
+    ("rootGeneratorClone" => RootGeneratorClone(Cow<'de, str>)),
+    ("activeNodes" => ActiveNodes(Cow<'de, str>)),
+    ("activeNodeTemplateToIndexMap" => ActiveNodeTemplateToIndexMap(Cow<'de, str>)),
+    ("activeNodesChildrenIndices" => ActiveNodesChildrenIndices(Cow<'de, str>)),
+    ("globalTransitionData" => GlobalTransitionData(Cow<'de, str>)),
+    ("eventIdMap" => EventIdMap(Cow<'de, str>)),
+    ("attributeIdMap" => AttributeIdMap(Cow<'de, str>)),
+    ("variableIdMap" => VariableIdMap(Cow<'de, str>)),
+    ("characterPropertyIdMap" => CharacterPropertyIdMap(Cow<'de, str>)),
+    ("variableValueSet" => VariableValueSet(Cow<'de, str>)),
+    ("nodeTemplateToCloneMap" => NodeTemplateToCloneMap(Cow<'de, str>)),
+    ("nodeCloneToTemplateMap" => NodeCloneToTemplateMap(Cow<'de, str>)),
+    ("stateListenerTemplateToCloneMap" => StateListenerTemplateToCloneMap(Cow<'de, str>)),
+    ("nodePartitionInfo" => NodePartitionInfo(Cow<'de, str>)),
     ("numIntermediateOutputs" => NumIntermediateOutputs(Primitive<i32>)),
-    ("jobs" => Jobs(Vec<()>)),
-    ("allPartitionMemory" => AllPartitionMemory(Vec<()>)),
+    ("jobs" => Jobs(HkArrayRef<Cow<'de, str>>)),
+    ("allPartitionMemory" => AllPartitionMemory(HkArrayRef<Cow<'de, str>>)),
     ("numStaticNodes" => NumStaticNodes(Primitive<i16>)),
     ("nextUniqueId" => NextUniqueId(Primitive<i16>)),
     ("isActive" => IsActive(Primitive<bool>)),
@@ -312,7 +269,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("stateOrTransitionChanged" => StateOrTransitionChanged(Primitive<bool>)),
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum VariableMode {
     #[serde(rename = "VARIABLE_MODE_DISCARD_WHEN_INACTIVE")]
     VariableModeDiscardWhenInactive = 0,

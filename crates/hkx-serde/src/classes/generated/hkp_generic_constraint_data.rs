@@ -1,77 +1,35 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkpGenericConstraintData`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpGenericConstraintData`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkpGenericConstraintData`
 ///
-/// # Information on the original C++ class
-/// -    size: 88
-/// -  vtable: true
-/// -  parent: hkpConstraintData/`80559a4e`(Non prefix hex signature)
-/// - version: 0
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkpGenericConstraintData<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkpGenericConstraintData"`: The original C++ class name.
-    #[serde(default = "HkpGenericConstraintData::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0xfa824640`: Unique value of this class.
-    #[serde(default = "HkpGenericConstraintData::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkpGenericConstraintDataHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkpGenericConstraintDataHkParam<'a>>
-}
-
-impl HkpGenericConstraintData<'_> {
-    /// Return `"hkpGenericConstraintData"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkpGenericConstraintData".into()
-    }
-
-    /// Return `"0xfa824640"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0xfa824640".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 88
+/// -    vtable: true
+/// -    parent: `hkpConstraintData`/`0x80559a4e`
+/// - signature: `0xfa824640`
+/// -   version: 0
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpGenericConstraintDataHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkpGenericConstraintData {
+    /// # C++ Class Fields Info
     /// -   name:`"atoms"`
     /// -   type: `struct hkpBridgeAtoms`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "atoms")]
     Atoms(HkpBridgeAtoms),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"scheme"`
     /// -   type: `struct hkpGenericConstraintDataScheme`
     /// - offset: 24
@@ -80,10 +38,9 @@ pub enum HkpGenericConstraintDataHkParam<'a> {
     Scheme(HkpGenericConstraintDataScheme),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpGenericConstraintDataHkParam<'de>, "@name",
+    HkpGenericConstraintData, "@name",
     ("atoms" => Atoms(HkpBridgeAtoms)),
     ("scheme" => Scheme(HkpGenericConstraintDataScheme)),
 }

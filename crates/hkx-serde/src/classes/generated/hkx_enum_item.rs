@@ -1,77 +1,35 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkxEnumItem`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkxEnumItem`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkxEnumItem`
 ///
-/// # Information on the original C++ class
-/// -    size: 8
-/// -  vtable: false
-/// -  parent: None/`0`(Non prefix hex signature)
-/// - version: 0
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkxEnumItem<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkxEnumItem"`: The original C++ class name.
-    #[serde(default = "HkxEnumItem::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0xdf4cf1e9`: Unique value of this class.
-    #[serde(default = "HkxEnumItem::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkxEnumItemHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkxEnumItemHkParam<'a>>
-}
-
-impl HkxEnumItem<'_> {
-    /// Return `"hkxEnumItem"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkxEnumItem".into()
-    }
-
-    /// Return `"0xdf4cf1e9"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0xdf4cf1e9".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 8
+/// -    vtable: false
+/// -    parent: `None`/`0x0`
+/// - signature: `0xdf4cf1e9`
+/// -   version: 0
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkxEnumItemHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkxEnumItem<'a> {
+    /// # C++ Class Fields Info
     /// -   name:`"value"`
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "value")]
     Value(Primitive<i32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 4
@@ -80,10 +38,9 @@ pub enum HkxEnumItemHkParam<'a> {
     Name(Primitive<Cow<'a, str>>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkxEnumItemHkParam<'de>, "@name",
+    HkxEnumItem<'de>, "@name",
     ("value" => Value(Primitive<i32>)),
-    ("name" => Name(Primitive<Cow<'a, str>>)),
+    ("name" => Name(Primitive<Cow<'de, str>>)),
 }

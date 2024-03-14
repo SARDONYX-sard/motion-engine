@@ -1,147 +1,105 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkpMotion`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpMotion`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkpMotion`
 ///
-/// # Information on the original C++ class
-/// -    size: 288
-/// -  vtable: true
-/// -  parent: hkReferencedObject/`3b1c1113`(Non prefix hex signature)
-/// - version: 3
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkpMotion<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkpMotion"`: The original C++ class name.
-    #[serde(default = "HkpMotion::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0x98aadb4f`: Unique value of this class.
-    #[serde(default = "HkpMotion::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkpMotionHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkpMotionHkParam<'a>>
-}
-
-impl HkpMotion<'_> {
-    /// Return `"hkpMotion"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkpMotion".into()
-    }
-
-    /// Return `"0x98aadb4f"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0x98aadb4f".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 288
+/// -    vtable: true
+/// -    parent: `hkReferencedObject`/`0x3b1c1113`
+/// - signature: `0x98aadb4f`
+/// -   version: 3
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpMotionHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkpMotion<'a> {
+    /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum MotionType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
     Type(MotionType),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"deactivationIntegrateCounter"`
     /// -   type: `hkUint8`
     /// - offset: 9
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "deactivationIntegrateCounter")]
     DeactivationIntegrateCounter(Primitive<u8>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"deactivationNumInactiveFrames"`
     /// -   type: `hkUint16[2]`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "deactivationNumInactiveFrames")]
     DeactivationNumInactiveFrames([Primitive<u16>; 2]),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"motionState"`
     /// -   type: `struct hkMotionState`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "motionState")]
     MotionState(HkMotionState),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"inertiaAndMassInv"`
     /// -   type: `hkVector4`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "inertiaAndMassInv")]
     InertiaAndMassInv(Vector4<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"linearVelocity"`
     /// -   type: `hkVector4`
     /// - offset: 208
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "linearVelocity")]
     LinearVelocity(Vector4<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"angularVelocity"`
     /// -   type: `hkVector4`
     /// - offset: 224
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "angularVelocity")]
     AngularVelocity(Vector4<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"deactivationRefPosition"`
     /// -   type: `hkVector4[2]`
     /// - offset: 240
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "deactivationRefPosition")]
-    DeactivationRefPosition(Vector4<f32>),
-    /// # Field information in the original C++ class
+    DeactivationRefPosition([Vector4<f32>; 2]),
+    /// # C++ Class Fields Info
     /// -   name:`"deactivationRefOrientation"`
     /// -   type: `hkUint32[2]`
     /// - offset: 272
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "deactivationRefOrientation")]
     DeactivationRefOrientation([Primitive<u32>; 2]),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"savedMotion"`
     /// -   type: `struct hkpMaxSizeMotion*`
     /// - offset: 280
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "savedMotion")]
     SavedMotion(Cow<'a, str>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"savedQualityTypeIndex"`
     /// -   type: `hkUint16`
     /// - offset: 284
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "savedQualityTypeIndex")]
     SavedQualityTypeIndex(Primitive<u16>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"gravityFactor"`
     /// -   type: `hkHalf`
     /// - offset: 286
@@ -150,10 +108,9 @@ pub enum HkpMotionHkParam<'a> {
     GravityFactor(Primitive<f32>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpMotionHkParam<'de>, "@name",
+    HkpMotion<'de>, "@name",
     ("type" => Type(MotionType)),
     ("deactivationIntegrateCounter" => DeactivationIntegrateCounter(Primitive<u8>)),
     ("deactivationNumInactiveFrames" => DeactivationNumInactiveFrames([Primitive<u16>; 2])),
@@ -161,14 +118,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("inertiaAndMassInv" => InertiaAndMassInv(Vector4<f32>)),
     ("linearVelocity" => LinearVelocity(Vector4<f32>)),
     ("angularVelocity" => AngularVelocity(Vector4<f32>)),
-    ("deactivationRefPosition" => DeactivationRefPosition(Vector4<f32>)),
+    ("deactivationRefPosition" => DeactivationRefPosition([Vector4<f32>; 2])),
     ("deactivationRefOrientation" => DeactivationRefOrientation([Primitive<u32>; 2])),
-    ("savedMotion" => SavedMotion(Cow<'a, str>)),
+    ("savedMotion" => SavedMotion(Cow<'de, str>)),
     ("savedQualityTypeIndex" => SavedQualityTypeIndex(Primitive<u16>)),
     ("gravityFactor" => GravityFactor(Primitive<f32>)),
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum MotionType {
     #[serde(rename = "MOTION_INVALID")]
     MotionInvalid = 0,

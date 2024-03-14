@@ -1,169 +1,126 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkbAttachmentModifier`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbAttachmentModifier`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkbAttachmentModifier`
 ///
-/// # Information on the original C++ class
-/// -    size: 108
-/// -  vtable: true
-/// -  parent: hkbModifier/`96ec5ced`(Non prefix hex signature)
-/// - version: 1
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkbAttachmentModifier<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkbAttachmentModifier"`: The original C++ class name.
-    #[serde(default = "HkbAttachmentModifier::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0xcc0aab32`: Unique value of this class.
-    #[serde(default = "HkbAttachmentModifier::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkbAttachmentModifierHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkbAttachmentModifierHkParam<'a>>
-}
-
-impl HkbAttachmentModifier<'_> {
-    /// Return `"hkbAttachmentModifier"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkbAttachmentModifier".into()
-    }
-
-    /// Return `"0xcc0aab32"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0xcc0aab32".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 108
+/// -    vtable: true
+/// -    parent: `hkbModifier`/`0x96ec5ced`
+/// - signature: `0xcc0aab32`
+/// -   version: 1
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbAttachmentModifierHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkbAttachmentModifier<'a> {
+    /// # C++ Class Fields Info
     /// -   name:`"sendToAttacherOnAttach"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "sendToAttacherOnAttach")]
     SendToAttacherOnAttach(HkbEventProperty),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"sendToAttacheeOnAttach"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "sendToAttacheeOnAttach")]
     SendToAttacheeOnAttach(HkbEventProperty),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"sendToAttacherOnDetach"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "sendToAttacherOnDetach")]
     SendToAttacherOnDetach(HkbEventProperty),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"sendToAttacheeOnDetach"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "sendToAttacheeOnDetach")]
     SendToAttacheeOnDetach(HkbEventProperty),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"attachmentSetup"`
     /// -   type: `struct hkbAttachmentSetup*`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "attachmentSetup")]
     AttachmentSetup(Cow<'a, str>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"attacherHandle"`
     /// -   type: `struct hkbHandle*`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "attacherHandle")]
     AttacherHandle(Cow<'a, str>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"attacheeHandle"`
     /// -   type: `struct hkbHandle*`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "attacheeHandle")]
     AttacheeHandle(Cow<'a, str>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"attacheeLayer"`
     /// -   type: `hkInt32`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "attacheeLayer")]
     AttacheeLayer(Primitive<i32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"attacheeRB"`
     /// -   type: `void*`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "attacheeRB", skip_serializing)]
-    AttacheeRb(()),
-    /// # Field information in the original C++ class
+    AttacheeRb(Cow<'a, str>),
+    /// # C++ Class Fields Info
     /// -   name:`"oldMotionType"`
     /// -   type: `enum unknown`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "oldMotionType", skip_serializing)]
     OldMotionType(Unknown),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"oldFilterInfo"`
     /// -   type: `hkInt32`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "oldFilterInfo", skip_serializing)]
     OldFilterInfo(Primitive<i32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"attachment"`
     /// -   type: `void*`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "attachment", skip_serializing)]
-    Attachment(()),
+    Attachment(Cow<'a, str>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbAttachmentModifierHkParam<'de>, "@name",
+    HkbAttachmentModifier<'de>, "@name",
     ("sendToAttacherOnAttach" => SendToAttacherOnAttach(HkbEventProperty)),
     ("sendToAttacheeOnAttach" => SendToAttacheeOnAttach(HkbEventProperty)),
     ("sendToAttacherOnDetach" => SendToAttacherOnDetach(HkbEventProperty)),
     ("sendToAttacheeOnDetach" => SendToAttacheeOnDetach(HkbEventProperty)),
-    ("attachmentSetup" => AttachmentSetup(Cow<'a, str>)),
-    ("attacherHandle" => AttacherHandle(Cow<'a, str>)),
-    ("attacheeHandle" => AttacheeHandle(Cow<'a, str>)),
+    ("attachmentSetup" => AttachmentSetup(Cow<'de, str>)),
+    ("attacherHandle" => AttacherHandle(Cow<'de, str>)),
+    ("attacheeHandle" => AttacheeHandle(Cow<'de, str>)),
     ("attacheeLayer" => AttacheeLayer(Primitive<i32>)),
-    ("attacheeRB" => AttacheeRb(())),
+    ("attacheeRB" => AttacheeRb(Cow<'de, str>)),
     ("oldMotionType" => OldMotionType(Unknown)),
     ("oldFilterInfo" => OldFilterInfo(Primitive<i32>)),
-    ("attachment" => Attachment(())),
+    ("attachment" => Attachment(Cow<'de, str>)),
 }

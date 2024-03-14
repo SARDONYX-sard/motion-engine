@@ -1,98 +1,56 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkxIndexBuffer`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkxIndexBuffer`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkxIndexBuffer`
 ///
-/// # Information on the original C++ class
-/// -    size: 44
-/// -  vtable: true
-/// -  parent: hkReferencedObject/`3b1c1113`(Non prefix hex signature)
-/// - version: 1
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkxIndexBuffer<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkxIndexBuffer"`: The original C++ class name.
-    #[serde(default = "HkxIndexBuffer::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0xc12c8197`: Unique value of this class.
-    #[serde(default = "HkxIndexBuffer::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkxIndexBufferHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkxIndexBufferHkParam<'a>>
-}
-
-impl HkxIndexBuffer<'_> {
-    /// Return `"hkxIndexBuffer"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkxIndexBuffer".into()
-    }
-
-    /// Return `"0xc12c8197"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0xc12c8197".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 44
+/// -    vtable: true
+/// -    parent: `hkReferencedObject`/`0x3b1c1113`
+/// - signature: `0xc12c8197`
+/// -   version: 1
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkxIndexBufferHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkxIndexBuffer {
+    /// # C++ Class Fields Info
     /// -   name:`"indexType"`
     /// -   type: `enum IndexType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "indexType")]
     IndexType(IndexType),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"indices16"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "indices16")]
-    Indices16(Vec<Primitive<u16>>),
-    /// # Field information in the original C++ class
+    Indices16(HkArrayRef<Primitive<u16>>),
+    /// # C++ Class Fields Info
     /// -   name:`"indices32"`
     /// -   type: `hkArray&lt;hkUint32&gt;`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "indices32")]
-    Indices32(Vec<Primitive<u32>>),
-    /// # Field information in the original C++ class
+    Indices32(HkArrayRef<Primitive<u32>>),
+    /// # C++ Class Fields Info
     /// -   name:`"vertexBaseOffset"`
     /// -   type: `hkUint32`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertexBaseOffset")]
     VertexBaseOffset(Primitive<u32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"length"`
     /// -   type: `hkUint32`
     /// - offset: 40
@@ -101,18 +59,17 @@ pub enum HkxIndexBufferHkParam<'a> {
     Length(Primitive<u32>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkxIndexBufferHkParam<'de>, "@name",
+    HkxIndexBuffer, "@name",
     ("indexType" => IndexType(IndexType)),
-    ("indices16" => Indices16(Vec<Primitive<u16>>)),
-    ("indices32" => Indices32(Vec<Primitive<u32>>)),
+    ("indices16" => Indices16(HkArrayRef<Primitive<u16>>)),
+    ("indices32" => Indices32(HkArrayRef<Primitive<u32>>)),
     ("vertexBaseOffset" => VertexBaseOffset(Primitive<u32>)),
     ("length" => Length(Primitive<u32>)),
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum IndexType {
     #[serde(rename = "INDEX_TYPE_INVALID")]
     IndexTypeInvalid = 0,

@@ -1,112 +1,70 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkpWheelConstraintDataAtoms`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpWheelConstraintDataAtoms`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkpWheelConstraintDataAtoms`
 ///
-/// # Information on the original C++ class
-/// -    size: 304
-/// -  vtable: false
-/// -  parent: None/`0`(Non prefix hex signature)
-/// - version: 0
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkpWheelConstraintDataAtoms<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkpWheelConstraintDataAtoms"`: The original C++ class name.
-    #[serde(default = "HkpWheelConstraintDataAtoms::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0x1188cbe1`: Unique value of this class.
-    #[serde(default = "HkpWheelConstraintDataAtoms::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkpWheelConstraintDataAtomsHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkpWheelConstraintDataAtomsHkParam<'a>>
-}
-
-impl HkpWheelConstraintDataAtoms<'_> {
-    /// Return `"hkpWheelConstraintDataAtoms"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkpWheelConstraintDataAtoms".into()
-    }
-
-    /// Return `"0x1188cbe1"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0x1188cbe1".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 304
+/// -    vtable: false
+/// -    parent: `None`/`0x0`
+/// - signature: `0x1188cbe1`
+/// -   version: 0
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpWheelConstraintDataAtomsHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkpWheelConstraintDataAtoms {
+    /// # C++ Class Fields Info
     /// -   name:`"suspensionBase"`
     /// -   type: `struct hkpSetLocalTransformsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "suspensionBase")]
     SuspensionBase(HkpSetLocalTransformsConstraintAtom),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"lin0Limit"`
     /// -   type: `struct hkpLinLimitConstraintAtom`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "lin0Limit")]
     Lin0Limit(HkpLinLimitConstraintAtom),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"lin0Soft"`
     /// -   type: `struct hkpLinSoftConstraintAtom`
     /// - offset: 156
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "lin0Soft")]
     Lin0Soft(HkpLinSoftConstraintAtom),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"lin1"`
     /// -   type: `struct hkpLinConstraintAtom`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "lin1")]
     Lin1(HkpLinConstraintAtom),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"lin2"`
     /// -   type: `struct hkpLinConstraintAtom`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "lin2")]
     Lin2(HkpLinConstraintAtom),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"steeringBase"`
     /// -   type: `struct hkpSetLocalRotationsConstraintAtom`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "steeringBase")]
     SteeringBase(HkpSetLocalRotationsConstraintAtom),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"2dAng"`
     /// -   type: `struct hkp2dAngConstraintAtom`
     /// - offset: 288
@@ -115,10 +73,9 @@ pub enum HkpWheelConstraintDataAtomsHkParam<'a> {
     2DAng(Hkp2DAngConstraintAtom),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpWheelConstraintDataAtomsHkParam<'de>, "@name",
+    HkpWheelConstraintDataAtoms, "@name",
     ("suspensionBase" => SuspensionBase(HkpSetLocalTransformsConstraintAtom)),
     ("lin0Limit" => Lin0Limit(HkpLinLimitConstraintAtom)),
     ("lin0Soft" => Lin0Soft(HkpLinSoftConstraintAtom)),
@@ -128,7 +85,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("2dAng" => 2DAng(Hkp2DAngConstraintAtom)),
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum Axis {
     #[serde(rename = "AXIS_SUSPENSION")]
     AxisSuspension = 0,

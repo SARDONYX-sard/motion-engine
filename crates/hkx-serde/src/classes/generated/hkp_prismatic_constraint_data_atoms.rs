@@ -1,112 +1,70 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkpPrismaticConstraintDataAtoms`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpPrismaticConstraintDataAtoms`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkpPrismaticConstraintDataAtoms`
 ///
-/// # Information on the original C++ class
-/// -    size: 192
-/// -  vtable: false
-/// -  parent: None/`0`(Non prefix hex signature)
-/// - version: 0
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkpPrismaticConstraintDataAtoms<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkpPrismaticConstraintDataAtoms"`: The original C++ class name.
-    #[serde(default = "HkpPrismaticConstraintDataAtoms::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0x7f516137`: Unique value of this class.
-    #[serde(default = "HkpPrismaticConstraintDataAtoms::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkpPrismaticConstraintDataAtomsHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkpPrismaticConstraintDataAtomsHkParam<'a>>
-}
-
-impl HkpPrismaticConstraintDataAtoms<'_> {
-    /// Return `"hkpPrismaticConstraintDataAtoms"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkpPrismaticConstraintDataAtoms".into()
-    }
-
-    /// Return `"0x7f516137"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0x7f516137".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 192
+/// -    vtable: false
+/// -    parent: `None`/`0x0`
+/// - signature: `0x7f516137`
+/// -   version: 0
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpPrismaticConstraintDataAtomsHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkpPrismaticConstraintDataAtoms {
+    /// # C++ Class Fields Info
     /// -   name:`"transforms"`
     /// -   type: `struct hkpSetLocalTransformsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transforms")]
     Transforms(HkpSetLocalTransformsConstraintAtom),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"motor"`
     /// -   type: `struct hkpLinMotorConstraintAtom`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "motor")]
     Motor(HkpLinMotorConstraintAtom),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"friction"`
     /// -   type: `struct hkpLinFrictionConstraintAtom`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "friction")]
     Friction(HkpLinFrictionConstraintAtom),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"ang"`
     /// -   type: `struct hkpAngConstraintAtom`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "ang")]
     Ang(HkpAngConstraintAtom),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"lin0"`
     /// -   type: `struct hkpLinConstraintAtom`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "lin0")]
     Lin0(HkpLinConstraintAtom),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"lin1"`
     /// -   type: `struct hkpLinConstraintAtom`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "lin1")]
     Lin1(HkpLinConstraintAtom),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"linLimit"`
     /// -   type: `struct hkpLinLimitConstraintAtom`
     /// - offset: 180
@@ -115,10 +73,9 @@ pub enum HkpPrismaticConstraintDataAtomsHkParam<'a> {
     LinLimit(HkpLinLimitConstraintAtom),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpPrismaticConstraintDataAtomsHkParam<'de>, "@name",
+    HkpPrismaticConstraintDataAtoms, "@name",
     ("transforms" => Transforms(HkpSetLocalTransformsConstraintAtom)),
     ("motor" => Motor(HkpLinMotorConstraintAtom)),
     ("friction" => Friction(HkpLinFrictionConstraintAtom)),
@@ -128,7 +85,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("linLimit" => LinLimit(HkpLinLimitConstraintAtom)),
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum Axis {
     #[serde(rename = "AXIS_SHAFT")]
     AxisShaft = 0,

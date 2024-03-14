@@ -1,81 +1,38 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkpVehicleDefaultSuspension`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpVehicleDefaultSuspension`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkpVehicleDefaultSuspension`
 ///
-/// # Information on the original C++ class
-/// -    size: 32
-/// -  vtable: true
-/// -  parent: hkpVehicleSuspension/`af5056fa`(Non prefix hex signature)
-/// - version: 0
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkpVehicleDefaultSuspension<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkpVehicleDefaultSuspension"`: The original C++ class name.
-    #[serde(default = "HkpVehicleDefaultSuspension::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0x21735a24`: Unique value of this class.
-    #[serde(default = "HkpVehicleDefaultSuspension::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkpVehicleDefaultSuspensionHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkpVehicleDefaultSuspensionHkParam<'a>>
-}
-
-impl HkpVehicleDefaultSuspension<'_> {
-    /// Return `"hkpVehicleDefaultSuspension"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkpVehicleDefaultSuspension".into()
-    }
-
-    /// Return `"0x21735a24"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0x21735a24".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 32
+/// -    vtable: true
+/// -    parent: `hkpVehicleSuspension`/`0xaf5056fa`
+/// - signature: `0x21735a24`
+/// -   version: 0
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpVehicleDefaultSuspensionHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkpVehicleDefaultSuspension {
+    /// # C++ Class Fields Info
     /// -   name:`"wheelSpringParams"`
     /// -   type: `hkArray&lt;struct hkpVehicleDefaultSuspensionWheelSpringSuspensionParameters&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "wheelSpringParams")]
-    WheelSpringParams(Vec<HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters>),
+    WheelSpringParams(HkArrayClass<HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpVehicleDefaultSuspensionHkParam<'de>, "@name",
-    ("wheelSpringParams" => WheelSpringParams(Vec<HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters>)),
+    HkpVehicleDefaultSuspension, "@name",
+    ("wheelSpringParams" => WheelSpringParams(HkArrayClass<HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters>)),
 }

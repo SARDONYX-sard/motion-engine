@@ -1,133 +1,91 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkbStateMachineTransitionInfo`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbStateMachineTransitionInfo`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkbStateMachineTransitionInfo`
 ///
-/// # Information on the original C++ class
-/// -    size: 60
-/// -  vtable: false
-/// -  parent: None/`0`(Non prefix hex signature)
-/// - version: 1
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkbStateMachineTransitionInfo<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkbStateMachineTransitionInfo"`: The original C++ class name.
-    #[serde(default = "HkbStateMachineTransitionInfo::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0xcdec8025`: Unique value of this class.
-    #[serde(default = "HkbStateMachineTransitionInfo::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkbStateMachineTransitionInfoHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkbStateMachineTransitionInfoHkParam<'a>>
-}
-
-impl HkbStateMachineTransitionInfo<'_> {
-    /// Return `"hkbStateMachineTransitionInfo"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkbStateMachineTransitionInfo".into()
-    }
-
-    /// Return `"0xcdec8025"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0xcdec8025".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 60
+/// -    vtable: false
+/// -    parent: `None`/`0x0`
+/// - signature: `0xcdec8025`
+/// -   version: 1
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbStateMachineTransitionInfoHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkbStateMachineTransitionInfo<'a> {
+    /// # C++ Class Fields Info
     /// -   name:`"triggerInterval"`
     /// -   type: `struct hkbStateMachineTimeInterval`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "triggerInterval")]
     TriggerInterval(HkbStateMachineTimeInterval),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"initiateInterval"`
     /// -   type: `struct hkbStateMachineTimeInterval`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "initiateInterval")]
     InitiateInterval(HkbStateMachineTimeInterval),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"transition"`
     /// -   type: `struct hkbTransitionEffect*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transition")]
     Transition(Cow<'a, str>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"condition"`
     /// -   type: `struct hkbCondition*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "condition")]
     Condition(Cow<'a, str>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"eventId"`
     /// -   type: `hkInt32`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "eventId")]
     EventId(Primitive<i32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"toStateId"`
     /// -   type: `hkInt32`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "toStateId")]
     ToStateId(Primitive<i32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"fromNestedStateId"`
     /// -   type: `hkInt32`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "fromNestedStateId")]
     FromNestedStateId(Primitive<i32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"toNestedStateId"`
     /// -   type: `hkInt32`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "toNestedStateId")]
     ToNestedStateId(Primitive<i32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"priority"`
     /// -   type: `hkInt16`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "priority")]
     Priority(Primitive<i16>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `flags TransitionFlags`
     /// - offset: 58
@@ -136,14 +94,13 @@ pub enum HkbStateMachineTransitionInfoHkParam<'a> {
     Flags(TransitionFlags),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbStateMachineTransitionInfoHkParam<'de>, "@name",
+    HkbStateMachineTransitionInfo<'de>, "@name",
     ("triggerInterval" => TriggerInterval(HkbStateMachineTimeInterval)),
     ("initiateInterval" => InitiateInterval(HkbStateMachineTimeInterval)),
-    ("transition" => Transition(Cow<'a, str>)),
-    ("condition" => Condition(Cow<'a, str>)),
+    ("transition" => Transition(Cow<'de, str>)),
+    ("condition" => Condition(Cow<'de, str>)),
     ("eventId" => EventId(Primitive<i32>)),
     ("toStateId" => ToStateId(Primitive<i32>)),
     ("fromNestedStateId" => FromNestedStateId(Primitive<i32>)),
@@ -152,7 +109,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("flags" => Flags(TransitionFlags)),
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum TransitionFlags {
     #[serde(rename = "FLAG_USE_TRIGGER_INTERVAL")]
     FlagUseTriggerInterval = 1,
@@ -186,7 +143,7 @@ pub enum TransitionFlags {
     FlagAbutAtEndOfFromGenerator = 16384,
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum InternalFlagBits {
     #[serde(rename = "FLAG_INTERNAL_IN_TRIGGER_INTERVAL")]
     FlagInternalInTriggerInterval = 1,

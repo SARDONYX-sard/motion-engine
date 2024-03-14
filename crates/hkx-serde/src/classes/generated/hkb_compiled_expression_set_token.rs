@@ -1,84 +1,42 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkbCompiledExpressionSetToken`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbCompiledExpressionSetToken`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `hkbCompiledExpressionSetToken`
 ///
-/// # Information on the original C++ class
-/// -    size: 8
-/// -  vtable: false
-/// -  parent: None/`0`(Non prefix hex signature)
-/// - version: 0
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkbCompiledExpressionSetToken<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkbCompiledExpressionSetToken"`: The original C++ class name.
-    #[serde(default = "HkbCompiledExpressionSetToken::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0xc6aaccc8`: Unique value of this class.
-    #[serde(default = "HkbCompiledExpressionSetToken::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkbCompiledExpressionSetTokenHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkbCompiledExpressionSetTokenHkParam<'a>>
-}
-
-impl HkbCompiledExpressionSetToken<'_> {
-    /// Return `"hkbCompiledExpressionSetToken"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkbCompiledExpressionSetToken".into()
-    }
-
-    /// Return `"0xc6aaccc8"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0xc6aaccc8".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 8
+/// -    vtable: false
+/// -    parent: `None`/`0x0`
+/// - signature: `0xc6aaccc8`
+/// -   version: 0
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbCompiledExpressionSetTokenHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum HkbCompiledExpressionSetToken {
+    /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "data")]
     Data(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum TokenType`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
     Type(TokenType),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"operator"`
     /// -   type: `enum Operator`
     /// - offset: 5
@@ -87,16 +45,15 @@ pub enum HkbCompiledExpressionSetTokenHkParam<'a> {
     Operator(Operator),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbCompiledExpressionSetTokenHkParam<'de>, "@name",
+    HkbCompiledExpressionSetToken, "@name",
     ("data" => Data(Primitive<f32>)),
     ("type" => Type(TokenType)),
     ("operator" => Operator(Operator)),
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum TokenType {
     #[serde(rename = "TOKEN_TYPE_NONE")]
     TokenTypeNone = 0,
@@ -116,7 +73,7 @@ pub enum TokenType {
     TokenTypeCharacterPropertyIndex = 7,
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum Operator {
     #[serde(rename = "OP_NOP")]
     OpNop = 0,

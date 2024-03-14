@@ -1,126 +1,84 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `BSTweenerModifier`, a class defined in C++
+//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `BSTweenerModifier`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 use super::*;
-use crate::hk_types::*;
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
+/// `BSTweenerModifier`
 ///
-/// # Information on the original C++ class
-/// -    size: 176
-/// -  vtable: true
-/// -  parent: hkbModifier/`96ec5ced`(Non prefix hex signature)
-/// - version: 1
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct BsTweenerModifier<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"BSTweenerModifier"`: The original C++ class name.
-    #[serde(default = "BsTweenerModifier::class_name")]
-    #[serde(rename = "@class", borrow)]
-    pub class: Cow<'a, str>,
-
-    /// `0xd2d9a04`: Unique value of this class.
-    #[serde(default = "BsTweenerModifier::signature")]
-    #[serde(rename = "@signature", borrow)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<BsTweenerModifierHkParam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<BsTweenerModifierHkParam<'a>>
-}
-
-impl BsTweenerModifier<'_> {
-    /// Return `"BSTweenerModifier"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "BSTweenerModifier".into()
-    }
-
-    /// Return `"0xd2d9a04"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0xd2d9a04".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, PartialEq, Serialize)]
+/// # C++ Class Info
+/// -      size: 176
+/// -    vtable: true
+/// -    parent: `hkbModifier`/`0x96ec5ced`
+/// - signature: `0xd2d9a04`
+/// -   version: 1
+#[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum BsTweenerModifierHkParam<'a> {
-    /// # Field information in the original C++ class
+pub enum BsTweenerModifier {
+    /// # C++ Class Fields Info
     /// -   name:`"tweenPosition"`
     /// -   type: `hkBool`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "tweenPosition")]
     TweenPosition(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"tweenRotation"`
     /// -   type: `hkBool`
     /// - offset: 45
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "tweenRotation")]
     TweenRotation(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"useTweenDuration"`
     /// -   type: `hkBool`
     /// - offset: 46
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "useTweenDuration")]
     UseTweenDuration(Primitive<bool>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"tweenDuration"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "tweenDuration")]
     TweenDuration(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"targetPosition"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "targetPosition")]
     TargetPosition(Vector4<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"targetRotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "targetRotation")]
     TargetRotation(Quaternion<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"duration"`
     /// -   type: `hkReal`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "duration", skip_serializing)]
     Duration(Primitive<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"startTransform"`
     /// -   type: `hkQsTransform`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "startTransform", skip_serializing)]
     StartTransform(QsTransform<f32>),
-    /// # Field information in the original C++ class
+    /// # C++ Class Fields Info
     /// -   name:`"time"`
     /// -   type: `hkReal`
     /// - offset: 160
@@ -129,10 +87,9 @@ pub enum BsTweenerModifierHkParam<'a> {
     Time(Primitive<f32>),
 }
 
-// Implementing a deserializer for enum manually with macros is necessary
-// because the type needs to change depending on the value of the `"name"` attribute in the XML.
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    BsTweenerModifierHkParam<'de>, "@name",
+    BsTweenerModifier, "@name",
     ("tweenPosition" => TweenPosition(Primitive<bool>)),
     ("tweenRotation" => TweenRotation(Primitive<bool>)),
     ("useTweenDuration" => UseTweenDuration(Primitive<bool>)),

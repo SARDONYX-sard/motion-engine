@@ -15,14 +15,13 @@ type IResult<I, O, E = nom::error::VerboseError<I>> = Result<(I, O), nom::Err<E>
 /// C++ type to Rust type conversion
 pub fn parse_cpp_type(input: &str) -> IResult<&str, Cow<'_, str>> {
     match input {
-        input if input.ends_with('*') => Ok(("", "Cow<'a, str>".into())),
-
         "char*" | "hkBool" | "hkChar" | "hkHalf" | "hkInt16" | "hkInt32" | "hkInt8" | "hkReal"
-        | "hkUint16" | "hkUint32" | "hkUint64" | "hkUint8" | "hkUlong" | "hkVariant" | "void" => {
-            parse_primitive_type(input)
-        }
+        | "hkUint16" | "hkUint32" | "hkUint64" | "hkUint8" | "hkUlong" | "hkStringPtr"
+        | "hkVariant" | "void" => parse_primitive_type(input),
         "hkMatrix3" | "hkMatrix4" | "hkQsTransform" | "hkQuaternion" | "hkRotation"
         | "hkTransform" | "hkVector4" => parse_vector(input),
+
+        input if input.ends_with('*') => Ok(("", "Cow<'a, str>".into())),
 
         input if input.starts_with("hkArray&lt;") || input.starts_with("hkSimpleArray&lt;") => {
             parse_hk_array_type(input)

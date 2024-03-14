@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpFirstPersonGun`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpFirstPersonGun`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,7 +28,7 @@ pub enum HkpFirstPersonGun<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "type", skip_serializing)]
-    Type(Unknown),
+    Type(Primitive<Unknown>),
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
@@ -42,7 +42,7 @@ pub enum HkpFirstPersonGun<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "keyboardKey")]
-    KeyboardKey(KeyboardKey),
+    KeyboardKey(Primitive<KeyboardKey>),
     /// # C++ Class Fields Info
     /// -   name:`"listeners"`
     /// -   type: `hkArray&lt;void*&gt;`
@@ -55,9 +55,9 @@ pub enum HkpFirstPersonGun<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpFirstPersonGun<'de>, "@name",
-    ("type" => Type(Unknown)),
+    ("type" => Type(Primitive<Unknown>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
-    ("keyboardKey" => KeyboardKey(KeyboardKey)),
+    ("keyboardKey" => KeyboardKey(Primitive<KeyboardKey>)),
     ("listeners" => Listeners(HkArrayRef<Cow<'de, str>>)),
 }
 

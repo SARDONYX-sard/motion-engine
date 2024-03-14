@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpCollisionFilter`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpCollisionFilter`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -35,7 +35,7 @@ pub enum HkpCollisionFilter {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
-    Type(HkpFilterType),
+    Type(Primitive<HkpFilterType>),
     /// # C++ Class Fields Info
     /// -   name:`"postpad"`
     /// -   type: `hkUint32[3]`
@@ -49,7 +49,7 @@ pub enum HkpCollisionFilter {
 impl_deserialize_for_internally_tagged_enum! {
     HkpCollisionFilter, "@name",
     ("prepad" => Prepad([Primitive<u32>; 2])),
-    ("type" => Type(HkpFilterType)),
+    ("type" => Type(Primitive<HkpFilterType>)),
     ("postpad" => Postpad([Primitive<u32>; 3])),
 }
 

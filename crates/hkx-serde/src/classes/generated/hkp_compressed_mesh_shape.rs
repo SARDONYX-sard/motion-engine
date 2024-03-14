@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpCompressedMeshShape`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpCompressedMeshShape`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -63,14 +63,14 @@ pub enum HkpCompressedMeshShape<'a> {
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "weldingType")]
-    WeldingType(WeldingType),
+    WeldingType(Primitive<WeldingType>),
     /// # C++ Class Fields Info
     /// -   name:`"materialType"`
     /// -   type: `enum MaterialType`
     /// - offset: 45
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "materialType")]
-    MaterialType(MaterialType),
+    MaterialType(Primitive<MaterialType>),
     /// # C++ Class Fields Info
     /// -   name:`"materials"`
     /// -   type: `hkArray&lt;hkUint32&gt;`
@@ -186,8 +186,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("wIndexMask" => WIndexMask(Primitive<i32>)),
     ("indexMask" => IndexMask(Primitive<i32>)),
     ("radius" => Radius(Primitive<f32>)),
-    ("weldingType" => WeldingType(WeldingType)),
-    ("materialType" => MaterialType(MaterialType)),
+    ("weldingType" => WeldingType(Primitive<WeldingType>)),
+    ("materialType" => MaterialType(Primitive<MaterialType>)),
     ("materials" => Materials(HkArrayRef<Primitive<u32>>)),
     ("materials16" => Materials16(HkArrayRef<Primitive<u16>>)),
     ("materials8" => Materials8(HkArrayRef<Primitive<u8>>)),

@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkxMaterialEffect`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkxMaterialEffect`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -35,7 +35,7 @@ pub enum HkxMaterialEffect<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
-    Type(EffectType),
+    Type(Primitive<EffectType>),
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
@@ -49,7 +49,7 @@ pub enum HkxMaterialEffect<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkxMaterialEffect<'de>, "@name",
     ("name" => Name(Primitive<Cow<'de, str>>)),
-    ("type" => Type(EffectType)),
+    ("type" => Type(Primitive<EffectType>)),
     ("data" => Data(HkArrayRef<Primitive<u8>>)),
 }
 

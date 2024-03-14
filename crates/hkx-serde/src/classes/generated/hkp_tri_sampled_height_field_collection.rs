@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpTriSampledHeightFieldCollection`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpTriSampledHeightFieldCollection`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.

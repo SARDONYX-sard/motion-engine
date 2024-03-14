@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkaAnimation`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkaAnimation`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,7 +28,7 @@ pub enum HkaAnimation<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
-    Type(AnimationType),
+    Type(Primitive<AnimationType>),
     /// # C++ Class Fields Info
     /// -   name:`"duration"`
     /// -   type: `hkReal`
@@ -69,7 +69,7 @@ pub enum HkaAnimation<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkaAnimation<'de>, "@name",
-    ("type" => Type(AnimationType)),
+    ("type" => Type(Primitive<AnimationType>)),
     ("duration" => Duration(Primitive<f32>)),
     ("numberOfTransformTracks" => NumberOfTransformTracks(Primitive<i32>)),
     ("numberOfFloatTracks" => NumberOfFloatTracks(Primitive<i32>)),

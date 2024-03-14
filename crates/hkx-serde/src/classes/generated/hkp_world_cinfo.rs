@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpWorldCinfo`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpWorldCinfo`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -49,7 +49,7 @@ pub enum HkpWorldCinfo<'a> {
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "broadPhaseBorderBehaviour")]
-    BroadPhaseBorderBehaviour(BroadPhaseBorderBehaviour),
+    BroadPhaseBorderBehaviour(Primitive<BroadPhaseBorderBehaviour>),
     /// # C++ Class Fields Info
     /// -   name:`"mtPostponeAndSortBroadPhaseBorderCallbacks"`
     /// -   type: `hkBool`
@@ -84,7 +84,7 @@ pub enum HkpWorldCinfo<'a> {
     /// - offset: 82
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "treeUpdateType")]
-    TreeUpdateType(TreeUpdateType),
+    TreeUpdateType(Primitive<TreeUpdateType>),
     /// # C++ Class Fields Info
     /// -   name:`"autoUpdateKdTree"`
     /// -   type: `hkBool`
@@ -154,7 +154,7 @@ pub enum HkpWorldCinfo<'a> {
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "contactPointGeneration")]
-    ContactPointGeneration(ContactPointGeneration),
+    ContactPointGeneration(Primitive<ContactPointGeneration>),
     /// # C++ Class Fields Info
     /// -   name:`"allowToSkipConfirmedCallbacks"`
     /// -   type: `hkBool`
@@ -378,7 +378,7 @@ pub enum HkpWorldCinfo<'a> {
     /// - offset: 217
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "simulationType")]
-    SimulationType(SimulationType),
+    SimulationType(Primitive<SimulationType>),
     /// # C++ Class Fields Info
     /// -   name:`"enableSimulationIslands"`
     /// -   type: `hkBool`
@@ -429,12 +429,12 @@ impl_deserialize_for_internally_tagged_enum! {
     ("gravity" => Gravity(Vector4<f32>)),
     ("broadPhaseQuerySize" => BroadPhaseQuerySize(Primitive<i32>)),
     ("contactRestingVelocity" => ContactRestingVelocity(Primitive<f32>)),
-    ("broadPhaseBorderBehaviour" => BroadPhaseBorderBehaviour(BroadPhaseBorderBehaviour)),
+    ("broadPhaseBorderBehaviour" => BroadPhaseBorderBehaviour(Primitive<BroadPhaseBorderBehaviour>)),
     ("mtPostponeAndSortBroadPhaseBorderCallbacks" => MtPostponeAndSortBroadPhaseBorderCallbacks(Primitive<bool>)),
     ("broadPhaseWorldAabb" => BroadPhaseWorldAabb(HkAabb)),
     ("useKdTree" => UseKdTree(Primitive<bool>)),
     ("useMultipleTree" => UseMultipleTree(Primitive<bool>)),
-    ("treeUpdateType" => TreeUpdateType(TreeUpdateType)),
+    ("treeUpdateType" => TreeUpdateType(Primitive<TreeUpdateType>)),
     ("autoUpdateKdTree" => AutoUpdateKdTree(Primitive<bool>)),
     ("collisionTolerance" => CollisionTolerance(Primitive<f32>)),
     ("collisionFilter" => CollisionFilter(Cow<'de, str>)),
@@ -444,7 +444,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("expectedMinPsiDeltaTime" => ExpectedMinPsiDeltaTime(Primitive<f32>)),
     ("memoryWatchDog" => MemoryWatchDog(Cow<'de, str>)),
     ("broadPhaseNumMarkers" => BroadPhaseNumMarkers(Primitive<i32>)),
-    ("contactPointGeneration" => ContactPointGeneration(ContactPointGeneration)),
+    ("contactPointGeneration" => ContactPointGeneration(Primitive<ContactPointGeneration>)),
     ("allowToSkipConfirmedCallbacks" => AllowToSkipConfirmedCallbacks(Primitive<bool>)),
     ("useHybridBroadphase" => UseHybridBroadphase(Primitive<bool>)),
     ("solverTau" => SolverTau(Primitive<f32>)),
@@ -476,7 +476,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("numToisTillAllowedPenetrationToiHigher" => NumToisTillAllowedPenetrationToiHigher(Primitive<f32>)),
     ("numToisTillAllowedPenetrationToiForced" => NumToisTillAllowedPenetrationToiForced(Primitive<f32>)),
     ("enableDeactivation" => EnableDeactivation(Primitive<bool>)),
-    ("simulationType" => SimulationType(SimulationType)),
+    ("simulationType" => SimulationType(Primitive<SimulationType>)),
     ("enableSimulationIslands" => EnableSimulationIslands(Primitive<bool>)),
     ("minDesiredIslandSize" => MinDesiredIslandSize(Primitive<u32>)),
     ("processActionsInSingleThread" => ProcessActionsInSingleThread(Primitive<bool>)),

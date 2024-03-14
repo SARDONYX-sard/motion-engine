@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbAttachmentSetup`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbAttachmentSetup`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -77,7 +77,7 @@ pub enum HkbAttachmentSetup {
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "attachmentType")]
-    AttachmentType(AttachmentType),
+    AttachmentType(Primitive<AttachmentType>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -90,7 +90,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("fixUpGain" => FixUpGain(Primitive<f32>)),
     ("maxLinearDistance" => MaxLinearDistance(Primitive<f32>)),
     ("maxAngularDistance" => MaxAngularDistance(Primitive<f32>)),
-    ("attachmentType" => AttachmentType(AttachmentType)),
+    ("attachmentType" => AttachmentType(Primitive<AttachmentType>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

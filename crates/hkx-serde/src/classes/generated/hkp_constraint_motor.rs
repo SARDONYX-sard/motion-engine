@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpConstraintMotor`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpConstraintMotor`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,13 +28,13 @@ pub enum HkpConstraintMotor {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
-    Type(MotorType),
+    Type(Primitive<MotorType>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpConstraintMotor, "@name",
-    ("type" => Type(MotorType)),
+    ("type" => Type(Primitive<MotorType>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

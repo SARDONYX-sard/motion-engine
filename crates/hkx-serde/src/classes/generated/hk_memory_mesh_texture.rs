@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkMemoryMeshTexture`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkMemoryMeshTexture`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -42,7 +42,7 @@ pub enum HkMemoryMeshTexture<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "format")]
-    Format(Format),
+    Format(Primitive<Format>),
     /// # C++ Class Fields Info
     /// -   name:`"hasMipMaps"`
     /// -   type: `hkBool`
@@ -56,14 +56,14 @@ pub enum HkMemoryMeshTexture<'a> {
     /// - offset: 26
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "filterMode")]
-    FilterMode(FilterMode),
+    FilterMode(Primitive<FilterMode>),
     /// # C++ Class Fields Info
     /// -   name:`"usageHint"`
     /// -   type: `enum TextureUsageType`
     /// - offset: 27
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "usageHint")]
-    UsageHint(TextureUsageType),
+    UsageHint(Primitive<TextureUsageType>),
     /// # C++ Class Fields Info
     /// -   name:`"textureCoordChannel"`
     /// -   type: `hkInt32`
@@ -78,9 +78,9 @@ impl_deserialize_for_internally_tagged_enum! {
     HkMemoryMeshTexture<'de>, "@name",
     ("filename" => Filename(Primitive<Cow<'de, str>>)),
     ("data" => Data(HkArrayRef<Primitive<u8>>)),
-    ("format" => Format(Format)),
+    ("format" => Format(Primitive<Format>)),
     ("hasMipMaps" => HasMipMaps(Primitive<bool>)),
-    ("filterMode" => FilterMode(FilterMode)),
-    ("usageHint" => UsageHint(TextureUsageType)),
+    ("filterMode" => FilterMode(Primitive<FilterMode>)),
+    ("usageHint" => UsageHint(Primitive<TextureUsageType>)),
     ("textureCoordChannel" => TextureCoordChannel(Primitive<i32>)),
 }

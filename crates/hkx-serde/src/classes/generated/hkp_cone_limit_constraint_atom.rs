@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpConeLimitConstraintAtom`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpConeLimitConstraintAtom`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -49,7 +49,7 @@ pub enum HkpConeLimitConstraintAtom {
     /// - offset: 5
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "angleMeasurementMode")]
-    AngleMeasurementMode(MeasurementMode),
+    AngleMeasurementMode(Primitive<MeasurementMode>),
     /// # C++ Class Fields Info
     /// -   name:`"memOffsetToAngleOffset"`
     /// -   type: `hkUint8`
@@ -86,7 +86,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("isEnabled" => IsEnabled(Primitive<u8>)),
     ("twistAxisInA" => TwistAxisInA(Primitive<u8>)),
     ("refAxisInB" => RefAxisInB(Primitive<u8>)),
-    ("angleMeasurementMode" => AngleMeasurementMode(MeasurementMode)),
+    ("angleMeasurementMode" => AngleMeasurementMode(Primitive<MeasurementMode>)),
     ("memOffsetToAngleOffset" => MemOffsetToAngleOffset(Primitive<u8>)),
     ("minAngle" => MinAngle(Primitive<f32>)),
     ("maxAngle" => MaxAngle(Primitive<f32>)),

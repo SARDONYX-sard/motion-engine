@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpShapeCollection`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpShapeCollection`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -35,14 +35,14 @@ pub enum HkpShapeCollection {
     /// - offset: 21
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "collectionType")]
-    CollectionType(CollectionType),
+    CollectionType(Primitive<CollectionType>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpShapeCollection, "@name",
     ("disableWelding" => DisableWelding(Primitive<bool>)),
-    ("collectionType" => CollectionType(CollectionType)),
+    ("collectionType" => CollectionType(Primitive<CollectionType>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

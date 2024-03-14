@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbVariableInfo`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbVariableInfo`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -35,14 +35,14 @@ pub enum HkbVariableInfo {
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
-    Type(VariableType),
+    Type(Primitive<VariableType>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbVariableInfo, "@name",
     ("role" => Role(HkbRoleAttribute)),
-    ("type" => Type(VariableType)),
+    ("type" => Type(Primitive<VariableType>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

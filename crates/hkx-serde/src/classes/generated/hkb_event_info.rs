@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbEventInfo`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbEventInfo`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,13 +28,13 @@ pub enum HkbEventInfo {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "flags")]
-    Flags(Flags),
+    Flags(Primitive<Flags>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbEventInfo, "@name",
-    ("flags" => Flags(Flags)),
+    ("flags" => Flags(Primitive<Flags>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

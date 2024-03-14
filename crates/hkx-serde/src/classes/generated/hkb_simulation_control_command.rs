@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbSimulationControlCommand`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbSimulationControlCommand`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,13 +28,13 @@ pub enum HkbSimulationControlCommand {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "command")]
-    Command(SimulationControlCommand),
+    Command(Primitive<SimulationControlCommand>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbSimulationControlCommand, "@name",
-    ("command" => Command(SimulationControlCommand)),
+    ("command" => Command(Primitive<SimulationControlCommand>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

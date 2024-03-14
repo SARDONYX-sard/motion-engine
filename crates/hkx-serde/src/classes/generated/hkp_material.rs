@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpMaterial`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpMaterial`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,7 +28,7 @@ pub enum HkpMaterial {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "responseType")]
-    ResponseType(ResponseType),
+    ResponseType(Primitive<ResponseType>),
     /// # C++ Class Fields Info
     /// -   name:`"rollingFrictionMultiplier"`
     /// -   type: `hkHalf`
@@ -55,7 +55,7 @@ pub enum HkpMaterial {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpMaterial, "@name",
-    ("responseType" => ResponseType(ResponseType)),
+    ("responseType" => ResponseType(Primitive<ResponseType>)),
     ("rollingFrictionMultiplier" => RollingFrictionMultiplier(Primitive<f32>)),
     ("friction" => Friction(Primitive<f32>)),
     ("restitution" => Restitution(Primitive<f32>)),

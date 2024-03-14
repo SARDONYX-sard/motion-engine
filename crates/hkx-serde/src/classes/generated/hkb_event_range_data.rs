@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbEventRangeData`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbEventRangeData`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -42,7 +42,7 @@ pub enum HkbEventRangeData {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "eventMode")]
-    EventMode(EventRangeMode),
+    EventMode(Primitive<EventRangeMode>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -50,7 +50,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbEventRangeData, "@name",
     ("upperBound" => UpperBound(Primitive<f32>)),
     ("event" => Event(HkbEventProperty)),
-    ("eventMode" => EventMode(EventRangeMode)),
+    ("eventMode" => EventMode(Primitive<EventRangeMode>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

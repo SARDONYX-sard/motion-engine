@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbRoleAttribute`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbRoleAttribute`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,21 +28,21 @@ pub enum HkbRoleAttribute {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "role")]
-    Role(Role),
+    Role(Primitive<Role>),
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `flags RoleFlags`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "flags")]
-    Flags(RoleFlags),
+    Flags(Primitive<RoleFlags>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbRoleAttribute, "@name",
-    ("role" => Role(Role)),
-    ("flags" => Flags(RoleFlags)),
+    ("role" => Role(Primitive<Role>)),
+    ("flags" => Flags(Primitive<RoleFlags>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

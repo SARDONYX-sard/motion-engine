@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkUiAttribute`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkUiAttribute`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -35,7 +35,7 @@ pub enum HkUiAttribute<'a> {
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "hideInModeler")]
-    HideInModeler(HideInModeler),
+    HideInModeler(Primitive<HideInModeler>),
     /// # C++ Class Fields Info
     /// -   name:`"label"`
     /// -   type: `char*`
@@ -84,7 +84,7 @@ pub enum HkUiAttribute<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkUiAttribute<'de>, "@name",
     ("visible" => Visible(Primitive<bool>)),
-    ("hideInModeler" => HideInModeler(HideInModeler)),
+    ("hideInModeler" => HideInModeler(Primitive<HideInModeler>)),
     ("label" => Label(Primitive<Cow<'de, str>>)),
     ("group" => Group(Primitive<Cow<'de, str>>)),
     ("hideBaseClassMembers" => HideBaseClassMembers(Primitive<Cow<'de, str>>)),

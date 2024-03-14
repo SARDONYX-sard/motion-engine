@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpExtendedMeshShapeSubpart`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpExtendedMeshShapeSubpart`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,14 +28,14 @@ pub enum HkpExtendedMeshShapeSubpart<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
-    Type(SubpartType),
+    Type(Primitive<SubpartType>),
     /// # C++ Class Fields Info
     /// -   name:`"materialIndexStridingType"`
     /// -   type: `enum MaterialIndexStridingType`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "materialIndexStridingType")]
-    MaterialIndexStridingType(MaterialIndexStridingType),
+    MaterialIndexStridingType(Primitive<MaterialIndexStridingType>),
     /// # C++ Class Fields Info
     /// -   name:`"materialStriding"`
     /// -   type: `hkInt16`
@@ -83,8 +83,8 @@ pub enum HkpExtendedMeshShapeSubpart<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpExtendedMeshShapeSubpart<'de>, "@name",
-    ("type" => Type(SubpartType)),
-    ("materialIndexStridingType" => MaterialIndexStridingType(MaterialIndexStridingType)),
+    ("type" => Type(Primitive<SubpartType>)),
+    ("materialIndexStridingType" => MaterialIndexStridingType(Primitive<MaterialIndexStridingType>)),
     ("materialStriding" => MaterialStriding(Primitive<i16>)),
     ("materialIndexBase" => MaterialIndexBase(Cow<'de, str>)),
     ("materialIndexStriding" => MaterialIndexStriding(Primitive<u16>)),

@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpConstraintInstance`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpConstraintInstance`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -56,7 +56,7 @@ pub enum HkpConstraintInstance<'a> {
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "priority")]
-    Priority(ConstraintPriority),
+    Priority(Primitive<ConstraintPriority>),
     /// # C++ Class Fields Info
     /// -   name:`"wantRuntime"`
     /// -   type: `hkBool`
@@ -70,7 +70,7 @@ pub enum HkpConstraintInstance<'a> {
     /// - offset: 30
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "destructionRemapInfo")]
-    DestructionRemapInfo(OnDestructionRemapInfo),
+    DestructionRemapInfo(Primitive<OnDestructionRemapInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"listeners"`
     /// -   type: `struct hkpConstraintInstanceSmallArraySerializeOverrideType`
@@ -115,9 +115,9 @@ impl_deserialize_for_internally_tagged_enum! {
     ("data" => Data(Cow<'de, str>)),
     ("constraintModifiers" => ConstraintModifiers(Cow<'de, str>)),
     ("entities" => Entities(Cow<'de, str>)),
-    ("priority" => Priority(ConstraintPriority)),
+    ("priority" => Priority(Primitive<ConstraintPriority>)),
     ("wantRuntime" => WantRuntime(Primitive<bool>)),
-    ("destructionRemapInfo" => DestructionRemapInfo(OnDestructionRemapInfo)),
+    ("destructionRemapInfo" => DestructionRemapInfo(Primitive<OnDestructionRemapInfo>)),
     ("listeners" => Listeners(HkpConstraintInstanceSmallArraySerializeOverrideType)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("userData" => UserData(Primitive<usize>)),

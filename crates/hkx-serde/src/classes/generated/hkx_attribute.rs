@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkxAttribute`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkxAttribute`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.

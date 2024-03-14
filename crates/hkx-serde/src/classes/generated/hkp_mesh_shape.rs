@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpMeshShape`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpMeshShape`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -56,7 +56,7 @@ pub enum HkpMeshShape {
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "weldingType")]
-    WeldingType(WeldingType),
+    WeldingType(Primitive<WeldingType>),
     /// # C++ Class Fields Info
     /// -   name:`"radius"`
     /// -   type: `hkReal`
@@ -80,7 +80,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("numBitsForSubpartIndex" => NumBitsForSubpartIndex(Primitive<i32>)),
     ("subparts" => Subparts(HkArrayClass<HkpMeshShapeSubpart>)),
     ("weldingInfo" => WeldingInfo(HkArrayRef<Primitive<u16>>)),
-    ("weldingType" => WeldingType(WeldingType)),
+    ("weldingType" => WeldingType(Primitive<WeldingType>)),
     ("radius" => Radius(Primitive<f32>)),
     ("pad" => Pad([Primitive<i32>; 3])),
 }

@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `BSCyclicBlendTransitionGenerator`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `BSCyclicBlendTransitionGenerator`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -63,7 +63,7 @@ pub enum BsCyclicBlendTransitionGenerator<'a> {
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "eBlendCurve")]
-    EBlendCurve(BlendCurve),
+    EBlendCurve(Primitive<BlendCurve>),
     /// # C++ Class Fields Info
     /// -   name:`"pTransitionBlenderGenerator"`
     /// -   type: `void*`
@@ -84,7 +84,7 @@ pub enum BsCyclicBlendTransitionGenerator<'a> {
     /// - offset: 100
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "currentMode", skip_serializing)]
-    CurrentMode(Unknown),
+    CurrentMode(Primitive<Unknown>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -95,10 +95,10 @@ impl_deserialize_for_internally_tagged_enum! {
     ("EventToCrossBlend" => EventToCrossBlend(HkbEventProperty)),
     ("fBlendParameter" => FBlendParameter(Primitive<f32>)),
     ("fTransitionDuration" => FTransitionDuration(Primitive<f32>)),
-    ("eBlendCurve" => EBlendCurve(BlendCurve)),
+    ("eBlendCurve" => EBlendCurve(Primitive<BlendCurve>)),
     ("pTransitionBlenderGenerator" => PTransitionBlenderGenerator(Cow<'de, str>)),
     ("pTransitionEffect" => PTransitionEffect(Cow<'de, str>)),
-    ("currentMode" => CurrentMode(Unknown)),
+    ("currentMode" => CurrentMode(Primitive<Unknown>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

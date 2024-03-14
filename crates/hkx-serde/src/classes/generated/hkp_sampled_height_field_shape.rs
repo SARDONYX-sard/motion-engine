@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpSampledHeightFieldShape`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpSampledHeightFieldShape`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -56,7 +56,7 @@ pub enum HkpSampledHeightFieldShape {
     /// - offset: 29
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "heightfieldType")]
-    HeightfieldType(HeightFieldType),
+    HeightfieldType(Primitive<HeightFieldType>),
     /// # C++ Class Fields Info
     /// -   name:`"intToFloatScale"`
     /// -   type: `hkVector4`
@@ -94,7 +94,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("zRes" => ZRes(Primitive<i32>)),
     ("heightCenter" => HeightCenter(Primitive<f32>)),
     ("useProjectionBasedHeight" => UseProjectionBasedHeight(Primitive<bool>)),
-    ("heightfieldType" => HeightfieldType(HeightFieldType)),
+    ("heightfieldType" => HeightfieldType(Primitive<HeightFieldType>)),
     ("intToFloatScale" => IntToFloatScale(Vector4<f32>)),
     ("floatToIntScale" => FloatToIntScale(Vector4<f32>)),
     ("floatToIntOffsetFloorCorrected" => FloatToIntOffsetFloorCorrected(Vector4<f32>)),

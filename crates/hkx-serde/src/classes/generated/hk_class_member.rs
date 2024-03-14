@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkClassMember`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkClassMember`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -49,14 +49,14 @@ pub enum HkClassMember<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
-    Type(Type),
+    Type(Primitive<Type>),
     /// # C++ Class Fields Info
     /// -   name:`"subtype"`
     /// -   type: `enum Type`
     /// - offset: 13
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "subtype")]
-    Subtype(Type),
+    Subtype(Primitive<Type>),
     /// # C++ Class Fields Info
     /// -   name:`"cArraySize"`
     /// -   type: `hkInt16`
@@ -70,7 +70,7 @@ pub enum HkClassMember<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "flags")]
-    Flags(FlagValues),
+    Flags(Primitive<FlagValues>),
     /// # C++ Class Fields Info
     /// -   name:`"offset"`
     /// -   type: `hkUint16`
@@ -93,10 +93,10 @@ impl_deserialize_for_internally_tagged_enum! {
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("class" => Class(Cow<'de, str>)),
     ("enum" => Enum(Cow<'de, str>)),
-    ("type" => Type(Type)),
-    ("subtype" => Subtype(Type)),
+    ("type" => Type(Primitive<Type>)),
+    ("subtype" => Subtype(Primitive<Type>)),
     ("cArraySize" => CArraySize(Primitive<i16>)),
-    ("flags" => Flags(FlagValues)),
+    ("flags" => Flags(Primitive<FlagValues>)),
     ("offset" => Offset(Primitive<u16>)),
     ("attributes" => Attributes(Cow<'de, str>)),
 }

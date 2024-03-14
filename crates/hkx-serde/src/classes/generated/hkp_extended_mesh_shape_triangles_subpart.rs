@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpExtendedMeshShapeTrianglesSubpart`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpExtendedMeshShapeTrianglesSubpart`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -77,7 +77,7 @@ pub enum HkpExtendedMeshShapeTrianglesSubpart<'a> {
     /// - offset: 46
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "stridingType")]
-    StridingType(IndexStridingType),
+    StridingType(Primitive<IndexStridingType>),
     /// # C++ Class Fields Info
     /// -   name:`"flipAlternateTriangles"`
     /// -   type: `hkInt8`
@@ -111,7 +111,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("vertexStriding" => VertexStriding(Primitive<u16>)),
     ("triangleOffset" => TriangleOffset(Primitive<i32>)),
     ("indexStriding" => IndexStriding(Primitive<u16>)),
-    ("stridingType" => StridingType(IndexStridingType)),
+    ("stridingType" => StridingType(Primitive<IndexStridingType>)),
     ("flipAlternateTriangles" => FlipAlternateTriangles(Primitive<i8>)),
     ("extrusion" => Extrusion(Vector4<f32>)),
     ("transform" => Transform(QsTransform<f32>)),

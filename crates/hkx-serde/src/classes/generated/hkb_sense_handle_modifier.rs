@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbSenseHandleModifier`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbSenseHandleModifier`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -119,7 +119,7 @@ pub enum HkbSenseHandleModifier<'a> {
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "sensingMode")]
-    SensingMode(SensingMode),
+    SensingMode(Primitive<SensingMode>),
     /// # C++ Class Fields Info
     /// -   name:`"extrapolateSensorPosition"`
     /// -   type: `hkBool`
@@ -173,7 +173,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("collisionFilterInfo" => CollisionFilterInfo(Primitive<u32>)),
     ("sensorRagdollBoneIndex" => SensorRagdollBoneIndex(Primitive<i16>)),
     ("sensorAnimationBoneIndex" => SensorAnimationBoneIndex(Primitive<i16>)),
-    ("sensingMode" => SensingMode(SensingMode)),
+    ("sensingMode" => SensingMode(Primitive<SensingMode>)),
     ("extrapolateSensorPosition" => ExtrapolateSensorPosition(Primitive<bool>)),
     ("keepFirstSensedHandle" => KeepFirstSensedHandle(Primitive<bool>)),
     ("foundHandleOut" => FoundHandleOut(Primitive<bool>)),

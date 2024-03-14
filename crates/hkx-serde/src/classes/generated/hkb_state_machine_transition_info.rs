@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbStateMachineTransitionInfo`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbStateMachineTransitionInfo`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -91,7 +91,7 @@ pub enum HkbStateMachineTransitionInfo<'a> {
     /// - offset: 58
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "flags")]
-    Flags(TransitionFlags),
+    Flags(Primitive<TransitionFlags>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -106,7 +106,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("fromNestedStateId" => FromNestedStateId(Primitive<i32>)),
     ("toNestedStateId" => ToNestedStateId(Primitive<i32>)),
     ("priority" => Priority(Primitive<i16>)),
-    ("flags" => Flags(TransitionFlags)),
+    ("flags" => Flags(Primitive<TransitionFlags>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

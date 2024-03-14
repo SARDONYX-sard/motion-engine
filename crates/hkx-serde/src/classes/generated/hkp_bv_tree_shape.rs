@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpBvTreeShape`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpBvTreeShape`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,13 +28,13 @@ pub enum HkpBvTreeShape {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "bvTreeType")]
-    BvTreeType(BvTreeType),
+    BvTreeType(Primitive<BvTreeType>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpBvTreeShape, "@name",
-    ("bvTreeType" => BvTreeType(BvTreeType)),
+    ("bvTreeType" => BvTreeType(Primitive<BvTreeType>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

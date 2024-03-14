@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbHandIkModifier`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbHandIkModifier`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -35,7 +35,7 @@ pub enum HkbHandIkModifier {
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "fadeInOutCurve")]
-    FadeInOutCurve(BlendCurve),
+    FadeInOutCurve(Primitive<BlendCurve>),
     /// # C++ Class Fields Info
     /// -   name:`"internalHandData"`
     /// -   type: `hkArray&lt;void&gt;`
@@ -49,6 +49,6 @@ pub enum HkbHandIkModifier {
 impl_deserialize_for_internally_tagged_enum! {
     HkbHandIkModifier, "@name",
     ("hands" => Hands(HkArrayClass<HkbHandIkModifierHand>)),
-    ("fadeInOutCurve" => FadeInOutCurve(BlendCurve)),
+    ("fadeInOutCurve" => FadeInOutCurve(Primitive<BlendCurve>)),
     ("internalHandData" => InternalHandData(HkArrayRef<()>)),
 }

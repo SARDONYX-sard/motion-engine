@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbParticleSystemEventPayload`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbParticleSystemEventPayload`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,7 +28,7 @@ pub enum HkbParticleSystemEventPayload {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
-    Type(SystemType),
+    Type(Primitive<SystemType>),
     /// # C++ Class Fields Info
     /// -   name:`"emitBoneIndex"`
     /// -   type: `hkInt16`
@@ -69,7 +69,7 @@ pub enum HkbParticleSystemEventPayload {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbParticleSystemEventPayload, "@name",
-    ("type" => Type(SystemType)),
+    ("type" => Type(Primitive<SystemType>)),
     ("emitBoneIndex" => EmitBoneIndex(Primitive<i16>)),
     ("offset" => Offset(Vector4<f32>)),
     ("direction" => Direction(Vector4<f32>)),

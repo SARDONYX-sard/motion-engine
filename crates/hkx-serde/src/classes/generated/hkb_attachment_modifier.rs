@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbAttachmentModifier`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbAttachmentModifier`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -91,7 +91,7 @@ pub enum HkbAttachmentModifier<'a> {
     /// - offset: 96
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "oldMotionType", skip_serializing)]
-    OldMotionType(Unknown),
+    OldMotionType(Primitive<Unknown>),
     /// # C++ Class Fields Info
     /// -   name:`"oldFilterInfo"`
     /// -   type: `hkInt32`
@@ -120,7 +120,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("attacheeHandle" => AttacheeHandle(Cow<'de, str>)),
     ("attacheeLayer" => AttacheeLayer(Primitive<i32>)),
     ("attacheeRB" => AttacheeRb(Cow<'de, str>)),
-    ("oldMotionType" => OldMotionType(Unknown)),
+    ("oldMotionType" => OldMotionType(Primitive<Unknown>)),
     ("oldFilterInfo" => OldFilterInfo(Primitive<i32>)),
     ("attachment" => Attachment(Cow<'de, str>)),
 }

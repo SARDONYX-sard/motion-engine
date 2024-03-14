@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbCompiledExpressionSetToken`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbCompiledExpressionSetToken`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -35,22 +35,22 @@ pub enum HkbCompiledExpressionSetToken {
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
-    Type(TokenType),
+    Type(Primitive<TokenType>),
     /// # C++ Class Fields Info
     /// -   name:`"operator"`
     /// -   type: `enum Operator`
     /// - offset: 5
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "operator")]
-    Operator(Operator),
+    Operator(Primitive<Operator>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbCompiledExpressionSetToken, "@name",
     ("data" => Data(Primitive<f32>)),
-    ("type" => Type(TokenType)),
-    ("operator" => Operator(Operator)),
+    ("type" => Type(Primitive<TokenType>)),
+    ("operator" => Operator(Primitive<Operator>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkaAnimationBinding`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkaAnimationBinding`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -56,7 +56,7 @@ pub enum HkaAnimationBinding<'a> {
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "blendHint")]
-    BlendHint(BlendHint),
+    BlendHint(Primitive<BlendHint>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -66,7 +66,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("animation" => Animation(Cow<'de, str>)),
     ("transformTrackToBoneIndices" => TransformTrackToBoneIndices(HkArrayRef<Primitive<i16>>)),
     ("floatTrackToFloatSlotIndices" => FloatTrackToFloatSlotIndices(HkArrayRef<Primitive<i16>>)),
-    ("blendHint" => BlendHint(BlendHint)),
+    ("blendHint" => BlendHint(Primitive<BlendHint>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

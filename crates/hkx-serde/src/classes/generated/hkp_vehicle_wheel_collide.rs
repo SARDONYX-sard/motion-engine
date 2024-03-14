@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpVehicleWheelCollide`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpVehicleWheelCollide`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -35,14 +35,14 @@ pub enum HkpVehicleWheelCollide {
     /// - offset: 9
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "type", skip_serializing)]
-    Type(Unknown),
+    Type(Primitive<Unknown>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpVehicleWheelCollide, "@name",
     ("alreadyUsed" => AlreadyUsed(Primitive<bool>)),
-    ("type" => Type(Unknown)),
+    ("type" => Type(Primitive<Unknown>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

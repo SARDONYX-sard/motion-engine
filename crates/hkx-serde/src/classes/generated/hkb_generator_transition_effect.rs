@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbGeneratorTransitionEffect`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbGeneratorTransitionEffect`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -98,7 +98,7 @@ pub enum HkbGeneratorTransitionEffect<'a> {
     /// - offset: 84
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "toGeneratorState", skip_serializing)]
-    ToGeneratorState(Unknown),
+    ToGeneratorState(Primitive<Unknown>),
     /// # C++ Class Fields Info
     /// -   name:`"echoTransitionGenerator"`
     /// -   type: `hkBool`
@@ -133,7 +133,7 @@ pub enum HkbGeneratorTransitionEffect<'a> {
     /// - offset: 89
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "stage", skip_serializing)]
-    Stage(Unknown),
+    Stage(Primitive<Unknown>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -149,12 +149,12 @@ impl_deserialize_for_internally_tagged_enum! {
     ("duration" => Duration(Primitive<f32>)),
     ("effectiveBlendInDuration" => EffectiveBlendInDuration(Primitive<f32>)),
     ("effectiveBlendOutDuration" => EffectiveBlendOutDuration(Primitive<f32>)),
-    ("toGeneratorState" => ToGeneratorState(Unknown)),
+    ("toGeneratorState" => ToGeneratorState(Primitive<Unknown>)),
     ("echoTransitionGenerator" => EchoTransitionGenerator(Primitive<bool>)),
     ("echoToGenerator" => EchoToGenerator(Primitive<bool>)),
     ("justActivated" => JustActivated(Primitive<bool>)),
     ("updateActiveNodes" => UpdateActiveNodes(Primitive<bool>)),
-    ("stage" => Stage(Unknown)),
+    ("stage" => Stage(Primitive<Unknown>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

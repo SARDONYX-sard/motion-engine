@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkArrayTypeAttribute`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkArrayTypeAttribute`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,13 +28,13 @@ pub enum HkArrayTypeAttribute {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
-    Type(ArrayType),
+    Type(Primitive<ArrayType>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkArrayTypeAttribute, "@name",
-    ("type" => Type(ArrayType)),
+    ("type" => Type(Primitive<ArrayType>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

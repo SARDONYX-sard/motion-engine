@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbNode`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbNode`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -49,7 +49,7 @@ pub enum HkbNode<'a> {
     /// - offset: 38
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "cloneState", skip_serializing)]
-    CloneState(Unknown),
+    CloneState(Primitive<Unknown>),
     /// # C++ Class Fields Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
@@ -65,7 +65,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("userData" => UserData(Primitive<usize>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("id" => Id(Primitive<i16>)),
-    ("cloneState" => CloneState(Unknown)),
+    ("cloneState" => CloneState(Primitive<Unknown>)),
     ("padNode" => PadNode([Primitive<bool>; 1])),
 }
 

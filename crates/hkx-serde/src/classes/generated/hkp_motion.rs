@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpMotion`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpMotion`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,7 +28,7 @@ pub enum HkpMotion<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
-    Type(MotionType),
+    Type(Primitive<MotionType>),
     /// # C++ Class Fields Info
     /// -   name:`"deactivationIntegrateCounter"`
     /// -   type: `hkUint8`
@@ -111,7 +111,7 @@ pub enum HkpMotion<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpMotion<'de>, "@name",
-    ("type" => Type(MotionType)),
+    ("type" => Type(Primitive<MotionType>)),
     ("deactivationIntegrateCounter" => DeactivationIntegrateCounter(Primitive<u8>)),
     ("deactivationNumInactiveFrames" => DeactivationNumInactiveFrames([Primitive<u16>; 2])),
     ("motionState" => MotionState(HkMotionState)),

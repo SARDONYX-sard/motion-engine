@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpSimpleMeshShape`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpSimpleMeshShape`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -56,7 +56,7 @@ pub enum HkpSimpleMeshShape {
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "weldingType")]
-    WeldingType(WeldingType),
+    WeldingType(Primitive<WeldingType>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -66,5 +66,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("triangles" => Triangles(HkArrayClass<HkpSimpleMeshShapeTriangle>)),
     ("materialIndices" => MaterialIndices(HkArrayRef<Primitive<u8>>)),
     ("radius" => Radius(Primitive<f32>)),
-    ("weldingType" => WeldingType(WeldingType)),
+    ("weldingType" => WeldingType(Primitive<WeldingType>)),
 }

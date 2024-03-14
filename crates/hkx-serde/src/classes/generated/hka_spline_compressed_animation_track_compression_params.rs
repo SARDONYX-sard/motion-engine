@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkaSplineCompressedAnimationTrackCompressionParams`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkaSplineCompressedAnimationTrackCompressionParams`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -84,28 +84,28 @@ pub enum HkaSplineCompressedAnimationTrackCompressionParams {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rotationQuantizationType")]
-    RotationQuantizationType(RotationQuantization),
+    RotationQuantizationType(Primitive<RotationQuantization>),
     /// # C++ Class Fields Info
     /// -   name:`"translationQuantizationType"`
     /// -   type: `enum ScalarQuantization`
     /// - offset: 25
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "translationQuantizationType")]
-    TranslationQuantizationType(ScalarQuantization),
+    TranslationQuantizationType(Primitive<ScalarQuantization>),
     /// # C++ Class Fields Info
     /// -   name:`"scaleQuantizationType"`
     /// -   type: `enum ScalarQuantization`
     /// - offset: 26
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "scaleQuantizationType")]
-    ScaleQuantizationType(ScalarQuantization),
+    ScaleQuantizationType(Primitive<ScalarQuantization>),
     /// # C++ Class Fields Info
     /// -   name:`"floatQuantizationType"`
     /// -   type: `enum ScalarQuantization`
     /// - offset: 27
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "floatQuantizationType")]
-    FloatQuantizationType(ScalarQuantization),
+    FloatQuantizationType(Primitive<ScalarQuantization>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -119,10 +119,10 @@ impl_deserialize_for_internally_tagged_enum! {
     ("translationDegree" => TranslationDegree(Primitive<u16>)),
     ("scaleDegree" => ScaleDegree(Primitive<u16>)),
     ("floatingDegree" => FloatingDegree(Primitive<u16>)),
-    ("rotationQuantizationType" => RotationQuantizationType(RotationQuantization)),
-    ("translationQuantizationType" => TranslationQuantizationType(ScalarQuantization)),
-    ("scaleQuantizationType" => ScaleQuantizationType(ScalarQuantization)),
-    ("floatQuantizationType" => FloatQuantizationType(ScalarQuantization)),
+    ("rotationQuantizationType" => RotationQuantizationType(Primitive<RotationQuantization>)),
+    ("translationQuantizationType" => TranslationQuantizationType(Primitive<ScalarQuantization>)),
+    ("scaleQuantizationType" => ScaleQuantizationType(Primitive<ScalarQuantization>)),
+    ("floatQuantizationType" => FloatQuantizationType(Primitive<ScalarQuantization>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

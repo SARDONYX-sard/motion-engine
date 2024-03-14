@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbCharacterControlCommand`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbCharacterControlCommand`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -35,7 +35,7 @@ pub enum HkbCharacterControlCommand {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "command")]
-    Command(CharacterControlCommand),
+    Command(Primitive<CharacterControlCommand>),
     /// # C++ Class Fields Info
     /// -   name:`"padding"`
     /// -   type: `hkInt32`
@@ -49,7 +49,7 @@ pub enum HkbCharacterControlCommand {
 impl_deserialize_for_internally_tagged_enum! {
     HkbCharacterControlCommand, "@name",
     ("characterId" => CharacterId(Primitive<u64>)),
-    ("command" => Command(CharacterControlCommand)),
+    ("command" => Command(Primitive<CharacterControlCommand>)),
     ("padding" => Padding(Primitive<i32>)),
 }
 

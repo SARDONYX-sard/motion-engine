@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpCallbackConstraintMotor`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpCallbackConstraintMotor`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -35,7 +35,7 @@ pub enum HkpCallbackConstraintMotor<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "callbackType")]
-    CallbackType(CallbackType),
+    CallbackType(Primitive<CallbackType>),
     /// # C++ Class Fields Info
     /// -   name:`"userData0"`
     /// -   type: `hkUlong`
@@ -63,7 +63,7 @@ pub enum HkpCallbackConstraintMotor<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkpCallbackConstraintMotor<'de>, "@name",
     ("callbackFunc" => CallbackFunc(Cow<'de, str>)),
-    ("callbackType" => CallbackType(CallbackType)),
+    ("callbackType" => CallbackType(Primitive<CallbackType>)),
     ("userData0" => UserData0(Primitive<usize>)),
     ("userData1" => UserData1(Primitive<usize>)),
     ("userData2" => UserData2(Primitive<usize>)),

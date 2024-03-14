@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbFootIkModifier`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbFootIkModifier`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -140,7 +140,7 @@ pub enum HkbFootIkModifier {
     /// - offset: 183
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "alignMode")]
-    AlignMode(AlignMode),
+    AlignMode(Primitive<AlignMode>),
     /// # C++ Class Fields Info
     /// -   name:`"internalLegData"`
     /// -   type: `hkArray&lt;struct hkbFootIkModifierInternalLegData&gt;`
@@ -197,7 +197,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("useTrackData" => UseTrackData(Primitive<bool>)),
     ("lockFeetWhenPlanted" => LockFeetWhenPlanted(Primitive<bool>)),
     ("useCharacterUpVector" => UseCharacterUpVector(Primitive<bool>)),
-    ("alignMode" => AlignMode(AlignMode)),
+    ("alignMode" => AlignMode(Primitive<AlignMode>)),
     ("internalLegData" => InternalLegData(HkArrayClass<HkbFootIkModifierInternalLegData>)),
     ("prevIsFootIkEnabled" => PrevIsFootIkEnabled(Primitive<f32>)),
     ("isSetUp" => IsSetUp(Primitive<bool>)),

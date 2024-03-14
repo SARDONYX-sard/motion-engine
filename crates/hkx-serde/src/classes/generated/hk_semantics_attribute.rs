@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkSemanticsAttribute`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkSemanticsAttribute`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,13 +28,13 @@ pub enum HkSemanticsAttribute {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
-    Type(Semantics),
+    Type(Primitive<Semantics>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkSemanticsAttribute, "@name",
-    ("type" => Type(Semantics)),
+    ("type" => Type(Primitive<Semantics>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

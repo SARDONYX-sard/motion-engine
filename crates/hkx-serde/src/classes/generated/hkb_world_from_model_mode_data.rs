@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbWorldFromModelModeData`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbWorldFromModelModeData`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -49,7 +49,7 @@ pub enum HkbWorldFromModelModeData {
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "mode")]
-    Mode(WorldFromModelMode),
+    Mode(Primitive<WorldFromModelMode>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -58,7 +58,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("poseMatchingBone0" => PoseMatchingBone0(Primitive<i16>)),
     ("poseMatchingBone1" => PoseMatchingBone1(Primitive<i16>)),
     ("poseMatchingBone2" => PoseMatchingBone2(Primitive<i16>)),
-    ("mode" => Mode(WorldFromModelMode)),
+    ("mode" => Mode(Primitive<WorldFromModelMode>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

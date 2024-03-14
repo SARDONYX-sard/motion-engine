@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkxAnimatedMatrix`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkxAnimatedMatrix`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -35,12 +35,12 @@ pub enum HkxAnimatedMatrix {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "hint")]
-    Hint(Hint),
+    Hint(Primitive<Hint>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkxAnimatedMatrix, "@name",
     ("matrices" => Matrices(HkArrayVector<Matrix4<f32>>)),
-    ("hint" => Hint(Hint)),
+    ("hint" => Hint(Primitive<Hint>)),
 }

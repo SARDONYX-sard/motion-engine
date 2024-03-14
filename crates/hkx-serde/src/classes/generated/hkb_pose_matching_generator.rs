@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbPoseMatchingGenerator`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbPoseMatchingGenerator`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -105,7 +105,7 @@ pub enum HkbPoseMatchingGenerator<'a> {
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "mode")]
-    Mode(Mode),
+    Mode(Primitive<Mode>),
     /// # C++ Class Fields Info
     /// -   name:`"currentMatch"`
     /// -   type: `hkInt32`
@@ -164,7 +164,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("otherBoneIndex" => OtherBoneIndex(Primitive<i16>)),
     ("anotherBoneIndex" => AnotherBoneIndex(Primitive<i16>)),
     ("pelvisIndex" => PelvisIndex(Primitive<i16>)),
-    ("mode" => Mode(Mode)),
+    ("mode" => Mode(Primitive<Mode>)),
     ("currentMatch" => CurrentMatch(Primitive<i32>)),
     ("bestMatch" => BestMatch(Primitive<i32>)),
     ("timeSinceBetterMatch" => TimeSinceBetterMatch(Primitive<f32>)),

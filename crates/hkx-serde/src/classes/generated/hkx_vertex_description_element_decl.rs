@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkxVertexDescriptionElementDecl`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkxVertexDescriptionElementDecl`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -35,14 +35,14 @@ pub enum HkxVertexDescriptionElementDecl {
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
-    Type(DataType),
+    Type(Primitive<DataType>),
     /// # C++ Class Fields Info
     /// -   name:`"usage"`
     /// -   type: `enum DataUsage`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "usage")]
-    Usage(DataUsage),
+    Usage(Primitive<DataUsage>),
     /// # C++ Class Fields Info
     /// -   name:`"byteStride"`
     /// -   type: `hkUint32`
@@ -63,8 +63,8 @@ pub enum HkxVertexDescriptionElementDecl {
 impl_deserialize_for_internally_tagged_enum! {
     HkxVertexDescriptionElementDecl, "@name",
     ("byteOffset" => ByteOffset(Primitive<u32>)),
-    ("type" => Type(DataType)),
-    ("usage" => Usage(DataUsage)),
+    ("type" => Type(Primitive<DataType>)),
+    ("usage" => Usage(Primitive<DataUsage>)),
     ("byteStride" => ByteStride(Primitive<u32>)),
     ("numElements" => NumElements(Primitive<u8>)),
 }

@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkxMaterialTextureStage`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkxMaterialTextureStage`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -35,7 +35,7 @@ pub enum HkxMaterialTextureStage<'a> {
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "usageHint")]
-    UsageHint(TextureType),
+    UsageHint(Primitive<TextureType>),
     /// # C++ Class Fields Info
     /// -   name:`"tcoordChannel"`
     /// -   type: `hkInt32`
@@ -49,6 +49,6 @@ pub enum HkxMaterialTextureStage<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkxMaterialTextureStage<'de>, "@name",
     ("texture" => Texture(Cow<'de, str>)),
-    ("usageHint" => UsageHint(TextureType)),
+    ("usageHint" => UsageHint(Primitive<TextureType>)),
     ("tcoordChannel" => TcoordChannel(Primitive<i32>)),
 }

@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpTriggerVolumeEventInfo`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpTriggerVolumeEventInfo`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -42,7 +42,7 @@ pub enum HkpTriggerVolumeEventInfo<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "operation")]
-    Operation(Operation),
+    Operation(Primitive<Operation>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -50,5 +50,5 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpTriggerVolumeEventInfo<'de>, "@name",
     ("sortValue" => SortValue(Primitive<u64>)),
     ("body" => Body(Cow<'de, str>)),
-    ("operation" => Operation(Operation)),
+    ("operation" => Operation(Primitive<Operation>)),
 }

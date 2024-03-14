@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkxIndexBuffer`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkxIndexBuffer`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,7 +28,7 @@ pub enum HkxIndexBuffer {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "indexType")]
-    IndexType(IndexType),
+    IndexType(Primitive<IndexType>),
     /// # C++ Class Fields Info
     /// -   name:`"indices16"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
@@ -62,7 +62,7 @@ pub enum HkxIndexBuffer {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkxIndexBuffer, "@name",
-    ("indexType" => IndexType(IndexType)),
+    ("indexType" => IndexType(Primitive<IndexType>)),
     ("indices16" => Indices16(HkArrayRef<Primitive<u16>>)),
     ("indices32" => Indices32(HkArrayRef<Primitive<u32>>)),
     ("vertexBaseOffset" => VertexBaseOffset(Primitive<u32>)),

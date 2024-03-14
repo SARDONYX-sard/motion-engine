@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpSerializedAgentNnEntry`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpSerializedAgentNnEntry`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -63,7 +63,7 @@ pub enum HkpSerializedAgentNnEntry<'a> {
     /// - offset: 25
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "agentType")]
-    AgentType(SerializedAgentType),
+    AgentType(Primitive<SerializedAgentType>),
     /// # C++ Class Fields Info
     /// -   name:`"atom"`
     /// -   type: `struct hkpSimpleContactConstraintAtom`
@@ -130,7 +130,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("bodyAId" => BodyAId(Primitive<usize>)),
     ("bodyBId" => BodyBId(Primitive<usize>)),
     ("useEntityIds" => UseEntityIds(Primitive<bool>)),
-    ("agentType" => AgentType(SerializedAgentType)),
+    ("agentType" => AgentType(Primitive<SerializedAgentType>)),
     ("atom" => Atom(HkpSimpleContactConstraintAtom)),
     ("propertiesStream" => PropertiesStream(HkArrayRef<Primitive<u8>>)),
     ("contactPoints" => ContactPoints(HkArrayClass<HkContactPoint>)),

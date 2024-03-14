@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbProxyModifier`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbProxyModifier`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -126,14 +126,14 @@ pub enum HkbProxyModifier<'a> {
     /// - offset: 192
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "phantomType")]
-    PhantomType(PhantomType),
+    PhantomType(Primitive<PhantomType>),
     /// # C++ Class Fields Info
     /// -   name:`"linearVelocityMode"`
     /// -   type: `enum LinearVelocityMode`
     /// - offset: 193
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "linearVelocityMode")]
-    LinearVelocityMode(LinearVelocityMode),
+    LinearVelocityMode(Primitive<LinearVelocityMode>),
     /// # C++ Class Fields Info
     /// -   name:`"ignoreIncomingRotation"`
     /// -   type: `hkBool`
@@ -244,8 +244,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("capsuleRadius" => CapsuleRadius(Primitive<f32>)),
     ("maxSlopeForRotation" => MaxSlopeForRotation(Primitive<f32>)),
     ("collisionFilterInfo" => CollisionFilterInfo(Primitive<u32>)),
-    ("phantomType" => PhantomType(PhantomType)),
-    ("linearVelocityMode" => LinearVelocityMode(LinearVelocityMode)),
+    ("phantomType" => PhantomType(Primitive<PhantomType>)),
+    ("linearVelocityMode" => LinearVelocityMode(Primitive<LinearVelocityMode>)),
     ("ignoreIncomingRotation" => IgnoreIncomingRotation(Primitive<bool>)),
     ("ignoreCollisionDuringRotation" => IgnoreCollisionDuringRotation(Primitive<bool>)),
     ("ignoreIncomingTranslation" => IgnoreIncomingTranslation(Primitive<bool>)),

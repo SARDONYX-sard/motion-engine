@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkLinkAttribute`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkLinkAttribute`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,13 +28,13 @@ pub enum HkLinkAttribute {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
-    Type(Link),
+    Type(Primitive<Link>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkLinkAttribute, "@name",
-    ("type" => Type(Link)),
+    ("type" => Type(Primitive<Link>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

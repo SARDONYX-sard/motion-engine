@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpBallSocketConstraintAtom`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpBallSocketConstraintAtom`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,7 +28,7 @@ pub enum HkpBallSocketConstraintAtom {
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "solvingMethod")]
-    SolvingMethod(SolvingMethod),
+    SolvingMethod(Primitive<SolvingMethod>),
     /// # C++ Class Fields Info
     /// -   name:`"bodiesToNotify"`
     /// -   type: `hkUint8`
@@ -62,7 +62,7 @@ pub enum HkpBallSocketConstraintAtom {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpBallSocketConstraintAtom, "@name",
-    ("solvingMethod" => SolvingMethod(SolvingMethod)),
+    ("solvingMethod" => SolvingMethod(Primitive<SolvingMethod>)),
     ("bodiesToNotify" => BodiesToNotify(Primitive<u8>)),
     ("velocityStabilizationFactor" => VelocityStabilizationFactor(Primitive<u8>)),
     ("maxImpulse" => MaxImpulse(Primitive<f32>)),

@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkxLight`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkxLight`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,7 +28,7 @@ pub enum HkxLight {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
-    Type(LightType),
+    Type(Primitive<LightType>),
     /// # C++ Class Fields Info
     /// -   name:`"position"`
     /// -   type: `hkVector4`
@@ -62,7 +62,7 @@ pub enum HkxLight {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkxLight, "@name",
-    ("type" => Type(LightType)),
+    ("type" => Type(Primitive<LightType>)),
     ("position" => Position(Vector4<f32>)),
     ("direction" => Direction(Vector4<f32>)),
     ("color" => Color(Primitive<u32>)),

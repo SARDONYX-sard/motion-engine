@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbVariableBindingSetBinding`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbVariableBindingSetBinding`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -77,14 +77,14 @@ pub enum HkbVariableBindingSetBinding<'a> {
     /// - offset: 25
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "bindingType")]
-    BindingType(BindingType),
+    BindingType(Primitive<BindingType>),
     /// # C++ Class Fields Info
     /// -   name:`"memberType"`
     /// -   type: `enum unknown`
     /// - offset: 26
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "memberType", skip_serializing)]
-    MemberType(Unknown),
+    MemberType(Primitive<Unknown>),
     /// # C++ Class Fields Info
     /// -   name:`"variableType"`
     /// -   type: `hkInt8`
@@ -98,7 +98,7 @@ pub enum HkbVariableBindingSetBinding<'a> {
     /// - offset: 28
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "flags", skip_serializing)]
-    Flags(Unknown),
+    Flags(Primitive<Unknown>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -111,10 +111,10 @@ impl_deserialize_for_internally_tagged_enum! {
     ("rootVariableIndex" => RootVariableIndex(Primitive<i32>)),
     ("variableIndex" => VariableIndex(Primitive<i32>)),
     ("bitIndex" => BitIndex(Primitive<i8>)),
-    ("bindingType" => BindingType(BindingType)),
-    ("memberType" => MemberType(Unknown)),
+    ("bindingType" => BindingType(Primitive<BindingType>)),
+    ("memberType" => MemberType(Primitive<Unknown>)),
     ("variableType" => VariableType(Primitive<i8>)),
-    ("flags" => Flags(Unknown)),
+    ("flags" => Flags(Primitive<Unknown>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbCharacterControllerModifier`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbCharacterControllerModifier`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -42,14 +42,14 @@ pub enum HkbCharacterControllerModifier {
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "initialVelocityCoordinates")]
-    InitialVelocityCoordinates(InitialVelocityCoordinates),
+    InitialVelocityCoordinates(Primitive<InitialVelocityCoordinates>),
     /// # C++ Class Fields Info
     /// -   name:`"motionMode"`
     /// -   type: `enum MotionMode`
     /// - offset: 97
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "motionMode")]
-    MotionMode(MotionMode),
+    MotionMode(Primitive<MotionMode>),
     /// # C++ Class Fields Info
     /// -   name:`"forceDownwardMomentum"`
     /// -   type: `hkBool`
@@ -106,8 +106,8 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbCharacterControllerModifier, "@name",
     ("controlData" => ControlData(HkbCharacterControllerControlData)),
     ("initialVelocity" => InitialVelocity(Vector4<f32>)),
-    ("initialVelocityCoordinates" => InitialVelocityCoordinates(InitialVelocityCoordinates)),
-    ("motionMode" => MotionMode(MotionMode)),
+    ("initialVelocityCoordinates" => InitialVelocityCoordinates(Primitive<InitialVelocityCoordinates>)),
+    ("motionMode" => MotionMode(Primitive<MotionMode>)),
     ("forceDownwardMomentum" => ForceDownwardMomentum(Primitive<bool>)),
     ("applyGravity" => ApplyGravity(Primitive<bool>)),
     ("setInitialVelocity" => SetInitialVelocity(Primitive<bool>)),

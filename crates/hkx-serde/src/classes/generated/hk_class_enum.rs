@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkClassEnum`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkClassEnum`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -49,7 +49,7 @@ pub enum HkClassEnum<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "flags")]
-    Flags(FlagValues),
+    Flags(Primitive<FlagValues>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -58,7 +58,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("items" => Items(HkArrayClass<HkClassEnumItem>)),
     ("attributes" => Attributes(Cow<'de, str>)),
-    ("flags" => Flags(FlagValues)),
+    ("flags" => Flags(Primitive<FlagValues>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

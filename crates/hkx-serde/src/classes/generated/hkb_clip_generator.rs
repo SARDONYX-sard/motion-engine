@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbClipGenerator`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbClipGenerator`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -91,7 +91,7 @@ pub enum HkbClipGenerator<'a> {
     /// - offset: 74
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "mode")]
-    Mode(PlaybackMode),
+    Mode(Primitive<PlaybackMode>),
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `hkInt8`
@@ -225,7 +225,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("enforcedDuration" => EnforcedDuration(Primitive<f32>)),
     ("userControlledTimeFraction" => UserControlledTimeFraction(Primitive<f32>)),
     ("animationBindingIndex" => AnimationBindingIndex(Primitive<i16>)),
-    ("mode" => Mode(PlaybackMode)),
+    ("mode" => Mode(Primitive<PlaybackMode>)),
     ("flags" => Flags(Primitive<i8>)),
     ("animDatas" => AnimDatas(HkArrayRef<()>)),
     ("animationControl" => AnimationControl(Cow<'de, str>)),

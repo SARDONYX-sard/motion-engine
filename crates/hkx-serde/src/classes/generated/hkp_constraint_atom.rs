@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpConstraintAtom`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpConstraintAtom`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,13 +28,13 @@ pub enum HkpConstraintAtom {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
-    Type(AtomType),
+    Type(Primitive<AtomType>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpConstraintAtom, "@name",
-    ("type" => Type(AtomType)),
+    ("type" => Type(Primitive<AtomType>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

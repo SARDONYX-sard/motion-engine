@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpTriangleShape`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpTriangleShape`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -35,7 +35,7 @@ pub enum HkpTriangleShape {
     /// - offset: 22
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "weldingType")]
-    WeldingType(WeldingType),
+    WeldingType(Primitive<WeldingType>),
     /// # C++ Class Fields Info
     /// -   name:`"isExtruded"`
     /// -   type: `hkUint8`
@@ -77,7 +77,7 @@ pub enum HkpTriangleShape {
 impl_deserialize_for_internally_tagged_enum! {
     HkpTriangleShape, "@name",
     ("weldingInfo" => WeldingInfo(Primitive<u16>)),
-    ("weldingType" => WeldingType(WeldingType)),
+    ("weldingType" => WeldingType(Primitive<WeldingType>)),
     ("isExtruded" => IsExtruded(Primitive<u8>)),
     ("vertexA" => VertexA(Vector4<f32>)),
     ("vertexB" => VertexB(Vector4<f32>)),

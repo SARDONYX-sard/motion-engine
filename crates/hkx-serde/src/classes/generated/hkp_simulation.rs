@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpSimulation`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpSimulation`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -42,7 +42,7 @@ pub enum HkpSimulation<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "lastProcessingStep")]
-    LastProcessingStep(LastProcessingStep),
+    LastProcessingStep(Primitive<LastProcessingStep>),
     /// # C++ Class Fields Info
     /// -   name:`"currentTime"`
     /// -   type: `hkReal`
@@ -92,7 +92,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpSimulation<'de>, "@name",
     ("determinismCheckFrameCounter" => DeterminismCheckFrameCounter(Primitive<u32>)),
     ("world" => World(Cow<'de, str>)),
-    ("lastProcessingStep" => LastProcessingStep(LastProcessingStep)),
+    ("lastProcessingStep" => LastProcessingStep(Primitive<LastProcessingStep>)),
     ("currentTime" => CurrentTime(Primitive<f32>)),
     ("currentPsiTime" => CurrentPsiTime(Primitive<f32>)),
     ("physicsDeltaTime" => PhysicsDeltaTime(Primitive<f32>)),

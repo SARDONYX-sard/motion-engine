@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbSetWordVariableCommand`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbSetWordVariableCommand`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -56,7 +56,7 @@ pub enum HkbSetWordVariableCommand {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
-    Type(VariableType),
+    Type(Primitive<VariableType>),
     /// # C++ Class Fields Info
     /// -   name:`"global"`
     /// -   type: `hkBool`
@@ -73,6 +73,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("characterId" => CharacterId(Primitive<u64>)),
     ("variableId" => VariableId(Primitive<i32>)),
     ("value" => Value(HkbVariableValue)),
-    ("type" => Type(VariableType)),
+    ("type" => Type(Primitive<VariableType>)),
     ("global" => Global(Primitive<bool>)),
 }

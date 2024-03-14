@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkVertexFormatElement`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkVertexFormatElement`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,7 +28,7 @@ pub enum HkVertexFormatElement {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "dataType")]
-    DataType(ComponentType),
+    DataType(Primitive<ComponentType>),
     /// # C++ Class Fields Info
     /// -   name:`"numValues"`
     /// -   type: `hkUint8`
@@ -42,7 +42,7 @@ pub enum HkVertexFormatElement {
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "usage")]
-    Usage(ComponentUsage),
+    Usage(Primitive<ComponentUsage>),
     /// # C++ Class Fields Info
     /// -   name:`"subUsage"`
     /// -   type: `hkUint8`
@@ -56,7 +56,7 @@ pub enum HkVertexFormatElement {
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "flags")]
-    Flags(HintFlags),
+    Flags(Primitive<HintFlags>),
     /// # C++ Class Fields Info
     /// -   name:`"pad"`
     /// -   type: `hkUint8[3]`
@@ -69,10 +69,10 @@ pub enum HkVertexFormatElement {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkVertexFormatElement, "@name",
-    ("dataType" => DataType(ComponentType)),
+    ("dataType" => DataType(Primitive<ComponentType>)),
     ("numValues" => NumValues(Primitive<u8>)),
-    ("usage" => Usage(ComponentUsage)),
+    ("usage" => Usage(Primitive<ComponentUsage>)),
     ("subUsage" => SubUsage(Primitive<u8>)),
-    ("flags" => Flags(HintFlags)),
+    ("flags" => Flags(Primitive<HintFlags>)),
     ("pad" => Pad([Primitive<u8>; 3])),
 }

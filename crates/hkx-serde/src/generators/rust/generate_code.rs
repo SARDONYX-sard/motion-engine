@@ -37,7 +37,7 @@ pub fn generate_code(class: &ClassInfo) -> String {
     let (parent_name, parent_signature) = (parent.as_ref()).unwrap_or(&parent_default);
 
     rust_code.push_str(&format!(
-        r#"//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `{class_name}`
+        r#"//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `{class_name}`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.

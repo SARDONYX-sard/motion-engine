@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbExpressionData`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbExpressionData`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -49,7 +49,7 @@ pub enum HkbExpressionData<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "eventMode")]
-    EventMode(ExpressionEventMode),
+    EventMode(Primitive<ExpressionEventMode>),
     /// # C++ Class Fields Info
     /// -   name:`"raisedEvent"`
     /// -   type: `hkBool`
@@ -72,7 +72,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("expression" => Expression(Primitive<Cow<'de, str>>)),
     ("assignmentVariableIndex" => AssignmentVariableIndex(Primitive<i32>)),
     ("assignmentEventIndex" => AssignmentEventIndex(Primitive<i32>)),
-    ("eventMode" => EventMode(ExpressionEventMode)),
+    ("eventMode" => EventMode(Primitive<ExpressionEventMode>)),
     ("raisedEvent" => RaisedEvent(Primitive<bool>)),
     ("wasTrueInPreviousFrame" => WasTrueInPreviousFrame(Primitive<bool>)),
 }

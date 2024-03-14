@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbStateMachine`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbStateMachine`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -105,14 +105,14 @@ pub enum HkbStateMachine<'a> {
     /// - offset: 86
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "startStateMode")]
-    StartStateMode(StartStateMode),
+    StartStateMode(Primitive<StartStateMode>),
     /// # C++ Class Fields Info
     /// -   name:`"selfTransitionMode"`
     /// -   type: `enum StateMachineSelfTransitionMode`
     /// - offset: 87
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "selfTransitionMode")]
-    SelfTransitionMode(StateMachineSelfTransitionMode),
+    SelfTransitionMode(Primitive<StateMachineSelfTransitionMode>),
     /// # C++ Class Fields Info
     /// -   name:`"isActive"`
     /// -   type: `hkBool`
@@ -234,8 +234,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("currentStateId" => CurrentStateId(Primitive<i32>)),
     ("wrapAroundStateId" => WrapAroundStateId(Primitive<bool>)),
     ("maxSimultaneousTransitions" => MaxSimultaneousTransitions(Primitive<i8>)),
-    ("startStateMode" => StartStateMode(StartStateMode)),
-    ("selfTransitionMode" => SelfTransitionMode(StateMachineSelfTransitionMode)),
+    ("startStateMode" => StartStateMode(Primitive<StartStateMode>)),
+    ("selfTransitionMode" => SelfTransitionMode(Primitive<StateMachineSelfTransitionMode>)),
     ("isActive" => IsActive(Primitive<bool>)),
     ("states" => States(HkArrayRef<Cow<'de, str>>)),
     ("wildcardTransitions" => WildcardTransitions(Cow<'de, str>)),

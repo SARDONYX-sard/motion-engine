@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbAuxiliaryNodeInfo`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbAuxiliaryNodeInfo`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,7 +28,7 @@ pub enum HkbAuxiliaryNodeInfo<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
-    Type(NodeType),
+    Type(Primitive<NodeType>),
     /// # C++ Class Fields Info
     /// -   name:`"depth"`
     /// -   type: `hkUint8`
@@ -55,7 +55,7 @@ pub enum HkbAuxiliaryNodeInfo<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbAuxiliaryNodeInfo<'de>, "@name",
-    ("type" => Type(NodeType)),
+    ("type" => Type(Primitive<NodeType>)),
     ("depth" => Depth(Primitive<u8>)),
     ("referenceBehaviorName" => ReferenceBehaviorName(Primitive<Cow<'de, str>>)),
     ("selfTransitionNames" => SelfTransitionNames(HkArrayStringPtr<'de>)),

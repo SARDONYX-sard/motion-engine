@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkxMaterialShader`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkxMaterialShader`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -35,7 +35,7 @@ pub enum HkxMaterialShader<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
-    Type(ShaderType),
+    Type(Primitive<ShaderType>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexEntryName"`
     /// -   type: `hkStringPtr`
@@ -70,7 +70,7 @@ pub enum HkxMaterialShader<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkxMaterialShader<'de>, "@name",
     ("name" => Name(Primitive<Cow<'de, str>>)),
-    ("type" => Type(ShaderType)),
+    ("type" => Type(Primitive<ShaderType>)),
     ("vertexEntryName" => VertexEntryName(Primitive<Cow<'de, str>>)),
     ("geomEntryName" => GeomEntryName(Primitive<Cow<'de, str>>)),
     ("pixelEntryName" => PixelEntryName(Primitive<Cow<'de, str>>)),

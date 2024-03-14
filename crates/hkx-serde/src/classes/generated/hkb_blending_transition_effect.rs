@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbBlendingTransitionEffect`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbBlendingTransitionEffect`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -42,21 +42,21 @@ pub enum HkbBlendingTransitionEffect<'a> {
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "flags")]
-    Flags(FlagBits),
+    Flags(Primitive<FlagBits>),
     /// # C++ Class Fields Info
     /// -   name:`"endMode"`
     /// -   type: `enum EndMode`
     /// - offset: 54
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "endMode")]
-    EndMode(EndMode),
+    EndMode(Primitive<EndMode>),
     /// # C++ Class Fields Info
     /// -   name:`"blendCurve"`
     /// -   type: `enum BlendCurve`
     /// - offset: 55
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "blendCurve")]
-    BlendCurve(BlendCurve),
+    BlendCurve(Primitive<BlendCurve>),
     /// # C++ Class Fields Info
     /// -   name:`"fromGenerator"`
     /// -   type: `void*`
@@ -113,9 +113,9 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbBlendingTransitionEffect<'de>, "@name",
     ("duration" => Duration(Primitive<f32>)),
     ("toGeneratorStartTimeFraction" => ToGeneratorStartTimeFraction(Primitive<f32>)),
-    ("flags" => Flags(FlagBits)),
-    ("endMode" => EndMode(EndMode)),
-    ("blendCurve" => BlendCurve(BlendCurve)),
+    ("flags" => Flags(Primitive<FlagBits>)),
+    ("endMode" => EndMode(Primitive<EndMode>)),
+    ("blendCurve" => BlendCurve(Primitive<BlendCurve>)),
     ("fromGenerator" => FromGenerator(Cow<'de, str>)),
     ("toGenerator" => ToGenerator(Cow<'de, str>)),
     ("characterPoseAtBeginningOfTransition" => CharacterPoseAtBeginningOfTransition(HkArrayRef<()>)),

@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `BGSGamebryoSequenceGenerator`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `BGSGamebryoSequenceGenerator`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -35,7 +35,7 @@ pub enum BgsGamebryoSequenceGenerator<'a> {
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "eBlendModeFunction")]
-    EBlendModeFunction(BlendModeFunction),
+    EBlendModeFunction(Primitive<BlendModeFunction>),
     /// # C++ Class Fields Info
     /// -   name:`"fPercent"`
     /// -   type: `hkReal`
@@ -77,7 +77,7 @@ pub enum BgsGamebryoSequenceGenerator<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     BgsGamebryoSequenceGenerator<'de>, "@name",
     ("pSequence" => PSequence(Primitive<Cow<'de, str>>)),
-    ("eBlendModeFunction" => EBlendModeFunction(BlendModeFunction)),
+    ("eBlendModeFunction" => EBlendModeFunction(Primitive<BlendModeFunction>)),
     ("fPercent" => FPercent(Primitive<f32>)),
     ("events" => Events(HkArrayRef<()>)),
     ("fTime" => FTime(Primitive<f32>)),

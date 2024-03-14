@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkPackedVector3`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkPackedVector3`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.

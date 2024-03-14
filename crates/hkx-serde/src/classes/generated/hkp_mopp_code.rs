@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpMoppCode`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpMoppCode`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -42,7 +42,7 @@ pub enum HkpMoppCode {
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "buildType")]
-    BuildType(BuildType),
+    BuildType(Primitive<BuildType>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -50,7 +50,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpMoppCode, "@name",
     ("info" => Info(HkpMoppCodeCodeInfo)),
     ("data" => Data(HkArrayRef<Primitive<u8>>)),
-    ("buildType" => BuildType(BuildType)),
+    ("buildType" => BuildType(Primitive<BuildType>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

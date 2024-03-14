@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpExtendedMeshShape`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpExtendedMeshShape`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -84,7 +84,7 @@ pub enum HkpExtendedMeshShape<'a> {
     /// - offset: 220
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "weldingType")]
-    WeldingType(WeldingType),
+    WeldingType(Primitive<WeldingType>),
     /// # C++ Class Fields Info
     /// -   name:`"defaultCollisionFilterInfo"`
     /// -   type: `hkUint32`
@@ -126,7 +126,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("trianglesSubparts" => TrianglesSubparts(HkArrayClass<HkpExtendedMeshShapeTrianglesSubpart>)),
     ("shapesSubparts" => ShapesSubparts(HkArrayClass<HkpExtendedMeshShapeShapesSubpart>)),
     ("weldingInfo" => WeldingInfo(HkArrayRef<Primitive<u16>>)),
-    ("weldingType" => WeldingType(WeldingType)),
+    ("weldingType" => WeldingType(Primitive<WeldingType>)),
     ("defaultCollisionFilterInfo" => DefaultCollisionFilterInfo(Primitive<u32>)),
     ("cachedNumChildShapes" => CachedNumChildShapes(Primitive<i32>)),
     ("triangleRadius" => TriangleRadius(Primitive<f32>)),

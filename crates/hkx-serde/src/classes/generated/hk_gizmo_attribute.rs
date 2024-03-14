@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkGizmoAttribute`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkGizmoAttribute`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -42,7 +42,7 @@ pub enum HkGizmoAttribute<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
-    Type(GizmoType),
+    Type(Primitive<GizmoType>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -50,7 +50,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkGizmoAttribute<'de>, "@name",
     ("visible" => Visible(Primitive<bool>)),
     ("label" => Label(Primitive<Cow<'de, str>>)),
-    ("type" => Type(GizmoType)),
+    ("type" => Type(Primitive<GizmoType>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

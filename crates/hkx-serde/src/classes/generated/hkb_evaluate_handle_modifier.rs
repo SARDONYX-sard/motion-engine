@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbEvaluateHandleModifier`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbEvaluateHandleModifier`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -70,7 +70,7 @@ pub enum HkbEvaluateHandleModifier<'a> {
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "handleChangeMode")]
-    HandleChangeMode(HandleChangeMode),
+    HandleChangeMode(Primitive<HandleChangeMode>),
     /// # C++ Class Fields Info
     /// -   name:`"oldHandle"`
     /// -   type: `struct hkbHandle`
@@ -117,7 +117,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("isValidOut" => IsValidOut(Primitive<bool>)),
     ("extrapolationTimeStep" => ExtrapolationTimeStep(Primitive<f32>)),
     ("handleChangeSpeed" => HandleChangeSpeed(Primitive<f32>)),
-    ("handleChangeMode" => HandleChangeMode(HandleChangeMode)),
+    ("handleChangeMode" => HandleChangeMode(Primitive<HandleChangeMode>)),
     ("oldHandle" => OldHandle(HkbHandle)),
     ("oldHandlePosition" => OldHandlePosition(Vector4<f32>)),
     ("oldHandleRotation" => OldHandleRotation(Quaternion<f32>)),

@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbBehaviorInfoIdToNamePair`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbBehaviorInfoIdToNamePair`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -42,7 +42,7 @@ pub enum HkbBehaviorInfoIdToNamePair<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "toolType")]
-    ToolType(ToolNodeType),
+    ToolType(Primitive<ToolNodeType>),
     /// # C++ Class Fields Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
@@ -57,7 +57,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbBehaviorInfoIdToNamePair<'de>, "@name",
     ("behaviorName" => BehaviorName(Primitive<Cow<'de, str>>)),
     ("nodeName" => NodeName(Primitive<Cow<'de, str>>)),
-    ("toolType" => ToolType(ToolNodeType)),
+    ("toolType" => ToolType(Primitive<ToolNodeType>)),
     ("id" => Id(Primitive<i16>)),
 }
 

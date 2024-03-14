@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbProjectData`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbProjectData`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -42,7 +42,7 @@ pub enum HkbProjectData<'a> {
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "defaultEventMode")]
-    DefaultEventMode(EventMode),
+    DefaultEventMode(Primitive<EventMode>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -50,5 +50,5 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbProjectData<'de>, "@name",
     ("worldUpWS" => WorldUpWs(Vector4<f32>)),
     ("stringData" => StringData(Cow<'de, str>)),
-    ("defaultEventMode" => DefaultEventMode(EventMode)),
+    ("defaultEventMode" => DefaultEventMode(Primitive<EventMode>)),
 }

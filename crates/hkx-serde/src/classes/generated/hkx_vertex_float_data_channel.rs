@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkxVertexFloatDataChannel`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkxVertexFloatDataChannel`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -35,14 +35,14 @@ pub enum HkxVertexFloatDataChannel {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "dimensions")]
-    Dimensions(VertexFloatDimensions),
+    Dimensions(Primitive<VertexFloatDimensions>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkxVertexFloatDataChannel, "@name",
     ("perVertexFloats" => PerVertexFloats(HkArrayRef<Primitive<f32>>)),
-    ("dimensions" => Dimensions(VertexFloatDimensions)),
+    ("dimensions" => Dimensions(Primitive<VertexFloatDimensions>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbSimulationStateInfo`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbSimulationStateInfo`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,11 +28,11 @@ pub enum HkbSimulationStateInfo {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "simulationState")]
-    SimulationState(SimulationState),
+    SimulationState(Primitive<SimulationState>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbSimulationStateInfo, "@name",
-    ("simulationState" => SimulationState(SimulationState)),
+    ("simulationState" => SimulationState(Primitive<SimulationState>)),
 }

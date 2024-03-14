@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkMonitorStreamColorTableColorPair`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkMonitorStreamColorTableColorPair`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -35,12 +35,12 @@ pub enum HkMonitorStreamColorTableColorPair<'a> {
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "color")]
-    Color(ExtendedColors),
+    Color(Primitive<ExtendedColors>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkMonitorStreamColorTableColorPair<'de>, "@name",
     ("colorName" => ColorName(Primitive<Cow<'de, str>>)),
-    ("color" => Color(ExtendedColors)),
+    ("color" => Color(Primitive<ExtendedColors>)),
 }

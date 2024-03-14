@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpMeshShapeSubpart`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpMeshShapeSubpart`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -56,14 +56,14 @@ pub enum HkpMeshShapeSubpart<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "stridingType")]
-    StridingType(MeshShapeIndexStridingType),
+    StridingType(Primitive<MeshShapeIndexStridingType>),
     /// # C++ Class Fields Info
     /// -   name:`"materialIndexStridingType"`
     /// -   type: `enum MeshShapeMaterialIndexStridingType`
     /// - offset: 17
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "materialIndexStridingType")]
-    MaterialIndexStridingType(MeshShapeMaterialIndexStridingType),
+    MaterialIndexStridingType(Primitive<MeshShapeMaterialIndexStridingType>),
     /// # C++ Class Fields Info
     /// -   name:`"indexStriding"`
     /// -   type: `hkInt32`
@@ -136,8 +136,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("vertexStriding" => VertexStriding(Primitive<i32>)),
     ("numVertices" => NumVertices(Primitive<i32>)),
     ("indexBase" => IndexBase(Cow<'de, str>)),
-    ("stridingType" => StridingType(MeshShapeIndexStridingType)),
-    ("materialIndexStridingType" => MaterialIndexStridingType(MeshShapeMaterialIndexStridingType)),
+    ("stridingType" => StridingType(Primitive<MeshShapeIndexStridingType>)),
+    ("materialIndexStridingType" => MaterialIndexStridingType(Primitive<MeshShapeMaterialIndexStridingType>)),
     ("indexStriding" => IndexStriding(Primitive<i32>)),
     ("flipAlternateTriangles" => FlipAlternateTriangles(Primitive<i32>)),
     ("numTriangles" => NumTriangles(Primitive<i32>)),

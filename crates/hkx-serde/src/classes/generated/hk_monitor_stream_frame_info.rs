@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkMonitorStreamFrameInfo`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkMonitorStreamFrameInfo`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -49,7 +49,7 @@ pub enum HkMonitorStreamFrameInfo<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "absoluteTimeCounter")]
-    AbsoluteTimeCounter(AbsoluteTimeCounter),
+    AbsoluteTimeCounter(Primitive<AbsoluteTimeCounter>),
     /// # C++ Class Fields Info
     /// -   name:`"timerFactor0"`
     /// -   type: `hkReal`
@@ -93,7 +93,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("heading" => Heading(Primitive<Cow<'de, str>>)),
     ("indexOfTimer0" => IndexOfTimer0(Primitive<i32>)),
     ("indexOfTimer1" => IndexOfTimer1(Primitive<i32>)),
-    ("absoluteTimeCounter" => AbsoluteTimeCounter(AbsoluteTimeCounter)),
+    ("absoluteTimeCounter" => AbsoluteTimeCounter(Primitive<AbsoluteTimeCounter>)),
     ("timerFactor0" => TimerFactor0(Primitive<f32>)),
     ("timerFactor1" => TimerFactor1(Primitive<f32>)),
     ("threadId" => ThreadId(Primitive<i32>)),

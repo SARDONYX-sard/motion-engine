@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkClass`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkClass`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -84,7 +84,7 @@ pub enum HkClass<'a> {
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "flags")]
-    Flags(FlagValues),
+    Flags(Primitive<FlagValues>),
     /// # C++ Class Fields Info
     /// -   name:`"describedVersion"`
     /// -   type: `hkInt32`
@@ -105,7 +105,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("declaredMembers" => DeclaredMembers(HkArrayClass<HkClassMember>)),
     ("defaults" => Defaults(Cow<'de, str>)),
     ("attributes" => Attributes(Cow<'de, str>)),
-    ("flags" => Flags(FlagValues)),
+    ("flags" => Flags(Primitive<FlagValues>)),
     ("describedVersion" => DescribedVersion(Primitive<i32>)),
 }
 

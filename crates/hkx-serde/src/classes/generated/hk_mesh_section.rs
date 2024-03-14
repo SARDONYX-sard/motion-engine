@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkMeshSection`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkMeshSection`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,7 +28,7 @@ pub enum HkMeshSection<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "primitiveType")]
-    PrimitiveType(PrimitiveType),
+    PrimitiveType(Primitive<PrimitiveType>),
     /// # C++ Class Fields Info
     /// -   name:`"numPrimitives"`
     /// -   type: `hkInt32`
@@ -63,7 +63,7 @@ pub enum HkMeshSection<'a> {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "indexType")]
-    IndexType(MeshSectionIndexType),
+    IndexType(Primitive<MeshSectionIndexType>),
     /// # C++ Class Fields Info
     /// -   name:`"indices"`
     /// -   type: `void*`
@@ -97,12 +97,12 @@ pub enum HkMeshSection<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkMeshSection<'de>, "@name",
-    ("primitiveType" => PrimitiveType(PrimitiveType)),
+    ("primitiveType" => PrimitiveType(Primitive<PrimitiveType>)),
     ("numPrimitives" => NumPrimitives(Primitive<i32>)),
     ("numIndices" => NumIndices(Primitive<i32>)),
     ("vertexStartIndex" => VertexStartIndex(Primitive<i32>)),
     ("transformIndex" => TransformIndex(Primitive<i32>)),
-    ("indexType" => IndexType(MeshSectionIndexType)),
+    ("indexType" => IndexType(Primitive<MeshSectionIndexType>)),
     ("indices" => Indices(Cow<'de, str>)),
     ("vertexBuffer" => VertexBuffer(Cow<'de, str>)),
     ("material" => Material(Cow<'de, str>)),

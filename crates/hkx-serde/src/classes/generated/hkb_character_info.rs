@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbCharacterInfo`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbCharacterInfo`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -35,7 +35,7 @@ pub enum HkbCharacterInfo {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "event")]
-    Event(Event),
+    Event(Primitive<Event>),
     /// # C++ Class Fields Info
     /// -   name:`"padding"`
     /// -   type: `hkInt32`
@@ -49,7 +49,7 @@ pub enum HkbCharacterInfo {
 impl_deserialize_for_internally_tagged_enum! {
     HkbCharacterInfo, "@name",
     ("characterId" => CharacterId(Primitive<u64>)),
-    ("event" => Event(Event)),
+    ("event" => Event(Primitive<Event>)),
     ("padding" => Padding(Primitive<i32>)),
 }
 

@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbTransitionEffect`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbTransitionEffect`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -28,29 +28,29 @@ pub enum HkbTransitionEffect {
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "selfTransitionMode")]
-    SelfTransitionMode(SelfTransitionMode),
+    SelfTransitionMode(Primitive<SelfTransitionMode>),
     /// # C++ Class Fields Info
     /// -   name:`"eventMode"`
     /// -   type: `enum EventMode`
     /// - offset: 41
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "eventMode")]
-    EventMode(EventMode),
+    EventMode(Primitive<EventMode>),
     /// # C++ Class Fields Info
     /// -   name:`"defaultEventMode"`
     /// -   type: `enum unknown`
     /// - offset: 42
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "defaultEventMode", skip_serializing)]
-    DefaultEventMode(Unknown),
+    DefaultEventMode(Primitive<Unknown>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbTransitionEffect, "@name",
-    ("selfTransitionMode" => SelfTransitionMode(SelfTransitionMode)),
-    ("eventMode" => EventMode(EventMode)),
-    ("defaultEventMode" => DefaultEventMode(Unknown)),
+    ("selfTransitionMode" => SelfTransitionMode(Primitive<SelfTransitionMode>)),
+    ("eventMode" => EventMode(Primitive<EventMode>)),
+    ("defaultEventMode" => DefaultEventMode(Primitive<Unknown>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

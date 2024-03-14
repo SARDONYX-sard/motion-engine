@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpPointToPathConstraintData`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpPointToPathConstraintData`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -49,7 +49,7 @@ pub enum HkpPointToPathConstraintData<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "angularConstrainedDOF")]
-    AngularConstrainedDof(OrientationConstraintType),
+    AngularConstrainedDof(Primitive<OrientationConstraintType>),
     /// # C++ Class Fields Info
     /// -   name:`"transform_OS_KS"`
     /// -   type: `hkTransform[2]`
@@ -65,7 +65,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("atoms" => Atoms(HkpBridgeAtoms)),
     ("path" => Path(Cow<'de, str>)),
     ("maxFrictionForce" => MaxFrictionForce(Primitive<f32>)),
-    ("angularConstrainedDOF" => AngularConstrainedDof(OrientationConstraintType)),
+    ("angularConstrainedDOF" => AngularConstrainedDof(Primitive<OrientationConstraintType>)),
     ("transform_OS_KS" => TransformOsKs([Transform<f32>; 2])),
 }
 

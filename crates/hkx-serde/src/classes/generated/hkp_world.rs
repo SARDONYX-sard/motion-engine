@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpWorld`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpWorld`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -406,7 +406,7 @@ pub enum HkpWorld<'a> {
     /// - offset: 252
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "simulationType", skip_serializing)]
-    SimulationType(Unknown),
+    SimulationType(Primitive<Unknown>),
     /// # C++ Class Fields Info
     /// -   name:`"numToisTillAllowedPenetrationSimplifiedToi"`
     /// -   type: `hkReal`
@@ -630,7 +630,7 @@ pub enum HkpWorld<'a> {
     /// - offset: 848
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "contactPointGeneration", skip_serializing)]
-    ContactPointGeneration(Unknown),
+    ContactPointGeneration(Primitive<Unknown>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -690,7 +690,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("maxEntriesPerToiMidphaseCollideTask" => MaxEntriesPerToiMidphaseCollideTask(Primitive<i32>)),
     ("maxEntriesPerToiNarrowphaseCollideTask" => MaxEntriesPerToiNarrowphaseCollideTask(Primitive<i32>)),
     ("maxNumToiCollisionPairsSinglethreaded" => MaxNumToiCollisionPairsSinglethreaded(Primitive<i32>)),
-    ("simulationType" => SimulationType(Unknown)),
+    ("simulationType" => SimulationType(Primitive<Unknown>)),
     ("numToisTillAllowedPenetrationSimplifiedToi" => NumToisTillAllowedPenetrationSimplifiedToi(Primitive<f32>)),
     ("numToisTillAllowedPenetrationToi" => NumToisTillAllowedPenetrationToi(Primitive<f32>)),
     ("numToisTillAllowedPenetrationToiHigher" => NumToisTillAllowedPenetrationToiHigher(Primitive<f32>)),
@@ -722,7 +722,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("sizeOfToiEventQueue" => SizeOfToiEventQueue(Primitive<i32>)),
     ("broadPhaseQuerySize" => BroadPhaseQuerySize(Primitive<i32>)),
     ("broadPhaseUpdateSize" => BroadPhaseUpdateSize(Primitive<i32>)),
-    ("contactPointGeneration" => ContactPointGeneration(Unknown)),
+    ("contactPointGeneration" => ContactPointGeneration(Primitive<Unknown>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

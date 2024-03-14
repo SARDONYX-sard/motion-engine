@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbHandIkControlData`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbHandIkControlData`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -98,7 +98,7 @@ pub enum HkbHandIkControlData<'a> {
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "handleChangeMode")]
-    HandleChangeMode(HandleChangeMode),
+    HandleChangeMode(Primitive<HandleChangeMode>),
     /// # C++ Class Fields Info
     /// -   name:`"fixUp"`
     /// -   type: `hkBool`
@@ -121,7 +121,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("fadeOutDuration" => FadeOutDuration(Primitive<f32>)),
     ("extrapolationTimeStep" => ExtrapolationTimeStep(Primitive<f32>)),
     ("handleChangeSpeed" => HandleChangeSpeed(Primitive<f32>)),
-    ("handleChangeMode" => HandleChangeMode(HandleChangeMode)),
+    ("handleChangeMode" => HandleChangeMode(Primitive<HandleChangeMode>)),
     ("fixUp" => FixUp(Primitive<bool>)),
 }
 

@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkpShape`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkpShape`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -35,12 +35,12 @@ pub enum HkpShape {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "type", skip_serializing)]
-    Type(Unknown),
+    Type(Primitive<Unknown>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpShape, "@name",
     ("userData" => UserData(Primitive<usize>)),
-    ("type" => Type(Unknown)),
+    ("type" => Type(Primitive<Unknown>)),
 }

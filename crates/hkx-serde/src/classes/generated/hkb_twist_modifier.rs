@@ -1,4 +1,4 @@
-//! Rust [`Serializer`]/[`Deserializer`] corresponding to C++ class `hkbTwistModifier`
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbTwistModifier`
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
@@ -56,14 +56,14 @@ pub enum HkbTwistModifier {
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "setAngleMethod")]
-    SetAngleMethod(SetAngleMethod),
+    SetAngleMethod(Primitive<SetAngleMethod>),
     /// # C++ Class Fields Info
     /// -   name:`"rotationAxisCoordinates"`
     /// -   type: `enum RotationAxisCoordinates`
     /// - offset: 73
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rotationAxisCoordinates")]
-    RotationAxisCoordinates(RotationAxisCoordinates),
+    RotationAxisCoordinates(Primitive<RotationAxisCoordinates>),
     /// # C++ Class Fields Info
     /// -   name:`"isAdditive"`
     /// -   type: `hkBool`
@@ -94,8 +94,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("twistAngle" => TwistAngle(Primitive<f32>)),
     ("startBoneIndex" => StartBoneIndex(Primitive<i16>)),
     ("endBoneIndex" => EndBoneIndex(Primitive<i16>)),
-    ("setAngleMethod" => SetAngleMethod(SetAngleMethod)),
-    ("rotationAxisCoordinates" => RotationAxisCoordinates(RotationAxisCoordinates)),
+    ("setAngleMethod" => SetAngleMethod(Primitive<SetAngleMethod>)),
+    ("rotationAxisCoordinates" => RotationAxisCoordinates(Primitive<RotationAxisCoordinates>)),
     ("isAdditive" => IsAdditive(Primitive<bool>)),
     ("boneChainIndices" => BoneChainIndices(HkArrayRef<()>)),
     ("parentBoneIndices" => ParentBoneIndices(HkArrayRef<()>)),

@@ -62,8 +62,6 @@ pub fn generate_classes() {
         tracing::debug!("remain = {:?}", remain);
         tracing::debug!("class = {:?}", class);
 
-        let rust_file = output_dir.join(format!("{file_stem}.rs"));
-
         mod_indexes.push(format!("mod {file_stem};\nuse {file_stem}::*;\n"));
         sig_class_map.insert(class.signature, class);
     }

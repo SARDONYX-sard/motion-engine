@@ -26,7 +26,6 @@ pub fn generate_classes() {
         .join("rpt");
 
     let mut sig_class_map = IndexMap::new();
-    let mut output_files = Vec::new();
     let mut mod_indexes = Vec::new();
 
     for entry in jwalk::WalkDir::new(rpt_dir).into_iter() {
@@ -56,7 +55,6 @@ pub fn generate_classes() {
             .last()
             .unwrap()
             .to_case(Case::Snake);
-        mod_indexes.push(format!("mod {};\nuse {}::*;\n", file_stem, file_stem));
 
         let content = std::fs::read_to_string(path).unwrap();
         let (remain, class) = parse_class(&content).unwrap();
@@ -65,16 +63,18 @@ pub fn generate_classes() {
         tracing::debug!("class = {:?}", class);
 
         let rust_file = output_dir.join(format!("{file_stem}.rs"));
-        output_files.push(rust_file);
 
-        mod_indexes.push(format!("mod {};\nuse {}::*;\n", file_stem, file_stem));
+        mod_indexes.push(format!("mod {file_stem};\nuse {file_stem}::*;\n"));
         sig_class_map.insert(class.signature, class);
     }
-    mod_indexes.push("pub mod class_params;".into());
+    mod_indexes.push("pub mod class_params;\n".into());
     std::fs::write(output_dir.join("mod.rs"), mod_indexes.join("\n")).unwrap();
 
-    for ((sig, _class), rust_file) in sig_class_map.clone().into_iter().zip(output_files) {
-        let rust_code = generate_code(sig, sig_class_map.clone());
+    for (_sig, class) in sig_class_map.clone().into_iter() {
+        let rust_code = generate_code(class.signature, sig_class_map.clone());
+
+        let name = class.name.to_case(Case::Snake);
+        let rust_file = output_dir.join(format!("{name}.rs"));
         std::fs::write(rust_file, rust_code).unwrap();
     }
 

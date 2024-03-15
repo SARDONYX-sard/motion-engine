@@ -10,7 +10,7 @@ pub fn get_life_time(vec: &Vec<MemberInfo>) -> &'static str {
     for m in vec {
         let (_input, ty) = parse_cpp_type(&m.type_name).unwrap();
         if ty.as_ref().contains("'a") {
-            return "'a";
+            return "<'a>";
         }
     }
     ""
@@ -31,7 +31,7 @@ pub fn generate_code(signature: u32, classes_map: IndexMap<u32, ClassInfo>) -> S
         ..
     } = class;
 
-    let (parent_name, parent_signature) = parent.clone().unwrap_or_default();
+    let (parent_name, parent_signature) = parent.clone().unwrap_or(("None".into(), 0));
 
     let rust_enum_class_name = class_name.to_case(Case::Pascal);
     let life_time = get_life_time(members);
@@ -108,7 +108,6 @@ impl_deserialize_for_internally_tagged_enum! {{
     {rust_enum_class_name}{life_time}, "@name",
 "#
     ));
-    rust_code.push('\n');
     for (member_name, (tag_name, rust_type)) in field {
         let rust_type = rust_type.replace("'a", "'de");
         rust_code.push_str(&format!(

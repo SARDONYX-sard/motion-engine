@@ -54,7 +54,7 @@ type IResult<I, O, E = nom::error::VerboseError<I>> = Result<(I, O), nom::Err<E>
 
 /// Enum tag & value
 type EnumPair = (String, i32);
-type Enum = (String, Vec<EnumPair>);
+pub type Enum = (String, Vec<EnumPair>);
 
 /// C++ class information from `hkxcmd Report`.
 ///
@@ -65,7 +65,7 @@ pub struct ClassInfo {
     pub signature: u32,
     /// Is virtual table C++ class?
     pub vtable: bool,
-    /// Class name
+    /// Class name(e.g. `"BGSGamebryoSequenceGenerator"`)
     pub name: String,
     /// Super class name & signature
     pub parent: Option<(String, u32)>,

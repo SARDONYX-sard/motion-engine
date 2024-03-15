@@ -1,10 +1,11 @@
 use super::cpp_type_parser::parse_cpp_type;
 use crate::{
     flag_values::FlagValues,
-    parse_rpt::{ClassInfo, MemberInfo},
+    parse_rpt::{ClassInfo, Enum, MemberInfo},
 };
 use convert_case::{Case, Casing};
 use indexmap::IndexMap;
+use std::borrow::Cow;
 
 pub fn get_life_time(vec: &Vec<MemberInfo>) -> &'static str {
     for m in vec {
@@ -16,10 +17,10 @@ pub fn get_life_time(vec: &Vec<MemberInfo>) -> &'static str {
     ""
 }
 
-pub fn generate_code(signature: u32, classes_map: IndexMap<u32, ClassInfo>) -> String {
+pub fn generate_code(cpp_class_name: &str, classes_map: IndexMap<String, ClassInfo>) -> String {
     let mut rust_code = String::new();
 
-    let class = classes_map.get(&signature).unwrap();
+    let class = classes_map.get(cpp_class_name).unwrap();
     let ClassInfo {
         signature,
         vtable,
@@ -31,7 +32,10 @@ pub fn generate_code(signature: u32, classes_map: IndexMap<u32, ClassInfo>) -> S
         ..
     } = class;
 
-    let (parent_name, parent_signature) = parent.clone().unwrap_or(("None".into(), 0));
+    let parent_info = parent
+        .as_ref()
+        .map(|(name, signature)| format!("\n/// -    parent: `{name}`/`0x{signature:x}`"))
+        .unwrap_or_default();
 
     let rust_enum_class_name = class_name.to_case(Case::Pascal);
     let life_time = get_life_time(members);
@@ -54,8 +58,7 @@ use std::borrow::Cow;
 ///
 /// # C++ Class Info
 /// -      size: {size}
-/// -    vtable: {vtable}
-/// -    parent: `{parent_name}`/`0x{parent_signature:x}`
+/// -    vtable: {vtable}{parent_info}
 /// - signature: `0x{signature:x}`
 /// -   version: {version}
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -64,16 +67,84 @@ pub enum {rust_enum_class_name}{life_time} {{
 "#
     ));
 
-    //? - C++ class fields
-    let mut field = IndexMap::new();
-    for member in &class.members {
+    let mut fields = IndexMap::new();
+
+    //? - Flatten the C++ parent's inherited moves to the fields of the current class.
+    let mut current_parent_class_name = parent
+        .as_ref()
+        .map(|(name, _sig)| name.clone())
+        .unwrap_or_default();
+    while let Some(parent_class) = classes_map.get(&current_parent_class_name) {
+        let (fields_code, field) = generate_fields(&parent_class.members);
+        fields.extend(field);
+
+        let parent_name = &parent_class.name;
+        let parent_of_parent = &parent_class
+            .parent
+            .as_ref()
+            .map(|(name, _)| name.as_str())
+            .unwrap_or("None");
+
+        let fields_code = match fields_code.is_empty() {
+            true => format!("    // `{parent_name}`(Parent class) has no fields\n"),
+            false => fields_code.replace(
+                "C++ Class Fields Info",
+                &format!(
+                    "C++ Parent class(`{parent_name}`, parent: `{parent_of_parent}`) field Info"
+                ),
+            ),
+        };
+        rust_code.push_str(&format!("{fields_code}\n",));
+        if let Some((parent_name, _parent_signature)) = parent_class.parent.clone() {
+            current_parent_class_name = parent_name;
+        } else {
+            break; // No more parent to process
+        }
+    }
+
+    //? - Current C++ class fields
+    let (fields_code, field) = generate_fields(&class.members);
+    fields.extend(field);
+    rust_code.push_str(&format!("{fields_code}}}\n"));
+
+    //? - Impl Deserialization
+    let life_time = get_life_time(members).replace("'a", "'de");
+    rust_code.push_str(&format!(
+        r#"
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
+impl_deserialize_for_internally_tagged_enum! {{
+    {rust_enum_class_name}{life_time}, "@name",
+"#
+    ));
+    for (member_name, (tag_name, rust_type)) in fields {
+        let rust_type = rust_type.replace("'a", "'de");
+        rust_code.push_str(&format!(
+            r#"    ("{member_name}" => {tag_name}({rust_type})),
+"#
+        ));
+    }
+    rust_code.push_str("}\n");
+
+    rust_code.push_str(&generate_enums(&class.enums));
+
+    rust_code
+}
+
+/// Generates C++ fields to Rust enum
+///
+/// Return `(generated code, IndexMap<"C++ field name", ("rust enum tag name", "rust type name")>)`
+fn generate_fields(members: &[MemberInfo]) -> (String, IndexMap<&String, (String, Cow<'_, str>)>) {
+    let mut fields = IndexMap::new();
+    let mut rust_code = String::new();
+
+    for member in members {
         let MemberInfo {
             name: member_name,
             type_name,
             offset,
             flags,
             ..
-        } = &member;
+        } = member;
 
         let mut skip_serializing_attr = String::new();
         if flags.contains(FlagValues::SERIALIZE_IGNORED) {
@@ -91,34 +162,22 @@ pub enum {rust_enum_class_name}{life_time} {{
     /// -   type: `{type_name}`
     /// - offset: {offset}
     /// -  flags: `{flags}`
-    #[serde(rename = "{member_name}"{skip_serializing_attr})]
+    #[serde(rename = "{member_name}", default{skip_serializing_attr})]
     {tag_name}({rust_type}),
 "#
         ));
-        field.insert(member_name, (tag_name, rust_type));
+        fields.insert(member_name, (tag_name, rust_type));
     }
-    rust_code.push_str("}\n");
 
-    //? - Impl Deserialization
-    let life_time = get_life_time(members).replace("'a", "'de");
-    rust_code.push_str(&format!(
-        r#"
-// Manual implementation to branch the process using the value of the `name` attribute as the key.
-impl_deserialize_for_internally_tagged_enum! {{
-    {rust_enum_class_name}{life_time}, "@name",
-"#
-    ));
-    for (member_name, (tag_name, rust_type)) in field {
-        let rust_type = rust_type.replace("'a", "'de");
-        rust_code.push_str(&format!(
-            r#"    ("{member_name}" => {tag_name}({rust_type})),
-"#
-        ));
-    }
-    rust_code.push_str("}\n");
+    (rust_code, fields)
+}
 
-    //? - Enum definitions(If exists)
-    for (enum_name, enum_info) in &class.enums {
+/// Generate Enum definitions rust code(If exists)
+fn generate_enums(enums: &[Enum]) -> String {
+    let mut rust_code = String::new();
+
+    for (enum_name, enum_info) in enums {
+        // Generate one enum template prefix
         rust_code.push_str(&format!(
             r#"
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -126,6 +185,7 @@ pub enum {enum_name} {{
 "#
         ));
 
+        // Generate tag names of enum
         for (tag_name, enum_value) in enum_info {
             let rust_enum_field_name = &tag_name.to_case(Case::Pascal);
             rust_code.push_str(&format!(
@@ -135,6 +195,7 @@ pub enum {enum_name} {{
             ));
         }
 
+        // Generate one enum template postfix
         rust_code.push_str("}\n");
     }
 

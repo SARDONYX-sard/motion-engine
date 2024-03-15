@@ -25,9 +25,13 @@ pub struct Class<'a> {
     /// e.g. `"hkbBehaviorGraphStringData"`
     pub class: Cow<'a, str>,
 
-    /// Unique value of each class.
+    /// Signature of each class.
     ///
     /// e.g. `0xc713064e`
+    ///
+    /// #Note
+    /// In some cases, the signature of the parent class is inherited, in which case it is duplicated.
+    /// Because of the possibility of duplication, use the class name instead of the signature for the serializer/deserializer.
     pub signature: Cow<'a, str>,
 
     /// The `"hkparam"` tag (C++ fields) vector
@@ -132,8 +136,8 @@ impl<'de> Deserialize<'de> for Class<'de> {
                             signature = Some(map.next_value()?);
                         }
                         "hkparam" => {
-                            if let Some(ref signature) = signature {
-                                hkparam = Some(Ok(match signature.as_ref() {
+                            if let Some(ref class_name) = class {
+                                hkparam = Some(Ok(match class_name.as_ref() {
                                     "0x27812d8d" => {
                                         ClassParams::HkbVariableValueSet(map.next_value()?)
                                     }
@@ -148,7 +152,7 @@ impl<'de> Deserialize<'de> for Class<'de> {
                                     }
                                 })?);
                             } else {
-                                return Err(de::Error::custom("Processing an array of `hkparam` requires identification by `signature` first, but the `signature` attribute did not exist"));
+                                return Err(de::Error::custom("Processing an array of `hkparam` requires identification by `class` attribute first, but non exist"));
                             }
                         }
                         _ => {

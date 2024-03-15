@@ -3,7 +3,12 @@ use crate::parse_rpt::ClassInfo;
 use convert_case::{Case, Casing as _};
 use indexmap::IndexMap;
 
-pub fn generate_class_params(sig_struct_map: IndexMap<u32, ClassInfo>) -> String {
+/// Generate all havok C++ class enums.
+///
+/// Pass `key: class name, value: class information` mapping as information.
+///
+/// The reason we don't take a signature is that this is not a unique value. (**It may inherit the signature of the parent class! **. Example: `hkpShapeContainer` and `baseObject`)
+pub fn generate_class_params(class_map: IndexMap<String, ClassInfo>) -> String {
     let mut class_params = String::new();
 
     class_params.push_str(
@@ -27,7 +32,8 @@ pub enum ClassParams<'a> {
 "#,
     );
 
-    for (sig, class) in sig_struct_map.clone().into_iter() {
+    for (_cpp_class_name, class) in class_map.clone().into_iter() {
+        let sig = class.signature;
         let struct_name = class.name.to_case(Case::Pascal);
         let life_time = get_life_time(&class.members);
 
@@ -60,18 +66,18 @@ impl<'a> Serialize for Class<'a> {{
         state.serialize_field("@class", &self.class)?;
         state.serialize_field("@signature", &self.signature)?;
 
-        // Serialize hkparam based on signature
-        match self.signature.as_ref() {{
+        // Serialize hkparam based on class(C++ class name)
+        match self.class.as_ref() {{
 "#,
-        sig_struct_map.len()
+        class_map.len()
     ));
 
-    for (sig, class) in sig_struct_map.clone().into_iter() {
+    for (cpp_class_name, class) in class_map.clone().into_iter() {
         let struct_name = class.name.to_case(Case::Pascal);
 
         class_params.push_str(&format!(
             r#"
-            "0x{sig:x}" => {{
+            "{cpp_class_name}" => {{
                 if let ClassParams::{struct_name}(ref params) = self.hkparams {{
                     state.serialize_field("hkparam", params)?;
                 }}
@@ -139,18 +145,18 @@ impl<'de> Deserialize<'de> for Class<'de> {
                             signature = Some(map.next_value()?);
                         }
                         "hkparam" => {
-                            if let Some(ref signature) = signature {
-                                hkparam = Some(Ok(match signature.as_ref() {
+                            if let Some(ref class_name) = class {
+                                hkparam = Some(Ok(match class_name.as_ref() {
 "#,
     );
 
-    for (sig, class) in sig_struct_map.clone().into_iter() {
+    for (cpp_class_name, class) in class_map.clone().into_iter() {
         let struct_name = class.name.to_case(Case::Pascal);
 
         class_params.push_str(&format!(
-            r#"                                    "0x{sig:x}" => {{
+            r#"                                    "{cpp_class_name}" => {{
                                                         ClassParams::{struct_name}(map.next_value()?)
-                                                    }},
+                                    }},
 "#
         ));
     }
@@ -164,7 +170,7 @@ impl<'de> Deserialize<'de> for Class<'de> {
                                     }
                                 })?);
                             } else {
-                                return Err(de::Error::custom("Processing an array of `hkparam` requires identification by `signature` first, but the `signature` attribute did not exist"));
+                                return Err(de::Error::custom("Processing an array of `hkparam` requires identification by `class` attribute first, but non exist"));
                             }
                         }
                         _ => {

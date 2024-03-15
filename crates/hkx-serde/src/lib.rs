@@ -25,7 +25,7 @@ pub fn generate_classes() {
         .join("hkxcmd_help")
         .join("rpt");
 
-    let mut sig_class_map = IndexMap::new();
+    let mut class_map: IndexMap<String, parse_rpt::ClassInfo> = IndexMap::new();
     let mut mod_indexes = Vec::new();
 
     for entry in jwalk::WalkDir::new(rpt_dir).into_iter() {
@@ -63,20 +63,20 @@ pub fn generate_classes() {
         tracing::debug!("class = {:?}", class);
 
         mod_indexes.push(format!("mod {file_stem};\nuse {file_stem}::*;\n"));
-        sig_class_map.insert(class.signature, class);
+        class_map.insert(class.name.clone(), class);
     }
     mod_indexes.push("pub mod class_params;\n".into());
     std::fs::write(output_dir.join("mod.rs"), mod_indexes.join("\n")).unwrap();
 
-    for (_sig, class) in sig_class_map.clone().into_iter() {
-        let rust_code = generate_code(class.signature, sig_class_map.clone());
+    for (_sig, class) in class_map.clone().into_iter() {
+        let rust_code = generate_code(&class.name, class_map.clone());
 
         let name = class.name.to_case(Case::Snake);
         let rust_file = output_dir.join(format!("{name}.rs"));
         std::fs::write(rust_file, rust_code).unwrap();
     }
 
-    let class_params = generate_class_params(sig_class_map);
+    let class_params = generate_class_params(class_map);
     std::fs::write(output_dir.join("class_params.rs"), class_params).unwrap();
 }
 

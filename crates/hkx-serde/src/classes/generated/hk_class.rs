@@ -35,7 +35,7 @@ pub enum HkClass<'a> {
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "parent")]
-    Parent(Cow<'a, str>),
+    Parent(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"objectSize"`
     /// -   type: `hkInt32`
@@ -70,14 +70,14 @@ pub enum HkClass<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "defaults", skip_serializing)]
-    Defaults(Cow<'a, str>),
+    Defaults(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"attributes"`
     /// -   type: `struct hkCustomAttributes*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "attributes", skip_serializing)]
-    Attributes(Cow<'a, str>),
+    Attributes(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `flags FlagValues`
@@ -98,13 +98,13 @@ pub enum HkClass<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkClass<'de>, "@name",
     ("name" => Name(Primitive<Cow<'de, str>>)),
-    ("parent" => Parent(Cow<'de, str>)),
+    ("parent" => Parent(Primitive<Cow<'de, str>>)),
     ("objectSize" => ObjectSize(Primitive<i32>)),
     ("numImplementedInterfaces" => NumImplementedInterfaces(Primitive<i32>)),
     ("declaredEnums" => DeclaredEnums(HkArrayClass<HkClassEnum>)),
     ("declaredMembers" => DeclaredMembers(HkArrayClass<HkClassMember>)),
-    ("defaults" => Defaults(Cow<'de, str>)),
-    ("attributes" => Attributes(Cow<'de, str>)),
+    ("defaults" => Defaults(Primitive<Cow<'de, str>>)),
+    ("attributes" => Attributes(Primitive<Cow<'de, str>>)),
     ("flags" => Flags(Primitive<FlagValues>)),
     ("describedVersion" => DescribedVersion(Primitive<i32>)),
 }

@@ -35,7 +35,7 @@ pub enum HkpSimulation<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "world")]
-    World(Cow<'a, str>),
+    World(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"lastProcessingStep"`
     /// -   type: `enum LastProcessingStep`
@@ -91,7 +91,7 @@ pub enum HkpSimulation<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkpSimulation<'de>, "@name",
     ("determinismCheckFrameCounter" => DeterminismCheckFrameCounter(Primitive<u32>)),
-    ("world" => World(Cow<'de, str>)),
+    ("world" => World(Primitive<Cow<'de, str>>)),
     ("lastProcessingStep" => LastProcessingStep(Primitive<LastProcessingStep>)),
     ("currentTime" => CurrentTime(Primitive<f32>)),
     ("currentPsiTime" => CurrentPsiTime(Primitive<f32>)),

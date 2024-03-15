@@ -70,49 +70,49 @@ pub enum HkbSequence<'a> {
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "stringData")]
-    StringData(Cow<'a, str>),
+    StringData(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"variableIdMap"`
     /// -   type: `void*`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "variableIdMap", skip_serializing)]
-    VariableIdMap(Cow<'a, str>),
+    VariableIdMap(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"eventIdMap"`
     /// -   type: `void*`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "eventIdMap", skip_serializing)]
-    EventIdMap(Cow<'a, str>),
+    EventIdMap(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"nextSampleEvents"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "nextSampleEvents", skip_serializing)]
-    NextSampleEvents(HkArrayRef<()>),
+    NextSampleEvents(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"nextSampleReals"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "nextSampleReals", skip_serializing)]
-    NextSampleReals(HkArrayRef<()>),
+    NextSampleReals(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"nextSampleBools"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "nextSampleBools", skip_serializing)]
-    NextSampleBools(HkArrayRef<()>),
+    NextSampleBools(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"nextSampleInts"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 148
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "nextSampleInts", skip_serializing)]
-    NextSampleInts(HkArrayRef<()>),
+    NextSampleInts(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"time"`
     /// -   type: `hkReal`
@@ -138,13 +138,13 @@ impl_deserialize_for_internally_tagged_enum! {
     ("intVariableSequencedData" => IntVariableSequencedData(HkArrayRef<Cow<'de, str>>)),
     ("enableEventId" => EnableEventId(Primitive<i32>)),
     ("disableEventId" => DisableEventId(Primitive<i32>)),
-    ("stringData" => StringData(Cow<'de, str>)),
-    ("variableIdMap" => VariableIdMap(Cow<'de, str>)),
-    ("eventIdMap" => EventIdMap(Cow<'de, str>)),
-    ("nextSampleEvents" => NextSampleEvents(HkArrayRef<()>)),
-    ("nextSampleReals" => NextSampleReals(HkArrayRef<()>)),
-    ("nextSampleBools" => NextSampleBools(HkArrayRef<()>)),
-    ("nextSampleInts" => NextSampleInts(HkArrayRef<()>)),
+    ("stringData" => StringData(Primitive<Cow<'de, str>>)),
+    ("variableIdMap" => VariableIdMap(Primitive<Cow<'de, str>>)),
+    ("eventIdMap" => EventIdMap(Primitive<Cow<'de, str>>)),
+    ("nextSampleEvents" => NextSampleEvents(HkArrayRef<Primitive<()>>)),
+    ("nextSampleReals" => NextSampleReals(HkArrayRef<Primitive<()>>)),
+    ("nextSampleBools" => NextSampleBools(HkArrayRef<Primitive<()>>)),
+    ("nextSampleInts" => NextSampleInts(HkArrayRef<Primitive<()>>)),
     ("time" => Time(Primitive<f32>)),
     ("isEnabled" => IsEnabled(Primitive<bool>)),
 }

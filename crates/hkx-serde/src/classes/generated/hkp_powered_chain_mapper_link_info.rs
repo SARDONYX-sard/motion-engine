@@ -42,7 +42,7 @@ pub enum HkpPoweredChainMapperLinkInfo<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "limitConstraint")]
-    LimitConstraint(Cow<'a, str>),
+    LimitConstraint(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -50,5 +50,5 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpPoweredChainMapperLinkInfo<'de>, "@name",
     ("firstTargetIdx" => FirstTargetIdx(Primitive<i32>)),
     ("numTargets" => NumTargets(Primitive<i32>)),
-    ("limitConstraint" => LimitConstraint(Cow<'de, str>)),
+    ("limitConstraint" => LimitConstraint(Primitive<Cow<'de, str>>)),
 }

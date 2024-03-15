@@ -28,11 +28,11 @@ pub enum HkpConstraintChainInstanceAction<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE | NOT_OWNED`
     #[serde(rename = "constraintInstance")]
-    ConstraintInstance(Cow<'a, str>),
+    ConstraintInstance(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpConstraintChainInstanceAction<'de>, "@name",
-    ("constraintInstance" => ConstraintInstance(Cow<'de, str>)),
+    ("constraintInstance" => ConstraintInstance(Primitive<Cow<'de, str>>)),
 }

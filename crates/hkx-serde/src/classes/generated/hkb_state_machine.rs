@@ -35,7 +35,7 @@ pub enum HkbStateMachine<'a> {
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "startStateChooser")]
-    StartStateChooser(Cow<'a, str>),
+    StartStateChooser(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"startStateId"`
     /// -   type: `hkInt32`
@@ -133,42 +133,42 @@ pub enum HkbStateMachine<'a> {
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "wildcardTransitions")]
-    WildcardTransitions(Cow<'a, str>),
+    WildcardTransitions(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"stateIdToIndexMap"`
     /// -   type: `void*`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "stateIdToIndexMap", skip_serializing)]
-    StateIdToIndexMap(Cow<'a, str>),
+    StateIdToIndexMap(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"activeTransitions"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "activeTransitions", skip_serializing)]
-    ActiveTransitions(HkArrayRef<()>),
+    ActiveTransitions(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"transitionFlags"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "transitionFlags", skip_serializing)]
-    TransitionFlags(HkArrayRef<()>),
+    TransitionFlags(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"wildcardTransitionFlags"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "wildcardTransitionFlags", skip_serializing)]
-    WildcardTransitionFlags(HkArrayRef<()>),
+    WildcardTransitionFlags(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"delayedTransitions"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 148
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "delayedTransitions", skip_serializing)]
-    DelayedTransitions(HkArrayRef<()>),
+    DelayedTransitions(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"timeInState"`
     /// -   type: `hkReal`
@@ -224,7 +224,7 @@ pub enum HkbStateMachine<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkbStateMachine<'de>, "@name",
     ("eventToSendWhenStateOrTransitionChanges" => EventToSendWhenStateOrTransitionChanges(HkbEvent)),
-    ("startStateChooser" => StartStateChooser(Cow<'de, str>)),
+    ("startStateChooser" => StartStateChooser(Primitive<Cow<'de, str>>)),
     ("startStateId" => StartStateId(Primitive<i32>)),
     ("returnToPreviousStateEventId" => ReturnToPreviousStateEventId(Primitive<i32>)),
     ("randomTransitionEventId" => RandomTransitionEventId(Primitive<i32>)),
@@ -238,12 +238,12 @@ impl_deserialize_for_internally_tagged_enum! {
     ("selfTransitionMode" => SelfTransitionMode(Primitive<StateMachineSelfTransitionMode>)),
     ("isActive" => IsActive(Primitive<bool>)),
     ("states" => States(HkArrayRef<Cow<'de, str>>)),
-    ("wildcardTransitions" => WildcardTransitions(Cow<'de, str>)),
-    ("stateIdToIndexMap" => StateIdToIndexMap(Cow<'de, str>)),
-    ("activeTransitions" => ActiveTransitions(HkArrayRef<()>)),
-    ("transitionFlags" => TransitionFlags(HkArrayRef<()>)),
-    ("wildcardTransitionFlags" => WildcardTransitionFlags(HkArrayRef<()>)),
-    ("delayedTransitions" => DelayedTransitions(HkArrayRef<()>)),
+    ("wildcardTransitions" => WildcardTransitions(Primitive<Cow<'de, str>>)),
+    ("stateIdToIndexMap" => StateIdToIndexMap(Primitive<Cow<'de, str>>)),
+    ("activeTransitions" => ActiveTransitions(HkArrayRef<Primitive<()>>)),
+    ("transitionFlags" => TransitionFlags(HkArrayRef<Primitive<()>>)),
+    ("wildcardTransitionFlags" => WildcardTransitionFlags(HkArrayRef<Primitive<()>>)),
+    ("delayedTransitions" => DelayedTransitions(HkArrayRef<Primitive<()>>)),
     ("timeInState" => TimeInState(Primitive<f32>)),
     ("lastLocalTime" => LastLocalTime(Primitive<f32>)),
     ("previousStateId" => PreviousStateId(Primitive<i32>)),

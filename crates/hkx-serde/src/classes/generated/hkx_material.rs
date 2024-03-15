@@ -77,7 +77,7 @@ pub enum HkxMaterial<'a> {
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "extraData")]
-    ExtraData(Cow<'a, str>),
+    ExtraData(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"properties"`
     /// -   type: `hkArray&lt;struct hkxMaterialProperty&gt;`
@@ -97,7 +97,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("specularColor" => SpecularColor(Vector4<f32>)),
     ("emissiveColor" => EmissiveColor(Vector4<f32>)),
     ("subMaterials" => SubMaterials(HkArrayRef<Cow<'de, str>>)),
-    ("extraData" => ExtraData(Cow<'de, str>)),
+    ("extraData" => ExtraData(Primitive<Cow<'de, str>>)),
     ("properties" => Properties(HkArrayClass<HkxMaterialProperty>)),
 }
 

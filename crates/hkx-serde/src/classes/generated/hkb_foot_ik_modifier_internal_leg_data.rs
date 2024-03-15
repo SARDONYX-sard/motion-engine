@@ -35,12 +35,12 @@ pub enum HkbFootIkModifierInternalLegData<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "footIkSolver", skip_serializing)]
-    FootIkSolver(Cow<'a, str>),
+    FootIkSolver(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbFootIkModifierInternalLegData<'de>, "@name",
     ("groundPosition" => GroundPosition(Vector4<f32>)),
-    ("footIkSolver" => FootIkSolver(Cow<'de, str>)),
+    ("footIkSolver" => FootIkSolver(Primitive<Cow<'de, str>>)),
 }

@@ -49,7 +49,7 @@ pub enum HkxScene<'a> {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rootNode")]
-    RootNode(Cow<'a, str>),
+    RootNode(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"selectionSets"`
     /// -   type: `hkArray&lt;hkxNodeSelectionSet*&gt;`
@@ -121,7 +121,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("modeller" => Modeller(Primitive<Cow<'de, str>>)),
     ("asset" => Asset(Primitive<Cow<'de, str>>)),
     ("sceneLength" => SceneLength(Primitive<f32>)),
-    ("rootNode" => RootNode(Cow<'de, str>)),
+    ("rootNode" => RootNode(Primitive<Cow<'de, str>>)),
     ("selectionSets" => SelectionSets(HkArrayRef<Cow<'de, str>>)),
     ("cameras" => Cameras(HkArrayRef<Cow<'de, str>>)),
     ("lights" => Lights(HkArrayRef<Cow<'de, str>>)),

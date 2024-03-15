@@ -35,14 +35,14 @@ pub enum HkbEventBase<'a> {
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "payload")]
-    Payload(Cow<'a, str>),
+    Payload(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbEventBase<'de>, "@name",
     ("id" => Id(Primitive<i32>)),
-    ("payload" => Payload(Cow<'de, str>)),
+    ("payload" => Payload(Primitive<Cow<'de, str>>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

@@ -28,11 +28,11 @@ pub enum BsiStateManagerModifierBsiStateManagerStateListener<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "pStateManager", skip_serializing)]
-    PStateManager(Cow<'a, str>),
+    PStateManager(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     BsiStateManagerModifierBsiStateManagerStateListener<'de>, "@name",
-    ("pStateManager" => PStateManager(Cow<'de, str>)),
+    ("pStateManager" => PStateManager(Primitive<Cow<'de, str>>)),
 }

@@ -28,7 +28,7 @@ pub enum HkbGetHandleOnBoneModifier<'a> {
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "handleOut")]
-    HandleOut(Cow<'a, str>),
+    HandleOut(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"localFrameName"`
     /// -   type: `hkStringPtr`
@@ -55,7 +55,7 @@ pub enum HkbGetHandleOnBoneModifier<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbGetHandleOnBoneModifier<'de>, "@name",
-    ("handleOut" => HandleOut(Cow<'de, str>)),
+    ("handleOut" => HandleOut(Primitive<Cow<'de, str>>)),
     ("localFrameName" => LocalFrameName(Primitive<Cow<'de, str>>)),
     ("ragdollBoneIndex" => RagdollBoneIndex(Primitive<i16>)),
     ("animationBoneIndex" => AnimationBoneIndex(Primitive<i16>)),

@@ -28,7 +28,7 @@ pub enum HkpCallbackConstraintMotor<'a> {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "callbackFunc", skip_serializing)]
-    CallbackFunc(Cow<'a, str>),
+    CallbackFunc(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"callbackType"`
     /// -   type: `enum CallbackType`
@@ -62,7 +62,7 @@ pub enum HkpCallbackConstraintMotor<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpCallbackConstraintMotor<'de>, "@name",
-    ("callbackFunc" => CallbackFunc(Cow<'de, str>)),
+    ("callbackFunc" => CallbackFunc(Primitive<Cow<'de, str>>)),
     ("callbackType" => CallbackType(Primitive<CallbackType>)),
     ("userData0" => UserData0(Primitive<usize>)),
     ("userData1" => UserData1(Primitive<usize>)),

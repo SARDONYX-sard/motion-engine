@@ -28,7 +28,7 @@ pub enum HkaSkeletonLocalFrameOnBone<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "localFrame")]
-    LocalFrame(Cow<'a, str>),
+    LocalFrame(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"boneIndex"`
     /// -   type: `hkInt32`
@@ -41,6 +41,6 @@ pub enum HkaSkeletonLocalFrameOnBone<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkaSkeletonLocalFrameOnBone<'de>, "@name",
-    ("localFrame" => LocalFrame(Cow<'de, str>)),
+    ("localFrame" => LocalFrame(Primitive<Cow<'de, str>>)),
     ("boneIndex" => BoneIndex(Primitive<i32>)),
 }

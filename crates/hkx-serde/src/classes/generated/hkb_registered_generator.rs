@@ -28,7 +28,7 @@ pub enum HkbRegisteredGenerator<'a> {
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "generator")]
-    Generator(Cow<'a, str>),
+    Generator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"relativePosition"`
     /// -   type: `hkVector4`
@@ -48,7 +48,7 @@ pub enum HkbRegisteredGenerator<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbRegisteredGenerator<'de>, "@name",
-    ("generator" => Generator(Cow<'de, str>)),
+    ("generator" => Generator(Primitive<Cow<'de, str>>)),
     ("relativePosition" => RelativePosition(Vector4<f32>)),
     ("relativeDirection" => RelativeDirection(Vector4<f32>)),
 }

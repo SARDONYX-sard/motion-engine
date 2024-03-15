@@ -35,7 +35,7 @@ pub enum HkpCharacterRigidBodyCinfo<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "shape")]
-    Shape(Cow<'a, str>),
+    Shape(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"position"`
     /// -   type: `hkVector4`
@@ -140,7 +140,7 @@ pub enum HkpCharacterRigidBodyCinfo<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkpCharacterRigidBodyCinfo<'de>, "@name",
     ("collisionFilterInfo" => CollisionFilterInfo(Primitive<u32>)),
-    ("shape" => Shape(Cow<'de, str>)),
+    ("shape" => Shape(Primitive<Cow<'de, str>>)),
     ("position" => Position(Vector4<f32>)),
     ("rotation" => Rotation(Quaternion<f32>)),
     ("mass" => Mass(Primitive<f32>)),

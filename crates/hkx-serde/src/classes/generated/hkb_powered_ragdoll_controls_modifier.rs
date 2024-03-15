@@ -35,7 +35,7 @@ pub enum HkbPoweredRagdollControlsModifier<'a> {
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "bones")]
-    Bones(Cow<'a, str>),
+    Bones(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"worldFromModelModeData"`
     /// -   type: `struct hkbWorldFromModelModeData`
@@ -49,14 +49,14 @@ pub enum HkbPoweredRagdollControlsModifier<'a> {
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "boneWeights")]
-    BoneWeights(Cow<'a, str>),
+    BoneWeights(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbPoweredRagdollControlsModifier<'de>, "@name",
     ("controlData" => ControlData(HkbPoweredRagdollControlData)),
-    ("bones" => Bones(Cow<'de, str>)),
+    ("bones" => Bones(Primitive<Cow<'de, str>>)),
     ("worldFromModelModeData" => WorldFromModelModeData(HkbWorldFromModelModeData)),
-    ("boneWeights" => BoneWeights(Cow<'de, str>)),
+    ("boneWeights" => BoneWeights(Primitive<Cow<'de, str>>)),
 }

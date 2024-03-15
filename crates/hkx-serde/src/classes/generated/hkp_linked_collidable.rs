@@ -28,11 +28,11 @@ pub enum HkpLinkedCollidable {
     /// - offset: 80
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "collisionEntries", skip_serializing)]
-    CollisionEntries(HkArrayRef<()>),
+    CollisionEntries(HkArrayRef<Primitive<()>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpLinkedCollidable, "@name",
-    ("collisionEntries" => CollisionEntries(HkArrayRef<()>)),
+    ("collisionEntries" => CollisionEntries(HkArrayRef<Primitive<()>>)),
 }

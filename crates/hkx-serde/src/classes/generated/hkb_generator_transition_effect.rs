@@ -28,7 +28,7 @@ pub enum HkbGeneratorTransitionEffect<'a> {
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transitionGenerator")]
-    TransitionGenerator(Cow<'a, str>),
+    TransitionGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"blendInDuration"`
     /// -   type: `hkReal`
@@ -56,14 +56,14 @@ pub enum HkbGeneratorTransitionEffect<'a> {
     /// - offset: 60
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "fromGenerator", skip_serializing)]
-    FromGenerator(Cow<'a, str>),
+    FromGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"toGenerator"`
     /// -   type: `void*`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "toGenerator", skip_serializing)]
-    ToGenerator(Cow<'a, str>),
+    ToGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"timeInTransition"`
     /// -   type: `hkReal`
@@ -139,12 +139,12 @@ pub enum HkbGeneratorTransitionEffect<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbGeneratorTransitionEffect<'de>, "@name",
-    ("transitionGenerator" => TransitionGenerator(Cow<'de, str>)),
+    ("transitionGenerator" => TransitionGenerator(Primitive<Cow<'de, str>>)),
     ("blendInDuration" => BlendInDuration(Primitive<f32>)),
     ("blendOutDuration" => BlendOutDuration(Primitive<f32>)),
     ("syncToGeneratorStartTime" => SyncToGeneratorStartTime(Primitive<bool>)),
-    ("fromGenerator" => FromGenerator(Cow<'de, str>)),
-    ("toGenerator" => ToGenerator(Cow<'de, str>)),
+    ("fromGenerator" => FromGenerator(Primitive<Cow<'de, str>>)),
+    ("toGenerator" => ToGenerator(Primitive<Cow<'de, str>>)),
     ("timeInTransition" => TimeInTransition(Primitive<f32>)),
     ("duration" => Duration(Primitive<f32>)),
     ("effectiveBlendInDuration" => EffectiveBlendInDuration(Primitive<f32>)),

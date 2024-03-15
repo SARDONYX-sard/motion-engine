@@ -35,7 +35,7 @@ pub enum HkbBehaviorInfo<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "data")]
-    Data(Cow<'a, str>),
+    Data(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"idToNamePairs"`
     /// -   type: `hkArray&lt;struct hkbBehaviorInfoIdToNamePair&gt;`
@@ -49,6 +49,6 @@ pub enum HkbBehaviorInfo<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkbBehaviorInfo<'de>, "@name",
     ("characterId" => CharacterId(Primitive<u64>)),
-    ("data" => Data(Cow<'de, str>)),
+    ("data" => Data(Primitive<Cow<'de, str>>)),
     ("idToNamePairs" => IdToNamePairs(HkArrayClass<HkbBehaviorInfoIdToNamePair>)),
 }

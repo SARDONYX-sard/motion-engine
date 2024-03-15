@@ -56,14 +56,14 @@ pub enum HkpProjectileGun<'a> {
     /// - offset: 56
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "world", skip_serializing)]
-    World(Cow<'a, str>),
+    World(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"destructionWorld"`
     /// -   type: `void*`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "destructionWorld", skip_serializing)]
-    DestructionWorld(Cow<'a, str>),
+    DestructionWorld(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -73,6 +73,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("reloadTime" => ReloadTime(Primitive<f32>)),
     ("reload" => Reload(Primitive<f32>)),
     ("projectiles" => Projectiles(HkArrayRef<Cow<'de, str>>)),
-    ("world" => World(Cow<'de, str>)),
-    ("destructionWorld" => DestructionWorld(Cow<'de, str>)),
+    ("world" => World(Primitive<Cow<'de, str>>)),
+    ("destructionWorld" => DestructionWorld(Primitive<Cow<'de, str>>)),
 }

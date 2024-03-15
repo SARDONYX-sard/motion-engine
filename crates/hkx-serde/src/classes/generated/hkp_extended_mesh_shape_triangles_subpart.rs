@@ -35,7 +35,7 @@ pub enum HkpExtendedMeshShapeTrianglesSubpart<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "vertexBase", skip_serializing)]
-    VertexBase(Cow<'a, str>),
+    VertexBase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"numVertices"`
     /// -   type: `hkInt32`
@@ -49,7 +49,7 @@ pub enum HkpExtendedMeshShapeTrianglesSubpart<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "indexBase", skip_serializing)]
-    IndexBase(Cow<'a, str>),
+    IndexBase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexStriding"`
     /// -   type: `hkUint16`
@@ -105,9 +105,9 @@ pub enum HkpExtendedMeshShapeTrianglesSubpart<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkpExtendedMeshShapeTrianglesSubpart<'de>, "@name",
     ("numTriangleShapes" => NumTriangleShapes(Primitive<i32>)),
-    ("vertexBase" => VertexBase(Cow<'de, str>)),
+    ("vertexBase" => VertexBase(Primitive<Cow<'de, str>>)),
     ("numVertices" => NumVertices(Primitive<i32>)),
-    ("indexBase" => IndexBase(Cow<'de, str>)),
+    ("indexBase" => IndexBase(Primitive<Cow<'de, str>>)),
     ("vertexStriding" => VertexStriding(Primitive<u16>)),
     ("triangleOffset" => TriangleOffset(Primitive<i32>)),
     ("indexStriding" => IndexStriding(Primitive<u16>)),

@@ -28,14 +28,14 @@ pub enum HkbBlenderGeneratorChild<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | ALIGN16`
     #[serde(rename = "generator")]
-    Generator(Cow<'a, str>),
+    Generator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"boneWeights"`
     /// -   type: `struct hkbBoneWeightArray*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "boneWeights")]
-    BoneWeights(Cow<'a, str>),
+    BoneWeights(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"weight"`
     /// -   type: `hkReal`
@@ -55,8 +55,8 @@ pub enum HkbBlenderGeneratorChild<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbBlenderGeneratorChild<'de>, "@name",
-    ("generator" => Generator(Cow<'de, str>)),
-    ("boneWeights" => BoneWeights(Cow<'de, str>)),
+    ("generator" => Generator(Primitive<Cow<'de, str>>)),
+    ("boneWeights" => BoneWeights(Primitive<Cow<'de, str>>)),
     ("weight" => Weight(Primitive<f32>)),
     ("worldFromModelWeight" => WorldFromModelWeight(Primitive<f32>)),
 }

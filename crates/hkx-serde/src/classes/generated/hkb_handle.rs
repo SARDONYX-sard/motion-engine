@@ -28,21 +28,21 @@ pub enum HkbHandle<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "frame")]
-    Frame(Cow<'a, str>),
+    Frame(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"rigidBody"`
     /// -   type: `struct hkpRigidBody*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rigidBody")]
-    RigidBody(Cow<'a, str>),
+    RigidBody(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"character"`
     /// -   type: `struct hkbCharacter*`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "character")]
-    Character(Cow<'a, str>),
+    Character(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"animationBoneIndex"`
     /// -   type: `hkInt16`
@@ -55,8 +55,8 @@ pub enum HkbHandle<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbHandle<'de>, "@name",
-    ("frame" => Frame(Cow<'de, str>)),
-    ("rigidBody" => RigidBody(Cow<'de, str>)),
-    ("character" => Character(Cow<'de, str>)),
+    ("frame" => Frame(Primitive<Cow<'de, str>>)),
+    ("rigidBody" => RigidBody(Primitive<Cow<'de, str>>)),
+    ("character" => Character(Primitive<Cow<'de, str>>)),
     ("animationBoneIndex" => AnimationBoneIndex(Primitive<i16>)),
 }

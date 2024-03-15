@@ -28,19 +28,19 @@ pub enum BsModifyOnceModifier<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE | ALIGN16`
     #[serde(rename = "pOnActivateModifier")]
-    POnActivateModifier(Cow<'a, str>),
+    POnActivateModifier(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"pOnDeactivateModifier"`
     /// -   type: `struct hkbModifier*`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE | ALIGN16`
     #[serde(rename = "pOnDeactivateModifier")]
-    POnDeactivateModifier(Cow<'a, str>),
+    POnDeactivateModifier(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     BsModifyOnceModifier<'de>, "@name",
-    ("pOnActivateModifier" => POnActivateModifier(Cow<'de, str>)),
-    ("pOnDeactivateModifier" => POnDeactivateModifier(Cow<'de, str>)),
+    ("pOnActivateModifier" => POnActivateModifier(Primitive<Cow<'de, str>>)),
+    ("pOnDeactivateModifier" => POnDeactivateModifier(Primitive<Cow<'de, str>>)),
 }

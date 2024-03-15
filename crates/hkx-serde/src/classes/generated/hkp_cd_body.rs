@@ -28,7 +28,7 @@ pub enum HkpCdBody<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "shape")]
-    Shape(Cow<'a, str>),
+    Shape(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"shapeKey"`
     /// -   type: `hkUint32`
@@ -42,21 +42,21 @@ pub enum HkpCdBody<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "motion", skip_serializing)]
-    Motion(Cow<'a, str>),
+    Motion(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"parent"`
     /// -   type: `struct hkpCdBody*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "parent", skip_serializing)]
-    Parent(Cow<'a, str>),
+    Parent(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpCdBody<'de>, "@name",
-    ("shape" => Shape(Cow<'de, str>)),
+    ("shape" => Shape(Primitive<Cow<'de, str>>)),
     ("shapeKey" => ShapeKey(Primitive<u32>)),
-    ("motion" => Motion(Cow<'de, str>)),
-    ("parent" => Parent(Cow<'de, str>)),
+    ("motion" => Motion(Primitive<Cow<'de, str>>)),
+    ("parent" => Parent(Primitive<Cow<'de, str>>)),
 }

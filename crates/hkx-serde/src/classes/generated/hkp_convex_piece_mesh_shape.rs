@@ -28,14 +28,14 @@ pub enum HkpConvexPieceMeshShape<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "convexPieceStream")]
-    ConvexPieceStream(Cow<'a, str>),
+    ConvexPieceStream(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"displayMesh"`
     /// -   type: `struct hkpShapeCollection*`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "displayMesh")]
-    DisplayMesh(Cow<'a, str>),
+    DisplayMesh(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"radius"`
     /// -   type: `hkReal`
@@ -48,7 +48,7 @@ pub enum HkpConvexPieceMeshShape<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpConvexPieceMeshShape<'de>, "@name",
-    ("convexPieceStream" => ConvexPieceStream(Cow<'de, str>)),
-    ("displayMesh" => DisplayMesh(Cow<'de, str>)),
+    ("convexPieceStream" => ConvexPieceStream(Primitive<Cow<'de, str>>)),
+    ("displayMesh" => DisplayMesh(Primitive<Cow<'de, str>>)),
     ("radius" => Radius(Primitive<f32>)),
 }

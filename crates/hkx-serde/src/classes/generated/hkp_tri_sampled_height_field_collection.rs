@@ -28,7 +28,7 @@ pub enum HkpTriSampledHeightFieldCollection<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "heightfield")]
-    Heightfield(Cow<'a, str>),
+    Heightfield(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"childSize"`
     /// -   type: `hkInt32`
@@ -62,7 +62,7 @@ pub enum HkpTriSampledHeightFieldCollection<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpTriSampledHeightFieldCollection<'de>, "@name",
-    ("heightfield" => Heightfield(Cow<'de, str>)),
+    ("heightfield" => Heightfield(Primitive<Cow<'de, str>>)),
     ("childSize" => ChildSize(Primitive<i32>)),
     ("radius" => Radius(Primitive<f32>)),
     ("weldingInfo" => WeldingInfo(HkArrayRef<Primitive<u16>>)),

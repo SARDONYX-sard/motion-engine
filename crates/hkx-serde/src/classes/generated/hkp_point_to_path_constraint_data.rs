@@ -35,7 +35,7 @@ pub enum HkpPointToPathConstraintData<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "path")]
-    Path(Cow<'a, str>),
+    Path(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"maxFrictionForce"`
     /// -   type: `hkReal`
@@ -63,7 +63,7 @@ pub enum HkpPointToPathConstraintData<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkpPointToPathConstraintData<'de>, "@name",
     ("atoms" => Atoms(HkpBridgeAtoms)),
-    ("path" => Path(Cow<'de, str>)),
+    ("path" => Path(Primitive<Cow<'de, str>>)),
     ("maxFrictionForce" => MaxFrictionForce(Primitive<f32>)),
     ("angularConstrainedDOF" => AngularConstrainedDof(Primitive<OrientationConstraintType>)),
     ("transform_OS_KS" => TransformOsKs([Transform<f32>; 2])),

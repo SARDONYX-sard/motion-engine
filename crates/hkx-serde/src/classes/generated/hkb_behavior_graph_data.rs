@@ -70,14 +70,14 @@ pub enum HkbBehaviorGraphData<'a> {
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "variableInitialValues")]
-    VariableInitialValues(Cow<'a, str>),
+    VariableInitialValues(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"stringData"`
     /// -   type: `struct hkbBehaviorGraphStringData*`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "stringData")]
-    StringData(Cow<'a, str>),
+    StringData(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -89,6 +89,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("eventInfos" => EventInfos(HkArrayClass<HkbEventInfo>)),
     ("wordMinVariableValues" => WordMinVariableValues(HkArrayClass<HkbVariableValue>)),
     ("wordMaxVariableValues" => WordMaxVariableValues(HkArrayClass<HkbVariableValue>)),
-    ("variableInitialValues" => VariableInitialValues(Cow<'de, str>)),
-    ("stringData" => StringData(Cow<'de, str>)),
+    ("variableInitialValues" => VariableInitialValues(Primitive<Cow<'de, str>>)),
+    ("stringData" => StringData(Primitive<Cow<'de, str>>)),
 }

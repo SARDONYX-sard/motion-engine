@@ -49,7 +49,7 @@ pub enum HkpExtendedMeshShape<'a> {
     /// - offset: 176
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "materialClass", skip_serializing)]
-    MaterialClass(Cow<'a, str>),
+    MaterialClass(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"numBitsForSubpartIndex"`
     /// -   type: `hkInt32`
@@ -121,7 +121,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("embeddedTrianglesSubpart" => EmbeddedTrianglesSubpart(HkpExtendedMeshShapeTrianglesSubpart)),
     ("aabbHalfExtents" => AabbHalfExtents(Vector4<f32>)),
     ("aabbCenter" => AabbCenter(Vector4<f32>)),
-    ("materialClass" => MaterialClass(Cow<'de, str>)),
+    ("materialClass" => MaterialClass(Primitive<Cow<'de, str>>)),
     ("numBitsForSubpartIndex" => NumBitsForSubpartIndex(Primitive<i32>)),
     ("trianglesSubparts" => TrianglesSubparts(HkArrayClass<HkpExtendedMeshShapeTrianglesSubpart>)),
     ("shapesSubparts" => ShapesSubparts(HkArrayClass<HkpExtendedMeshShapeShapesSubpart>)),

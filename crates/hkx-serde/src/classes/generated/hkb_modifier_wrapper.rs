@@ -28,11 +28,11 @@ pub enum HkbModifierWrapper<'a> {
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "modifier")]
-    Modifier(Cow<'a, str>),
+    Modifier(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbModifierWrapper<'de>, "@name",
-    ("modifier" => Modifier(Cow<'de, str>)),
+    ("modifier" => Modifier(Primitive<Cow<'de, str>>)),
 }

@@ -28,7 +28,7 @@ pub enum HkxSkinBinding<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "mesh")]
-    Mesh(Cow<'a, str>),
+    Mesh(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"nodeNames"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
@@ -55,7 +55,7 @@ pub enum HkxSkinBinding<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkxSkinBinding<'de>, "@name",
-    ("mesh" => Mesh(Cow<'de, str>)),
+    ("mesh" => Mesh(Primitive<Cow<'de, str>>)),
     ("nodeNames" => NodeNames(HkArrayStringPtr<'de>)),
     ("bindPose" => BindPose(HkArrayVector<Matrix4<f32>>)),
     ("initSkinTransform" => InitSkinTransform(Matrix4<f32>)),

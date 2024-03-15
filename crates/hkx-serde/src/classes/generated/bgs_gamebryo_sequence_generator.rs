@@ -49,7 +49,7 @@ pub enum BgsGamebryoSequenceGenerator<'a> {
     /// - offset: 52
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "events", skip_serializing)]
-    Events(HkArrayRef<()>),
+    Events(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"fTime"`
     /// -   type: `hkReal`
@@ -79,7 +79,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("pSequence" => PSequence(Primitive<Cow<'de, str>>)),
     ("eBlendModeFunction" => EBlendModeFunction(Primitive<BlendModeFunction>)),
     ("fPercent" => FPercent(Primitive<f32>)),
-    ("events" => Events(HkArrayRef<()>)),
+    ("events" => Events(HkArrayRef<Primitive<()>>)),
     ("fTime" => FTime(Primitive<f32>)),
     ("bDelayedActivate" => BDelayedActivate(Primitive<bool>)),
     ("bLooping" => BLooping(Primitive<bool>)),

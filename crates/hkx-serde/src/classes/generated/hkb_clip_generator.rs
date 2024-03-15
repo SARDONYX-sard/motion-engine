@@ -35,7 +35,7 @@ pub enum HkbClipGenerator<'a> {
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "triggers")]
-    Triggers(Cow<'a, str>),
+    Triggers(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"cropStartAmountLocalTime"`
     /// -   type: `hkReal`
@@ -105,42 +105,42 @@ pub enum HkbClipGenerator<'a> {
     /// - offset: 76
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "animDatas", skip_serializing)]
-    AnimDatas(HkArrayRef<()>),
+    AnimDatas(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"animationControl"`
     /// -   type: `void*`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "animationControl", skip_serializing)]
-    AnimationControl(Cow<'a, str>),
+    AnimationControl(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"originalTriggers"`
     /// -   type: `void*`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "originalTriggers", skip_serializing)]
-    OriginalTriggers(Cow<'a, str>),
+    OriginalTriggers(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"mapperData"`
     /// -   type: `void*`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "mapperData", skip_serializing)]
-    MapperData(Cow<'a, str>),
+    MapperData(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"binding"`
     /// -   type: `void*`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "binding", skip_serializing)]
-    Binding(Cow<'a, str>),
+    Binding(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"mirroredAnimation"`
     /// -   type: `void*`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "mirroredAnimation", skip_serializing)]
-    MirroredAnimation(Cow<'a, str>),
+    MirroredAnimation(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"extractedMotion"`
     /// -   type: `hkQsTransform`
@@ -154,7 +154,7 @@ pub enum HkbClipGenerator<'a> {
     /// - offset: 160
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "echos", skip_serializing)]
-    Echos(HkArrayRef<()>),
+    Echos(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"localTime"`
     /// -   type: `hkReal`
@@ -217,7 +217,7 @@ pub enum HkbClipGenerator<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkbClipGenerator<'de>, "@name",
     ("animationName" => AnimationName(Primitive<Cow<'de, str>>)),
-    ("triggers" => Triggers(Cow<'de, str>)),
+    ("triggers" => Triggers(Primitive<Cow<'de, str>>)),
     ("cropStartAmountLocalTime" => CropStartAmountLocalTime(Primitive<f32>)),
     ("cropEndAmountLocalTime" => CropEndAmountLocalTime(Primitive<f32>)),
     ("startTime" => StartTime(Primitive<f32>)),
@@ -227,14 +227,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("animationBindingIndex" => AnimationBindingIndex(Primitive<i16>)),
     ("mode" => Mode(Primitive<PlaybackMode>)),
     ("flags" => Flags(Primitive<i8>)),
-    ("animDatas" => AnimDatas(HkArrayRef<()>)),
-    ("animationControl" => AnimationControl(Cow<'de, str>)),
-    ("originalTriggers" => OriginalTriggers(Cow<'de, str>)),
-    ("mapperData" => MapperData(Cow<'de, str>)),
-    ("binding" => Binding(Cow<'de, str>)),
-    ("mirroredAnimation" => MirroredAnimation(Cow<'de, str>)),
+    ("animDatas" => AnimDatas(HkArrayRef<Primitive<()>>)),
+    ("animationControl" => AnimationControl(Primitive<Cow<'de, str>>)),
+    ("originalTriggers" => OriginalTriggers(Primitive<Cow<'de, str>>)),
+    ("mapperData" => MapperData(Primitive<Cow<'de, str>>)),
+    ("binding" => Binding(Primitive<Cow<'de, str>>)),
+    ("mirroredAnimation" => MirroredAnimation(Primitive<Cow<'de, str>>)),
     ("extractedMotion" => ExtractedMotion(QsTransform<f32>)),
-    ("echos" => Echos(HkArrayRef<()>)),
+    ("echos" => Echos(HkArrayRef<Primitive<()>>)),
     ("localTime" => LocalTime(Primitive<f32>)),
     ("time" => Time(Primitive<f32>)),
     ("previousUserControlledTimeFraction" => PreviousUserControlledTimeFraction(Primitive<f32>)),

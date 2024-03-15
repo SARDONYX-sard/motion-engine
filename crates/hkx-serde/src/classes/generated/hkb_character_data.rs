@@ -70,35 +70,35 @@ pub enum HkbCharacterData<'a> {
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "characterPropertyValues")]
-    CharacterPropertyValues(Cow<'a, str>),
+    CharacterPropertyValues(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"footIkDriverInfo"`
     /// -   type: `struct hkbFootIkDriverInfo*`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "footIkDriverInfo")]
-    FootIkDriverInfo(Cow<'a, str>),
+    FootIkDriverInfo(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"handIkDriverInfo"`
     /// -   type: `struct hkbHandIkDriverInfo*`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "handIkDriverInfo")]
-    HandIkDriverInfo(Cow<'a, str>),
+    HandIkDriverInfo(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"stringData"`
     /// -   type: `struct hkbCharacterStringData*`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "stringData")]
-    StringData(Cow<'a, str>),
+    StringData(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"mirroredSkeletonInfo"`
     /// -   type: `struct hkbMirroredSkeletonInfo*`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "mirroredSkeletonInfo")]
-    MirroredSkeletonInfo(Cow<'a, str>),
+    MirroredSkeletonInfo(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"scale"`
     /// -   type: `hkReal`
@@ -131,11 +131,11 @@ impl_deserialize_for_internally_tagged_enum! {
     ("modelRightMS" => ModelRightMs(Vector4<f32>)),
     ("characterPropertyInfos" => CharacterPropertyInfos(HkArrayClass<HkbVariableInfo>)),
     ("numBonesPerLod" => NumBonesPerLod(HkArrayRef<Primitive<i32>>)),
-    ("characterPropertyValues" => CharacterPropertyValues(Cow<'de, str>)),
-    ("footIkDriverInfo" => FootIkDriverInfo(Cow<'de, str>)),
-    ("handIkDriverInfo" => HandIkDriverInfo(Cow<'de, str>)),
-    ("stringData" => StringData(Cow<'de, str>)),
-    ("mirroredSkeletonInfo" => MirroredSkeletonInfo(Cow<'de, str>)),
+    ("characterPropertyValues" => CharacterPropertyValues(Primitive<Cow<'de, str>>)),
+    ("footIkDriverInfo" => FootIkDriverInfo(Primitive<Cow<'de, str>>)),
+    ("handIkDriverInfo" => HandIkDriverInfo(Primitive<Cow<'de, str>>)),
+    ("stringData" => StringData(Primitive<Cow<'de, str>>)),
+    ("mirroredSkeletonInfo" => MirroredSkeletonInfo(Primitive<Cow<'de, str>>)),
     ("scale" => Scale(Primitive<f32>)),
     ("numHands" => NumHands(Primitive<i16>)),
     ("numFloatSlots" => NumFloatSlots(Primitive<i16>)),

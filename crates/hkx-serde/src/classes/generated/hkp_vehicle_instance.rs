@@ -28,77 +28,77 @@ pub enum HkpVehicleInstance<'a> {
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "data")]
-    Data(Cow<'a, str>),
+    Data(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"driverInput"`
     /// -   type: `struct hkpVehicleDriverInput*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "driverInput")]
-    DriverInput(Cow<'a, str>),
+    DriverInput(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"steering"`
     /// -   type: `struct hkpVehicleSteering*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "steering")]
-    Steering(Cow<'a, str>),
+    Steering(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"engine"`
     /// -   type: `struct hkpVehicleEngine*`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "engine")]
-    Engine(Cow<'a, str>),
+    Engine(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"transmission"`
     /// -   type: `struct hkpVehicleTransmission*`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transmission")]
-    Transmission(Cow<'a, str>),
+    Transmission(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"brake"`
     /// -   type: `struct hkpVehicleBrake*`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "brake")]
-    Brake(Cow<'a, str>),
+    Brake(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"suspension"`
     /// -   type: `struct hkpVehicleSuspension*`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "suspension")]
-    Suspension(Cow<'a, str>),
+    Suspension(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"aerodynamics"`
     /// -   type: `struct hkpVehicleAerodynamics*`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "aerodynamics")]
-    Aerodynamics(Cow<'a, str>),
+    Aerodynamics(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"wheelCollide"`
     /// -   type: `struct hkpVehicleWheelCollide*`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "wheelCollide")]
-    WheelCollide(Cow<'a, str>),
+    WheelCollide(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"tyreMarks"`
     /// -   type: `struct hkpTyremarksInfo*`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "tyreMarks")]
-    TyreMarks(Cow<'a, str>),
+    TyreMarks(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"velocityDamper"`
     /// -   type: `struct hkpVehicleVelocityDamper*`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "velocityDamper")]
-    VelocityDamper(Cow<'a, str>),
+    VelocityDamper(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"wheelsInfo"`
     /// -   type: `hkArray&lt;struct hkpVehicleInstanceWheelInfo&gt;`
@@ -119,7 +119,7 @@ pub enum HkpVehicleInstance<'a> {
     /// - offset: 156
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "deviceStatus")]
-    DeviceStatus(Cow<'a, str>),
+    DeviceStatus(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"isFixed"`
     /// -   type: `hkArray&lt;hkBool&gt;`
@@ -202,20 +202,20 @@ pub enum HkpVehicleInstance<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpVehicleInstance<'de>, "@name",
-    ("data" => Data(Cow<'de, str>)),
-    ("driverInput" => DriverInput(Cow<'de, str>)),
-    ("steering" => Steering(Cow<'de, str>)),
-    ("engine" => Engine(Cow<'de, str>)),
-    ("transmission" => Transmission(Cow<'de, str>)),
-    ("brake" => Brake(Cow<'de, str>)),
-    ("suspension" => Suspension(Cow<'de, str>)),
-    ("aerodynamics" => Aerodynamics(Cow<'de, str>)),
-    ("wheelCollide" => WheelCollide(Cow<'de, str>)),
-    ("tyreMarks" => TyreMarks(Cow<'de, str>)),
-    ("velocityDamper" => VelocityDamper(Cow<'de, str>)),
+    ("data" => Data(Primitive<Cow<'de, str>>)),
+    ("driverInput" => DriverInput(Primitive<Cow<'de, str>>)),
+    ("steering" => Steering(Primitive<Cow<'de, str>>)),
+    ("engine" => Engine(Primitive<Cow<'de, str>>)),
+    ("transmission" => Transmission(Primitive<Cow<'de, str>>)),
+    ("brake" => Brake(Primitive<Cow<'de, str>>)),
+    ("suspension" => Suspension(Primitive<Cow<'de, str>>)),
+    ("aerodynamics" => Aerodynamics(Primitive<Cow<'de, str>>)),
+    ("wheelCollide" => WheelCollide(Primitive<Cow<'de, str>>)),
+    ("tyreMarks" => TyreMarks(Primitive<Cow<'de, str>>)),
+    ("velocityDamper" => VelocityDamper(Primitive<Cow<'de, str>>)),
     ("wheelsInfo" => WheelsInfo(HkArrayClass<HkpVehicleInstanceWheelInfo>)),
     ("frictionStatus" => FrictionStatus(HkpVehicleFrictionStatus)),
-    ("deviceStatus" => DeviceStatus(Cow<'de, str>)),
+    ("deviceStatus" => DeviceStatus(Primitive<Cow<'de, str>>)),
     ("isFixed" => IsFixed(HkArrayRef<Primitive<bool>>)),
     ("wheelsTimeSinceMaxPedalInput" => WheelsTimeSinceMaxPedalInput(Primitive<f32>)),
     ("tryingToReverse" => TryingToReverse(Primitive<bool>)),

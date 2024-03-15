@@ -154,7 +154,7 @@ pub enum HkpCompressedMeshShape<'a> {
     /// - offset: 196
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "meshMaterials", skip_serializing)]
-    MeshMaterials(Cow<'a, str>),
+    MeshMaterials(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"materialStriding"`
     /// -   type: `hkUint16`
@@ -199,7 +199,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("error" => Error(Primitive<f32>)),
     ("bounds" => Bounds(HkAabb)),
     ("defaultCollisionFilterInfo" => DefaultCollisionFilterInfo(Primitive<u32>)),
-    ("meshMaterials" => MeshMaterials(Cow<'de, str>)),
+    ("meshMaterials" => MeshMaterials(Primitive<Cow<'de, str>>)),
     ("materialStriding" => MaterialStriding(Primitive<u16>)),
     ("numMaterials" => NumMaterials(Primitive<u16>)),
     ("namedMaterials" => NamedMaterials(HkArrayClass<HkpNamedMeshMaterial>)),

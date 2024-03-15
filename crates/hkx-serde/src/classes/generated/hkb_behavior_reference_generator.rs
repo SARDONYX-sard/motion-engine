@@ -35,12 +35,12 @@ pub enum HkbBehaviorReferenceGenerator<'a> {
     /// - offset: 44
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "behavior", skip_serializing)]
-    Behavior(Cow<'a, str>),
+    Behavior(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbBehaviorReferenceGenerator<'de>, "@name",
     ("behaviorName" => BehaviorName(Primitive<Cow<'de, str>>)),
-    ("behavior" => Behavior(Cow<'de, str>)),
+    ("behavior" => Behavior(Primitive<Cow<'de, str>>)),
 }

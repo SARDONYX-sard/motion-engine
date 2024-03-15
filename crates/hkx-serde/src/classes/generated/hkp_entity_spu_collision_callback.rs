@@ -28,7 +28,7 @@ pub enum HkpEntitySpuCollisionCallback<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "util", skip_serializing)]
-    Util(Cow<'a, str>),
+    Util(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"capacity"`
     /// -   type: `hkUint16`
@@ -55,7 +55,7 @@ pub enum HkpEntitySpuCollisionCallback<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpEntitySpuCollisionCallback<'de>, "@name",
-    ("util" => Util(Cow<'de, str>)),
+    ("util" => Util(Primitive<Cow<'de, str>>)),
     ("capacity" => Capacity(Primitive<u16>)),
     ("eventFilter" => EventFilter(Primitive<u8>)),
     ("userFilter" => UserFilter(Primitive<u8>)),

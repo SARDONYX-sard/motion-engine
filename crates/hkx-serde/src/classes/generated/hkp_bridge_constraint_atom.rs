@@ -28,19 +28,19 @@ pub enum HkpBridgeConstraintAtom<'a> {
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "buildJacobianFunc", skip_serializing)]
-    BuildJacobianFunc(Cow<'a, str>),
+    BuildJacobianFunc(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"constraintData"`
     /// -   type: `struct hkpConstraintData*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | NOT_OWNED`
     #[serde(rename = "constraintData")]
-    ConstraintData(Cow<'a, str>),
+    ConstraintData(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpBridgeConstraintAtom<'de>, "@name",
-    ("buildJacobianFunc" => BuildJacobianFunc(Cow<'de, str>)),
-    ("constraintData" => ConstraintData(Cow<'de, str>)),
+    ("buildJacobianFunc" => BuildJacobianFunc(Primitive<Cow<'de, str>>)),
+    ("constraintData" => ConstraintData(Primitive<Cow<'de, str>>)),
 }

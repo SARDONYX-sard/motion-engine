@@ -63,7 +63,7 @@ pub enum HkpLinMotorConstraintAtom<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "motor")]
-    Motor(Cow<'a, str>),
+    Motor(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -74,5 +74,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("initializedOffset" => InitializedOffset(Primitive<i16>)),
     ("previousTargetPositionOffset" => PreviousTargetPositionOffset(Primitive<i16>)),
     ("targetPosition" => TargetPosition(Primitive<f32>)),
-    ("motor" => Motor(Cow<'de, str>)),
+    ("motor" => Motor(Primitive<Cow<'de, str>>)),
 }

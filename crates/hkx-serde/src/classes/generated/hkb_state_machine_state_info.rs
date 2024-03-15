@@ -35,28 +35,28 @@ pub enum HkbStateMachineStateInfo<'a> {
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "enterNotifyEvents")]
-    EnterNotifyEvents(Cow<'a, str>),
+    EnterNotifyEvents(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"exitNotifyEvents"`
     /// -   type: `struct hkbStateMachineEventPropertyArray*`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "exitNotifyEvents")]
-    ExitNotifyEvents(Cow<'a, str>),
+    ExitNotifyEvents(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"transitions"`
     /// -   type: `struct hkbStateMachineTransitionInfoArray*`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transitions")]
-    Transitions(Cow<'a, str>),
+    Transitions(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"generator"`
     /// -   type: `struct hkbGenerator*`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "generator")]
-    Generator(Cow<'a, str>),
+    Generator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
@@ -91,10 +91,10 @@ pub enum HkbStateMachineStateInfo<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkbStateMachineStateInfo<'de>, "@name",
     ("listeners" => Listeners(HkArrayRef<Cow<'de, str>>)),
-    ("enterNotifyEvents" => EnterNotifyEvents(Cow<'de, str>)),
-    ("exitNotifyEvents" => ExitNotifyEvents(Cow<'de, str>)),
-    ("transitions" => Transitions(Cow<'de, str>)),
-    ("generator" => Generator(Cow<'de, str>)),
+    ("enterNotifyEvents" => EnterNotifyEvents(Primitive<Cow<'de, str>>)),
+    ("exitNotifyEvents" => ExitNotifyEvents(Primitive<Cow<'de, str>>)),
+    ("transitions" => Transitions(Primitive<Cow<'de, str>>)),
+    ("generator" => Generator(Primitive<Cow<'de, str>>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("stateId" => StateId(Primitive<i32>)),
     ("probability" => Probability(Primitive<f32>)),

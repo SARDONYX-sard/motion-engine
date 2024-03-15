@@ -35,7 +35,7 @@ pub enum HkMemoryResourceContainer<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "parent", skip_serializing)]
-    Parent(Cow<'a, str>),
+    Parent(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"resourceHandles"`
     /// -   type: `hkArray&lt;hkMemoryResourceHandle*&gt;`
@@ -56,7 +56,7 @@ pub enum HkMemoryResourceContainer<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkMemoryResourceContainer<'de>, "@name",
     ("name" => Name(Primitive<Cow<'de, str>>)),
-    ("parent" => Parent(Cow<'de, str>)),
+    ("parent" => Parent(Primitive<Cow<'de, str>>)),
     ("resourceHandles" => ResourceHandles(HkArrayRef<Cow<'de, str>>)),
     ("children" => Children(HkArrayRef<Cow<'de, str>>)),
 }

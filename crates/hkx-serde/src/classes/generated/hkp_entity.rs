@@ -35,7 +35,7 @@ pub enum HkpEntity<'a> {
     /// - offset: 152
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "limitContactImpulseUtilAndFlag", skip_serializing)]
-    LimitContactImpulseUtilAndFlag(Cow<'a, str>),
+    LimitContactImpulseUtilAndFlag(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"damageMultiplier"`
     /// -   type: `hkReal`
@@ -49,7 +49,7 @@ pub enum HkpEntity<'a> {
     /// - offset: 160
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "breakableBody", skip_serializing)]
-    BreakableBody(Cow<'a, str>),
+    BreakableBody(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"solverData"`
     /// -   type: `hkUint32`
@@ -98,7 +98,7 @@ pub enum HkpEntity<'a> {
     /// - offset: 204
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "simulationIsland", skip_serializing)]
-    SimulationIsland(Cow<'a, str>),
+    SimulationIsland(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"autoRemoveLevel"`
     /// -   type: `hkInt8`
@@ -161,14 +161,14 @@ pub enum HkpEntity<'a> {
     /// - offset: 528
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "localFrame")]
-    LocalFrame(Cow<'a, str>),
+    LocalFrame(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"extendedListeners"`
     /// -   type: `struct hkpEntityExtendedListeners*`
     /// - offset: 532
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "extendedListeners", skip_serializing)]
-    ExtendedListeners(Cow<'a, str>),
+    ExtendedListeners(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"npData"`
     /// -   type: `hkUint32`
@@ -182,16 +182,16 @@ pub enum HkpEntity<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkpEntity<'de>, "@name",
     ("material" => Material(HkpMaterial)),
-    ("limitContactImpulseUtilAndFlag" => LimitContactImpulseUtilAndFlag(Cow<'de, str>)),
+    ("limitContactImpulseUtilAndFlag" => LimitContactImpulseUtilAndFlag(Primitive<Cow<'de, str>>)),
     ("damageMultiplier" => DamageMultiplier(Primitive<f32>)),
-    ("breakableBody" => BreakableBody(Cow<'de, str>)),
+    ("breakableBody" => BreakableBody(Primitive<Cow<'de, str>>)),
     ("solverData" => SolverData(Primitive<u32>)),
     ("storageIndex" => StorageIndex(Primitive<u16>)),
     ("contactPointCallbackDelay" => ContactPointCallbackDelay(Primitive<u16>)),
     ("constraintsMaster" => ConstraintsMaster(HkpEntitySmallArraySerializeOverrideType)),
     ("constraintsSlave" => ConstraintsSlave(HkArrayRef<Cow<'de, str>>)),
     ("constraintRuntime" => ConstraintRuntime(HkArrayRef<Primitive<u8>>)),
-    ("simulationIsland" => SimulationIsland(Cow<'de, str>)),
+    ("simulationIsland" => SimulationIsland(Primitive<Cow<'de, str>>)),
     ("autoRemoveLevel" => AutoRemoveLevel(Primitive<i8>)),
     ("numShapeKeysInContactPointProperties" => NumShapeKeysInContactPointProperties(Primitive<u8>)),
     ("responseModifierFlags" => ResponseModifierFlags(Primitive<u8>)),
@@ -200,8 +200,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("motion" => Motion(HkpMaxSizeMotion)),
     ("contactListeners" => ContactListeners(HkpEntitySmallArraySerializeOverrideType)),
     ("actions" => Actions(HkpEntitySmallArraySerializeOverrideType)),
-    ("localFrame" => LocalFrame(Cow<'de, str>)),
-    ("extendedListeners" => ExtendedListeners(Cow<'de, str>)),
+    ("localFrame" => LocalFrame(Primitive<Cow<'de, str>>)),
+    ("extendedListeners" => ExtendedListeners(Primitive<Cow<'de, str>>)),
     ("npData" => NpData(Primitive<u32>)),
 }
 

@@ -42,7 +42,7 @@ pub enum HkbHandIkModifier {
     /// - offset: 60
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "internalHandData", skip_serializing)]
-    InternalHandData(HkArrayRef<()>),
+    InternalHandData(HkArrayRef<Primitive<()>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -50,5 +50,5 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbHandIkModifier, "@name",
     ("hands" => Hands(HkArrayClass<HkbHandIkModifierHand>)),
     ("fadeInOutCurve" => FadeInOutCurve(Primitive<BlendCurve>)),
-    ("internalHandData" => InternalHandData(HkArrayRef<()>)),
+    ("internalHandData" => InternalHandData(HkArrayRef<Primitive<()>>)),
 }

@@ -35,12 +35,12 @@ pub enum HkpDisplayBindingDataPhysicsSystem<'a> {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "system")]
-    System(Cow<'a, str>),
+    System(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpDisplayBindingDataPhysicsSystem<'de>, "@name",
     ("bindings" => Bindings(HkArrayRef<Cow<'de, str>>)),
-    ("system" => System(Cow<'de, str>)),
+    ("system" => System(Primitive<Cow<'de, str>>)),
 }

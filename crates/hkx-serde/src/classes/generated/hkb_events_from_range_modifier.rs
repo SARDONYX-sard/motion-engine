@@ -42,14 +42,14 @@ pub enum HkbEventsFromRangeModifier<'a> {
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "eventRanges")]
-    EventRanges(Cow<'a, str>),
+    EventRanges(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"wasActiveInPreviousFrame"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "wasActiveInPreviousFrame", skip_serializing)]
-    WasActiveInPreviousFrame(HkArrayRef<()>),
+    WasActiveInPreviousFrame(HkArrayRef<Primitive<()>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -57,6 +57,6 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbEventsFromRangeModifier<'de>, "@name",
     ("inputValue" => InputValue(Primitive<f32>)),
     ("lowerBound" => LowerBound(Primitive<f32>)),
-    ("eventRanges" => EventRanges(Cow<'de, str>)),
-    ("wasActiveInPreviousFrame" => WasActiveInPreviousFrame(HkArrayRef<()>)),
+    ("eventRanges" => EventRanges(Primitive<Cow<'de, str>>)),
+    ("wasActiveInPreviousFrame" => WasActiveInPreviousFrame(HkArrayRef<Primitive<()>>)),
 }

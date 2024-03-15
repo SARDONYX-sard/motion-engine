@@ -35,7 +35,7 @@ pub enum HkpVehicleRayCastWheelCollide<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "phantom")]
-    Phantom(Cow<'a, str>),
+    Phantom(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"rejectRayChassisListener"`
     /// -   type: `struct hkpRejectChassisListener`
@@ -49,6 +49,6 @@ pub enum HkpVehicleRayCastWheelCollide<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkpVehicleRayCastWheelCollide<'de>, "@name",
     ("wheelCollisionFilterInfo" => WheelCollisionFilterInfo(Primitive<u32>)),
-    ("phantom" => Phantom(Cow<'de, str>)),
+    ("phantom" => Phantom(Primitive<Cow<'de, str>>)),
     ("rejectRayChassisListener" => RejectRayChassisListener(HkpRejectChassisListener)),
 }

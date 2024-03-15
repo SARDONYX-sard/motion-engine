@@ -56,21 +56,21 @@ pub enum HkbAttachmentModifier<'a> {
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "attachmentSetup")]
-    AttachmentSetup(Cow<'a, str>),
+    AttachmentSetup(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"attacherHandle"`
     /// -   type: `struct hkbHandle*`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "attacherHandle")]
-    AttacherHandle(Cow<'a, str>),
+    AttacherHandle(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"attacheeHandle"`
     /// -   type: `struct hkbHandle*`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "attacheeHandle")]
-    AttacheeHandle(Cow<'a, str>),
+    AttacheeHandle(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"attacheeLayer"`
     /// -   type: `hkInt32`
@@ -84,7 +84,7 @@ pub enum HkbAttachmentModifier<'a> {
     /// - offset: 92
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "attacheeRB", skip_serializing)]
-    AttacheeRb(Cow<'a, str>),
+    AttacheeRb(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"oldMotionType"`
     /// -   type: `enum unknown`
@@ -105,7 +105,7 @@ pub enum HkbAttachmentModifier<'a> {
     /// - offset: 104
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "attachment", skip_serializing)]
-    Attachment(Cow<'a, str>),
+    Attachment(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -115,12 +115,12 @@ impl_deserialize_for_internally_tagged_enum! {
     ("sendToAttacheeOnAttach" => SendToAttacheeOnAttach(HkbEventProperty)),
     ("sendToAttacherOnDetach" => SendToAttacherOnDetach(HkbEventProperty)),
     ("sendToAttacheeOnDetach" => SendToAttacheeOnDetach(HkbEventProperty)),
-    ("attachmentSetup" => AttachmentSetup(Cow<'de, str>)),
-    ("attacherHandle" => AttacherHandle(Cow<'de, str>)),
-    ("attacheeHandle" => AttacheeHandle(Cow<'de, str>)),
+    ("attachmentSetup" => AttachmentSetup(Primitive<Cow<'de, str>>)),
+    ("attacherHandle" => AttacherHandle(Primitive<Cow<'de, str>>)),
+    ("attacheeHandle" => AttacheeHandle(Primitive<Cow<'de, str>>)),
     ("attacheeLayer" => AttacheeLayer(Primitive<i32>)),
-    ("attacheeRB" => AttacheeRb(Cow<'de, str>)),
+    ("attacheeRB" => AttacheeRb(Primitive<Cow<'de, str>>)),
     ("oldMotionType" => OldMotionType(Primitive<Unknown>)),
     ("oldFilterInfo" => OldFilterInfo(Primitive<i32>)),
-    ("attachment" => Attachment(Cow<'de, str>)),
+    ("attachment" => Attachment(Primitive<Cow<'de, str>>)),
 }

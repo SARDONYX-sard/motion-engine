@@ -28,7 +28,7 @@ pub enum HkpWorld<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "simulation")]
-    Simulation(Cow<'a, str>),
+    Simulation(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"gravity"`
     /// -   type: `hkVector4`
@@ -42,14 +42,14 @@ pub enum HkpWorld<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "fixedIsland", skip_serializing)]
-    FixedIsland(Cow<'a, str>),
+    FixedIsland(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"fixedRigidBody"`
     /// -   type: `struct hkpRigidBody*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "fixedRigidBody")]
-    FixedRigidBody(Cow<'a, str>),
+    FixedRigidBody(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"activeSimulationIslands"`
     /// -   type: `hkArray&lt;void*&gt;`
@@ -77,14 +77,14 @@ pub enum HkpWorld<'a> {
     /// - offset: 76
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "maintenanceMgr", skip_serializing)]
-    MaintenanceMgr(Cow<'a, str>),
+    MaintenanceMgr(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"memoryWatchDog"`
     /// -   type: `void*`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "memoryWatchDog", skip_serializing)]
-    MemoryWatchDog(Cow<'a, str>),
+    MemoryWatchDog(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"assertOnRunningOutOfSolverMemory"`
     /// -   type: `hkBool`
@@ -98,14 +98,14 @@ pub enum HkpWorld<'a> {
     /// - offset: 88
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "broadPhase", skip_serializing)]
-    BroadPhase(Cow<'a, str>),
+    BroadPhase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"kdTreeManager"`
     /// -   type: `void*`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "kdTreeManager", skip_serializing)]
-    KdTreeManager(Cow<'a, str>),
+    KdTreeManager(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"autoUpdateTree"`
     /// -   type: `hkBool`
@@ -119,70 +119,70 @@ pub enum HkpWorld<'a> {
     /// - offset: 100
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "broadPhaseDispatcher", skip_serializing)]
-    BroadPhaseDispatcher(Cow<'a, str>),
+    BroadPhaseDispatcher(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"phantomBroadPhaseListener"`
     /// -   type: `void*`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "phantomBroadPhaseListener", skip_serializing)]
-    PhantomBroadPhaseListener(Cow<'a, str>),
+    PhantomBroadPhaseListener(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"entityEntityBroadPhaseListener"`
     /// -   type: `void*`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "entityEntityBroadPhaseListener", skip_serializing)]
-    EntityEntityBroadPhaseListener(Cow<'a, str>),
+    EntityEntityBroadPhaseListener(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseBorderListener"`
     /// -   type: `void*`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "broadPhaseBorderListener", skip_serializing)]
-    BroadPhaseBorderListener(Cow<'a, str>),
+    BroadPhaseBorderListener(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"multithreadedSimulationJobData"`
     /// -   type: `void*`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "multithreadedSimulationJobData", skip_serializing)]
-    MultithreadedSimulationJobData(Cow<'a, str>),
+    MultithreadedSimulationJobData(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"collisionInput"`
     /// -   type: `void*`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "collisionInput", skip_serializing)]
-    CollisionInput(Cow<'a, str>),
+    CollisionInput(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilter"`
     /// -   type: `void*`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "collisionFilter", skip_serializing)]
-    CollisionFilter(Cow<'a, str>),
+    CollisionFilter(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"collisionDispatcher"`
     /// -   type: `void*`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "collisionDispatcher", skip_serializing)]
-    CollisionDispatcher(Cow<'a, str>),
+    CollisionDispatcher(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"convexListFilter"`
     /// -   type: `void*`
     /// - offset: 132
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "convexListFilter", skip_serializing)]
-    ConvexListFilter(Cow<'a, str>),
+    ConvexListFilter(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"pendingOperations"`
     /// -   type: `void*`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "pendingOperations", skip_serializing)]
-    PendingOperations(Cow<'a, str>),
+    PendingOperations(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"pendingOperationsCount"`
     /// -   type: `hkInt32`
@@ -231,7 +231,7 @@ pub enum HkpWorld<'a> {
     /// - offset: 160
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "pendingOperationQueues", skip_serializing)]
-    PendingOperationQueues(Cow<'a, str>),
+    PendingOperationQueues(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"pendingOperationQueueCount"`
     /// -   type: `hkInt32`
@@ -273,7 +273,7 @@ pub enum HkpWorld<'a> {
     /// - offset: 188
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "modifyConstraintCriticalSection", skip_serializing)]
-    ModifyConstraintCriticalSection(Cow<'a, str>),
+    ModifyConstraintCriticalSection(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"isLocked"`
     /// -   type: `hkInt32`
@@ -287,14 +287,14 @@ pub enum HkpWorld<'a> {
     /// - offset: 196
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "islandDirtyListCriticalSection", skip_serializing)]
-    IslandDirtyListCriticalSection(Cow<'a, str>),
+    IslandDirtyListCriticalSection(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"propertyMasterLock"`
     /// -   type: `void*`
     /// - offset: 200
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "propertyMasterLock", skip_serializing)]
-    PropertyMasterLock(Cow<'a, str>),
+    PropertyMasterLock(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"wantSimulationIslands"`
     /// -   type: `hkBool`
@@ -567,28 +567,28 @@ pub enum HkpWorld<'a> {
     /// - offset: 464
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "violatedConstraintArray", skip_serializing)]
-    ViolatedConstraintArray(Cow<'a, str>),
+    ViolatedConstraintArray(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseBorder"`
     /// -   type: `void*`
     /// - offset: 468
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "broadPhaseBorder", skip_serializing)]
-    BroadPhaseBorder(Cow<'a, str>),
+    BroadPhaseBorder(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"destructionWorld"`
     /// -   type: `void*`
     /// - offset: 472
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "destructionWorld", skip_serializing)]
-    DestructionWorld(Cow<'a, str>),
+    DestructionWorld(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"npWorld"`
     /// -   type: `void*`
     /// - offset: 476
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "npWorld", skip_serializing)]
-    NpWorld(Cow<'a, str>),
+    NpWorld(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseExtents"`
     /// -   type: `hkVector4[2]`
@@ -636,45 +636,45 @@ pub enum HkpWorld<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpWorld<'de>, "@name",
-    ("simulation" => Simulation(Cow<'de, str>)),
+    ("simulation" => Simulation(Primitive<Cow<'de, str>>)),
     ("gravity" => Gravity(Vector4<f32>)),
-    ("fixedIsland" => FixedIsland(Cow<'de, str>)),
-    ("fixedRigidBody" => FixedRigidBody(Cow<'de, str>)),
+    ("fixedIsland" => FixedIsland(Primitive<Cow<'de, str>>)),
+    ("fixedRigidBody" => FixedRigidBody(Primitive<Cow<'de, str>>)),
     ("activeSimulationIslands" => ActiveSimulationIslands(HkArrayRef<Cow<'de, str>>)),
     ("inactiveSimulationIslands" => InactiveSimulationIslands(HkArrayRef<Cow<'de, str>>)),
     ("dirtySimulationIslands" => DirtySimulationIslands(HkArrayRef<Cow<'de, str>>)),
-    ("maintenanceMgr" => MaintenanceMgr(Cow<'de, str>)),
-    ("memoryWatchDog" => MemoryWatchDog(Cow<'de, str>)),
+    ("maintenanceMgr" => MaintenanceMgr(Primitive<Cow<'de, str>>)),
+    ("memoryWatchDog" => MemoryWatchDog(Primitive<Cow<'de, str>>)),
     ("assertOnRunningOutOfSolverMemory" => AssertOnRunningOutOfSolverMemory(Primitive<bool>)),
-    ("broadPhase" => BroadPhase(Cow<'de, str>)),
-    ("kdTreeManager" => KdTreeManager(Cow<'de, str>)),
+    ("broadPhase" => BroadPhase(Primitive<Cow<'de, str>>)),
+    ("kdTreeManager" => KdTreeManager(Primitive<Cow<'de, str>>)),
     ("autoUpdateTree" => AutoUpdateTree(Primitive<bool>)),
-    ("broadPhaseDispatcher" => BroadPhaseDispatcher(Cow<'de, str>)),
-    ("phantomBroadPhaseListener" => PhantomBroadPhaseListener(Cow<'de, str>)),
-    ("entityEntityBroadPhaseListener" => EntityEntityBroadPhaseListener(Cow<'de, str>)),
-    ("broadPhaseBorderListener" => BroadPhaseBorderListener(Cow<'de, str>)),
-    ("multithreadedSimulationJobData" => MultithreadedSimulationJobData(Cow<'de, str>)),
-    ("collisionInput" => CollisionInput(Cow<'de, str>)),
-    ("collisionFilter" => CollisionFilter(Cow<'de, str>)),
-    ("collisionDispatcher" => CollisionDispatcher(Cow<'de, str>)),
-    ("convexListFilter" => ConvexListFilter(Cow<'de, str>)),
-    ("pendingOperations" => PendingOperations(Cow<'de, str>)),
+    ("broadPhaseDispatcher" => BroadPhaseDispatcher(Primitive<Cow<'de, str>>)),
+    ("phantomBroadPhaseListener" => PhantomBroadPhaseListener(Primitive<Cow<'de, str>>)),
+    ("entityEntityBroadPhaseListener" => EntityEntityBroadPhaseListener(Primitive<Cow<'de, str>>)),
+    ("broadPhaseBorderListener" => BroadPhaseBorderListener(Primitive<Cow<'de, str>>)),
+    ("multithreadedSimulationJobData" => MultithreadedSimulationJobData(Primitive<Cow<'de, str>>)),
+    ("collisionInput" => CollisionInput(Primitive<Cow<'de, str>>)),
+    ("collisionFilter" => CollisionFilter(Primitive<Cow<'de, str>>)),
+    ("collisionDispatcher" => CollisionDispatcher(Primitive<Cow<'de, str>>)),
+    ("convexListFilter" => ConvexListFilter(Primitive<Cow<'de, str>>)),
+    ("pendingOperations" => PendingOperations(Primitive<Cow<'de, str>>)),
     ("pendingOperationsCount" => PendingOperationsCount(Primitive<i32>)),
     ("pendingBodyOperationsCount" => PendingBodyOperationsCount(Primitive<i32>)),
     ("criticalOperationsLockCount" => CriticalOperationsLockCount(Primitive<i32>)),
     ("criticalOperationsLockCountForPhantoms" => CriticalOperationsLockCountForPhantoms(Primitive<i32>)),
     ("blockExecutingPendingOperations" => BlockExecutingPendingOperations(Primitive<bool>)),
     ("criticalOperationsAllowed" => CriticalOperationsAllowed(Primitive<bool>)),
-    ("pendingOperationQueues" => PendingOperationQueues(Cow<'de, str>)),
+    ("pendingOperationQueues" => PendingOperationQueues(Primitive<Cow<'de, str>>)),
     ("pendingOperationQueueCount" => PendingOperationQueueCount(Primitive<i32>)),
     ("multiThreadCheck" => MultiThreadCheck(HkMultiThreadCheck)),
     ("processActionsInSingleThread" => ProcessActionsInSingleThread(Primitive<bool>)),
     ("allowIntegrationOfIslandsWithoutConstraintsInASeparateJob" => AllowIntegrationOfIslandsWithoutConstraintsInASeparateJob(Primitive<bool>)),
     ("minDesiredIslandSize" => MinDesiredIslandSize(Primitive<u32>)),
-    ("modifyConstraintCriticalSection" => ModifyConstraintCriticalSection(Cow<'de, str>)),
+    ("modifyConstraintCriticalSection" => ModifyConstraintCriticalSection(Primitive<Cow<'de, str>>)),
     ("isLocked" => IsLocked(Primitive<i32>)),
-    ("islandDirtyListCriticalSection" => IslandDirtyListCriticalSection(Cow<'de, str>)),
-    ("propertyMasterLock" => PropertyMasterLock(Cow<'de, str>)),
+    ("islandDirtyListCriticalSection" => IslandDirtyListCriticalSection(Primitive<Cow<'de, str>>)),
+    ("propertyMasterLock" => PropertyMasterLock(Primitive<Cow<'de, str>>)),
     ("wantSimulationIslands" => WantSimulationIslands(Primitive<bool>)),
     ("useHybridBroadphase" => UseHybridBroadphase(Primitive<bool>)),
     ("snapCollisionToConvexEdgeThreshold" => SnapCollisionToConvexEdgeThreshold(Primitive<f32>)),
@@ -713,10 +713,10 @@ impl_deserialize_for_internally_tagged_enum! {
     ("contactListeners" => ContactListeners(HkArrayRef<Cow<'de, str>>)),
     ("contactImpulseLimitBreachedListeners" => ContactImpulseLimitBreachedListeners(HkArrayRef<Cow<'de, str>>)),
     ("worldExtensions" => WorldExtensions(HkArrayRef<Cow<'de, str>>)),
-    ("violatedConstraintArray" => ViolatedConstraintArray(Cow<'de, str>)),
-    ("broadPhaseBorder" => BroadPhaseBorder(Cow<'de, str>)),
-    ("destructionWorld" => DestructionWorld(Cow<'de, str>)),
-    ("npWorld" => NpWorld(Cow<'de, str>)),
+    ("violatedConstraintArray" => ViolatedConstraintArray(Primitive<Cow<'de, str>>)),
+    ("broadPhaseBorder" => BroadPhaseBorder(Primitive<Cow<'de, str>>)),
+    ("destructionWorld" => DestructionWorld(Primitive<Cow<'de, str>>)),
+    ("npWorld" => NpWorld(Primitive<Cow<'de, str>>)),
     ("broadPhaseExtents" => BroadPhaseExtents([Vector4<f32>; 2])),
     ("broadPhaseNumMarkers" => BroadPhaseNumMarkers(Primitive<i32>)),
     ("sizeOfToiEventQueue" => SizeOfToiEventQueue(Primitive<i32>)),

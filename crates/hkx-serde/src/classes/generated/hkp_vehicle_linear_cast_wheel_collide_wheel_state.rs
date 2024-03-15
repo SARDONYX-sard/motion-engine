@@ -28,14 +28,14 @@ pub enum HkpVehicleLinearCastWheelCollideWheelState<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "phantom")]
-    Phantom(Cow<'a, str>),
+    Phantom(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"shape"`
     /// -   type: `struct hkpShape*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "shape")]
-    Shape(Cow<'a, str>),
+    Shape(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"transform"`
     /// -   type: `hkTransform`
@@ -55,8 +55,8 @@ pub enum HkpVehicleLinearCastWheelCollideWheelState<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpVehicleLinearCastWheelCollideWheelState<'de>, "@name",
-    ("phantom" => Phantom(Cow<'de, str>)),
-    ("shape" => Shape(Cow<'de, str>)),
+    ("phantom" => Phantom(Primitive<Cow<'de, str>>)),
+    ("shape" => Shape(Primitive<Cow<'de, str>>)),
     ("transform" => Transform(Transform<f32>)),
     ("to" => To(Vector4<f32>)),
 }

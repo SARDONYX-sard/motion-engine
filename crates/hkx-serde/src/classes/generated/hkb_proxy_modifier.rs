@@ -182,21 +182,21 @@ pub enum HkbProxyModifier<'a> {
     /// - offset: 200
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "characterProxy", skip_serializing)]
-    CharacterProxy(Cow<'a, str>),
+    CharacterProxy(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"phantom"`
     /// -   type: `void*`
     /// - offset: 204
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "phantom", skip_serializing)]
-    Phantom(Cow<'a, str>),
+    Phantom(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"phantomShape"`
     /// -   type: `void*`
     /// - offset: 208
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "phantomShape", skip_serializing)]
-    PhantomShape(Cow<'a, str>),
+    PhantomShape(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"horizontalDisplacement"`
     /// -   type: `hkVector4`
@@ -252,9 +252,9 @@ impl_deserialize_for_internally_tagged_enum! {
     ("includeDownwardMomentum" => IncludeDownwardMomentum(Primitive<bool>)),
     ("followWorldFromModel" => FollowWorldFromModel(Primitive<bool>)),
     ("isTouchingGround" => IsTouchingGround(Primitive<bool>)),
-    ("characterProxy" => CharacterProxy(Cow<'de, str>)),
-    ("phantom" => Phantom(Cow<'de, str>)),
-    ("phantomShape" => PhantomShape(Cow<'de, str>)),
+    ("characterProxy" => CharacterProxy(Primitive<Cow<'de, str>>)),
+    ("phantom" => Phantom(Primitive<Cow<'de, str>>)),
+    ("phantomShape" => PhantomShape(Primitive<Cow<'de, str>>)),
     ("horizontalDisplacement" => HorizontalDisplacement(Vector4<f32>)),
     ("verticalDisplacement" => VerticalDisplacement(Primitive<f32>)),
     ("timestep" => Timestep(Primitive<f32>)),

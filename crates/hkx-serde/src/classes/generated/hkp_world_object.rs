@@ -28,7 +28,7 @@ pub enum HkpWorldObject<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "world", skip_serializing)]
-    World(Cow<'a, str>),
+    World(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -70,19 +70,19 @@ pub enum HkpWorldObject<'a> {
     /// - offset: 136
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "treeData", skip_serializing)]
-    TreeData(Cow<'a, str>),
+    TreeData(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpWorldObject<'de>, "@name",
-    ("world" => World(Cow<'de, str>)),
+    ("world" => World(Primitive<Cow<'de, str>>)),
     ("userData" => UserData(Primitive<usize>)),
     ("collidable" => Collidable(HkpLinkedCollidable)),
     ("multiThreadCheck" => MultiThreadCheck(HkMultiThreadCheck)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("properties" => Properties(HkArrayClass<HkpProperty>)),
-    ("treeData" => TreeData(Cow<'de, str>)),
+    ("treeData" => TreeData(Primitive<Cow<'de, str>>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

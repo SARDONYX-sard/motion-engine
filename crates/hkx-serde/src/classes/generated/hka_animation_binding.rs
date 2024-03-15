@@ -35,7 +35,7 @@ pub enum HkaAnimationBinding<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "animation")]
-    Animation(Cow<'a, str>),
+    Animation(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"transformTrackToBoneIndices"`
     /// -   type: `hkArray&lt;hkInt16&gt;`
@@ -63,7 +63,7 @@ pub enum HkaAnimationBinding<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkaAnimationBinding<'de>, "@name",
     ("originalSkeletonName" => OriginalSkeletonName(Primitive<Cow<'de, str>>)),
-    ("animation" => Animation(Cow<'de, str>)),
+    ("animation" => Animation(Primitive<Cow<'de, str>>)),
     ("transformTrackToBoneIndices" => TransformTrackToBoneIndices(HkArrayRef<Primitive<i16>>)),
     ("floatTrackToFloatSlotIndices" => FloatTrackToFloatSlotIndices(HkArrayRef<Primitive<i16>>)),
     ("blendHint" => BlendHint(Primitive<BlendHint>)),

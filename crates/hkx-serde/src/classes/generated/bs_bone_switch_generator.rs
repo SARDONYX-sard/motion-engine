@@ -28,7 +28,7 @@ pub enum BsBoneSwitchGenerator<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE | ALIGN16`
     #[serde(rename = "pDefaultGenerator")]
-    PDefaultGenerator(Cow<'a, str>),
+    PDefaultGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"ChildrenA"`
     /// -   type: `hkArray&lt;BSBoneSwitchGeneratorBoneData*&gt;`
@@ -41,6 +41,6 @@ pub enum BsBoneSwitchGenerator<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     BsBoneSwitchGenerator<'de>, "@name",
-    ("pDefaultGenerator" => PDefaultGenerator(Cow<'de, str>)),
+    ("pDefaultGenerator" => PDefaultGenerator(Primitive<Cow<'de, str>>)),
     ("ChildrenA" => ChildrenA(HkArrayRef<Cow<'de, str>>)),
 }

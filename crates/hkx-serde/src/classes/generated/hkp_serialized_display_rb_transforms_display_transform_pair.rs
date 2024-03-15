@@ -28,7 +28,7 @@ pub enum HkpSerializedDisplayRbTransformsDisplayTransformPair<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rb")]
-    Rb(Cow<'a, str>),
+    Rb(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"localToDisplay"`
     /// -   type: `hkTransform`
@@ -41,6 +41,6 @@ pub enum HkpSerializedDisplayRbTransformsDisplayTransformPair<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpSerializedDisplayRbTransformsDisplayTransformPair<'de>, "@name",
-    ("rb" => Rb(Cow<'de, str>)),
+    ("rb" => Rb(Primitive<Cow<'de, str>>)),
     ("localToDisplay" => LocalToDisplay(Transform<f32>)),
 }

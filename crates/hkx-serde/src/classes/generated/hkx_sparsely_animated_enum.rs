@@ -28,11 +28,11 @@ pub enum HkxSparselyAnimatedEnum<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "enum")]
-    Enum(Cow<'a, str>),
+    Enum(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkxSparselyAnimatedEnum<'de>, "@name",
-    ("enum" => Enum(Cow<'de, str>)),
+    ("enum" => Enum(Primitive<Cow<'de, str>>)),
 }

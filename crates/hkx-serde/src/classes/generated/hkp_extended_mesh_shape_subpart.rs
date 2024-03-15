@@ -49,7 +49,7 @@ pub enum HkpExtendedMeshShapeSubpart<'a> {
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "materialIndexBase", skip_serializing)]
-    MaterialIndexBase(Cow<'a, str>),
+    MaterialIndexBase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"materialIndexStriding"`
     /// -   type: `hkUint16`
@@ -70,7 +70,7 @@ pub enum HkpExtendedMeshShapeSubpart<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "materialBase", skip_serializing)]
-    MaterialBase(Cow<'a, str>),
+    MaterialBase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -86,9 +86,9 @@ impl_deserialize_for_internally_tagged_enum! {
     ("type" => Type(Primitive<SubpartType>)),
     ("materialIndexStridingType" => MaterialIndexStridingType(Primitive<MaterialIndexStridingType>)),
     ("materialStriding" => MaterialStriding(Primitive<i16>)),
-    ("materialIndexBase" => MaterialIndexBase(Cow<'de, str>)),
+    ("materialIndexBase" => MaterialIndexBase(Primitive<Cow<'de, str>>)),
     ("materialIndexStriding" => MaterialIndexStriding(Primitive<u16>)),
     ("numMaterials" => NumMaterials(Primitive<u16>)),
-    ("materialBase" => MaterialBase(Cow<'de, str>)),
+    ("materialBase" => MaterialBase(Primitive<Cow<'de, str>>)),
     ("userData" => UserData(Primitive<usize>)),
 }

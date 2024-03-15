@@ -28,19 +28,19 @@ pub enum HkbStateMachineNestedStateMachineData<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "nestedStateMachine", skip_serializing)]
-    NestedStateMachine(Cow<'a, str>),
+    NestedStateMachine(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"eventIdMap"`
     /// -   type: `void*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "eventIdMap", skip_serializing)]
-    EventIdMap(Cow<'a, str>),
+    EventIdMap(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbStateMachineNestedStateMachineData<'de>, "@name",
-    ("nestedStateMachine" => NestedStateMachine(Cow<'de, str>)),
-    ("eventIdMap" => EventIdMap(Cow<'de, str>)),
+    ("nestedStateMachine" => NestedStateMachine(Primitive<Cow<'de, str>>)),
+    ("eventIdMap" => EventIdMap(Primitive<Cow<'de, str>>)),
 }

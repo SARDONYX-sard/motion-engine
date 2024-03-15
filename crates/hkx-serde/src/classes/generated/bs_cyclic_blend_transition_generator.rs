@@ -28,7 +28,7 @@ pub enum BsCyclicBlendTransitionGenerator<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE | ALIGN16`
     #[serde(rename = "pBlenderGenerator")]
-    PBlenderGenerator(Cow<'a, str>),
+    PBlenderGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"EventToFreezeBlendValue"`
     /// -   type: `struct hkbEventProperty`
@@ -70,14 +70,14 @@ pub enum BsCyclicBlendTransitionGenerator<'a> {
     /// - offset: 80
     /// -  flags: `FLAGS_NONE | ALIGN16 | SERIALIZE_IGNORED`
     #[serde(rename = "pTransitionBlenderGenerator", skip_serializing)]
-    PTransitionBlenderGenerator(Cow<'a, str>),
+    PTransitionBlenderGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"pTransitionEffect"`
     /// -   type: `void*`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE | ALIGN16 | SERIALIZE_IGNORED`
     #[serde(rename = "pTransitionEffect", skip_serializing)]
-    PTransitionEffect(Cow<'a, str>),
+    PTransitionEffect(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"currentMode"`
     /// -   type: `enum unknown`
@@ -90,14 +90,14 @@ pub enum BsCyclicBlendTransitionGenerator<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     BsCyclicBlendTransitionGenerator<'de>, "@name",
-    ("pBlenderGenerator" => PBlenderGenerator(Cow<'de, str>)),
+    ("pBlenderGenerator" => PBlenderGenerator(Primitive<Cow<'de, str>>)),
     ("EventToFreezeBlendValue" => EventToFreezeBlendValue(HkbEventProperty)),
     ("EventToCrossBlend" => EventToCrossBlend(HkbEventProperty)),
     ("fBlendParameter" => FBlendParameter(Primitive<f32>)),
     ("fTransitionDuration" => FTransitionDuration(Primitive<f32>)),
     ("eBlendCurve" => EBlendCurve(Primitive<BlendCurve>)),
-    ("pTransitionBlenderGenerator" => PTransitionBlenderGenerator(Cow<'de, str>)),
-    ("pTransitionEffect" => PTransitionEffect(Cow<'de, str>)),
+    ("pTransitionBlenderGenerator" => PTransitionBlenderGenerator(Primitive<Cow<'de, str>>)),
+    ("pTransitionEffect" => PTransitionEffect(Primitive<Cow<'de, str>>)),
     ("currentMode" => CurrentMode(Primitive<Unknown>)),
 }
 

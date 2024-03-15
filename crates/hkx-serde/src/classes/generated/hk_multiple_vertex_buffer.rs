@@ -42,7 +42,7 @@ pub enum HkMultipleVertexBuffer<'a> {
     /// - offset: 280
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "lockedBuffer")]
-    LockedBuffer(Cow<'a, str>),
+    LockedBuffer(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"elementInfos"`
     /// -   type: `hkArray&lt;struct hkMultipleVertexBufferElementInfo&gt;`
@@ -106,7 +106,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkMultipleVertexBuffer<'de>, "@name",
     ("vertexFormat" => VertexFormat(HkVertexFormat)),
     ("lockedElements" => LockedElements(HkArrayClass<HkMultipleVertexBufferLockedElement>)),
-    ("lockedBuffer" => LockedBuffer(Cow<'de, str>)),
+    ("lockedBuffer" => LockedBuffer(Primitive<Cow<'de, str>>)),
     ("elementInfos" => ElementInfos(HkArrayClass<HkMultipleVertexBufferElementInfo>)),
     ("vertexBufferInfos" => VertexBufferInfos(HkArrayClass<HkMultipleVertexBufferVertexBufferInfo>)),
     ("numVertices" => NumVertices(Primitive<i32>)),

@@ -42,7 +42,7 @@ pub enum HkbNodeInternalStateInfo<'a> {
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "internalState")]
-    InternalState(Cow<'a, str>),
+    InternalState(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"nodeId"`
     /// -   type: `hkInt16`
@@ -64,7 +64,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbNodeInternalStateInfo<'de>, "@name",
     ("syncInfo" => SyncInfo(HkbGeneratorSyncInfo)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
-    ("internalState" => InternalState(Cow<'de, str>)),
+    ("internalState" => InternalState(Primitive<Cow<'de, str>>)),
     ("nodeId" => NodeId(Primitive<i16>)),
     ("hasActivateBeenCalled" => HasActivateBeenCalled(Primitive<bool>)),
 }

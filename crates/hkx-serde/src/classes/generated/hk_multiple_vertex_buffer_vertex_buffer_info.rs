@@ -28,14 +28,14 @@ pub enum HkMultipleVertexBufferVertexBufferInfo<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertexBuffer")]
-    VertexBuffer(Cow<'a, str>),
+    VertexBuffer(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"lockedVertices"`
     /// -   type: `void*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "lockedVertices", skip_serializing)]
-    LockedVertices(Cow<'a, str>),
+    LockedVertices(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"isLocked"`
     /// -   type: `hkBool`
@@ -48,7 +48,7 @@ pub enum HkMultipleVertexBufferVertexBufferInfo<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkMultipleVertexBufferVertexBufferInfo<'de>, "@name",
-    ("vertexBuffer" => VertexBuffer(Cow<'de, str>)),
-    ("lockedVertices" => LockedVertices(Cow<'de, str>)),
+    ("vertexBuffer" => VertexBuffer(Primitive<Cow<'de, str>>)),
+    ("lockedVertices" => LockedVertices(Primitive<Cow<'de, str>>)),
     ("isLocked" => IsLocked(Primitive<bool>)),
 }

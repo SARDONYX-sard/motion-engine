@@ -42,14 +42,14 @@ pub enum HkSimpleLocalFrame<'a> {
     /// - offset: 92
     /// -  flags: `FLAGS_NONE | NOT_OWNED`
     #[serde(rename = "parentFrame")]
-    ParentFrame(Cow<'a, str>),
+    ParentFrame(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"group"`
     /// -   type: `struct hkLocalFrameGroup*`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "group")]
-    Group(Cow<'a, str>),
+    Group(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
@@ -64,7 +64,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkSimpleLocalFrame<'de>, "@name",
     ("transform" => Transform(Transform<f32>)),
     ("children" => Children(HkArrayRef<Cow<'de, str>>)),
-    ("parentFrame" => ParentFrame(Cow<'de, str>)),
-    ("group" => Group(Cow<'de, str>)),
+    ("parentFrame" => ParentFrame(Primitive<Cow<'de, str>>)),
+    ("group" => Group(Primitive<Cow<'de, str>>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
 }

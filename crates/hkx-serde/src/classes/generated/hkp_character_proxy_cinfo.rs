@@ -84,7 +84,7 @@ pub enum HkpCharacterProxyCinfo<'a> {
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "shapePhantom")]
-    ShapePhantom(Cow<'a, str>),
+    ShapePhantom(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"keepDistance"`
     /// -   type: `hkReal`
@@ -168,7 +168,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("up" => Up(Vector4<f32>)),
     ("extraUpStaticFriction" => ExtraUpStaticFriction(Primitive<f32>)),
     ("extraDownStaticFriction" => ExtraDownStaticFriction(Primitive<f32>)),
-    ("shapePhantom" => ShapePhantom(Cow<'de, str>)),
+    ("shapePhantom" => ShapePhantom(Primitive<Cow<'de, str>>)),
     ("keepDistance" => KeepDistance(Primitive<f32>)),
     ("contactAngleSensitivity" => ContactAngleSensitivity(Primitive<f32>)),
     ("userPlanes" => UserPlanes(Primitive<u32>)),

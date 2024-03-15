@@ -56,7 +56,7 @@ pub enum HkpRagdollMotorConstraintAtom<'a> {
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "motors")]
-    Motors(Cow<'a, str>),
+    Motors(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -66,5 +66,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("initializedOffset" => InitializedOffset(Primitive<i16>)),
     ("previousTargetAnglesOffset" => PreviousTargetAnglesOffset(Primitive<i16>)),
     ("target_bRca" => TargetBRca(Matrix3<f32>)),
-    ("motors" => Motors(Cow<'de, str>)),
+    ("motors" => Motors(Primitive<Cow<'de, str>>)),
 }

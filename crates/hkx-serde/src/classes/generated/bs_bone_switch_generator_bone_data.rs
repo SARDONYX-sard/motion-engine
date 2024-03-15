@@ -28,19 +28,19 @@ pub enum BsBoneSwitchGeneratorBoneData<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | ALIGN16`
     #[serde(rename = "pGenerator")]
-    PGenerator(Cow<'a, str>),
+    PGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"spBoneWeight"`
     /// -   type: `struct hkbBoneWeightArray*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "spBoneWeight")]
-    SpBoneWeight(Cow<'a, str>),
+    SpBoneWeight(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     BsBoneSwitchGeneratorBoneData<'de>, "@name",
-    ("pGenerator" => PGenerator(Cow<'de, str>)),
-    ("spBoneWeight" => SpBoneWeight(Cow<'de, str>)),
+    ("pGenerator" => PGenerator(Primitive<Cow<'de, str>>)),
+    ("spBoneWeight" => SpBoneWeight(Primitive<Cow<'de, str>>)),
 }

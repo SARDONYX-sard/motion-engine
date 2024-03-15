@@ -35,12 +35,12 @@ pub enum HkbKeyframeBonesModifier<'a> {
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "keyframedBonesList")]
-    KeyframedBonesList(Cow<'a, str>),
+    KeyframedBonesList(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbKeyframeBonesModifier<'de>, "@name",
     ("keyframeInfo" => KeyframeInfo(HkArrayClass<HkbKeyframeBonesModifierKeyframeInfo>)),
-    ("keyframedBonesList" => KeyframedBonesList(Cow<'de, str>)),
+    ("keyframedBonesList" => KeyframedBonesList(Primitive<Cow<'de, str>>)),
 }

@@ -28,7 +28,7 @@ pub enum HkpMeshShapeSubpart<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "vertexBase", skip_serializing)]
-    VertexBase(Cow<'a, str>),
+    VertexBase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexStriding"`
     /// -   type: `hkInt32`
@@ -49,7 +49,7 @@ pub enum HkpMeshShapeSubpart<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "indexBase", skip_serializing)]
-    IndexBase(Cow<'a, str>),
+    IndexBase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"stridingType"`
     /// -   type: `enum MeshShapeIndexStridingType`
@@ -91,7 +91,7 @@ pub enum HkpMeshShapeSubpart<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "materialIndexBase", skip_serializing)]
-    MaterialIndexBase(Cow<'a, str>),
+    MaterialIndexBase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"materialIndexStriding"`
     /// -   type: `hkInt32`
@@ -105,7 +105,7 @@ pub enum HkpMeshShapeSubpart<'a> {
     /// - offset: 40
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "materialBase", skip_serializing)]
-    MaterialBase(Cow<'a, str>),
+    MaterialBase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"materialStriding"`
     /// -   type: `hkInt32`
@@ -132,18 +132,18 @@ pub enum HkpMeshShapeSubpart<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpMeshShapeSubpart<'de>, "@name",
-    ("vertexBase" => VertexBase(Cow<'de, str>)),
+    ("vertexBase" => VertexBase(Primitive<Cow<'de, str>>)),
     ("vertexStriding" => VertexStriding(Primitive<i32>)),
     ("numVertices" => NumVertices(Primitive<i32>)),
-    ("indexBase" => IndexBase(Cow<'de, str>)),
+    ("indexBase" => IndexBase(Primitive<Cow<'de, str>>)),
     ("stridingType" => StridingType(Primitive<MeshShapeIndexStridingType>)),
     ("materialIndexStridingType" => MaterialIndexStridingType(Primitive<MeshShapeMaterialIndexStridingType>)),
     ("indexStriding" => IndexStriding(Primitive<i32>)),
     ("flipAlternateTriangles" => FlipAlternateTriangles(Primitive<i32>)),
     ("numTriangles" => NumTriangles(Primitive<i32>)),
-    ("materialIndexBase" => MaterialIndexBase(Cow<'de, str>)),
+    ("materialIndexBase" => MaterialIndexBase(Primitive<Cow<'de, str>>)),
     ("materialIndexStriding" => MaterialIndexStriding(Primitive<i32>)),
-    ("materialBase" => MaterialBase(Cow<'de, str>)),
+    ("materialBase" => MaterialBase(Primitive<Cow<'de, str>>)),
     ("materialStriding" => MaterialStriding(Primitive<i32>)),
     ("numMaterials" => NumMaterials(Primitive<i32>)),
     ("triangleOffset" => TriangleOffset(Primitive<i32>)),

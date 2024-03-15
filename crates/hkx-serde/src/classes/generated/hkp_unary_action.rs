@@ -28,11 +28,11 @@ pub enum HkpUnaryAction<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "entity")]
-    Entity(Cow<'a, str>),
+    Entity(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpUnaryAction<'de>, "@name",
-    ("entity" => Entity(Cow<'de, str>)),
+    ("entity" => Entity(Primitive<Cow<'de, str>>)),
 }

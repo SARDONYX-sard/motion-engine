@@ -42,7 +42,7 @@ pub enum HkpModifierConstraintAtom<'a> {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "child")]
-    Child(Cow<'a, str>),
+    Child(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"pad"`
     /// -   type: `hkUint32[2]`
@@ -57,6 +57,6 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpModifierConstraintAtom<'de>, "@name",
     ("modifierAtomSize" => ModifierAtomSize(Primitive<u16>)),
     ("childSize" => ChildSize(Primitive<u16>)),
-    ("child" => Child(Cow<'de, str>)),
+    ("child" => Child(Primitive<Cow<'de, str>>)),
     ("pad" => Pad([Primitive<u32>; 2])),
 }

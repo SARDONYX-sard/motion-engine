@@ -28,14 +28,14 @@ pub enum HkpDisplayBindingDataRigidBody<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rigidBody")]
-    RigidBody(Cow<'a, str>),
+    RigidBody(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"displayObjectPtr"`
     /// -   type: `struct hkReferencedObject*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "displayObjectPtr")]
-    DisplayObjectPtr(Cow<'a, str>),
+    DisplayObjectPtr(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"rigidBodyFromDisplayObjectTransform"`
     /// -   type: `hkMatrix4`
@@ -48,7 +48,7 @@ pub enum HkpDisplayBindingDataRigidBody<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpDisplayBindingDataRigidBody<'de>, "@name",
-    ("rigidBody" => RigidBody(Cow<'de, str>)),
-    ("displayObjectPtr" => DisplayObjectPtr(Cow<'de, str>)),
+    ("rigidBody" => RigidBody(Primitive<Cow<'de, str>>)),
+    ("displayObjectPtr" => DisplayObjectPtr(Primitive<Cow<'de, str>>)),
     ("rigidBodyFromDisplayObjectTransform" => RigidBodyFromDisplayObjectTransform(Matrix4<f32>)),
 }

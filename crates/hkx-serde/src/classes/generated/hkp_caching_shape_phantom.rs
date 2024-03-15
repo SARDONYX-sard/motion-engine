@@ -28,7 +28,7 @@ pub enum HkpCachingShapePhantom {
     /// - offset: 352
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "collisionDetails", skip_serializing)]
-    CollisionDetails(HkArrayRef<()>),
+    CollisionDetails(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"orderDirty"`
     /// -   type: `hkBool`
@@ -41,6 +41,6 @@ pub enum HkpCachingShapePhantom {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpCachingShapePhantom, "@name",
-    ("collisionDetails" => CollisionDetails(HkArrayRef<()>)),
+    ("collisionDetails" => CollisionDetails(HkArrayRef<Primitive<()>>)),
     ("orderDirty" => OrderDirty(Primitive<bool>)),
 }

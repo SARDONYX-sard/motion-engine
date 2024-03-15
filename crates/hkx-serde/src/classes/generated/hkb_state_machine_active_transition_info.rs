@@ -28,14 +28,14 @@ pub enum HkbStateMachineActiveTransitionInfo<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "transitionEffect", skip_serializing)]
-    TransitionEffect(Cow<'a, str>),
+    TransitionEffect(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"transitionEffectInternalStateInfo"`
     /// -   type: `struct hkbNodeInternalStateInfo*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transitionEffectInternalStateInfo")]
-    TransitionEffectInternalStateInfo(Cow<'a, str>),
+    TransitionEffectInternalStateInfo(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"transitionInfoReference"`
     /// -   type: `struct hkbStateMachineTransitionInfoReference`
@@ -76,8 +76,8 @@ pub enum HkbStateMachineActiveTransitionInfo<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbStateMachineActiveTransitionInfo<'de>, "@name",
-    ("transitionEffect" => TransitionEffect(Cow<'de, str>)),
-    ("transitionEffectInternalStateInfo" => TransitionEffectInternalStateInfo(Cow<'de, str>)),
+    ("transitionEffect" => TransitionEffect(Primitive<Cow<'de, str>>)),
+    ("transitionEffectInternalStateInfo" => TransitionEffectInternalStateInfo(Primitive<Cow<'de, str>>)),
     ("transitionInfoReference" => TransitionInfoReference(HkbStateMachineTransitionInfoReference)),
     ("transitionInfoReferenceForTE" => TransitionInfoReferenceForTe(HkbStateMachineTransitionInfoReference)),
     ("fromStateId" => FromStateId(Primitive<i32>)),

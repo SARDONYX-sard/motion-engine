@@ -28,42 +28,42 @@ pub enum HkbContext<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "character", skip_serializing)]
-    Character(Cow<'a, str>),
+    Character(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"behavior"`
     /// -   type: `void*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "behavior", skip_serializing)]
-    Behavior(Cow<'a, str>),
+    Behavior(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"nodeToIndexMap"`
     /// -   type: `void*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "nodeToIndexMap", skip_serializing)]
-    NodeToIndexMap(Cow<'a, str>),
+    NodeToIndexMap(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"eventQueue"`
     /// -   type: `void*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "eventQueue", skip_serializing)]
-    EventQueue(Cow<'a, str>),
+    EventQueue(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"sharedEventQueue"`
     /// -   type: `void*`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "sharedEventQueue", skip_serializing)]
-    SharedEventQueue(Cow<'a, str>),
+    SharedEventQueue(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"generatorOutputListener"`
     /// -   type: `struct hkbGeneratorOutputListener*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "generatorOutputListener")]
-    GeneratorOutputListener(Cow<'a, str>),
+    GeneratorOutputListener(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"eventTriggeredTransition"`
     /// -   type: `hkBool`
@@ -77,34 +77,34 @@ pub enum HkbContext<'a> {
     /// - offset: 28
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "world", skip_serializing)]
-    World(Cow<'a, str>),
+    World(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"attachmentManager"`
     /// -   type: `void*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "attachmentManager", skip_serializing)]
-    AttachmentManager(Cow<'a, str>),
+    AttachmentManager(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"animationCache"`
     /// -   type: `void*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "animationCache", skip_serializing)]
-    AnimationCache(Cow<'a, str>),
+    AnimationCache(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbContext<'de>, "@name",
-    ("character" => Character(Cow<'de, str>)),
-    ("behavior" => Behavior(Cow<'de, str>)),
-    ("nodeToIndexMap" => NodeToIndexMap(Cow<'de, str>)),
-    ("eventQueue" => EventQueue(Cow<'de, str>)),
-    ("sharedEventQueue" => SharedEventQueue(Cow<'de, str>)),
-    ("generatorOutputListener" => GeneratorOutputListener(Cow<'de, str>)),
+    ("character" => Character(Primitive<Cow<'de, str>>)),
+    ("behavior" => Behavior(Primitive<Cow<'de, str>>)),
+    ("nodeToIndexMap" => NodeToIndexMap(Primitive<Cow<'de, str>>)),
+    ("eventQueue" => EventQueue(Primitive<Cow<'de, str>>)),
+    ("sharedEventQueue" => SharedEventQueue(Primitive<Cow<'de, str>>)),
+    ("generatorOutputListener" => GeneratorOutputListener(Primitive<Cow<'de, str>>)),
     ("eventTriggeredTransition" => EventTriggeredTransition(Primitive<bool>)),
-    ("world" => World(Cow<'de, str>)),
-    ("attachmentManager" => AttachmentManager(Cow<'de, str>)),
-    ("animationCache" => AnimationCache(Cow<'de, str>)),
+    ("world" => World(Primitive<Cow<'de, str>>)),
+    ("attachmentManager" => AttachmentManager(Primitive<Cow<'de, str>>)),
+    ("animationCache" => AnimationCache(Primitive<Cow<'de, str>>)),
 }

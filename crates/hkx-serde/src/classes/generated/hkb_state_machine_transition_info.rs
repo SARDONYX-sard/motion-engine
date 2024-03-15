@@ -42,14 +42,14 @@ pub enum HkbStateMachineTransitionInfo<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transition")]
-    Transition(Cow<'a, str>),
+    Transition(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"condition"`
     /// -   type: `struct hkbCondition*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "condition")]
-    Condition(Cow<'a, str>),
+    Condition(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"eventId"`
     /// -   type: `hkInt32`
@@ -99,8 +99,8 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbStateMachineTransitionInfo<'de>, "@name",
     ("triggerInterval" => TriggerInterval(HkbStateMachineTimeInterval)),
     ("initiateInterval" => InitiateInterval(HkbStateMachineTimeInterval)),
-    ("transition" => Transition(Cow<'de, str>)),
-    ("condition" => Condition(Cow<'de, str>)),
+    ("transition" => Transition(Primitive<Cow<'de, str>>)),
+    ("condition" => Condition(Primitive<Cow<'de, str>>)),
     ("eventId" => EventId(Primitive<i32>)),
     ("toStateId" => ToStateId(Primitive<i32>)),
     ("fromNestedStateId" => FromNestedStateId(Primitive<i32>)),

@@ -28,11 +28,11 @@ pub enum HkpSingleShapeContainer<'a> {
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "childShape")]
-    ChildShape(Cow<'a, str>),
+    ChildShape(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpSingleShapeContainer<'de>, "@name",
-    ("childShape" => ChildShape(Cow<'de, str>)),
+    ("childShape" => ChildShape(Primitive<Cow<'de, str>>)),
 }

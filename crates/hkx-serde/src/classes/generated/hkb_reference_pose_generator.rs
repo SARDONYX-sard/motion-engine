@@ -28,11 +28,11 @@ pub enum HkbReferencePoseGenerator<'a> {
     /// - offset: 40
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "skeleton", skip_serializing)]
-    Skeleton(Cow<'a, str>),
+    Skeleton(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbReferencePoseGenerator<'de>, "@name",
-    ("skeleton" => Skeleton(Cow<'de, str>)),
+    ("skeleton" => Skeleton(Primitive<Cow<'de, str>>)),
 }

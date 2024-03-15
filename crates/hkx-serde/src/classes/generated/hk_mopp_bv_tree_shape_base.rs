@@ -28,14 +28,14 @@ pub enum HkMoppBvTreeShapeBase<'a> {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "code")]
-    Code(Cow<'a, str>),
+    Code(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"moppData"`
     /// -   type: `void*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "moppData", skip_serializing)]
-    MoppData(Cow<'a, str>),
+    MoppData(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"moppDataSize"`
     /// -   type: `hkUint32`
@@ -55,8 +55,8 @@ pub enum HkMoppBvTreeShapeBase<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkMoppBvTreeShapeBase<'de>, "@name",
-    ("code" => Code(Cow<'de, str>)),
-    ("moppData" => MoppData(Cow<'de, str>)),
+    ("code" => Code(Primitive<Cow<'de, str>>)),
+    ("moppData" => MoppData(Primitive<Cow<'de, str>>)),
     ("moppDataSize" => MoppDataSize(Primitive<u32>)),
     ("codeInfoCopy" => CodeInfoCopy(Vector4<f32>)),
 }

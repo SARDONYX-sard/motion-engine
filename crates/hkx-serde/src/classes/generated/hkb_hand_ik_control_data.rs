@@ -49,7 +49,7 @@ pub enum HkbHandIkControlData<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "targetHandle")]
-    TargetHandle(Cow<'a, str>),
+    TargetHandle(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"transformOnFraction"`
     /// -   type: `hkReal`
@@ -114,7 +114,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("targetPosition" => TargetPosition(Vector4<f32>)),
     ("targetRotation" => TargetRotation(Quaternion<f32>)),
     ("targetNormal" => TargetNormal(Vector4<f32>)),
-    ("targetHandle" => TargetHandle(Cow<'de, str>)),
+    ("targetHandle" => TargetHandle(Primitive<Cow<'de, str>>)),
     ("transformOnFraction" => TransformOnFraction(Primitive<f32>)),
     ("normalOnFraction" => NormalOnFraction(Primitive<f32>)),
     ("fadeInDuration" => FadeInDuration(Primitive<f32>)),

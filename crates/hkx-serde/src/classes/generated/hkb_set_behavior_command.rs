@@ -35,14 +35,14 @@ pub enum HkbSetBehaviorCommand<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "behavior")]
-    Behavior(Cow<'a, str>),
+    Behavior(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"rootGenerator"`
     /// -   type: `struct hkbGenerator*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rootGenerator")]
-    RootGenerator(Cow<'a, str>),
+    RootGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"referencedBehaviors"`
     /// -   type: `hkArray&lt;hkbBehaviorGraph*&gt;`
@@ -77,8 +77,8 @@ pub enum HkbSetBehaviorCommand<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkbSetBehaviorCommand<'de>, "@name",
     ("characterId" => CharacterId(Primitive<u64>)),
-    ("behavior" => Behavior(Cow<'de, str>)),
-    ("rootGenerator" => RootGenerator(Cow<'de, str>)),
+    ("behavior" => Behavior(Primitive<Cow<'de, str>>)),
+    ("rootGenerator" => RootGenerator(Primitive<Cow<'de, str>>)),
     ("referencedBehaviors" => ReferencedBehaviors(HkArrayRef<Cow<'de, str>>)),
     ("startStateIndex" => StartStateIndex(Primitive<i32>)),
     ("randomizeSimulation" => RandomizeSimulation(Primitive<bool>)),

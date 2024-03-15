@@ -98,21 +98,21 @@ pub enum HkbClientCharacterState<'a> {
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "behaviorData")]
-    BehaviorData(Cow<'a, str>),
+    BehaviorData(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"behaviorInternalState"`
     /// -   type: `struct hkbBehaviorGraphInternalState*`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "behaviorInternalState")]
-    BehaviorInternalState(Cow<'a, str>),
+    BehaviorInternalState(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"nodeIdToInternalStateMap"`
     /// -   type: `void*`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "nodeIdToInternalStateMap", skip_serializing)]
-    NodeIdToInternalStateMap(Cow<'a, str>),
+    NodeIdToInternalStateMap(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"visible"`
     /// -   type: `hkBool`
@@ -133,7 +133,7 @@ pub enum HkbClientCharacterState<'a> {
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "skeleton")]
-    Skeleton(Cow<'a, str>),
+    Skeleton(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"worldFromModel"`
     /// -   type: `hkQsTransform`
@@ -170,12 +170,12 @@ impl_deserialize_for_internally_tagged_enum! {
     ("instanceName" => InstanceName(Primitive<Cow<'de, str>>)),
     ("templateName" => TemplateName(Primitive<Cow<'de, str>>)),
     ("fullPathToProject" => FullPathToProject(Primitive<Cow<'de, str>>)),
-    ("behaviorData" => BehaviorData(Cow<'de, str>)),
-    ("behaviorInternalState" => BehaviorInternalState(Cow<'de, str>)),
-    ("nodeIdToInternalStateMap" => NodeIdToInternalStateMap(Cow<'de, str>)),
+    ("behaviorData" => BehaviorData(Primitive<Cow<'de, str>>)),
+    ("behaviorInternalState" => BehaviorInternalState(Primitive<Cow<'de, str>>)),
+    ("nodeIdToInternalStateMap" => NodeIdToInternalStateMap(Primitive<Cow<'de, str>>)),
     ("visible" => Visible(Primitive<bool>)),
     ("elapsedSimulationTime" => ElapsedSimulationTime(Primitive<f32>)),
-    ("skeleton" => Skeleton(Cow<'de, str>)),
+    ("skeleton" => Skeleton(Primitive<Cow<'de, str>>)),
     ("worldFromModel" => WorldFromModel(QsTransform<f32>)),
     ("poseModelSpace" => PoseModelSpace(HkArrayVector<QsTransform<f32>>)),
     ("rigidAttachmentTransforms" => RigidAttachmentTransforms(HkArrayVector<QsTransform<f32>>)),

@@ -35,7 +35,7 @@ pub enum HkbBehaviorGraphInternalStateInfo<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "internalState")]
-    InternalState(Cow<'a, str>),
+    InternalState(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"auxiliaryNodeInfo"`
     /// -   type: `hkArray&lt;hkbAuxiliaryNodeInfo*&gt;`
@@ -63,7 +63,7 @@ pub enum HkbBehaviorGraphInternalStateInfo<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkbBehaviorGraphInternalStateInfo<'de>, "@name",
     ("characterId" => CharacterId(Primitive<u64>)),
-    ("internalState" => InternalState(Cow<'de, str>)),
+    ("internalState" => InternalState(Primitive<Cow<'de, str>>)),
     ("auxiliaryNodeInfo" => AuxiliaryNodeInfo(HkArrayRef<Cow<'de, str>>)),
     ("activeEventIds" => ActiveEventIds(HkArrayRef<Primitive<i16>>)),
     ("activeVariableIds" => ActiveVariableIds(HkArrayRef<Primitive<i16>>)),

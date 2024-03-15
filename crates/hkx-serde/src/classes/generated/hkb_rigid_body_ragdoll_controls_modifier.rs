@@ -35,12 +35,12 @@ pub enum HkbRigidBodyRagdollControlsModifier<'a> {
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "bones")]
-    Bones(Cow<'a, str>),
+    Bones(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbRigidBodyRagdollControlsModifier<'de>, "@name",
     ("controlData" => ControlData(HkbRigidBodyRagdollControlData)),
-    ("bones" => Bones(Cow<'de, str>)),
+    ("bones" => Bones(Primitive<Cow<'de, str>>)),
 }

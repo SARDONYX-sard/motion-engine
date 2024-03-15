@@ -28,19 +28,19 @@ pub enum HkpBinaryAction<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "entityA")]
-    EntityA(Cow<'a, str>),
+    EntityA(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"entityB"`
     /// -   type: `struct hkpEntity*`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "entityB")]
-    EntityB(Cow<'a, str>),
+    EntityB(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpBinaryAction<'de>, "@name",
-    ("entityA" => EntityA(Cow<'de, str>)),
-    ("entityB" => EntityB(Cow<'de, str>)),
+    ("entityA" => EntityA(Primitive<Cow<'de, str>>)),
+    ("entityB" => EntityB(Primitive<Cow<'de, str>>)),
 }

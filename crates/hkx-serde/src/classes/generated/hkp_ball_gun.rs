@@ -70,7 +70,7 @@ pub enum HkpBallGun<'a> {
     /// - offset: 80
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "addedBodies", skip_serializing)]
-    AddedBodies(Cow<'a, str>),
+    AddedBodies(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -82,5 +82,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("damageMultiplier" => DamageMultiplier(Primitive<f32>)),
     ("maxBulletsInWorld" => MaxBulletsInWorld(Primitive<i32>)),
     ("bulletOffsetFromCenter" => BulletOffsetFromCenter(Vector4<f32>)),
-    ("addedBodies" => AddedBodies(Cow<'de, str>)),
+    ("addedBodies" => AddedBodies(Primitive<Cow<'de, str>>)),
 }

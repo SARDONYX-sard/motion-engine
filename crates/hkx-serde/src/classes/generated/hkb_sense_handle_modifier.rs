@@ -49,14 +49,14 @@ pub enum HkbSenseHandleModifier<'a> {
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "handleOut")]
-    HandleOut(Cow<'a, str>),
+    HandleOut(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"handleIn"`
     /// -   type: `struct hkbHandle*`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "handleIn")]
-    HandleIn(Cow<'a, str>),
+    HandleIn(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"localFrameName"`
     /// -   type: `hkStringPtr`
@@ -163,8 +163,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("handle" => Handle(HkbHandle)),
     ("sensorLocalOffset" => SensorLocalOffset(Vector4<f32>)),
     ("ranges" => Ranges(HkArrayClass<HkbSenseHandleModifierRange>)),
-    ("handleOut" => HandleOut(Cow<'de, str>)),
-    ("handleIn" => HandleIn(Cow<'de, str>)),
+    ("handleOut" => HandleOut(Primitive<Cow<'de, str>>)),
+    ("handleIn" => HandleIn(Primitive<Cow<'de, str>>)),
     ("localFrameName" => LocalFrameName(Primitive<Cow<'de, str>>)),
     ("sensorLocalFrameName" => SensorLocalFrameName(Primitive<Cow<'de, str>>)),
     ("minDistance" => MinDistance(Primitive<f32>)),

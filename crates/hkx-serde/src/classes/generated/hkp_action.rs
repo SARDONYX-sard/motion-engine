@@ -28,14 +28,14 @@ pub enum HkpAction<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "world", skip_serializing)]
-    World(Cow<'a, str>),
+    World(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"island"`
     /// -   type: `void*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "island", skip_serializing)]
-    Island(Cow<'a, str>),
+    Island(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -55,8 +55,8 @@ pub enum HkpAction<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpAction<'de>, "@name",
-    ("world" => World(Cow<'de, str>)),
-    ("island" => Island(Cow<'de, str>)),
+    ("world" => World(Primitive<Cow<'de, str>>)),
+    ("island" => Island(Primitive<Cow<'de, str>>)),
     ("userData" => UserData(Primitive<usize>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
 }

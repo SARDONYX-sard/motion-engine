@@ -28,7 +28,7 @@ pub enum HkpMalleableConstraintData<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "constraintData")]
-    ConstraintData(Cow<'a, str>),
+    ConstraintData(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"atoms"`
     /// -   type: `struct hkpBridgeAtoms`
@@ -48,7 +48,7 @@ pub enum HkpMalleableConstraintData<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpMalleableConstraintData<'de>, "@name",
-    ("constraintData" => ConstraintData(Cow<'de, str>)),
+    ("constraintData" => ConstraintData(Primitive<Cow<'de, str>>)),
     ("atoms" => Atoms(HkpBridgeAtoms)),
     ("strength" => Strength(Primitive<f32>)),
 }

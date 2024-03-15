@@ -35,7 +35,7 @@ pub enum HkpTriggerVolumeEventInfo<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "body")]
-    Body(Cow<'a, str>),
+    Body(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"operation"`
     /// -   type: `enum Operation`
@@ -49,6 +49,6 @@ pub enum HkpTriggerVolumeEventInfo<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkpTriggerVolumeEventInfo<'de>, "@name",
     ("sortValue" => SortValue(Primitive<u64>)),
-    ("body" => Body(Cow<'de, str>)),
+    ("body" => Body(Primitive<Cow<'de, str>>)),
     ("operation" => Operation(Primitive<Operation>)),
 }

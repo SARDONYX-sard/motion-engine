@@ -28,7 +28,7 @@ pub enum HkpPairCollisionFilterMapPairFilterKeyOverrideType<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "elem", skip_serializing)]
-    Elem(Cow<'a, str>),
+    Elem(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"numElems"`
     /// -   type: `hkInt32`
@@ -48,7 +48,7 @@ pub enum HkpPairCollisionFilterMapPairFilterKeyOverrideType<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpPairCollisionFilterMapPairFilterKeyOverrideType<'de>, "@name",
-    ("elem" => Elem(Cow<'de, str>)),
+    ("elem" => Elem(Primitive<Cow<'de, str>>)),
     ("numElems" => NumElems(Primitive<i32>)),
     ("hashMod" => HashMod(Primitive<i32>)),
 }

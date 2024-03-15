@@ -28,7 +28,7 @@ pub enum HkpBvShape<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "boundingVolumeShape")]
-    BoundingVolumeShape(Cow<'a, str>),
+    BoundingVolumeShape(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"childShape"`
     /// -   type: `struct hkpSingleShapeContainer`
@@ -41,6 +41,6 @@ pub enum HkpBvShape<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpBvShape<'de>, "@name",
-    ("boundingVolumeShape" => BoundingVolumeShape(Cow<'de, str>)),
+    ("boundingVolumeShape" => BoundingVolumeShape(Primitive<Cow<'de, str>>)),
     ("childShape" => ChildShape(HkpSingleShapeContainer)),
 }

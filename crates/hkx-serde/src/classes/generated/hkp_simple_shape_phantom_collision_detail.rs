@@ -28,11 +28,11 @@ pub enum HkpSimpleShapePhantomCollisionDetail<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "collidable")]
-    Collidable(Cow<'a, str>),
+    Collidable(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpSimpleShapePhantomCollisionDetail<'de>, "@name",
-    ("collidable" => Collidable(Cow<'de, str>)),
+    ("collidable" => Collidable(Primitive<Cow<'de, str>>)),
 }

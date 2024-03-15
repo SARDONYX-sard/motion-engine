@@ -28,14 +28,14 @@ pub enum BsOffsetAnimationGenerator<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE | ALIGN16`
     #[serde(rename = "pDefaultGenerator")]
-    PDefaultGenerator(Cow<'a, str>),
+    PDefaultGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"pOffsetClipGenerator"`
     /// -   type: `struct hkbGenerator*`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE | ALIGN16`
     #[serde(rename = "pOffsetClipGenerator")]
-    POffsetClipGenerator(Cow<'a, str>),
+    POffsetClipGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"fOffsetVariable"`
     /// -   type: `hkReal`
@@ -63,14 +63,14 @@ pub enum BsOffsetAnimationGenerator<'a> {
     /// - offset: 80
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "BoneOffsetA", skip_serializing)]
-    BoneOffsetA(HkArrayRef<()>),
+    BoneOffsetA(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"BoneIndexA"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "BoneIndexA", skip_serializing)]
-    BoneIndexA(HkArrayRef<()>),
+    BoneIndexA(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"fCurrentPercentage"`
     /// -   type: `hkReal`
@@ -104,13 +104,13 @@ pub enum BsOffsetAnimationGenerator<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     BsOffsetAnimationGenerator<'de>, "@name",
-    ("pDefaultGenerator" => PDefaultGenerator(Cow<'de, str>)),
-    ("pOffsetClipGenerator" => POffsetClipGenerator(Cow<'de, str>)),
+    ("pDefaultGenerator" => PDefaultGenerator(Primitive<Cow<'de, str>>)),
+    ("pOffsetClipGenerator" => POffsetClipGenerator(Primitive<Cow<'de, str>>)),
     ("fOffsetVariable" => FOffsetVariable(Primitive<f32>)),
     ("fOffsetRangeStart" => FOffsetRangeStart(Primitive<f32>)),
     ("fOffsetRangeEnd" => FOffsetRangeEnd(Primitive<f32>)),
-    ("BoneOffsetA" => BoneOffsetA(HkArrayRef<()>)),
-    ("BoneIndexA" => BoneIndexA(HkArrayRef<()>)),
+    ("BoneOffsetA" => BoneOffsetA(HkArrayRef<Primitive<()>>)),
+    ("BoneIndexA" => BoneIndexA(HkArrayRef<Primitive<()>>)),
     ("fCurrentPercentage" => FCurrentPercentage(Primitive<f32>)),
     ("iCurrentFrame" => ICurrentFrame(Primitive<u32>)),
     ("bZeroOffset" => BZeroOffset(Primitive<bool>)),

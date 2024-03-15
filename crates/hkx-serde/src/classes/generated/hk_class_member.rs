@@ -35,14 +35,14 @@ pub enum HkClassMember<'a> {
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "class")]
-    Class(Cow<'a, str>),
+    Class(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"enum"`
     /// -   type: `struct hkClassEnum*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "enum")]
-    Enum(Cow<'a, str>),
+    Enum(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum Type`
@@ -84,21 +84,21 @@ pub enum HkClassMember<'a> {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "attributes", skip_serializing)]
-    Attributes(Cow<'a, str>),
+    Attributes(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkClassMember<'de>, "@name",
     ("name" => Name(Primitive<Cow<'de, str>>)),
-    ("class" => Class(Cow<'de, str>)),
-    ("enum" => Enum(Cow<'de, str>)),
+    ("class" => Class(Primitive<Cow<'de, str>>)),
+    ("enum" => Enum(Primitive<Cow<'de, str>>)),
     ("type" => Type(Primitive<Type>)),
     ("subtype" => Subtype(Primitive<Type>)),
     ("cArraySize" => CArraySize(Primitive<i16>)),
     ("flags" => Flags(Primitive<FlagValues>)),
     ("offset" => Offset(Primitive<u16>)),
-    ("attributes" => Attributes(Cow<'de, str>)),
+    ("attributes" => Attributes(Primitive<Cow<'de, str>>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

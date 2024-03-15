@@ -28,7 +28,7 @@ pub enum HkxMaterialTextureStage<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "texture")]
-    Texture(Cow<'a, str>),
+    Texture(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"usageHint"`
     /// -   type: `enum TextureType`
@@ -48,7 +48,7 @@ pub enum HkxMaterialTextureStage<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkxMaterialTextureStage<'de>, "@name",
-    ("texture" => Texture(Cow<'de, str>)),
+    ("texture" => Texture(Primitive<Cow<'de, str>>)),
     ("usageHint" => UsageHint(Primitive<TextureType>)),
     ("tcoordChannel" => TcoordChannel(Primitive<i32>)),
 }

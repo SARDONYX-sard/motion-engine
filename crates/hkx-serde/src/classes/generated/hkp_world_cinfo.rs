@@ -105,14 +105,14 @@ pub enum HkpWorldCinfo<'a> {
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "collisionFilter")]
-    CollisionFilter(Cow<'a, str>),
+    CollisionFilter(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"convexListFilter"`
     /// -   type: `struct hkpConvexListFilter*`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "convexListFilter")]
-    ConvexListFilter(Cow<'a, str>),
+    ConvexListFilter(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"expectedMaxLinearVelocity"`
     /// -   type: `hkReal`
@@ -140,7 +140,7 @@ pub enum HkpWorldCinfo<'a> {
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "memoryWatchDog")]
-    MemoryWatchDog(Cow<'a, str>),
+    MemoryWatchDog(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseNumMarkers"`
     /// -   type: `hkInt32`
@@ -437,12 +437,12 @@ impl_deserialize_for_internally_tagged_enum! {
     ("treeUpdateType" => TreeUpdateType(Primitive<TreeUpdateType>)),
     ("autoUpdateKdTree" => AutoUpdateKdTree(Primitive<bool>)),
     ("collisionTolerance" => CollisionTolerance(Primitive<f32>)),
-    ("collisionFilter" => CollisionFilter(Cow<'de, str>)),
-    ("convexListFilter" => ConvexListFilter(Cow<'de, str>)),
+    ("collisionFilter" => CollisionFilter(Primitive<Cow<'de, str>>)),
+    ("convexListFilter" => ConvexListFilter(Primitive<Cow<'de, str>>)),
     ("expectedMaxLinearVelocity" => ExpectedMaxLinearVelocity(Primitive<f32>)),
     ("sizeOfToiEventQueue" => SizeOfToiEventQueue(Primitive<i32>)),
     ("expectedMinPsiDeltaTime" => ExpectedMinPsiDeltaTime(Primitive<f32>)),
-    ("memoryWatchDog" => MemoryWatchDog(Cow<'de, str>)),
+    ("memoryWatchDog" => MemoryWatchDog(Primitive<Cow<'de, str>>)),
     ("broadPhaseNumMarkers" => BroadPhaseNumMarkers(Primitive<i32>)),
     ("contactPointGeneration" => ContactPointGeneration(Primitive<ContactPointGeneration>)),
     ("allowToSkipConfirmedCallbacks" => AllowToSkipConfirmedCallbacks(Primitive<bool>)),

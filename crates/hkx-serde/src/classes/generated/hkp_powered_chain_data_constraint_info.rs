@@ -56,7 +56,7 @@ pub enum HkpPoweredChainDataConstraintInfo<'a> {
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "motors")]
-    Motors(Cow<'a, str>),
+    Motors(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"switchBodies"`
     /// -   type: `hkBool`
@@ -73,6 +73,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("pivotInB" => PivotInB(Vector4<f32>)),
     ("aTc" => ATc(Quaternion<f32>)),
     ("bTc" => BTc(Quaternion<f32>)),
-    ("motors" => Motors(Cow<'de, str>)),
+    ("motors" => Motors(Primitive<Cow<'de, str>>)),
     ("switchBodies" => SwitchBodies(Primitive<bool>)),
 }

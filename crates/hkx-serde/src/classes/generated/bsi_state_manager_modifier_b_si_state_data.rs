@@ -28,7 +28,7 @@ pub enum BsiStateManagerModifierBSiStateData<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "pStateMachine")]
-    PStateMachine(Cow<'a, str>),
+    PStateMachine(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"StateID"`
     /// -   type: `hkInt32`
@@ -48,7 +48,7 @@ pub enum BsiStateManagerModifierBSiStateData<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     BsiStateManagerModifierBSiStateData<'de>, "@name",
-    ("pStateMachine" => PStateMachine(Cow<'de, str>)),
+    ("pStateMachine" => PStateMachine(Primitive<Cow<'de, str>>)),
     ("StateID" => StateId(Primitive<i32>)),
     ("iStateToSetAs" => IStateToSetAs(Primitive<i32>)),
 }

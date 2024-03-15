@@ -35,12 +35,12 @@ pub enum HkpPairCollisionFilter<'a> {
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "childFilter")]
-    ChildFilter(Cow<'a, str>),
+    ChildFilter(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpPairCollisionFilter<'de>, "@name",
     ("disabledPairs" => DisabledPairs(HkpPairCollisionFilterMapPairFilterKeyOverrideType)),
-    ("childFilter" => ChildFilter(Cow<'de, str>)),
+    ("childFilter" => ChildFilter(Primitive<Cow<'de, str>>)),
 }

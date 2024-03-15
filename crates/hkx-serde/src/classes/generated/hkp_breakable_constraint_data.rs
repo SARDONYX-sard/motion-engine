@@ -35,7 +35,7 @@ pub enum HkpBreakableConstraintData<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "constraintData")]
-    ConstraintData(Cow<'a, str>),
+    ConstraintData(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"childRuntimeSize"`
     /// -   type: `hkUint16`
@@ -77,7 +77,7 @@ pub enum HkpBreakableConstraintData<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkpBreakableConstraintData<'de>, "@name",
     ("atoms" => Atoms(HkpBridgeAtoms)),
-    ("constraintData" => ConstraintData(Cow<'de, str>)),
+    ("constraintData" => ConstraintData(Primitive<Cow<'de, str>>)),
     ("childRuntimeSize" => ChildRuntimeSize(Primitive<u16>)),
     ("childNumSolverResults" => ChildNumSolverResults(Primitive<u16>)),
     ("solverResultLimit" => SolverResultLimit(Primitive<f32>)),

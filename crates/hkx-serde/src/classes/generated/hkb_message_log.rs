@@ -28,7 +28,7 @@ pub enum HkbMessageLog<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "messages", skip_serializing)]
-    Messages(Cow<'a, str>),
+    Messages(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"maxMessages"`
     /// -   type: `hkInt32`
@@ -41,6 +41,6 @@ pub enum HkbMessageLog<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbMessageLog<'de>, "@name",
-    ("messages" => Messages(Cow<'de, str>)),
+    ("messages" => Messages(Primitive<Cow<'de, str>>)),
     ("maxMessages" => MaxMessages(Primitive<i32>)),
 }

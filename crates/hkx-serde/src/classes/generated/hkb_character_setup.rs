@@ -35,60 +35,60 @@ pub enum HkbCharacterSetup<'a> {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "animationSkeleton")]
-    AnimationSkeleton(Cow<'a, str>),
+    AnimationSkeleton(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"ragdollToAnimationSkeletonMapper"`
     /// -   type: `struct hkaSkeletonMapper*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "ragdollToAnimationSkeletonMapper")]
-    RagdollToAnimationSkeletonMapper(Cow<'a, str>),
+    RagdollToAnimationSkeletonMapper(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"animationToRagdollSkeletonMapper"`
     /// -   type: `struct hkaSkeletonMapper*`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "animationToRagdollSkeletonMapper")]
-    AnimationToRagdollSkeletonMapper(Cow<'a, str>),
+    AnimationToRagdollSkeletonMapper(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"animationBindingSet"`
     /// -   type: `void*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "animationBindingSet", skip_serializing)]
-    AnimationBindingSet(Cow<'a, str>),
+    AnimationBindingSet(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `struct hkbCharacterData*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "data")]
-    Data(Cow<'a, str>),
+    Data(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"mirroredSkeleton"`
     /// -   type: `void*`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "mirroredSkeleton", skip_serializing)]
-    MirroredSkeleton(Cow<'a, str>),
+    MirroredSkeleton(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"characterPropertyIdMap"`
     /// -   type: `void*`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "characterPropertyIdMap", skip_serializing)]
-    CharacterPropertyIdMap(Cow<'a, str>),
+    CharacterPropertyIdMap(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbCharacterSetup<'de>, "@name",
     ("retargetingSkeletonMappers" => RetargetingSkeletonMappers(HkArrayRef<Cow<'de, str>>)),
-    ("animationSkeleton" => AnimationSkeleton(Cow<'de, str>)),
-    ("ragdollToAnimationSkeletonMapper" => RagdollToAnimationSkeletonMapper(Cow<'de, str>)),
-    ("animationToRagdollSkeletonMapper" => AnimationToRagdollSkeletonMapper(Cow<'de, str>)),
-    ("animationBindingSet" => AnimationBindingSet(Cow<'de, str>)),
-    ("data" => Data(Cow<'de, str>)),
-    ("mirroredSkeleton" => MirroredSkeleton(Cow<'de, str>)),
-    ("characterPropertyIdMap" => CharacterPropertyIdMap(Cow<'de, str>)),
+    ("animationSkeleton" => AnimationSkeleton(Primitive<Cow<'de, str>>)),
+    ("ragdollToAnimationSkeletonMapper" => RagdollToAnimationSkeletonMapper(Primitive<Cow<'de, str>>)),
+    ("animationToRagdollSkeletonMapper" => AnimationToRagdollSkeletonMapper(Primitive<Cow<'de, str>>)),
+    ("animationBindingSet" => AnimationBindingSet(Primitive<Cow<'de, str>>)),
+    ("data" => Data(Primitive<Cow<'de, str>>)),
+    ("mirroredSkeleton" => MirroredSkeleton(Primitive<Cow<'de, str>>)),
+    ("characterPropertyIdMap" => CharacterPropertyIdMap(Primitive<Cow<'de, str>>)),
 }

@@ -56,7 +56,7 @@ pub enum HkaAnimation<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "extractedMotion")]
-    ExtractedMotion(Cow<'a, str>),
+    ExtractedMotion(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"annotationTracks"`
     /// -   type: `hkArray&lt;struct hkaAnnotationTrack&gt;`
@@ -73,7 +73,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("duration" => Duration(Primitive<f32>)),
     ("numberOfTransformTracks" => NumberOfTransformTracks(Primitive<i32>)),
     ("numberOfFloatTracks" => NumberOfFloatTracks(Primitive<i32>)),
-    ("extractedMotion" => ExtractedMotion(Cow<'de, str>)),
+    ("extractedMotion" => ExtractedMotion(Primitive<Cow<'de, str>>)),
     ("annotationTracks" => AnnotationTracks(HkArrayClass<HkaAnnotationTrack>)),
 }
 

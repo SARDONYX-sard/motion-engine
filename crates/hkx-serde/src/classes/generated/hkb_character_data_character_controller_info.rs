@@ -49,7 +49,7 @@ pub enum HkbCharacterDataCharacterControllerInfo<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "characterControllerCinfo")]
-    CharacterControllerCinfo(Cow<'a, str>),
+    CharacterControllerCinfo(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -58,5 +58,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("capsuleHeight" => CapsuleHeight(Primitive<f32>)),
     ("capsuleRadius" => CapsuleRadius(Primitive<f32>)),
     ("collisionFilterInfo" => CollisionFilterInfo(Primitive<u32>)),
-    ("characterControllerCinfo" => CharacterControllerCinfo(Cow<'de, str>)),
+    ("characterControllerCinfo" => CharacterControllerCinfo(Primitive<Cow<'de, str>>)),
 }

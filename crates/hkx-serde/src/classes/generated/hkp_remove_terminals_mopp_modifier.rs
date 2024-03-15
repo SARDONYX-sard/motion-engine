@@ -35,12 +35,12 @@ pub enum HkpRemoveTerminalsMoppModifier<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "tempShapesToRemove", skip_serializing)]
-    TempShapesToRemove(Cow<'a, str>),
+    TempShapesToRemove(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpRemoveTerminalsMoppModifier<'de>, "@name",
     ("removeInfo" => RemoveInfo(HkArrayRef<Primitive<u32>>)),
-    ("tempShapesToRemove" => TempShapesToRemove(Cow<'de, str>)),
+    ("tempShapesToRemove" => TempShapesToRemove(Primitive<Cow<'de, str>>)),
 }

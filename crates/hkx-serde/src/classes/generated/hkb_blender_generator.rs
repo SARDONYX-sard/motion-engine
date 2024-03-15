@@ -84,14 +84,14 @@ pub enum HkbBlenderGenerator<'a> {
     /// - offset: 76
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "childrenInternalStates", skip_serializing)]
-    ChildrenInternalStates(HkArrayRef<()>),
+    ChildrenInternalStates(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"sortedChildren"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "sortedChildren", skip_serializing)]
-    SortedChildren(HkArrayRef<()>),
+    SortedChildren(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"endIntervalWeight"`
     /// -   type: `hkReal`
@@ -147,8 +147,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("flags" => Flags(Primitive<i16>)),
     ("subtractLastChild" => SubtractLastChild(Primitive<bool>)),
     ("children" => Children(HkArrayRef<Cow<'de, str>>)),
-    ("childrenInternalStates" => ChildrenInternalStates(HkArrayRef<()>)),
-    ("sortedChildren" => SortedChildren(HkArrayRef<()>)),
+    ("childrenInternalStates" => ChildrenInternalStates(HkArrayRef<Primitive<()>>)),
+    ("sortedChildren" => SortedChildren(HkArrayRef<Primitive<()>>)),
     ("endIntervalWeight" => EndIntervalWeight(Primitive<f32>)),
     ("numActiveChildren" => NumActiveChildren(Primitive<i32>)),
     ("beginIntervalIndex" => BeginIntervalIndex(Primitive<i16>)),

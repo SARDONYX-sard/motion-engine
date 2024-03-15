@@ -28,7 +28,7 @@ pub enum HkpPoweredChainMapperTarget<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "chain")]
-    Chain(Cow<'a, str>),
+    Chain(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"infoIndex"`
     /// -   type: `hkInt32`
@@ -41,6 +41,6 @@ pub enum HkpPoweredChainMapperTarget<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpPoweredChainMapperTarget<'de>, "@name",
-    ("chain" => Chain(Cow<'de, str>)),
+    ("chain" => Chain(Primitive<Cow<'de, str>>)),
     ("infoIndex" => InfoIndex(Primitive<i32>)),
 }

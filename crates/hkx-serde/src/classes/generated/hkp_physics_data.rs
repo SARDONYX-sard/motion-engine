@@ -28,7 +28,7 @@ pub enum HkpPhysicsData<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "worldCinfo")]
-    WorldCinfo(Cow<'a, str>),
+    WorldCinfo(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"systems"`
     /// -   type: `hkArray&lt;hkpPhysicsSystem*&gt;`
@@ -41,6 +41,6 @@ pub enum HkpPhysicsData<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpPhysicsData<'de>, "@name",
-    ("worldCinfo" => WorldCinfo(Cow<'de, str>)),
+    ("worldCinfo" => WorldCinfo(Primitive<Cow<'de, str>>)),
     ("systems" => Systems(HkArrayRef<Cow<'de, str>>)),
 }

@@ -49,7 +49,7 @@ pub enum HkaRagdollInstance<'a> {
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "skeleton")]
-    Skeleton(Cow<'a, str>),
+    Skeleton(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -58,5 +58,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("rigidBodies" => RigidBodies(HkArrayRef<Cow<'de, str>>)),
     ("constraints" => Constraints(HkArrayRef<Cow<'de, str>>)),
     ("boneToRigidBodyMap" => BoneToRigidBodyMap(HkArrayRef<Primitive<i32>>)),
-    ("skeleton" => Skeleton(Cow<'de, str>)),
+    ("skeleton" => Skeleton(Primitive<Cow<'de, str>>)),
 }

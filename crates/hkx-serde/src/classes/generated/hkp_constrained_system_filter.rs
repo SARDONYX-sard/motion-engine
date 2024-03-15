@@ -28,11 +28,11 @@ pub enum HkpConstrainedSystemFilter<'a> {
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "otherFilter")]
-    OtherFilter(Cow<'a, str>),
+    OtherFilter(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpConstrainedSystemFilter<'de>, "@name",
-    ("otherFilter" => OtherFilter(Cow<'de, str>)),
+    ("otherFilter" => OtherFilter(Primitive<Cow<'de, str>>)),
 }

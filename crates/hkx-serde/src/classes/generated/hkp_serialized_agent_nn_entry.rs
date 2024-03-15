@@ -28,14 +28,14 @@ pub enum HkpSerializedAgentNnEntry<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "bodyA")]
-    BodyA(Cow<'a, str>),
+    BodyA(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"bodyB"`
     /// -   type: `struct hkpEntity*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "bodyB")]
-    BodyB(Cow<'a, str>),
+    BodyB(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"bodyAId"`
     /// -   type: `hkUlong`
@@ -125,8 +125,8 @@ pub enum HkpSerializedAgentNnEntry<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpSerializedAgentNnEntry<'de>, "@name",
-    ("bodyA" => BodyA(Cow<'de, str>)),
-    ("bodyB" => BodyB(Cow<'de, str>)),
+    ("bodyA" => BodyA(Primitive<Cow<'de, str>>)),
+    ("bodyB" => BodyB(Primitive<Cow<'de, str>>)),
     ("bodyAId" => BodyAId(Primitive<usize>)),
     ("bodyBId" => BodyBId(Primitive<usize>)),
     ("useEntityIds" => UseEntityIds(Primitive<bool>)),

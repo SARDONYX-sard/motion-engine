@@ -35,7 +35,7 @@ pub enum HkbVariableBindingSetBinding<'a> {
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "memberClass", skip_serializing)]
-    MemberClass(Cow<'a, str>),
+    MemberClass(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"offsetInObjectPlusOne"`
     /// -   type: `hkInt32`
@@ -105,7 +105,7 @@ pub enum HkbVariableBindingSetBinding<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkbVariableBindingSetBinding<'de>, "@name",
     ("memberPath" => MemberPath(Primitive<Cow<'de, str>>)),
-    ("memberClass" => MemberClass(Cow<'de, str>)),
+    ("memberClass" => MemberClass(Primitive<Cow<'de, str>>)),
     ("offsetInObjectPlusOne" => OffsetInObjectPlusOne(Primitive<i32>)),
     ("offsetInArrayPlusOne" => OffsetInArrayPlusOne(Primitive<i32>)),
     ("rootVariableIndex" => RootVariableIndex(Primitive<i32>)),

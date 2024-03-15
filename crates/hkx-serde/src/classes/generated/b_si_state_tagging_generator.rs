@@ -28,7 +28,7 @@ pub enum BSiStateTaggingGenerator<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE | ALIGN16`
     #[serde(rename = "pDefaultGenerator")]
-    PDefaultGenerator(Cow<'a, str>),
+    PDefaultGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"iStateToSetAs"`
     /// -   type: `hkInt32`
@@ -48,7 +48,7 @@ pub enum BSiStateTaggingGenerator<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     BSiStateTaggingGenerator<'de>, "@name",
-    ("pDefaultGenerator" => PDefaultGenerator(Cow<'de, str>)),
+    ("pDefaultGenerator" => PDefaultGenerator(Primitive<Cow<'de, str>>)),
     ("iStateToSetAs" => IStateToSetAs(Primitive<i32>)),
     ("iPriority" => IPriority(Primitive<i32>)),
 }

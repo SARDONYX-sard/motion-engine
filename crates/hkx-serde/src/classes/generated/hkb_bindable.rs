@@ -28,14 +28,14 @@ pub enum HkbBindable<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "variableBindingSet")]
-    VariableBindingSet(Cow<'a, str>),
+    VariableBindingSet(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<()>),
+    CachedBindables(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -48,7 +48,7 @@ pub enum HkbBindable<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbBindable<'de>, "@name",
-    ("variableBindingSet" => VariableBindingSet(Cow<'de, str>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
+    ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
 }

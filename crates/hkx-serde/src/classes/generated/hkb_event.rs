@@ -28,11 +28,11 @@ pub enum HkbEvent<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "sender", skip_serializing)]
-    Sender(Cow<'a, str>),
+    Sender(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbEvent<'de>, "@name",
-    ("sender" => Sender(Cow<'de, str>)),
+    ("sender" => Sender(Primitive<Cow<'de, str>>)),
 }

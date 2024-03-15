@@ -42,7 +42,7 @@ pub enum HkRootLevelContainerNamedVariant<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "variant")]
-    Variant(Cow<'a, str>),
+    Variant(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -50,5 +50,5 @@ impl_deserialize_for_internally_tagged_enum! {
     HkRootLevelContainerNamedVariant<'de>, "@name",
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("className" => ClassName(Primitive<Cow<'de, str>>)),
-    ("variant" => Variant(Cow<'de, str>)),
+    ("variant" => Variant(Primitive<Cow<'de, str>>)),
 }

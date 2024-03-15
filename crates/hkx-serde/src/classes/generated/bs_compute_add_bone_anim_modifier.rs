@@ -56,7 +56,7 @@ pub enum BsComputeAddBoneAnimModifier<'a> {
     /// - offset: 96
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "pSkeletonMemory", skip_serializing)]
-    PSkeletonMemory(Cow<'a, str>),
+    PSkeletonMemory(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -66,5 +66,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("translationLSOut" => TranslationLsOut(Vector4<f32>)),
     ("rotationLSOut" => RotationLsOut(Quaternion<f32>)),
     ("scaleLSOut" => ScaleLsOut(Vector4<f32>)),
-    ("pSkeletonMemory" => PSkeletonMemory(Cow<'de, str>)),
+    ("pSkeletonMemory" => PSkeletonMemory(Primitive<Cow<'de, str>>)),
 }

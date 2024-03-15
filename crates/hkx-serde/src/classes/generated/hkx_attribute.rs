@@ -35,14 +35,14 @@ pub enum HkxAttribute<'a> {
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "value")]
-    Value(Cow<'a, str>),
+    Value(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkxAttribute<'de>, "@name",
     ("name" => Name(Primitive<Cow<'de, str>>)),
-    ("value" => Value(Cow<'de, str>)),
+    ("value" => Value(Primitive<Cow<'de, str>>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

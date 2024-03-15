@@ -28,27 +28,27 @@ pub enum HkbEvaluateExpressionModifier<'a> {
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "expressions")]
-    Expressions(Cow<'a, str>),
+    Expressions(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"compiledExpressionSet"`
     /// -   type: `void*`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "compiledExpressionSet", skip_serializing)]
-    CompiledExpressionSet(Cow<'a, str>),
+    CompiledExpressionSet(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"internalExpressionsData"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "internalExpressionsData", skip_serializing)]
-    InternalExpressionsData(HkArrayRef<()>),
+    InternalExpressionsData(HkArrayRef<Primitive<()>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbEvaluateExpressionModifier<'de>, "@name",
-    ("expressions" => Expressions(Cow<'de, str>)),
-    ("compiledExpressionSet" => CompiledExpressionSet(Cow<'de, str>)),
-    ("internalExpressionsData" => InternalExpressionsData(HkArrayRef<()>)),
+    ("expressions" => Expressions(Primitive<Cow<'de, str>>)),
+    ("compiledExpressionSet" => CompiledExpressionSet(Primitive<Cow<'de, str>>)),
+    ("internalExpressionsData" => InternalExpressionsData(HkArrayRef<Primitive<()>>)),
 }

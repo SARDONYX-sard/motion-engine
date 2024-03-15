@@ -28,11 +28,11 @@ pub enum HkPostFinishAttribute<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "postFinishFunction", skip_serializing)]
-    PostFinishFunction(Cow<'a, str>),
+    PostFinishFunction(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkPostFinishAttribute<'de>, "@name",
-    ("postFinishFunction" => PostFinishFunction(Cow<'de, str>)),
+    ("postFinishFunction" => PostFinishFunction(Primitive<Cow<'de, str>>)),
 }

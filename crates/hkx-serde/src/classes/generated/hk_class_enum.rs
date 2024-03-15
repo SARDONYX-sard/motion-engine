@@ -42,7 +42,7 @@ pub enum HkClassEnum<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "attributes", skip_serializing)]
-    Attributes(Cow<'a, str>),
+    Attributes(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `flags FlagValues`
@@ -57,7 +57,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkClassEnum<'de>, "@name",
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("items" => Items(HkArrayClass<HkClassEnumItem>)),
-    ("attributes" => Attributes(Cow<'de, str>)),
+    ("attributes" => Attributes(Primitive<Cow<'de, str>>)),
     ("flags" => Flags(Primitive<FlagValues>)),
 }
 

@@ -35,12 +35,12 @@ pub enum HkbExpressionCondition<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "compiledExpressionSet", skip_serializing)]
-    CompiledExpressionSet(Cow<'a, str>),
+    CompiledExpressionSet(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbExpressionCondition<'de>, "@name",
     ("expression" => Expression(Primitive<Cow<'de, str>>)),
-    ("compiledExpressionSet" => CompiledExpressionSet(Cow<'de, str>)),
+    ("compiledExpressionSet" => CompiledExpressionSet(Primitive<Cow<'de, str>>)),
 }

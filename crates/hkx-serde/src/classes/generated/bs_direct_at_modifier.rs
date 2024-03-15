@@ -168,7 +168,7 @@ pub enum BsDirectAtModifier<'a> {
     /// - offset: 132
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "pSkeletonMemory", skip_serializing)]
-    PSkeletonMemory(Cow<'a, str>),
+    PSkeletonMemory(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"hasTarget"`
     /// -   type: `hkBool`
@@ -189,7 +189,7 @@ pub enum BsDirectAtModifier<'a> {
     /// - offset: 160
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "boneChainIndices", skip_serializing)]
-    BoneChainIndices(HkArrayRef<()>),
+    BoneChainIndices(HkArrayRef<Primitive<()>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -215,8 +215,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("currentHeadingOffset" => CurrentHeadingOffset(Primitive<f32>)),
     ("currentPitchOffset" => CurrentPitchOffset(Primitive<f32>)),
     ("timeStep" => TimeStep(Primitive<f32>)),
-    ("pSkeletonMemory" => PSkeletonMemory(Cow<'de, str>)),
+    ("pSkeletonMemory" => PSkeletonMemory(Primitive<Cow<'de, str>>)),
     ("hasTarget" => HasTarget(Primitive<bool>)),
     ("directAtTargetLocation" => DirectAtTargetLocation(Vector4<f32>)),
-    ("boneChainIndices" => BoneChainIndices(HkArrayRef<()>)),
+    ("boneChainIndices" => BoneChainIndices(HkArrayRef<Primitive<()>>)),
 }

@@ -56,14 +56,14 @@ pub enum HkpConvexVerticesShape<'a> {
     /// - offset: 80
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "externalObject", skip_serializing)]
-    ExternalObject(Cow<'a, str>),
+    ExternalObject(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"getFaceNormals"`
     /// -   type: `void*`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "getFaceNormals", skip_serializing)]
-    GetFaceNormals(Cow<'a, str>),
+    GetFaceNormals(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"planeEquations"`
     /// -   type: `hkArray&lt;hkVector4&gt;`
@@ -77,7 +77,7 @@ pub enum HkpConvexVerticesShape<'a> {
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "connectivity")]
-    Connectivity(Cow<'a, str>),
+    Connectivity(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -87,8 +87,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("aabbCenter" => AabbCenter(Vector4<f32>)),
     ("rotatedVertices" => RotatedVertices(HkArrayClass<HkpConvexVerticesShapeFourVectors>)),
     ("numVertices" => NumVertices(Primitive<i32>)),
-    ("externalObject" => ExternalObject(Cow<'de, str>)),
-    ("getFaceNormals" => GetFaceNormals(Cow<'de, str>)),
+    ("externalObject" => ExternalObject(Primitive<Cow<'de, str>>)),
+    ("getFaceNormals" => GetFaceNormals(Primitive<Cow<'de, str>>)),
     ("planeEquations" => PlaneEquations(HkArrayVector<Vector4<f32>>)),
-    ("connectivity" => Connectivity(Cow<'de, str>)),
+    ("connectivity" => Connectivity(Primitive<Cow<'de, str>>)),
 }

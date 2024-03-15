@@ -42,7 +42,7 @@ pub enum HkaBoneAttachment<'a> {
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "attachment")]
-    Attachment(Cow<'a, str>),
+    Attachment(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
@@ -64,7 +64,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkaBoneAttachment<'de>, "@name",
     ("originalSkeletonName" => OriginalSkeletonName(Primitive<Cow<'de, str>>)),
     ("boneFromAttachment" => BoneFromAttachment(Matrix4<f32>)),
-    ("attachment" => Attachment(Cow<'de, str>)),
+    ("attachment" => Attachment(Primitive<Cow<'de, str>>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("boneIndex" => BoneIndex(Primitive<i16>)),
 }

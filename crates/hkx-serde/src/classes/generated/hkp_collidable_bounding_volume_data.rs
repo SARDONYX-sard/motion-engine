@@ -84,14 +84,14 @@ pub enum HkpCollidableBoundingVolumeData<'a> {
     /// - offset: 36
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "childShapeAabbs", skip_serializing)]
-    ChildShapeAabbs(Cow<'a, str>),
+    ChildShapeAabbs(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"childShapeKeys"`
     /// -   type: `void*`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "childShapeKeys", skip_serializing)]
-    ChildShapeKeys(Cow<'a, str>),
+    ChildShapeKeys(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -105,6 +105,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("padding" => Padding(Primitive<u8>)),
     ("numChildShapeAabbs" => NumChildShapeAabbs(Primitive<u16>)),
     ("capacityChildShapeAabbs" => CapacityChildShapeAabbs(Primitive<u16>)),
-    ("childShapeAabbs" => ChildShapeAabbs(Cow<'de, str>)),
-    ("childShapeKeys" => ChildShapeKeys(Cow<'de, str>)),
+    ("childShapeAabbs" => ChildShapeAabbs(Primitive<Cow<'de, str>>)),
+    ("childShapeKeys" => ChildShapeKeys(Primitive<Cow<'de, str>>)),
 }

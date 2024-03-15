@@ -28,28 +28,28 @@ pub enum HkpConstraintInstance<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "owner", skip_serializing)]
-    Owner(Cow<'a, str>),
+    Owner(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `struct hkpConstraintData*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "data")]
-    Data(Cow<'a, str>),
+    Data(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"constraintModifiers"`
     /// -   type: `struct hkpModifierConstraintAtom*`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "constraintModifiers")]
-    ConstraintModifiers(Cow<'a, str>),
+    ConstraintModifiers(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"entities"`
     /// -   type: `struct hkpEntity*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "entities")]
-    Entities(Cow<'a, str>),
+    Entities(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"priority"`
     /// -   type: `enum ConstraintPriority`
@@ -98,7 +98,7 @@ pub enum HkpConstraintInstance<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "internal", skip_serializing)]
-    Internal(Cow<'a, str>),
+    Internal(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"uid"`
     /// -   type: `hkUint32`
@@ -111,17 +111,17 @@ pub enum HkpConstraintInstance<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpConstraintInstance<'de>, "@name",
-    ("owner" => Owner(Cow<'de, str>)),
-    ("data" => Data(Cow<'de, str>)),
-    ("constraintModifiers" => ConstraintModifiers(Cow<'de, str>)),
-    ("entities" => Entities(Cow<'de, str>)),
+    ("owner" => Owner(Primitive<Cow<'de, str>>)),
+    ("data" => Data(Primitive<Cow<'de, str>>)),
+    ("constraintModifiers" => ConstraintModifiers(Primitive<Cow<'de, str>>)),
+    ("entities" => Entities(Primitive<Cow<'de, str>>)),
     ("priority" => Priority(Primitive<ConstraintPriority>)),
     ("wantRuntime" => WantRuntime(Primitive<bool>)),
     ("destructionRemapInfo" => DestructionRemapInfo(Primitive<OnDestructionRemapInfo>)),
     ("listeners" => Listeners(HkpConstraintInstanceSmallArraySerializeOverrideType)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("userData" => UserData(Primitive<usize>)),
-    ("internal" => Internal(Cow<'de, str>)),
+    ("internal" => Internal(Primitive<Cow<'de, str>>)),
     ("uid" => Uid(Primitive<u32>)),
 }
 

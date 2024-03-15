@@ -35,12 +35,12 @@ pub enum HkbBehaviorGraphInternalState<'a> {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "variableValueSet")]
-    VariableValueSet(Cow<'a, str>),
+    VariableValueSet(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbBehaviorGraphInternalState<'de>, "@name",
     ("nodeInternalStateInfos" => NodeInternalStateInfos(HkArrayRef<Cow<'de, str>>)),
-    ("variableValueSet" => VariableValueSet(Cow<'de, str>)),
+    ("variableValueSet" => VariableValueSet(Primitive<Cow<'de, str>>)),
 }

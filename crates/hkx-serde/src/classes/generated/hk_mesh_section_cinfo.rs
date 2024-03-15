@@ -28,14 +28,14 @@ pub enum HkMeshSectionCinfo<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertexBuffer")]
-    VertexBuffer(Cow<'a, str>),
+    VertexBuffer(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"material"`
     /// -   type: `struct hkMeshMaterial*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "material")]
-    Material(Cow<'a, str>),
+    Material(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"primitiveType"`
     /// -   type: `enum PrimitiveType`
@@ -63,7 +63,7 @@ pub enum HkMeshSectionCinfo<'a> {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "indices", skip_serializing)]
-    Indices(Cow<'a, str>),
+    Indices(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexStartIndex"`
     /// -   type: `hkInt32`
@@ -83,12 +83,12 @@ pub enum HkMeshSectionCinfo<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkMeshSectionCinfo<'de>, "@name",
-    ("vertexBuffer" => VertexBuffer(Cow<'de, str>)),
-    ("material" => Material(Cow<'de, str>)),
+    ("vertexBuffer" => VertexBuffer(Primitive<Cow<'de, str>>)),
+    ("material" => Material(Primitive<Cow<'de, str>>)),
     ("primitiveType" => PrimitiveType(Primitive<PrimitiveType>)),
     ("numPrimitives" => NumPrimitives(Primitive<i32>)),
     ("indexType" => IndexType(Primitive<MeshSectionIndexType>)),
-    ("indices" => Indices(Cow<'de, str>)),
+    ("indices" => Indices(Primitive<Cow<'de, str>>)),
     ("vertexStartIndex" => VertexStartIndex(Primitive<i32>)),
     ("transformIndex" => TransformIndex(Primitive<i32>)),
 }

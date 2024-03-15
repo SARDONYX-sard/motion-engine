@@ -63,21 +63,21 @@ pub enum HkbBlendingTransitionEffect<'a> {
     /// - offset: 56
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "fromGenerator", skip_serializing)]
-    FromGenerator(Cow<'a, str>),
+    FromGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"toGenerator"`
     /// -   type: `void*`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "toGenerator", skip_serializing)]
-    ToGenerator(Cow<'a, str>),
+    ToGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"characterPoseAtBeginningOfTransition"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "characterPoseAtBeginningOfTransition", skip_serializing)]
-    CharacterPoseAtBeginningOfTransition(HkArrayRef<()>),
+    CharacterPoseAtBeginningOfTransition(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"timeRemaining"`
     /// -   type: `hkReal`
@@ -116,9 +116,9 @@ impl_deserialize_for_internally_tagged_enum! {
     ("flags" => Flags(Primitive<FlagBits>)),
     ("endMode" => EndMode(Primitive<EndMode>)),
     ("blendCurve" => BlendCurve(Primitive<BlendCurve>)),
-    ("fromGenerator" => FromGenerator(Cow<'de, str>)),
-    ("toGenerator" => ToGenerator(Cow<'de, str>)),
-    ("characterPoseAtBeginningOfTransition" => CharacterPoseAtBeginningOfTransition(HkArrayRef<()>)),
+    ("fromGenerator" => FromGenerator(Primitive<Cow<'de, str>>)),
+    ("toGenerator" => ToGenerator(Primitive<Cow<'de, str>>)),
+    ("characterPoseAtBeginningOfTransition" => CharacterPoseAtBeginningOfTransition(HkArrayRef<Primitive<()>>)),
     ("timeRemaining" => TimeRemaining(Primitive<f32>)),
     ("timeInTransition" => TimeInTransition(Primitive<f32>)),
     ("applySelfTransition" => ApplySelfTransition(Primitive<bool>)),

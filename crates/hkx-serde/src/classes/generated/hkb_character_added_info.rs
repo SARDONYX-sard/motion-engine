@@ -56,7 +56,7 @@ pub enum HkbCharacterAddedInfo<'a> {
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "skeleton")]
-    Skeleton(Cow<'a, str>),
+    Skeleton(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"worldFromModel"`
     /// -   type: `hkQsTransform`
@@ -80,7 +80,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("instanceName" => InstanceName(Primitive<Cow<'de, str>>)),
     ("templateName" => TemplateName(Primitive<Cow<'de, str>>)),
     ("fullPathToProject" => FullPathToProject(Primitive<Cow<'de, str>>)),
-    ("skeleton" => Skeleton(Cow<'de, str>)),
+    ("skeleton" => Skeleton(Primitive<Cow<'de, str>>)),
     ("worldFromModel" => WorldFromModel(QsTransform<f32>)),
     ("poseModelSpace" => PoseModelSpace(HkArrayVector<QsTransform<f32>>)),
 }

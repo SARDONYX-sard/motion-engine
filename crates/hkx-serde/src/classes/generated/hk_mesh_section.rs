@@ -70,21 +70,21 @@ pub enum HkMeshSection<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "indices", skip_serializing)]
-    Indices(Cow<'a, str>),
+    Indices(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexBuffer"`
     /// -   type: `struct hkMeshVertexBuffer*`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertexBuffer")]
-    VertexBuffer(Cow<'a, str>),
+    VertexBuffer(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"material"`
     /// -   type: `struct hkMeshMaterial*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "material")]
-    Material(Cow<'a, str>),
+    Material(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"sectionIndex"`
     /// -   type: `hkInt32`
@@ -103,9 +103,9 @@ impl_deserialize_for_internally_tagged_enum! {
     ("vertexStartIndex" => VertexStartIndex(Primitive<i32>)),
     ("transformIndex" => TransformIndex(Primitive<i32>)),
     ("indexType" => IndexType(Primitive<MeshSectionIndexType>)),
-    ("indices" => Indices(Cow<'de, str>)),
-    ("vertexBuffer" => VertexBuffer(Cow<'de, str>)),
-    ("material" => Material(Cow<'de, str>)),
+    ("indices" => Indices(Primitive<Cow<'de, str>>)),
+    ("vertexBuffer" => VertexBuffer(Primitive<Cow<'de, str>>)),
+    ("material" => Material(Primitive<Cow<'de, str>>)),
     ("sectionIndex" => SectionIndex(Primitive<i32>)),
 }
 

@@ -35,7 +35,7 @@ pub enum HkbProjectData<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "stringData")]
-    StringData(Cow<'a, str>),
+    StringData(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"defaultEventMode"`
     /// -   type: `enum EventMode`
@@ -49,6 +49,6 @@ pub enum HkbProjectData<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkbProjectData<'de>, "@name",
     ("worldUpWS" => WorldUpWs(Vector4<f32>)),
-    ("stringData" => StringData(Cow<'de, str>)),
+    ("stringData" => StringData(Primitive<Cow<'de, str>>)),
     ("defaultEventMode" => DefaultEventMode(Primitive<EventMode>)),
 }

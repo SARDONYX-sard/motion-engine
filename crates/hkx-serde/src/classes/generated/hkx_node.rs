@@ -35,7 +35,7 @@ pub enum HkxNode<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "object")]
-    Object(Cow<'a, str>),
+    Object(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"keyFrames"`
     /// -   type: `hkArray&lt;hkMatrix4&gt;`
@@ -77,7 +77,7 @@ pub enum HkxNode<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkxNode<'de>, "@name",
     ("name" => Name(Primitive<Cow<'de, str>>)),
-    ("object" => Object(Cow<'de, str>)),
+    ("object" => Object(Primitive<Cow<'de, str>>)),
     ("keyFrames" => KeyFrames(HkArrayVector<Matrix4<f32>>)),
     ("children" => Children(HkArrayRef<Cow<'de, str>>)),
     ("annotations" => Annotations(HkArrayClass<HkxNodeAnnotationData>)),

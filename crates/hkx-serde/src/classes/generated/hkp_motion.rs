@@ -91,7 +91,7 @@ pub enum HkpMotion<'a> {
     /// - offset: 280
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "savedMotion")]
-    SavedMotion(Cow<'a, str>),
+    SavedMotion(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"savedQualityTypeIndex"`
     /// -   type: `hkUint16`
@@ -120,7 +120,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("angularVelocity" => AngularVelocity(Vector4<f32>)),
     ("deactivationRefPosition" => DeactivationRefPosition([Vector4<f32>; 2])),
     ("deactivationRefOrientation" => DeactivationRefOrientation([Primitive<u32>; 2])),
-    ("savedMotion" => SavedMotion(Cow<'de, str>)),
+    ("savedMotion" => SavedMotion(Primitive<Cow<'de, str>>)),
     ("savedQualityTypeIndex" => SavedQualityTypeIndex(Primitive<u16>)),
     ("gravityFactor" => GravityFactor(Primitive<f32>)),
 }

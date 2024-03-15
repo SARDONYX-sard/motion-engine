@@ -35,14 +35,14 @@ pub enum HkMemoryMeshBody<'a> {
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transformSet")]
-    TransformSet(Cow<'a, str>),
+    TransformSet(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"shape"`
     /// -   type: `struct hkMeshShape*`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "shape")]
-    Shape(Cow<'a, str>),
+    Shape(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexBuffers"`
     /// -   type: `hkArray&lt;hkMeshVertexBuffer*&gt;`
@@ -63,8 +63,8 @@ pub enum HkMemoryMeshBody<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkMemoryMeshBody<'de>, "@name",
     ("transform" => Transform(Matrix4<f32>)),
-    ("transformSet" => TransformSet(Cow<'de, str>)),
-    ("shape" => Shape(Cow<'de, str>)),
+    ("transformSet" => TransformSet(Primitive<Cow<'de, str>>)),
+    ("shape" => Shape(Primitive<Cow<'de, str>>)),
     ("vertexBuffers" => VertexBuffers(HkArrayRef<Cow<'de, str>>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
 }

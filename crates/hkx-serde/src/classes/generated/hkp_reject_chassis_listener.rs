@@ -28,11 +28,11 @@ pub enum HkpRejectChassisListener<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "chassis", skip_serializing)]
-    Chassis(Cow<'a, str>),
+    Chassis(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpRejectChassisListener<'de>, "@name",
-    ("chassis" => Chassis(Cow<'de, str>)),
+    ("chassis" => Chassis(Primitive<Cow<'de, str>>)),
 }

@@ -28,7 +28,7 @@ pub enum HkbEvaluateHandleModifier<'a> {
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "handle")]
-    Handle(Cow<'a, str>),
+    Handle(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"handlePositionOut"`
     /// -   type: `hkVector4`
@@ -111,7 +111,7 @@ pub enum HkbEvaluateHandleModifier<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbEvaluateHandleModifier<'de>, "@name",
-    ("handle" => Handle(Cow<'de, str>)),
+    ("handle" => Handle(Primitive<Cow<'de, str>>)),
     ("handlePositionOut" => HandlePositionOut(Vector4<f32>)),
     ("handleRotationOut" => HandleRotationOut(Quaternion<f32>)),
     ("isValidOut" => IsValidOut(Primitive<bool>)),

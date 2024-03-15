@@ -28,7 +28,7 @@ pub enum HkxMeshSection<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertexBuffer")]
-    VertexBuffer(Cow<'a, str>),
+    VertexBuffer(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"indexBuffers"`
     /// -   type: `hkArray&lt;hkxIndexBuffer*&gt;`
@@ -42,7 +42,7 @@ pub enum HkxMeshSection<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "material")]
-    Material(Cow<'a, str>),
+    Material(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"userChannels"`
     /// -   type: `hkArray&lt;hkReferencedObject*&gt;`
@@ -55,8 +55,8 @@ pub enum HkxMeshSection<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkxMeshSection<'de>, "@name",
-    ("vertexBuffer" => VertexBuffer(Cow<'de, str>)),
+    ("vertexBuffer" => VertexBuffer(Primitive<Cow<'de, str>>)),
     ("indexBuffers" => IndexBuffers(HkArrayRef<Cow<'de, str>>)),
-    ("material" => Material(Cow<'de, str>)),
+    ("material" => Material(Primitive<Cow<'de, str>>)),
     ("userChannels" => UserChannels(HkArrayRef<Cow<'de, str>>)),
 }

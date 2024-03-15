@@ -28,7 +28,7 @@ pub enum HkaMeshBinding<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "mesh")]
-    Mesh(Cow<'a, str>),
+    Mesh(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"originalSkeletonName"`
     /// -   type: `hkStringPtr`
@@ -42,7 +42,7 @@ pub enum HkaMeshBinding<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "skeleton")]
-    Skeleton(Cow<'a, str>),
+    Skeleton(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"mappings"`
     /// -   type: `hkArray&lt;struct hkaMeshBindingMapping&gt;`
@@ -62,9 +62,9 @@ pub enum HkaMeshBinding<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkaMeshBinding<'de>, "@name",
-    ("mesh" => Mesh(Cow<'de, str>)),
+    ("mesh" => Mesh(Primitive<Cow<'de, str>>)),
     ("originalSkeletonName" => OriginalSkeletonName(Primitive<Cow<'de, str>>)),
-    ("skeleton" => Skeleton(Cow<'de, str>)),
+    ("skeleton" => Skeleton(Primitive<Cow<'de, str>>)),
     ("mappings" => Mappings(HkArrayClass<HkaMeshBindingMapping>)),
     ("boneFromSkinMeshTransforms" => BoneFromSkinMeshTransforms(HkArrayVector<Transform<f32>>)),
 }

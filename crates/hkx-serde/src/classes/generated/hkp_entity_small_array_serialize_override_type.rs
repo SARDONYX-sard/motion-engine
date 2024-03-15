@@ -28,7 +28,7 @@ pub enum HkpEntitySmallArraySerializeOverrideType<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "data", skip_serializing)]
-    Data(Cow<'a, str>),
+    Data(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"size"`
     /// -   type: `hkUint16`
@@ -48,7 +48,7 @@ pub enum HkpEntitySmallArraySerializeOverrideType<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpEntitySmallArraySerializeOverrideType<'de>, "@name",
-    ("data" => Data(Cow<'de, str>)),
+    ("data" => Data(Primitive<Cow<'de, str>>)),
     ("size" => Size(Primitive<u16>)),
     ("capacityAndFlags" => CapacityAndFlags(Primitive<u16>)),
 }

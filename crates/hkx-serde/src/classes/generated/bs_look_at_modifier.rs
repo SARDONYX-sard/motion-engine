@@ -154,7 +154,7 @@ pub enum BsLookAtModifier<'a> {
     /// - offset: 148
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "pSkeletonMemory", skip_serializing)]
-    PSkeletonMemory(Cow<'a, str>),
+    PSkeletonMemory(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -178,5 +178,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("lookAtCameraZ" => LookAtCameraZ(Primitive<f32>)),
     ("timeStep" => TimeStep(Primitive<f32>)),
     ("ballBonesValid" => BallBonesValid(Primitive<bool>)),
-    ("pSkeletonMemory" => PSkeletonMemory(Cow<'de, str>)),
+    ("pSkeletonMemory" => PSkeletonMemory(Primitive<Cow<'de, str>>)),
 }

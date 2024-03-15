@@ -70,7 +70,7 @@ pub enum HkpAngMotorConstraintAtom<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "motor")]
-    Motor(Cow<'a, str>),
+    Motor(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -82,5 +82,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("previousTargetAngleOffset" => PreviousTargetAngleOffset(Primitive<i16>)),
     ("correspondingAngLimitSolverResultOffset" => CorrespondingAngLimitSolverResultOffset(Primitive<i16>)),
     ("targetAngle" => TargetAngle(Primitive<f32>)),
-    ("motor" => Motor(Cow<'de, str>)),
+    ("motor" => Motor(Primitive<Cow<'de, str>>)),
 }

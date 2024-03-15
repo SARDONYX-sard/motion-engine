@@ -28,7 +28,7 @@ pub enum HkpShapeInfo<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "shape")]
-    Shape(Cow<'a, str>),
+    Shape(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"isHierarchicalCompound"`
     /// -   type: `hkBool`
@@ -69,7 +69,7 @@ pub enum HkpShapeInfo<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpShapeInfo<'de>, "@name",
-    ("shape" => Shape(Cow<'de, str>)),
+    ("shape" => Shape(Primitive<Cow<'de, str>>)),
     ("isHierarchicalCompound" => IsHierarchicalCompound(Primitive<bool>)),
     ("hkdShapesCollected" => HkdShapesCollected(Primitive<bool>)),
     ("childShapeNames" => ChildShapeNames(HkArrayStringPtr<'de>)),

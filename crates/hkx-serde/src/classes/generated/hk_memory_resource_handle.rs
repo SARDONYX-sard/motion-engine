@@ -28,7 +28,7 @@ pub enum HkMemoryResourceHandle<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "variant")]
-    Variant(Cow<'a, str>),
+    Variant(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
@@ -48,7 +48,7 @@ pub enum HkMemoryResourceHandle<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkMemoryResourceHandle<'de>, "@name",
-    ("variant" => Variant(Cow<'de, str>)),
+    ("variant" => Variant(Primitive<Cow<'de, str>>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("references" => References(HkArrayClass<HkMemoryResourceHandleExternalLink>)),
 }

@@ -28,7 +28,7 @@ pub enum HkpListShapeChildInfo<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | ALIGN16`
     #[serde(rename = "shape")]
-    Shape(Cow<'a, str>),
+    Shape(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilterInfo"`
     /// -   type: `hkUint32`
@@ -55,7 +55,7 @@ pub enum HkpListShapeChildInfo<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpListShapeChildInfo<'de>, "@name",
-    ("shape" => Shape(Cow<'de, str>)),
+    ("shape" => Shape(Primitive<Cow<'de, str>>)),
     ("collisionFilterInfo" => CollisionFilterInfo(Primitive<u32>)),
     ("shapeSize" => ShapeSize(Primitive<i32>)),
     ("numChildShapes" => NumChildShapes(Primitive<i32>)),

@@ -56,91 +56,91 @@ pub enum HkbCharacter<'a> {
     /// - offset: 28
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "ragdollDriver", skip_serializing)]
-    RagdollDriver(Cow<'a, str>),
+    RagdollDriver(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"characterControllerDriver"`
     /// -   type: `void*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "characterControllerDriver", skip_serializing)]
-    CharacterControllerDriver(Cow<'a, str>),
+    CharacterControllerDriver(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"footIkDriver"`
     /// -   type: `void*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "footIkDriver", skip_serializing)]
-    FootIkDriver(Cow<'a, str>),
+    FootIkDriver(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"handIkDriver"`
     /// -   type: `void*`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "handIkDriver", skip_serializing)]
-    HandIkDriver(Cow<'a, str>),
+    HandIkDriver(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"setup"`
     /// -   type: `struct hkbCharacterSetup*`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "setup")]
-    Setup(Cow<'a, str>),
+    Setup(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"behaviorGraph"`
     /// -   type: `struct hkbBehaviorGraph*`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "behaviorGraph")]
-    BehaviorGraph(Cow<'a, str>),
+    BehaviorGraph(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"projectData"`
     /// -   type: `struct hkbProjectData*`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "projectData")]
-    ProjectData(Cow<'a, str>),
+    ProjectData(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"animationBindingSet"`
     /// -   type: `void*`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "animationBindingSet", skip_serializing)]
-    AnimationBindingSet(Cow<'a, str>),
+    AnimationBindingSet(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"raycastInterface"`
     /// -   type: `void*`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "raycastInterface", skip_serializing)]
-    RaycastInterface(Cow<'a, str>),
+    RaycastInterface(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"world"`
     /// -   type: `void*`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE | NOT_OWNED | SERIALIZE_IGNORED`
     #[serde(rename = "world", skip_serializing)]
-    World(Cow<'a, str>),
+    World(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"eventQueue"`
     /// -   type: `void*`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "eventQueue", skip_serializing)]
-    EventQueue(Cow<'a, str>),
+    EventQueue(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"worldFromModel"`
     /// -   type: `void*`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "worldFromModel", skip_serializing)]
-    WorldFromModel(Cow<'a, str>),
+    WorldFromModel(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"poseLocal"`
     /// -   type: `hkSimpleArray&lt;void&gt;`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "poseLocal", skip_serializing)]
-    PoseLocal(HkArrayRef<()>),
+    PoseLocal(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"deleteWorldFromModel"`
     /// -   type: `hkBool`
@@ -164,19 +164,19 @@ impl_deserialize_for_internally_tagged_enum! {
     ("currentLod" => CurrentLod(Primitive<i16>)),
     ("numTracksInLod" => NumTracksInLod(Primitive<i16>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
-    ("ragdollDriver" => RagdollDriver(Cow<'de, str>)),
-    ("characterControllerDriver" => CharacterControllerDriver(Cow<'de, str>)),
-    ("footIkDriver" => FootIkDriver(Cow<'de, str>)),
-    ("handIkDriver" => HandIkDriver(Cow<'de, str>)),
-    ("setup" => Setup(Cow<'de, str>)),
-    ("behaviorGraph" => BehaviorGraph(Cow<'de, str>)),
-    ("projectData" => ProjectData(Cow<'de, str>)),
-    ("animationBindingSet" => AnimationBindingSet(Cow<'de, str>)),
-    ("raycastInterface" => RaycastInterface(Cow<'de, str>)),
-    ("world" => World(Cow<'de, str>)),
-    ("eventQueue" => EventQueue(Cow<'de, str>)),
-    ("worldFromModel" => WorldFromModel(Cow<'de, str>)),
-    ("poseLocal" => PoseLocal(HkArrayRef<()>)),
+    ("ragdollDriver" => RagdollDriver(Primitive<Cow<'de, str>>)),
+    ("characterControllerDriver" => CharacterControllerDriver(Primitive<Cow<'de, str>>)),
+    ("footIkDriver" => FootIkDriver(Primitive<Cow<'de, str>>)),
+    ("handIkDriver" => HandIkDriver(Primitive<Cow<'de, str>>)),
+    ("setup" => Setup(Primitive<Cow<'de, str>>)),
+    ("behaviorGraph" => BehaviorGraph(Primitive<Cow<'de, str>>)),
+    ("projectData" => ProjectData(Primitive<Cow<'de, str>>)),
+    ("animationBindingSet" => AnimationBindingSet(Primitive<Cow<'de, str>>)),
+    ("raycastInterface" => RaycastInterface(Primitive<Cow<'de, str>>)),
+    ("world" => World(Primitive<Cow<'de, str>>)),
+    ("eventQueue" => EventQueue(Primitive<Cow<'de, str>>)),
+    ("worldFromModel" => WorldFromModel(Primitive<Cow<'de, str>>)),
+    ("poseLocal" => PoseLocal(HkArrayRef<Primitive<()>>)),
     ("deleteWorldFromModel" => DeleteWorldFromModel(Primitive<bool>)),
     ("deletePoseLocal" => DeletePoseLocal(Primitive<bool>)),
 }

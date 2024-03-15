@@ -77,14 +77,14 @@ pub enum HkbTwistModifier {
     /// - offset: 76
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "boneChainIndices", skip_serializing)]
-    BoneChainIndices(HkArrayRef<()>),
+    BoneChainIndices(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"parentBoneIndices"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "parentBoneIndices", skip_serializing)]
-    ParentBoneIndices(HkArrayRef<()>),
+    ParentBoneIndices(HkArrayRef<Primitive<()>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -97,8 +97,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("setAngleMethod" => SetAngleMethod(Primitive<SetAngleMethod>)),
     ("rotationAxisCoordinates" => RotationAxisCoordinates(Primitive<RotationAxisCoordinates>)),
     ("isAdditive" => IsAdditive(Primitive<bool>)),
-    ("boneChainIndices" => BoneChainIndices(HkArrayRef<()>)),
-    ("parentBoneIndices" => ParentBoneIndices(HkArrayRef<()>)),
+    ("boneChainIndices" => BoneChainIndices(HkArrayRef<Primitive<()>>)),
+    ("parentBoneIndices" => ParentBoneIndices(HkArrayRef<Primitive<()>>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

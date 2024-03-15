@@ -28,7 +28,7 @@ pub enum BsSynchronizedClipGenerator<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE | ALIGN16`
     #[serde(rename = "pClipGenerator")]
-    PClipGenerator(Cow<'a, str>),
+    PClipGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"SyncAnimPrefix"`
     /// -   type: `char*`
@@ -84,7 +84,7 @@ pub enum BsSynchronizedClipGenerator<'a> {
     /// - offset: 72
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "pSyncScene", skip_serializing)]
-    PSyncScene(Cow<'a, str>),
+    PSyncScene(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"StartMarkWS"`
     /// -   type: `hkQsTransform`
@@ -119,14 +119,14 @@ pub enum BsSynchronizedClipGenerator<'a> {
     /// - offset: 228
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "pLocalSyncBinding", skip_serializing)]
-    PLocalSyncBinding(Cow<'a, str>),
+    PLocalSyncBinding(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"pEventMap"`
     /// -   type: `void*`
     /// - offset: 232
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "pEventMap", skip_serializing)]
-    PEventMap(Cow<'a, str>),
+    PEventMap(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"sAnimationBindingIndex"`
     /// -   type: `hkInt16`
@@ -160,7 +160,7 @@ pub enum BsSynchronizedClipGenerator<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     BsSynchronizedClipGenerator<'de>, "@name",
-    ("pClipGenerator" => PClipGenerator(Cow<'de, str>)),
+    ("pClipGenerator" => PClipGenerator(Primitive<Cow<'de, str>>)),
     ("SyncAnimPrefix" => SyncAnimPrefix(Primitive<Cow<'de, str>>)),
     ("bSyncClipIgnoreMarkPlacement" => BSyncClipIgnoreMarkPlacement(Primitive<bool>)),
     ("fGetToMarkTime" => FGetToMarkTime(Primitive<f32>)),
@@ -168,13 +168,13 @@ impl_deserialize_for_internally_tagged_enum! {
     ("bLeadCharacter" => BLeadCharacter(Primitive<bool>)),
     ("bReorientSupportChar" => BReorientSupportChar(Primitive<bool>)),
     ("bApplyMotionFromRoot" => BApplyMotionFromRoot(Primitive<bool>)),
-    ("pSyncScene" => PSyncScene(Cow<'de, str>)),
+    ("pSyncScene" => PSyncScene(Primitive<Cow<'de, str>>)),
     ("StartMarkWS" => StartMarkWs(QsTransform<f32>)),
     ("EndMarkWS" => EndMarkWs(QsTransform<f32>)),
     ("StartMarkMS" => StartMarkMs(QsTransform<f32>)),
     ("fCurrentLerp" => FCurrentLerp(Primitive<f32>)),
-    ("pLocalSyncBinding" => PLocalSyncBinding(Cow<'de, str>)),
-    ("pEventMap" => PEventMap(Cow<'de, str>)),
+    ("pLocalSyncBinding" => PLocalSyncBinding(Primitive<Cow<'de, str>>)),
+    ("pEventMap" => PEventMap(Primitive<Cow<'de, str>>)),
     ("sAnimationBindingIndex" => SAnimationBindingIndex(Primitive<i16>)),
     ("bAtMark" => BAtMark(Primitive<bool>)),
     ("bAllCharactersInScene" => BAllCharactersInScene(Primitive<bool>)),

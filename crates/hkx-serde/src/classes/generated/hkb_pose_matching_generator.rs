@@ -147,7 +147,7 @@ pub enum HkbPoseMatchingGenerator<'a> {
     /// - offset: 200
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "poseMatchingUtility", skip_serializing)]
-    PoseMatchingUtility(Cow<'a, str>),
+    PoseMatchingUtility(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -170,7 +170,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("timeSinceBetterMatch" => TimeSinceBetterMatch(Primitive<f32>)),
     ("error" => Error(Primitive<f32>)),
     ("resetCurrentMatchLocalTime" => ResetCurrentMatchLocalTime(Primitive<bool>)),
-    ("poseMatchingUtility" => PoseMatchingUtility(Cow<'de, str>)),
+    ("poseMatchingUtility" => PoseMatchingUtility(Primitive<Cow<'de, str>>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

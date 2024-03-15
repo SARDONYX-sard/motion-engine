@@ -28,14 +28,14 @@ pub enum HkaSkeletonMapperData<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "skeletonA")]
-    SkeletonA(Cow<'a, str>),
+    SkeletonA(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"skeletonB"`
     /// -   type: `struct hkaSkeleton*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "skeletonB")]
-    SkeletonB(Cow<'a, str>),
+    SkeletonB(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"simpleMappings"`
     /// -   type: `hkArray&lt;struct hkaSkeletonMapperDataSimpleMapping&gt;`
@@ -83,8 +83,8 @@ pub enum HkaSkeletonMapperData<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkaSkeletonMapperData<'de>, "@name",
-    ("skeletonA" => SkeletonA(Cow<'de, str>)),
-    ("skeletonB" => SkeletonB(Cow<'de, str>)),
+    ("skeletonA" => SkeletonA(Primitive<Cow<'de, str>>)),
+    ("skeletonB" => SkeletonB(Primitive<Cow<'de, str>>)),
     ("simpleMappings" => SimpleMappings(HkArrayClass<HkaSkeletonMapperDataSimpleMapping>)),
     ("chainMappings" => ChainMappings(HkArrayClass<HkaSkeletonMapperDataChainMapping>)),
     ("unmappedBones" => UnmappedBones(HkArrayRef<Primitive<i16>>)),

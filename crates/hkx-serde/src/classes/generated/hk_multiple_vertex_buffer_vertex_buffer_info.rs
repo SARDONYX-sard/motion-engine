@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 12
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xdafbe0e6`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkMultipleVertexBufferVertexBufferInfo<'a> {
     /// -   type: `struct hkMeshVertexBuffer*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexBuffer")]
+    #[serde(rename = "vertexBuffer", default)]
     VertexBuffer(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"lockedVertices"`
     /// -   type: `void*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "lockedVertices", skip_serializing)]
+    #[serde(rename = "lockedVertices", default, skip_serializing)]
     LockedVertices(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"isLocked"`
     /// -   type: `hkBool`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isLocked")]
+    #[serde(rename = "isLocked", default)]
     IsLocked(Primitive<bool>),
 }
 

@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 144
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x555876ff`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkpHingeLimitsDataAtoms {
     /// -   type: `struct hkpSetLocalRotationsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotations")]
+    #[serde(rename = "rotations", default)]
     Rotations(HkpSetLocalRotationsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"angLimit"`
     /// -   type: `struct hkpAngLimitConstraintAtom`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "angLimit")]
+    #[serde(rename = "angLimit", default)]
     AngLimit(HkpAngLimitConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"2dAng"`
     /// -   type: `struct hkp2dAngConstraintAtom`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "2dAng")]
+    #[serde(rename = "2dAng", default)]
     2DAng(Hkp2DAngConstraintAtom),
 }
 

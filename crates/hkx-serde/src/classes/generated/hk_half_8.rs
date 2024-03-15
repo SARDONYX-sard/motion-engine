@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 16
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x7684dc80`
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,7 +26,7 @@ pub enum HkHalf8 {
     /// -   type: `hkHalf[8]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "quad")]
+    #[serde(rename = "quad", default)]
     Quad([Primitive<f32>; 8]),
 }
 

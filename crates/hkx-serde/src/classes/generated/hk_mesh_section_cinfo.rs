@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 32
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x6075f3ff`
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,56 +26,56 @@ pub enum HkMeshSectionCinfo<'a> {
     /// -   type: `struct hkMeshVertexBuffer*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexBuffer")]
+    #[serde(rename = "vertexBuffer", default)]
     VertexBuffer(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"material"`
     /// -   type: `struct hkMeshMaterial*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "material")]
+    #[serde(rename = "material", default)]
     Material(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"primitiveType"`
     /// -   type: `enum PrimitiveType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "primitiveType")]
+    #[serde(rename = "primitiveType", default)]
     PrimitiveType(Primitive<PrimitiveType>),
     /// # C++ Class Fields Info
     /// -   name:`"numPrimitives"`
     /// -   type: `hkInt32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numPrimitives")]
+    #[serde(rename = "numPrimitives", default)]
     NumPrimitives(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"indexType"`
     /// -   type: `enum MeshSectionIndexType`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "indexType")]
+    #[serde(rename = "indexType", default)]
     IndexType(Primitive<MeshSectionIndexType>),
     /// # C++ Class Fields Info
     /// -   name:`"indices"`
     /// -   type: `void*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "indices", skip_serializing)]
+    #[serde(rename = "indices", default, skip_serializing)]
     Indices(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexStartIndex"`
     /// -   type: `hkInt32`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexStartIndex")]
+    #[serde(rename = "vertexStartIndex", default)]
     VertexStartIndex(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"transformIndex"`
     /// -   type: `hkInt32`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformIndex")]
+    #[serde(rename = "transformIndex", default)]
     TransformIndex(Primitive<i32>),
 }
 

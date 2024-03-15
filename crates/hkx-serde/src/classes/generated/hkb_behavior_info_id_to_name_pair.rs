@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 12
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x35a0439a`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,28 +26,28 @@ pub enum HkbBehaviorInfoIdToNamePair<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "behaviorName")]
+    #[serde(rename = "behaviorName", default)]
     BehaviorName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"nodeName"`
     /// -   type: `hkStringPtr`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "nodeName")]
+    #[serde(rename = "nodeName", default)]
     NodeName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"toolType"`
     /// -   type: `enum ToolNodeType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "toolType")]
+    #[serde(rename = "toolType", default)]
     ToolType(Primitive<ToolNodeType>),
     /// # C++ Class Fields Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "id")]
+    #[serde(rename = "id", default)]
     Id(Primitive<i16>),
 }
 

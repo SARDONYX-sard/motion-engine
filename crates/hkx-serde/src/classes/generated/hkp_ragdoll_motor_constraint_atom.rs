@@ -22,46 +22,55 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpRagdollMotorConstraintAtom<'a> {
+    /// # C++ Parent class(`hkpConstraintAtom`, parent: `None`) field Info
+    /// -   name:`"type"`
+    /// -   type: `enum AtomType`
+    /// - offset: 0
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "type", default)]
+    Type(Primitive<AtomType>),
+
     /// # C++ Class Fields Info
     /// -   name:`"isEnabled"`
     /// -   type: `hkBool`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isEnabled")]
+    #[serde(rename = "isEnabled", default)]
     IsEnabled(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"initializedOffset"`
     /// -   type: `hkInt16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "initializedOffset")]
+    #[serde(rename = "initializedOffset", default)]
     InitializedOffset(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"previousTargetAnglesOffset"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "previousTargetAnglesOffset")]
+    #[serde(rename = "previousTargetAnglesOffset", default)]
     PreviousTargetAnglesOffset(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"target_bRca"`
     /// -   type: `hkMatrix3`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "target_bRca")]
+    #[serde(rename = "target_bRca", default)]
     TargetBRca(Matrix3<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"motors"`
     /// -   type: `struct hkpConstraintMotor*`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "motors")]
+    #[serde(rename = "motors", default)]
     Motors(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpRagdollMotorConstraintAtom<'de>, "@name",
+    ("type" => Type(Primitive<AtomType>)),
     ("isEnabled" => IsEnabled(Primitive<bool>)),
     ("initializedOffset" => InitializedOffset(Primitive<i16>)),
     ("previousTargetAnglesOffset" => PreviousTargetAnglesOffset(Primitive<i16>)),

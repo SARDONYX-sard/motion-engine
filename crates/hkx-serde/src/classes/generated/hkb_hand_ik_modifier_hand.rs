@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 96
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x14dfe1dd`
 /// -   version: 3
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,98 +26,98 @@ pub enum HkbHandIkModifierHand<'a> {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "elbowAxisLS")]
+    #[serde(rename = "elbowAxisLS", default)]
     ElbowAxisLs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"backHandNormalLS"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "backHandNormalLS")]
+    #[serde(rename = "backHandNormalLS", default)]
     BackHandNormalLs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"handOffsetLS"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "handOffsetLS")]
+    #[serde(rename = "handOffsetLS", default)]
     HandOffsetLs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"handOrienationOffsetLS"`
     /// -   type: `hkQuaternion`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "handOrienationOffsetLS")]
+    #[serde(rename = "handOrienationOffsetLS", default)]
     HandOrienationOffsetLs(Quaternion<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxElbowAngleDegrees"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxElbowAngleDegrees")]
+    #[serde(rename = "maxElbowAngleDegrees", default)]
     MaxElbowAngleDegrees(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"minElbowAngleDegrees"`
     /// -   type: `hkReal`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minElbowAngleDegrees")]
+    #[serde(rename = "minElbowAngleDegrees", default)]
     MinElbowAngleDegrees(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"shoulderIndex"`
     /// -   type: `hkInt16`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "shoulderIndex")]
+    #[serde(rename = "shoulderIndex", default)]
     ShoulderIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"shoulderSiblingIndex"`
     /// -   type: `hkInt16`
     /// - offset: 74
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "shoulderSiblingIndex")]
+    #[serde(rename = "shoulderSiblingIndex", default)]
     ShoulderSiblingIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"elbowIndex"`
     /// -   type: `hkInt16`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "elbowIndex")]
+    #[serde(rename = "elbowIndex", default)]
     ElbowIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"elbowSiblingIndex"`
     /// -   type: `hkInt16`
     /// - offset: 78
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "elbowSiblingIndex")]
+    #[serde(rename = "elbowSiblingIndex", default)]
     ElbowSiblingIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"wristIndex"`
     /// -   type: `hkInt16`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wristIndex")]
+    #[serde(rename = "wristIndex", default)]
     WristIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"enforceEndPosition"`
     /// -   type: `hkBool`
     /// - offset: 82
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enforceEndPosition")]
+    #[serde(rename = "enforceEndPosition", default)]
     EnforceEndPosition(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"enforceEndRotation"`
     /// -   type: `hkBool`
     /// - offset: 83
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enforceEndRotation")]
+    #[serde(rename = "enforceEndRotation", default)]
     EnforceEndRotation(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"localFrameName"`
     /// -   type: `hkStringPtr`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "localFrameName")]
+    #[serde(rename = "localFrameName", default)]
     LocalFrameName(Primitive<Cow<'a, str>>),
 }
 

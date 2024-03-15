@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 64
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x385bb842`
 /// -   version: 3
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,42 +26,42 @@ pub enum HkpCompressedMeshShapeConvexPiece {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "offset")]
+    #[serde(rename = "offset", default)]
     Offset(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"vertices"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertices")]
+    #[serde(rename = "vertices", default)]
     Vertices(HkArrayRef<Primitive<u16>>),
     /// # C++ Class Fields Info
     /// -   name:`"faceVertices"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "faceVertices")]
+    #[serde(rename = "faceVertices", default)]
     FaceVertices(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"faceOffsets"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "faceOffsets")]
+    #[serde(rename = "faceOffsets", default)]
     FaceOffsets(HkArrayRef<Primitive<u16>>),
     /// # C++ Class Fields Info
     /// -   name:`"reference"`
     /// -   type: `hkUint16`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "reference")]
+    #[serde(rename = "reference", default)]
     Reference(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"transformIndex"`
     /// -   type: `hkUint16`
     /// - offset: 54
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformIndex")]
+    #[serde(rename = "transformIndex", default)]
     TransformIndex(Primitive<u16>),
 }
 

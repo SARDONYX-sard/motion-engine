@@ -22,39 +22,83 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbBlenderGeneratorChild<'a> {
+    /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"variableBindingSet"`
+    /// -   type: `struct hkbVariableBindingSet*`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "variableBindingSet", default)]
+    VariableBindingSet(Primitive<Cow<'a, str>>),
+    /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"cachedBindables"`
+    /// -   type: `hkArray&lt;void&gt;`
+    /// - offset: 12
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "cachedBindables", default, skip_serializing)]
+    CachedBindables(HkArrayRef<Primitive<()>>),
+    /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"areBindablesCached"`
+    /// -   type: `hkBool`
+    /// - offset: 24
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "areBindablesCached", default, skip_serializing)]
+    AreBindablesCached(Primitive<bool>),
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"generator"`
     /// -   type: `struct hkbGenerator*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "generator")]
+    #[serde(rename = "generator", default)]
     Generator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"boneWeights"`
     /// -   type: `struct hkbBoneWeightArray*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "boneWeights")]
+    #[serde(rename = "boneWeights", default)]
     BoneWeights(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"weight"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "weight")]
+    #[serde(rename = "weight", default)]
     Weight(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"worldFromModelWeight"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "worldFromModelWeight")]
+    #[serde(rename = "worldFromModelWeight", default)]
     WorldFromModelWeight(Primitive<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbBlenderGeneratorChild<'de>, "@name",
+    ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("generator" => Generator(Primitive<Cow<'de, str>>)),
     ("boneWeights" => BoneWeights(Primitive<Cow<'de, str>>)),
     ("weight" => Weight(Primitive<f32>)),

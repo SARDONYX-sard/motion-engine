@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 32
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x471a21ee`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkQTransform {
     /// -   type: `hkQuaternion`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotation")]
+    #[serde(rename = "rotation", default)]
     Rotation(Quaternion<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"translation"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "translation")]
+    #[serde(rename = "translation", default)]
     Translation(Vector4<f32>),
 }
 

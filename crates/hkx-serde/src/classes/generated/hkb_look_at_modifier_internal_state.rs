@@ -22,32 +22,51 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbLookAtModifierInternalState {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"lookAtLastTargetWS"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lookAtLastTargetWS")]
+    #[serde(rename = "lookAtLastTargetWS", default)]
     LookAtLastTargetWs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"lookAtWeight"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lookAtWeight")]
+    #[serde(rename = "lookAtWeight", default)]
     LookAtWeight(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"isTargetInsideLimitCone"`
     /// -   type: `hkBool`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isTargetInsideLimitCone")]
+    #[serde(rename = "isTargetInsideLimitCone", default)]
     IsTargetInsideLimitCone(Primitive<bool>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbLookAtModifierInternalState, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("lookAtLastTargetWS" => LookAtLastTargetWs(Vector4<f32>)),
     ("lookAtWeight" => LookAtWeight(Primitive<f32>)),
     ("isTargetInsideLimitCone" => IsTargetInsideLimitCone(Primitive<bool>)),

@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 4
 /// -    vtable: true
-/// -    parent: `None`/`0x0`
 /// - signature: `0xe0708a00`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]

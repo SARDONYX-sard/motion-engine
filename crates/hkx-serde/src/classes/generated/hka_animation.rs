@@ -22,53 +22,72 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkaAnimation<'a> {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum AnimationType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type")]
+    #[serde(rename = "type", default)]
     Type(Primitive<AnimationType>),
     /// # C++ Class Fields Info
     /// -   name:`"duration"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "duration")]
+    #[serde(rename = "duration", default)]
     Duration(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"numberOfTransformTracks"`
     /// -   type: `hkInt32`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numberOfTransformTracks")]
+    #[serde(rename = "numberOfTransformTracks", default)]
     NumberOfTransformTracks(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"numberOfFloatTracks"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numberOfFloatTracks")]
+    #[serde(rename = "numberOfFloatTracks", default)]
     NumberOfFloatTracks(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"extractedMotion"`
     /// -   type: `struct hkaAnimatedReferenceFrame*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "extractedMotion")]
+    #[serde(rename = "extractedMotion", default)]
     ExtractedMotion(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"annotationTracks"`
     /// -   type: `hkArray&lt;struct hkaAnnotationTrack&gt;`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "annotationTracks")]
+    #[serde(rename = "annotationTracks", default)]
     AnnotationTracks(HkArrayClass<HkaAnnotationTrack>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkaAnimation<'de>, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("type" => Type(Primitive<AnimationType>)),
     ("duration" => Duration(Primitive<f32>)),
     ("numberOfTransformTracks" => NumberOfTransformTracks(Primitive<i32>)),

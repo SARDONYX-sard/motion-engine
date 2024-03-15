@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 8
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x4e32287c`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,35 +26,35 @@ pub enum HkContactPointMaterial {
     /// -   type: `hkUlong`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData")]
+    #[serde(rename = "userData", default)]
     UserData(Primitive<usize>),
     /// # C++ Class Fields Info
     /// -   name:`"friction"`
     /// -   type: `hkUint8`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "friction")]
+    #[serde(rename = "friction", default)]
     Friction(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"restitution"`
     /// -   type: `hkUint8`
     /// - offset: 5
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "restitution")]
+    #[serde(rename = "restitution", default)]
     Restitution(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"maxImpulse"`
     /// -   type: `hkUint8`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxImpulse")]
+    #[serde(rename = "maxImpulse", default)]
     MaxImpulse(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `hkUint8`
     /// - offset: 7
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "flags")]
+    #[serde(rename = "flags", default)]
     Flags(Primitive<u8>),
 }
 

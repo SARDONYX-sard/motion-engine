@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 32
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x11e7c11`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,42 +26,42 @@ pub enum HkAabbUint32 {
     /// -   type: `hkUint32[3]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "min")]
+    #[serde(rename = "min", default)]
     Min([Primitive<u32>; 3]),
     /// # C++ Class Fields Info
     /// -   name:`"expansionMin"`
     /// -   type: `hkUint8[3]`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "expansionMin")]
+    #[serde(rename = "expansionMin", default)]
     ExpansionMin([Primitive<u8>; 3]),
     /// # C++ Class Fields Info
     /// -   name:`"expansionShift"`
     /// -   type: `hkUint8`
     /// - offset: 15
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "expansionShift")]
+    #[serde(rename = "expansionShift", default)]
     ExpansionShift(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"max"`
     /// -   type: `hkUint32[3]`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "max")]
+    #[serde(rename = "max", default)]
     Max([Primitive<u32>; 3]),
     /// # C++ Class Fields Info
     /// -   name:`"expansionMax"`
     /// -   type: `hkUint8[3]`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "expansionMax")]
+    #[serde(rename = "expansionMax", default)]
     ExpansionMax([Primitive<u8>; 3]),
     /// # C++ Class Fields Info
     /// -   name:`"shapeKeyByte"`
     /// -   type: `hkUint8`
     /// - offset: 31
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "shapeKeyByte")]
+    #[serde(rename = "shapeKeyByte", default)]
     ShapeKeyByte(Primitive<u8>),
 }
 

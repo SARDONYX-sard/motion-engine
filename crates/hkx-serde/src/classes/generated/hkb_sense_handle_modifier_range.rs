@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 20
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xfb56b692`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,28 +26,28 @@ pub enum HkbSenseHandleModifierRange {
     /// -   type: `struct hkbEventProperty`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "event")]
+    #[serde(rename = "event", default)]
     Event(HkbEventProperty),
     /// # C++ Class Fields Info
     /// -   name:`"minDistance"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minDistance")]
+    #[serde(rename = "minDistance", default)]
     MinDistance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxDistance"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxDistance")]
+    #[serde(rename = "maxDistance", default)]
     MaxDistance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"ignoreHandle"`
     /// -   type: `hkBool`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ignoreHandle")]
+    #[serde(rename = "ignoreHandle", default)]
     IgnoreHandle(Primitive<bool>),
 }
 

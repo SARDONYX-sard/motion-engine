@@ -22,186 +22,247 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpVehicleInstance<'a> {
+    /// # C++ Parent class(`hkpUnaryAction`, parent: `hkpAction`) field Info
+    /// -   name:`"entity"`
+    /// -   type: `struct hkpEntity*`
+    /// - offset: 24
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "entity", default)]
+    Entity(Primitive<Cow<'a, str>>),
+
+    /// # C++ Parent class(`hkpAction`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"world"`
+    /// -   type: `void*`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "world", default, skip_serializing)]
+    World(Primitive<Cow<'a, str>>),
+    /// # C++ Parent class(`hkpAction`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"island"`
+    /// -   type: `void*`
+    /// - offset: 12
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "island", default, skip_serializing)]
+    Island(Primitive<Cow<'a, str>>),
+    /// # C++ Parent class(`hkpAction`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"userData"`
+    /// -   type: `hkUlong`
+    /// - offset: 16
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "userData", default)]
+    UserData(Primitive<usize>),
+    /// # C++ Parent class(`hkpAction`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"name"`
+    /// -   type: `hkStringPtr`
+    /// - offset: 20
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "name", default)]
+    Name(Primitive<Cow<'a, str>>),
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `struct hkpVehicleData*`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "data")]
+    #[serde(rename = "data", default)]
     Data(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"driverInput"`
     /// -   type: `struct hkpVehicleDriverInput*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "driverInput")]
+    #[serde(rename = "driverInput", default)]
     DriverInput(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"steering"`
     /// -   type: `struct hkpVehicleSteering*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "steering")]
+    #[serde(rename = "steering", default)]
     Steering(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"engine"`
     /// -   type: `struct hkpVehicleEngine*`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "engine")]
+    #[serde(rename = "engine", default)]
     Engine(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"transmission"`
     /// -   type: `struct hkpVehicleTransmission*`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transmission")]
+    #[serde(rename = "transmission", default)]
     Transmission(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"brake"`
     /// -   type: `struct hkpVehicleBrake*`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "brake")]
+    #[serde(rename = "brake", default)]
     Brake(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"suspension"`
     /// -   type: `struct hkpVehicleSuspension*`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "suspension")]
+    #[serde(rename = "suspension", default)]
     Suspension(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"aerodynamics"`
     /// -   type: `struct hkpVehicleAerodynamics*`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "aerodynamics")]
+    #[serde(rename = "aerodynamics", default)]
     Aerodynamics(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"wheelCollide"`
     /// -   type: `struct hkpVehicleWheelCollide*`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wheelCollide")]
+    #[serde(rename = "wheelCollide", default)]
     WheelCollide(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"tyreMarks"`
     /// -   type: `struct hkpTyremarksInfo*`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "tyreMarks")]
+    #[serde(rename = "tyreMarks", default)]
     TyreMarks(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"velocityDamper"`
     /// -   type: `struct hkpVehicleVelocityDamper*`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "velocityDamper")]
+    #[serde(rename = "velocityDamper", default)]
     VelocityDamper(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"wheelsInfo"`
     /// -   type: `hkArray&lt;struct hkpVehicleInstanceWheelInfo&gt;`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wheelsInfo")]
+    #[serde(rename = "wheelsInfo", default)]
     WheelsInfo(HkArrayClass<HkpVehicleInstanceWheelInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"frictionStatus"`
     /// -   type: `struct hkpVehicleFrictionStatus`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "frictionStatus")]
+    #[serde(rename = "frictionStatus", default)]
     FrictionStatus(HkpVehicleFrictionStatus),
     /// # C++ Class Fields Info
     /// -   name:`"deviceStatus"`
     /// -   type: `struct hkpVehicleDriverInputStatus*`
     /// - offset: 156
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "deviceStatus")]
+    #[serde(rename = "deviceStatus", default)]
     DeviceStatus(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"isFixed"`
     /// -   type: `hkArray&lt;hkBool&gt;`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isFixed")]
+    #[serde(rename = "isFixed", default)]
     IsFixed(HkArrayRef<Primitive<bool>>),
     /// # C++ Class Fields Info
     /// -   name:`"wheelsTimeSinceMaxPedalInput"`
     /// -   type: `hkReal`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wheelsTimeSinceMaxPedalInput")]
+    #[serde(rename = "wheelsTimeSinceMaxPedalInput", default)]
     WheelsTimeSinceMaxPedalInput(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"tryingToReverse"`
     /// -   type: `hkBool`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "tryingToReverse")]
+    #[serde(rename = "tryingToReverse", default)]
     TryingToReverse(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"torque"`
     /// -   type: `hkReal`
     /// - offset: 180
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "torque")]
+    #[serde(rename = "torque", default)]
     Torque(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"rpm"`
     /// -   type: `hkReal`
     /// - offset: 184
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rpm")]
+    #[serde(rename = "rpm", default)]
     Rpm(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"mainSteeringAngle"`
     /// -   type: `hkReal`
     /// - offset: 188
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "mainSteeringAngle")]
+    #[serde(rename = "mainSteeringAngle", default)]
     MainSteeringAngle(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"wheelsSteeringAngle"`
     /// -   type: `hkArray&lt;hkReal&gt;`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wheelsSteeringAngle")]
+    #[serde(rename = "wheelsSteeringAngle", default)]
     WheelsSteeringAngle(HkArrayRef<Primitive<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"isReversing"`
     /// -   type: `hkBool`
     /// - offset: 204
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isReversing")]
+    #[serde(rename = "isReversing", default)]
     IsReversing(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"currentGear"`
     /// -   type: `hkInt8`
     /// - offset: 205
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "currentGear")]
+    #[serde(rename = "currentGear", default)]
     CurrentGear(Primitive<i8>),
     /// # C++ Class Fields Info
     /// -   name:`"delayed"`
     /// -   type: `hkBool`
     /// - offset: 206
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "delayed")]
+    #[serde(rename = "delayed", default)]
     Delayed(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"clutchDelayCountdown"`
     /// -   type: `hkReal`
     /// - offset: 208
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "clutchDelayCountdown")]
+    #[serde(rename = "clutchDelayCountdown", default)]
     ClutchDelayCountdown(Primitive<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpVehicleInstance<'de>, "@name",
+    ("entity" => Entity(Primitive<Cow<'de, str>>)),
+    ("world" => World(Primitive<Cow<'de, str>>)),
+    ("island" => Island(Primitive<Cow<'de, str>>)),
+    ("userData" => UserData(Primitive<usize>)),
+    ("name" => Name(Primitive<Cow<'de, str>>)),
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("data" => Data(Primitive<Cow<'de, str>>)),
     ("driverInput" => DriverInput(Primitive<Cow<'de, str>>)),
     ("steering" => Steering(Primitive<Cow<'de, str>>)),

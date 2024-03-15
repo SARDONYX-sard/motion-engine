@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 8
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x7358f5da`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkbStateMachineNestedStateMachineData<'a> {
     /// -   type: `void*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "nestedStateMachine", skip_serializing)]
+    #[serde(rename = "nestedStateMachine", default, skip_serializing)]
     NestedStateMachine(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"eventIdMap"`
     /// -   type: `void*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "eventIdMap", skip_serializing)]
+    #[serde(rename = "eventIdMap", default, skip_serializing)]
     EventIdMap(Primitive<Cow<'a, str>>),
 }
 

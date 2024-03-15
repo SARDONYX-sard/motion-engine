@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 8
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x52e8043`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkaSkeletonLocalFrameOnBone<'a> {
     /// -   type: `struct hkLocalFrame*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "localFrame")]
+    #[serde(rename = "localFrame", default)]
     LocalFrame(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"boneIndex"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "boneIndex")]
+    #[serde(rename = "boneIndex", default)]
     BoneIndex(Primitive<i32>),
 }
 

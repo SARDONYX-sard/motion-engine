@@ -22,39 +22,48 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpPulleyConstraintAtom {
+    /// # C++ Parent class(`hkpConstraintAtom`, parent: `None`) field Info
+    /// -   name:`"type"`
+    /// -   type: `enum AtomType`
+    /// - offset: 0
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "type", default)]
+    Type(Primitive<AtomType>),
+
     /// # C++ Class Fields Info
     /// -   name:`"fixedPivotAinWorld"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fixedPivotAinWorld")]
+    #[serde(rename = "fixedPivotAinWorld", default)]
     FixedPivotAinWorld(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"fixedPivotBinWorld"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fixedPivotBinWorld")]
+    #[serde(rename = "fixedPivotBinWorld", default)]
     FixedPivotBinWorld(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"ropeLength"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ropeLength")]
+    #[serde(rename = "ropeLength", default)]
     RopeLength(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"leverageOnBodyB"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "leverageOnBodyB")]
+    #[serde(rename = "leverageOnBodyB", default)]
     LeverageOnBodyB(Primitive<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpPulleyConstraintAtom, "@name",
+    ("type" => Type(Primitive<AtomType>)),
     ("fixedPivotAinWorld" => FixedPivotAinWorld(Vector4<f32>)),
     ("fixedPivotBinWorld" => FixedPivotBinWorld(Vector4<f32>)),
     ("ropeLength" => RopeLength(Primitive<f32>)),

@@ -22,67 +22,88 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkMemoryMeshVertexBuffer {
+    // `hkMeshVertexBuffer`(Parent class) has no fields
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"format"`
     /// -   type: `struct hkVertexFormat`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "format")]
+    #[serde(rename = "format", default)]
     Format(HkVertexFormat),
     /// # C++ Class Fields Info
     /// -   name:`"elementOffsets"`
     /// -   type: `hkInt32[32]`
     /// - offset: 268
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "elementOffsets")]
+    #[serde(rename = "elementOffsets", default)]
     ElementOffsets([Primitive<i32>; 32]),
     /// # C++ Class Fields Info
     /// -   name:`"memory"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 396
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "memory")]
+    #[serde(rename = "memory", default)]
     Memory(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexStride"`
     /// -   type: `hkInt32`
     /// - offset: 408
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexStride")]
+    #[serde(rename = "vertexStride", default)]
     VertexStride(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"locked"`
     /// -   type: `hkBool`
     /// - offset: 412
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "locked")]
+    #[serde(rename = "locked", default)]
     Locked(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"numVertices"`
     /// -   type: `hkInt32`
     /// - offset: 416
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numVertices")]
+    #[serde(rename = "numVertices", default)]
     NumVertices(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"isBigEndian"`
     /// -   type: `hkBool`
     /// - offset: 420
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isBigEndian")]
+    #[serde(rename = "isBigEndian", default)]
     IsBigEndian(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"isSharable"`
     /// -   type: `hkBool`
     /// - offset: 421
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isSharable")]
+    #[serde(rename = "isSharable", default)]
     IsSharable(Primitive<bool>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkMemoryMeshVertexBuffer, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("format" => Format(HkVertexFormat)),
     ("elementOffsets" => ElementOffsets([Primitive<i32>; 32])),
     ("memory" => Memory(HkArrayRef<Primitive<u8>>)),

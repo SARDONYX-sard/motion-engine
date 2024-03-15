@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 160
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xf855ba44`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkpCogWheelConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTransformsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transforms")]
+    #[serde(rename = "transforms", default)]
     Transforms(HkpSetLocalTransformsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"cogWheels"`
     /// -   type: `struct hkpCogWheelConstraintAtom`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "cogWheels")]
+    #[serde(rename = "cogWheels", default)]
     CogWheels(HkpCogWheelConstraintAtom),
 }
 

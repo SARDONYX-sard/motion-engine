@@ -22,32 +22,68 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpVehicleRayCastWheelCollide<'a> {
+    /// # C++ Parent class(`hkpVehicleWheelCollide`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"alreadyUsed"`
+    /// -   type: `hkBool`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "alreadyUsed", default)]
+    AlreadyUsed(Primitive<bool>),
+    /// # C++ Parent class(`hkpVehicleWheelCollide`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"type"`
+    /// -   type: `enum unknown`
+    /// - offset: 9
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "type", default, skip_serializing)]
+    Type(Primitive<Unknown>),
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"wheelCollisionFilterInfo"`
     /// -   type: `hkUint32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wheelCollisionFilterInfo")]
+    #[serde(rename = "wheelCollisionFilterInfo", default)]
     WheelCollisionFilterInfo(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"phantom"`
     /// -   type: `struct hkpAabbPhantom*`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "phantom")]
+    #[serde(rename = "phantom", default)]
     Phantom(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"rejectRayChassisListener"`
     /// -   type: `struct hkpRejectChassisListener`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rejectRayChassisListener")]
+    #[serde(rename = "rejectRayChassisListener", default)]
     RejectRayChassisListener(HkpRejectChassisListener),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpVehicleRayCastWheelCollide<'de>, "@name",
+    ("alreadyUsed" => AlreadyUsed(Primitive<bool>)),
+    ("type" => Type(Primitive<Unknown>)),
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("wheelCollisionFilterInfo" => WheelCollisionFilterInfo(Primitive<u32>)),
     ("phantom" => Phantom(Primitive<Cow<'de, str>>)),
     ("rejectRayChassisListener" => RejectRayChassisListener(HkpRejectChassisListener)),

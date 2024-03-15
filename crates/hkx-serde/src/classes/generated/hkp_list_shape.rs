@@ -22,53 +22,106 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpListShape {
+    /// # C++ Parent class(`hkpShapeCollection`, parent: `hkpShape`) field Info
+    /// -   name:`"disableWelding"`
+    /// -   type: `hkBool`
+    /// - offset: 20
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "disableWelding", default)]
+    DisableWelding(Primitive<bool>),
+    /// # C++ Parent class(`hkpShapeCollection`, parent: `hkpShape`) field Info
+    /// -   name:`"collectionType"`
+    /// -   type: `enum CollectionType`
+    /// - offset: 21
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "collectionType", default)]
+    CollectionType(Primitive<CollectionType>),
+
+    /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"userData"`
+    /// -   type: `hkUlong`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "userData", default)]
+    UserData(Primitive<usize>),
+    /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"type"`
+    /// -   type: `enum unknown`
+    /// - offset: 12
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "type", default, skip_serializing)]
+    Type(Primitive<Unknown>),
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"childInfo"`
     /// -   type: `hkArray&lt;struct hkpListShapeChildInfo&gt;`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "childInfo")]
+    #[serde(rename = "childInfo", default)]
     ChildInfo(HkArrayClass<HkpListShapeChildInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `hkUint16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "flags")]
+    #[serde(rename = "flags", default)]
     Flags(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"numDisabledChildren"`
     /// -   type: `hkUint16`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numDisabledChildren")]
+    #[serde(rename = "numDisabledChildren", default)]
     NumDisabledChildren(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"aabbHalfExtents"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "aabbHalfExtents")]
+    #[serde(rename = "aabbHalfExtents", default)]
     AabbHalfExtents(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"aabbCenter"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "aabbCenter")]
+    #[serde(rename = "aabbCenter", default)]
     AabbCenter(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"enabledChildren"`
     /// -   type: `hkUint32[8]`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enabledChildren")]
+    #[serde(rename = "enabledChildren", default)]
     EnabledChildren([Primitive<u32>; 8]),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpListShape, "@name",
+    ("disableWelding" => DisableWelding(Primitive<bool>)),
+    ("collectionType" => CollectionType(Primitive<CollectionType>)),
+    ("userData" => UserData(Primitive<usize>)),
+    ("type" => Type(Primitive<Unknown>)),
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("childInfo" => ChildInfo(HkArrayClass<HkpListShapeChildInfo>)),
     ("flags" => Flags(Primitive<u16>)),
     ("numDisabledChildren" => NumDisabledChildren(Primitive<u16>)),

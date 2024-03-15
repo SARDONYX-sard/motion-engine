@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 304
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x1188cbe1`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,49 +26,49 @@ pub enum HkpWheelConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTransformsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "suspensionBase")]
+    #[serde(rename = "suspensionBase", default)]
     SuspensionBase(HkpSetLocalTransformsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"lin0Limit"`
     /// -   type: `struct hkpLinLimitConstraintAtom`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lin0Limit")]
+    #[serde(rename = "lin0Limit", default)]
     Lin0Limit(HkpLinLimitConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"lin0Soft"`
     /// -   type: `struct hkpLinSoftConstraintAtom`
     /// - offset: 156
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lin0Soft")]
+    #[serde(rename = "lin0Soft", default)]
     Lin0Soft(HkpLinSoftConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"lin1"`
     /// -   type: `struct hkpLinConstraintAtom`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lin1")]
+    #[serde(rename = "lin1", default)]
     Lin1(HkpLinConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"lin2"`
     /// -   type: `struct hkpLinConstraintAtom`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lin2")]
+    #[serde(rename = "lin2", default)]
     Lin2(HkpLinConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"steeringBase"`
     /// -   type: `struct hkpSetLocalRotationsConstraintAtom`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "steeringBase")]
+    #[serde(rename = "steeringBase", default)]
     SteeringBase(HkpSetLocalRotationsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"2dAng"`
     /// -   type: `struct hkp2dAngConstraintAtom`
     /// - offset: 288
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "2dAng")]
+    #[serde(rename = "2dAng", default)]
     2DAng(Hkp2DAngConstraintAtom),
 }
 

@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 16
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xeb60f431`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkpTriggerVolumeEventInfo<'a> {
     /// -   type: `hkUint64`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sortValue")]
+    #[serde(rename = "sortValue", default)]
     SortValue(Primitive<u64>),
     /// # C++ Class Fields Info
     /// -   name:`"body"`
     /// -   type: `struct hkpRigidBody*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "body")]
+    #[serde(rename = "body", default)]
     Body(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"operation"`
     /// -   type: `enum Operation`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "operation")]
+    #[serde(rename = "operation", default)]
     Operation(Primitive<Operation>),
 }
 

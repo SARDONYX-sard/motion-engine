@@ -22,19 +22,21 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkReferencedObject {
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", skip_serializing)]
+    #[serde(rename = "referenceCount", default, skip_serializing)]
     ReferenceCount(Primitive<i16>),
 }
 

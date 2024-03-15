@@ -22,67 +22,114 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpConvexVerticesShape<'a> {
+    /// # C++ Parent class(`hkpConvexShape`, parent: `hkpSphereRepShape`) field Info
+    /// -   name:`"radius"`
+    /// -   type: `hkReal`
+    /// - offset: 16
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "radius", default)]
+    Radius(Primitive<f32>),
+
+    // `hkpSphereRepShape`(Parent class) has no fields
+
+    /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"userData"`
+    /// -   type: `hkUlong`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "userData", default)]
+    UserData(Primitive<usize>),
+    /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"type"`
+    /// -   type: `enum unknown`
+    /// - offset: 12
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "type", default, skip_serializing)]
+    Type(Primitive<Unknown>),
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"aabbHalfExtents"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "aabbHalfExtents")]
+    #[serde(rename = "aabbHalfExtents", default)]
     AabbHalfExtents(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"aabbCenter"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "aabbCenter")]
+    #[serde(rename = "aabbCenter", default)]
     AabbCenter(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"rotatedVertices"`
     /// -   type: `hkArray&lt;struct hkpConvexVerticesShapeFourVectors&gt;`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotatedVertices")]
+    #[serde(rename = "rotatedVertices", default)]
     RotatedVertices(HkArrayClass<HkpConvexVerticesShapeFourVectors>),
     /// # C++ Class Fields Info
     /// -   name:`"numVertices"`
     /// -   type: `hkInt32`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numVertices")]
+    #[serde(rename = "numVertices", default)]
     NumVertices(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"externalObject"`
     /// -   type: `void*`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "externalObject", skip_serializing)]
+    #[serde(rename = "externalObject", default, skip_serializing)]
     ExternalObject(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"getFaceNormals"`
     /// -   type: `void*`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "getFaceNormals", skip_serializing)]
+    #[serde(rename = "getFaceNormals", default, skip_serializing)]
     GetFaceNormals(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"planeEquations"`
     /// -   type: `hkArray&lt;hkVector4&gt;`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "planeEquations")]
+    #[serde(rename = "planeEquations", default)]
     PlaneEquations(HkArrayVector<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"connectivity"`
     /// -   type: `struct hkpConvexVerticesConnectivity*`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "connectivity")]
+    #[serde(rename = "connectivity", default)]
     Connectivity(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpConvexVerticesShape<'de>, "@name",
+    ("radius" => Radius(Primitive<f32>)),
+    ("userData" => UserData(Primitive<usize>)),
+    ("type" => Type(Primitive<Unknown>)),
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("aabbHalfExtents" => AabbHalfExtents(Vector4<f32>)),
     ("aabbCenter" => AabbCenter(Vector4<f32>)),
     ("rotatedVertices" => RotatedVertices(HkArrayClass<HkpConvexVerticesShapeFourVectors>)),

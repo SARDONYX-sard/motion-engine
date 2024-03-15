@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 16
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x80df0f90`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,28 +26,28 @@ pub enum HkpListShapeChildInfo<'a> {
     /// -   type: `struct hkpShape*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "shape")]
+    #[serde(rename = "shape", default)]
     Shape(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilterInfo"`
     /// -   type: `hkUint32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "collisionFilterInfo")]
+    #[serde(rename = "collisionFilterInfo", default)]
     CollisionFilterInfo(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"shapeSize"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "shapeSize", skip_serializing)]
+    #[serde(rename = "shapeSize", default, skip_serializing)]
     ShapeSize(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"numChildShapes"`
     /// -   type: `hkInt32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "numChildShapes", skip_serializing)]
+    #[serde(rename = "numChildShapes", default, skip_serializing)]
     NumChildShapes(Primitive<i32>),
 }
 

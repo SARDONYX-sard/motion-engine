@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 12
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x9ab3a6ac`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkTrackerSerializableScanSnapshotAllocation {
     /// -   type: `hkUlong`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "start")]
+    #[serde(rename = "start", default)]
     Start(Primitive<usize>),
     /// # C++ Class Fields Info
     /// -   name:`"size"`
     /// -   type: `hkUlong`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "size")]
+    #[serde(rename = "size", default)]
     Size(Primitive<usize>),
     /// # C++ Class Fields Info
     /// -   name:`"traceId"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "traceId")]
+    #[serde(rename = "traceId", default)]
     TraceId(Primitive<i32>),
 }
 

@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 2
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xb8686f6b`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkbEvaluateExpressionModifierInternalExpressionData {
     /// -   type: `hkBool`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "raisedEvent")]
+    #[serde(rename = "raisedEvent", default)]
     RaisedEvent(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"wasTrueInPreviousFrame"`
     /// -   type: `hkBool`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wasTrueInPreviousFrame")]
+    #[serde(rename = "wasTrueInPreviousFrame", default)]
     WasTrueInPreviousFrame(Primitive<bool>),
 }
 

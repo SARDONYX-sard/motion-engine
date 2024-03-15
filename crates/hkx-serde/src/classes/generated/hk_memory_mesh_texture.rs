@@ -22,60 +22,81 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkMemoryMeshTexture<'a> {
+    // `hkMeshTexture`(Parent class) has no fields
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"filename"`
     /// -   type: `hkStringPtr`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "filename")]
+    #[serde(rename = "filename", default)]
     Filename(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "data")]
+    #[serde(rename = "data", default)]
     Data(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"format"`
     /// -   type: `enum Format`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "format")]
+    #[serde(rename = "format", default)]
     Format(Primitive<Format>),
     /// # C++ Class Fields Info
     /// -   name:`"hasMipMaps"`
     /// -   type: `hkBool`
     /// - offset: 25
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "hasMipMaps")]
+    #[serde(rename = "hasMipMaps", default)]
     HasMipMaps(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"filterMode"`
     /// -   type: `enum FilterMode`
     /// - offset: 26
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "filterMode")]
+    #[serde(rename = "filterMode", default)]
     FilterMode(Primitive<FilterMode>),
     /// # C++ Class Fields Info
     /// -   name:`"usageHint"`
     /// -   type: `enum TextureUsageType`
     /// - offset: 27
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "usageHint")]
+    #[serde(rename = "usageHint", default)]
     UsageHint(Primitive<TextureUsageType>),
     /// # C++ Class Fields Info
     /// -   name:`"textureCoordChannel"`
     /// -   type: `hkInt32`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "textureCoordChannel")]
+    #[serde(rename = "textureCoordChannel", default)]
     TextureCoordChannel(Primitive<i32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkMemoryMeshTexture<'de>, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("filename" => Filename(Primitive<Cow<'de, str>>)),
     ("data" => Data(HkArrayRef<Primitive<u8>>)),
     ("format" => Format(Primitive<Format>)),

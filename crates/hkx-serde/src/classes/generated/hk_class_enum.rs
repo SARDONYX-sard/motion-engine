@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 20
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x8a3609cf`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,28 +26,28 @@ pub enum HkClassEnum<'a> {
     /// -   type: `char*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name")]
+    #[serde(rename = "name", default)]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"items"`
     /// -   type: `hkSimpleArray&lt;struct hkClassEnumItem&gt;`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "items")]
+    #[serde(rename = "items", default)]
     Items(HkArrayClass<HkClassEnumItem>),
     /// # C++ Class Fields Info
     /// -   name:`"attributes"`
     /// -   type: `struct hkCustomAttributes*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "attributes", skip_serializing)]
+    #[serde(rename = "attributes", default, skip_serializing)]
     Attributes(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `flags FlagValues`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "flags")]
+    #[serde(rename = "flags", default)]
     Flags(Primitive<FlagValues>),
 }
 

@@ -22,39 +22,58 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkxMeshSection<'a> {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"vertexBuffer"`
     /// -   type: `struct hkxVertexBuffer*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexBuffer")]
+    #[serde(rename = "vertexBuffer", default)]
     VertexBuffer(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"indexBuffers"`
     /// -   type: `hkArray&lt;hkxIndexBuffer*&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "indexBuffers")]
+    #[serde(rename = "indexBuffers", default)]
     IndexBuffers(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"material"`
     /// -   type: `struct hkxMaterial*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "material")]
+    #[serde(rename = "material", default)]
     Material(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"userChannels"`
     /// -   type: `hkArray&lt;hkReferencedObject*&gt;`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userChannels")]
+    #[serde(rename = "userChannels", default)]
     UserChannels(HkArrayRef<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkxMeshSection<'de>, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("vertexBuffer" => VertexBuffer(Primitive<Cow<'de, str>>)),
     ("indexBuffers" => IndexBuffers(HkArrayRef<Cow<'de, str>>)),
     ("material" => Material(Primitive<Cow<'de, str>>)),

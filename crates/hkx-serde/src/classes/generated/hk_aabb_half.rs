@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 16
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x1d716a17`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkAabbHalf {
     /// -   type: `hkUint16[6]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "data")]
+    #[serde(rename = "data", default)]
     Data([Primitive<u16>; 6]),
     /// # C++ Class Fields Info
     /// -   name:`"extras"`
     /// -   type: `hkUint16[2]`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "extras")]
+    #[serde(rename = "extras", default)]
     Extras([Primitive<u16>; 2]),
 }
 

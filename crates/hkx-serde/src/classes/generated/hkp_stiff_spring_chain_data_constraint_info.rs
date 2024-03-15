@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 48
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xc624a180`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkpStiffSpringChainDataConstraintInfo {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pivotInA")]
+    #[serde(rename = "pivotInA", default)]
     PivotInA(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"pivotInB"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pivotInB")]
+    #[serde(rename = "pivotInB", default)]
     PivotInB(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"springLength"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "springLength")]
+    #[serde(rename = "springLength", default)]
     SpringLength(Primitive<f32>),
 }
 

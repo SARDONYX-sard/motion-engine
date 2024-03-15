@@ -22,67 +22,86 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbCharacterSetup<'a> {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"retargetingSkeletonMappers"`
     /// -   type: `hkArray&lt;hkaSkeletonMapper*&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "retargetingSkeletonMappers")]
+    #[serde(rename = "retargetingSkeletonMappers", default)]
     RetargetingSkeletonMappers(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"animationSkeleton"`
     /// -   type: `struct hkaSkeleton*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "animationSkeleton")]
+    #[serde(rename = "animationSkeleton", default)]
     AnimationSkeleton(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"ragdollToAnimationSkeletonMapper"`
     /// -   type: `struct hkaSkeletonMapper*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ragdollToAnimationSkeletonMapper")]
+    #[serde(rename = "ragdollToAnimationSkeletonMapper", default)]
     RagdollToAnimationSkeletonMapper(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"animationToRagdollSkeletonMapper"`
     /// -   type: `struct hkaSkeletonMapper*`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "animationToRagdollSkeletonMapper")]
+    #[serde(rename = "animationToRagdollSkeletonMapper", default)]
     AnimationToRagdollSkeletonMapper(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"animationBindingSet"`
     /// -   type: `void*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "animationBindingSet", skip_serializing)]
+    #[serde(rename = "animationBindingSet", default, skip_serializing)]
     AnimationBindingSet(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `struct hkbCharacterData*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "data")]
+    #[serde(rename = "data", default)]
     Data(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"mirroredSkeleton"`
     /// -   type: `void*`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "mirroredSkeleton", skip_serializing)]
+    #[serde(rename = "mirroredSkeleton", default, skip_serializing)]
     MirroredSkeleton(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"characterPropertyIdMap"`
     /// -   type: `void*`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "characterPropertyIdMap", skip_serializing)]
+    #[serde(rename = "characterPropertyIdMap", default, skip_serializing)]
     CharacterPropertyIdMap(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbCharacterSetup<'de>, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("retargetingSkeletonMappers" => RetargetingSkeletonMappers(HkArrayRef<Cow<'de, str>>)),
     ("animationSkeleton" => AnimationSkeleton(Primitive<Cow<'de, str>>)),
     ("ragdollToAnimationSkeletonMapper" => RagdollToAnimationSkeletonMapper(Primitive<Cow<'de, str>>)),

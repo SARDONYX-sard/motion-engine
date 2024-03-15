@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 80
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x39de637e`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,98 +26,98 @@ pub enum HkbProxyModifierProxyInfo {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "dynamicFriction")]
+    #[serde(rename = "dynamicFriction", default)]
     DynamicFriction(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"staticFriction"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "staticFriction")]
+    #[serde(rename = "staticFriction", default)]
     StaticFriction(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"keepContactTolerance"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "keepContactTolerance")]
+    #[serde(rename = "keepContactTolerance", default)]
     KeepContactTolerance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"up"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "up")]
+    #[serde(rename = "up", default)]
     Up(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"keepDistance"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "keepDistance")]
+    #[serde(rename = "keepDistance", default)]
     KeepDistance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"contactAngleSensitivity"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "contactAngleSensitivity")]
+    #[serde(rename = "contactAngleSensitivity", default)]
     ContactAngleSensitivity(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"userPlanes"`
     /// -   type: `hkUint32`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userPlanes")]
+    #[serde(rename = "userPlanes", default)]
     UserPlanes(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxCharacterSpeedForSolver"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxCharacterSpeedForSolver")]
+    #[serde(rename = "maxCharacterSpeedForSolver", default)]
     MaxCharacterSpeedForSolver(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"characterStrength"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "characterStrength")]
+    #[serde(rename = "characterStrength", default)]
     CharacterStrength(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"characterMass"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "characterMass")]
+    #[serde(rename = "characterMass", default)]
     CharacterMass(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxSlope"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxSlope")]
+    #[serde(rename = "maxSlope", default)]
     MaxSlope(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"penetrationRecoverySpeed"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "penetrationRecoverySpeed")]
+    #[serde(rename = "penetrationRecoverySpeed", default)]
     PenetrationRecoverySpeed(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxCastIterations"`
     /// -   type: `hkInt32`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxCastIterations")]
+    #[serde(rename = "maxCastIterations", default)]
     MaxCastIterations(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"refreshManifoldInCheckSupport"`
     /// -   type: `hkBool`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "refreshManifoldInCheckSupport")]
+    #[serde(rename = "refreshManifoldInCheckSupport", default)]
     RefreshManifoldInCheckSupport(Primitive<bool>),
 }
 

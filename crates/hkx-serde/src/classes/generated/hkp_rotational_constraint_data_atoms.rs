@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 128
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xa0c64586`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkpRotationalConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalRotationsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotations")]
+    #[serde(rename = "rotations", default)]
     Rotations(HkpSetLocalRotationsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"ang"`
     /// -   type: `struct hkpAngConstraintAtom`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ang")]
+    #[serde(rename = "ang", default)]
     Ang(HkpAngConstraintAtom),
 }
 

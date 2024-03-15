@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 80
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xc73dcaf9`
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkpBallAndSocketConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTranslationsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pivots")]
+    #[serde(rename = "pivots", default)]
     Pivots(HkpSetLocalTranslationsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"setupStabilization"`
     /// -   type: `struct hkpSetupStabilizationAtom`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "setupStabilization")]
+    #[serde(rename = "setupStabilization", default)]
     SetupStabilization(HkpSetupStabilizationAtom),
     /// # C++ Class Fields Info
     /// -   name:`"ballSocket"`
     /// -   type: `struct hkpBallSocketConstraintAtom`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ballSocket")]
+    #[serde(rename = "ballSocket", default)]
     BallSocket(HkpBallSocketConstraintAtom),
 }
 

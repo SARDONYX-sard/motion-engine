@@ -22,39 +22,58 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpTriggerVolume<'a> {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"overlappingBodies"`
     /// -   type: `hkArray&lt;hkpRigidBody*&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "overlappingBodies")]
+    #[serde(rename = "overlappingBodies", default)]
     OverlappingBodies(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"eventQueue"`
     /// -   type: `hkArray&lt;struct hkpTriggerVolumeEventInfo&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "eventQueue")]
+    #[serde(rename = "eventQueue", default)]
     EventQueue(HkArrayClass<HkpTriggerVolumeEventInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"triggerBody"`
     /// -   type: `struct hkpRigidBody*`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "triggerBody")]
+    #[serde(rename = "triggerBody", default)]
     TriggerBody(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"sequenceNumber"`
     /// -   type: `hkUint32`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sequenceNumber")]
+    #[serde(rename = "sequenceNumber", default)]
     SequenceNumber(Primitive<u32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpTriggerVolume<'de>, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("overlappingBodies" => OverlappingBodies(HkArrayRef<Cow<'de, str>>)),
     ("eventQueue" => EventQueue(HkArrayClass<HkpTriggerVolumeEventInfo>)),
     ("triggerBody" => TriggerBody(Primitive<Cow<'de, str>>)),

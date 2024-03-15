@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 8
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x76bddb31`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkbEventBase<'a> {
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "id")]
+    #[serde(rename = "id", default)]
     Id(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"payload"`
     /// -   type: `struct hkbEventPayload*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "payload")]
+    #[serde(rename = "payload", default)]
     Payload(Primitive<Cow<'a, str>>),
 }
 

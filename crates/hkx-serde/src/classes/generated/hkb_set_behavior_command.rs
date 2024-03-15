@@ -22,60 +22,79 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbSetBehaviorCommand<'a> {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"characterId"`
     /// -   type: `hkUint64`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "characterId")]
+    #[serde(rename = "characterId", default)]
     CharacterId(Primitive<u64>),
     /// # C++ Class Fields Info
     /// -   name:`"behavior"`
     /// -   type: `struct hkbBehaviorGraph*`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "behavior")]
+    #[serde(rename = "behavior", default)]
     Behavior(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"rootGenerator"`
     /// -   type: `struct hkbGenerator*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rootGenerator")]
+    #[serde(rename = "rootGenerator", default)]
     RootGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"referencedBehaviors"`
     /// -   type: `hkArray&lt;hkbBehaviorGraph*&gt;`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "referencedBehaviors")]
+    #[serde(rename = "referencedBehaviors", default)]
     ReferencedBehaviors(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"startStateIndex"`
     /// -   type: `hkInt32`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "startStateIndex")]
+    #[serde(rename = "startStateIndex", default)]
     StartStateIndex(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"randomizeSimulation"`
     /// -   type: `hkBool`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "randomizeSimulation")]
+    #[serde(rename = "randomizeSimulation", default)]
     RandomizeSimulation(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"padding"`
     /// -   type: `hkInt32`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "padding")]
+    #[serde(rename = "padding", default)]
     Padding(Primitive<i32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbSetBehaviorCommand<'de>, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("characterId" => CharacterId(Primitive<u64>)),
     ("behavior" => Behavior(Primitive<Cow<'de, str>>)),
     ("rootGenerator" => RootGenerator(Primitive<Cow<'de, str>>)),

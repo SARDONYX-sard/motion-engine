@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 208
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x1034549a`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkpVehicleFrictionDescription {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wheelDistance")]
+    #[serde(rename = "wheelDistance", default)]
     WheelDistance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"chassisMassInv"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "chassisMassInv")]
+    #[serde(rename = "chassisMassInv", default)]
     ChassisMassInv(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"axleDescr"`
     /// -   type: `struct hkpVehicleFrictionDescriptionAxisDescription[2]`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "axleDescr")]
+    #[serde(rename = "axleDescr", default)]
     AxleDescr([HkpVehicleFrictionDescriptionAxisDescription; 2]),
 }
 

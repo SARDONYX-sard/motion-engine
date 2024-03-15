@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 512
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x626e55a`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,35 +26,35 @@ pub enum HkpAgent1NSector {
     /// -   type: `hkUint32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bytesAllocated")]
+    #[serde(rename = "bytesAllocated", default)]
     BytesAllocated(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"pad0"`
     /// -   type: `hkUint32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pad0")]
+    #[serde(rename = "pad0", default)]
     Pad0(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"pad1"`
     /// -   type: `hkUint32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pad1")]
+    #[serde(rename = "pad1", default)]
     Pad1(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"pad2"`
     /// -   type: `hkUint32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pad2")]
+    #[serde(rename = "pad2", default)]
     Pad2(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `hkUint8[496]`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "data")]
+    #[serde(rename = "data", default)]
     Data([Primitive<u8>; 496]),
 }
 

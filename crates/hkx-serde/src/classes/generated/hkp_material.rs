@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 12
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x33be6570`
 /// -   version: 2
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,28 +26,28 @@ pub enum HkpMaterial {
     /// -   type: `enum ResponseType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "responseType")]
+    #[serde(rename = "responseType", default)]
     ResponseType(Primitive<ResponseType>),
     /// # C++ Class Fields Info
     /// -   name:`"rollingFrictionMultiplier"`
     /// -   type: `hkHalf`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rollingFrictionMultiplier")]
+    #[serde(rename = "rollingFrictionMultiplier", default)]
     RollingFrictionMultiplier(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"friction"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "friction")]
+    #[serde(rename = "friction", default)]
     Friction(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"restitution"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "restitution")]
+    #[serde(rename = "restitution", default)]
     Restitution(Primitive<f32>),
 }
 

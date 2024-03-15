@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 8
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xc6aaccc8`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkbCompiledExpressionSetToken {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "data")]
+    #[serde(rename = "data", default)]
     Data(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum TokenType`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type")]
+    #[serde(rename = "type", default)]
     Type(Primitive<TokenType>),
     /// # C++ Class Fields Info
     /// -   name:`"operator"`
     /// -   type: `enum Operator`
     /// - offset: 5
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "operator")]
+    #[serde(rename = "operator", default)]
     Operator(Primitive<Operator>),
 }
 

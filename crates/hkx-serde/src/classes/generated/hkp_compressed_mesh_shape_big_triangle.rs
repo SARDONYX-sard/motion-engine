@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 16
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xcbfc95a4`
 /// -   version: 2
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,42 +26,42 @@ pub enum HkpCompressedMeshShapeBigTriangle {
     /// -   type: `hkUint16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "a")]
+    #[serde(rename = "a", default)]
     A(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"b"`
     /// -   type: `hkUint16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "b")]
+    #[serde(rename = "b", default)]
     B(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"c"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "c")]
+    #[serde(rename = "c", default)]
     C(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"material"`
     /// -   type: `hkUint32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "material")]
+    #[serde(rename = "material", default)]
     Material(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"weldingInfo"`
     /// -   type: `hkUint16`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "weldingInfo")]
+    #[serde(rename = "weldingInfo", default)]
     WeldingInfo(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"transformIndex"`
     /// -   type: `hkUint16`
     /// - offset: 14
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformIndex")]
+    #[serde(rename = "transformIndex", default)]
     TransformIndex(Primitive<u16>),
 }
 

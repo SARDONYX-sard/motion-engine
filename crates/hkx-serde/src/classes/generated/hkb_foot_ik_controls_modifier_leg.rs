@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 32
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x9e17091a`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,35 +26,35 @@ pub enum HkbFootIkControlsModifierLeg {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "groundPosition")]
+    #[serde(rename = "groundPosition", default)]
     GroundPosition(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"ungroundedEvent"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ungroundedEvent")]
+    #[serde(rename = "ungroundedEvent", default)]
     UngroundedEvent(HkbEventProperty),
     /// # C++ Class Fields Info
     /// -   name:`"verticalError"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "verticalError")]
+    #[serde(rename = "verticalError", default)]
     VerticalError(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"hitSomething"`
     /// -   type: `hkBool`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "hitSomething")]
+    #[serde(rename = "hitSomething", default)]
     HitSomething(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"isPlantedMS"`
     /// -   type: `hkBool`
     /// - offset: 29
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isPlantedMS")]
+    #[serde(rename = "isPlantedMS", default)]
     IsPlantedMs(Primitive<bool>),
 }
 

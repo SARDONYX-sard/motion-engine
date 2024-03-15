@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 16
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x750edf40`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkbClipGeneratorEcho {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "offsetLocalTime")]
+    #[serde(rename = "offsetLocalTime", default)]
     OffsetLocalTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"weight"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "weight")]
+    #[serde(rename = "weight", default)]
     Weight(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"dwdt"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "dwdt")]
+    #[serde(rename = "dwdt", default)]
     Dwdt(Primitive<f32>),
 }
 

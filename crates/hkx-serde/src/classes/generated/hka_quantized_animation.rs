@@ -22,32 +22,100 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkaQuantizedAnimation<'a> {
+    /// # C++ Parent class(`hkaAnimation`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"type"`
+    /// -   type: `enum AnimationType`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "type", default)]
+    Type(Primitive<AnimationType>),
+    /// # C++ Parent class(`hkaAnimation`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"duration"`
+    /// -   type: `hkReal`
+    /// - offset: 12
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "duration", default)]
+    Duration(Primitive<f32>),
+    /// # C++ Parent class(`hkaAnimation`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"numberOfTransformTracks"`
+    /// -   type: `hkInt32`
+    /// - offset: 16
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "numberOfTransformTracks", default)]
+    NumberOfTransformTracks(Primitive<i32>),
+    /// # C++ Parent class(`hkaAnimation`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"numberOfFloatTracks"`
+    /// -   type: `hkInt32`
+    /// - offset: 20
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "numberOfFloatTracks", default)]
+    NumberOfFloatTracks(Primitive<i32>),
+    /// # C++ Parent class(`hkaAnimation`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"extractedMotion"`
+    /// -   type: `struct hkaAnimatedReferenceFrame*`
+    /// - offset: 24
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "extractedMotion", default)]
+    ExtractedMotion(Primitive<Cow<'a, str>>),
+    /// # C++ Parent class(`hkaAnimation`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"annotationTracks"`
+    /// -   type: `hkArray&lt;struct hkaAnnotationTrack&gt;`
+    /// - offset: 28
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "annotationTracks", default)]
+    AnnotationTracks(HkArrayClass<HkaAnnotationTrack>),
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "data")]
+    #[serde(rename = "data", default)]
     Data(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"endian"`
     /// -   type: `hkUint32`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "endian")]
+    #[serde(rename = "endian", default)]
     Endian(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"skeleton"`
     /// -   type: `void*`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "skeleton", skip_serializing)]
+    #[serde(rename = "skeleton", default, skip_serializing)]
     Skeleton(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkaQuantizedAnimation<'de>, "@name",
+    ("type" => Type(Primitive<AnimationType>)),
+    ("duration" => Duration(Primitive<f32>)),
+    ("numberOfTransformTracks" => NumberOfTransformTracks(Primitive<i32>)),
+    ("numberOfFloatTracks" => NumberOfFloatTracks(Primitive<i32>)),
+    ("extractedMotion" => ExtractedMotion(Primitive<Cow<'de, str>>)),
+    ("annotationTracks" => AnnotationTracks(HkArrayClass<HkaAnnotationTrack>)),
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("data" => Data(HkArrayRef<Primitive<u8>>)),
     ("endian" => Endian(Primitive<u32>)),
     ("skeleton" => Skeleton(Primitive<Cow<'de, str>>)),

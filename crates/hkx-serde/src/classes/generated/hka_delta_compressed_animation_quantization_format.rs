@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 20
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x724a7561`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,42 +26,42 @@ pub enum HkaDeltaCompressedAnimationQuantizationFormat {
     /// -   type: `hkUint8`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxBitWidth")]
+    #[serde(rename = "maxBitWidth", default)]
     MaxBitWidth(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"preserved"`
     /// -   type: `hkUint8`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "preserved")]
+    #[serde(rename = "preserved", default)]
     Preserved(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"numD"`
     /// -   type: `hkUint32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numD")]
+    #[serde(rename = "numD", default)]
     NumD(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"offsetIdx"`
     /// -   type: `hkUint32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "offsetIdx")]
+    #[serde(rename = "offsetIdx", default)]
     OffsetIdx(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"scaleIdx"`
     /// -   type: `hkUint32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "scaleIdx")]
+    #[serde(rename = "scaleIdx", default)]
     ScaleIdx(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"bitWidthIdx"`
     /// -   type: `hkUint32`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bitWidthIdx")]
+    #[serde(rename = "bitWidthIdx", default)]
     BitWidthIdx(Primitive<u32>),
 }
 

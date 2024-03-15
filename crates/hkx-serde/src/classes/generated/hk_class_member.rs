@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 24
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x5c7ea4c2`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,63 +26,63 @@ pub enum HkClassMember<'a> {
     /// -   type: `char*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name")]
+    #[serde(rename = "name", default)]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"class"`
     /// -   type: `struct hkClass*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "class")]
+    #[serde(rename = "class", default)]
     Class(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"enum"`
     /// -   type: `struct hkClassEnum*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enum")]
+    #[serde(rename = "enum", default)]
     Enum(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum Type`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type")]
+    #[serde(rename = "type", default)]
     Type(Primitive<Type>),
     /// # C++ Class Fields Info
     /// -   name:`"subtype"`
     /// -   type: `enum Type`
     /// - offset: 13
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "subtype")]
+    #[serde(rename = "subtype", default)]
     Subtype(Primitive<Type>),
     /// # C++ Class Fields Info
     /// -   name:`"cArraySize"`
     /// -   type: `hkInt16`
     /// - offset: 14
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "cArraySize")]
+    #[serde(rename = "cArraySize", default)]
     CArraySize(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `flags FlagValues`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "flags")]
+    #[serde(rename = "flags", default)]
     Flags(Primitive<FlagValues>),
     /// # C++ Class Fields Info
     /// -   name:`"offset"`
     /// -   type: `hkUint16`
     /// - offset: 18
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "offset")]
+    #[serde(rename = "offset", default)]
     Offset(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"attributes"`
     /// -   type: `struct hkCustomAttributes*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "attributes", skip_serializing)]
+    #[serde(rename = "attributes", default, skip_serializing)]
     Attributes(Primitive<Cow<'a, str>>),
 }
 

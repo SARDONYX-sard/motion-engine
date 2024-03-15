@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 16
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x9ce308e9`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkpProperty {
     /// -   type: `hkUint32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "key")]
+    #[serde(rename = "key", default)]
     Key(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"alignmentPadding"`
     /// -   type: `hkUint32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "alignmentPadding")]
+    #[serde(rename = "alignmentPadding", default)]
     AlignmentPadding(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"value"`
     /// -   type: `struct hkpPropertyValue`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "value")]
+    #[serde(rename = "value", default)]
     Value(HkpPropertyValue),
 }
 

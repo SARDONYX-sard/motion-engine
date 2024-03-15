@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 48
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x72deb7a6`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,28 +26,28 @@ pub enum HkbKeyframeBonesModifierKeyframeInfo {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "keyframedPosition")]
+    #[serde(rename = "keyframedPosition", default)]
     KeyframedPosition(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"keyframedRotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "keyframedRotation")]
+    #[serde(rename = "keyframedRotation", default)]
     KeyframedRotation(Quaternion<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"boneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "boneIndex")]
+    #[serde(rename = "boneIndex", default)]
     BoneIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"isValid"`
     /// -   type: `hkBool`
     /// - offset: 34
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isValid")]
+    #[serde(rename = "isValid", default)]
     IsValid(Primitive<bool>),
 }
 

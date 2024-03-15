@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 8
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x9c16df5b`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,7 +26,7 @@ pub enum HkPackedVector3 {
     /// -   type: `hkInt16[4]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "values")]
+    #[serde(rename = "values", default)]
     Values([Primitive<i16>; 4]),
 }
 

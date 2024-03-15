@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 24
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xf12d48d9`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkpSerializedTrack1NInfo<'a> {
     /// -   type: `hkArray&lt;hkpAgent1nSector*&gt;`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sectors")]
+    #[serde(rename = "sectors", default)]
     Sectors(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"subTracks"`
     /// -   type: `hkArray&lt;hkpSerializedSubTrack1nInfo*&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "subTracks")]
+    #[serde(rename = "subTracks", default)]
     SubTracks(HkArrayRef<Cow<'a, str>>),
 }
 

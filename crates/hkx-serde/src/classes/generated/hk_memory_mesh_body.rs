@@ -22,46 +22,67 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkMemoryMeshBody<'a> {
+    // `hkMeshBody`(Parent class) has no fields
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"transform"`
     /// -   type: `hkMatrix4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transform")]
+    #[serde(rename = "transform", default)]
     Transform(Matrix4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"transformSet"`
     /// -   type: `struct hkIndexedTransformSet*`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformSet")]
+    #[serde(rename = "transformSet", default)]
     TransformSet(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"shape"`
     /// -   type: `struct hkMeshShape*`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "shape")]
+    #[serde(rename = "shape", default)]
     Shape(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexBuffers"`
     /// -   type: `hkArray&lt;hkMeshVertexBuffer*&gt;`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexBuffers")]
+    #[serde(rename = "vertexBuffers", default)]
     VertexBuffers(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name")]
+    #[serde(rename = "name", default)]
     Name(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkMemoryMeshBody<'de>, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("transform" => Transform(Matrix4<f32>)),
     ("transformSet" => TransformSet(Primitive<Cow<'de, str>>)),
     ("shape" => Shape(Primitive<Cow<'de, str>>)),

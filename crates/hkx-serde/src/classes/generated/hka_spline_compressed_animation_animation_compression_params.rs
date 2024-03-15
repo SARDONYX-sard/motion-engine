@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 4
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xde830789`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkaSplineCompressedAnimationAnimationCompressionParams {
     /// -   type: `hkUint16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxFramesPerBlock")]
+    #[serde(rename = "maxFramesPerBlock", default)]
     MaxFramesPerBlock(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"enableSampleSingleTracks"`
     /// -   type: `hkBool`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enableSampleSingleTracks")]
+    #[serde(rename = "enableSampleSingleTracks", default)]
     EnableSampleSingleTracks(Primitive<bool>),
 }
 

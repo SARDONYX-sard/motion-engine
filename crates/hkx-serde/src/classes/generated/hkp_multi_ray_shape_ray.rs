@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 32
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xffdc0b65`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkpMultiRayShapeRay {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "start")]
+    #[serde(rename = "start", default)]
     Start(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"end"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "end")]
+    #[serde(rename = "end", default)]
     End(Vector4<f32>),
 }
 

@@ -22,46 +22,65 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkaBoneAttachment<'a> {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"originalSkeletonName"`
     /// -   type: `hkStringPtr`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "originalSkeletonName")]
+    #[serde(rename = "originalSkeletonName", default)]
     OriginalSkeletonName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"boneFromAttachment"`
     /// -   type: `hkMatrix4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "boneFromAttachment")]
+    #[serde(rename = "boneFromAttachment", default)]
     BoneFromAttachment(Matrix4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"attachment"`
     /// -   type: `struct hkReferencedObject*`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "attachment")]
+    #[serde(rename = "attachment", default)]
     Attachment(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name")]
+    #[serde(rename = "name", default)]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"boneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "boneIndex")]
+    #[serde(rename = "boneIndex", default)]
     BoneIndex(Primitive<i16>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkaBoneAttachment<'de>, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("originalSkeletonName" => OriginalSkeletonName(Primitive<Cow<'de, str>>)),
     ("boneFromAttachment" => BoneFromAttachment(Matrix4<f32>)),
     ("attachment" => Attachment(Primitive<Cow<'de, str>>)),

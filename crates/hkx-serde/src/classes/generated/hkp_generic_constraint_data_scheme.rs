@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 64
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x11fd6f6c`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,35 +26,35 @@ pub enum HkpGenericConstraintDataScheme<'a> {
     /// -   type: `struct hkpGenericConstraintDataSchemeConstraintInfo`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "info", skip_serializing)]
+    #[serde(rename = "info", default, skip_serializing)]
     Info(HkpGenericConstraintDataSchemeConstraintInfo),
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `hkArray&lt;hkVector4&gt;`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "data")]
+    #[serde(rename = "data", default)]
     Data(HkArrayVector<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"commands"`
     /// -   type: `hkArray&lt;hkInt32&gt;`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "commands")]
+    #[serde(rename = "commands", default)]
     Commands(HkArrayRef<Primitive<i32>>),
     /// # C++ Class Fields Info
     /// -   name:`"modifiers"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "modifiers", skip_serializing)]
+    #[serde(rename = "modifiers", default, skip_serializing)]
     Modifiers(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"motors"`
     /// -   type: `hkArray&lt;hkpConstraintMotor*&gt;`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "motors")]
+    #[serde(rename = "motors", default)]
     Motors(HkArrayRef<Cow<'a, str>>),
 }
 

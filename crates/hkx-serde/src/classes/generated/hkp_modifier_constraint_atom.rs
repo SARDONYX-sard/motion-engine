@@ -22,39 +22,48 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpModifierConstraintAtom<'a> {
+    /// # C++ Parent class(`hkpConstraintAtom`, parent: `None`) field Info
+    /// -   name:`"type"`
+    /// -   type: `enum AtomType`
+    /// - offset: 0
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "type", default)]
+    Type(Primitive<AtomType>),
+
     /// # C++ Class Fields Info
     /// -   name:`"modifierAtomSize"`
     /// -   type: `hkUint16`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "modifierAtomSize")]
+    #[serde(rename = "modifierAtomSize", default)]
     ModifierAtomSize(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"childSize"`
     /// -   type: `hkUint16`
     /// - offset: 18
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "childSize")]
+    #[serde(rename = "childSize", default)]
     ChildSize(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"child"`
     /// -   type: `struct hkpConstraintAtom*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "child")]
+    #[serde(rename = "child", default)]
     Child(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"pad"`
     /// -   type: `hkUint32[2]`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pad")]
+    #[serde(rename = "pad", default)]
     Pad([Primitive<u32>; 2]),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpModifierConstraintAtom<'de>, "@name",
+    ("type" => Type(Primitive<AtomType>)),
     ("modifierAtomSize" => ModifierAtomSize(Primitive<u16>)),
     ("childSize" => ChildSize(Primitive<u16>)),
     ("child" => Child(Primitive<Cow<'de, str>>)),

@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 32
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xb59d1734`
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,42 +26,42 @@ pub enum HkpSimpleContactConstraintDataInfo {
     /// -   type: `hkUint16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "flags")]
+    #[serde(rename = "flags", default)]
     Flags(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"index"`
     /// -   type: `hkUint16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "index")]
+    #[serde(rename = "index", default)]
     Index(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"internalData0"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "internalData0")]
+    #[serde(rename = "internalData0", default)]
     InternalData0(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"rollingFrictionMultiplier"`
     /// -   type: `hkHalf`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rollingFrictionMultiplier")]
+    #[serde(rename = "rollingFrictionMultiplier", default)]
     RollingFrictionMultiplier(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"internalData1"`
     /// -   type: `hkHalf`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "internalData1")]
+    #[serde(rename = "internalData1", default)]
     InternalData1(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `hkUint32[5]`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "data")]
+    #[serde(rename = "data", default)]
     Data([Primitive<u32>; 5]),
 }
 

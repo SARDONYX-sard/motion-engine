@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 8
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x3144d17c`
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkMemoryResourceHandleExternalLink<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "memberName")]
+    #[serde(rename = "memberName", default)]
     MemberName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"externalId"`
     /// -   type: `hkStringPtr`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "externalId")]
+    #[serde(rename = "externalId", default)]
     ExternalId(Primitive<Cow<'a, str>>),
 }
 

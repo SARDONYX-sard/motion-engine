@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 12
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x2df6313d`
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,7 +26,7 @@ pub enum HkxVertexDescription {
     /// -   type: `hkArray&lt;struct hkxVertexDescriptionElementDecl&gt;`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "decls")]
+    #[serde(rename = "decls", default)]
     Decls(HkArrayClass<HkxVertexDescriptionElementDecl>),
 }
 

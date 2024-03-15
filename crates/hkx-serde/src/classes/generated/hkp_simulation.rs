@@ -22,74 +22,93 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpSimulation<'a> {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"determinismCheckFrameCounter"`
     /// -   type: `hkUint32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "determinismCheckFrameCounter")]
+    #[serde(rename = "determinismCheckFrameCounter", default)]
     DeterminismCheckFrameCounter(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"world"`
     /// -   type: `struct hkpWorld*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "world")]
+    #[serde(rename = "world", default)]
     World(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"lastProcessingStep"`
     /// -   type: `enum LastProcessingStep`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lastProcessingStep")]
+    #[serde(rename = "lastProcessingStep", default)]
     LastProcessingStep(Primitive<LastProcessingStep>),
     /// # C++ Class Fields Info
     /// -   name:`"currentTime"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "currentTime")]
+    #[serde(rename = "currentTime", default)]
     CurrentTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"currentPsiTime"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "currentPsiTime")]
+    #[serde(rename = "currentPsiTime", default)]
     CurrentPsiTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"physicsDeltaTime"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "physicsDeltaTime")]
+    #[serde(rename = "physicsDeltaTime", default)]
     PhysicsDeltaTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"simulateUntilTime"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "simulateUntilTime")]
+    #[serde(rename = "simulateUntilTime", default)]
     SimulateUntilTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"frameMarkerPsiSnap"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "frameMarkerPsiSnap")]
+    #[serde(rename = "frameMarkerPsiSnap", default)]
     FrameMarkerPsiSnap(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"previousStepResult"`
     /// -   type: `hkUint32`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "previousStepResult")]
+    #[serde(rename = "previousStepResult", default)]
     PreviousStepResult(Primitive<u32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpSimulation<'de>, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("determinismCheckFrameCounter" => DeterminismCheckFrameCounter(Primitive<u32>)),
     ("world" => World(Primitive<Cow<'de, str>>)),
     ("lastProcessingStep" => LastProcessingStep(Primitive<LastProcessingStep>)),

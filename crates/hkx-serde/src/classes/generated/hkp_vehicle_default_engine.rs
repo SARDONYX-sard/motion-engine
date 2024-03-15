@@ -22,81 +22,102 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpVehicleDefaultEngine {
+    // `hkpVehicleEngine`(Parent class) has no fields
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"minRPM"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minRPM")]
+    #[serde(rename = "minRPM", default)]
     MinRpm(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"optRPM"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "optRPM")]
+    #[serde(rename = "optRPM", default)]
     OptRpm(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxRPM"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxRPM")]
+    #[serde(rename = "maxRPM", default)]
     MaxRpm(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxTorque"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxTorque")]
+    #[serde(rename = "maxTorque", default)]
     MaxTorque(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"torqueFactorAtMinRPM"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "torqueFactorAtMinRPM")]
+    #[serde(rename = "torqueFactorAtMinRPM", default)]
     TorqueFactorAtMinRpm(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"torqueFactorAtMaxRPM"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "torqueFactorAtMaxRPM")]
+    #[serde(rename = "torqueFactorAtMaxRPM", default)]
     TorqueFactorAtMaxRpm(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"resistanceFactorAtMinRPM"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "resistanceFactorAtMinRPM")]
+    #[serde(rename = "resistanceFactorAtMinRPM", default)]
     ResistanceFactorAtMinRpm(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"resistanceFactorAtOptRPM"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "resistanceFactorAtOptRPM")]
+    #[serde(rename = "resistanceFactorAtOptRPM", default)]
     ResistanceFactorAtOptRpm(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"resistanceFactorAtMaxRPM"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "resistanceFactorAtMaxRPM")]
+    #[serde(rename = "resistanceFactorAtMaxRPM", default)]
     ResistanceFactorAtMaxRpm(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"clutchSlipRPM"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "clutchSlipRPM")]
+    #[serde(rename = "clutchSlipRPM", default)]
     ClutchSlipRpm(Primitive<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpVehicleDefaultEngine, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("minRPM" => MinRpm(Primitive<f32>)),
     ("optRPM" => OptRpm(Primitive<f32>)),
     ("maxRPM" => MaxRpm(Primitive<f32>)),

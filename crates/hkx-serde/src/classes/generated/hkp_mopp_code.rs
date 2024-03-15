@@ -22,32 +22,51 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpMoppCode {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"info"`
     /// -   type: `struct hkpMoppCodeCodeInfo`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "info")]
+    #[serde(rename = "info", default)]
     Info(HkpMoppCodeCodeInfo),
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "data")]
+    #[serde(rename = "data", default)]
     Data(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"buildType"`
     /// -   type: `enum BuildType`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "buildType")]
+    #[serde(rename = "buildType", default)]
     BuildType(Primitive<BuildType>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpMoppCode, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("info" => Info(HkpMoppCodeCodeInfo)),
     ("data" => Data(HkArrayRef<Primitive<u8>>)),
     ("buildType" => BuildType(Primitive<BuildType>)),

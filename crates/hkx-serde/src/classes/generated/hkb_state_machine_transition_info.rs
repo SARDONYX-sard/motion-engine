@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 60
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xcdec8025`
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,70 +26,70 @@ pub enum HkbStateMachineTransitionInfo<'a> {
     /// -   type: `struct hkbStateMachineTimeInterval`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "triggerInterval")]
+    #[serde(rename = "triggerInterval", default)]
     TriggerInterval(HkbStateMachineTimeInterval),
     /// # C++ Class Fields Info
     /// -   name:`"initiateInterval"`
     /// -   type: `struct hkbStateMachineTimeInterval`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "initiateInterval")]
+    #[serde(rename = "initiateInterval", default)]
     InitiateInterval(HkbStateMachineTimeInterval),
     /// # C++ Class Fields Info
     /// -   name:`"transition"`
     /// -   type: `struct hkbTransitionEffect*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transition")]
+    #[serde(rename = "transition", default)]
     Transition(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"condition"`
     /// -   type: `struct hkbCondition*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "condition")]
+    #[serde(rename = "condition", default)]
     Condition(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"eventId"`
     /// -   type: `hkInt32`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "eventId")]
+    #[serde(rename = "eventId", default)]
     EventId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"toStateId"`
     /// -   type: `hkInt32`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "toStateId")]
+    #[serde(rename = "toStateId", default)]
     ToStateId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"fromNestedStateId"`
     /// -   type: `hkInt32`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fromNestedStateId")]
+    #[serde(rename = "fromNestedStateId", default)]
     FromNestedStateId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"toNestedStateId"`
     /// -   type: `hkInt32`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "toNestedStateId")]
+    #[serde(rename = "toNestedStateId", default)]
     ToNestedStateId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"priority"`
     /// -   type: `hkInt16`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "priority")]
+    #[serde(rename = "priority", default)]
     Priority(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `flags TransitionFlags`
     /// - offset: 58
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "flags")]
+    #[serde(rename = "flags", default)]
     Flags(Primitive<TransitionFlags>),
 }
 

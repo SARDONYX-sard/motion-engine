@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 24
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x26d5499`
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,28 +26,28 @@ pub enum HkbStateMachineDelayedTransitionInfo {
     /// -   type: `struct hkbStateMachineProspectiveTransitionInfo`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "delayedTransition")]
+    #[serde(rename = "delayedTransition", default)]
     DelayedTransition(HkbStateMachineProspectiveTransitionInfo),
     /// # C++ Class Fields Info
     /// -   name:`"timeDelayed"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "timeDelayed")]
+    #[serde(rename = "timeDelayed", default)]
     TimeDelayed(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"isDelayedTransitionReturnToPreviousState"`
     /// -   type: `hkBool`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isDelayedTransitionReturnToPreviousState")]
+    #[serde(rename = "isDelayedTransitionReturnToPreviousState", default)]
     IsDelayedTransitionReturnToPreviousState(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"wasInAbutRangeLastFrame"`
     /// -   type: `hkBool`
     /// - offset: 21
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wasInAbutRangeLastFrame")]
+    #[serde(rename = "wasInAbutRangeLastFrame", default)]
     WasInAbutRangeLastFrame(Primitive<bool>),
 }
 

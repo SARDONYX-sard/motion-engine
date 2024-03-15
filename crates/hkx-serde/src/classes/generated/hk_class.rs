@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 48
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x75585ef6`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,70 +26,70 @@ pub enum HkClass<'a> {
     /// -   type: `char*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name")]
+    #[serde(rename = "name", default)]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"parent"`
     /// -   type: `struct hkClass*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "parent")]
+    #[serde(rename = "parent", default)]
     Parent(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"objectSize"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "objectSize")]
+    #[serde(rename = "objectSize", default)]
     ObjectSize(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"numImplementedInterfaces"`
     /// -   type: `hkInt32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numImplementedInterfaces")]
+    #[serde(rename = "numImplementedInterfaces", default)]
     NumImplementedInterfaces(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"declaredEnums"`
     /// -   type: `hkSimpleArray&lt;struct hkClassEnum&gt;`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "declaredEnums")]
+    #[serde(rename = "declaredEnums", default)]
     DeclaredEnums(HkArrayClass<HkClassEnum>),
     /// # C++ Class Fields Info
     /// -   name:`"declaredMembers"`
     /// -   type: `hkSimpleArray&lt;struct hkClassMember&gt;`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "declaredMembers")]
+    #[serde(rename = "declaredMembers", default)]
     DeclaredMembers(HkArrayClass<HkClassMember>),
     /// # C++ Class Fields Info
     /// -   name:`"defaults"`
     /// -   type: `void*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "defaults", skip_serializing)]
+    #[serde(rename = "defaults", default, skip_serializing)]
     Defaults(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"attributes"`
     /// -   type: `struct hkCustomAttributes*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "attributes", skip_serializing)]
+    #[serde(rename = "attributes", default, skip_serializing)]
     Attributes(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `flags FlagValues`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "flags")]
+    #[serde(rename = "flags", default)]
     Flags(Primitive<FlagValues>),
     /// # C++ Class Fields Info
     /// -   name:`"describedVersion"`
     /// -   type: `hkInt32`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "describedVersion")]
+    #[serde(rename = "describedVersion", default)]
     DescribedVersion(Primitive<i32>),
 }
 

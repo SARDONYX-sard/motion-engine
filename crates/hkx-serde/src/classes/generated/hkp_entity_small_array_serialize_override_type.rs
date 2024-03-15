@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 8
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xee3c2aec`
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkpEntitySmallArraySerializeOverrideType<'a> {
     /// -   type: `void*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "data", skip_serializing)]
+    #[serde(rename = "data", default, skip_serializing)]
     Data(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"size"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "size")]
+    #[serde(rename = "size", default)]
     Size(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"capacityAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "capacityAndFlags")]
+    #[serde(rename = "capacityAndFlags", default)]
     CapacityAndFlags(Primitive<u16>),
 }
 

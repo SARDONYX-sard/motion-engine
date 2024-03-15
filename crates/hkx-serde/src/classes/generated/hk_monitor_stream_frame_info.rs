@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 36
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x7798b7db`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,63 +26,63 @@ pub enum HkMonitorStreamFrameInfo<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "heading")]
+    #[serde(rename = "heading", default)]
     Heading(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"indexOfTimer0"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "indexOfTimer0")]
+    #[serde(rename = "indexOfTimer0", default)]
     IndexOfTimer0(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"indexOfTimer1"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "indexOfTimer1")]
+    #[serde(rename = "indexOfTimer1", default)]
     IndexOfTimer1(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"absoluteTimeCounter"`
     /// -   type: `enum AbsoluteTimeCounter`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "absoluteTimeCounter")]
+    #[serde(rename = "absoluteTimeCounter", default)]
     AbsoluteTimeCounter(Primitive<AbsoluteTimeCounter>),
     /// # C++ Class Fields Info
     /// -   name:`"timerFactor0"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "timerFactor0")]
+    #[serde(rename = "timerFactor0", default)]
     TimerFactor0(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"timerFactor1"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "timerFactor1")]
+    #[serde(rename = "timerFactor1", default)]
     TimerFactor1(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"threadId"`
     /// -   type: `hkInt32`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "threadId")]
+    #[serde(rename = "threadId", default)]
     ThreadId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"frameStreamStart"`
     /// -   type: `hkInt32`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "frameStreamStart")]
+    #[serde(rename = "frameStreamStart", default)]
     FrameStreamStart(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"frameStreamEnd"`
     /// -   type: `hkInt32`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "frameStreamEnd")]
+    #[serde(rename = "frameStreamEnd", default)]
     FrameStreamEnd(Primitive<i32>),
 }
 

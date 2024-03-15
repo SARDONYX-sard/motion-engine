@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 176
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x82b894c3`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,28 +26,28 @@ pub enum HkpRagdollLimitsDataAtoms {
     /// -   type: `struct hkpSetLocalRotationsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotations")]
+    #[serde(rename = "rotations", default)]
     Rotations(HkpSetLocalRotationsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"twistLimit"`
     /// -   type: `struct hkpTwistLimitConstraintAtom`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "twistLimit")]
+    #[serde(rename = "twistLimit", default)]
     TwistLimit(HkpTwistLimitConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"coneLimit"`
     /// -   type: `struct hkpConeLimitConstraintAtom`
     /// - offset: 132
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "coneLimit")]
+    #[serde(rename = "coneLimit", default)]
     ConeLimit(HkpConeLimitConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"planesLimit"`
     /// -   type: `struct hkpConeLimitConstraintAtom`
     /// - offset: 152
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "planesLimit")]
+    #[serde(rename = "planesLimit", default)]
     PlanesLimit(HkpConeLimitConstraintAtom),
 }
 

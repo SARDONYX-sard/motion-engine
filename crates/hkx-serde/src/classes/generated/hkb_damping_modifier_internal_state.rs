@@ -22,53 +22,72 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbDampingModifierInternalState {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"dampedVector"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "dampedVector")]
+    #[serde(rename = "dampedVector", default)]
     DampedVector(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"vecErrorSum"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vecErrorSum")]
+    #[serde(rename = "vecErrorSum", default)]
     VecErrorSum(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"vecPreviousError"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vecPreviousError")]
+    #[serde(rename = "vecPreviousError", default)]
     VecPreviousError(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"dampedValue"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "dampedValue")]
+    #[serde(rename = "dampedValue", default)]
     DampedValue(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"errorSum"`
     /// -   type: `hkReal`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "errorSum")]
+    #[serde(rename = "errorSum", default)]
     ErrorSum(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"previousError"`
     /// -   type: `hkReal`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "previousError")]
+    #[serde(rename = "previousError", default)]
     PreviousError(Primitive<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbDampingModifierInternalState, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("dampedVector" => DampedVector(Vector4<f32>)),
     ("vecErrorSum" => VecErrorSum(Vector4<f32>)),
     ("vecPreviousError" => VecPreviousError(Vector4<f32>)),

@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 4
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x903abb2c`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,7 +26,7 @@ pub enum HkPostFinishAttribute<'a> {
     /// -   type: `void*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "postFinishFunction", skip_serializing)]
+    #[serde(rename = "postFinishFunction", default, skip_serializing)]
     PostFinishFunction(Primitive<Cow<'a, str>>),
 }
 

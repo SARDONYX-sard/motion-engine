@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 12
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x11e4408b`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,28 +26,28 @@ pub enum HkMultiThreadCheck {
     /// -   type: `hkUint32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "threadId", skip_serializing)]
+    #[serde(rename = "threadId", default, skip_serializing)]
     ThreadId(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"stackTraceId"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "stackTraceId", skip_serializing)]
+    #[serde(rename = "stackTraceId", default, skip_serializing)]
     StackTraceId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"markCount"`
     /// -   type: `hkUint16`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "markCount", skip_serializing)]
+    #[serde(rename = "markCount", default, skip_serializing)]
     MarkCount(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"markBitStack"`
     /// -   type: `hkUint16`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "markBitStack", skip_serializing)]
+    #[serde(rename = "markBitStack", default, skip_serializing)]
     MarkBitStack(Primitive<u16>),
 }
 

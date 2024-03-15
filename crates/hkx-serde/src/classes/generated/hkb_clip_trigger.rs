@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 16
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x7eb45cea`
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,35 +26,35 @@ pub enum HkbClipTrigger {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "localTime")]
+    #[serde(rename = "localTime", default)]
     LocalTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"event"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "event")]
+    #[serde(rename = "event", default)]
     Event(HkbEventProperty),
     /// # C++ Class Fields Info
     /// -   name:`"relativeToEndOfClip"`
     /// -   type: `hkBool`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "relativeToEndOfClip")]
+    #[serde(rename = "relativeToEndOfClip", default)]
     RelativeToEndOfClip(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"acyclic"`
     /// -   type: `hkBool`
     /// - offset: 13
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "acyclic")]
+    #[serde(rename = "acyclic", default)]
     Acyclic(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"isAnnotation"`
     /// -   type: `hkBool`
     /// - offset: 14
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isAnnotation")]
+    #[serde(rename = "isAnnotation", default)]
     IsAnnotation(Primitive<bool>),
 }
 

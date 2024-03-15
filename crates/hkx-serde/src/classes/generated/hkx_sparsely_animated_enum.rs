@@ -22,17 +22,53 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkxSparselyAnimatedEnum<'a> {
+    /// # C++ Parent class(`hkxSparselyAnimatedInt`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"ints"`
+    /// -   type: `hkArray&lt;hkInt32&gt;`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "ints", default)]
+    Ints(HkArrayRef<Primitive<i32>>),
+    /// # C++ Parent class(`hkxSparselyAnimatedInt`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"times"`
+    /// -   type: `hkArray&lt;hkReal&gt;`
+    /// - offset: 20
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "times", default)]
+    Times(HkArrayRef<Primitive<f32>>),
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"enum"`
     /// -   type: `struct hkxEnum*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enum")]
+    #[serde(rename = "enum", default)]
     Enum(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkxSparselyAnimatedEnum<'de>, "@name",
+    ("ints" => Ints(HkArrayRef<Primitive<i32>>)),
+    ("times" => Times(HkArrayRef<Primitive<f32>>)),
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("enum" => Enum(Primitive<Cow<'de, str>>)),
 }

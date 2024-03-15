@@ -22,46 +22,65 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkxLight {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum LightType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type")]
+    #[serde(rename = "type", default)]
     Type(Primitive<LightType>),
     /// # C++ Class Fields Info
     /// -   name:`"position"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "position")]
+    #[serde(rename = "position", default)]
     Position(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"direction"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "direction")]
+    #[serde(rename = "direction", default)]
     Direction(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"color"`
     /// -   type: `hkUint32`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "color")]
+    #[serde(rename = "color", default)]
     Color(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"angle"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "angle")]
+    #[serde(rename = "angle", default)]
     Angle(Primitive<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkxLight, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("type" => Type(Primitive<LightType>)),
     ("position" => Position(Vector4<f32>)),
     ("direction" => Direction(Vector4<f32>)),

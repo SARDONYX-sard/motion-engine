@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 112
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xb149e5a`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkpPulleyConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTranslationsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "translations")]
+    #[serde(rename = "translations", default)]
     Translations(HkpSetLocalTranslationsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"pulley"`
     /// -   type: `struct hkpPulleyConstraintAtom`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pulley")]
+    #[serde(rename = "pulley", default)]
     Pulley(HkpPulleyConstraintAtom),
 }
 

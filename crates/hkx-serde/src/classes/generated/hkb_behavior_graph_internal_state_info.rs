@@ -22,46 +22,65 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbBehaviorGraphInternalStateInfo<'a> {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"characterId"`
     /// -   type: `hkUint64`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "characterId")]
+    #[serde(rename = "characterId", default)]
     CharacterId(Primitive<u64>),
     /// # C++ Class Fields Info
     /// -   name:`"internalState"`
     /// -   type: `struct hkbBehaviorGraphInternalState*`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "internalState")]
+    #[serde(rename = "internalState", default)]
     InternalState(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"auxiliaryNodeInfo"`
     /// -   type: `hkArray&lt;hkbAuxiliaryNodeInfo*&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "auxiliaryNodeInfo")]
+    #[serde(rename = "auxiliaryNodeInfo", default)]
     AuxiliaryNodeInfo(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"activeEventIds"`
     /// -   type: `hkArray&lt;hkInt16&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "activeEventIds")]
+    #[serde(rename = "activeEventIds", default)]
     ActiveEventIds(HkArrayRef<Primitive<i16>>),
     /// # C++ Class Fields Info
     /// -   name:`"activeVariableIds"`
     /// -   type: `hkArray&lt;hkInt16&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "activeVariableIds")]
+    #[serde(rename = "activeVariableIds", default)]
     ActiveVariableIds(HkArrayRef<Primitive<i16>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbBehaviorGraphInternalStateInfo<'de>, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("characterId" => CharacterId(Primitive<u64>)),
     ("internalState" => InternalState(Primitive<Cow<'de, str>>)),
     ("auxiliaryNodeInfo" => AuxiliaryNodeInfo(HkArrayRef<Cow<'de, str>>)),

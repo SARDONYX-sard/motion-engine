@@ -22,102 +22,121 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbCharacterStringData<'a> {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"deformableSkinNames"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "deformableSkinNames")]
+    #[serde(rename = "deformableSkinNames", default)]
     DeformableSkinNames(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"rigidSkinNames"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rigidSkinNames")]
+    #[serde(rename = "rigidSkinNames", default)]
     RigidSkinNames(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"animationNames"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "animationNames")]
+    #[serde(rename = "animationNames", default)]
     AnimationNames(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"animationFilenames"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "animationFilenames")]
+    #[serde(rename = "animationFilenames", default)]
     AnimationFilenames(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"characterPropertyNames"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "characterPropertyNames")]
+    #[serde(rename = "characterPropertyNames", default)]
     CharacterPropertyNames(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"retargetingSkeletonMapperFilenames"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "retargetingSkeletonMapperFilenames")]
+    #[serde(rename = "retargetingSkeletonMapperFilenames", default)]
     RetargetingSkeletonMapperFilenames(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"lodNames"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lodNames")]
+    #[serde(rename = "lodNames", default)]
     LodNames(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"mirroredSyncPointSubstringsA"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "mirroredSyncPointSubstringsA")]
+    #[serde(rename = "mirroredSyncPointSubstringsA", default)]
     MirroredSyncPointSubstringsA(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"mirroredSyncPointSubstringsB"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "mirroredSyncPointSubstringsB")]
+    #[serde(rename = "mirroredSyncPointSubstringsB", default)]
     MirroredSyncPointSubstringsB(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name")]
+    #[serde(rename = "name", default)]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"rigName"`
     /// -   type: `hkStringPtr`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rigName")]
+    #[serde(rename = "rigName", default)]
     RigName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"ragdollName"`
     /// -   type: `hkStringPtr`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ragdollName")]
+    #[serde(rename = "ragdollName", default)]
     RagdollName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"behaviorFilename"`
     /// -   type: `hkStringPtr`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "behaviorFilename")]
+    #[serde(rename = "behaviorFilename", default)]
     BehaviorFilename(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbCharacterStringData<'de>, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("deformableSkinNames" => DeformableSkinNames(HkArrayStringPtr<'de>)),
     ("rigidSkinNames" => RigidSkinNames(HkArrayStringPtr<'de>)),
     ("animationNames" => AnimationNames(HkArrayStringPtr<'de>)),

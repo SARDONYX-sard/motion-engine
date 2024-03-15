@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 16
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x60a881e5`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,28 +26,28 @@ pub enum HkbStateMachineTimeInterval {
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enterEventId")]
+    #[serde(rename = "enterEventId", default)]
     EnterEventId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"exitEventId"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "exitEventId")]
+    #[serde(rename = "exitEventId", default)]
     ExitEventId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"enterTime"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enterTime")]
+    #[serde(rename = "enterTime", default)]
     EnterTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"exitTime"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "exitTime")]
+    #[serde(rename = "exitTime", default)]
     ExitTime(Primitive<f32>),
 }
 

@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 72
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x1c076a84`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,7 +26,7 @@ pub enum HkpVehicleFrictionStatus {
     /// -   type: `struct hkpVehicleFrictionStatusAxisStatus[2]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "axis")]
+    #[serde(rename = "axis", default)]
     Axis([HkpVehicleFrictionStatusAxisStatus; 2]),
 }
 

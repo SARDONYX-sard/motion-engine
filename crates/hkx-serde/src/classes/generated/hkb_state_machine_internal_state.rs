@@ -22,88 +22,107 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbStateMachineInternalState {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"activeTransitions"`
     /// -   type: `hkArray&lt;struct hkbStateMachineActiveTransitionInfo&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "activeTransitions")]
+    #[serde(rename = "activeTransitions", default)]
     ActiveTransitions(HkArrayClass<HkbStateMachineActiveTransitionInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"transitionFlags"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transitionFlags")]
+    #[serde(rename = "transitionFlags", default)]
     TransitionFlags(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"wildcardTransitionFlags"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wildcardTransitionFlags")]
+    #[serde(rename = "wildcardTransitionFlags", default)]
     WildcardTransitionFlags(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"delayedTransitions"`
     /// -   type: `hkArray&lt;struct hkbStateMachineDelayedTransitionInfo&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "delayedTransitions")]
+    #[serde(rename = "delayedTransitions", default)]
     DelayedTransitions(HkArrayClass<HkbStateMachineDelayedTransitionInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"timeInState"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "timeInState")]
+    #[serde(rename = "timeInState", default)]
     TimeInState(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"lastLocalTime"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lastLocalTime")]
+    #[serde(rename = "lastLocalTime", default)]
     LastLocalTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"currentStateId"`
     /// -   type: `hkInt32`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "currentStateId")]
+    #[serde(rename = "currentStateId", default)]
     CurrentStateId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"previousStateId"`
     /// -   type: `hkInt32`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "previousStateId")]
+    #[serde(rename = "previousStateId", default)]
     PreviousStateId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"nextStartStateIndexOverride"`
     /// -   type: `hkInt32`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "nextStartStateIndexOverride")]
+    #[serde(rename = "nextStartStateIndexOverride", default)]
     NextStartStateIndexOverride(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"stateOrTransitionChanged"`
     /// -   type: `hkBool`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "stateOrTransitionChanged")]
+    #[serde(rename = "stateOrTransitionChanged", default)]
     StateOrTransitionChanged(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"echoNextUpdate"`
     /// -   type: `hkBool`
     /// - offset: 77
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "echoNextUpdate")]
+    #[serde(rename = "echoNextUpdate", default)]
     EchoNextUpdate(Primitive<bool>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbStateMachineInternalState, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("activeTransitions" => ActiveTransitions(HkArrayClass<HkbStateMachineActiveTransitionInfo>)),
     ("transitionFlags" => TransitionFlags(HkArrayRef<Primitive<u8>>)),
     ("wildcardTransitionFlags" => WildcardTransitionFlags(HkArrayRef<Primitive<u8>>)),

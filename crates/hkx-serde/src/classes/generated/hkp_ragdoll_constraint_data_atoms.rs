@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 336
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xeed76b00`
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,56 +26,56 @@ pub enum HkpRagdollConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTransformsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transforms")]
+    #[serde(rename = "transforms", default)]
     Transforms(HkpSetLocalTransformsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"setupStabilization"`
     /// -   type: `struct hkpSetupStabilizationAtom`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "setupStabilization")]
+    #[serde(rename = "setupStabilization", default)]
     SetupStabilization(HkpSetupStabilizationAtom),
     /// # C++ Class Fields Info
     /// -   name:`"ragdollMotors"`
     /// -   type: `struct hkpRagdollMotorConstraintAtom`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ragdollMotors")]
+    #[serde(rename = "ragdollMotors", default)]
     RagdollMotors(HkpRagdollMotorConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"angFriction"`
     /// -   type: `struct hkpAngFrictionConstraintAtom`
     /// - offset: 240
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "angFriction")]
+    #[serde(rename = "angFriction", default)]
     AngFriction(HkpAngFrictionConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"twistLimit"`
     /// -   type: `struct hkpTwistLimitConstraintAtom`
     /// - offset: 252
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "twistLimit")]
+    #[serde(rename = "twistLimit", default)]
     TwistLimit(HkpTwistLimitConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"coneLimit"`
     /// -   type: `struct hkpConeLimitConstraintAtom`
     /// - offset: 272
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "coneLimit")]
+    #[serde(rename = "coneLimit", default)]
     ConeLimit(HkpConeLimitConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"planesLimit"`
     /// -   type: `struct hkpConeLimitConstraintAtom`
     /// - offset: 292
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "planesLimit")]
+    #[serde(rename = "planesLimit", default)]
     PlanesLimit(HkpConeLimitConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"ballSocket"`
     /// -   type: `struct hkpBallSocketConstraintAtom`
     /// - offset: 312
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ballSocket")]
+    #[serde(rename = "ballSocket", default)]
     BallSocket(HkpBallSocketConstraintAtom),
 }
 

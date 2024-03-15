@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 224
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x99f693f0`
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,119 +26,119 @@ pub enum HkpVehicleInstanceWheelInfo<'a> {
     /// -   type: `struct hkContactPoint`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "contactPoint")]
+    #[serde(rename = "contactPoint", default)]
     ContactPoint(HkContactPoint),
     /// # C++ Class Fields Info
     /// -   name:`"contactFriction"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "contactFriction")]
+    #[serde(rename = "contactFriction", default)]
     ContactFriction(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"contactBody"`
     /// -   type: `void*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "contactBody", skip_serializing)]
+    #[serde(rename = "contactBody", default, skip_serializing)]
     ContactBody(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"contactShapeKey"`
     /// -   type: `hkUint32[8]`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "contactShapeKey")]
+    #[serde(rename = "contactShapeKey", default)]
     ContactShapeKey([Primitive<u32>; 8]),
     /// # C++ Class Fields Info
     /// -   name:`"hardPointWs"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "hardPointWs")]
+    #[serde(rename = "hardPointWs", default)]
     HardPointWs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"rayEndPointWs"`
     /// -   type: `hkVector4`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rayEndPointWs")]
+    #[serde(rename = "rayEndPointWs", default)]
     RayEndPointWs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"currentSuspensionLength"`
     /// -   type: `hkReal`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "currentSuspensionLength")]
+    #[serde(rename = "currentSuspensionLength", default)]
     CurrentSuspensionLength(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"suspensionDirectionWs"`
     /// -   type: `hkVector4`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "suspensionDirectionWs")]
+    #[serde(rename = "suspensionDirectionWs", default)]
     SuspensionDirectionWs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"spinAxisChassisSpace"`
     /// -   type: `hkVector4`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "spinAxisChassisSpace")]
+    #[serde(rename = "spinAxisChassisSpace", default)]
     SpinAxisChassisSpace(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"spinAxisWs"`
     /// -   type: `hkVector4`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "spinAxisWs")]
+    #[serde(rename = "spinAxisWs", default)]
     SpinAxisWs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"steeringOrientationChassisSpace"`
     /// -   type: `hkQuaternion`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "steeringOrientationChassisSpace")]
+    #[serde(rename = "steeringOrientationChassisSpace", default)]
     SteeringOrientationChassisSpace(Quaternion<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"spinVelocity"`
     /// -   type: `hkReal`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "spinVelocity")]
+    #[serde(rename = "spinVelocity", default)]
     SpinVelocity(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"spinAngle"`
     /// -   type: `hkReal`
     /// - offset: 196
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "spinAngle")]
+    #[serde(rename = "spinAngle", default)]
     SpinAngle(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"skidEnergyDensity"`
     /// -   type: `hkReal`
     /// - offset: 200
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "skidEnergyDensity")]
+    #[serde(rename = "skidEnergyDensity", default)]
     SkidEnergyDensity(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"sideForce"`
     /// -   type: `hkReal`
     /// - offset: 204
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sideForce")]
+    #[serde(rename = "sideForce", default)]
     SideForce(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"forwardSlipVelocity"`
     /// -   type: `hkReal`
     /// - offset: 208
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "forwardSlipVelocity")]
+    #[serde(rename = "forwardSlipVelocity", default)]
     ForwardSlipVelocity(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"sideSlipVelocity"`
     /// -   type: `hkReal`
     /// - offset: 212
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sideSlipVelocity")]
+    #[serde(rename = "sideSlipVelocity", default)]
     SideSlipVelocity(Primitive<f32>),
 }
 

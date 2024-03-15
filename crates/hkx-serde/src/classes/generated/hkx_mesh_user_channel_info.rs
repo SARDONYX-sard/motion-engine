@@ -22,25 +22,53 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkxMeshUserChannelInfo<'a> {
+    /// # C++ Parent class(`hkxAttributeHolder`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"attributeGroups"`
+    /// -   type: `hkArray&lt;struct hkxAttributeGroup&gt;`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "attributeGroups", default)]
+    AttributeGroups(HkArrayClass<HkxAttributeGroup>),
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name")]
+    #[serde(rename = "name", default)]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"className"`
     /// -   type: `hkStringPtr`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "className")]
+    #[serde(rename = "className", default)]
     ClassName(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkxMeshUserChannelInfo<'de>, "@name",
+    ("attributeGroups" => AttributeGroups(HkArrayClass<HkxAttributeGroup>)),
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("className" => ClassName(Primitive<Cow<'de, str>>)),
 }

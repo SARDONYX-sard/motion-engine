@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 48
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xa111b704`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,7 +26,7 @@ pub enum HkbFootIkControlData {
     /// -   type: `struct hkbFootIkGains`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "gains")]
+    #[serde(rename = "gains", default)]
     Gains(HkbFootIkGains),
 }
 

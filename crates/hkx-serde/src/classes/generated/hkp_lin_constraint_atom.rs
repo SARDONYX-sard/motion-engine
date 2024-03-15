@@ -22,17 +22,26 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpLinConstraintAtom {
+    /// # C++ Parent class(`hkpConstraintAtom`, parent: `None`) field Info
+    /// -   name:`"type"`
+    /// -   type: `enum AtomType`
+    /// - offset: 0
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "type", default)]
+    Type(Primitive<AtomType>),
+
     /// # C++ Class Fields Info
     /// -   name:`"axisIndex"`
     /// -   type: `hkUint8`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "axisIndex")]
+    #[serde(rename = "axisIndex", default)]
     AxisIndex(Primitive<u8>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpLinConstraintAtom, "@name",
+    ("type" => Type(Primitive<AtomType>)),
     ("axisIndex" => AxisIndex(Primitive<u8>)),
 }

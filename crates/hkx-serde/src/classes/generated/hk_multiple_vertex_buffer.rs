@@ -22,88 +22,109 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkMultipleVertexBuffer<'a> {
+    // `hkMeshVertexBuffer`(Parent class) has no fields
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"vertexFormat"`
     /// -   type: `struct hkVertexFormat`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexFormat")]
+    #[serde(rename = "vertexFormat", default)]
     VertexFormat(HkVertexFormat),
     /// # C++ Class Fields Info
     /// -   name:`"lockedElements"`
     /// -   type: `hkArray&lt;struct hkMultipleVertexBufferLockedElement&gt;`
     /// - offset: 268
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lockedElements")]
+    #[serde(rename = "lockedElements", default)]
     LockedElements(HkArrayClass<HkMultipleVertexBufferLockedElement>),
     /// # C++ Class Fields Info
     /// -   name:`"lockedBuffer"`
     /// -   type: `struct hkMemoryMeshVertexBuffer*`
     /// - offset: 280
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lockedBuffer")]
+    #[serde(rename = "lockedBuffer", default)]
     LockedBuffer(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"elementInfos"`
     /// -   type: `hkArray&lt;struct hkMultipleVertexBufferElementInfo&gt;`
     /// - offset: 284
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "elementInfos")]
+    #[serde(rename = "elementInfos", default)]
     ElementInfos(HkArrayClass<HkMultipleVertexBufferElementInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexBufferInfos"`
     /// -   type: `hkArray&lt;struct hkMultipleVertexBufferVertexBufferInfo&gt;`
     /// - offset: 296
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexBufferInfos")]
+    #[serde(rename = "vertexBufferInfos", default)]
     VertexBufferInfos(HkArrayClass<HkMultipleVertexBufferVertexBufferInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"numVertices"`
     /// -   type: `hkInt32`
     /// - offset: 308
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numVertices")]
+    #[serde(rename = "numVertices", default)]
     NumVertices(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"isLocked"`
     /// -   type: `hkBool`
     /// - offset: 312
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isLocked")]
+    #[serde(rename = "isLocked", default)]
     IsLocked(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"updateCount"`
     /// -   type: `hkUint32`
     /// - offset: 316
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "updateCount")]
+    #[serde(rename = "updateCount", default)]
     UpdateCount(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"writeLock"`
     /// -   type: `hkBool`
     /// - offset: 320
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "writeLock")]
+    #[serde(rename = "writeLock", default)]
     WriteLock(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"isSharable"`
     /// -   type: `hkBool`
     /// - offset: 321
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isSharable")]
+    #[serde(rename = "isSharable", default)]
     IsSharable(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"constructionComplete"`
     /// -   type: `hkBool`
     /// - offset: 322
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "constructionComplete")]
+    #[serde(rename = "constructionComplete", default)]
     ConstructionComplete(Primitive<bool>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkMultipleVertexBuffer<'de>, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("vertexFormat" => VertexFormat(HkVertexFormat)),
     ("lockedElements" => LockedElements(HkArrayClass<HkMultipleVertexBufferLockedElement>)),
     ("lockedBuffer" => LockedBuffer(Primitive<Cow<'de, str>>)),

@@ -22,39 +22,60 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpVehicleDriverInputAnalogStatus {
+    // `hkpVehicleDriverInputStatus`(Parent class) has no fields
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"positionX"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "positionX")]
+    #[serde(rename = "positionX", default)]
     PositionX(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"positionY"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "positionY")]
+    #[serde(rename = "positionY", default)]
     PositionY(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"handbrakeButtonPressed"`
     /// -   type: `hkBool`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "handbrakeButtonPressed")]
+    #[serde(rename = "handbrakeButtonPressed", default)]
     HandbrakeButtonPressed(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"reverseButtonPressed"`
     /// -   type: `hkBool`
     /// - offset: 17
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "reverseButtonPressed")]
+    #[serde(rename = "reverseButtonPressed", default)]
     ReverseButtonPressed(Primitive<bool>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpVehicleDriverInputAnalogStatus, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("positionX" => PositionX(Primitive<f32>)),
     ("positionY" => PositionY(Primitive<f32>)),
     ("handbrakeButtonPressed" => HandbrakeButtonPressed(Primitive<bool>)),

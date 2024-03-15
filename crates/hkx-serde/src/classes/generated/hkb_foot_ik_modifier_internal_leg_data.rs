@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 32
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xe5ca3677`
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkbFootIkModifierInternalLegData<'a> {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "groundPosition")]
+    #[serde(rename = "groundPosition", default)]
     GroundPosition(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"footIkSolver"`
     /// -   type: `void*`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "footIkSolver", skip_serializing)]
+    #[serde(rename = "footIkSolver", default, skip_serializing)]
     FootIkSolver(Primitive<Cow<'a, str>>),
 }
 

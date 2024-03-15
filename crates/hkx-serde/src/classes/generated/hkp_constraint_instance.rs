@@ -22,95 +22,114 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpConstraintInstance<'a> {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"owner"`
     /// -   type: `void*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "owner", skip_serializing)]
+    #[serde(rename = "owner", default, skip_serializing)]
     Owner(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `struct hkpConstraintData*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "data")]
+    #[serde(rename = "data", default)]
     Data(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"constraintModifiers"`
     /// -   type: `struct hkpModifierConstraintAtom*`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "constraintModifiers")]
+    #[serde(rename = "constraintModifiers", default)]
     ConstraintModifiers(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"entities"`
     /// -   type: `struct hkpEntity*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "entities")]
+    #[serde(rename = "entities", default)]
     Entities(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"priority"`
     /// -   type: `enum ConstraintPriority`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "priority")]
+    #[serde(rename = "priority", default)]
     Priority(Primitive<ConstraintPriority>),
     /// # C++ Class Fields Info
     /// -   name:`"wantRuntime"`
     /// -   type: `hkBool`
     /// - offset: 29
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wantRuntime")]
+    #[serde(rename = "wantRuntime", default)]
     WantRuntime(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"destructionRemapInfo"`
     /// -   type: `enum OnDestructionRemapInfo`
     /// - offset: 30
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "destructionRemapInfo")]
+    #[serde(rename = "destructionRemapInfo", default)]
     DestructionRemapInfo(Primitive<OnDestructionRemapInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"listeners"`
     /// -   type: `struct hkpConstraintInstanceSmallArraySerializeOverrideType`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "listeners", skip_serializing)]
+    #[serde(rename = "listeners", default, skip_serializing)]
     Listeners(HkpConstraintInstanceSmallArraySerializeOverrideType),
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name")]
+    #[serde(rename = "name", default)]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData")]
+    #[serde(rename = "userData", default)]
     UserData(Primitive<usize>),
     /// # C++ Class Fields Info
     /// -   name:`"internal"`
     /// -   type: `void*`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "internal", skip_serializing)]
+    #[serde(rename = "internal", default, skip_serializing)]
     Internal(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"uid"`
     /// -   type: `hkUint32`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "uid", skip_serializing)]
+    #[serde(rename = "uid", default, skip_serializing)]
     Uid(Primitive<u32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpConstraintInstance<'de>, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("owner" => Owner(Primitive<Cow<'de, str>>)),
     ("data" => Data(Primitive<Cow<'de, str>>)),
     ("constraintModifiers" => ConstraintModifiers(Primitive<Cow<'de, str>>)),

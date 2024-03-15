@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 32
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x5b6c03d9`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,35 +26,35 @@ pub enum HkbCharacterControllerControlData {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "desiredVelocity")]
+    #[serde(rename = "desiredVelocity", default)]
     DesiredVelocity(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"verticalGain"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "verticalGain")]
+    #[serde(rename = "verticalGain", default)]
     VerticalGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"horizontalCatchUpGain"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "horizontalCatchUpGain")]
+    #[serde(rename = "horizontalCatchUpGain", default)]
     HorizontalCatchUpGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxVerticalSeparation"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxVerticalSeparation")]
+    #[serde(rename = "maxVerticalSeparation", default)]
     MaxVerticalSeparation(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxHorizontalSeparation"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxHorizontalSeparation")]
+    #[serde(rename = "maxHorizontalSeparation", default)]
     MaxHorizontalSeparation(Primitive<f32>),
 }
 

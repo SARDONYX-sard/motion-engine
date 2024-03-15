@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 84
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xd72b6fd0`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,77 +26,77 @@ pub enum HkxVertexBufferVertexData {
     /// -   type: `hkArray&lt;hkVector4&gt;`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vectorData")]
+    #[serde(rename = "vectorData", default)]
     VectorData(HkArrayVector<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"floatData"`
     /// -   type: `hkArray&lt;hkReal&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "floatData")]
+    #[serde(rename = "floatData", default)]
     FloatData(HkArrayRef<Primitive<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"uint32Data"`
     /// -   type: `hkArray&lt;hkUint32&gt;`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "uint32Data")]
+    #[serde(rename = "uint32Data", default)]
     Uint32Data(HkArrayRef<Primitive<u32>>),
     /// # C++ Class Fields Info
     /// -   name:`"uint16Data"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "uint16Data")]
+    #[serde(rename = "uint16Data", default)]
     Uint16Data(HkArrayRef<Primitive<u16>>),
     /// # C++ Class Fields Info
     /// -   name:`"uint8Data"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "uint8Data")]
+    #[serde(rename = "uint8Data", default)]
     Uint8Data(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"numVerts"`
     /// -   type: `hkUint32`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numVerts")]
+    #[serde(rename = "numVerts", default)]
     NumVerts(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"vectorStride"`
     /// -   type: `hkUint32`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vectorStride")]
+    #[serde(rename = "vectorStride", default)]
     VectorStride(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"floatStride"`
     /// -   type: `hkUint32`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "floatStride")]
+    #[serde(rename = "floatStride", default)]
     FloatStride(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"uint32Stride"`
     /// -   type: `hkUint32`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "uint32Stride")]
+    #[serde(rename = "uint32Stride", default)]
     Uint32Stride(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"uint16Stride"`
     /// -   type: `hkUint32`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "uint16Stride")]
+    #[serde(rename = "uint16Stride", default)]
     Uint16Stride(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"uint8Stride"`
     /// -   type: `hkUint32`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "uint8Stride")]
+    #[serde(rename = "uint8Stride", default)]
     Uint8Stride(Primitive<u32>),
 }
 

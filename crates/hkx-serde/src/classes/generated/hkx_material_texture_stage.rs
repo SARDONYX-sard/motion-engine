@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 12
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xfa6facb2`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkxMaterialTextureStage<'a> {
     /// -   type: `struct hkReferencedObject*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "texture")]
+    #[serde(rename = "texture", default)]
     Texture(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"usageHint"`
     /// -   type: `enum TextureType`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "usageHint")]
+    #[serde(rename = "usageHint", default)]
     UsageHint(Primitive<TextureType>),
     /// # C++ Class Fields Info
     /// -   name:`"tcoordChannel"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "tcoordChannel")]
+    #[serde(rename = "tcoordChannel", default)]
     TcoordChannel(Primitive<i32>),
 }
 

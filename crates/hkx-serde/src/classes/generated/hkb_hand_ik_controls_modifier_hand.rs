@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 96
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x9c72e9e3`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkbHandIkControlsModifierHand {
     /// -   type: `struct hkbHandIkControlData`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "controlData")]
+    #[serde(rename = "controlData", default)]
     ControlData(HkbHandIkControlData),
     /// # C++ Class Fields Info
     /// -   name:`"handIndex"`
     /// -   type: `hkInt32`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "handIndex")]
+    #[serde(rename = "handIndex", default)]
     HandIndex(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"enable"`
     /// -   type: `hkBool`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enable")]
+    #[serde(rename = "enable", default)]
     Enable(Primitive<bool>),
 }
 

@@ -22,39 +22,58 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbComputeDirectionModifierInternalState {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"pointOut"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pointOut")]
+    #[serde(rename = "pointOut", default)]
     PointOut(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"groundAngleOut"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "groundAngleOut")]
+    #[serde(rename = "groundAngleOut", default)]
     GroundAngleOut(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"upAngleOut"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "upAngleOut")]
+    #[serde(rename = "upAngleOut", default)]
     UpAngleOut(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"computedOutput"`
     /// -   type: `hkBool`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "computedOutput")]
+    #[serde(rename = "computedOutput", default)]
     ComputedOutput(Primitive<bool>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbComputeDirectionModifierInternalState, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("pointOut" => PointOut(Vector4<f32>)),
     ("groundAngleOut" => GroundAngleOut(Primitive<f32>)),
     ("upAngleOut" => UpAngleOut(Primitive<f32>)),

@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 8
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x48b8ad52`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkbAttributeModifierAssignment {
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "attributeIndex")]
+    #[serde(rename = "attributeIndex", default)]
     AttributeIndex(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"attributeValue"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "attributeValue")]
+    #[serde(rename = "attributeValue", default)]
     AttributeValue(Primitive<f32>),
 }
 

@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 1
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xd404a39a`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,7 +26,7 @@ pub enum HkArrayTypeAttribute {
     /// -   type: `enum ArrayType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type")]
+    #[serde(rename = "type", default)]
     Type(Primitive<ArrayType>),
 }
 

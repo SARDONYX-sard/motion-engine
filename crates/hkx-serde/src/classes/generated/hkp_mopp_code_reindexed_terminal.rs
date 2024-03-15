@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 8
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x6ed8ac06`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkpMoppCodeReindexedTerminal {
     /// -   type: `hkUint32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "origShapeKey")]
+    #[serde(rename = "origShapeKey", default)]
     OrigShapeKey(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"reindexedShapeKey"`
     /// -   type: `hkUint32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "reindexedShapeKey")]
+    #[serde(rename = "reindexedShapeKey", default)]
     ReindexedShapeKey(Primitive<u32>),
 }
 

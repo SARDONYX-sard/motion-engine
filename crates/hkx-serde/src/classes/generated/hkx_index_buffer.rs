@@ -22,46 +22,65 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkxIndexBuffer {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"indexType"`
     /// -   type: `enum IndexType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "indexType")]
+    #[serde(rename = "indexType", default)]
     IndexType(Primitive<IndexType>),
     /// # C++ Class Fields Info
     /// -   name:`"indices16"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "indices16")]
+    #[serde(rename = "indices16", default)]
     Indices16(HkArrayRef<Primitive<u16>>),
     /// # C++ Class Fields Info
     /// -   name:`"indices32"`
     /// -   type: `hkArray&lt;hkUint32&gt;`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "indices32")]
+    #[serde(rename = "indices32", default)]
     Indices32(HkArrayRef<Primitive<u32>>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexBaseOffset"`
     /// -   type: `hkUint32`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexBaseOffset")]
+    #[serde(rename = "vertexBaseOffset", default)]
     VertexBaseOffset(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"length"`
     /// -   type: `hkUint32`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "length")]
+    #[serde(rename = "length", default)]
     Length(Primitive<u32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkxIndexBuffer, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("indexType" => IndexType(Primitive<IndexType>)),
     ("indices16" => Indices16(HkArrayRef<Primitive<u16>>)),
     ("indices32" => Indices32(HkArrayRef<Primitive<u32>>)),

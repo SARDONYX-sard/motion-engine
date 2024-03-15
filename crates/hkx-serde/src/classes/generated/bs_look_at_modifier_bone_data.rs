@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 64
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x29efee59`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,49 +26,49 @@ pub enum BsLookAtModifierBoneData {
     /// -   type: `hkInt16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "index")]
+    #[serde(rename = "index", default)]
     Index(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"fwdAxisLS"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fwdAxisLS")]
+    #[serde(rename = "fwdAxisLS", default)]
     FwdAxisLs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"limitAngleDegrees"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "limitAngleDegrees")]
+    #[serde(rename = "limitAngleDegrees", default)]
     LimitAngleDegrees(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"onGain"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "onGain")]
+    #[serde(rename = "onGain", default)]
     OnGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"offGain"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "offGain")]
+    #[serde(rename = "offGain", default)]
     OffGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"enabled"`
     /// -   type: `hkBool`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enabled")]
+    #[serde(rename = "enabled", default)]
     Enabled(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"currentFwdAxisLS"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "currentFwdAxisLS", skip_serializing)]
+    #[serde(rename = "currentFwdAxisLS", default, skip_serializing)]
     CurrentFwdAxisLs(Vector4<f32>),
 }
 

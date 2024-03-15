@@ -22,74 +22,102 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkxMaterial<'a> {
+    /// # C++ Parent class(`hkxAttributeHolder`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"attributeGroups"`
+    /// -   type: `hkArray&lt;struct hkxAttributeGroup&gt;`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "attributeGroups", default)]
+    AttributeGroups(HkArrayClass<HkxAttributeGroup>),
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name")]
+    #[serde(rename = "name", default)]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"stages"`
     /// -   type: `hkArray&lt;struct hkxMaterialTextureStage&gt;`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "stages")]
+    #[serde(rename = "stages", default)]
     Stages(HkArrayClass<HkxMaterialTextureStage>),
     /// # C++ Class Fields Info
     /// -   name:`"diffuseColor"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "diffuseColor")]
+    #[serde(rename = "diffuseColor", default)]
     DiffuseColor(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"ambientColor"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ambientColor")]
+    #[serde(rename = "ambientColor", default)]
     AmbientColor(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"specularColor"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "specularColor")]
+    #[serde(rename = "specularColor", default)]
     SpecularColor(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"emissiveColor"`
     /// -   type: `hkVector4`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "emissiveColor")]
+    #[serde(rename = "emissiveColor", default)]
     EmissiveColor(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"subMaterials"`
     /// -   type: `hkArray&lt;hkxMaterial*&gt;`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "subMaterials")]
+    #[serde(rename = "subMaterials", default)]
     SubMaterials(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"extraData"`
     /// -   type: `struct hkReferencedObject*`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "extraData")]
+    #[serde(rename = "extraData", default)]
     ExtraData(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"properties"`
     /// -   type: `hkArray&lt;struct hkxMaterialProperty&gt;`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "properties")]
+    #[serde(rename = "properties", default)]
     Properties(HkArrayClass<HkxMaterialProperty>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkxMaterial<'de>, "@name",
+    ("attributeGroups" => AttributeGroups(HkArrayClass<HkxAttributeGroup>)),
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("stages" => Stages(HkArrayClass<HkxMaterialTextureStage>)),
     ("diffuseColor" => DiffuseColor(Vector4<f32>)),

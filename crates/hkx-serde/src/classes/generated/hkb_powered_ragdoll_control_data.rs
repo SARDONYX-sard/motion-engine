@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 32
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xf5ba21b`
 /// -   version: 3
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,35 +26,35 @@ pub enum HkbPoweredRagdollControlData {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "maxForce")]
+    #[serde(rename = "maxForce", default)]
     MaxForce(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"tau"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "tau")]
+    #[serde(rename = "tau", default)]
     Tau(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"damping"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "damping")]
+    #[serde(rename = "damping", default)]
     Damping(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"proportionalRecoveryVelocity"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "proportionalRecoveryVelocity")]
+    #[serde(rename = "proportionalRecoveryVelocity", default)]
     ProportionalRecoveryVelocity(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"constantRecoveryVelocity"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "constantRecoveryVelocity")]
+    #[serde(rename = "constantRecoveryVelocity", default)]
     ConstantRecoveryVelocity(Primitive<f32>),
 }
 

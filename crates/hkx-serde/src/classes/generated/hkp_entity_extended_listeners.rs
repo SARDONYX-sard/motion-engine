@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 16
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xf557023c`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkpEntityExtendedListeners {
     /// -   type: `struct hkpEntitySmallArraySerializeOverrideType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "activationListeners", skip_serializing)]
+    #[serde(rename = "activationListeners", default, skip_serializing)]
     ActivationListeners(HkpEntitySmallArraySerializeOverrideType),
     /// # C++ Class Fields Info
     /// -   name:`"entityListeners"`
     /// -   type: `struct hkpEntitySmallArraySerializeOverrideType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "entityListeners", skip_serializing)]
+    #[serde(rename = "entityListeners", default, skip_serializing)]
     EntityListeners(HkpEntitySmallArraySerializeOverrideType),
 }
 

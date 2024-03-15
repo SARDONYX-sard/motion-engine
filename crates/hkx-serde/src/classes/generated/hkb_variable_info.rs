@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 6
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x9e746ba2`
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkbVariableInfo {
     /// -   type: `struct hkbRoleAttribute`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "role")]
+    #[serde(rename = "role", default)]
     Role(HkbRoleAttribute),
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum VariableType`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type")]
+    #[serde(rename = "type", default)]
     Type(Primitive<VariableType>),
 }
 

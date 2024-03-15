@@ -22,200 +22,287 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbClipGenerator<'a> {
+    // `hkbGenerator`(Parent class) has no fields
+
+    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// -   name:`"userData"`
+    /// -   type: `hkUlong`
+    /// - offset: 28
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "userData", default)]
+    UserData(Primitive<usize>),
+    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// -   name:`"name"`
+    /// -   type: `hkStringPtr`
+    /// - offset: 32
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "name", default)]
+    Name(Primitive<Cow<'a, str>>),
+    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// -   name:`"id"`
+    /// -   type: `hkInt16`
+    /// - offset: 36
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "id", default, skip_serializing)]
+    Id(Primitive<i16>),
+    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// -   name:`"cloneState"`
+    /// -   type: `enum unknown`
+    /// - offset: 38
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "cloneState", default, skip_serializing)]
+    CloneState(Primitive<Unknown>),
+    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// -   name:`"padNode"`
+    /// -   type: `hkBool[1]`
+    /// - offset: 39
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "padNode", default, skip_serializing)]
+    PadNode([Primitive<bool>; 1]),
+
+    /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"variableBindingSet"`
+    /// -   type: `struct hkbVariableBindingSet*`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "variableBindingSet", default)]
+    VariableBindingSet(Primitive<Cow<'a, str>>),
+    /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"cachedBindables"`
+    /// -   type: `hkArray&lt;void&gt;`
+    /// - offset: 12
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "cachedBindables", default, skip_serializing)]
+    CachedBindables(HkArrayRef<Primitive<()>>),
+    /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"areBindablesCached"`
+    /// -   type: `hkBool`
+    /// - offset: 24
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "areBindablesCached", default, skip_serializing)]
+    AreBindablesCached(Primitive<bool>),
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"animationName"`
     /// -   type: `hkStringPtr`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "animationName")]
+    #[serde(rename = "animationName", default)]
     AnimationName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"triggers"`
     /// -   type: `struct hkbClipTriggerArray*`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "triggers")]
+    #[serde(rename = "triggers", default)]
     Triggers(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"cropStartAmountLocalTime"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "cropStartAmountLocalTime")]
+    #[serde(rename = "cropStartAmountLocalTime", default)]
     CropStartAmountLocalTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"cropEndAmountLocalTime"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "cropEndAmountLocalTime")]
+    #[serde(rename = "cropEndAmountLocalTime", default)]
     CropEndAmountLocalTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"startTime"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "startTime")]
+    #[serde(rename = "startTime", default)]
     StartTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"playbackSpeed"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "playbackSpeed")]
+    #[serde(rename = "playbackSpeed", default)]
     PlaybackSpeed(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"enforcedDuration"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enforcedDuration")]
+    #[serde(rename = "enforcedDuration", default)]
     EnforcedDuration(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"userControlledTimeFraction"`
     /// -   type: `hkReal`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userControlledTimeFraction")]
+    #[serde(rename = "userControlledTimeFraction", default)]
     UserControlledTimeFraction(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"animationBindingIndex"`
     /// -   type: `hkInt16`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "animationBindingIndex")]
+    #[serde(rename = "animationBindingIndex", default)]
     AnimationBindingIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"mode"`
     /// -   type: `enum PlaybackMode`
     /// - offset: 74
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "mode")]
+    #[serde(rename = "mode", default)]
     Mode(Primitive<PlaybackMode>),
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `hkInt8`
     /// - offset: 75
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "flags")]
+    #[serde(rename = "flags", default)]
     Flags(Primitive<i8>),
     /// # C++ Class Fields Info
     /// -   name:`"animDatas"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "animDatas", skip_serializing)]
+    #[serde(rename = "animDatas", default, skip_serializing)]
     AnimDatas(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"animationControl"`
     /// -   type: `void*`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "animationControl", skip_serializing)]
+    #[serde(rename = "animationControl", default, skip_serializing)]
     AnimationControl(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"originalTriggers"`
     /// -   type: `void*`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "originalTriggers", skip_serializing)]
+    #[serde(rename = "originalTriggers", default, skip_serializing)]
     OriginalTriggers(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"mapperData"`
     /// -   type: `void*`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "mapperData", skip_serializing)]
+    #[serde(rename = "mapperData", default, skip_serializing)]
     MapperData(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"binding"`
     /// -   type: `void*`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "binding", skip_serializing)]
+    #[serde(rename = "binding", default, skip_serializing)]
     Binding(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"mirroredAnimation"`
     /// -   type: `void*`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "mirroredAnimation", skip_serializing)]
+    #[serde(rename = "mirroredAnimation", default, skip_serializing)]
     MirroredAnimation(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"extractedMotion"`
     /// -   type: `hkQsTransform`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "extractedMotion", skip_serializing)]
+    #[serde(rename = "extractedMotion", default, skip_serializing)]
     ExtractedMotion(QsTransform<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"echos"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "echos", skip_serializing)]
+    #[serde(rename = "echos", default, skip_serializing)]
     Echos(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"localTime"`
     /// -   type: `hkReal`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "localTime", skip_serializing)]
+    #[serde(rename = "localTime", default, skip_serializing)]
     LocalTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"time"`
     /// -   type: `hkReal`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "time", skip_serializing)]
+    #[serde(rename = "time", default, skip_serializing)]
     Time(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"previousUserControlledTimeFraction"`
     /// -   type: `hkReal`
     /// - offset: 180
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "previousUserControlledTimeFraction", skip_serializing)]
+    #[serde(rename = "previousUserControlledTimeFraction", default, skip_serializing)]
     PreviousUserControlledTimeFraction(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"bufferSize"`
     /// -   type: `hkInt32`
     /// - offset: 184
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "bufferSize", skip_serializing)]
+    #[serde(rename = "bufferSize", default, skip_serializing)]
     BufferSize(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"echoBufferSize"`
     /// -   type: `hkInt32`
     /// - offset: 188
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "echoBufferSize", skip_serializing)]
+    #[serde(rename = "echoBufferSize", default, skip_serializing)]
     EchoBufferSize(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"atEnd"`
     /// -   type: `hkBool`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "atEnd", skip_serializing)]
+    #[serde(rename = "atEnd", default, skip_serializing)]
     AtEnd(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"ignoreStartTime"`
     /// -   type: `hkBool`
     /// - offset: 193
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "ignoreStartTime", skip_serializing)]
+    #[serde(rename = "ignoreStartTime", default, skip_serializing)]
     IgnoreStartTime(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"pingPongBackward"`
     /// -   type: `hkBool`
     /// - offset: 194
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "pingPongBackward", skip_serializing)]
+    #[serde(rename = "pingPongBackward", default, skip_serializing)]
     PingPongBackward(Primitive<bool>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbClipGenerator<'de>, "@name",
+    ("userData" => UserData(Primitive<usize>)),
+    ("name" => Name(Primitive<Cow<'de, str>>)),
+    ("id" => Id(Primitive<i16>)),
+    ("cloneState" => CloneState(Primitive<Unknown>)),
+    ("padNode" => PadNode([Primitive<bool>; 1])),
+    ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("animationName" => AnimationName(Primitive<Cow<'de, str>>)),
     ("triggers" => Triggers(Primitive<Cow<'de, str>>)),
     ("cropStartAmountLocalTime" => CropStartAmountLocalTime(Primitive<f32>)),

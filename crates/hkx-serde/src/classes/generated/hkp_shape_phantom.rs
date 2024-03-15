@@ -22,17 +22,110 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpShapePhantom {
+    /// # C++ Parent class(`hkpPhantom`, parent: `hkpWorldObject`) field Info
+    /// -   name:`"overlapListeners"`
+    /// -   type: `hkArray&lt;void*&gt;`
+    /// - offset: 140
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "overlapListeners", default, skip_serializing)]
+    OverlapListeners(HkArrayRef<Cow<'a, str>>),
+    /// # C++ Parent class(`hkpPhantom`, parent: `hkpWorldObject`) field Info
+    /// -   name:`"phantomListeners"`
+    /// -   type: `hkArray&lt;void*&gt;`
+    /// - offset: 152
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "phantomListeners", default, skip_serializing)]
+    PhantomListeners(HkArrayRef<Cow<'a, str>>),
+
+    /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"world"`
+    /// -   type: `void*`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "world", default, skip_serializing)]
+    World(Primitive<Cow<'a, str>>),
+    /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"userData"`
+    /// -   type: `hkUlong`
+    /// - offset: 12
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "userData", default)]
+    UserData(Primitive<usize>),
+    /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"collidable"`
+    /// -   type: `struct hkpLinkedCollidable`
+    /// - offset: 16
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "collidable", default)]
+    Collidable(HkpLinkedCollidable),
+    /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"multiThreadCheck"`
+    /// -   type: `struct hkMultiThreadCheck`
+    /// - offset: 108
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "multiThreadCheck", default)]
+    MultiThreadCheck(HkMultiThreadCheck),
+    /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"name"`
+    /// -   type: `hkStringPtr`
+    /// - offset: 120
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "name", default)]
+    Name(Primitive<Cow<'a, str>>),
+    /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"properties"`
+    /// -   type: `hkArray&lt;struct hkpProperty&gt;`
+    /// - offset: 124
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "properties", default)]
+    Properties(HkArrayClass<HkpProperty>),
+    /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"treeData"`
+    /// -   type: `void*`
+    /// - offset: 136
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "treeData", default, skip_serializing)]
+    TreeData(Primitive<Cow<'a, str>>),
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"motionState"`
     /// -   type: `struct hkMotionState`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "motionState")]
+    #[serde(rename = "motionState", default)]
     MotionState(HkMotionState),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpShapePhantom, "@name",
+    ("overlapListeners" => OverlapListeners(HkArrayRef<Cow<'de, str>>)),
+    ("phantomListeners" => PhantomListeners(HkArrayRef<Cow<'de, str>>)),
+    ("world" => World(Primitive<Cow<'de, str>>)),
+    ("userData" => UserData(Primitive<usize>)),
+    ("collidable" => Collidable(HkpLinkedCollidable)),
+    ("multiThreadCheck" => MultiThreadCheck(HkMultiThreadCheck)),
+    ("name" => Name(Primitive<Cow<'de, str>>)),
+    ("properties" => Properties(HkArrayClass<HkpProperty>)),
+    ("treeData" => TreeData(Primitive<Cow<'de, str>>)),
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("motionState" => MotionState(HkMotionState)),
 }

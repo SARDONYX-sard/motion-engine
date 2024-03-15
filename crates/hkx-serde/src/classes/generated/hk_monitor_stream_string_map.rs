@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 12
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xc4d3a8b4`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,7 +26,7 @@ pub enum HkMonitorStreamStringMap {
     /// -   type: `hkArray&lt;struct hkMonitorStreamStringMapStringMap&gt;`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "map")]
+    #[serde(rename = "map", default)]
     Map(HkArrayClass<HkMonitorStreamStringMapStringMap>),
 }
 

@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 16
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x483a429b`
 /// -   version: 2
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,35 +26,35 @@ pub enum HkxVertexDescriptionElementDecl {
     /// -   type: `hkUint32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "byteOffset")]
+    #[serde(rename = "byteOffset", default)]
     ByteOffset(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum DataType`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type")]
+    #[serde(rename = "type", default)]
     Type(Primitive<DataType>),
     /// # C++ Class Fields Info
     /// -   name:`"usage"`
     /// -   type: `enum DataUsage`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "usage")]
+    #[serde(rename = "usage", default)]
     Usage(Primitive<DataUsage>),
     /// # C++ Class Fields Info
     /// -   name:`"byteStride"`
     /// -   type: `hkUint32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "byteStride")]
+    #[serde(rename = "byteStride", default)]
     ByteStride(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"numElements"`
     /// -   type: `hkUint8`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numElements")]
+    #[serde(rename = "numElements", default)]
     NumElements(Primitive<u8>),
 }
 

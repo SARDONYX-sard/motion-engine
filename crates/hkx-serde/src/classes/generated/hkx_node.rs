@@ -22,60 +22,88 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkxNode<'a> {
+    /// # C++ Parent class(`hkxAttributeHolder`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"attributeGroups"`
+    /// -   type: `hkArray&lt;struct hkxAttributeGroup&gt;`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "attributeGroups", default)]
+    AttributeGroups(HkArrayClass<HkxAttributeGroup>),
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name")]
+    #[serde(rename = "name", default)]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"object"`
     /// -   type: `struct hkReferencedObject*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "object")]
+    #[serde(rename = "object", default)]
     Object(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"keyFrames"`
     /// -   type: `hkArray&lt;hkMatrix4&gt;`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "keyFrames")]
+    #[serde(rename = "keyFrames", default)]
     KeyFrames(HkArrayVector<Matrix4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"children"`
     /// -   type: `hkArray&lt;hkxNode*&gt;`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "children")]
+    #[serde(rename = "children", default)]
     Children(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"annotations"`
     /// -   type: `hkArray&lt;struct hkxNodeAnnotationData&gt;`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "annotations")]
+    #[serde(rename = "annotations", default)]
     Annotations(HkArrayClass<HkxNodeAnnotationData>),
     /// # C++ Class Fields Info
     /// -   name:`"userProperties"`
     /// -   type: `hkStringPtr`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userProperties")]
+    #[serde(rename = "userProperties", default)]
     UserProperties(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"selected"`
     /// -   type: `hkBool`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "selected")]
+    #[serde(rename = "selected", default)]
     Selected(Primitive<bool>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkxNode<'de>, "@name",
+    ("attributeGroups" => AttributeGroups(HkArrayClass<HkxAttributeGroup>)),
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("object" => Object(Primitive<Cow<'de, str>>)),
     ("keyFrames" => KeyFrames(HkArrayVector<Matrix4<f32>>)),

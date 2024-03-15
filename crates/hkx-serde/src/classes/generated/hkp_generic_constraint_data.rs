@@ -22,25 +22,53 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpGenericConstraintData {
+    /// # C++ Parent class(`hkpConstraintData`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"userData"`
+    /// -   type: `hkUlong`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "userData", default)]
+    UserData(Primitive<usize>),
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"atoms"`
     /// -   type: `struct hkpBridgeAtoms`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "atoms")]
+    #[serde(rename = "atoms", default)]
     Atoms(HkpBridgeAtoms),
     /// # C++ Class Fields Info
     /// -   name:`"scheme"`
     /// -   type: `struct hkpGenericConstraintDataScheme`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "scheme")]
+    #[serde(rename = "scheme", default)]
     Scheme(HkpGenericConstraintDataScheme),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpGenericConstraintData, "@name",
+    ("userData" => UserData(Primitive<usize>)),
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("atoms" => Atoms(HkpBridgeAtoms)),
     ("scheme" => Scheme(HkpGenericConstraintDataScheme)),
 }

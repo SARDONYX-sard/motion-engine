@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 12
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x7be5bed1`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "strength")]
+    #[serde(rename = "strength", default)]
     Strength(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"dampingCompression"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "dampingCompression")]
+    #[serde(rename = "dampingCompression", default)]
     DampingCompression(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"dampingRelaxation"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "dampingRelaxation")]
+    #[serde(rename = "dampingRelaxation", default)]
     DampingRelaxation(Primitive<f32>),
 }
 

@@ -22,74 +22,93 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkAlignSceneToNodeOptions<'a> {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"invert"`
     /// -   type: `hkBool`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "invert")]
+    #[serde(rename = "invert", default)]
     Invert(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"transformPositionX"`
     /// -   type: `hkBool`
     /// - offset: 9
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformPositionX")]
+    #[serde(rename = "transformPositionX", default)]
     TransformPositionX(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"transformPositionY"`
     /// -   type: `hkBool`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformPositionY")]
+    #[serde(rename = "transformPositionY", default)]
     TransformPositionY(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"transformPositionZ"`
     /// -   type: `hkBool`
     /// - offset: 11
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformPositionZ")]
+    #[serde(rename = "transformPositionZ", default)]
     TransformPositionZ(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"transformRotation"`
     /// -   type: `hkBool`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformRotation")]
+    #[serde(rename = "transformRotation", default)]
     TransformRotation(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"transformScale"`
     /// -   type: `hkBool`
     /// - offset: 13
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformScale")]
+    #[serde(rename = "transformScale", default)]
     TransformScale(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"transformSkew"`
     /// -   type: `hkBool`
     /// - offset: 14
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformSkew")]
+    #[serde(rename = "transformSkew", default)]
     TransformSkew(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"keyframe"`
     /// -   type: `hkInt32`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "keyframe")]
+    #[serde(rename = "keyframe", default)]
     Keyframe(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"nodeName"`
     /// -   type: `hkStringPtr`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "nodeName")]
+    #[serde(rename = "nodeName", default)]
     NodeName(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkAlignSceneToNodeOptions<'de>, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("invert" => Invert(Primitive<bool>)),
     ("transformPositionX" => TransformPositionX(Primitive<bool>)),
     ("transformPositionY" => TransformPositionY(Primitive<bool>)),

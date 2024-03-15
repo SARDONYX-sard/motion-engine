@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 16
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x345ca95d`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkxAttributeGroup<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name")]
+    #[serde(rename = "name", default)]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"attributes"`
     /// -   type: `hkArray&lt;struct hkxAttribute&gt;`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "attributes")]
+    #[serde(rename = "attributes", default)]
     Attributes(HkArrayClass<HkxAttribute>),
 }
 

@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 80
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x5d0d67bd`
 /// -   version: 4
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,56 +26,56 @@ pub enum HkpCompressedMeshShapeChunk {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "offset")]
+    #[serde(rename = "offset", default)]
     Offset(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"vertices"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertices")]
+    #[serde(rename = "vertices", default)]
     Vertices(HkArrayRef<Primitive<u16>>),
     /// # C++ Class Fields Info
     /// -   name:`"indices"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "indices")]
+    #[serde(rename = "indices", default)]
     Indices(HkArrayRef<Primitive<u16>>),
     /// # C++ Class Fields Info
     /// -   name:`"stripLengths"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "stripLengths")]
+    #[serde(rename = "stripLengths", default)]
     StripLengths(HkArrayRef<Primitive<u16>>),
     /// # C++ Class Fields Info
     /// -   name:`"weldingInfo"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "weldingInfo")]
+    #[serde(rename = "weldingInfo", default)]
     WeldingInfo(HkArrayRef<Primitive<u16>>),
     /// # C++ Class Fields Info
     /// -   name:`"materialInfo"`
     /// -   type: `hkUint32`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "materialInfo")]
+    #[serde(rename = "materialInfo", default)]
     MaterialInfo(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"reference"`
     /// -   type: `hkUint16`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "reference")]
+    #[serde(rename = "reference", default)]
     Reference(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"transformIndex"`
     /// -   type: `hkUint16`
     /// - offset: 70
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformIndex")]
+    #[serde(rename = "transformIndex", default)]
     TransformIndex(Primitive<u16>),
 }
 

@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 32
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x91d7dd8e`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkContactPoint {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "position")]
+    #[serde(rename = "position", default)]
     Position(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"separatingNormal"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "separatingNormal")]
+    #[serde(rename = "separatingNormal", default)]
     SeparatingNormal(Vector4<f32>),
 }
 

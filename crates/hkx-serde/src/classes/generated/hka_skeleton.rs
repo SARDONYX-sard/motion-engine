@@ -22,60 +22,79 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkaSkeleton<'a> {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name")]
+    #[serde(rename = "name", default)]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"parentIndices"`
     /// -   type: `hkArray&lt;hkInt16&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "parentIndices")]
+    #[serde(rename = "parentIndices", default)]
     ParentIndices(HkArrayRef<Primitive<i16>>),
     /// # C++ Class Fields Info
     /// -   name:`"bones"`
     /// -   type: `hkArray&lt;struct hkaBone&gt;`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bones")]
+    #[serde(rename = "bones", default)]
     Bones(HkArrayClass<HkaBone>),
     /// # C++ Class Fields Info
     /// -   name:`"referencePose"`
     /// -   type: `hkArray&lt;hkQsTransform&gt;`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "referencePose")]
+    #[serde(rename = "referencePose", default)]
     ReferencePose(HkArrayVector<QsTransform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"referenceFloats"`
     /// -   type: `hkArray&lt;hkReal&gt;`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "referenceFloats")]
+    #[serde(rename = "referenceFloats", default)]
     ReferenceFloats(HkArrayRef<Primitive<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"floatSlots"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "floatSlots")]
+    #[serde(rename = "floatSlots", default)]
     FloatSlots(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"localFrames"`
     /// -   type: `hkArray&lt;struct hkaSkeletonLocalFrameOnBone&gt;`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "localFrames")]
+    #[serde(rename = "localFrames", default)]
     LocalFrames(HkArrayClass<HkaSkeletonLocalFrameOnBone>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkaSkeleton<'de>, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("parentIndices" => ParentIndices(HkArrayRef<Primitive<i16>>)),
     ("bones" => Bones(HkArrayClass<HkaBone>)),

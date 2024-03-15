@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 16
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x9139b821`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkbEventSequencedDataSequencedEvent {
     /// -   type: `struct hkbEvent`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "event")]
+    #[serde(rename = "event", default)]
     Event(HkbEvent),
     /// # C++ Class Fields Info
     /// -   name:`"time"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "time")]
+    #[serde(rename = "time", default)]
     Time(Primitive<f32>),
 }
 

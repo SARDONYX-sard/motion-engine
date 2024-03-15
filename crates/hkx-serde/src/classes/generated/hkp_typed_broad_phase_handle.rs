@@ -22,39 +22,48 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpTypedBroadPhaseHandle {
+    /// # C++ Parent class(`hkpBroadPhaseHandle`, parent: `None`) field Info
+    /// -   name:`"id"`
+    /// -   type: `hkUint32`
+    /// - offset: 0
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "id", default, skip_serializing)]
+    Id(Primitive<u32>),
+
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `hkInt8`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type")]
+    #[serde(rename = "type", default)]
     Type(Primitive<i8>),
     /// # C++ Class Fields Info
     /// -   name:`"ownerOffset"`
     /// -   type: `hkInt8`
     /// - offset: 5
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "ownerOffset", skip_serializing)]
+    #[serde(rename = "ownerOffset", default, skip_serializing)]
     OwnerOffset(Primitive<i8>),
     /// # C++ Class Fields Info
     /// -   name:`"objectQualityType"`
     /// -   type: `hkInt8`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "objectQualityType")]
+    #[serde(rename = "objectQualityType", default)]
     ObjectQualityType(Primitive<i8>),
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilterInfo"`
     /// -   type: `hkUint32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "collisionFilterInfo")]
+    #[serde(rename = "collisionFilterInfo", default)]
     CollisionFilterInfo(Primitive<u32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpTypedBroadPhaseHandle, "@name",
+    ("id" => Id(Primitive<u32>)),
     ("type" => Type(Primitive<i8>)),
     ("ownerOffset" => OwnerOffset(Primitive<i8>)),
     ("objectQualityType" => ObjectQualityType(Primitive<i8>)),

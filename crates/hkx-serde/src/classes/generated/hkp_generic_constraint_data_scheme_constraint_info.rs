@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 16
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xd6421f19`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,28 +26,28 @@ pub enum HkpGenericConstraintDataSchemeConstraintInfo {
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxSizeOfSchema")]
+    #[serde(rename = "maxSizeOfSchema", default)]
     MaxSizeOfSchema(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"sizeOfSchemas"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sizeOfSchemas")]
+    #[serde(rename = "sizeOfSchemas", default)]
     SizeOfSchemas(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"numSolverResults"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numSolverResults")]
+    #[serde(rename = "numSolverResults", default)]
     NumSolverResults(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"numSolverElemTemps"`
     /// -   type: `hkInt32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numSolverElemTemps")]
+    #[serde(rename = "numSolverElemTemps", default)]
     NumSolverElemTemps(Primitive<i32>),
 }
 

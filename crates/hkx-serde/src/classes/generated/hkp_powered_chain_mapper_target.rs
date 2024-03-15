@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 8
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xf651c74d`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkpPoweredChainMapperTarget<'a> {
     /// -   type: `struct hkpPoweredChainData*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "chain")]
+    #[serde(rename = "chain", default)]
     Chain(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"infoIndex"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "infoIndex")]
+    #[serde(rename = "infoIndex", default)]
     InfoIndex(Primitive<i32>),
 }
 

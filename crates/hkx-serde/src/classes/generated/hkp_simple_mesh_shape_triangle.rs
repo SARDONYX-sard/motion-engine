@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 16
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xd38738c1`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,28 +26,28 @@ pub enum HkpSimpleMeshShapeTriangle {
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "a")]
+    #[serde(rename = "a", default)]
     A(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"b"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "b")]
+    #[serde(rename = "b", default)]
     B(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"c"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "c")]
+    #[serde(rename = "c", default)]
     C(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"weldingInfo"`
     /// -   type: `hkUint16`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "weldingInfo")]
+    #[serde(rename = "weldingInfo", default)]
     WeldingInfo(Primitive<u16>),
 }
 

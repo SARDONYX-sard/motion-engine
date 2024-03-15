@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 12
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x6b8a15fc`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum BsiStateManagerModifierBSiStateData<'a> {
     /// -   type: `struct hkbGenerator*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pStateMachine")]
+    #[serde(rename = "pStateMachine", default)]
     PStateMachine(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"StateID"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "StateID")]
+    #[serde(rename = "StateID", default)]
     StateId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"iStateToSetAs"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "iStateToSetAs")]
+    #[serde(rename = "iStateToSetAs", default)]
     IStateToSetAs(Primitive<i32>),
 }
 

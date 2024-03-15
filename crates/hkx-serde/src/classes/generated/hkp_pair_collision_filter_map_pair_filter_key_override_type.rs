@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 12
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x36195969`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkpPairCollisionFilterMapPairFilterKeyOverrideType<'a> {
     /// -   type: `void*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "elem", skip_serializing)]
+    #[serde(rename = "elem", default, skip_serializing)]
     Elem(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"numElems"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numElems")]
+    #[serde(rename = "numElems", default)]
     NumElems(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"hashMod"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "hashMod")]
+    #[serde(rename = "hashMod", default)]
     HashMod(Primitive<i32>),
 }
 

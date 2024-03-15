@@ -22,25 +22,34 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpBridgeConstraintAtom<'a> {
+    /// # C++ Parent class(`hkpConstraintAtom`, parent: `None`) field Info
+    /// -   name:`"type"`
+    /// -   type: `enum AtomType`
+    /// - offset: 0
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "type", default)]
+    Type(Primitive<AtomType>),
+
     /// # C++ Class Fields Info
     /// -   name:`"buildJacobianFunc"`
     /// -   type: `void*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "buildJacobianFunc", skip_serializing)]
+    #[serde(rename = "buildJacobianFunc", default, skip_serializing)]
     BuildJacobianFunc(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"constraintData"`
     /// -   type: `struct hkpConstraintData*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | NOT_OWNED`
-    #[serde(rename = "constraintData")]
+    #[serde(rename = "constraintData", default)]
     ConstraintData(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpBridgeConstraintAtom<'de>, "@name",
+    ("type" => Type(Primitive<AtomType>)),
     ("buildJacobianFunc" => BuildJacobianFunc(Primitive<Cow<'de, str>>)),
     ("constraintData" => ConstraintData(Primitive<Cow<'de, str>>)),
 }

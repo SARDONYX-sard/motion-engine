@@ -22,39 +22,100 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpMotorAction {
+    /// # C++ Parent class(`hkpUnaryAction`, parent: `hkpAction`) field Info
+    /// -   name:`"entity"`
+    /// -   type: `struct hkpEntity*`
+    /// - offset: 24
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "entity", default)]
+    Entity(Primitive<Cow<'a, str>>),
+
+    /// # C++ Parent class(`hkpAction`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"world"`
+    /// -   type: `void*`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "world", default, skip_serializing)]
+    World(Primitive<Cow<'a, str>>),
+    /// # C++ Parent class(`hkpAction`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"island"`
+    /// -   type: `void*`
+    /// - offset: 12
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "island", default, skip_serializing)]
+    Island(Primitive<Cow<'a, str>>),
+    /// # C++ Parent class(`hkpAction`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"userData"`
+    /// -   type: `hkUlong`
+    /// - offset: 16
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "userData", default)]
+    UserData(Primitive<usize>),
+    /// # C++ Parent class(`hkpAction`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"name"`
+    /// -   type: `hkStringPtr`
+    /// - offset: 20
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "name", default)]
+    Name(Primitive<Cow<'a, str>>),
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"axis"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "axis")]
+    #[serde(rename = "axis", default)]
     Axis(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"spinRate"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "spinRate")]
+    #[serde(rename = "spinRate", default)]
     SpinRate(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"gain"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "gain")]
+    #[serde(rename = "gain", default)]
     Gain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"active"`
     /// -   type: `hkBool`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "active")]
+    #[serde(rename = "active", default)]
     Active(Primitive<bool>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpMotorAction, "@name",
+    ("entity" => Entity(Primitive<Cow<'de, str>>)),
+    ("world" => World(Primitive<Cow<'de, str>>)),
+    ("island" => Island(Primitive<Cow<'de, str>>)),
+    ("userData" => UserData(Primitive<usize>)),
+    ("name" => Name(Primitive<Cow<'de, str>>)),
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("axis" => Axis(Vector4<f32>)),
     ("spinRate" => SpinRate(Primitive<f32>)),
     ("gain" => Gain(Primitive<f32>)),

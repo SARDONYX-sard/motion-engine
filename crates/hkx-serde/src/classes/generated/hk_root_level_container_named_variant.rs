@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 12
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xb103a2cd`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkRootLevelContainerNamedVariant<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name")]
+    #[serde(rename = "name", default)]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"className"`
     /// -   type: `hkStringPtr`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "className")]
+    #[serde(rename = "className", default)]
     ClassName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"variant"`
     /// -   type: `struct hkReferencedObject*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "variant")]
+    #[serde(rename = "variant", default)]
     Variant(Primitive<Cow<'a, str>>),
 }
 

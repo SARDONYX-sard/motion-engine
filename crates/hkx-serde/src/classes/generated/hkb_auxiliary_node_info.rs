@@ -22,39 +22,58 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbAuxiliaryNodeInfo<'a> {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum NodeType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type")]
+    #[serde(rename = "type", default)]
     Type(Primitive<NodeType>),
     /// # C++ Class Fields Info
     /// -   name:`"depth"`
     /// -   type: `hkUint8`
     /// - offset: 9
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "depth")]
+    #[serde(rename = "depth", default)]
     Depth(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"referenceBehaviorName"`
     /// -   type: `hkStringPtr`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "referenceBehaviorName")]
+    #[serde(rename = "referenceBehaviorName", default)]
     ReferenceBehaviorName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"selfTransitionNames"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "selfTransitionNames")]
+    #[serde(rename = "selfTransitionNames", default)]
     SelfTransitionNames(HkArrayStringPtr<'a>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbAuxiliaryNodeInfo<'de>, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("type" => Type(Primitive<NodeType>)),
     ("depth" => Depth(Primitive<u8>)),
     ("referenceBehaviorName" => ReferenceBehaviorName(Primitive<Cow<'de, str>>)),

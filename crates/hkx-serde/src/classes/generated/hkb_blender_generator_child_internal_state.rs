@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 2
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xff7327c0`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkbBlenderGeneratorChildInternalState {
     /// -   type: `hkBool`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isActive")]
+    #[serde(rename = "isActive", default)]
     IsActive(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"syncNextFrame"`
     /// -   type: `hkBool`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "syncNextFrame")]
+    #[serde(rename = "syncNextFrame", default)]
     SyncNextFrame(Primitive<bool>),
 }
 

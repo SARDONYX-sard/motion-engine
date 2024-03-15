@@ -22,17 +22,26 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpNamedMeshMaterial<'a> {
+    /// # C++ Parent class(`hkpMeshMaterial`, parent: `None`) field Info
+    /// -   name:`"filterInfo"`
+    /// -   type: `hkUint32`
+    /// - offset: 0
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "filterInfo", default)]
+    FilterInfo(Primitive<u32>),
+
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name")]
+    #[serde(rename = "name", default)]
     Name(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpNamedMeshMaterial<'de>, "@name",
+    ("filterInfo" => FilterInfo(Primitive<u32>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
 }

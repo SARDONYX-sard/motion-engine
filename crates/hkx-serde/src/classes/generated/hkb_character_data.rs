@@ -22,109 +22,128 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbCharacterData<'a> {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"characterControllerInfo"`
     /// -   type: `struct hkbCharacterDataCharacterControllerInfo`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "characterControllerInfo")]
+    #[serde(rename = "characterControllerInfo", default)]
     CharacterControllerInfo(HkbCharacterDataCharacterControllerInfo),
     /// # C++ Class Fields Info
     /// -   name:`"modelUpMS"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "modelUpMS")]
+    #[serde(rename = "modelUpMS", default)]
     ModelUpMs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"modelForwardMS"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "modelForwardMS")]
+    #[serde(rename = "modelForwardMS", default)]
     ModelForwardMs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"modelRightMS"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "modelRightMS")]
+    #[serde(rename = "modelRightMS", default)]
     ModelRightMs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"characterPropertyInfos"`
     /// -   type: `hkArray&lt;struct hkbVariableInfo&gt;`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "characterPropertyInfos")]
+    #[serde(rename = "characterPropertyInfos", default)]
     CharacterPropertyInfos(HkArrayClass<HkbVariableInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"numBonesPerLod"`
     /// -   type: `hkArray&lt;hkInt32&gt;`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numBonesPerLod")]
+    #[serde(rename = "numBonesPerLod", default)]
     NumBonesPerLod(HkArrayRef<Primitive<i32>>),
     /// # C++ Class Fields Info
     /// -   name:`"characterPropertyValues"`
     /// -   type: `struct hkbVariableValueSet*`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "characterPropertyValues")]
+    #[serde(rename = "characterPropertyValues", default)]
     CharacterPropertyValues(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"footIkDriverInfo"`
     /// -   type: `struct hkbFootIkDriverInfo*`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "footIkDriverInfo")]
+    #[serde(rename = "footIkDriverInfo", default)]
     FootIkDriverInfo(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"handIkDriverInfo"`
     /// -   type: `struct hkbHandIkDriverInfo*`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "handIkDriverInfo")]
+    #[serde(rename = "handIkDriverInfo", default)]
     HandIkDriverInfo(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"stringData"`
     /// -   type: `struct hkbCharacterStringData*`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "stringData")]
+    #[serde(rename = "stringData", default)]
     StringData(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"mirroredSkeletonInfo"`
     /// -   type: `struct hkbMirroredSkeletonInfo*`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "mirroredSkeletonInfo")]
+    #[serde(rename = "mirroredSkeletonInfo", default)]
     MirroredSkeletonInfo(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"scale"`
     /// -   type: `hkReal`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "scale")]
+    #[serde(rename = "scale", default)]
     Scale(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"numHands"`
     /// -   type: `hkInt16`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "numHands", skip_serializing)]
+    #[serde(rename = "numHands", default, skip_serializing)]
     NumHands(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"numFloatSlots"`
     /// -   type: `hkInt16`
     /// - offset: 130
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "numFloatSlots", skip_serializing)]
+    #[serde(rename = "numFloatSlots", default, skip_serializing)]
     NumFloatSlots(Primitive<i16>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbCharacterData<'de>, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("characterControllerInfo" => CharacterControllerInfo(HkbCharacterDataCharacterControllerInfo)),
     ("modelUpMS" => ModelUpMs(Vector4<f32>)),
     ("modelForwardMS" => ModelForwardMs(Vector4<f32>)),

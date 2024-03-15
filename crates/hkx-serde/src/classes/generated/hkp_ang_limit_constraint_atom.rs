@@ -22,46 +22,55 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpAngLimitConstraintAtom {
+    /// # C++ Parent class(`hkpConstraintAtom`, parent: `None`) field Info
+    /// -   name:`"type"`
+    /// -   type: `enum AtomType`
+    /// - offset: 0
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "type", default)]
+    Type(Primitive<AtomType>),
+
     /// # C++ Class Fields Info
     /// -   name:`"isEnabled"`
     /// -   type: `hkUint8`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isEnabled")]
+    #[serde(rename = "isEnabled", default)]
     IsEnabled(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"limitAxis"`
     /// -   type: `hkUint8`
     /// - offset: 3
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "limitAxis")]
+    #[serde(rename = "limitAxis", default)]
     LimitAxis(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"minAngle"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minAngle")]
+    #[serde(rename = "minAngle", default)]
     MinAngle(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxAngle"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxAngle")]
+    #[serde(rename = "maxAngle", default)]
     MaxAngle(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"angularLimitsTauFactor"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "angularLimitsTauFactor")]
+    #[serde(rename = "angularLimitsTauFactor", default)]
     AngularLimitsTauFactor(Primitive<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpAngLimitConstraintAtom, "@name",
+    ("type" => Type(Primitive<AtomType>)),
     ("isEnabled" => IsEnabled(Primitive<u8>)),
     ("limitAxis" => LimitAxis(Primitive<u8>)),
     ("minAngle" => MinAngle(Primitive<f32>)),

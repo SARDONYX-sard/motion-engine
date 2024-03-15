@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 12
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x23aadfb6`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkGizmoAttribute<'a> {
     /// -   type: `hkBool`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "visible")]
+    #[serde(rename = "visible", default)]
     Visible(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"label"`
     /// -   type: `char*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "label")]
+    #[serde(rename = "label", default)]
     Label(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum GizmoType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type")]
+    #[serde(rename = "type", default)]
     Type(Primitive<GizmoType>),
 }
 

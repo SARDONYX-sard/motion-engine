@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 4
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x3eb2e082`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkbRoleAttribute {
     /// -   type: `enum Role`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "role")]
+    #[serde(rename = "role", default)]
     Role(Primitive<Role>),
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `flags RoleFlags`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "flags")]
+    #[serde(rename = "flags", default)]
     Flags(Primitive<RoleFlags>),
 }
 

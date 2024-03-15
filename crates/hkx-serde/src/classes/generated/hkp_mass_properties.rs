@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 80
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x68a56834`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,28 +26,28 @@ pub enum HkpMassProperties {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "volume")]
+    #[serde(rename = "volume", default)]
     Volume(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"mass"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "mass")]
+    #[serde(rename = "mass", default)]
     Mass(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"centerOfMass"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "centerOfMass")]
+    #[serde(rename = "centerOfMass", default)]
     CenterOfMass(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"inertiaTensor"`
     /// -   type: `hkMatrix3`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "inertiaTensor")]
+    #[serde(rename = "inertiaTensor", default)]
     InertiaTensor(Matrix3<f32>),
 }
 

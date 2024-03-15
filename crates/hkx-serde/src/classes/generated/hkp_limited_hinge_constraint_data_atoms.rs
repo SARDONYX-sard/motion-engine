@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 240
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x54c7715b`
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,49 +26,49 @@ pub enum HkpLimitedHingeConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTransformsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transforms")]
+    #[serde(rename = "transforms", default)]
     Transforms(HkpSetLocalTransformsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"setupStabilization"`
     /// -   type: `struct hkpSetupStabilizationAtom`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "setupStabilization")]
+    #[serde(rename = "setupStabilization", default)]
     SetupStabilization(HkpSetupStabilizationAtom),
     /// # C++ Class Fields Info
     /// -   name:`"angMotor"`
     /// -   type: `struct hkpAngMotorConstraintAtom`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "angMotor")]
+    #[serde(rename = "angMotor", default)]
     AngMotor(HkpAngMotorConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"angFriction"`
     /// -   type: `struct hkpAngFrictionConstraintAtom`
     /// - offset: 180
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "angFriction")]
+    #[serde(rename = "angFriction", default)]
     AngFriction(HkpAngFrictionConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"angLimit"`
     /// -   type: `struct hkpAngLimitConstraintAtom`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "angLimit")]
+    #[serde(rename = "angLimit", default)]
     AngLimit(HkpAngLimitConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"2dAng"`
     /// -   type: `struct hkp2dAngConstraintAtom`
     /// - offset: 208
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "2dAng")]
+    #[serde(rename = "2dAng", default)]
     2DAng(Hkp2DAngConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"ballSocket"`
     /// -   type: `struct hkpBallSocketConstraintAtom`
     /// - offset: 212
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ballSocket")]
+    #[serde(rename = "ballSocket", default)]
     BallSocket(HkpBallSocketConstraintAtom),
 }
 

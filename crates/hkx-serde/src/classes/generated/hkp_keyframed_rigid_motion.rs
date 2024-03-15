@@ -22,9 +22,125 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpKeyframedRigidMotion {
+    /// # C++ Parent class(`hkpMotion`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"type"`
+    /// -   type: `enum MotionType`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "type", default)]
+    Type(Primitive<MotionType>),
+    /// # C++ Parent class(`hkpMotion`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"deactivationIntegrateCounter"`
+    /// -   type: `hkUint8`
+    /// - offset: 9
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "deactivationIntegrateCounter", default)]
+    DeactivationIntegrateCounter(Primitive<u8>),
+    /// # C++ Parent class(`hkpMotion`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"deactivationNumInactiveFrames"`
+    /// -   type: `hkUint16[2]`
+    /// - offset: 10
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "deactivationNumInactiveFrames", default)]
+    DeactivationNumInactiveFrames([Primitive<u16>; 2]),
+    /// # C++ Parent class(`hkpMotion`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"motionState"`
+    /// -   type: `struct hkMotionState`
+    /// - offset: 16
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "motionState", default)]
+    MotionState(HkMotionState),
+    /// # C++ Parent class(`hkpMotion`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"inertiaAndMassInv"`
+    /// -   type: `hkVector4`
+    /// - offset: 192
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "inertiaAndMassInv", default)]
+    InertiaAndMassInv(Vector4<f32>),
+    /// # C++ Parent class(`hkpMotion`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"linearVelocity"`
+    /// -   type: `hkVector4`
+    /// - offset: 208
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "linearVelocity", default)]
+    LinearVelocity(Vector4<f32>),
+    /// # C++ Parent class(`hkpMotion`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"angularVelocity"`
+    /// -   type: `hkVector4`
+    /// - offset: 224
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "angularVelocity", default)]
+    AngularVelocity(Vector4<f32>),
+    /// # C++ Parent class(`hkpMotion`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"deactivationRefPosition"`
+    /// -   type: `hkVector4[2]`
+    /// - offset: 240
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "deactivationRefPosition", default)]
+    DeactivationRefPosition([Vector4<f32>; 2]),
+    /// # C++ Parent class(`hkpMotion`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"deactivationRefOrientation"`
+    /// -   type: `hkUint32[2]`
+    /// - offset: 272
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "deactivationRefOrientation", default)]
+    DeactivationRefOrientation([Primitive<u32>; 2]),
+    /// # C++ Parent class(`hkpMotion`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"savedMotion"`
+    /// -   type: `struct hkpMaxSizeMotion*`
+    /// - offset: 280
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "savedMotion", default)]
+    SavedMotion(Primitive<Cow<'a, str>>),
+    /// # C++ Parent class(`hkpMotion`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"savedQualityTypeIndex"`
+    /// -   type: `hkUint16`
+    /// - offset: 284
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "savedQualityTypeIndex", default)]
+    SavedQualityTypeIndex(Primitive<u16>),
+    /// # C++ Parent class(`hkpMotion`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"gravityFactor"`
+    /// -   type: `hkHalf`
+    /// - offset: 286
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "gravityFactor", default)]
+    GravityFactor(Primitive<f32>),
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpKeyframedRigidMotion, "@name",
+    ("type" => Type(Primitive<MotionType>)),
+    ("deactivationIntegrateCounter" => DeactivationIntegrateCounter(Primitive<u8>)),
+    ("deactivationNumInactiveFrames" => DeactivationNumInactiveFrames([Primitive<u16>; 2])),
+    ("motionState" => MotionState(HkMotionState)),
+    ("inertiaAndMassInv" => InertiaAndMassInv(Vector4<f32>)),
+    ("linearVelocity" => LinearVelocity(Vector4<f32>)),
+    ("angularVelocity" => AngularVelocity(Vector4<f32>)),
+    ("deactivationRefPosition" => DeactivationRefPosition([Vector4<f32>; 2])),
+    ("deactivationRefOrientation" => DeactivationRefOrientation([Primitive<u32>; 2])),
+    ("savedMotion" => SavedMotion(Primitive<Cow<'de, str>>)),
+    ("savedQualityTypeIndex" => SavedQualityTypeIndex(Primitive<u16>)),
+    ("gravityFactor" => GravityFactor(Primitive<f32>)),
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
 }

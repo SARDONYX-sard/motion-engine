@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 8
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x7375cae3`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkxAttribute<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name")]
+    #[serde(rename = "name", default)]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"value"`
     /// -   type: `struct hkReferencedObject*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "value")]
+    #[serde(rename = "value", default)]
     Value(Primitive<Cow<'a, str>>),
 }
 

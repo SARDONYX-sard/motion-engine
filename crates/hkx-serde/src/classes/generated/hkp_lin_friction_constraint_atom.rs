@@ -22,32 +22,41 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpLinFrictionConstraintAtom {
+    /// # C++ Parent class(`hkpConstraintAtom`, parent: `None`) field Info
+    /// -   name:`"type"`
+    /// -   type: `enum AtomType`
+    /// - offset: 0
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "type", default)]
+    Type(Primitive<AtomType>),
+
     /// # C++ Class Fields Info
     /// -   name:`"isEnabled"`
     /// -   type: `hkUint8`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isEnabled")]
+    #[serde(rename = "isEnabled", default)]
     IsEnabled(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"frictionAxis"`
     /// -   type: `hkUint8`
     /// - offset: 3
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "frictionAxis")]
+    #[serde(rename = "frictionAxis", default)]
     FrictionAxis(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"maxFrictionForce"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxFrictionForce")]
+    #[serde(rename = "maxFrictionForce", default)]
     MaxFrictionForce(Primitive<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpLinFrictionConstraintAtom, "@name",
+    ("type" => Type(Primitive<AtomType>)),
     ("isEnabled" => IsEnabled(Primitive<u8>)),
     ("frictionAxis" => FrictionAxis(Primitive<u8>)),
     ("maxFrictionForce" => MaxFrictionForce(Primitive<f32>)),

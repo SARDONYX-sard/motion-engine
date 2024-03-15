@@ -22,88 +22,153 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpExtendedMeshShapeTrianglesSubpart<'a> {
+    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
+    /// -   name:`"type"`
+    /// -   type: `enum SubpartType`
+    /// - offset: 0
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "type", default)]
+    Type(Primitive<SubpartType>),
+    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
+    /// -   name:`"materialIndexStridingType"`
+    /// -   type: `enum MaterialIndexStridingType`
+    /// - offset: 1
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "materialIndexStridingType", default)]
+    MaterialIndexStridingType(Primitive<MaterialIndexStridingType>),
+    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
+    /// -   name:`"materialStriding"`
+    /// -   type: `hkInt16`
+    /// - offset: 2
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "materialStriding", default, skip_serializing)]
+    MaterialStriding(Primitive<i16>),
+    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
+    /// -   name:`"materialIndexBase"`
+    /// -   type: `void*`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "materialIndexBase", default, skip_serializing)]
+    MaterialIndexBase(Primitive<Cow<'a, str>>),
+    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
+    /// -   name:`"materialIndexStriding"`
+    /// -   type: `hkUint16`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "materialIndexStriding", default)]
+    MaterialIndexStriding(Primitive<u16>),
+    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
+    /// -   name:`"numMaterials"`
+    /// -   type: `hkUint16`
+    /// - offset: 10
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "numMaterials", default)]
+    NumMaterials(Primitive<u16>),
+    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
+    /// -   name:`"materialBase"`
+    /// -   type: `void*`
+    /// - offset: 12
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "materialBase", default, skip_serializing)]
+    MaterialBase(Primitive<Cow<'a, str>>),
+    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
+    /// -   name:`"userData"`
+    /// -   type: `hkUlong`
+    /// - offset: 16
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "userData", default)]
+    UserData(Primitive<usize>),
+
     /// # C++ Class Fields Info
     /// -   name:`"numTriangleShapes"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numTriangleShapes")]
+    #[serde(rename = "numTriangleShapes", default)]
     NumTriangleShapes(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexBase"`
     /// -   type: `void*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "vertexBase", skip_serializing)]
+    #[serde(rename = "vertexBase", default, skip_serializing)]
     VertexBase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"numVertices"`
     /// -   type: `hkInt32`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numVertices")]
+    #[serde(rename = "numVertices", default)]
     NumVertices(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"indexBase"`
     /// -   type: `void*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "indexBase", skip_serializing)]
+    #[serde(rename = "indexBase", default, skip_serializing)]
     IndexBase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexStriding"`
     /// -   type: `hkUint16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexStriding")]
+    #[serde(rename = "vertexStriding", default)]
     VertexStriding(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"triangleOffset"`
     /// -   type: `hkInt32`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "triangleOffset")]
+    #[serde(rename = "triangleOffset", default)]
     TriangleOffset(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"indexStriding"`
     /// -   type: `hkUint16`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "indexStriding")]
+    #[serde(rename = "indexStriding", default)]
     IndexStriding(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"stridingType"`
     /// -   type: `enum IndexStridingType`
     /// - offset: 46
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "stridingType")]
+    #[serde(rename = "stridingType", default)]
     StridingType(Primitive<IndexStridingType>),
     /// # C++ Class Fields Info
     /// -   name:`"flipAlternateTriangles"`
     /// -   type: `hkInt8`
     /// - offset: 47
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "flipAlternateTriangles")]
+    #[serde(rename = "flipAlternateTriangles", default)]
     FlipAlternateTriangles(Primitive<i8>),
     /// # C++ Class Fields Info
     /// -   name:`"extrusion"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "extrusion")]
+    #[serde(rename = "extrusion", default)]
     Extrusion(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"transform"`
     /// -   type: `hkQsTransform`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transform")]
+    #[serde(rename = "transform", default)]
     Transform(QsTransform<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpExtendedMeshShapeTrianglesSubpart<'de>, "@name",
+    ("type" => Type(Primitive<SubpartType>)),
+    ("materialIndexStridingType" => MaterialIndexStridingType(Primitive<MaterialIndexStridingType>)),
+    ("materialStriding" => MaterialStriding(Primitive<i16>)),
+    ("materialIndexBase" => MaterialIndexBase(Primitive<Cow<'de, str>>)),
+    ("materialIndexStriding" => MaterialIndexStriding(Primitive<u16>)),
+    ("numMaterials" => NumMaterials(Primitive<u16>)),
+    ("materialBase" => MaterialBase(Primitive<Cow<'de, str>>)),
+    ("userData" => UserData(Primitive<usize>)),
     ("numTriangleShapes" => NumTriangleShapes(Primitive<i32>)),
     ("vertexBase" => VertexBase(Primitive<Cow<'de, str>>)),
     ("numVertices" => NumVertices(Primitive<i32>)),

@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 192
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x6958371c`
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,28 +26,28 @@ pub enum HkpHingeConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTransformsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transforms")]
+    #[serde(rename = "transforms", default)]
     Transforms(HkpSetLocalTransformsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"setupStabilization"`
     /// -   type: `struct hkpSetupStabilizationAtom`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "setupStabilization")]
+    #[serde(rename = "setupStabilization", default)]
     SetupStabilization(HkpSetupStabilizationAtom),
     /// # C++ Class Fields Info
     /// -   name:`"2dAng"`
     /// -   type: `struct hkp2dAngConstraintAtom`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "2dAng")]
+    #[serde(rename = "2dAng", default)]
     2DAng(Hkp2DAngConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"ballSocket"`
     /// -   type: `struct hkpBallSocketConstraintAtom`
     /// - offset: 164
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ballSocket")]
+    #[serde(rename = "ballSocket", default)]
     BallSocket(HkpBallSocketConstraintAtom),
 }
 

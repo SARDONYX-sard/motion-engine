@@ -22,25 +22,69 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum BsBoneSwitchGeneratorBoneData<'a> {
+    /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"variableBindingSet"`
+    /// -   type: `struct hkbVariableBindingSet*`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "variableBindingSet", default)]
+    VariableBindingSet(Primitive<Cow<'a, str>>),
+    /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"cachedBindables"`
+    /// -   type: `hkArray&lt;void&gt;`
+    /// - offset: 12
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "cachedBindables", default, skip_serializing)]
+    CachedBindables(HkArrayRef<Primitive<()>>),
+    /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"areBindablesCached"`
+    /// -   type: `hkBool`
+    /// - offset: 24
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "areBindablesCached", default, skip_serializing)]
+    AreBindablesCached(Primitive<bool>),
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"pGenerator"`
     /// -   type: `struct hkbGenerator*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "pGenerator")]
+    #[serde(rename = "pGenerator", default)]
     PGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"spBoneWeight"`
     /// -   type: `struct hkbBoneWeightArray*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "spBoneWeight")]
+    #[serde(rename = "spBoneWeight", default)]
     SpBoneWeight(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     BsBoneSwitchGeneratorBoneData<'de>, "@name",
+    ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("pGenerator" => PGenerator(Primitive<Cow<'de, str>>)),
     ("spBoneWeight" => SpBoneWeight(Primitive<Cow<'de, str>>)),
 }

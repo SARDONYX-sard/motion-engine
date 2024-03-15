@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 24
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x98dd8bdc`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkGeometry {
     /// -   type: `hkArray&lt;hkVector4&gt;`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertices")]
+    #[serde(rename = "vertices", default)]
     Vertices(HkArrayVector<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"triangles"`
     /// -   type: `hkArray&lt;struct hkGeometryTriangle&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "triangles")]
+    #[serde(rename = "triangles", default)]
     Triangles(HkArrayClass<HkGeometryTriangle>),
 }
 

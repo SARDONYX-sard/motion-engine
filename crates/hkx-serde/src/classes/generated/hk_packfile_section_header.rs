@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 48
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xf2a92154`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,63 +26,63 @@ pub enum HkPackfileSectionHeader {
     /// -   type: `hkChar[19]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sectionTag")]
+    #[serde(rename = "sectionTag", default)]
     SectionTag([Primitive<char>; 19]),
     /// # C++ Class Fields Info
     /// -   name:`"nullByte"`
     /// -   type: `hkChar`
     /// - offset: 19
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "nullByte")]
+    #[serde(rename = "nullByte", default)]
     NullByte(Primitive<char>),
     /// # C++ Class Fields Info
     /// -   name:`"absoluteDataStart"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "absoluteDataStart")]
+    #[serde(rename = "absoluteDataStart", default)]
     AbsoluteDataStart(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"localFixupsOffset"`
     /// -   type: `hkInt32`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "localFixupsOffset")]
+    #[serde(rename = "localFixupsOffset", default)]
     LocalFixupsOffset(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"globalFixupsOffset"`
     /// -   type: `hkInt32`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "globalFixupsOffset")]
+    #[serde(rename = "globalFixupsOffset", default)]
     GlobalFixupsOffset(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"virtualFixupsOffset"`
     /// -   type: `hkInt32`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "virtualFixupsOffset")]
+    #[serde(rename = "virtualFixupsOffset", default)]
     VirtualFixupsOffset(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"exportsOffset"`
     /// -   type: `hkInt32`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "exportsOffset")]
+    #[serde(rename = "exportsOffset", default)]
     ExportsOffset(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"importsOffset"`
     /// -   type: `hkInt32`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "importsOffset")]
+    #[serde(rename = "importsOffset", default)]
     ImportsOffset(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"endOffset"`
     /// -   type: `hkInt32`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "endOffset")]
+    #[serde(rename = "endOffset", default)]
     EndOffset(Primitive<i32>),
 }
 

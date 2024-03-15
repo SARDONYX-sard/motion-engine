@@ -22,25 +22,34 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpSetLocalTranslationsConstraintAtom {
+    /// # C++ Parent class(`hkpConstraintAtom`, parent: `None`) field Info
+    /// -   name:`"type"`
+    /// -   type: `enum AtomType`
+    /// - offset: 0
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "type", default)]
+    Type(Primitive<AtomType>),
+
     /// # C++ Class Fields Info
     /// -   name:`"translationA"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "translationA")]
+    #[serde(rename = "translationA", default)]
     TranslationA(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"translationB"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "translationB")]
+    #[serde(rename = "translationB", default)]
     TranslationB(Vector4<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpSetLocalTranslationsConstraintAtom, "@name",
+    ("type" => Type(Primitive<AtomType>)),
     ("translationA" => TranslationA(Vector4<f32>)),
     ("translationB" => TranslationB(Vector4<f32>)),
 }

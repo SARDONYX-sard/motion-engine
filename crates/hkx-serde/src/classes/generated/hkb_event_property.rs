@@ -22,9 +22,26 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbEventProperty {
+    /// # C++ Parent class(`hkbEventBase`, parent: `None`) field Info
+    /// -   name:`"id"`
+    /// -   type: `hkInt32`
+    /// - offset: 0
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "id", default)]
+    Id(Primitive<i32>),
+    /// # C++ Parent class(`hkbEventBase`, parent: `None`) field Info
+    /// -   name:`"payload"`
+    /// -   type: `struct hkbEventPayload*`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "payload", default)]
+    Payload(Primitive<Cow<'a, str>>),
+
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbEventProperty, "@name",
+    ("id" => Id(Primitive<i32>)),
+    ("payload" => Payload(Primitive<Cow<'de, str>>)),
 }

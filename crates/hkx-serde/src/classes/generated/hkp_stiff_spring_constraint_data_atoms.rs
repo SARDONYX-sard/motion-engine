@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 64
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x207eb376`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkpStiffSpringConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTranslationsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pivots")]
+    #[serde(rename = "pivots", default)]
     Pivots(HkpSetLocalTranslationsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"spring"`
     /// -   type: `struct hkpStiffSpringConstraintAtom`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "spring")]
+    #[serde(rename = "spring", default)]
     Spring(HkpStiffSpringConstraintAtom),
 }
 

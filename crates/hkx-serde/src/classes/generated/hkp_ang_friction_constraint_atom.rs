@@ -22,39 +22,48 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpAngFrictionConstraintAtom {
+    /// # C++ Parent class(`hkpConstraintAtom`, parent: `None`) field Info
+    /// -   name:`"type"`
+    /// -   type: `enum AtomType`
+    /// - offset: 0
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "type", default)]
+    Type(Primitive<AtomType>),
+
     /// # C++ Class Fields Info
     /// -   name:`"isEnabled"`
     /// -   type: `hkUint8`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isEnabled")]
+    #[serde(rename = "isEnabled", default)]
     IsEnabled(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"firstFrictionAxis"`
     /// -   type: `hkUint8`
     /// - offset: 3
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "firstFrictionAxis")]
+    #[serde(rename = "firstFrictionAxis", default)]
     FirstFrictionAxis(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"numFrictionAxes"`
     /// -   type: `hkUint8`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numFrictionAxes")]
+    #[serde(rename = "numFrictionAxes", default)]
     NumFrictionAxes(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"maxFrictionTorque"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxFrictionTorque")]
+    #[serde(rename = "maxFrictionTorque", default)]
     MaxFrictionTorque(Primitive<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpAngFrictionConstraintAtom, "@name",
+    ("type" => Type(Primitive<AtomType>)),
     ("isEnabled" => IsEnabled(Primitive<u8>)),
     ("firstFrictionAxis" => FirstFrictionAxis(Primitive<u8>)),
     ("numFrictionAxes" => NumFrictionAxes(Primitive<u8>)),

@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 96
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x2a9acf98`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,28 +26,28 @@ pub enum HkpVehicleLinearCastWheelCollideWheelState<'a> {
     /// -   type: `struct hkpAabbPhantom*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "phantom")]
+    #[serde(rename = "phantom", default)]
     Phantom(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"shape"`
     /// -   type: `struct hkpShape*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "shape")]
+    #[serde(rename = "shape", default)]
     Shape(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"transform"`
     /// -   type: `hkTransform`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transform")]
+    #[serde(rename = "transform", default)]
     Transform(Transform<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"to"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "to")]
+    #[serde(rename = "to", default)]
     To(Vector4<f32>),
 }
 

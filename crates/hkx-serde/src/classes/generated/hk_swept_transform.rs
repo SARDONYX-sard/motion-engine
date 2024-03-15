@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 80
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xb4e5770`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,35 +26,35 @@ pub enum HkSweptTransform {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "centerOfMass0")]
+    #[serde(rename = "centerOfMass0", default)]
     CenterOfMass0(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"centerOfMass1"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "centerOfMass1")]
+    #[serde(rename = "centerOfMass1", default)]
     CenterOfMass1(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"rotation0"`
     /// -   type: `hkQuaternion`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotation0")]
+    #[serde(rename = "rotation0", default)]
     Rotation0(Quaternion<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"rotation1"`
     /// -   type: `hkQuaternion`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotation1")]
+    #[serde(rename = "rotation1", default)]
     Rotation1(Quaternion<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"centerOfMassLocal"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "centerOfMassLocal")]
+    #[serde(rename = "centerOfMassLocal", default)]
     CenterOfMassLocal(Vector4<f32>),
 }
 

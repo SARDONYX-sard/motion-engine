@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 80
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x94ac5bec`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkpSerializedDisplayRbTransformsDisplayTransformPair<'a> {
     /// -   type: `struct hkpRigidBody*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rb")]
+    #[serde(rename = "rb", default)]
     Rb(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"localToDisplay"`
     /// -   type: `hkTransform`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "localToDisplay")]
+    #[serde(rename = "localToDisplay", default)]
     LocalToDisplay(Transform<f32>),
 }
 

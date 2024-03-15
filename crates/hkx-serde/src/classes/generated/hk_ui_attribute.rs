@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 20
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xeb6e96e3`
 /// -   version: 2
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,56 +26,56 @@ pub enum HkUiAttribute<'a> {
     /// -   type: `hkBool`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "visible")]
+    #[serde(rename = "visible", default)]
     Visible(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"hideInModeler"`
     /// -   type: `enum HideInModeler`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "hideInModeler")]
+    #[serde(rename = "hideInModeler", default)]
     HideInModeler(Primitive<HideInModeler>),
     /// # C++ Class Fields Info
     /// -   name:`"label"`
     /// -   type: `char*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "label")]
+    #[serde(rename = "label", default)]
     Label(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"group"`
     /// -   type: `char*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "group")]
+    #[serde(rename = "group", default)]
     Group(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"hideBaseClassMembers"`
     /// -   type: `char*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "hideBaseClassMembers")]
+    #[serde(rename = "hideBaseClassMembers", default)]
     HideBaseClassMembers(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"endGroup"`
     /// -   type: `hkBool`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "endGroup")]
+    #[serde(rename = "endGroup", default)]
     EndGroup(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"endGroup2"`
     /// -   type: `hkBool`
     /// - offset: 17
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "endGroup2")]
+    #[serde(rename = "endGroup2", default)]
     EndGroup2(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"advanced"`
     /// -   type: `hkBool`
     /// - offset: 18
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "advanced")]
+    #[serde(rename = "advanced", default)]
     Advanced(Primitive<bool>),
 }
 

@@ -22,67 +22,128 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpMouseSpringAction<'a> {
+    /// # C++ Parent class(`hkpUnaryAction`, parent: `hkpAction`) field Info
+    /// -   name:`"entity"`
+    /// -   type: `struct hkpEntity*`
+    /// - offset: 24
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "entity", default)]
+    Entity(Primitive<Cow<'a, str>>),
+
+    /// # C++ Parent class(`hkpAction`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"world"`
+    /// -   type: `void*`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "world", default, skip_serializing)]
+    World(Primitive<Cow<'a, str>>),
+    /// # C++ Parent class(`hkpAction`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"island"`
+    /// -   type: `void*`
+    /// - offset: 12
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "island", default, skip_serializing)]
+    Island(Primitive<Cow<'a, str>>),
+    /// # C++ Parent class(`hkpAction`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"userData"`
+    /// -   type: `hkUlong`
+    /// - offset: 16
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "userData", default)]
+    UserData(Primitive<usize>),
+    /// # C++ Parent class(`hkpAction`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"name"`
+    /// -   type: `hkStringPtr`
+    /// - offset: 20
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "name", default)]
+    Name(Primitive<Cow<'a, str>>),
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"positionInRbLocal"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "positionInRbLocal")]
+    #[serde(rename = "positionInRbLocal", default)]
     PositionInRbLocal(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"mousePositionInWorld"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "mousePositionInWorld")]
+    #[serde(rename = "mousePositionInWorld", default)]
     MousePositionInWorld(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"springDamping"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "springDamping")]
+    #[serde(rename = "springDamping", default)]
     SpringDamping(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"springElasticity"`
     /// -   type: `hkReal`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "springElasticity")]
+    #[serde(rename = "springElasticity", default)]
     SpringElasticity(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxRelativeForce"`
     /// -   type: `hkReal`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxRelativeForce")]
+    #[serde(rename = "maxRelativeForce", default)]
     MaxRelativeForce(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"objectDamping"`
     /// -   type: `hkReal`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "objectDamping")]
+    #[serde(rename = "objectDamping", default)]
     ObjectDamping(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"shapeKey"`
     /// -   type: `hkUint32`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "shapeKey")]
+    #[serde(rename = "shapeKey", default)]
     ShapeKey(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"applyCallbacks"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "applyCallbacks", skip_serializing)]
+    #[serde(rename = "applyCallbacks", default, skip_serializing)]
     ApplyCallbacks(HkArrayRef<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpMouseSpringAction<'de>, "@name",
+    ("entity" => Entity(Primitive<Cow<'de, str>>)),
+    ("world" => World(Primitive<Cow<'de, str>>)),
+    ("island" => Island(Primitive<Cow<'de, str>>)),
+    ("userData" => UserData(Primitive<usize>)),
+    ("name" => Name(Primitive<Cow<'de, str>>)),
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("positionInRbLocal" => PositionInRbLocal(Vector4<f32>)),
     ("mousePositionInWorld" => MousePositionInWorld(Vector4<f32>)),
     ("springDamping" => SpringDamping(Primitive<f32>)),

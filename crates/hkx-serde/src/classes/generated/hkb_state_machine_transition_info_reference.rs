@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 6
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x9810c2d0`
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkbStateMachineTransitionInfoReference {
     /// -   type: `hkInt16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fromStateIndex")]
+    #[serde(rename = "fromStateIndex", default)]
     FromStateIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"transitionIndex"`
     /// -   type: `hkInt16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transitionIndex")]
+    #[serde(rename = "transitionIndex", default)]
     TransitionIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"stateMachineId"`
     /// -   type: `hkInt16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "stateMachineId")]
+    #[serde(rename = "stateMachineId", default)]
     StateMachineId(Primitive<i16>),
 }
 

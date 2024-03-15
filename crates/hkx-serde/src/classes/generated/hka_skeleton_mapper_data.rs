@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 112
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x95687ea0`
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,56 +26,56 @@ pub enum HkaSkeletonMapperData<'a> {
     /// -   type: `struct hkaSkeleton*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "skeletonA")]
+    #[serde(rename = "skeletonA", default)]
     SkeletonA(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"skeletonB"`
     /// -   type: `struct hkaSkeleton*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "skeletonB")]
+    #[serde(rename = "skeletonB", default)]
     SkeletonB(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"simpleMappings"`
     /// -   type: `hkArray&lt;struct hkaSkeletonMapperDataSimpleMapping&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "simpleMappings")]
+    #[serde(rename = "simpleMappings", default)]
     SimpleMappings(HkArrayClass<HkaSkeletonMapperDataSimpleMapping>),
     /// # C++ Class Fields Info
     /// -   name:`"chainMappings"`
     /// -   type: `hkArray&lt;struct hkaSkeletonMapperDataChainMapping&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "chainMappings")]
+    #[serde(rename = "chainMappings", default)]
     ChainMappings(HkArrayClass<HkaSkeletonMapperDataChainMapping>),
     /// # C++ Class Fields Info
     /// -   name:`"unmappedBones"`
     /// -   type: `hkArray&lt;hkInt16&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "unmappedBones")]
+    #[serde(rename = "unmappedBones", default)]
     UnmappedBones(HkArrayRef<Primitive<i16>>),
     /// # C++ Class Fields Info
     /// -   name:`"extractedMotionMapping"`
     /// -   type: `hkQsTransform`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "extractedMotionMapping")]
+    #[serde(rename = "extractedMotionMapping", default)]
     ExtractedMotionMapping(QsTransform<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"keepUnmappedLocal"`
     /// -   type: `hkBool`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "keepUnmappedLocal")]
+    #[serde(rename = "keepUnmappedLocal", default)]
     KeepUnmappedLocal(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"mappingType"`
     /// -   type: `enum MappingType`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "mappingType")]
+    #[serde(rename = "mappingType", default)]
     MappingType(Primitive<MappingType>),
 }
 

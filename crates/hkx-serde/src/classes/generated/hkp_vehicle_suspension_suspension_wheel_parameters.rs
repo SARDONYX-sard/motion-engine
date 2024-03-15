@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 48
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x358bfe9c`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkpVehicleSuspensionSuspensionWheelParameters {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "hardpointChassisSpace")]
+    #[serde(rename = "hardpointChassisSpace", default)]
     HardpointChassisSpace(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"directionChassisSpace"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "directionChassisSpace")]
+    #[serde(rename = "directionChassisSpace", default)]
     DirectionChassisSpace(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"length"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "length")]
+    #[serde(rename = "length", default)]
     Length(Primitive<f32>),
 }
 

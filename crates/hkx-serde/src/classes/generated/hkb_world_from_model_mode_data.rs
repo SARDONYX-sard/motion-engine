@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 8
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xa3af8783`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,28 +26,28 @@ pub enum HkbWorldFromModelModeData {
     /// -   type: `hkInt16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "poseMatchingBone0")]
+    #[serde(rename = "poseMatchingBone0", default)]
     PoseMatchingBone0(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"poseMatchingBone1"`
     /// -   type: `hkInt16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "poseMatchingBone1")]
+    #[serde(rename = "poseMatchingBone1", default)]
     PoseMatchingBone1(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"poseMatchingBone2"`
     /// -   type: `hkInt16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "poseMatchingBone2")]
+    #[serde(rename = "poseMatchingBone2", default)]
     PoseMatchingBone2(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"mode"`
     /// -   type: `enum WorldFromModelMode`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "mode")]
+    #[serde(rename = "mode", default)]
     Mode(Primitive<WorldFromModelMode>),
 }
 

@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 36
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x27c6cafa`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,70 +26,70 @@ pub enum HkaWaveletCompressedAnimationCompressionParams {
     /// -   type: `hkUint16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "quantizationBits")]
+    #[serde(rename = "quantizationBits", default)]
     QuantizationBits(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"blockSize"`
     /// -   type: `hkUint16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "blockSize")]
+    #[serde(rename = "blockSize", default)]
     BlockSize(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"preserve"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "preserve")]
+    #[serde(rename = "preserve", default)]
     Preserve(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"truncProp"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "truncProp")]
+    #[serde(rename = "truncProp", default)]
     TruncProp(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"useOldStyleTruncation"`
     /// -   type: `hkBool`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "useOldStyleTruncation")]
+    #[serde(rename = "useOldStyleTruncation", default)]
     UseOldStyleTruncation(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"absolutePositionTolerance"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "absolutePositionTolerance")]
+    #[serde(rename = "absolutePositionTolerance", default)]
     AbsolutePositionTolerance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"relativePositionTolerance"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "relativePositionTolerance")]
+    #[serde(rename = "relativePositionTolerance", default)]
     RelativePositionTolerance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"rotationTolerance"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotationTolerance")]
+    #[serde(rename = "rotationTolerance", default)]
     RotationTolerance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"scaleTolerance"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "scaleTolerance")]
+    #[serde(rename = "scaleTolerance", default)]
     ScaleTolerance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"absoluteFloatTolerance"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "absoluteFloatTolerance")]
+    #[serde(rename = "absoluteFloatTolerance", default)]
     AbsoluteFloatTolerance(Primitive<f32>),
 }
 

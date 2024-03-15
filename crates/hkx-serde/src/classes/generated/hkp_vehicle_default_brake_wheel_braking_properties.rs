@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 12
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x1ffad971`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkpVehicleDefaultBrakeWheelBrakingProperties {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxBreakingTorque")]
+    #[serde(rename = "maxBreakingTorque", default)]
     MaxBreakingTorque(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"minPedalInputToBlock"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minPedalInputToBlock")]
+    #[serde(rename = "minPedalInputToBlock", default)]
     MinPedalInputToBlock(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"isConnectedToHandbrake"`
     /// -   type: `hkBool`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isConnectedToHandbrake")]
+    #[serde(rename = "isConnectedToHandbrake", default)]
     IsConnectedToHandbrake(Primitive<bool>),
 }
 

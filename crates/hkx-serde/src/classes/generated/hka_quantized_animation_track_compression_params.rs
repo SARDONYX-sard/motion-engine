@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 16
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xf7d64649`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,28 +26,28 @@ pub enum HkaQuantizedAnimationTrackCompressionParams {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotationTolerance")]
+    #[serde(rename = "rotationTolerance", default)]
     RotationTolerance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"translationTolerance"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "translationTolerance")]
+    #[serde(rename = "translationTolerance", default)]
     TranslationTolerance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"scaleTolerance"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "scaleTolerance")]
+    #[serde(rename = "scaleTolerance", default)]
     ScaleTolerance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"floatingTolerance"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "floatingTolerance")]
+    #[serde(rename = "floatingTolerance", default)]
     FloatingTolerance(Primitive<f32>),
 }
 

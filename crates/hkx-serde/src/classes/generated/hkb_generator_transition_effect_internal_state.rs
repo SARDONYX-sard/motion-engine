@@ -22,81 +22,100 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbGeneratorTransitionEffectInternalState {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"timeInTransition"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "timeInTransition")]
+    #[serde(rename = "timeInTransition", default)]
     TimeInTransition(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"duration"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "duration")]
+    #[serde(rename = "duration", default)]
     Duration(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"effectiveBlendInDuration"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "effectiveBlendInDuration")]
+    #[serde(rename = "effectiveBlendInDuration", default)]
     EffectiveBlendInDuration(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"effectiveBlendOutDuration"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "effectiveBlendOutDuration")]
+    #[serde(rename = "effectiveBlendOutDuration", default)]
     EffectiveBlendOutDuration(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"toGeneratorState"`
     /// -   type: `enum ToGeneratorState`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "toGeneratorState")]
+    #[serde(rename = "toGeneratorState", default)]
     ToGeneratorState(Primitive<ToGeneratorState>),
     /// # C++ Class Fields Info
     /// -   name:`"echoTransitionGenerator"`
     /// -   type: `hkBool`
     /// - offset: 25
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "echoTransitionGenerator")]
+    #[serde(rename = "echoTransitionGenerator", default)]
     EchoTransitionGenerator(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"echoToGenerator"`
     /// -   type: `hkBool`
     /// - offset: 26
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "echoToGenerator")]
+    #[serde(rename = "echoToGenerator", default)]
     EchoToGenerator(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"justActivated"`
     /// -   type: `hkBool`
     /// - offset: 27
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "justActivated")]
+    #[serde(rename = "justActivated", default)]
     JustActivated(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"updateActiveNodes"`
     /// -   type: `hkBool`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "updateActiveNodes")]
+    #[serde(rename = "updateActiveNodes", default)]
     UpdateActiveNodes(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"stage"`
     /// -   type: `enum Stage`
     /// - offset: 29
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "stage")]
+    #[serde(rename = "stage", default)]
     Stage(Primitive<Stage>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbGeneratorTransitionEffectInternalState, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("timeInTransition" => TimeInTransition(Primitive<f32>)),
     ("duration" => Duration(Primitive<f32>)),
     ("effectiveBlendInDuration" => EffectiveBlendInDuration(Primitive<f32>)),

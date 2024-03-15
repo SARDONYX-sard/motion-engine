@@ -22,32 +22,51 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbGetUpModifierInternalState {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"timeSinceBegin"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "timeSinceBegin")]
+    #[serde(rename = "timeSinceBegin", default)]
     TimeSinceBegin(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"timeStep"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "timeStep")]
+    #[serde(rename = "timeStep", default)]
     TimeStep(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"initNextModify"`
     /// -   type: `hkBool`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "initNextModify")]
+    #[serde(rename = "initNextModify", default)]
     InitNextModify(Primitive<bool>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbGetUpModifierInternalState, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("timeSinceBegin" => TimeSinceBegin(Primitive<f32>)),
     ("timeStep" => TimeStep(Primitive<f32>)),
     ("initNextModify" => InitNextModify(Primitive<bool>)),

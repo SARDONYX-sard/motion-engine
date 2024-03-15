@@ -22,46 +22,55 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpRackAndPinionConstraintAtom {
+    /// # C++ Parent class(`hkpConstraintAtom`, parent: `None`) field Info
+    /// -   name:`"type"`
+    /// -   type: `enum AtomType`
+    /// - offset: 0
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "type", default)]
+    Type(Primitive<AtomType>),
+
     /// # C++ Class Fields Info
     /// -   name:`"pinionRadiusOrScrewPitch"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pinionRadiusOrScrewPitch")]
+    #[serde(rename = "pinionRadiusOrScrewPitch", default)]
     PinionRadiusOrScrewPitch(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"isScrew"`
     /// -   type: `hkBool`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isScrew")]
+    #[serde(rename = "isScrew", default)]
     IsScrew(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"memOffsetToInitialAngleOffset"`
     /// -   type: `hkInt8`
     /// - offset: 9
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "memOffsetToInitialAngleOffset")]
+    #[serde(rename = "memOffsetToInitialAngleOffset", default)]
     MemOffsetToInitialAngleOffset(Primitive<i8>),
     /// # C++ Class Fields Info
     /// -   name:`"memOffsetToPrevAngle"`
     /// -   type: `hkInt8`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "memOffsetToPrevAngle")]
+    #[serde(rename = "memOffsetToPrevAngle", default)]
     MemOffsetToPrevAngle(Primitive<i8>),
     /// # C++ Class Fields Info
     /// -   name:`"memOffsetToRevolutionCounter"`
     /// -   type: `hkInt8`
     /// - offset: 11
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "memOffsetToRevolutionCounter")]
+    #[serde(rename = "memOffsetToRevolutionCounter", default)]
     MemOffsetToRevolutionCounter(Primitive<i8>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpRackAndPinionConstraintAtom, "@name",
+    ("type" => Type(Primitive<AtomType>)),
     ("pinionRadiusOrScrewPitch" => PinionRadiusOrScrewPitch(Primitive<f32>)),
     ("isScrew" => IsScrew(Primitive<bool>)),
     ("memOffsetToInitialAngleOffset" => MemOffsetToInitialAngleOffset(Primitive<i8>)),

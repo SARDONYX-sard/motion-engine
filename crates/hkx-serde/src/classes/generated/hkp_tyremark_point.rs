@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 32
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x6bb7c5e8`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkpTyremarkPoint {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pointLeft")]
+    #[serde(rename = "pointLeft", default)]
     PointLeft(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"pointRight"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pointRight")]
+    #[serde(rename = "pointRight", default)]
     PointRight(Vector4<f32>),
 }
 

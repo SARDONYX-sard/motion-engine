@@ -22,32 +22,51 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpTyremarksInfo<'a> {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"minTyremarkEnergy"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minTyremarkEnergy")]
+    #[serde(rename = "minTyremarkEnergy", default)]
     MinTyremarkEnergy(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxTyremarkEnergy"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxTyremarkEnergy")]
+    #[serde(rename = "maxTyremarkEnergy", default)]
     MaxTyremarkEnergy(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"tyremarksWheel"`
     /// -   type: `hkArray&lt;hkpTyremarksWheel*&gt;`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "tyremarksWheel")]
+    #[serde(rename = "tyremarksWheel", default)]
     TyremarksWheel(HkArrayRef<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpTyremarksInfo<'de>, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("minTyremarkEnergy" => MinTyremarkEnergy(Primitive<f32>)),
     ("maxTyremarkEnergy" => MaxTyremarkEnergy(Primitive<f32>)),
     ("tyremarksWheel" => TyremarksWheel(HkArrayRef<Cow<'de, str>>)),

@@ -22,95 +22,197 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbAttachmentModifier<'a> {
+    /// # C++ Parent class(`hkbModifier`, parent: `hkbNode`) field Info
+    /// -   name:`"enable"`
+    /// -   type: `hkBool`
+    /// - offset: 40
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "enable", default)]
+    Enable(Primitive<bool>),
+    /// # C++ Parent class(`hkbModifier`, parent: `hkbNode`) field Info
+    /// -   name:`"padModifier"`
+    /// -   type: `hkBool[3]`
+    /// - offset: 41
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "padModifier", default, skip_serializing)]
+    PadModifier([Primitive<bool>; 3]),
+
+    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// -   name:`"userData"`
+    /// -   type: `hkUlong`
+    /// - offset: 28
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "userData", default)]
+    UserData(Primitive<usize>),
+    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// -   name:`"name"`
+    /// -   type: `hkStringPtr`
+    /// - offset: 32
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "name", default)]
+    Name(Primitive<Cow<'a, str>>),
+    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// -   name:`"id"`
+    /// -   type: `hkInt16`
+    /// - offset: 36
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "id", default, skip_serializing)]
+    Id(Primitive<i16>),
+    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// -   name:`"cloneState"`
+    /// -   type: `enum unknown`
+    /// - offset: 38
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "cloneState", default, skip_serializing)]
+    CloneState(Primitive<Unknown>),
+    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// -   name:`"padNode"`
+    /// -   type: `hkBool[1]`
+    /// - offset: 39
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "padNode", default, skip_serializing)]
+    PadNode([Primitive<bool>; 1]),
+
+    /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"variableBindingSet"`
+    /// -   type: `struct hkbVariableBindingSet*`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "variableBindingSet", default)]
+    VariableBindingSet(Primitive<Cow<'a, str>>),
+    /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"cachedBindables"`
+    /// -   type: `hkArray&lt;void&gt;`
+    /// - offset: 12
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "cachedBindables", default, skip_serializing)]
+    CachedBindables(HkArrayRef<Primitive<()>>),
+    /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"areBindablesCached"`
+    /// -   type: `hkBool`
+    /// - offset: 24
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "areBindablesCached", default, skip_serializing)]
+    AreBindablesCached(Primitive<bool>),
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"sendToAttacherOnAttach"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sendToAttacherOnAttach")]
+    #[serde(rename = "sendToAttacherOnAttach", default)]
     SendToAttacherOnAttach(HkbEventProperty),
     /// # C++ Class Fields Info
     /// -   name:`"sendToAttacheeOnAttach"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sendToAttacheeOnAttach")]
+    #[serde(rename = "sendToAttacheeOnAttach", default)]
     SendToAttacheeOnAttach(HkbEventProperty),
     /// # C++ Class Fields Info
     /// -   name:`"sendToAttacherOnDetach"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sendToAttacherOnDetach")]
+    #[serde(rename = "sendToAttacherOnDetach", default)]
     SendToAttacherOnDetach(HkbEventProperty),
     /// # C++ Class Fields Info
     /// -   name:`"sendToAttacheeOnDetach"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sendToAttacheeOnDetach")]
+    #[serde(rename = "sendToAttacheeOnDetach", default)]
     SendToAttacheeOnDetach(HkbEventProperty),
     /// # C++ Class Fields Info
     /// -   name:`"attachmentSetup"`
     /// -   type: `struct hkbAttachmentSetup*`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "attachmentSetup")]
+    #[serde(rename = "attachmentSetup", default)]
     AttachmentSetup(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"attacherHandle"`
     /// -   type: `struct hkbHandle*`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "attacherHandle")]
+    #[serde(rename = "attacherHandle", default)]
     AttacherHandle(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"attacheeHandle"`
     /// -   type: `struct hkbHandle*`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "attacheeHandle")]
+    #[serde(rename = "attacheeHandle", default)]
     AttacheeHandle(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"attacheeLayer"`
     /// -   type: `hkInt32`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "attacheeLayer")]
+    #[serde(rename = "attacheeLayer", default)]
     AttacheeLayer(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"attacheeRB"`
     /// -   type: `void*`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "attacheeRB", skip_serializing)]
+    #[serde(rename = "attacheeRB", default, skip_serializing)]
     AttacheeRb(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"oldMotionType"`
     /// -   type: `enum unknown`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "oldMotionType", skip_serializing)]
+    #[serde(rename = "oldMotionType", default, skip_serializing)]
     OldMotionType(Primitive<Unknown>),
     /// # C++ Class Fields Info
     /// -   name:`"oldFilterInfo"`
     /// -   type: `hkInt32`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "oldFilterInfo", skip_serializing)]
+    #[serde(rename = "oldFilterInfo", default, skip_serializing)]
     OldFilterInfo(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"attachment"`
     /// -   type: `void*`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "attachment", skip_serializing)]
+    #[serde(rename = "attachment", default, skip_serializing)]
     Attachment(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbAttachmentModifier<'de>, "@name",
+    ("enable" => Enable(Primitive<bool>)),
+    ("padModifier" => PadModifier([Primitive<bool>; 3])),
+    ("userData" => UserData(Primitive<usize>)),
+    ("name" => Name(Primitive<Cow<'de, str>>)),
+    ("id" => Id(Primitive<i16>)),
+    ("cloneState" => CloneState(Primitive<Unknown>)),
+    ("padNode" => PadNode([Primitive<bool>; 1])),
+    ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("sendToAttacherOnAttach" => SendToAttacherOnAttach(HkbEventProperty)),
     ("sendToAttacheeOnAttach" => SendToAttacheeOnAttach(HkbEventProperty)),
     ("sendToAttacherOnDetach" => SendToAttacherOnDetach(HkbEventProperty)),

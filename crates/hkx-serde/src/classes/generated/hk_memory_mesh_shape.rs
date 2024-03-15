@@ -22,39 +22,60 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkMemoryMeshShape<'a> {
+    // `hkMeshShape`(Parent class) has no fields
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"sections"`
     /// -   type: `hkArray&lt;struct hkMeshSectionCinfo&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sections")]
+    #[serde(rename = "sections", default)]
     Sections(HkArrayClass<HkMeshSectionCinfo>),
     /// # C++ Class Fields Info
     /// -   name:`"indices16"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "indices16")]
+    #[serde(rename = "indices16", default)]
     Indices16(HkArrayRef<Primitive<u16>>),
     /// # C++ Class Fields Info
     /// -   name:`"indices32"`
     /// -   type: `hkArray&lt;hkUint32&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "indices32")]
+    #[serde(rename = "indices32", default)]
     Indices32(HkArrayRef<Primitive<u32>>),
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name")]
+    #[serde(rename = "name", default)]
     Name(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkMemoryMeshShape<'de>, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("sections" => Sections(HkArrayClass<HkMeshSectionCinfo>)),
     ("indices16" => Indices16(HkArrayRef<Primitive<u16>>)),
     ("indices32" => Indices32(HkArrayRef<Primitive<u32>>)),

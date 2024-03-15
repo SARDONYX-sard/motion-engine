@@ -22,12 +22,14 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpSingleShapeContainer<'a> {
+    // `hkpShapeContainer`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"childShape"`
     /// -   type: `struct hkpShape*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "childShape")]
+    #[serde(rename = "childShape", default)]
     ChildShape(Primitive<Cow<'a, str>>),
 }
 

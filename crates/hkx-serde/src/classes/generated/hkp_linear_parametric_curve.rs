@@ -22,46 +22,67 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpLinearParametricCurve {
+    // `hkpParametricCurve`(Parent class) has no fields
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"smoothingFactor"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "smoothingFactor")]
+    #[serde(rename = "smoothingFactor", default)]
     SmoothingFactor(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"closedLoop"`
     /// -   type: `hkBool`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "closedLoop")]
+    #[serde(rename = "closedLoop", default)]
     ClosedLoop(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"dirNotParallelToTangentAlongWholePath"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "dirNotParallelToTangentAlongWholePath")]
+    #[serde(rename = "dirNotParallelToTangentAlongWholePath", default)]
     DirNotParallelToTangentAlongWholePath(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"points"`
     /// -   type: `hkArray&lt;hkVector4&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "points")]
+    #[serde(rename = "points", default)]
     Points(HkArrayVector<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"distance"`
     /// -   type: `hkArray&lt;hkReal&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "distance")]
+    #[serde(rename = "distance", default)]
     Distance(HkArrayRef<Primitive<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpLinearParametricCurve, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("smoothingFactor" => SmoothingFactor(Primitive<f32>)),
     ("closedLoop" => ClosedLoop(Primitive<bool>)),
     ("dirNotParallelToTangentAlongWholePath" => DirNotParallelToTangentAlongWholePath(Vector4<f32>)),

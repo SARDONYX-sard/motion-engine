@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 56
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x27336e5d`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,105 +26,105 @@ pub enum HkpMeshShapeSubpart<'a> {
     /// -   type: `void*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "vertexBase", skip_serializing)]
+    #[serde(rename = "vertexBase", default, skip_serializing)]
     VertexBase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexStriding"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexStriding")]
+    #[serde(rename = "vertexStriding", default)]
     VertexStriding(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"numVertices"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numVertices")]
+    #[serde(rename = "numVertices", default)]
     NumVertices(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"indexBase"`
     /// -   type: `void*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "indexBase", skip_serializing)]
+    #[serde(rename = "indexBase", default, skip_serializing)]
     IndexBase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"stridingType"`
     /// -   type: `enum MeshShapeIndexStridingType`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "stridingType")]
+    #[serde(rename = "stridingType", default)]
     StridingType(Primitive<MeshShapeIndexStridingType>),
     /// # C++ Class Fields Info
     /// -   name:`"materialIndexStridingType"`
     /// -   type: `enum MeshShapeMaterialIndexStridingType`
     /// - offset: 17
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "materialIndexStridingType")]
+    #[serde(rename = "materialIndexStridingType", default)]
     MaterialIndexStridingType(Primitive<MeshShapeMaterialIndexStridingType>),
     /// # C++ Class Fields Info
     /// -   name:`"indexStriding"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "indexStriding")]
+    #[serde(rename = "indexStriding", default)]
     IndexStriding(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"flipAlternateTriangles"`
     /// -   type: `hkInt32`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "flipAlternateTriangles")]
+    #[serde(rename = "flipAlternateTriangles", default)]
     FlipAlternateTriangles(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"numTriangles"`
     /// -   type: `hkInt32`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numTriangles")]
+    #[serde(rename = "numTriangles", default)]
     NumTriangles(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"materialIndexBase"`
     /// -   type: `void*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "materialIndexBase", skip_serializing)]
+    #[serde(rename = "materialIndexBase", default, skip_serializing)]
     MaterialIndexBase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"materialIndexStriding"`
     /// -   type: `hkInt32`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "materialIndexStriding")]
+    #[serde(rename = "materialIndexStriding", default)]
     MaterialIndexStriding(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"materialBase"`
     /// -   type: `void*`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "materialBase", skip_serializing)]
+    #[serde(rename = "materialBase", default, skip_serializing)]
     MaterialBase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"materialStriding"`
     /// -   type: `hkInt32`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "materialStriding")]
+    #[serde(rename = "materialStriding", default)]
     MaterialStriding(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"numMaterials"`
     /// -   type: `hkInt32`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numMaterials")]
+    #[serde(rename = "numMaterials", default)]
     NumMaterials(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"triangleOffset"`
     /// -   type: `hkInt32`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "triangleOffset")]
+    #[serde(rename = "triangleOffset", default)]
     TriangleOffset(Primitive<i32>),
 }
 

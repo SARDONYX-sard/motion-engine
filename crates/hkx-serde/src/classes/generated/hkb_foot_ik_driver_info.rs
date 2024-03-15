@@ -22,95 +22,114 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbFootIkDriverInfo {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"legs"`
     /// -   type: `hkArray&lt;struct hkbFootIkDriverInfoLeg&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "legs")]
+    #[serde(rename = "legs", default)]
     Legs(HkArrayClass<HkbFootIkDriverInfoLeg>),
     /// # C++ Class Fields Info
     /// -   name:`"raycastDistanceUp"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "raycastDistanceUp")]
+    #[serde(rename = "raycastDistanceUp", default)]
     RaycastDistanceUp(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"raycastDistanceDown"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "raycastDistanceDown")]
+    #[serde(rename = "raycastDistanceDown", default)]
     RaycastDistanceDown(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"originalGroundHeightMS"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "originalGroundHeightMS")]
+    #[serde(rename = "originalGroundHeightMS", default)]
     OriginalGroundHeightMs(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"verticalOffset"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "verticalOffset")]
+    #[serde(rename = "verticalOffset", default)]
     VerticalOffset(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilterInfo"`
     /// -   type: `hkUint32`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "collisionFilterInfo")]
+    #[serde(rename = "collisionFilterInfo", default)]
     CollisionFilterInfo(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"forwardAlignFraction"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "forwardAlignFraction")]
+    #[serde(rename = "forwardAlignFraction", default)]
     ForwardAlignFraction(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"sidewaysAlignFraction"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sidewaysAlignFraction")]
+    #[serde(rename = "sidewaysAlignFraction", default)]
     SidewaysAlignFraction(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"sidewaysSampleWidth"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sidewaysSampleWidth")]
+    #[serde(rename = "sidewaysSampleWidth", default)]
     SidewaysSampleWidth(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"lockFeetWhenPlanted"`
     /// -   type: `hkBool`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lockFeetWhenPlanted")]
+    #[serde(rename = "lockFeetWhenPlanted", default)]
     LockFeetWhenPlanted(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"useCharacterUpVector"`
     /// -   type: `hkBool`
     /// - offset: 53
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "useCharacterUpVector")]
+    #[serde(rename = "useCharacterUpVector", default)]
     UseCharacterUpVector(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"isQuadrupedNarrow"`
     /// -   type: `hkBool`
     /// - offset: 54
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isQuadrupedNarrow")]
+    #[serde(rename = "isQuadrupedNarrow", default)]
     IsQuadrupedNarrow(Primitive<bool>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbFootIkDriverInfo, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("legs" => Legs(HkArrayClass<HkbFootIkDriverInfoLeg>)),
     ("raycastDistanceUp" => RaycastDistanceUp(Primitive<f32>)),
     ("raycastDistanceDown" => RaycastDistanceDown(Primitive<f32>)),

@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 8
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x433dee92`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkxNodeAnnotationData<'a> {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "time")]
+    #[serde(rename = "time", default)]
     Time(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"description"`
     /// -   type: `hkStringPtr`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "description")]
+    #[serde(rename = "description", default)]
     Description(Primitive<Cow<'a, str>>),
 }
 

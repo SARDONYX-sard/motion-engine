@@ -22,144 +22,246 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum BsLookAtModifier<'a> {
+    /// # C++ Parent class(`hkbModifier`, parent: `hkbNode`) field Info
+    /// -   name:`"enable"`
+    /// -   type: `hkBool`
+    /// - offset: 40
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "enable", default)]
+    Enable(Primitive<bool>),
+    /// # C++ Parent class(`hkbModifier`, parent: `hkbNode`) field Info
+    /// -   name:`"padModifier"`
+    /// -   type: `hkBool[3]`
+    /// - offset: 41
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "padModifier", default, skip_serializing)]
+    PadModifier([Primitive<bool>; 3]),
+
+    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// -   name:`"userData"`
+    /// -   type: `hkUlong`
+    /// - offset: 28
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "userData", default)]
+    UserData(Primitive<usize>),
+    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// -   name:`"name"`
+    /// -   type: `hkStringPtr`
+    /// - offset: 32
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "name", default)]
+    Name(Primitive<Cow<'a, str>>),
+    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// -   name:`"id"`
+    /// -   type: `hkInt16`
+    /// - offset: 36
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "id", default, skip_serializing)]
+    Id(Primitive<i16>),
+    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// -   name:`"cloneState"`
+    /// -   type: `enum unknown`
+    /// - offset: 38
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "cloneState", default, skip_serializing)]
+    CloneState(Primitive<Unknown>),
+    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// -   name:`"padNode"`
+    /// -   type: `hkBool[1]`
+    /// - offset: 39
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "padNode", default, skip_serializing)]
+    PadNode([Primitive<bool>; 1]),
+
+    /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"variableBindingSet"`
+    /// -   type: `struct hkbVariableBindingSet*`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "variableBindingSet", default)]
+    VariableBindingSet(Primitive<Cow<'a, str>>),
+    /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"cachedBindables"`
+    /// -   type: `hkArray&lt;void&gt;`
+    /// - offset: 12
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "cachedBindables", default, skip_serializing)]
+    CachedBindables(HkArrayRef<Primitive<()>>),
+    /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"areBindablesCached"`
+    /// -   type: `hkBool`
+    /// - offset: 24
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "areBindablesCached", default, skip_serializing)]
+    AreBindablesCached(Primitive<bool>),
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"lookAtTarget"`
     /// -   type: `hkBool`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lookAtTarget")]
+    #[serde(rename = "lookAtTarget", default)]
     LookAtTarget(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"bones"`
     /// -   type: `hkArray&lt;struct BSLookAtModifierBoneData&gt;`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bones")]
+    #[serde(rename = "bones", default)]
     Bones(HkArrayClass<BsLookAtModifierBoneData>),
     /// # C++ Class Fields Info
     /// -   name:`"eyeBones"`
     /// -   type: `hkArray&lt;struct BSLookAtModifierBoneData&gt;`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "eyeBones")]
+    #[serde(rename = "eyeBones", default)]
     EyeBones(HkArrayClass<BsLookAtModifierBoneData>),
     /// # C++ Class Fields Info
     /// -   name:`"limitAngleDegrees"`
     /// -   type: `hkReal`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "limitAngleDegrees")]
+    #[serde(rename = "limitAngleDegrees", default)]
     LimitAngleDegrees(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"limitAngleThresholdDegrees"`
     /// -   type: `hkReal`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "limitAngleThresholdDegrees")]
+    #[serde(rename = "limitAngleThresholdDegrees", default)]
     LimitAngleThresholdDegrees(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"continueLookOutsideOfLimit"`
     /// -   type: `hkBool`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "continueLookOutsideOfLimit")]
+    #[serde(rename = "continueLookOutsideOfLimit", default)]
     ContinueLookOutsideOfLimit(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"onGain"`
     /// -   type: `hkReal`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "onGain")]
+    #[serde(rename = "onGain", default)]
     OnGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"offGain"`
     /// -   type: `hkReal`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "offGain")]
+    #[serde(rename = "offGain", default)]
     OffGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"useBoneGains"`
     /// -   type: `hkBool`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "useBoneGains")]
+    #[serde(rename = "useBoneGains", default)]
     UseBoneGains(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"targetLocation"`
     /// -   type: `hkVector4`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "targetLocation")]
+    #[serde(rename = "targetLocation", default)]
     TargetLocation(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"targetOutsideLimits"`
     /// -   type: `hkBool`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "targetOutsideLimits")]
+    #[serde(rename = "targetOutsideLimits", default)]
     TargetOutsideLimits(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"targetOutOfLimitEvent"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "targetOutOfLimitEvent")]
+    #[serde(rename = "targetOutOfLimitEvent", default)]
     TargetOutOfLimitEvent(HkbEventProperty),
     /// # C++ Class Fields Info
     /// -   name:`"lookAtCamera"`
     /// -   type: `hkBool`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lookAtCamera")]
+    #[serde(rename = "lookAtCamera", default)]
     LookAtCamera(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"lookAtCameraX"`
     /// -   type: `hkReal`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lookAtCameraX")]
+    #[serde(rename = "lookAtCameraX", default)]
     LookAtCameraX(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"lookAtCameraY"`
     /// -   type: `hkReal`
     /// - offset: 132
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lookAtCameraY")]
+    #[serde(rename = "lookAtCameraY", default)]
     LookAtCameraY(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"lookAtCameraZ"`
     /// -   type: `hkReal`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lookAtCameraZ")]
+    #[serde(rename = "lookAtCameraZ", default)]
     LookAtCameraZ(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"timeStep"`
     /// -   type: `hkReal`
     /// - offset: 140
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "timeStep", skip_serializing)]
+    #[serde(rename = "timeStep", default, skip_serializing)]
     TimeStep(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"ballBonesValid"`
     /// -   type: `hkBool`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "ballBonesValid", skip_serializing)]
+    #[serde(rename = "ballBonesValid", default, skip_serializing)]
     BallBonesValid(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"pSkeletonMemory"`
     /// -   type: `void*`
     /// - offset: 148
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "pSkeletonMemory", skip_serializing)]
+    #[serde(rename = "pSkeletonMemory", default, skip_serializing)]
     PSkeletonMemory(Primitive<Cow<'a, str>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     BsLookAtModifier<'de>, "@name",
+    ("enable" => Enable(Primitive<bool>)),
+    ("padModifier" => PadModifier([Primitive<bool>; 3])),
+    ("userData" => UserData(Primitive<usize>)),
+    ("name" => Name(Primitive<Cow<'de, str>>)),
+    ("id" => Id(Primitive<i16>)),
+    ("cloneState" => CloneState(Primitive<Unknown>)),
+    ("padNode" => PadNode([Primitive<bool>; 1])),
+    ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("lookAtTarget" => LookAtTarget(Primitive<bool>)),
     ("bones" => Bones(HkArrayClass<BsLookAtModifierBoneData>)),
     ("eyeBones" => EyeBones(HkArrayClass<BsLookAtModifierBoneData>)),

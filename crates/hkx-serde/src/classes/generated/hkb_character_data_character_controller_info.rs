@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 16
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xa0f415bf`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,28 +26,28 @@ pub enum HkbCharacterDataCharacterControllerInfo<'a> {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "capsuleHeight")]
+    #[serde(rename = "capsuleHeight", default)]
     CapsuleHeight(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"capsuleRadius"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "capsuleRadius")]
+    #[serde(rename = "capsuleRadius", default)]
     CapsuleRadius(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilterInfo"`
     /// -   type: `hkUint32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "collisionFilterInfo")]
+    #[serde(rename = "collisionFilterInfo", default)]
     CollisionFilterInfo(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"characterControllerCinfo"`
     /// -   type: `struct hkpCharacterControllerCinfo*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "characterControllerCinfo")]
+    #[serde(rename = "characterControllerCinfo", default)]
     CharacterControllerCinfo(Primitive<Cow<'a, str>>),
 }
 

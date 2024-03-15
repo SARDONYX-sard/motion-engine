@@ -22,32 +22,51 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbBindable<'a> {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"variableBindingSet"`
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "variableBindingSet")]
+    #[serde(rename = "variableBindingSet", default)]
     VariableBindingSet(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cachedBindables", skip_serializing)]
+    #[serde(rename = "cachedBindables", default, skip_serializing)]
     CachedBindables(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "areBindablesCached", skip_serializing)]
+    #[serde(rename = "areBindablesCached", default, skip_serializing)]
     AreBindablesCached(Primitive<bool>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbBindable<'de>, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
     ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),

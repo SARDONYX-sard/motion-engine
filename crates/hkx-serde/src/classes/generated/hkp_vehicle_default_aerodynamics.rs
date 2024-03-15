@@ -22,46 +22,67 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpVehicleDefaultAerodynamics {
+    // `hkpVehicleAerodynamics`(Parent class) has no fields
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"airDensity"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "airDensity")]
+    #[serde(rename = "airDensity", default)]
     AirDensity(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"frontalArea"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "frontalArea")]
+    #[serde(rename = "frontalArea", default)]
     FrontalArea(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"dragCoefficient"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "dragCoefficient")]
+    #[serde(rename = "dragCoefficient", default)]
     DragCoefficient(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"liftCoefficient"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "liftCoefficient")]
+    #[serde(rename = "liftCoefficient", default)]
     LiftCoefficient(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"extraGravityws"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "extraGravityws")]
+    #[serde(rename = "extraGravityws", default)]
     ExtraGravityws(Vector4<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpVehicleDefaultAerodynamics, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("airDensity" => AirDensity(Primitive<f32>)),
     ("frontalArea" => FrontalArea(Primitive<f32>)),
     ("dragCoefficient" => DragCoefficient(Primitive<f32>)),

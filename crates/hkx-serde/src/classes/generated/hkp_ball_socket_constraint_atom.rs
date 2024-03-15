@@ -22,46 +22,55 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpBallSocketConstraintAtom {
+    /// # C++ Parent class(`hkpConstraintAtom`, parent: `None`) field Info
+    /// -   name:`"type"`
+    /// -   type: `enum AtomType`
+    /// - offset: 0
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "type", default)]
+    Type(Primitive<AtomType>),
+
     /// # C++ Class Fields Info
     /// -   name:`"solvingMethod"`
     /// -   type: `enum SolvingMethod`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "solvingMethod")]
+    #[serde(rename = "solvingMethod", default)]
     SolvingMethod(Primitive<SolvingMethod>),
     /// # C++ Class Fields Info
     /// -   name:`"bodiesToNotify"`
     /// -   type: `hkUint8`
     /// - offset: 3
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bodiesToNotify")]
+    #[serde(rename = "bodiesToNotify", default)]
     BodiesToNotify(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"velocityStabilizationFactor"`
     /// -   type: `hkUint8`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "velocityStabilizationFactor")]
+    #[serde(rename = "velocityStabilizationFactor", default)]
     VelocityStabilizationFactor(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"maxImpulse"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxImpulse")]
+    #[serde(rename = "maxImpulse", default)]
     MaxImpulse(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"inertiaStabilizationFactor"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "inertiaStabilizationFactor")]
+    #[serde(rename = "inertiaStabilizationFactor", default)]
     InertiaStabilizationFactor(Primitive<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpBallSocketConstraintAtom, "@name",
+    ("type" => Type(Primitive<AtomType>)),
     ("solvingMethod" => SolvingMethod(Primitive<SolvingMethod>)),
     ("bodiesToNotify" => BodiesToNotify(Primitive<u8>)),
     ("velocityStabilizationFactor" => VelocityStabilizationFactor(Primitive<u8>)),

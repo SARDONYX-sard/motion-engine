@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 192
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x7f516137`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,49 +26,49 @@ pub enum HkpPrismaticConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTransformsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transforms")]
+    #[serde(rename = "transforms", default)]
     Transforms(HkpSetLocalTransformsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"motor"`
     /// -   type: `struct hkpLinMotorConstraintAtom`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "motor")]
+    #[serde(rename = "motor", default)]
     Motor(HkpLinMotorConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"friction"`
     /// -   type: `struct hkpLinFrictionConstraintAtom`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "friction")]
+    #[serde(rename = "friction", default)]
     Friction(HkpLinFrictionConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"ang"`
     /// -   type: `struct hkpAngConstraintAtom`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ang")]
+    #[serde(rename = "ang", default)]
     Ang(HkpAngConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"lin0"`
     /// -   type: `struct hkpLinConstraintAtom`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lin0")]
+    #[serde(rename = "lin0", default)]
     Lin0(HkpLinConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"lin1"`
     /// -   type: `struct hkpLinConstraintAtom`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lin1")]
+    #[serde(rename = "lin1", default)]
     Lin1(HkpLinConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"linLimit"`
     /// -   type: `struct hkpLinLimitConstraintAtom`
     /// - offset: 180
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "linLimit")]
+    #[serde(rename = "linLimit", default)]
     LinLimit(HkpLinLimitConstraintAtom),
 }
 

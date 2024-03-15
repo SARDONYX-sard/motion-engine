@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 112
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xa528f7cf`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,42 +26,42 @@ pub enum HkaSkeletonMapperDataChainMapping {
     /// -   type: `hkInt16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "startBoneA")]
+    #[serde(rename = "startBoneA", default)]
     StartBoneA(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"endBoneA"`
     /// -   type: `hkInt16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "endBoneA")]
+    #[serde(rename = "endBoneA", default)]
     EndBoneA(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"startBoneB"`
     /// -   type: `hkInt16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "startBoneB")]
+    #[serde(rename = "startBoneB", default)]
     StartBoneB(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"endBoneB"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "endBoneB")]
+    #[serde(rename = "endBoneB", default)]
     EndBoneB(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"startAFromBTransform"`
     /// -   type: `hkQsTransform`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "startAFromBTransform")]
+    #[serde(rename = "startAFromBTransform", default)]
     StartAFromBTransform(QsTransform<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"endAFromBTransform"`
     /// -   type: `hkQsTransform`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "endAFromBTransform")]
+    #[serde(rename = "endAFromBTransform", default)]
     EndAFromBTransform(QsTransform<f32>),
 }
 

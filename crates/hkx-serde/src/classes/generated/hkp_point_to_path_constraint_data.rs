@@ -22,46 +22,74 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpPointToPathConstraintData<'a> {
+    /// # C++ Parent class(`hkpConstraintData`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"userData"`
+    /// -   type: `hkUlong`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "userData", default)]
+    UserData(Primitive<usize>),
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"atoms"`
     /// -   type: `struct hkpBridgeAtoms`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "atoms")]
+    #[serde(rename = "atoms", default)]
     Atoms(HkpBridgeAtoms),
     /// # C++ Class Fields Info
     /// -   name:`"path"`
     /// -   type: `struct hkpParametricCurve*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "path")]
+    #[serde(rename = "path", default)]
     Path(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"maxFrictionForce"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxFrictionForce")]
+    #[serde(rename = "maxFrictionForce", default)]
     MaxFrictionForce(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"angularConstrainedDOF"`
     /// -   type: `enum OrientationConstraintType`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "angularConstrainedDOF")]
+    #[serde(rename = "angularConstrainedDOF", default)]
     AngularConstrainedDof(Primitive<OrientationConstraintType>),
     /// # C++ Class Fields Info
     /// -   name:`"transform_OS_KS"`
     /// -   type: `hkTransform[2]`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transform_OS_KS")]
+    #[serde(rename = "transform_OS_KS", default)]
     TransformOsKs([Transform<f32>; 2]),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpPointToPathConstraintData<'de>, "@name",
+    ("userData" => UserData(Primitive<usize>)),
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("atoms" => Atoms(HkpBridgeAtoms)),
     ("path" => Path(Primitive<Cow<'de, str>>)),
     ("maxFrictionForce" => MaxFrictionForce(Primitive<f32>)),

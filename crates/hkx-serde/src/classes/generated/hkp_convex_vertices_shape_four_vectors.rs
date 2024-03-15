@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 48
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x3d80c5bf`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkpConvexVerticesShapeFourVectors {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "x")]
+    #[serde(rename = "x", default)]
     X(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"y"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "y")]
+    #[serde(rename = "y", default)]
     Y(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"z"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "z")]
+    #[serde(rename = "z", default)]
     Z(Vector4<f32>),
 }
 

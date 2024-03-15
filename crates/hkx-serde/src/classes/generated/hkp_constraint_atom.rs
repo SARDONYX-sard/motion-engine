@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 2
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x59d67ef6`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,7 +26,7 @@ pub enum HkpConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type")]
+    #[serde(rename = "type", default)]
     Type(Primitive<AtomType>),
 }
 

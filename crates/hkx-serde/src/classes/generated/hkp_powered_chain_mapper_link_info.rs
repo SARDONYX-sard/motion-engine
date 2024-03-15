@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 12
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xcf071a1b`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkpPoweredChainMapperLinkInfo<'a> {
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "firstTargetIdx")]
+    #[serde(rename = "firstTargetIdx", default)]
     FirstTargetIdx(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"numTargets"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numTargets")]
+    #[serde(rename = "numTargets", default)]
     NumTargets(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"limitConstraint"`
     /// -   type: `struct hkpConstraintInstance*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "limitConstraint")]
+    #[serde(rename = "limitConstraint", default)]
     LimitConstraint(Primitive<Cow<'a, str>>),
 }
 

@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 16
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x54a4b841`
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,28 +26,28 @@ pub enum HkpCdBody<'a> {
     /// -   type: `struct hkpShape*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "shape")]
+    #[serde(rename = "shape", default)]
     Shape(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"shapeKey"`
     /// -   type: `hkUint32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "shapeKey")]
+    #[serde(rename = "shapeKey", default)]
     ShapeKey(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"motion"`
     /// -   type: `void*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "motion", skip_serializing)]
+    #[serde(rename = "motion", default, skip_serializing)]
     Motion(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"parent"`
     /// -   type: `struct hkpCdBody*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "parent", skip_serializing)]
+    #[serde(rename = "parent", default, skip_serializing)]
     Parent(Primitive<Cow<'a, str>>),
 }
 

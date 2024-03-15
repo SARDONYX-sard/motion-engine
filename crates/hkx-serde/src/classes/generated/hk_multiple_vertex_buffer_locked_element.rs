@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 7
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xa0e22afc`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,49 +26,49 @@ pub enum HkMultipleVertexBufferLockedElement {
     /// -   type: `hkUint8`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexBufferIndex")]
+    #[serde(rename = "vertexBufferIndex", default)]
     VertexBufferIndex(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"elementIndex"`
     /// -   type: `hkUint8`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "elementIndex")]
+    #[serde(rename = "elementIndex", default)]
     ElementIndex(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"lockedBufferIndex"`
     /// -   type: `hkUint8`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lockedBufferIndex")]
+    #[serde(rename = "lockedBufferIndex", default)]
     LockedBufferIndex(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexFormatIndex"`
     /// -   type: `hkUint8`
     /// - offset: 3
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexFormatIndex")]
+    #[serde(rename = "vertexFormatIndex", default)]
     VertexFormatIndex(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"lockFlags"`
     /// -   type: `hkUint8`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lockFlags")]
+    #[serde(rename = "lockFlags", default)]
     LockFlags(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"outputBufferIndex"`
     /// -   type: `hkUint8`
     /// - offset: 5
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "outputBufferIndex")]
+    #[serde(rename = "outputBufferIndex", default)]
     OutputBufferIndex(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"emulatedIndex"`
     /// -   type: `hkInt8`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "emulatedIndex")]
+    #[serde(rename = "emulatedIndex", default)]
     EmulatedIndex(Primitive<i8>),
 }
 

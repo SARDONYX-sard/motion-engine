@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 8
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x81147f05`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,28 +26,28 @@ pub enum HkpEntitySpuCollisionCallback<'a> {
     /// -   type: `void*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "util", skip_serializing)]
+    #[serde(rename = "util", default, skip_serializing)]
     Util(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"capacity"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "capacity", skip_serializing)]
+    #[serde(rename = "capacity", default, skip_serializing)]
     Capacity(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"eventFilter"`
     /// -   type: `hkUint8`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "eventFilter")]
+    #[serde(rename = "eventFilter", default)]
     EventFilter(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"userFilter"`
     /// -   type: `hkUint8`
     /// - offset: 7
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userFilter")]
+    #[serde(rename = "userFilter", default)]
     UserFilter(Primitive<u8>),
 }
 

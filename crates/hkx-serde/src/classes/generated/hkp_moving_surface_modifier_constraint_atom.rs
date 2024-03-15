@@ -22,17 +22,59 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpMovingSurfaceModifierConstraintAtom {
+    /// # C++ Parent class(`hkpModifierConstraintAtom`, parent: `hkpConstraintAtom`) field Info
+    /// -   name:`"modifierAtomSize"`
+    /// -   type: `hkUint16`
+    /// - offset: 16
+    /// -  flags: `FLAGS_NONE | ALIGN16`
+    #[serde(rename = "modifierAtomSize", default)]
+    ModifierAtomSize(Primitive<u16>),
+    /// # C++ Parent class(`hkpModifierConstraintAtom`, parent: `hkpConstraintAtom`) field Info
+    /// -   name:`"childSize"`
+    /// -   type: `hkUint16`
+    /// - offset: 18
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "childSize", default)]
+    ChildSize(Primitive<u16>),
+    /// # C++ Parent class(`hkpModifierConstraintAtom`, parent: `hkpConstraintAtom`) field Info
+    /// -   name:`"child"`
+    /// -   type: `struct hkpConstraintAtom*`
+    /// - offset: 20
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "child", default)]
+    Child(Primitive<Cow<'a, str>>),
+    /// # C++ Parent class(`hkpModifierConstraintAtom`, parent: `hkpConstraintAtom`) field Info
+    /// -   name:`"pad"`
+    /// -   type: `hkUint32[2]`
+    /// - offset: 24
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "pad", default)]
+    Pad([Primitive<u32>; 2]),
+
+    /// # C++ Parent class(`hkpConstraintAtom`, parent: `None`) field Info
+    /// -   name:`"type"`
+    /// -   type: `enum AtomType`
+    /// - offset: 0
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "type", default)]
+    Type(Primitive<AtomType>),
+
     /// # C++ Class Fields Info
     /// -   name:`"velocity"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "velocity")]
+    #[serde(rename = "velocity", default)]
     Velocity(Vector4<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpMovingSurfaceModifierConstraintAtom, "@name",
+    ("modifierAtomSize" => ModifierAtomSize(Primitive<u16>)),
+    ("childSize" => ChildSize(Primitive<u16>)),
+    ("child" => Child(Primitive<Cow<'de, str>>)),
+    ("pad" => Pad([Primitive<u32>; 2])),
+    ("type" => Type(Primitive<AtomType>)),
     ("velocity" => Velocity(Vector4<f32>)),
 }

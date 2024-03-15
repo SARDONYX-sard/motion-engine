@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 16
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x949db24f`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,28 +26,28 @@ pub enum HkRangeRealAttribute {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "absmin")]
+    #[serde(rename = "absmin", default)]
     Absmin(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"absmax"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "absmax")]
+    #[serde(rename = "absmax", default)]
     Absmax(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"softmin"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "softmin")]
+    #[serde(rename = "softmin", default)]
     Softmin(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"softmax"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "softmax")]
+    #[serde(rename = "softmax", default)]
     Softmax(Primitive<f32>),
 }
 

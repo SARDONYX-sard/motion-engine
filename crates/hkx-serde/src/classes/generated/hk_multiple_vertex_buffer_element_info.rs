@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 2
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x4731fb1b`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkMultipleVertexBufferElementInfo {
     /// -   type: `hkUint8`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexBufferIndex")]
+    #[serde(rename = "vertexBufferIndex", default)]
     VertexBufferIndex(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"elementIndex"`
     /// -   type: `hkUint8`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "elementIndex")]
+    #[serde(rename = "elementIndex", default)]
     ElementIndex(Primitive<u8>),
 }
 

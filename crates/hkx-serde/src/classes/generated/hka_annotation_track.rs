@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 16
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xd4114fdd`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkaAnnotationTrack<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "trackName")]
+    #[serde(rename = "trackName", default)]
     TrackName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"annotations"`
     /// -   type: `hkArray&lt;struct hkaAnnotationTrackAnnotation&gt;`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "annotations")]
+    #[serde(rename = "annotations", default)]
     Annotations(HkArrayClass<HkaAnnotationTrackAnnotation>),
 }
 

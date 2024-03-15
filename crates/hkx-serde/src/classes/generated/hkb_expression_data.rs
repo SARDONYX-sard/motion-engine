@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 16
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x6740042a`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,42 +26,42 @@ pub enum HkbExpressionData<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "expression")]
+    #[serde(rename = "expression", default)]
     Expression(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"assignmentVariableIndex"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "assignmentVariableIndex")]
+    #[serde(rename = "assignmentVariableIndex", default)]
     AssignmentVariableIndex(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"assignmentEventIndex"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "assignmentEventIndex")]
+    #[serde(rename = "assignmentEventIndex", default)]
     AssignmentEventIndex(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"eventMode"`
     /// -   type: `enum ExpressionEventMode`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "eventMode")]
+    #[serde(rename = "eventMode", default)]
     EventMode(Primitive<ExpressionEventMode>),
     /// # C++ Class Fields Info
     /// -   name:`"raisedEvent"`
     /// -   type: `hkBool`
     /// - offset: 13
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "raisedEvent", skip_serializing)]
+    #[serde(rename = "raisedEvent", default, skip_serializing)]
     RaisedEvent(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"wasTrueInPreviousFrame"`
     /// -   type: `hkBool`
     /// - offset: 14
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "wasTrueInPreviousFrame", skip_serializing)]
+    #[serde(rename = "wasTrueInPreviousFrame", default, skip_serializing)]
     WasTrueInPreviousFrame(Primitive<bool>),
 }
 

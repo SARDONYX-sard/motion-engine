@@ -22,32 +22,53 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpVehicleDefaultVelocityDamper {
+    // `hkpVehicleVelocityDamper`(Parent class) has no fields
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"normalSpinDamping"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "normalSpinDamping")]
+    #[serde(rename = "normalSpinDamping", default)]
     NormalSpinDamping(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"collisionSpinDamping"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "collisionSpinDamping")]
+    #[serde(rename = "collisionSpinDamping", default)]
     CollisionSpinDamping(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"collisionThreshold"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "collisionThreshold")]
+    #[serde(rename = "collisionThreshold", default)]
     CollisionThreshold(Primitive<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpVehicleDefaultVelocityDamper, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("normalSpinDamping" => NormalSpinDamping(Primitive<f32>)),
     ("collisionSpinDamping" => CollisionSpinDamping(Primitive<f32>)),
     ("collisionThreshold" => CollisionThreshold(Primitive<f32>)),

@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 260
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xf11e3ff7`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkVertexFormat {
     /// -   type: `struct hkVertexFormatElement[32]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "elements")]
+    #[serde(rename = "elements", default)]
     Elements([HkVertexFormatElement; 32]),
     /// # C++ Class Fields Info
     /// -   name:`"numElements"`
     /// -   type: `hkInt32`
     /// - offset: 256
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numElements")]
+    #[serde(rename = "numElements", default)]
     NumElements(Primitive<i32>),
 }
 

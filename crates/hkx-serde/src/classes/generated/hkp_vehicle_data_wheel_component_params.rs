@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 40
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x82fe40e0`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,70 +26,70 @@ pub enum HkpVehicleDataWheelComponentParams {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "radius")]
+    #[serde(rename = "radius", default)]
     Radius(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"mass"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "mass")]
+    #[serde(rename = "mass", default)]
     Mass(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"width"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "width")]
+    #[serde(rename = "width", default)]
     Width(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"friction"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "friction")]
+    #[serde(rename = "friction", default)]
     Friction(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"viscosityFriction"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "viscosityFriction")]
+    #[serde(rename = "viscosityFriction", default)]
     ViscosityFriction(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxFriction"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxFriction")]
+    #[serde(rename = "maxFriction", default)]
     MaxFriction(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"slipAngle"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "slipAngle")]
+    #[serde(rename = "slipAngle", default)]
     SlipAngle(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"forceFeedbackMultiplier"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "forceFeedbackMultiplier")]
+    #[serde(rename = "forceFeedbackMultiplier", default)]
     ForceFeedbackMultiplier(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxContactBodyAcceleration"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxContactBodyAcceleration")]
+    #[serde(rename = "maxContactBodyAcceleration", default)]
     MaxContactBodyAcceleration(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"axle"`
     /// -   type: `hkInt8`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "axle")]
+    #[serde(rename = "axle", default)]
     Axle(Primitive<i8>),
 }
 

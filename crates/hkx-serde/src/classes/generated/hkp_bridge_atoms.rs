@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 12
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xde152a4d`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,7 +26,7 @@ pub enum HkpBridgeAtoms {
     /// -   type: `struct hkpBridgeConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bridgeAtom")]
+    #[serde(rename = "bridgeAtom", default)]
     BridgeAtom(HkpBridgeConstraintAtom),
 }
 

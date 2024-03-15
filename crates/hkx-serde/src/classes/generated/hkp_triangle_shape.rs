@@ -22,60 +22,107 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpTriangleShape {
+    /// # C++ Parent class(`hkpConvexShape`, parent: `hkpSphereRepShape`) field Info
+    /// -   name:`"radius"`
+    /// -   type: `hkReal`
+    /// - offset: 16
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "radius", default)]
+    Radius(Primitive<f32>),
+
+    // `hkpSphereRepShape`(Parent class) has no fields
+
+    /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"userData"`
+    /// -   type: `hkUlong`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "userData", default)]
+    UserData(Primitive<usize>),
+    /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"type"`
+    /// -   type: `enum unknown`
+    /// - offset: 12
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "type", default, skip_serializing)]
+    Type(Primitive<Unknown>),
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"weldingInfo"`
     /// -   type: `hkUint16`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "weldingInfo")]
+    #[serde(rename = "weldingInfo", default)]
     WeldingInfo(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"weldingType"`
     /// -   type: `enum WeldingType`
     /// - offset: 22
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "weldingType")]
+    #[serde(rename = "weldingType", default)]
     WeldingType(Primitive<WeldingType>),
     /// # C++ Class Fields Info
     /// -   name:`"isExtruded"`
     /// -   type: `hkUint8`
     /// - offset: 23
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isExtruded")]
+    #[serde(rename = "isExtruded", default)]
     IsExtruded(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexA"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexA")]
+    #[serde(rename = "vertexA", default)]
     VertexA(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexB"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexB")]
+    #[serde(rename = "vertexB", default)]
     VertexB(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexC"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexC")]
+    #[serde(rename = "vertexC", default)]
     VertexC(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"extrusion"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "extrusion")]
+    #[serde(rename = "extrusion", default)]
     Extrusion(Vector4<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpTriangleShape, "@name",
+    ("radius" => Radius(Primitive<f32>)),
+    ("userData" => UserData(Primitive<usize>)),
+    ("type" => Type(Primitive<Unknown>)),
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("weldingInfo" => WeldingInfo(Primitive<u16>)),
     ("weldingType" => WeldingType(Primitive<WeldingType>)),
     ("isExtruded" => IsExtruded(Primitive<u8>)),

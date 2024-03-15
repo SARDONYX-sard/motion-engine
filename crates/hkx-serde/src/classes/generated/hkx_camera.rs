@@ -22,60 +22,79 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkxCamera {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"from"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "from")]
+    #[serde(rename = "from", default)]
     From(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"focus"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "focus")]
+    #[serde(rename = "focus", default)]
     Focus(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"up"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "up")]
+    #[serde(rename = "up", default)]
     Up(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"fov"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fov")]
+    #[serde(rename = "fov", default)]
     Fov(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"far"`
     /// -   type: `hkReal`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "far")]
+    #[serde(rename = "far", default)]
     Far(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"near"`
     /// -   type: `hkReal`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "near")]
+    #[serde(rename = "near", default)]
     Near(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"leftHanded"`
     /// -   type: `hkBool`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "leftHanded")]
+    #[serde(rename = "leftHanded", default)]
     LeftHanded(Primitive<bool>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkxCamera, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("from" => From(Vector4<f32>)),
     ("focus" => Focus(Vector4<f32>)),
     ("up" => Up(Vector4<f32>)),

@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 16
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xda41bd9b`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkBitField {
     /// -   type: `hkArray&lt;hkUint32&gt;`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "words")]
+    #[serde(rename = "words", default)]
     Words(HkArrayRef<Primitive<u32>>),
     /// # C++ Class Fields Info
     /// -   name:`"numBits"`
     /// -   type: `hkInt32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numBits")]
+    #[serde(rename = "numBits", default)]
     NumBits(Primitive<i32>),
 }
 

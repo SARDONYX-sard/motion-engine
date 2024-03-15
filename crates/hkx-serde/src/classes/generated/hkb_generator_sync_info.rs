@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 80
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xa3c341f8`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,56 +26,56 @@ pub enum HkbGeneratorSyncInfo {
     /// -   type: `struct hkbGeneratorSyncInfoSyncPoint[8]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "syncPoints")]
+    #[serde(rename = "syncPoints", default)]
     SyncPoints([HkbGeneratorSyncInfoSyncPoint; 8]),
     /// # C++ Class Fields Info
     /// -   name:`"baseFrequency"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "baseFrequency")]
+    #[serde(rename = "baseFrequency", default)]
     BaseFrequency(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"localTime"`
     /// -   type: `hkReal`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "localTime")]
+    #[serde(rename = "localTime", default)]
     LocalTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"playbackSpeed"`
     /// -   type: `hkReal`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "playbackSpeed")]
+    #[serde(rename = "playbackSpeed", default)]
     PlaybackSpeed(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"numSyncPoints"`
     /// -   type: `hkInt8`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numSyncPoints")]
+    #[serde(rename = "numSyncPoints", default)]
     NumSyncPoints(Primitive<i8>),
     /// # C++ Class Fields Info
     /// -   name:`"isCyclic"`
     /// -   type: `hkBool`
     /// - offset: 77
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isCyclic")]
+    #[serde(rename = "isCyclic", default)]
     IsCyclic(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"isMirrored"`
     /// -   type: `hkBool`
     /// - offset: 78
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isMirrored")]
+    #[serde(rename = "isMirrored", default)]
     IsMirrored(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"isAdditive"`
     /// -   type: `hkBool`
     /// - offset: 79
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isAdditive")]
+    #[serde(rename = "isAdditive", default)]
     IsAdditive(Primitive<bool>),
 }
 

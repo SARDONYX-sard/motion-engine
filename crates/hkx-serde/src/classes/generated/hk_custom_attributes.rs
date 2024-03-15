@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 8
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xbff19005`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,7 +26,7 @@ pub enum HkCustomAttributes {
     /// -   type: `hkSimpleArray&lt;struct hkCustomAttributesAttribute&gt;`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "attributes")]
+    #[serde(rename = "attributes", default)]
     Attributes(HkArrayClass<HkCustomAttributesAttribute>),
 }
 

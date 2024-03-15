@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 32
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xc9cbedf2`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkpBallSocketChainDataConstraintInfo {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pivotInA")]
+    #[serde(rename = "pivotInA", default)]
     PivotInA(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"pivotInB"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pivotInB")]
+    #[serde(rename = "pivotInB", default)]
     PivotInB(Vector4<f32>),
 }
 

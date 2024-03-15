@@ -22,67 +22,76 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpConeLimitConstraintAtom {
+    /// # C++ Parent class(`hkpConstraintAtom`, parent: `None`) field Info
+    /// -   name:`"type"`
+    /// -   type: `enum AtomType`
+    /// - offset: 0
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "type", default)]
+    Type(Primitive<AtomType>),
+
     /// # C++ Class Fields Info
     /// -   name:`"isEnabled"`
     /// -   type: `hkUint8`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isEnabled")]
+    #[serde(rename = "isEnabled", default)]
     IsEnabled(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"twistAxisInA"`
     /// -   type: `hkUint8`
     /// - offset: 3
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "twistAxisInA")]
+    #[serde(rename = "twistAxisInA", default)]
     TwistAxisInA(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"refAxisInB"`
     /// -   type: `hkUint8`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "refAxisInB")]
+    #[serde(rename = "refAxisInB", default)]
     RefAxisInB(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"angleMeasurementMode"`
     /// -   type: `enum MeasurementMode`
     /// - offset: 5
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "angleMeasurementMode")]
+    #[serde(rename = "angleMeasurementMode", default)]
     AngleMeasurementMode(Primitive<MeasurementMode>),
     /// # C++ Class Fields Info
     /// -   name:`"memOffsetToAngleOffset"`
     /// -   type: `hkUint8`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "memOffsetToAngleOffset")]
+    #[serde(rename = "memOffsetToAngleOffset", default)]
     MemOffsetToAngleOffset(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"minAngle"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minAngle")]
+    #[serde(rename = "minAngle", default)]
     MinAngle(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxAngle"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxAngle")]
+    #[serde(rename = "maxAngle", default)]
     MaxAngle(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"angularLimitsTauFactor"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "angularLimitsTauFactor")]
+    #[serde(rename = "angularLimitsTauFactor", default)]
     AngularLimitsTauFactor(Primitive<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpConeLimitConstraintAtom, "@name",
+    ("type" => Type(Primitive<AtomType>)),
     ("isEnabled" => IsEnabled(Primitive<u8>)),
     ("twistAxisInA" => TwistAxisInA(Primitive<u8>)),
     ("refAxisInB" => RefAxisInB(Primitive<u8>)),

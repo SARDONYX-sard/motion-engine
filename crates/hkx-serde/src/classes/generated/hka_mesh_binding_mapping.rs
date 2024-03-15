@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 12
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x48aceb75`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,7 +26,7 @@ pub enum HkaMeshBindingMapping {
     /// -   type: `hkArray&lt;hkInt16&gt;`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "mapping")]
+    #[serde(rename = "mapping", default)]
     Mapping(HkArrayRef<Primitive<i16>>),
 }
 

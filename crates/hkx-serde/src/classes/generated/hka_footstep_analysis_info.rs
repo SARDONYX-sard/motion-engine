@@ -22,109 +22,128 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkaFootstepAnalysisInfo {
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkArray&lt;hkChar&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name")]
+    #[serde(rename = "name", default)]
     Name(HkArrayRef<Primitive<char>>),
     /// # C++ Class Fields Info
     /// -   name:`"nameStrike"`
     /// -   type: `hkArray&lt;hkChar&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "nameStrike")]
+    #[serde(rename = "nameStrike", default)]
     NameStrike(HkArrayRef<Primitive<char>>),
     /// # C++ Class Fields Info
     /// -   name:`"nameLift"`
     /// -   type: `hkArray&lt;hkChar&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "nameLift")]
+    #[serde(rename = "nameLift", default)]
     NameLift(HkArrayRef<Primitive<char>>),
     /// # C++ Class Fields Info
     /// -   name:`"nameLock"`
     /// -   type: `hkArray&lt;hkChar&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "nameLock")]
+    #[serde(rename = "nameLock", default)]
     NameLock(HkArrayRef<Primitive<char>>),
     /// # C++ Class Fields Info
     /// -   name:`"nameUnlock"`
     /// -   type: `hkArray&lt;hkChar&gt;`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "nameUnlock")]
+    #[serde(rename = "nameUnlock", default)]
     NameUnlock(HkArrayRef<Primitive<char>>),
     /// # C++ Class Fields Info
     /// -   name:`"minPos"`
     /// -   type: `hkArray&lt;hkReal&gt;`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minPos")]
+    #[serde(rename = "minPos", default)]
     MinPos(HkArrayRef<Primitive<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"maxPos"`
     /// -   type: `hkArray&lt;hkReal&gt;`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxPos")]
+    #[serde(rename = "maxPos", default)]
     MaxPos(HkArrayRef<Primitive<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"minVel"`
     /// -   type: `hkArray&lt;hkReal&gt;`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minVel")]
+    #[serde(rename = "minVel", default)]
     MinVel(HkArrayRef<Primitive<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"maxVel"`
     /// -   type: `hkArray&lt;hkReal&gt;`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxVel")]
+    #[serde(rename = "maxVel", default)]
     MaxVel(HkArrayRef<Primitive<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"allBonesDown"`
     /// -   type: `hkArray&lt;hkReal&gt;`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "allBonesDown")]
+    #[serde(rename = "allBonesDown", default)]
     AllBonesDown(HkArrayRef<Primitive<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"anyBonesDown"`
     /// -   type: `hkArray&lt;hkReal&gt;`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "anyBonesDown")]
+    #[serde(rename = "anyBonesDown", default)]
     AnyBonesDown(HkArrayRef<Primitive<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"posTol"`
     /// -   type: `hkReal`
     /// - offset: 140
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "posTol")]
+    #[serde(rename = "posTol", default)]
     PosTol(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"velTol"`
     /// -   type: `hkReal`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "velTol")]
+    #[serde(rename = "velTol", default)]
     VelTol(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"duration"`
     /// -   type: `hkReal`
     /// - offset: 148
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "duration")]
+    #[serde(rename = "duration", default)]
     Duration(Primitive<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkaFootstepAnalysisInfo, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("name" => Name(HkArrayRef<Primitive<char>>)),
     ("nameStrike" => NameStrike(HkArrayRef<Primitive<char>>)),
     ("nameLift" => NameLift(HkArrayRef<Primitive<char>>)),

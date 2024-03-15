@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 8
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x514763dc`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkbBoolVariableSequencedDataSample {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "time")]
+    #[serde(rename = "time", default)]
     Time(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"value"`
     /// -   type: `hkBool`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "value")]
+    #[serde(rename = "value", default)]
     Value(Primitive<bool>),
 }
 

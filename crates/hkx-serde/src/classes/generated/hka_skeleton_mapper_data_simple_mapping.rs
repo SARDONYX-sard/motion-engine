@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 64
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x3405deca`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,21 +26,21 @@ pub enum HkaSkeletonMapperDataSimpleMapping {
     /// -   type: `hkInt16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "boneA")]
+    #[serde(rename = "boneA", default)]
     BoneA(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"boneB"`
     /// -   type: `hkInt16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "boneB")]
+    #[serde(rename = "boneB", default)]
     BoneB(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"aFromBTransform"`
     /// -   type: `hkQsTransform`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "aFromBTransform")]
+    #[serde(rename = "aFromBTransform", default)]
     AFromBTransform(QsTransform<f32>),
 }
 

@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 64
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0x1e0bc068`
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,14 +26,14 @@ pub enum HkbRigidBodyRagdollControlData {
     /// -   type: `struct hkaKeyFrameHierarchyUtilityControlData`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "keyFrameHierarchyControlData")]
+    #[serde(rename = "keyFrameHierarchyControlData", default)]
     KeyFrameHierarchyControlData(HkaKeyFrameHierarchyUtilityControlData),
     /// # C++ Class Fields Info
     /// -   name:`"durationToBlend"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "durationToBlend")]
+    #[serde(rename = "durationToBlend", default)]
     DurationToBlend(Primitive<f32>),
 }
 

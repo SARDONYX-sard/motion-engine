@@ -22,39 +22,84 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpPositionConstraintMotor {
+    /// # C++ Parent class(`hkpLimitedForceConstraintMotor`, parent: `hkpConstraintMotor`) field Info
+    /// -   name:`"minForce"`
+    /// -   type: `hkReal`
+    /// - offset: 12
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "minForce", default)]
+    MinForce(Primitive<f32>),
+    /// # C++ Parent class(`hkpLimitedForceConstraintMotor`, parent: `hkpConstraintMotor`) field Info
+    /// -   name:`"maxForce"`
+    /// -   type: `hkReal`
+    /// - offset: 16
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "maxForce", default)]
+    MaxForce(Primitive<f32>),
+
+    /// # C++ Parent class(`hkpConstraintMotor`, parent: `hkReferencedObject`) field Info
+    /// -   name:`"type"`
+    /// -   type: `enum MotorType`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE`
+    #[serde(rename = "type", default)]
+    Type(Primitive<MotorType>),
+
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"memSizeAndFlags"`
+    /// -   type: `hkUint16`
+    /// - offset: 4
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// -   name:`"referenceCount"`
+    /// -   type: `hkInt16`
+    /// - offset: 6
+    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    #[serde(rename = "referenceCount", default, skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"tau"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "tau")]
+    #[serde(rename = "tau", default)]
     Tau(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"damping"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "damping")]
+    #[serde(rename = "damping", default)]
     Damping(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"proportionalRecoveryVelocity"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "proportionalRecoveryVelocity")]
+    #[serde(rename = "proportionalRecoveryVelocity", default)]
     ProportionalRecoveryVelocity(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"constantRecoveryVelocity"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "constantRecoveryVelocity")]
+    #[serde(rename = "constantRecoveryVelocity", default)]
     ConstantRecoveryVelocity(Primitive<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpPositionConstraintMotor, "@name",
+    ("minForce" => MinForce(Primitive<f32>)),
+    ("maxForce" => MaxForce(Primitive<f32>)),
+    ("type" => Type(Primitive<MotorType>)),
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("tau" => Tau(Primitive<f32>)),
     ("damping" => Damping(Primitive<f32>)),
     ("proportionalRecoveryVelocity" => ProportionalRecoveryVelocity(Primitive<f32>)),

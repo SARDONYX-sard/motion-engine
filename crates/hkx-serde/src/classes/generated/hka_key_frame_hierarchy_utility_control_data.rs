@@ -16,7 +16,6 @@ use std::borrow::Cow;
 /// # C++ Class Info
 /// -      size: 48
 /// -    vtable: false
-/// -    parent: `None`/`0x0`
 /// - signature: `0xa3d0ac71`
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
@@ -27,84 +26,84 @@ pub enum HkaKeyFrameHierarchyUtilityControlData {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "hierarchyGain")]
+    #[serde(rename = "hierarchyGain", default)]
     HierarchyGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"velocityDamping"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "velocityDamping")]
+    #[serde(rename = "velocityDamping", default)]
     VelocityDamping(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"accelerationGain"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "accelerationGain")]
+    #[serde(rename = "accelerationGain", default)]
     AccelerationGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"velocityGain"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "velocityGain")]
+    #[serde(rename = "velocityGain", default)]
     VelocityGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"positionGain"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "positionGain")]
+    #[serde(rename = "positionGain", default)]
     PositionGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"positionMaxLinearVelocity"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "positionMaxLinearVelocity")]
+    #[serde(rename = "positionMaxLinearVelocity", default)]
     PositionMaxLinearVelocity(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"positionMaxAngularVelocity"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "positionMaxAngularVelocity")]
+    #[serde(rename = "positionMaxAngularVelocity", default)]
     PositionMaxAngularVelocity(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"snapGain"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "snapGain")]
+    #[serde(rename = "snapGain", default)]
     SnapGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"snapMaxLinearVelocity"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "snapMaxLinearVelocity")]
+    #[serde(rename = "snapMaxLinearVelocity", default)]
     SnapMaxLinearVelocity(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"snapMaxAngularVelocity"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "snapMaxAngularVelocity")]
+    #[serde(rename = "snapMaxAngularVelocity", default)]
     SnapMaxAngularVelocity(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"snapMaxLinearDistance"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "snapMaxLinearDistance")]
+    #[serde(rename = "snapMaxLinearDistance", default)]
     SnapMaxLinearDistance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"snapMaxAngularDistance"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "snapMaxAngularDistance")]
+    #[serde(rename = "snapMaxAngularDistance", default)]
     SnapMaxAngularDistance(Primitive<f32>),
 }
 

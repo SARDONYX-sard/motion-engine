@@ -1,6 +1,9 @@
+use super::get_life_time;
+use crate::parse_rpt::ClassInfo;
+use convert_case::{Case, Casing as _};
 use indexmap::IndexMap;
 
-pub fn generate_class_params(sig_struct_map: IndexMap<u32, (String, &str)>) -> String {
+pub fn generate_class_params(sig_struct_map: IndexMap<u32, ClassInfo>) -> String {
     let mut class_params = String::new();
 
     class_params.push_str(
@@ -24,7 +27,10 @@ pub enum ClassParams<'a> {
 "#,
     );
 
-    for (sig, (struct_name, life_time)) in &sig_struct_map {
+    for (sig, class) in sig_struct_map.clone().into_iter() {
+        let struct_name = class.name.to_case(Case::Pascal);
+        let life_time = get_life_time(&class.members);
+
         let bound = if !life_time.is_empty() {
             format!("\n    #[serde(bound(deserialize = \"Vec<{struct_name}{life_time}>: Deserialize<'de>\"))]")
         } else {
@@ -60,7 +66,9 @@ impl<'a> Serialize for Class<'a> {{
         sig_struct_map.len()
     ));
 
-    for (sig, (struct_name, _life_time)) in &sig_struct_map {
+    for (sig, class) in sig_struct_map.clone().into_iter() {
+        let struct_name = class.name.to_case(Case::Pascal);
+
         class_params.push_str(&format!(
             r#"
             "0x{sig:x}" => {{
@@ -136,7 +144,9 @@ impl<'de> Deserialize<'de> for Class<'de> {
 "#,
     );
 
-    for (sig, (struct_name, _life_time)) in &sig_struct_map {
+    for (sig, class) in sig_struct_map.clone().into_iter() {
+        let struct_name = class.name.to_case(Case::Pascal);
+
         class_params.push_str(&format!(
             r#"                                    "0x{sig:x}" => {{
                                                         ClassParams::{struct_name}(map.next_value()?)

@@ -53,43 +53,43 @@ use crate::{flag_values::FlagValues, hk_types::Type};
 type IResult<I, O, E = nom::error::VerboseError<I>> = Result<(I, O), nom::Err<E>>;
 
 /// Enum tag & value
-type EnumPair<'a> = (Cow<'a, str>, i32);
-type Enum<'a> = (&'a str, Vec<EnumPair<'a>>);
+type EnumPair = (String, i32);
+type Enum = (String, Vec<EnumPair>);
 
 /// C++ class information from `hkxcmd Report`.
 ///
 /// ref: https://github.com/figment/hkxcmd/blob/dc4c75bf44303d874cc2656f56f107527f79ac29/Addins/Report.cpp#L144
 #[derive(Debug, Clone, Default, PartialEq)]
-pub struct ClassInfo<'a> {
+pub struct ClassInfo {
     /// Class signature
     pub signature: u32,
     /// Is virtual table C++ class?
     pub vtable: bool,
     /// Class name
-    pub name: Cow<'a, str>,
+    pub name: String,
     /// Super class name & signature
-    pub parent: Option<(Cow<'a, str>, u32)>,
+    pub parent: Option<(String, u32)>,
     /// Class size
     pub size: u32,
     /// Vector of enum names & enum fields
-    pub enums: Vec<Enum<'a>>,
+    pub enums: Vec<Enum>,
     /// C++ Class member Information
-    pub members: Vec<MemberInfo<'a>>,
+    pub members: Vec<MemberInfo>,
     /// Havok engine revision version(Maybe)
     pub version: u32,
 }
 
 /// C++ Class member Information
 #[derive(Debug, Clone, Default, PartialEq)]
-pub struct MemberInfo<'a> {
+pub struct MemberInfo {
     /// Member(Field) name
-    pub name: Cow<'a, str>,
+    pub name: String,
     /// Used class name
-    pub class_ref: Option<Cow<'a, str>>,
+    pub class_ref: Option<String>,
     /// Used enum name
-    pub enum_ref: Option<Cow<'a, str>>,
+    pub enum_ref: Option<String>,
     /// C++ Type
-    pub type_name: Cow<'a, str>,
+    pub type_name: String,
     /// Havok Type enumeration (Rough category of `Self::type_name`.)
     pub hk_type: Type,
     /// Type in generics when arrays, etc. come in.
@@ -105,7 +105,7 @@ pub struct MemberInfo<'a> {
 }
 
 /// Parser that parses strings in rpt files obtained by `hkxcmd Report` and obtains C++ living information.
-pub fn parse_class(input: &str) -> IResult<&str, ClassInfo<'_>> {
+pub fn parse_class(input: &str) -> IResult<&str, ClassInfo> {
     let (input, signature) = parse_value_number("Signature:", 16)(input)?;
     let (input, _) = multispace0(input)?;
 
@@ -171,9 +171,9 @@ pub fn parse_class(input: &str) -> IResult<&str, ClassInfo<'_>> {
             signature,
             vtable,
             name: name.into(),
-            parent,
+            parent: parent.map(|(s, i)| (s.into(), i)),
             size,
-            enums,
+            enums: enums.into_iter().map(|(s, i)| (s.into(), i)).collect(),
             members,
             version,
         },
@@ -278,7 +278,7 @@ fn parse_interface(input: &str) -> IResult<&str, &str> {
 /// Parse enum one line
 ///
 /// 000 BlendModeFunction (BMF_NONE=0;BMF_PERCENT=1;BMF_ONE_MINUS_PERCENT=2) {00000000}
-fn parse_enum(input: &str) -> IResult<&str, (&str, Vec<EnumPair<'_>>)> {
+fn parse_enum(input: &str) -> IResult<&str, (&str, Vec<EnumPair>)> {
     let (input, _) = space0(input)?;
 
     // 000
@@ -326,7 +326,7 @@ fn parse_enum(input: &str) -> IResult<&str, (&str, Vec<EnumPair<'_>>)> {
 }
 
 /// ref: https://github.com/figment/hkxcmd/blob/dc4c75bf44303d874cc2656f56f107527f79ac29/Addins/Report.cpp#L144
-fn parse_member(input: &str) -> IResult<&str, MemberInfo<'_>> {
+fn parse_member(input: &str) -> IResult<&str, MemberInfo> {
     fn parse_type(input: &str) -> IResult<&str, Type> {
         context("Type", map_res(parse_usize_hex, Type::try_from))(input)
     }

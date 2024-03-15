@@ -5,63 +5,13 @@
 use crate::havok_types::Primitive;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
-
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class nam
-///
-/// # Information on the original C++ class
-/// -    size: 4
-/// -  vtable: false
-/// -  parent: None/`0`(Non prefix hex signature)
-/// - version: 0
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkbVariableValue<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkbVariableValue"`: Name of C++ class.
-    #[serde(default = "HkbVariableValue::class_name")]
-    #[serde(rename = "@class", borrow, skip_deserializing)]
-    pub class: Cow<'a, str>,
-
-    /// `0xb99bd6a`: Unique value of this class.
-    #[serde(default = "HkbVariableValue::signature")]
-    #[serde(rename = "@signature", borrow, skip_deserializing)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(rename = "hkparam")]
-    pub hkparams: HkbVariableValueHkParam,
-}
-
-impl HkbVariableValue<'_> {
-    /// Return `"hkbVariableValue"`, which is the name of this C++ class.
-    ///
-    /// # NOTE
-    /// It is not the name of the Rust structure.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkbVariableValue".into()
-    }
-
-    /// Return `"0xb99bd6a"`, which is the signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0xb99bd6a".into()
-    }
-}
 
 /// In XML, the value of the `name` attribute of the `hkparam` tag.
 ///
 /// In C++, it represents the name of one field in the class.
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbVariableValueHkParam {
+pub enum HkbVariableValue {
     /// # Information on fields in the original C++ class
     /// -   name:`"value"`
     /// -   type: `hkInt32`
@@ -71,35 +21,38 @@ pub enum HkbVariableValueHkParam {
     Value(Primitive<i32>),
 }
 
-impl Default for HkbVariableValueHkParam {
+impl Default for HkbVariableValue {
     fn default() -> Self {
         Self::Value(0.into())
     }
 }
 
-impl From<i32> for HkbVariableValueHkParam {
+impl From<i32> for HkbVariableValue {
     fn from(value: i32) -> Self {
         Self::Value(value.into())
     }
 }
 
 impl_deserialize_for_internally_tagged_enum! {
-    HkbVariableValueHkParam, "@name",
+    HkbVariableValue, "@name",
     ("value"=> Value(Primitive<i32>))
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::classes::{Class, ClassParams};
     use pretty_assertions::assert_eq;
 
     #[test]
     fn should_serialize() {
-        let class = HkbVariableValue {
+        let class = Class {
             name: "#0060".into(),
             class: "hkbVariableValue".into(),
             signature: "0x27812d8d".into(),
-            hkparams: HkbVariableValueHkParam::Value(1045220557.into()),
+            hkparams: ClassParams::HkbVariableValue(vec![HkbVariableValue::Value(
+                1045220557.into(),
+            )]),
         };
 
         let result = quick_xml::se::to_string(&class).unwrap();
@@ -120,12 +73,14 @@ mod tests {
     <hkparam name=\"value\">1045220557</hkparam>\
 </hkobject>";
 
-        let result: HkbVariableValue = quick_xml::de::from_str(xml).unwrap();
-        let expected = HkbVariableValue {
+        let result: Class = quick_xml::de::from_str(xml).unwrap();
+        let expected = Class {
             name: "#0060".into(),
             class: "hkbVariableValue".into(),
             signature: "0x27812d8d".into(),
-            hkparams: HkbVariableValueHkParam::Value(1045220557.into()),
+            hkparams: ClassParams::HkbVariableValue(vec![HkbVariableValue::Value(
+                1045220557.into(),
+            )]),
         };
         assert_eq!(result, expected);
     }

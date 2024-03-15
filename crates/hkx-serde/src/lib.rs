@@ -8,10 +8,7 @@ mod helpers;
 mod hk_types;
 mod parse_rpt;
 
-use crate::{
-    generators::rust::{generate_code, has_life_time},
-    parse_rpt::parse_class,
-};
+use crate::{generators::rust::generate_code, parse_rpt::parse_class};
 use convert_case::{Case, Casing};
 use generators::rust::generate_class_params;
 use indexmap::IndexMap;
@@ -29,22 +26,10 @@ pub fn generate_classes() {
         .join("rpt");
 
     let mut sig_class_map = IndexMap::new();
+    let mut output_files = Vec::new();
     let mut mod_indexes = Vec::new();
-    let entries = jwalk::WalkDir::new(rpt_dir);
 
-    #[cfg(test)]
-    let mut test_index = 0;
-    #[cfg(test)]
-    let test_max = 1000;
-    for entry in entries.into_iter() {
-        #[cfg(test)]
-        {
-            match test_index >= test_max {
-                true => break,
-                false => test_index += 1,
-            }
-        }
-
+    for entry in jwalk::WalkDir::new(rpt_dir).into_iter() {
         let path = entry.unwrap().path();
         if !path.is_file() && path.extension() != Some(std::ffi::OsStr::new("xml")) {
             continue;
@@ -76,32 +61,25 @@ pub fn generate_classes() {
         let content = std::fs::read_to_string(path).unwrap();
         let (remain, class) = parse_class(&content).unwrap();
 
-        let life_time = if has_life_time(&class.members) {
-            "<'a>"
-        } else {
-            ""
-        };
-        sig_class_map.insert(
-            class.signature,
-            (class.name.to_case(Case::Pascal), life_time),
-        );
-
         tracing::debug!("remain = {:?}", remain);
         tracing::debug!("class = {:?}", class);
 
-        let rust_code = generate_code(&class);
         let rust_file = output_dir.join(format!("{file_stem}.rs"));
-        std::fs::write(rust_file, rust_code).unwrap();
-    }
+        output_files.push(rust_file);
 
+        mod_indexes.push(format!("mod {};\nuse {}::*;\n", file_stem, file_stem));
+        sig_class_map.insert(class.signature, class);
+    }
     mod_indexes.push("pub mod class_params;".into());
     std::fs::write(output_dir.join("mod.rs"), mod_indexes.join("\n")).unwrap();
 
-    std::fs::write(
-        output_dir.join("class_params.rs"),
-        generate_class_params(sig_class_map),
-    )
-    .unwrap();
+    for ((sig, _class), rust_file) in sig_class_map.clone().into_iter().zip(output_files) {
+        let rust_code = generate_code(sig, sig_class_map.clone());
+        std::fs::write(rust_file, rust_code).unwrap();
+    }
+
+    let class_params = generate_class_params(sig_class_map);
+    std::fs::write(output_dir.join("class_params.rs"), class_params).unwrap();
 }
 
 #[cfg(test)]

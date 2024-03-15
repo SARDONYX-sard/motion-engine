@@ -1,91 +1,79 @@
-use crate::havok_types::HkArrayStringPtr;
+//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `hkbBehaviorGraphStringData`
+//!
+//! # NOTE
+//! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+use crate::havok_types::*;
 use quick_xml::impl_deserialize_for_internally_tagged_enum;
 use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
-/// In XML, it is enclosed in a `hkobject` tag
-/// and the `class` attribute contains the C++ class name.
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-#[serde(rename = "hkobject")]
-pub struct HkbBehaviorGraphStringData<'a> {
-    /// e.g. `#0106`
-    ///
-    /// These names are referenced (in C++ implementations) by vectors that store pointers to a structure and a class.
-    #[serde(rename = "@name", borrow)]
-    #[serde(default)]
-    pub name: Cow<'a, str>,
-
-    /// `"hkbBehaviorGraphStringData"`: Name of this class.
-    #[serde(default = "HkbBehaviorGraphStringData::class_name")]
-    #[serde(rename = "@class", borrow, skip_deserializing)]
-    pub class: Cow<'a, str>,
-
-    /// `0xc713064e`: Unique value of this class.
-    #[serde(default = "HkbBehaviorGraphStringData::signature")]
-    #[serde(rename = "@signature", borrow, skip_deserializing)]
-    pub signature: Cow<'a, str>,
-
-    /// The `"hkparam"` tag (C++ field) vector
-    #[serde(bound(deserialize = "Vec<HkbBehaviorGraphStringDataHkparam<'a>>: Deserialize<'de>"))]
-    #[serde(rename = "hkparam")]
-    pub hkparams: Vec<HkbBehaviorGraphStringDataHkparam<'a>>,
-}
-
-impl HkbBehaviorGraphStringData<'_> {
-    /// Name of this class.
-    #[inline]
-    pub fn class_name() -> Cow<'static, str> {
-        "hkbBehaviorGraphStringData".into()
-    }
-
-    /// Signature of this class.
-    #[inline]
-    pub fn signature() -> Cow<'static, str> {
-        "0xc713064e".into()
-    }
-}
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
+/// `hkbBehaviorGraphStringData`
 ///
-/// In C++, it represents the name of one field in the class.
+/// - In C++, it represents the name of one field in the class.
+/// - In XML, the value of the `name` attribute of the `hkparam` tag.
+///
+/// # C++ Class Info
+/// -      size: 56
+/// -    vtable: true
+/// -    parent: `hkReferencedObject`/`0x3b1c1113`
+/// - signature: `0xc713064e`
+/// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbBehaviorGraphStringDataHkparam<'a> {
-    /// `"eventNames"`
+pub enum HkbBehaviorGraphStringData<'a> {
+    /// # C++ Class Fields Info
+    /// -   name:`"eventNames"`
+    /// -   type: `hkArray&lt;hkStringPtr&gt;`
+    /// - offset: 8
+    /// -  flags: `FLAGS_NONE`
     #[serde(rename = "eventNames")]
-    Event(HkArrayStringPtr<'a>),
-    /// `"attributeNames"`
+    EventNames(HkArrayStringPtr<'a>),
+    /// # C++ Class Fields Info
+    /// -   name:`"attributeNames"`
+    /// -   type: `hkArray&lt;hkStringPtr&gt;`
+    /// - offset: 20
+    /// -  flags: `FLAGS_NONE`
     #[serde(rename = "attributeNames")]
-    Attribute(HkArrayStringPtr<'a>),
-    /// `"variableNames"`
+    AttributeNames(HkArrayStringPtr<'a>),
+    /// # C++ Class Fields Info
+    /// -   name:`"variableNames"`
+    /// -   type: `hkArray&lt;hkStringPtr&gt;`
+    /// - offset: 32
+    /// -  flags: `FLAGS_NONE`
     #[serde(rename = "variableNames")]
-    Variable(HkArrayStringPtr<'a>),
-    /// `"characterPropertyNames"`
+    VariableNames(HkArrayStringPtr<'a>),
+    /// # C++ Class Fields Info
+    /// -   name:`"characterPropertyNames"`
+    /// -   type: `hkArray&lt;hkStringPtr&gt;`
+    /// - offset: 44
+    /// -  flags: `FLAGS_NONE`
     #[serde(rename = "characterPropertyNames")]
-    CharacterProperty(HkArrayStringPtr<'a>),
+    CharacterPropertyNames(HkArrayStringPtr<'a>),
 }
 
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbBehaviorGraphStringDataHkparam<'de>, "@name",
-    ("eventNames"    => Event(HkArrayStringPtr)),
-    ("attributeNames" => Attribute(HkArrayStringPtr)),
-    ("variableNames"  => Variable(HkArrayStringPtr)),
-    ("characterPropertyNames" => CharacterProperty(HkArrayStringPtr)),
+    HkbBehaviorGraphStringData<'de>, "@name",
+    ("eventNames" => EventNames(HkArrayStringPtr<'de>)),
+    ("attributeNames" => AttributeNames(HkArrayStringPtr<'de>)),
+    ("variableNames" => VariableNames(HkArrayStringPtr<'de>)),
+    ("characterPropertyNames" => CharacterPropertyNames(HkArrayStringPtr<'de>)),
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::classes::{Class, ClassParams};
     use pretty_assertions::assert_eq;
 
     #[test]
     fn should_serialize() {
-        let data = HkbBehaviorGraphStringData {
+        let data = Class {
             name: "#0085".into(),
             class: "hkbBehaviorGraphStringData".into(),
             signature: "0xc713064e".into(),
-            hkparams: vec![
-                HkbBehaviorGraphStringDataHkparam::Event(
+            hkparams: ClassParams::HkbBehaviorGraphStringData(vec![
+                HkbBehaviorGraphStringData::EventNames(
                     vec![
                         "cannedTurnRight90Flee",
                         "cannedTurnRight180Flee",
@@ -94,8 +82,8 @@ mod tests {
                     ]
                     .into(),
                 ),
-                HkbBehaviorGraphStringDataHkparam::Attribute(Default::default()),
-                HkbBehaviorGraphStringDataHkparam::Variable(
+                HkbBehaviorGraphStringData::AttributeNames(Default::default()),
+                HkbBehaviorGraphStringData::VariableNames(
                     vec![
                         "blendDefault",
                         "blendFast",
@@ -106,8 +94,8 @@ mod tests {
                     ]
                     .into(),
                 ),
-                HkbBehaviorGraphStringDataHkparam::CharacterProperty(Default::default()),
-            ],
+                HkbBehaviorGraphStringData::CharacterPropertyNames(Default::default()),
+            ]),
         };
         let serialized = quick_xml::se::to_string(&data).unwrap();
 
@@ -140,14 +128,14 @@ mod tests {
             .join("assets")
             .join("dummy.xml");
         let xml_str = std::fs::read_to_string(xml_path).unwrap();
-        let deserialized: HkbBehaviorGraphStringData = quick_xml::de::from_str(&xml_str).unwrap();
+        let deserialized: Class = quick_xml::de::from_str(&xml_str).unwrap();
 
-        let expected = HkbBehaviorGraphStringData {
+        let expected = Class {
             name: "#0085".into(),
             class: "hkbBehaviorGraphStringData".into(),
             signature: "0xc713064e".into(),
-            hkparams: vec![
-                HkbBehaviorGraphStringDataHkparam::Event(
+            hkparams: ClassParams::HkbBehaviorGraphStringData(vec![
+                HkbBehaviorGraphStringData::EventNames(
                     vec![
                         "cannedTurnRight90Flee",
                         "cannedTurnRight180Flee",
@@ -156,8 +144,8 @@ mod tests {
                     ]
                     .into(),
                 ),
-                HkbBehaviorGraphStringDataHkparam::Attribute(Default::default()),
-                HkbBehaviorGraphStringDataHkparam::Variable(
+                HkbBehaviorGraphStringData::AttributeNames(Default::default()),
+                HkbBehaviorGraphStringData::VariableNames(
                     vec![
                         "blendDefault",
                         "blendFast",
@@ -168,8 +156,8 @@ mod tests {
                     ]
                     .into(),
                 ),
-                HkbBehaviorGraphStringDataHkparam::CharacterProperty(Default::default()),
-            ],
+                HkbBehaviorGraphStringData::CharacterPropertyNames(Default::default()),
+            ]),
         };
         assert_eq!(deserialized, expected);
     }

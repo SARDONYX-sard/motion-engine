@@ -49,8 +49,8 @@ mod tests {
     use super::*;
     use crate::{
         classes::{
-            hkb_behavior_graph_string_data::HkbBehaviorGraphStringDataHkparam,
-            hkb_variable_value_set::HkbVariableValueSetHkParam, ClassParams,
+            hkb_behavior_graph_string_data::HkbBehaviorGraphStringData,
+            hkb_variable_value_set::HkbVariableValueSet, ClassParams,
         },
         havok_types::HkArrayClassParam,
     };
@@ -69,7 +69,7 @@ mod tests {
                     class: "hkbBehaviorGraphStringData".into(),
                     signature: "0xc713064e".into(),
                     hkparams: ClassParams::HkbBehaviorGraphStringData(vec![
-                        HkbBehaviorGraphStringDataHkparam::CharacterProperty(Default::default()),
+                        HkbBehaviorGraphStringData::CharacterPropertyNames(Default::default()),
                     ]),
                 }],
             },
@@ -109,7 +109,7 @@ mod tests {
                         class: "hkbBehaviorGraphStringData".into(),
                         signature: "0xc713064e".into(),
                         hkparams: ClassParams::HkbBehaviorGraphStringData(vec![
-                            HkbBehaviorGraphStringDataHkparam::Event(
+                            HkbBehaviorGraphStringData::EventNames(
                                 vec![
                                     "staggerStop",
                                     "syncPoint",
@@ -144,8 +144,8 @@ mod tests {
                                 ]
                                 .into(),
                             ),
-                            HkbBehaviorGraphStringDataHkparam::Attribute(Default::default()),
-                            HkbBehaviorGraphStringDataHkparam::Variable(
+                            HkbBehaviorGraphStringData::AttributeNames(Default::default()),
+                            HkbBehaviorGraphStringData::VariableNames(
                                 vec![
                                     "blendDefault",
                                     "IsEquipping",
@@ -166,7 +166,7 @@ mod tests {
                                 ]
                                 .into(),
                             ),
-                            HkbBehaviorGraphStringDataHkparam::CharacterProperty(
+                            HkbBehaviorGraphStringData::CharacterPropertyNames(
                                 vec!["LeftArm", "UpperBody", "RightArm"].into(),
                             ),
                         ]),
@@ -176,7 +176,7 @@ mod tests {
                         class: "hkbVariableValueSet".into(),
                         signature: "0x27812d8d".into(),
                         hkparams: ClassParams::HkbVariableValueSet(vec![
-                            HkbVariableValueSetHkParam::Word(
+                            HkbVariableValueSet::Word(
                                 vec![
                                     HkArrayClassParam {
                                         hkparam: 1045220557.into(),
@@ -199,8 +199,8 @@ mod tests {
                                 ]
                                 .into(),
                             ),
-                            HkbVariableValueSetHkParam::Quad(Default::default()),
-                            HkbVariableValueSetHkParam::Variant(Default::default()),
+                            HkbVariableValueSet::Quad(Default::default()),
+                            HkbVariableValueSet::Variant(Default::default()),
                         ]),
                     },
                 ],

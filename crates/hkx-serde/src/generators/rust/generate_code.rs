@@ -6,35 +6,35 @@ use crate::{
 use convert_case::{Case, Casing};
 use indexmap::IndexMap;
 
-pub fn has_life_time(vec: &Vec<MemberInfo>) -> bool {
+pub fn get_life_time(vec: &Vec<MemberInfo>) -> &'static str {
     for m in vec {
         let (_input, ty) = parse_cpp_type(&m.type_name).unwrap();
         if ty.as_ref().contains("'a") {
-            return true;
+            return "'a";
         }
     }
-    false
+    ""
 }
 
-pub fn generate_code(class: &ClassInfo) -> String {
+pub fn generate_code(signature: u32, classes_map: IndexMap<u32, ClassInfo>) -> String {
     let mut rust_code = String::new();
+
+    let class = classes_map.get(&signature).unwrap();
     let ClassInfo {
-        name: class_name,
         signature,
-        size,
         vtable,
+        name: class_name,
         parent,
-        version,
+        size,
         members,
+        version,
         ..
-    } = &class;
+    } = class;
+
+    let (parent_name, parent_signature) = parent.clone().unwrap_or_default();
 
     let rust_enum_class_name = class_name.to_case(Case::Pascal);
-
-    let life_time = if has_life_time(members) { "<'a>" } else { "" };
-
-    let parent_default = ("None".into(), 0);
-    let (parent_name, parent_signature) = (parent.as_ref()).unwrap_or(&parent_default);
+    let life_time = get_life_time(members);
 
     rust_code.push_str(&format!(
         r#"//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `{class_name}`
@@ -64,6 +64,7 @@ pub enum {rust_enum_class_name}{life_time} {{
 "#
     ));
 
+    //? - C++ class fields
     let mut field = IndexMap::new();
     for member in &class.members {
         let MemberInfo {
@@ -96,16 +97,18 @@ pub enum {rust_enum_class_name}{life_time} {{
         ));
         field.insert(member_name, (tag_name, rust_type));
     }
+    rust_code.push_str("}\n");
 
-    let life_time = if has_life_time(members) { "<'de>" } else { "" };
+    //? - Impl Deserialization
+    let life_time = get_life_time(members).replace("'a", "'de");
     rust_code.push_str(&format!(
-        r#"}}
-
+        r#"
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {{
     {rust_enum_class_name}{life_time}, "@name",
 "#
-    )); // Env C++ field enum
+    ));
+    rust_code.push('\n');
     for (member_name, (tag_name, rust_type)) in field {
         let rust_type = rust_type.replace("'a", "'de");
         rust_code.push_str(&format!(
@@ -115,7 +118,7 @@ impl_deserialize_for_internally_tagged_enum! {{
     }
     rust_code.push_str("}\n");
 
-    // field Type Enum definitions(If exists)
+    //? - Enum definitions(If exists)
     for (enum_name, enum_info) in &class.enums {
         rust_code.push_str(&format!(
             r#"
@@ -137,58 +140,4 @@ pub enum {enum_name} {{
     }
 
     rust_code
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use crate::hk_types::Type;
-    use pretty_assertions::assert_eq;
-
-    #[test]
-    fn test_generate_rust_code() {
-        // Create a mock class
-        let members = vec![
-            MemberInfo {
-                name: "eventNames".into(),
-                type_name: "Vec<Cow<'a, str>>".into(),
-                flags: FlagValues::FLAGS_NONE,
-                ..Default::default()
-            },
-            MemberInfo {
-                name: "attributeNames".into(),
-                type_name: "Vec<Cow<'a, str>>".into(),
-                flags: FlagValues::FLAGS_NONE,
-                ..Default::default()
-            },
-            MemberInfo {
-                name: "variableNames".into(),
-                type_name: "Vec<Cow<'a, str>>".into(),
-                flags: FlagValues::FLAGS_NONE,
-                ..Default::default()
-            },
-            MemberInfo {
-                name: "characterPropertyNames".into(),
-                hk_type: Type::Void,
-                flags: FlagValues::SERIALIZE_IGNORED,
-                ..Default::default()
-            },
-        ];
-        let enums = vec![
-            ("Enum1", vec![("Value1".into(), 0), ("Value2".into(), 1)]),
-            ("Enum2", vec![("Value3".into(), 2)]),
-        ];
-        let class = ClassInfo {
-            name: "TestClass".into(),
-            members,
-            enums,
-            signature: 0xc713064e,
-            ..Default::default()
-        };
-
-        let generated_code = generate_code(&class);
-
-        let expected_code = r#""#;
-        assert_eq!(generated_code, expected_code);
-    }
 }

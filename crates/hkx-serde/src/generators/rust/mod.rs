@@ -4,4 +4,4 @@ mod generate_code;
 mod generated_types;
 
 pub use gen_class_params::generate_class_params;
-pub use generate_code::{generate_code, has_life_time};
+pub use generate_code::{generate_code, get_life_time};

@@ -27,7 +27,7 @@ pub enum HkpConvexTransformShapeBase {
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "radius", default)]
+    #[serde(rename = "radius")]
     Radius(Primitive<f32>),
 
     // `hkpSphereRepShape`(Parent class) has no fields
@@ -37,14 +37,14 @@ pub enum HkpConvexTransformShapeBase {
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "type", default, skip_serializing)]
+    #[serde(rename = "type", skip_serializing)]
     Type(Primitive<Unknown>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -52,14 +52,14 @@ pub enum HkpConvexTransformShapeBase {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -69,14 +69,14 @@ pub enum HkpConvexTransformShapeBase {
     /// -   type: `struct hkpSingleShapeContainer`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "childShape", default)]
+    #[serde(rename = "childShape")]
     ChildShape(HkpSingleShapeContainer),
     /// # C++ Class Fields Info
     /// -   name:`"childShapeSize"`
     /// -   type: `hkInt32`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "childShapeSize", default, skip_serializing)]
+    #[serde(rename = "childShapeSize", skip_serializing)]
     ChildShapeSize(Primitive<i32>),
 }
 

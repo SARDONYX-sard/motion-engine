@@ -26,14 +26,14 @@ pub enum HkbEventSequencedDataSequencedEvent {
     /// -   type: `struct hkbEvent`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "event", default)]
+    #[serde(rename = "event")]
     Event(HkbEvent),
     /// # C++ Class Fields Info
     /// -   name:`"time"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "time", default)]
+    #[serde(rename = "time")]
     Time(Primitive<f32>),
 }
 

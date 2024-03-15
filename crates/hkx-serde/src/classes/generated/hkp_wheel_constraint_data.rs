@@ -27,7 +27,7 @@ pub enum HkpWheelConstraintData {
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -35,14 +35,14 @@ pub enum HkpWheelConstraintData {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -52,21 +52,21 @@ pub enum HkpWheelConstraintData {
     /// -   type: `struct hkpWheelConstraintDataAtoms`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "atoms", default)]
+    #[serde(rename = "atoms")]
     Atoms(HkpWheelConstraintDataAtoms),
     /// # C++ Class Fields Info
     /// -   name:`"initialAxleInB"`
     /// -   type: `hkVector4`
     /// - offset: 320
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "initialAxleInB", default)]
+    #[serde(rename = "initialAxleInB")]
     InitialAxleInB(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"initialSteeringAxisInB"`
     /// -   type: `hkVector4`
     /// - offset: 336
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "initialSteeringAxisInB", default)]
+    #[serde(rename = "initialSteeringAxisInB")]
     InitialSteeringAxisInB(Vector4<f32>),
 }
 

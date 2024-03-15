@@ -27,7 +27,7 @@ pub enum HkpModifierConstraintAtom<'a> {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -35,28 +35,28 @@ pub enum HkpModifierConstraintAtom<'a> {
     /// -   type: `hkUint16`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "modifierAtomSize", default)]
+    #[serde(rename = "modifierAtomSize")]
     ModifierAtomSize(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"childSize"`
     /// -   type: `hkUint16`
     /// - offset: 18
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "childSize", default)]
+    #[serde(rename = "childSize")]
     ChildSize(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"child"`
     /// -   type: `struct hkpConstraintAtom*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "child", default)]
+    #[serde(rename = "child")]
     Child(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"pad"`
     /// -   type: `hkUint32[2]`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pad", default)]
+    #[serde(rename = "pad")]
     Pad([Primitive<u32>; 2]),
 }
 

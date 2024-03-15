@@ -26,35 +26,35 @@ pub enum HkbClipTrigger {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "localTime", default)]
+    #[serde(rename = "localTime")]
     LocalTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"event"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "event", default)]
+    #[serde(rename = "event")]
     Event(HkbEventProperty),
     /// # C++ Class Fields Info
     /// -   name:`"relativeToEndOfClip"`
     /// -   type: `hkBool`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "relativeToEndOfClip", default)]
+    #[serde(rename = "relativeToEndOfClip")]
     RelativeToEndOfClip(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"acyclic"`
     /// -   type: `hkBool`
     /// - offset: 13
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "acyclic", default)]
+    #[serde(rename = "acyclic")]
     Acyclic(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"isAnnotation"`
     /// -   type: `hkBool`
     /// - offset: 14
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isAnnotation", default)]
+    #[serde(rename = "isAnnotation")]
     IsAnnotation(Primitive<bool>),
 }
 

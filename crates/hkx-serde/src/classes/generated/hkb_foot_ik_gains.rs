@@ -26,84 +26,84 @@ pub enum HkbFootIkGains {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "onOffGain", default)]
+    #[serde(rename = "onOffGain")]
     OnOffGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"groundAscendingGain"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "groundAscendingGain", default)]
+    #[serde(rename = "groundAscendingGain")]
     GroundAscendingGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"groundDescendingGain"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "groundDescendingGain", default)]
+    #[serde(rename = "groundDescendingGain")]
     GroundDescendingGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"footPlantedGain"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "footPlantedGain", default)]
+    #[serde(rename = "footPlantedGain")]
     FootPlantedGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"footRaisedGain"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "footRaisedGain", default)]
+    #[serde(rename = "footRaisedGain")]
     FootRaisedGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"footUnlockGain"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "footUnlockGain", default)]
+    #[serde(rename = "footUnlockGain")]
     FootUnlockGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"worldFromModelFeedbackGain"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "worldFromModelFeedbackGain", default)]
+    #[serde(rename = "worldFromModelFeedbackGain")]
     WorldFromModelFeedbackGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"errorUpDownBias"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "errorUpDownBias", default)]
+    #[serde(rename = "errorUpDownBias")]
     ErrorUpDownBias(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"alignWorldFromModelGain"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "alignWorldFromModelGain", default)]
+    #[serde(rename = "alignWorldFromModelGain")]
     AlignWorldFromModelGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"hipOrientationGain"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "hipOrientationGain", default)]
+    #[serde(rename = "hipOrientationGain")]
     HipOrientationGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxKneeAngleDifference"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxKneeAngleDifference", default)]
+    #[serde(rename = "maxKneeAngleDifference")]
     MaxKneeAngleDifference(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"ankleOrientationGain"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ankleOrientationGain", default)]
+    #[serde(rename = "ankleOrientationGain")]
     AnkleOrientationGain(Primitive<f32>),
 }
 

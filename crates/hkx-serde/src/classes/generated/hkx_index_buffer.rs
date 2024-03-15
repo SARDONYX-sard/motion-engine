@@ -27,14 +27,14 @@ pub enum HkxIndexBuffer {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,35 +44,35 @@ pub enum HkxIndexBuffer {
     /// -   type: `enum IndexType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "indexType", default)]
+    #[serde(rename = "indexType")]
     IndexType(Primitive<IndexType>),
     /// # C++ Class Fields Info
     /// -   name:`"indices16"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "indices16", default)]
+    #[serde(rename = "indices16")]
     Indices16(HkArrayRef<Primitive<u16>>),
     /// # C++ Class Fields Info
     /// -   name:`"indices32"`
     /// -   type: `hkArray&lt;hkUint32&gt;`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "indices32", default)]
+    #[serde(rename = "indices32")]
     Indices32(HkArrayRef<Primitive<u32>>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexBaseOffset"`
     /// -   type: `hkUint32`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexBaseOffset", default)]
+    #[serde(rename = "vertexBaseOffset")]
     VertexBaseOffset(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"length"`
     /// -   type: `hkUint32`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "length", default)]
+    #[serde(rename = "length")]
     Length(Primitive<u32>),
 }
 

@@ -27,14 +27,14 @@ pub enum HkpShapeCollection {
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "type", default, skip_serializing)]
+    #[serde(rename = "type", skip_serializing)]
     Type(Primitive<Unknown>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -42,14 +42,14 @@ pub enum HkpShapeCollection {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -59,14 +59,14 @@ pub enum HkpShapeCollection {
     /// -   type: `hkBool`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "disableWelding", default)]
+    #[serde(rename = "disableWelding")]
     DisableWelding(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"collectionType"`
     /// -   type: `enum CollectionType`
     /// - offset: 21
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "collectionType", default)]
+    #[serde(rename = "collectionType")]
     CollectionType(Primitive<CollectionType>),
 }
 

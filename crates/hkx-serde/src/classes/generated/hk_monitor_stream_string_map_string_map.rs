@@ -26,14 +26,14 @@ pub enum HkMonitorStreamStringMapStringMap<'a> {
     /// -   type: `hkUint64`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | ALIGN8`
-    #[serde(rename = "id", default)]
+    #[serde(rename = "id")]
     Id(Primitive<u64>),
     /// # C++ Class Fields Info
     /// -   name:`"string"`
     /// -   type: `hkStringPtr`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "string", default)]
+    #[serde(rename = "string")]
     String(Primitive<Cow<'a, str>>),
 }
 

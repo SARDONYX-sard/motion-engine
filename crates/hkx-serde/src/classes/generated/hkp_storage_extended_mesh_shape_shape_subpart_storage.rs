@@ -27,14 +27,14 @@ pub enum HkpStorageExtendedMeshShapeShapeSubpartStorage {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,21 +44,21 @@ pub enum HkpStorageExtendedMeshShapeShapeSubpartStorage {
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "materialIndices", default)]
+    #[serde(rename = "materialIndices")]
     MaterialIndices(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"materials"`
     /// -   type: `hkArray&lt;struct hkpStorageExtendedMeshShapeMaterial&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "materials", default)]
+    #[serde(rename = "materials")]
     Materials(HkArrayClass<HkpStorageExtendedMeshShapeMaterial>),
     /// # C++ Class Fields Info
     /// -   name:`"materialIndices16"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "materialIndices16", default)]
+    #[serde(rename = "materialIndices16")]
     MaterialIndices16(HkArrayRef<Primitive<u16>>),
 }
 

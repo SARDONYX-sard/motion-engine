@@ -27,91 +27,91 @@ pub enum HkpStorageExtendedMeshShape<'a> {
     /// -   type: `struct hkpExtendedMeshShapeTrianglesSubpart`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "embeddedTrianglesSubpart", default)]
+    #[serde(rename = "embeddedTrianglesSubpart")]
     EmbeddedTrianglesSubpart(HkpExtendedMeshShapeTrianglesSubpart),
     /// # C++ Parent class(`hkpExtendedMeshShape`, parent: `hkpShapeCollection`) field Info
     /// -   name:`"aabbHalfExtents"`
     /// -   type: `hkVector4`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "aabbHalfExtents", default)]
+    #[serde(rename = "aabbHalfExtents")]
     AabbHalfExtents(Vector4<f32>),
     /// # C++ Parent class(`hkpExtendedMeshShape`, parent: `hkpShapeCollection`) field Info
     /// -   name:`"aabbCenter"`
     /// -   type: `hkVector4`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "aabbCenter", default)]
+    #[serde(rename = "aabbCenter")]
     AabbCenter(Vector4<f32>),
     /// # C++ Parent class(`hkpExtendedMeshShape`, parent: `hkpShapeCollection`) field Info
     /// -   name:`"materialClass"`
     /// -   type: `void*`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "materialClass", default, skip_serializing)]
+    #[serde(rename = "materialClass", skip_serializing)]
     MaterialClass(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpExtendedMeshShape`, parent: `hkpShapeCollection`) field Info
     /// -   name:`"numBitsForSubpartIndex"`
     /// -   type: `hkInt32`
     /// - offset: 180
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numBitsForSubpartIndex", default)]
+    #[serde(rename = "numBitsForSubpartIndex")]
     NumBitsForSubpartIndex(Primitive<i32>),
     /// # C++ Parent class(`hkpExtendedMeshShape`, parent: `hkpShapeCollection`) field Info
     /// -   name:`"trianglesSubparts"`
     /// -   type: `hkArray&lt;struct hkpExtendedMeshShapeTrianglesSubpart&gt;`
     /// - offset: 184
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "trianglesSubparts", default)]
+    #[serde(rename = "trianglesSubparts")]
     TrianglesSubparts(HkArrayClass<HkpExtendedMeshShapeTrianglesSubpart>),
     /// # C++ Parent class(`hkpExtendedMeshShape`, parent: `hkpShapeCollection`) field Info
     /// -   name:`"shapesSubparts"`
     /// -   type: `hkArray&lt;struct hkpExtendedMeshShapeShapesSubpart&gt;`
     /// - offset: 196
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "shapesSubparts", default)]
+    #[serde(rename = "shapesSubparts")]
     ShapesSubparts(HkArrayClass<HkpExtendedMeshShapeShapesSubpart>),
     /// # C++ Parent class(`hkpExtendedMeshShape`, parent: `hkpShapeCollection`) field Info
     /// -   name:`"weldingInfo"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 208
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "weldingInfo", default)]
+    #[serde(rename = "weldingInfo")]
     WeldingInfo(HkArrayRef<Primitive<u16>>),
     /// # C++ Parent class(`hkpExtendedMeshShape`, parent: `hkpShapeCollection`) field Info
     /// -   name:`"weldingType"`
     /// -   type: `enum WeldingType`
     /// - offset: 220
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "weldingType", default)]
+    #[serde(rename = "weldingType")]
     WeldingType(Primitive<WeldingType>),
     /// # C++ Parent class(`hkpExtendedMeshShape`, parent: `hkpShapeCollection`) field Info
     /// -   name:`"defaultCollisionFilterInfo"`
     /// -   type: `hkUint32`
     /// - offset: 224
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "defaultCollisionFilterInfo", default)]
+    #[serde(rename = "defaultCollisionFilterInfo")]
     DefaultCollisionFilterInfo(Primitive<u32>),
     /// # C++ Parent class(`hkpExtendedMeshShape`, parent: `hkpShapeCollection`) field Info
     /// -   name:`"cachedNumChildShapes"`
     /// -   type: `hkInt32`
     /// - offset: 228
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "cachedNumChildShapes", default)]
+    #[serde(rename = "cachedNumChildShapes")]
     CachedNumChildShapes(Primitive<i32>),
     /// # C++ Parent class(`hkpExtendedMeshShape`, parent: `hkpShapeCollection`) field Info
     /// -   name:`"triangleRadius"`
     /// -   type: `hkReal`
     /// - offset: 232
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "triangleRadius", default)]
+    #[serde(rename = "triangleRadius")]
     TriangleRadius(Primitive<f32>),
     /// # C++ Parent class(`hkpExtendedMeshShape`, parent: `hkpShapeCollection`) field Info
     /// -   name:`"padding"`
     /// -   type: `hkInt32`
     /// - offset: 236
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "padding", default, skip_serializing)]
+    #[serde(rename = "padding", skip_serializing)]
     Padding(Primitive<i32>),
 
     /// # C++ Parent class(`hkpShapeCollection`, parent: `hkpShape`) field Info
@@ -119,14 +119,14 @@ pub enum HkpStorageExtendedMeshShape<'a> {
     /// -   type: `hkBool`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "disableWelding", default)]
+    #[serde(rename = "disableWelding")]
     DisableWelding(Primitive<bool>),
     /// # C++ Parent class(`hkpShapeCollection`, parent: `hkpShape`) field Info
     /// -   name:`"collectionType"`
     /// -   type: `enum CollectionType`
     /// - offset: 21
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "collectionType", default)]
+    #[serde(rename = "collectionType")]
     CollectionType(Primitive<CollectionType>),
 
     /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
@@ -134,14 +134,14 @@ pub enum HkpStorageExtendedMeshShape<'a> {
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "type", default, skip_serializing)]
+    #[serde(rename = "type", skip_serializing)]
     Type(Primitive<Unknown>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -149,14 +149,14 @@ pub enum HkpStorageExtendedMeshShape<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -166,14 +166,14 @@ pub enum HkpStorageExtendedMeshShape<'a> {
     /// -   type: `hkArray&lt;hkpStorageExtendedMeshShapeMeshSubpartStorage*&gt;`
     /// - offset: 240
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "meshstorage", default)]
+    #[serde(rename = "meshstorage")]
     Meshstorage(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"shapestorage"`
     /// -   type: `hkArray&lt;hkpStorageExtendedMeshShapeShapeSubpartStorage*&gt;`
     /// - offset: 252
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "shapestorage", default)]
+    #[serde(rename = "shapestorage")]
     Shapestorage(HkArrayRef<Cow<'a, str>>),
 }
 

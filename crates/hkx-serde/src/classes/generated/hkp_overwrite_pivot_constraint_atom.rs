@@ -27,7 +27,7 @@ pub enum HkpOverwritePivotConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -35,7 +35,7 @@ pub enum HkpOverwritePivotConstraintAtom {
     /// -   type: `hkUint8`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "copyToPivotBFromPivotA", default)]
+    #[serde(rename = "copyToPivotBFromPivotA")]
     CopyToPivotBFromPivotA(Primitive<u8>),
 }
 

@@ -26,7 +26,7 @@ pub enum HkpBroadPhaseHandle {
     /// -   type: `hkUint32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "id", default, skip_serializing)]
+    #[serde(rename = "id", skip_serializing)]
     Id(Primitive<u32>),
 }
 

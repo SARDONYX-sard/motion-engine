@@ -26,14 +26,14 @@ pub enum HkbAttributeModifierAssignment {
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "attributeIndex", default)]
+    #[serde(rename = "attributeIndex")]
     AttributeIndex(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"attributeValue"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "attributeValue", default)]
+    #[serde(rename = "attributeValue")]
     AttributeValue(Primitive<f32>),
 }
 

@@ -26,7 +26,7 @@ pub enum HkaMeshBindingMapping {
     /// -   type: `hkArray&lt;hkInt16&gt;`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "mapping", default)]
+    #[serde(rename = "mapping")]
     Mapping(HkArrayRef<Primitive<i16>>),
 }
 

@@ -29,35 +29,35 @@ pub enum HkbBehaviorGraph<'a> {
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "id", default, skip_serializing)]
+    #[serde(rename = "id", skip_serializing)]
     Id(Primitive<i16>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cloneState", default, skip_serializing)]
+    #[serde(rename = "cloneState", skip_serializing)]
     CloneState(Primitive<Unknown>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "padNode", default, skip_serializing)]
+    #[serde(rename = "padNode", skip_serializing)]
     PadNode([Primitive<bool>; 1]),
 
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
@@ -65,21 +65,21 @@ pub enum HkbBehaviorGraph<'a> {
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "variableBindingSet", default)]
+    #[serde(rename = "variableBindingSet")]
     VariableBindingSet(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cachedBindables", default, skip_serializing)]
+    #[serde(rename = "cachedBindables", skip_serializing)]
     CachedBindables(HkArrayRef<Primitive<()>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "areBindablesCached", default, skip_serializing)]
+    #[serde(rename = "areBindablesCached", skip_serializing)]
     AreBindablesCached(Primitive<bool>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -87,14 +87,14 @@ pub enum HkbBehaviorGraph<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -104,210 +104,210 @@ pub enum HkbBehaviorGraph<'a> {
     /// -   type: `enum VariableMode`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "variableMode", default)]
+    #[serde(rename = "variableMode")]
     VariableMode(Primitive<VariableMode>),
     /// # C++ Class Fields Info
     /// -   name:`"uniqueIdPool"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "uniqueIdPool", default, skip_serializing)]
+    #[serde(rename = "uniqueIdPool", skip_serializing)]
     UniqueIdPool(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"idToStateMachineTemplateMap"`
     /// -   type: `void*`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "idToStateMachineTemplateMap", default, skip_serializing)]
+    #[serde(rename = "idToStateMachineTemplateMap", skip_serializing)]
     IdToStateMachineTemplateMap(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"mirroredExternalIdMap"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "mirroredExternalIdMap", default, skip_serializing)]
+    #[serde(rename = "mirroredExternalIdMap", skip_serializing)]
     MirroredExternalIdMap(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"pseudoRandomGenerator"`
     /// -   type: `void*`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "pseudoRandomGenerator", default, skip_serializing)]
+    #[serde(rename = "pseudoRandomGenerator", skip_serializing)]
     PseudoRandomGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"rootGenerator"`
     /// -   type: `struct hkbGenerator*`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rootGenerator", default)]
+    #[serde(rename = "rootGenerator")]
     RootGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `struct hkbBehaviorGraphData*`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "data", default)]
+    #[serde(rename = "data")]
     Data(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"rootGeneratorClone"`
     /// -   type: `void*`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "rootGeneratorClone", default, skip_serializing)]
+    #[serde(rename = "rootGeneratorClone", skip_serializing)]
     RootGeneratorClone(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"activeNodes"`
     /// -   type: `void*`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "activeNodes", default, skip_serializing)]
+    #[serde(rename = "activeNodes", skip_serializing)]
     ActiveNodes(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"activeNodeTemplateToIndexMap"`
     /// -   type: `void*`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "activeNodeTemplateToIndexMap", default, skip_serializing)]
+    #[serde(rename = "activeNodeTemplateToIndexMap", skip_serializing)]
     ActiveNodeTemplateToIndexMap(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"activeNodesChildrenIndices"`
     /// -   type: `void*`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "activeNodesChildrenIndices", default, skip_serializing)]
+    #[serde(rename = "activeNodesChildrenIndices", skip_serializing)]
     ActiveNodesChildrenIndices(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"globalTransitionData"`
     /// -   type: `void*`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "globalTransitionData", default, skip_serializing)]
+    #[serde(rename = "globalTransitionData", skip_serializing)]
     GlobalTransitionData(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"eventIdMap"`
     /// -   type: `void*`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "eventIdMap", default, skip_serializing)]
+    #[serde(rename = "eventIdMap", skip_serializing)]
     EventIdMap(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"attributeIdMap"`
     /// -   type: `void*`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "attributeIdMap", default, skip_serializing)]
+    #[serde(rename = "attributeIdMap", skip_serializing)]
     AttributeIdMap(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"variableIdMap"`
     /// -   type: `void*`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "variableIdMap", default, skip_serializing)]
+    #[serde(rename = "variableIdMap", skip_serializing)]
     VariableIdMap(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"characterPropertyIdMap"`
     /// -   type: `void*`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "characterPropertyIdMap", default, skip_serializing)]
+    #[serde(rename = "characterPropertyIdMap", skip_serializing)]
     CharacterPropertyIdMap(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"variableValueSet"`
     /// -   type: `void*`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "variableValueSet", default, skip_serializing)]
+    #[serde(rename = "variableValueSet", skip_serializing)]
     VariableValueSet(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"nodeTemplateToCloneMap"`
     /// -   type: `void*`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "nodeTemplateToCloneMap", default, skip_serializing)]
+    #[serde(rename = "nodeTemplateToCloneMap", skip_serializing)]
     NodeTemplateToCloneMap(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"nodeCloneToTemplateMap"`
     /// -   type: `void*`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "nodeCloneToTemplateMap", default, skip_serializing)]
+    #[serde(rename = "nodeCloneToTemplateMap", skip_serializing)]
     NodeCloneToTemplateMap(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"stateListenerTemplateToCloneMap"`
     /// -   type: `void*`
     /// - offset: 132
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "stateListenerTemplateToCloneMap", default, skip_serializing)]
+    #[serde(rename = "stateListenerTemplateToCloneMap", skip_serializing)]
     StateListenerTemplateToCloneMap(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"nodePartitionInfo"`
     /// -   type: `void*`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "nodePartitionInfo", default, skip_serializing)]
+    #[serde(rename = "nodePartitionInfo", skip_serializing)]
     NodePartitionInfo(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"numIntermediateOutputs"`
     /// -   type: `hkInt32`
     /// - offset: 140
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "numIntermediateOutputs", default, skip_serializing)]
+    #[serde(rename = "numIntermediateOutputs", skip_serializing)]
     NumIntermediateOutputs(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"jobs"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "jobs", default, skip_serializing)]
+    #[serde(rename = "jobs", skip_serializing)]
     Jobs(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"allPartitionMemory"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 156
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "allPartitionMemory", default, skip_serializing)]
+    #[serde(rename = "allPartitionMemory", skip_serializing)]
     AllPartitionMemory(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"numStaticNodes"`
     /// -   type: `hkInt16`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "numStaticNodes", default, skip_serializing)]
+    #[serde(rename = "numStaticNodes", skip_serializing)]
     NumStaticNodes(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"nextUniqueId"`
     /// -   type: `hkInt16`
     /// - offset: 170
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "nextUniqueId", default, skip_serializing)]
+    #[serde(rename = "nextUniqueId", skip_serializing)]
     NextUniqueId(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"isActive"`
     /// -   type: `hkBool`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "isActive", default, skip_serializing)]
+    #[serde(rename = "isActive", skip_serializing)]
     IsActive(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"isLinked"`
     /// -   type: `hkBool`
     /// - offset: 173
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "isLinked", default, skip_serializing)]
+    #[serde(rename = "isLinked", skip_serializing)]
     IsLinked(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"updateActiveNodes"`
     /// -   type: `hkBool`
     /// - offset: 174
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "updateActiveNodes", default, skip_serializing)]
+    #[serde(rename = "updateActiveNodes", skip_serializing)]
     UpdateActiveNodes(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"stateOrTransitionChanged"`
     /// -   type: `hkBool`
     /// - offset: 175
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "stateOrTransitionChanged", default, skip_serializing)]
+    #[serde(rename = "stateOrTransitionChanged", skip_serializing)]
     StateOrTransitionChanged(Primitive<bool>),
 }
 

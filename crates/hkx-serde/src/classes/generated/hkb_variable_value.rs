@@ -26,7 +26,7 @@ pub enum HkbVariableValue {
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "value", default)]
+    #[serde(rename = "value")]
     Value(Primitive<i32>),
 }
 

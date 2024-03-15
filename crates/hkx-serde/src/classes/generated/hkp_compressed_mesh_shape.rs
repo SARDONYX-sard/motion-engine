@@ -27,14 +27,14 @@ pub enum HkpCompressedMeshShape<'a> {
     /// -   type: `hkBool`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "disableWelding", default)]
+    #[serde(rename = "disableWelding")]
     DisableWelding(Primitive<bool>),
     /// # C++ Parent class(`hkpShapeCollection`, parent: `hkpShape`) field Info
     /// -   name:`"collectionType"`
     /// -   type: `enum CollectionType`
     /// - offset: 21
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "collectionType", default)]
+    #[serde(rename = "collectionType")]
     CollectionType(Primitive<CollectionType>),
 
     /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
@@ -42,14 +42,14 @@ pub enum HkpCompressedMeshShape<'a> {
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "type", default, skip_serializing)]
+    #[serde(rename = "type", skip_serializing)]
     Type(Primitive<Unknown>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -57,14 +57,14 @@ pub enum HkpCompressedMeshShape<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -74,154 +74,154 @@ pub enum HkpCompressedMeshShape<'a> {
     /// -   type: `hkInt32`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bitsPerIndex", default)]
+    #[serde(rename = "bitsPerIndex")]
     BitsPerIndex(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"bitsPerWIndex"`
     /// -   type: `hkInt32`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bitsPerWIndex", default)]
+    #[serde(rename = "bitsPerWIndex")]
     BitsPerWIndex(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"wIndexMask"`
     /// -   type: `hkInt32`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wIndexMask", default)]
+    #[serde(rename = "wIndexMask")]
     WIndexMask(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"indexMask"`
     /// -   type: `hkInt32`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "indexMask", default)]
+    #[serde(rename = "indexMask")]
     IndexMask(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"radius"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "radius", default)]
+    #[serde(rename = "radius")]
     Radius(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"weldingType"`
     /// -   type: `enum WeldingType`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "weldingType", default)]
+    #[serde(rename = "weldingType")]
     WeldingType(Primitive<WeldingType>),
     /// # C++ Class Fields Info
     /// -   name:`"materialType"`
     /// -   type: `enum MaterialType`
     /// - offset: 45
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "materialType", default)]
+    #[serde(rename = "materialType")]
     MaterialType(Primitive<MaterialType>),
     /// # C++ Class Fields Info
     /// -   name:`"materials"`
     /// -   type: `hkArray&lt;hkUint32&gt;`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "materials", default)]
+    #[serde(rename = "materials")]
     Materials(HkArrayRef<Primitive<u32>>),
     /// # C++ Class Fields Info
     /// -   name:`"materials16"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "materials16", default)]
+    #[serde(rename = "materials16")]
     Materials16(HkArrayRef<Primitive<u16>>),
     /// # C++ Class Fields Info
     /// -   name:`"materials8"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "materials8", default)]
+    #[serde(rename = "materials8")]
     Materials8(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"transforms"`
     /// -   type: `hkArray&lt;hkQsTransform&gt;`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transforms", default)]
+    #[serde(rename = "transforms")]
     Transforms(HkArrayVector<QsTransform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"bigVertices"`
     /// -   type: `hkArray&lt;hkVector4&gt;`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bigVertices", default)]
+    #[serde(rename = "bigVertices")]
     BigVertices(HkArrayVector<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"bigTriangles"`
     /// -   type: `hkArray&lt;struct hkpCompressedMeshShapeBigTriangle&gt;`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bigTriangles", default)]
+    #[serde(rename = "bigTriangles")]
     BigTriangles(HkArrayClass<HkpCompressedMeshShapeBigTriangle>),
     /// # C++ Class Fields Info
     /// -   name:`"chunks"`
     /// -   type: `hkArray&lt;struct hkpCompressedMeshShapeChunk&gt;`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "chunks", default)]
+    #[serde(rename = "chunks")]
     Chunks(HkArrayClass<HkpCompressedMeshShapeChunk>),
     /// # C++ Class Fields Info
     /// -   name:`"convexPieces"`
     /// -   type: `hkArray&lt;struct hkpCompressedMeshShapeConvexPiece&gt;`
     /// - offset: 132
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "convexPieces", default)]
+    #[serde(rename = "convexPieces")]
     ConvexPieces(HkArrayClass<HkpCompressedMeshShapeConvexPiece>),
     /// # C++ Class Fields Info
     /// -   name:`"error"`
     /// -   type: `hkReal`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "error", default)]
+    #[serde(rename = "error")]
     Error(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"bounds"`
     /// -   type: `struct hkAabb`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bounds", default)]
+    #[serde(rename = "bounds")]
     Bounds(HkAabb),
     /// # C++ Class Fields Info
     /// -   name:`"defaultCollisionFilterInfo"`
     /// -   type: `hkUint32`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "defaultCollisionFilterInfo", default)]
+    #[serde(rename = "defaultCollisionFilterInfo")]
     DefaultCollisionFilterInfo(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"meshMaterials"`
     /// -   type: `void*`
     /// - offset: 196
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "meshMaterials", default, skip_serializing)]
+    #[serde(rename = "meshMaterials", skip_serializing)]
     MeshMaterials(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"materialStriding"`
     /// -   type: `hkUint16`
     /// - offset: 200
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "materialStriding", default)]
+    #[serde(rename = "materialStriding")]
     MaterialStriding(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"numMaterials"`
     /// -   type: `hkUint16`
     /// - offset: 202
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numMaterials", default)]
+    #[serde(rename = "numMaterials")]
     NumMaterials(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"namedMaterials"`
     /// -   type: `hkArray&lt;struct hkpNamedMeshMaterial&gt;`
     /// - offset: 204
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "namedMaterials", default)]
+    #[serde(rename = "namedMaterials")]
     NamedMaterials(HkArrayClass<HkpNamedMeshMaterial>),
 }
 

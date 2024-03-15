@@ -26,42 +26,42 @@ pub enum HkaSkeletonMapperDataChainMapping {
     /// -   type: `hkInt16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "startBoneA", default)]
+    #[serde(rename = "startBoneA")]
     StartBoneA(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"endBoneA"`
     /// -   type: `hkInt16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "endBoneA", default)]
+    #[serde(rename = "endBoneA")]
     EndBoneA(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"startBoneB"`
     /// -   type: `hkInt16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "startBoneB", default)]
+    #[serde(rename = "startBoneB")]
     StartBoneB(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"endBoneB"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "endBoneB", default)]
+    #[serde(rename = "endBoneB")]
     EndBoneB(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"startAFromBTransform"`
     /// -   type: `hkQsTransform`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "startAFromBTransform", default)]
+    #[serde(rename = "startAFromBTransform")]
     StartAFromBTransform(QsTransform<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"endAFromBTransform"`
     /// -   type: `hkQsTransform`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "endAFromBTransform", default)]
+    #[serde(rename = "endAFromBTransform")]
     EndAFromBTransform(QsTransform<f32>),
 }
 

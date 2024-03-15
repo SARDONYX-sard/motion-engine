@@ -27,14 +27,14 @@ pub enum HkpListShape {
     /// -   type: `hkBool`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "disableWelding", default)]
+    #[serde(rename = "disableWelding")]
     DisableWelding(Primitive<bool>),
     /// # C++ Parent class(`hkpShapeCollection`, parent: `hkpShape`) field Info
     /// -   name:`"collectionType"`
     /// -   type: `enum CollectionType`
     /// - offset: 21
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "collectionType", default)]
+    #[serde(rename = "collectionType")]
     CollectionType(Primitive<CollectionType>),
 
     /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
@@ -42,14 +42,14 @@ pub enum HkpListShape {
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "type", default, skip_serializing)]
+    #[serde(rename = "type", skip_serializing)]
     Type(Primitive<Unknown>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -57,14 +57,14 @@ pub enum HkpListShape {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -74,42 +74,42 @@ pub enum HkpListShape {
     /// -   type: `hkArray&lt;struct hkpListShapeChildInfo&gt;`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "childInfo", default)]
+    #[serde(rename = "childInfo")]
     ChildInfo(HkArrayClass<HkpListShapeChildInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `hkUint16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "flags", default)]
+    #[serde(rename = "flags")]
     Flags(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"numDisabledChildren"`
     /// -   type: `hkUint16`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numDisabledChildren", default)]
+    #[serde(rename = "numDisabledChildren")]
     NumDisabledChildren(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"aabbHalfExtents"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "aabbHalfExtents", default)]
+    #[serde(rename = "aabbHalfExtents")]
     AabbHalfExtents(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"aabbCenter"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "aabbCenter", default)]
+    #[serde(rename = "aabbCenter")]
     AabbCenter(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"enabledChildren"`
     /// -   type: `hkUint32[8]`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enabledChildren", default)]
+    #[serde(rename = "enabledChildren")]
     EnabledChildren([Primitive<u32>; 8]),
 }
 

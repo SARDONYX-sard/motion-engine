@@ -27,14 +27,14 @@ pub enum HkbProjectStringData<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,63 +44,63 @@ pub enum HkbProjectStringData<'a> {
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "animationFilenames", default)]
+    #[serde(rename = "animationFilenames")]
     AnimationFilenames(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"behaviorFilenames"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "behaviorFilenames", default)]
+    #[serde(rename = "behaviorFilenames")]
     BehaviorFilenames(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"characterFilenames"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "characterFilenames", default)]
+    #[serde(rename = "characterFilenames")]
     CharacterFilenames(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"eventNames"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "eventNames", default)]
+    #[serde(rename = "eventNames")]
     EventNames(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"animationPath"`
     /// -   type: `hkStringPtr`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "animationPath", default)]
+    #[serde(rename = "animationPath")]
     AnimationPath(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"behaviorPath"`
     /// -   type: `hkStringPtr`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "behaviorPath", default)]
+    #[serde(rename = "behaviorPath")]
     BehaviorPath(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"characterPath"`
     /// -   type: `hkStringPtr`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "characterPath", default)]
+    #[serde(rename = "characterPath")]
     CharacterPath(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"fullPathToSource"`
     /// -   type: `hkStringPtr`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fullPathToSource", default)]
+    #[serde(rename = "fullPathToSource")]
     FullPathToSource(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"rootPath"`
     /// -   type: `hkStringPtr`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "rootPath", default, skip_serializing)]
+    #[serde(rename = "rootPath", skip_serializing)]
     RootPath(Primitive<Cow<'a, str>>),
 }
 

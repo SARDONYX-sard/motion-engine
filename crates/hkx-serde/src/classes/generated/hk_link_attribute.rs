@@ -26,7 +26,7 @@ pub enum HkLinkAttribute {
     /// -   type: `enum Link`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<Link>),
 }
 

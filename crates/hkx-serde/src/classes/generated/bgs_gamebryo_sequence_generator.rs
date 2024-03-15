@@ -29,35 +29,35 @@ pub enum BgsGamebryoSequenceGenerator<'a> {
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "id", default, skip_serializing)]
+    #[serde(rename = "id", skip_serializing)]
     Id(Primitive<i16>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cloneState", default, skip_serializing)]
+    #[serde(rename = "cloneState", skip_serializing)]
     CloneState(Primitive<Unknown>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "padNode", default, skip_serializing)]
+    #[serde(rename = "padNode", skip_serializing)]
     PadNode([Primitive<bool>; 1]),
 
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
@@ -65,21 +65,21 @@ pub enum BgsGamebryoSequenceGenerator<'a> {
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "variableBindingSet", default)]
+    #[serde(rename = "variableBindingSet")]
     VariableBindingSet(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cachedBindables", default, skip_serializing)]
+    #[serde(rename = "cachedBindables", skip_serializing)]
     CachedBindables(HkArrayRef<Primitive<()>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "areBindablesCached", default, skip_serializing)]
+    #[serde(rename = "areBindablesCached", skip_serializing)]
     AreBindablesCached(Primitive<bool>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -87,14 +87,14 @@ pub enum BgsGamebryoSequenceGenerator<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -104,49 +104,49 @@ pub enum BgsGamebryoSequenceGenerator<'a> {
     /// -   type: `char*`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pSequence", default)]
+    #[serde(rename = "pSequence")]
     PSequence(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"eBlendModeFunction"`
     /// -   type: `enum BlendModeFunction`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "eBlendModeFunction", default)]
+    #[serde(rename = "eBlendModeFunction")]
     EBlendModeFunction(Primitive<BlendModeFunction>),
     /// # C++ Class Fields Info
     /// -   name:`"fPercent"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fPercent", default)]
+    #[serde(rename = "fPercent")]
     FPercent(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"events"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "events", default, skip_serializing)]
+    #[serde(rename = "events", skip_serializing)]
     Events(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"fTime"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "fTime", default, skip_serializing)]
+    #[serde(rename = "fTime", skip_serializing)]
     FTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"bDelayedActivate"`
     /// -   type: `hkBool`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "bDelayedActivate", default, skip_serializing)]
+    #[serde(rename = "bDelayedActivate", skip_serializing)]
     BDelayedActivate(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"bLooping"`
     /// -   type: `hkBool`
     /// - offset: 69
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "bLooping", default, skip_serializing)]
+    #[serde(rename = "bLooping", skip_serializing)]
     BLooping(Primitive<bool>),
 }
 

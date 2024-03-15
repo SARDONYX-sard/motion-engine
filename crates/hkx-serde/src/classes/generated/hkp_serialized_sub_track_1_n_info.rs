@@ -21,20 +21,20 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpSerializedSubTrack1NInfo {
+pub enum HkpSerializedSubTrack1NInfo<'a> {
     /// # C++ Parent class(`hkpSerializedTrack1nInfo`, parent: `None`) field Info
     /// -   name:`"sectors"`
     /// -   type: `hkArray&lt;hkpAgent1nSector*&gt;`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sectors", default)]
+    #[serde(rename = "sectors")]
     Sectors(HkArrayRef<Cow<'a, str>>),
     /// # C++ Parent class(`hkpSerializedTrack1nInfo`, parent: `None`) field Info
     /// -   name:`"subTracks"`
     /// -   type: `hkArray&lt;hkpSerializedSubTrack1nInfo*&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "subTracks", default)]
+    #[serde(rename = "subTracks")]
     SubTracks(HkArrayRef<Cow<'a, str>>),
 
     /// # C++ Class Fields Info
@@ -42,14 +42,14 @@ pub enum HkpSerializedSubTrack1NInfo {
     /// -   type: `hkInt32`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sectorIndex", default)]
+    #[serde(rename = "sectorIndex")]
     SectorIndex(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"offsetInSector"`
     /// -   type: `hkInt32`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "offsetInSector", default)]
+    #[serde(rename = "offsetInSector")]
     OffsetInSector(Primitive<i32>),
 }
 

@@ -26,28 +26,28 @@ pub enum HkbCharacterDataCharacterControllerInfo<'a> {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "capsuleHeight", default)]
+    #[serde(rename = "capsuleHeight")]
     CapsuleHeight(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"capsuleRadius"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "capsuleRadius", default)]
+    #[serde(rename = "capsuleRadius")]
     CapsuleRadius(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilterInfo"`
     /// -   type: `hkUint32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "collisionFilterInfo", default)]
+    #[serde(rename = "collisionFilterInfo")]
     CollisionFilterInfo(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"characterControllerCinfo"`
     /// -   type: `struct hkpCharacterControllerCinfo*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "characterControllerCinfo", default)]
+    #[serde(rename = "characterControllerCinfo")]
     CharacterControllerCinfo(Primitive<Cow<'a, str>>),
 }
 

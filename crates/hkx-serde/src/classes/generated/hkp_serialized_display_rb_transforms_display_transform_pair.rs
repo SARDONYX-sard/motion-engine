@@ -26,14 +26,14 @@ pub enum HkpSerializedDisplayRbTransformsDisplayTransformPair<'a> {
     /// -   type: `struct hkpRigidBody*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rb", default)]
+    #[serde(rename = "rb")]
     Rb(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"localToDisplay"`
     /// -   type: `hkTransform`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "localToDisplay", default)]
+    #[serde(rename = "localToDisplay")]
     LocalToDisplay(Transform<f32>),
 }
 

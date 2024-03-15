@@ -26,14 +26,14 @@ pub enum HkpPoweredChainMapperTarget<'a> {
     /// -   type: `struct hkpPoweredChainData*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "chain", default)]
+    #[serde(rename = "chain")]
     Chain(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"infoIndex"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "infoIndex", default)]
+    #[serde(rename = "infoIndex")]
     InfoIndex(Primitive<i32>),
 }
 

@@ -26,7 +26,7 @@ pub enum HkbFootIkControlData {
     /// -   type: `struct hkbFootIkGains`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "gains", default)]
+    #[serde(rename = "gains")]
     Gains(HkbFootIkGains),
 }
 

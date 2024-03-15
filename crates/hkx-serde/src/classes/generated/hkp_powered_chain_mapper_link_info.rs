@@ -26,21 +26,21 @@ pub enum HkpPoweredChainMapperLinkInfo<'a> {
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "firstTargetIdx", default)]
+    #[serde(rename = "firstTargetIdx")]
     FirstTargetIdx(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"numTargets"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numTargets", default)]
+    #[serde(rename = "numTargets")]
     NumTargets(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"limitConstraint"`
     /// -   type: `struct hkpConstraintInstance*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "limitConstraint", default)]
+    #[serde(rename = "limitConstraint")]
     LimitConstraint(Primitive<Cow<'a, str>>),
 }
 

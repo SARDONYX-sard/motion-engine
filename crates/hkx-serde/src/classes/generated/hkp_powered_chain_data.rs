@@ -29,7 +29,7 @@ pub enum HkpPoweredChainData {
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -37,14 +37,14 @@ pub enum HkpPoweredChainData {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -54,63 +54,63 @@ pub enum HkpPoweredChainData {
     /// -   type: `struct hkpBridgeAtoms`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "atoms", default)]
+    #[serde(rename = "atoms")]
     Atoms(HkpBridgeAtoms),
     /// # C++ Class Fields Info
     /// -   name:`"infos"`
     /// -   type: `hkArray&lt;struct hkpPoweredChainDataConstraintInfo&gt;`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "infos", default)]
+    #[serde(rename = "infos")]
     Infos(HkArrayClass<HkpPoweredChainDataConstraintInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"tau"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "tau", default)]
+    #[serde(rename = "tau")]
     Tau(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"damping"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "damping", default)]
+    #[serde(rename = "damping")]
     Damping(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"cfmLinAdd"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "cfmLinAdd", default)]
+    #[serde(rename = "cfmLinAdd")]
     CfmLinAdd(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"cfmLinMul"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "cfmLinMul", default)]
+    #[serde(rename = "cfmLinMul")]
     CfmLinMul(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"cfmAngAdd"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "cfmAngAdd", default)]
+    #[serde(rename = "cfmAngAdd")]
     CfmAngAdd(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"cfmAngMul"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "cfmAngMul", default)]
+    #[serde(rename = "cfmAngMul")]
     CfmAngMul(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxErrorDistance"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxErrorDistance", default)]
+    #[serde(rename = "maxErrorDistance")]
     MaxErrorDistance(Primitive<f32>),
 }
 

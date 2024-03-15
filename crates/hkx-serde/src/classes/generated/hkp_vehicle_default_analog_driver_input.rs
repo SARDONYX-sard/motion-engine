@@ -29,14 +29,14 @@ pub enum HkpVehicleDefaultAnalogDriverInput {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -46,28 +46,28 @@ pub enum HkpVehicleDefaultAnalogDriverInput {
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "slopeChangePointX", default)]
+    #[serde(rename = "slopeChangePointX")]
     SlopeChangePointX(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"initialSlope"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "initialSlope", default)]
+    #[serde(rename = "initialSlope")]
     InitialSlope(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"deadZone"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "deadZone", default)]
+    #[serde(rename = "deadZone")]
     DeadZone(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"autoReverse"`
     /// -   type: `hkBool`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "autoReverse", default)]
+    #[serde(rename = "autoReverse")]
     AutoReverse(Primitive<bool>),
 }
 

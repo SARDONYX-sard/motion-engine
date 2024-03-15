@@ -26,14 +26,14 @@ pub enum HkpRotationalConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalRotationsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotations", default)]
+    #[serde(rename = "rotations")]
     Rotations(HkpSetLocalRotationsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"ang"`
     /// -   type: `struct hkpAngConstraintAtom`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ang", default)]
+    #[serde(rename = "ang")]
     Ang(HkpAngConstraintAtom),
 }
 

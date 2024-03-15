@@ -21,20 +21,20 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpSpringAction {
+pub enum HkpSpringAction<'a> {
     /// # C++ Parent class(`hkpBinaryAction`, parent: `hkpAction`) field Info
     /// -   name:`"entityA"`
     /// -   type: `struct hkpEntity*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "entityA", default)]
+    #[serde(rename = "entityA")]
     EntityA(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpBinaryAction`, parent: `hkpAction`) field Info
     /// -   name:`"entityB"`
     /// -   type: `struct hkpEntity*`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "entityB", default)]
+    #[serde(rename = "entityB")]
     EntityB(Primitive<Cow<'a, str>>),
 
     /// # C++ Parent class(`hkpAction`, parent: `hkReferencedObject`) field Info
@@ -42,28 +42,28 @@ pub enum HkpSpringAction {
     /// -   type: `void*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "world", default, skip_serializing)]
+    #[serde(rename = "world", skip_serializing)]
     World(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpAction`, parent: `hkReferencedObject`) field Info
     /// -   name:`"island"`
     /// -   type: `void*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "island", default, skip_serializing)]
+    #[serde(rename = "island", skip_serializing)]
     Island(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpAction`, parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkpAction`, parent: `hkReferencedObject`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -71,14 +71,14 @@ pub enum HkpSpringAction {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -88,56 +88,56 @@ pub enum HkpSpringAction {
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lastForce", default)]
+    #[serde(rename = "lastForce")]
     LastForce(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"positionAinA"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "positionAinA", default)]
+    #[serde(rename = "positionAinA")]
     PositionAinA(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"positionBinB"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "positionBinB", default)]
+    #[serde(rename = "positionBinB")]
     PositionBinB(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"restLength"`
     /// -   type: `hkReal`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "restLength", default)]
+    #[serde(rename = "restLength")]
     RestLength(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"strength"`
     /// -   type: `hkReal`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "strength", default)]
+    #[serde(rename = "strength")]
     Strength(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"damping"`
     /// -   type: `hkReal`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "damping", default)]
+    #[serde(rename = "damping")]
     Damping(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"onCompression"`
     /// -   type: `hkBool`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "onCompression", default)]
+    #[serde(rename = "onCompression")]
     OnCompression(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"onExtension"`
     /// -   type: `hkBool`
     /// - offset: 93
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "onExtension", default)]
+    #[serde(rename = "onExtension")]
     OnExtension(Primitive<bool>),
 }
 

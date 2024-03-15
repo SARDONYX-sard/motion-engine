@@ -29,14 +29,14 @@ pub enum HkpCharacterRigidBodyCinfo<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -46,112 +46,112 @@ pub enum HkpCharacterRigidBodyCinfo<'a> {
     /// -   type: `hkUint32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "collisionFilterInfo", default)]
+    #[serde(rename = "collisionFilterInfo")]
     CollisionFilterInfo(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"shape"`
     /// -   type: `struct hkpShape*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "shape", default)]
+    #[serde(rename = "shape")]
     Shape(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"position"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "position", default)]
+    #[serde(rename = "position")]
     Position(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"rotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotation", default)]
+    #[serde(rename = "rotation")]
     Rotation(Quaternion<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"mass"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "mass", default)]
+    #[serde(rename = "mass")]
     Mass(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"friction"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "friction", default)]
+    #[serde(rename = "friction")]
     Friction(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxLinearVelocity"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxLinearVelocity", default)]
+    #[serde(rename = "maxLinearVelocity")]
     MaxLinearVelocity(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"allowedPenetrationDepth"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "allowedPenetrationDepth", default)]
+    #[serde(rename = "allowedPenetrationDepth")]
     AllowedPenetrationDepth(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"up"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "up", default)]
+    #[serde(rename = "up")]
     Up(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxSlope"`
     /// -   type: `hkReal`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxSlope", default)]
+    #[serde(rename = "maxSlope")]
     MaxSlope(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxForce"`
     /// -   type: `hkReal`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxForce", default)]
+    #[serde(rename = "maxForce")]
     MaxForce(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"unweldingHeightOffsetFactor"`
     /// -   type: `hkReal`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "unweldingHeightOffsetFactor", default)]
+    #[serde(rename = "unweldingHeightOffsetFactor")]
     UnweldingHeightOffsetFactor(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxSpeedForSimplexSolver"`
     /// -   type: `hkReal`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxSpeedForSimplexSolver", default)]
+    #[serde(rename = "maxSpeedForSimplexSolver")]
     MaxSpeedForSimplexSolver(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"supportDistance"`
     /// -   type: `hkReal`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "supportDistance", default)]
+    #[serde(rename = "supportDistance")]
     SupportDistance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"hardSupportDistance"`
     /// -   type: `hkReal`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "hardSupportDistance", default)]
+    #[serde(rename = "hardSupportDistance")]
     HardSupportDistance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"vdbColor"`
     /// -   type: `hkInt32`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vdbColor", default)]
+    #[serde(rename = "vdbColor")]
     VdbColor(Primitive<i32>),
 }
 

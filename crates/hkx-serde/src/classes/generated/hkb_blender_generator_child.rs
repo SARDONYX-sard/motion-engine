@@ -27,21 +27,21 @@ pub enum HkbBlenderGeneratorChild<'a> {
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "variableBindingSet", default)]
+    #[serde(rename = "variableBindingSet")]
     VariableBindingSet(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cachedBindables", default, skip_serializing)]
+    #[serde(rename = "cachedBindables", skip_serializing)]
     CachedBindables(HkArrayRef<Primitive<()>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "areBindablesCached", default, skip_serializing)]
+    #[serde(rename = "areBindablesCached", skip_serializing)]
     AreBindablesCached(Primitive<bool>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -49,14 +49,14 @@ pub enum HkbBlenderGeneratorChild<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -66,28 +66,28 @@ pub enum HkbBlenderGeneratorChild<'a> {
     /// -   type: `struct hkbGenerator*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "generator", default)]
+    #[serde(rename = "generator")]
     Generator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"boneWeights"`
     /// -   type: `struct hkbBoneWeightArray*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "boneWeights", default)]
+    #[serde(rename = "boneWeights")]
     BoneWeights(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"weight"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "weight", default)]
+    #[serde(rename = "weight")]
     Weight(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"worldFromModelWeight"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "worldFromModelWeight", default)]
+    #[serde(rename = "worldFromModelWeight")]
     WorldFromModelWeight(Primitive<f32>),
 }
 

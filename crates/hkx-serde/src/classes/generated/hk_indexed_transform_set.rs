@@ -27,14 +27,14 @@ pub enum HkIndexedTransformSet<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,42 +44,42 @@ pub enum HkIndexedTransformSet<'a> {
     /// -   type: `hkArray&lt;hkMatrix4&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "matrices", default)]
+    #[serde(rename = "matrices")]
     Matrices(HkArrayVector<Matrix4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"inverseMatrices"`
     /// -   type: `hkArray&lt;hkMatrix4&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "inverseMatrices", default)]
+    #[serde(rename = "inverseMatrices")]
     InverseMatrices(HkArrayVector<Matrix4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"matricesOrder"`
     /// -   type: `hkArray&lt;hkInt16&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "matricesOrder", default)]
+    #[serde(rename = "matricesOrder")]
     MatricesOrder(HkArrayRef<Primitive<i16>>),
     /// # C++ Class Fields Info
     /// -   name:`"matricesNames"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "matricesNames", default)]
+    #[serde(rename = "matricesNames")]
     MatricesNames(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"indexMappings"`
     /// -   type: `hkArray&lt;struct hkMeshBoneIndexMapping&gt;`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "indexMappings", default)]
+    #[serde(rename = "indexMappings")]
     IndexMappings(HkArrayClass<HkMeshBoneIndexMapping>),
     /// # C++ Class Fields Info
     /// -   name:`"allMatricesAreAffine"`
     /// -   type: `hkBool`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "allMatricesAreAffine", default)]
+    #[serde(rename = "allMatricesAreAffine")]
     AllMatricesAreAffine(Primitive<bool>),
 }
 

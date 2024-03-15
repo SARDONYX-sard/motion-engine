@@ -26,28 +26,28 @@ pub enum HkpGenericConstraintDataSchemeConstraintInfo {
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxSizeOfSchema", default)]
+    #[serde(rename = "maxSizeOfSchema")]
     MaxSizeOfSchema(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"sizeOfSchemas"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sizeOfSchemas", default)]
+    #[serde(rename = "sizeOfSchemas")]
     SizeOfSchemas(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"numSolverResults"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numSolverResults", default)]
+    #[serde(rename = "numSolverResults")]
     NumSolverResults(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"numSolverElemTemps"`
     /// -   type: `hkInt32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numSolverElemTemps", default)]
+    #[serde(rename = "numSolverElemTemps")]
     NumSolverElemTemps(Primitive<i32>),
 }
 

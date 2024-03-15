@@ -26,14 +26,14 @@ pub enum HkCustomAttributesAttribute<'a> {
     /// -   type: `char*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"value"`
     /// -   type: `hkVariant`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "value", default)]
+    #[serde(rename = "value")]
     Value(Primitive<u64>),
 }
 

@@ -26,7 +26,7 @@ pub enum HkxVertexDescription {
     /// -   type: `hkArray&lt;struct hkxVertexDescriptionElementDecl&gt;`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "decls", default)]
+    #[serde(rename = "decls")]
     Decls(HkArrayClass<HkxVertexDescriptionElementDecl>),
 }
 

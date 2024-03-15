@@ -26,28 +26,28 @@ pub enum HkbBehaviorInfoIdToNamePair<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "behaviorName", default)]
+    #[serde(rename = "behaviorName")]
     BehaviorName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"nodeName"`
     /// -   type: `hkStringPtr`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "nodeName", default)]
+    #[serde(rename = "nodeName")]
     NodeName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"toolType"`
     /// -   type: `enum ToolNodeType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "toolType", default)]
+    #[serde(rename = "toolType")]
     ToolType(Primitive<ToolNodeType>),
     /// # C++ Class Fields Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "id", default)]
+    #[serde(rename = "id")]
     Id(Primitive<i16>),
 }
 

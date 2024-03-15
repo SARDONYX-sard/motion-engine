@@ -26,14 +26,14 @@ pub enum HkAabbHalf {
     /// -   type: `hkUint16[6]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "data", default)]
+    #[serde(rename = "data")]
     Data([Primitive<u16>; 6]),
     /// # C++ Class Fields Info
     /// -   name:`"extras"`
     /// -   type: `hkUint16[2]`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "extras", default)]
+    #[serde(rename = "extras")]
     Extras([Primitive<u16>; 2]),
 }
 

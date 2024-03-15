@@ -26,28 +26,28 @@ pub enum HkpMaterial {
     /// -   type: `enum ResponseType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "responseType", default)]
+    #[serde(rename = "responseType")]
     ResponseType(Primitive<ResponseType>),
     /// # C++ Class Fields Info
     /// -   name:`"rollingFrictionMultiplier"`
     /// -   type: `hkHalf`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rollingFrictionMultiplier", default)]
+    #[serde(rename = "rollingFrictionMultiplier")]
     RollingFrictionMultiplier(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"friction"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "friction", default)]
+    #[serde(rename = "friction")]
     Friction(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"restitution"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "restitution", default)]
+    #[serde(rename = "restitution")]
     Restitution(Primitive<f32>),
 }
 

@@ -26,21 +26,21 @@ pub enum HkaSkeletonMapperDataSimpleMapping {
     /// -   type: `hkInt16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "boneA", default)]
+    #[serde(rename = "boneA")]
     BoneA(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"boneB"`
     /// -   type: `hkInt16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "boneB", default)]
+    #[serde(rename = "boneB")]
     BoneB(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"aFromBTransform"`
     /// -   type: `hkQsTransform`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "aFromBTransform", default)]
+    #[serde(rename = "aFromBTransform")]
     AFromBTransform(QsTransform<f32>),
 }
 

@@ -26,21 +26,21 @@ pub enum HkpEntitySmallArraySerializeOverrideType<'a> {
     /// -   type: `void*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "data", default, skip_serializing)]
+    #[serde(rename = "data", skip_serializing)]
     Data(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"size"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "size", default)]
+    #[serde(rename = "size")]
     Size(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"capacityAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "capacityAndFlags", default)]
+    #[serde(rename = "capacityAndFlags")]
     CapacityAndFlags(Primitive<u16>),
 }
 

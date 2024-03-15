@@ -26,14 +26,14 @@ pub enum HkpPointToPlaneConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTransformsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transforms", default)]
+    #[serde(rename = "transforms")]
     Transforms(HkpSetLocalTransformsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"lin"`
     /// -   type: `struct hkpLinConstraintAtom`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lin", default)]
+    #[serde(rename = "lin")]
     Lin(HkpLinConstraintAtom),
 }
 

@@ -26,28 +26,28 @@ pub enum HkRangeInt32Attribute {
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "absmin", default)]
+    #[serde(rename = "absmin")]
     Absmin(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"absmax"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "absmax", default)]
+    #[serde(rename = "absmax")]
     Absmax(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"softmin"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "softmin", default)]
+    #[serde(rename = "softmin")]
     Softmin(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"softmax"`
     /// -   type: `hkInt32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "softmax", default)]
+    #[serde(rename = "softmax")]
     Softmax(Primitive<i32>),
 }
 

@@ -21,55 +21,55 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpMountedBallGun {
+pub enum HkpMountedBallGun<'a> {
     /// # C++ Parent class(`hkpBallGun`, parent: `hkpFirstPersonGun`) field Info
     /// -   name:`"bulletRadius"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bulletRadius", default)]
+    #[serde(rename = "bulletRadius")]
     BulletRadius(Primitive<f32>),
     /// # C++ Parent class(`hkpBallGun`, parent: `hkpFirstPersonGun`) field Info
     /// -   name:`"bulletVelocity"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bulletVelocity", default)]
+    #[serde(rename = "bulletVelocity")]
     BulletVelocity(Primitive<f32>),
     /// # C++ Parent class(`hkpBallGun`, parent: `hkpFirstPersonGun`) field Info
     /// -   name:`"bulletMass"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bulletMass", default)]
+    #[serde(rename = "bulletMass")]
     BulletMass(Primitive<f32>),
     /// # C++ Parent class(`hkpBallGun`, parent: `hkpFirstPersonGun`) field Info
     /// -   name:`"damageMultiplier"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "damageMultiplier", default)]
+    #[serde(rename = "damageMultiplier")]
     DamageMultiplier(Primitive<f32>),
     /// # C++ Parent class(`hkpBallGun`, parent: `hkpFirstPersonGun`) field Info
     /// -   name:`"maxBulletsInWorld"`
     /// -   type: `hkInt32`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxBulletsInWorld", default)]
+    #[serde(rename = "maxBulletsInWorld")]
     MaxBulletsInWorld(Primitive<i32>),
     /// # C++ Parent class(`hkpBallGun`, parent: `hkpFirstPersonGun`) field Info
     /// -   name:`"bulletOffsetFromCenter"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bulletOffsetFromCenter", default)]
+    #[serde(rename = "bulletOffsetFromCenter")]
     BulletOffsetFromCenter(Vector4<f32>),
     /// # C++ Parent class(`hkpBallGun`, parent: `hkpFirstPersonGun`) field Info
     /// -   name:`"addedBodies"`
     /// -   type: `void*`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "addedBodies", default, skip_serializing)]
+    #[serde(rename = "addedBodies", skip_serializing)]
     AddedBodies(Primitive<Cow<'a, str>>),
 
     /// # C++ Parent class(`hkpFirstPersonGun`, parent: `hkReferencedObject`) field Info
@@ -77,28 +77,28 @@ pub enum HkpMountedBallGun {
     /// -   type: `enum unknown`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "type", default, skip_serializing)]
+    #[serde(rename = "type", skip_serializing)]
     Type(Primitive<Unknown>),
     /// # C++ Parent class(`hkpFirstPersonGun`, parent: `hkReferencedObject`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpFirstPersonGun`, parent: `hkReferencedObject`) field Info
     /// -   name:`"keyboardKey"`
     /// -   type: `enum KeyboardKey`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "keyboardKey", default)]
+    #[serde(rename = "keyboardKey")]
     KeyboardKey(Primitive<KeyboardKey>),
     /// # C++ Parent class(`hkpFirstPersonGun`, parent: `hkReferencedObject`) field Info
     /// -   name:`"listeners"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "listeners", default, skip_serializing)]
+    #[serde(rename = "listeners", skip_serializing)]
     Listeners(HkArrayRef<Cow<'a, str>>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -106,14 +106,14 @@ pub enum HkpMountedBallGun {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -123,7 +123,7 @@ pub enum HkpMountedBallGun {
     /// -   type: `hkVector4`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "position", default)]
+    #[serde(rename = "position")]
     Position(Vector4<f32>),
 }
 

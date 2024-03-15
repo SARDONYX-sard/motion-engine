@@ -26,49 +26,49 @@ pub enum HkpPrismaticConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTransformsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transforms", default)]
+    #[serde(rename = "transforms")]
     Transforms(HkpSetLocalTransformsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"motor"`
     /// -   type: `struct hkpLinMotorConstraintAtom`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "motor", default)]
+    #[serde(rename = "motor")]
     Motor(HkpLinMotorConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"friction"`
     /// -   type: `struct hkpLinFrictionConstraintAtom`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "friction", default)]
+    #[serde(rename = "friction")]
     Friction(HkpLinFrictionConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"ang"`
     /// -   type: `struct hkpAngConstraintAtom`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ang", default)]
+    #[serde(rename = "ang")]
     Ang(HkpAngConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"lin0"`
     /// -   type: `struct hkpLinConstraintAtom`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lin0", default)]
+    #[serde(rename = "lin0")]
     Lin0(HkpLinConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"lin1"`
     /// -   type: `struct hkpLinConstraintAtom`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lin1", default)]
+    #[serde(rename = "lin1")]
     Lin1(HkpLinConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"linLimit"`
     /// -   type: `struct hkpLinLimitConstraintAtom`
     /// - offset: 180
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "linLimit", default)]
+    #[serde(rename = "linLimit")]
     LinLimit(HkpLinLimitConstraintAtom),
 }
 

@@ -26,7 +26,7 @@ pub enum HkMonitorStreamStringMap {
     /// -   type: `hkArray&lt;struct hkMonitorStreamStringMapStringMap&gt;`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "map", default)]
+    #[serde(rename = "map")]
     Map(HkArrayClass<HkMonitorStreamStringMapStringMap>),
 }
 

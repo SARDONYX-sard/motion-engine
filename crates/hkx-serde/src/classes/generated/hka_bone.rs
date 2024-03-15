@@ -26,14 +26,14 @@ pub enum HkaBone<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"lockTranslation"`
     /// -   type: `hkBool`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lockTranslation", default)]
+    #[serde(rename = "lockTranslation")]
     LockTranslation(Primitive<bool>),
 }
 

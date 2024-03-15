@@ -26,56 +26,56 @@ pub enum HkbGeneratorSyncInfo {
     /// -   type: `struct hkbGeneratorSyncInfoSyncPoint[8]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "syncPoints", default)]
+    #[serde(rename = "syncPoints")]
     SyncPoints([HkbGeneratorSyncInfoSyncPoint; 8]),
     /// # C++ Class Fields Info
     /// -   name:`"baseFrequency"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "baseFrequency", default)]
+    #[serde(rename = "baseFrequency")]
     BaseFrequency(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"localTime"`
     /// -   type: `hkReal`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "localTime", default)]
+    #[serde(rename = "localTime")]
     LocalTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"playbackSpeed"`
     /// -   type: `hkReal`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "playbackSpeed", default)]
+    #[serde(rename = "playbackSpeed")]
     PlaybackSpeed(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"numSyncPoints"`
     /// -   type: `hkInt8`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numSyncPoints", default)]
+    #[serde(rename = "numSyncPoints")]
     NumSyncPoints(Primitive<i8>),
     /// # C++ Class Fields Info
     /// -   name:`"isCyclic"`
     /// -   type: `hkBool`
     /// - offset: 77
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isCyclic", default)]
+    #[serde(rename = "isCyclic")]
     IsCyclic(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"isMirrored"`
     /// -   type: `hkBool`
     /// - offset: 78
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isMirrored", default)]
+    #[serde(rename = "isMirrored")]
     IsMirrored(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"isAdditive"`
     /// -   type: `hkBool`
     /// - offset: 79
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isAdditive", default)]
+    #[serde(rename = "isAdditive")]
     IsAdditive(Primitive<bool>),
 }
 

@@ -27,14 +27,14 @@ pub enum HkbBlenderGeneratorInternalState {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,56 +44,56 @@ pub enum HkbBlenderGeneratorInternalState {
     /// -   type: `hkArray&lt;struct hkbBlenderGeneratorChildInternalState&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "childrenInternalStates", default)]
+    #[serde(rename = "childrenInternalStates")]
     ChildrenInternalStates(HkArrayClass<HkbBlenderGeneratorChildInternalState>),
     /// # C++ Class Fields Info
     /// -   name:`"sortedChildren"`
     /// -   type: `hkArray&lt;hkInt16&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sortedChildren", default)]
+    #[serde(rename = "sortedChildren")]
     SortedChildren(HkArrayRef<Primitive<i16>>),
     /// # C++ Class Fields Info
     /// -   name:`"endIntervalWeight"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "endIntervalWeight", default)]
+    #[serde(rename = "endIntervalWeight")]
     EndIntervalWeight(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"numActiveChildren"`
     /// -   type: `hkInt32`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numActiveChildren", default)]
+    #[serde(rename = "numActiveChildren")]
     NumActiveChildren(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"beginIntervalIndex"`
     /// -   type: `hkInt16`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "beginIntervalIndex", default)]
+    #[serde(rename = "beginIntervalIndex")]
     BeginIntervalIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"endIntervalIndex"`
     /// -   type: `hkInt16`
     /// - offset: 42
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "endIntervalIndex", default)]
+    #[serde(rename = "endIntervalIndex")]
     EndIntervalIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"initSync"`
     /// -   type: `hkBool`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "initSync", default)]
+    #[serde(rename = "initSync")]
     InitSync(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"doSubtractiveBlend"`
     /// -   type: `hkBool`
     /// - offset: 45
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "doSubtractiveBlend", default)]
+    #[serde(rename = "doSubtractiveBlend")]
     DoSubtractiveBlend(Primitive<bool>),
 }
 

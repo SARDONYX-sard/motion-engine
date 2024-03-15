@@ -26,14 +26,14 @@ pub enum HkMemoryResourceHandleExternalLink<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "memberName", default)]
+    #[serde(rename = "memberName")]
     MemberName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"externalId"`
     /// -   type: `hkStringPtr`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "externalId", default)]
+    #[serde(rename = "externalId")]
     ExternalId(Primitive<Cow<'a, str>>),
 }
 

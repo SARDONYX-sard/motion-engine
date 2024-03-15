@@ -26,7 +26,7 @@ pub enum HkTraceStreamTitle {
     /// -   type: `hkChar[32]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "value", default)]
+    #[serde(rename = "value")]
     Value([Primitive<char>; 32]),
 }
 

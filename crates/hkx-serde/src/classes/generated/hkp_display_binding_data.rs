@@ -27,14 +27,14 @@ pub enum HkpDisplayBindingData<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,14 +44,14 @@ pub enum HkpDisplayBindingData<'a> {
     /// -   type: `hkArray&lt;hkpDisplayBindingDataRigidBody*&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rigidBodyBindings", default)]
+    #[serde(rename = "rigidBodyBindings")]
     RigidBodyBindings(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"physicsSystemBindings"`
     /// -   type: `hkArray&lt;hkpDisplayBindingDataPhysicsSystem*&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "physicsSystemBindings", default)]
+    #[serde(rename = "physicsSystemBindings")]
     PhysicsSystemBindings(HkArrayRef<Cow<'a, str>>),
 }
 

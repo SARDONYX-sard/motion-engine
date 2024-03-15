@@ -27,14 +27,14 @@ pub enum HkbStateMachineInternalState {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,77 +44,77 @@ pub enum HkbStateMachineInternalState {
     /// -   type: `hkArray&lt;struct hkbStateMachineActiveTransitionInfo&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "activeTransitions", default)]
+    #[serde(rename = "activeTransitions")]
     ActiveTransitions(HkArrayClass<HkbStateMachineActiveTransitionInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"transitionFlags"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transitionFlags", default)]
+    #[serde(rename = "transitionFlags")]
     TransitionFlags(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"wildcardTransitionFlags"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wildcardTransitionFlags", default)]
+    #[serde(rename = "wildcardTransitionFlags")]
     WildcardTransitionFlags(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"delayedTransitions"`
     /// -   type: `hkArray&lt;struct hkbStateMachineDelayedTransitionInfo&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "delayedTransitions", default)]
+    #[serde(rename = "delayedTransitions")]
     DelayedTransitions(HkArrayClass<HkbStateMachineDelayedTransitionInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"timeInState"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "timeInState", default)]
+    #[serde(rename = "timeInState")]
     TimeInState(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"lastLocalTime"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lastLocalTime", default)]
+    #[serde(rename = "lastLocalTime")]
     LastLocalTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"currentStateId"`
     /// -   type: `hkInt32`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "currentStateId", default)]
+    #[serde(rename = "currentStateId")]
     CurrentStateId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"previousStateId"`
     /// -   type: `hkInt32`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "previousStateId", default)]
+    #[serde(rename = "previousStateId")]
     PreviousStateId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"nextStartStateIndexOverride"`
     /// -   type: `hkInt32`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "nextStartStateIndexOverride", default)]
+    #[serde(rename = "nextStartStateIndexOverride")]
     NextStartStateIndexOverride(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"stateOrTransitionChanged"`
     /// -   type: `hkBool`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "stateOrTransitionChanged", default)]
+    #[serde(rename = "stateOrTransitionChanged")]
     StateOrTransitionChanged(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"echoNextUpdate"`
     /// -   type: `hkBool`
     /// - offset: 77
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "echoNextUpdate", default)]
+    #[serde(rename = "echoNextUpdate")]
     EchoNextUpdate(Primitive<bool>),
 }
 

@@ -26,14 +26,14 @@ pub enum HkpRackAndPinionConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTransformsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transforms", default)]
+    #[serde(rename = "transforms")]
     Transforms(HkpSetLocalTransformsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"rackAndPinion"`
     /// -   type: `struct hkpRackAndPinionConstraintAtom`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rackAndPinion", default)]
+    #[serde(rename = "rackAndPinion")]
     RackAndPinion(HkpRackAndPinionConstraintAtom),
 }
 

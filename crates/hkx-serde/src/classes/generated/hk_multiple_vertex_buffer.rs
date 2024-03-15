@@ -29,14 +29,14 @@ pub enum HkMultipleVertexBuffer<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -46,77 +46,77 @@ pub enum HkMultipleVertexBuffer<'a> {
     /// -   type: `struct hkVertexFormat`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexFormat", default)]
+    #[serde(rename = "vertexFormat")]
     VertexFormat(HkVertexFormat),
     /// # C++ Class Fields Info
     /// -   name:`"lockedElements"`
     /// -   type: `hkArray&lt;struct hkMultipleVertexBufferLockedElement&gt;`
     /// - offset: 268
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lockedElements", default)]
+    #[serde(rename = "lockedElements")]
     LockedElements(HkArrayClass<HkMultipleVertexBufferLockedElement>),
     /// # C++ Class Fields Info
     /// -   name:`"lockedBuffer"`
     /// -   type: `struct hkMemoryMeshVertexBuffer*`
     /// - offset: 280
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lockedBuffer", default)]
+    #[serde(rename = "lockedBuffer")]
     LockedBuffer(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"elementInfos"`
     /// -   type: `hkArray&lt;struct hkMultipleVertexBufferElementInfo&gt;`
     /// - offset: 284
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "elementInfos", default)]
+    #[serde(rename = "elementInfos")]
     ElementInfos(HkArrayClass<HkMultipleVertexBufferElementInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexBufferInfos"`
     /// -   type: `hkArray&lt;struct hkMultipleVertexBufferVertexBufferInfo&gt;`
     /// - offset: 296
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexBufferInfos", default)]
+    #[serde(rename = "vertexBufferInfos")]
     VertexBufferInfos(HkArrayClass<HkMultipleVertexBufferVertexBufferInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"numVertices"`
     /// -   type: `hkInt32`
     /// - offset: 308
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numVertices", default)]
+    #[serde(rename = "numVertices")]
     NumVertices(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"isLocked"`
     /// -   type: `hkBool`
     /// - offset: 312
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isLocked", default)]
+    #[serde(rename = "isLocked")]
     IsLocked(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"updateCount"`
     /// -   type: `hkUint32`
     /// - offset: 316
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "updateCount", default)]
+    #[serde(rename = "updateCount")]
     UpdateCount(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"writeLock"`
     /// -   type: `hkBool`
     /// - offset: 320
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "writeLock", default)]
+    #[serde(rename = "writeLock")]
     WriteLock(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"isSharable"`
     /// -   type: `hkBool`
     /// - offset: 321
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isSharable", default)]
+    #[serde(rename = "isSharable")]
     IsSharable(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"constructionComplete"`
     /// -   type: `hkBool`
     /// - offset: 322
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "constructionComplete", default)]
+    #[serde(rename = "constructionComplete")]
     ConstructionComplete(Primitive<bool>),
 }
 

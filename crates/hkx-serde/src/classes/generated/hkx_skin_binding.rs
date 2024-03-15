@@ -27,14 +27,14 @@ pub enum HkxSkinBinding<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,28 +44,28 @@ pub enum HkxSkinBinding<'a> {
     /// -   type: `struct hkxMesh*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "mesh", default)]
+    #[serde(rename = "mesh")]
     Mesh(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"nodeNames"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "nodeNames", default)]
+    #[serde(rename = "nodeNames")]
     NodeNames(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"bindPose"`
     /// -   type: `hkArray&lt;hkMatrix4&gt;`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bindPose", default)]
+    #[serde(rename = "bindPose")]
     BindPose(HkArrayVector<Matrix4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"initSkinTransform"`
     /// -   type: `hkMatrix4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "initSkinTransform", default)]
+    #[serde(rename = "initSkinTransform")]
     InitSkinTransform(Matrix4<f32>),
 }
 

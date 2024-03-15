@@ -27,14 +27,14 @@ pub enum HkbFootIkDriverInfo {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,84 +44,84 @@ pub enum HkbFootIkDriverInfo {
     /// -   type: `hkArray&lt;struct hkbFootIkDriverInfoLeg&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "legs", default)]
+    #[serde(rename = "legs")]
     Legs(HkArrayClass<HkbFootIkDriverInfoLeg>),
     /// # C++ Class Fields Info
     /// -   name:`"raycastDistanceUp"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "raycastDistanceUp", default)]
+    #[serde(rename = "raycastDistanceUp")]
     RaycastDistanceUp(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"raycastDistanceDown"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "raycastDistanceDown", default)]
+    #[serde(rename = "raycastDistanceDown")]
     RaycastDistanceDown(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"originalGroundHeightMS"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "originalGroundHeightMS", default)]
+    #[serde(rename = "originalGroundHeightMS")]
     OriginalGroundHeightMs(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"verticalOffset"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "verticalOffset", default)]
+    #[serde(rename = "verticalOffset")]
     VerticalOffset(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilterInfo"`
     /// -   type: `hkUint32`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "collisionFilterInfo", default)]
+    #[serde(rename = "collisionFilterInfo")]
     CollisionFilterInfo(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"forwardAlignFraction"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "forwardAlignFraction", default)]
+    #[serde(rename = "forwardAlignFraction")]
     ForwardAlignFraction(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"sidewaysAlignFraction"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sidewaysAlignFraction", default)]
+    #[serde(rename = "sidewaysAlignFraction")]
     SidewaysAlignFraction(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"sidewaysSampleWidth"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sidewaysSampleWidth", default)]
+    #[serde(rename = "sidewaysSampleWidth")]
     SidewaysSampleWidth(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"lockFeetWhenPlanted"`
     /// -   type: `hkBool`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lockFeetWhenPlanted", default)]
+    #[serde(rename = "lockFeetWhenPlanted")]
     LockFeetWhenPlanted(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"useCharacterUpVector"`
     /// -   type: `hkBool`
     /// - offset: 53
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "useCharacterUpVector", default)]
+    #[serde(rename = "useCharacterUpVector")]
     UseCharacterUpVector(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"isQuadrupedNarrow"`
     /// -   type: `hkBool`
     /// - offset: 54
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isQuadrupedNarrow", default)]
+    #[serde(rename = "isQuadrupedNarrow")]
     IsQuadrupedNarrow(Primitive<bool>),
 }
 

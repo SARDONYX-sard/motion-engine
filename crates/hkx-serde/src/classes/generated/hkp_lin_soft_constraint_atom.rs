@@ -27,7 +27,7 @@ pub enum HkpLinSoftConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -35,21 +35,21 @@ pub enum HkpLinSoftConstraintAtom {
     /// -   type: `hkUint8`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "axisIndex", default)]
+    #[serde(rename = "axisIndex")]
     AxisIndex(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"tau"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "tau", default)]
+    #[serde(rename = "tau")]
     Tau(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"damping"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "damping", default)]
+    #[serde(rename = "damping")]
     Damping(Primitive<f32>),
 }
 

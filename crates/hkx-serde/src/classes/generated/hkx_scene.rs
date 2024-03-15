@@ -27,14 +27,14 @@ pub enum HkxScene<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,91 +44,91 @@ pub enum HkxScene<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "modeller", default)]
+    #[serde(rename = "modeller")]
     Modeller(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"asset"`
     /// -   type: `hkStringPtr`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "asset", default)]
+    #[serde(rename = "asset")]
     Asset(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"sceneLength"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sceneLength", default)]
+    #[serde(rename = "sceneLength")]
     SceneLength(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"rootNode"`
     /// -   type: `struct hkxNode*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rootNode", default)]
+    #[serde(rename = "rootNode")]
     RootNode(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"selectionSets"`
     /// -   type: `hkArray&lt;hkxNodeSelectionSet*&gt;`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "selectionSets", default)]
+    #[serde(rename = "selectionSets")]
     SelectionSets(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"cameras"`
     /// -   type: `hkArray&lt;hkxCamera*&gt;`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "cameras", default)]
+    #[serde(rename = "cameras")]
     Cameras(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"lights"`
     /// -   type: `hkArray&lt;hkxLight*&gt;`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lights", default)]
+    #[serde(rename = "lights")]
     Lights(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"meshes"`
     /// -   type: `hkArray&lt;hkxMesh*&gt;`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "meshes", default)]
+    #[serde(rename = "meshes")]
     Meshes(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"materials"`
     /// -   type: `hkArray&lt;hkxMaterial*&gt;`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "materials", default)]
+    #[serde(rename = "materials")]
     Materials(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"inplaceTextures"`
     /// -   type: `hkArray&lt;hkxTextureInplace*&gt;`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "inplaceTextures", default)]
+    #[serde(rename = "inplaceTextures")]
     InplaceTextures(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"externalTextures"`
     /// -   type: `hkArray&lt;hkxTextureFile*&gt;`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "externalTextures", default)]
+    #[serde(rename = "externalTextures")]
     ExternalTextures(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"skinBindings"`
     /// -   type: `hkArray&lt;hkxSkinBinding*&gt;`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "skinBindings", default)]
+    #[serde(rename = "skinBindings")]
     SkinBindings(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"appliedTransform"`
     /// -   type: `hkMatrix3`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "appliedTransform", default)]
+    #[serde(rename = "appliedTransform")]
     AppliedTransform(Matrix3<f32>),
 }
 

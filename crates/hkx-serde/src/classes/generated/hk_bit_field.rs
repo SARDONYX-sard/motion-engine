@@ -26,14 +26,14 @@ pub enum HkBitField {
     /// -   type: `hkArray&lt;hkUint32&gt;`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "words", default)]
+    #[serde(rename = "words")]
     Words(HkArrayRef<Primitive<u32>>),
     /// # C++ Class Fields Info
     /// -   name:`"numBits"`
     /// -   type: `hkInt32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numBits", default)]
+    #[serde(rename = "numBits")]
     NumBits(Primitive<i32>),
 }
 

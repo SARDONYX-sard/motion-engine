@@ -27,14 +27,14 @@ pub enum HkpVelocityConstraintMotor {
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minForce", default)]
+    #[serde(rename = "minForce")]
     MinForce(Primitive<f32>),
     /// # C++ Parent class(`hkpLimitedForceConstraintMotor`, parent: `hkpConstraintMotor`) field Info
     /// -   name:`"maxForce"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxForce", default)]
+    #[serde(rename = "maxForce")]
     MaxForce(Primitive<f32>),
 
     /// # C++ Parent class(`hkpConstraintMotor`, parent: `hkReferencedObject`) field Info
@@ -42,7 +42,7 @@ pub enum HkpVelocityConstraintMotor {
     /// -   type: `enum MotorType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<MotorType>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -50,14 +50,14 @@ pub enum HkpVelocityConstraintMotor {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -67,21 +67,21 @@ pub enum HkpVelocityConstraintMotor {
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "tau", default)]
+    #[serde(rename = "tau")]
     Tau(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"velocityTarget"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "velocityTarget", default)]
+    #[serde(rename = "velocityTarget")]
     VelocityTarget(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"useVelocityTargetFromConstraintTargets"`
     /// -   type: `hkBool`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "useVelocityTargetFromConstraintTargets", default)]
+    #[serde(rename = "useVelocityTargetFromConstraintTargets")]
     UseVelocityTargetFromConstraintTargets(Primitive<bool>),
 }
 

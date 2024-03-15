@@ -29,7 +29,7 @@ pub enum HkpSingleShapeContainer<'a> {
     /// -   type: `struct hkpShape*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "childShape", default)]
+    #[serde(rename = "childShape")]
     ChildShape(Primitive<Cow<'a, str>>),
 }
 

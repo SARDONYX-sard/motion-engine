@@ -27,7 +27,7 @@ pub enum HkpPulleyConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -35,28 +35,28 @@ pub enum HkpPulleyConstraintAtom {
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fixedPivotAinWorld", default)]
+    #[serde(rename = "fixedPivotAinWorld")]
     FixedPivotAinWorld(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"fixedPivotBinWorld"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fixedPivotBinWorld", default)]
+    #[serde(rename = "fixedPivotBinWorld")]
     FixedPivotBinWorld(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"ropeLength"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ropeLength", default)]
+    #[serde(rename = "ropeLength")]
     RopeLength(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"leverageOnBodyB"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "leverageOnBodyB", default)]
+    #[serde(rename = "leverageOnBodyB")]
     LeverageOnBodyB(Primitive<f32>),
 }
 

@@ -26,42 +26,42 @@ pub enum HkpSimpleContactConstraintDataInfo {
     /// -   type: `hkUint16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "flags", default)]
+    #[serde(rename = "flags")]
     Flags(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"index"`
     /// -   type: `hkUint16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "index", default)]
+    #[serde(rename = "index")]
     Index(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"internalData0"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "internalData0", default)]
+    #[serde(rename = "internalData0")]
     InternalData0(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"rollingFrictionMultiplier"`
     /// -   type: `hkHalf`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rollingFrictionMultiplier", default)]
+    #[serde(rename = "rollingFrictionMultiplier")]
     RollingFrictionMultiplier(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"internalData1"`
     /// -   type: `hkHalf`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "internalData1", default)]
+    #[serde(rename = "internalData1")]
     InternalData1(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `hkUint32[5]`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "data", default)]
+    #[serde(rename = "data")]
     Data([Primitive<u32>; 5]),
 }
 

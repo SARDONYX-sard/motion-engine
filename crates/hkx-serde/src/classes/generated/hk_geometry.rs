@@ -26,14 +26,14 @@ pub enum HkGeometry {
     /// -   type: `hkArray&lt;hkVector4&gt;`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertices", default)]
+    #[serde(rename = "vertices")]
     Vertices(HkArrayVector<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"triangles"`
     /// -   type: `hkArray&lt;struct hkGeometryTriangle&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "triangles", default)]
+    #[serde(rename = "triangles")]
     Triangles(HkArrayClass<HkGeometryTriangle>),
 }
 

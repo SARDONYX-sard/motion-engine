@@ -27,14 +27,14 @@ pub enum HkpSimulation<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,63 +44,63 @@ pub enum HkpSimulation<'a> {
     /// -   type: `hkUint32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "determinismCheckFrameCounter", default)]
+    #[serde(rename = "determinismCheckFrameCounter")]
     DeterminismCheckFrameCounter(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"world"`
     /// -   type: `struct hkpWorld*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "world", default)]
+    #[serde(rename = "world")]
     World(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"lastProcessingStep"`
     /// -   type: `enum LastProcessingStep`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lastProcessingStep", default)]
+    #[serde(rename = "lastProcessingStep")]
     LastProcessingStep(Primitive<LastProcessingStep>),
     /// # C++ Class Fields Info
     /// -   name:`"currentTime"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "currentTime", default)]
+    #[serde(rename = "currentTime")]
     CurrentTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"currentPsiTime"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "currentPsiTime", default)]
+    #[serde(rename = "currentPsiTime")]
     CurrentPsiTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"physicsDeltaTime"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "physicsDeltaTime", default)]
+    #[serde(rename = "physicsDeltaTime")]
     PhysicsDeltaTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"simulateUntilTime"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "simulateUntilTime", default)]
+    #[serde(rename = "simulateUntilTime")]
     SimulateUntilTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"frameMarkerPsiSnap"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "frameMarkerPsiSnap", default)]
+    #[serde(rename = "frameMarkerPsiSnap")]
     FrameMarkerPsiSnap(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"previousStepResult"`
     /// -   type: `hkUint32`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "previousStepResult", default)]
+    #[serde(rename = "previousStepResult")]
     PreviousStepResult(Primitive<u32>),
 }
 

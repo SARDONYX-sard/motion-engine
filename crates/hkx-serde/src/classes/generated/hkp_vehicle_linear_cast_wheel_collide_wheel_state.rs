@@ -26,28 +26,28 @@ pub enum HkpVehicleLinearCastWheelCollideWheelState<'a> {
     /// -   type: `struct hkpAabbPhantom*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "phantom", default)]
+    #[serde(rename = "phantom")]
     Phantom(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"shape"`
     /// -   type: `struct hkpShape*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "shape", default)]
+    #[serde(rename = "shape")]
     Shape(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"transform"`
     /// -   type: `hkTransform`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transform", default)]
+    #[serde(rename = "transform")]
     Transform(Transform<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"to"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "to", default)]
+    #[serde(rename = "to")]
     To(Vector4<f32>),
 }
 

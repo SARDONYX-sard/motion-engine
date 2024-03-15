@@ -26,28 +26,28 @@ pub enum HkbSenseHandleModifierRange {
     /// -   type: `struct hkbEventProperty`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "event", default)]
+    #[serde(rename = "event")]
     Event(HkbEventProperty),
     /// # C++ Class Fields Info
     /// -   name:`"minDistance"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minDistance", default)]
+    #[serde(rename = "minDistance")]
     MinDistance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxDistance"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxDistance", default)]
+    #[serde(rename = "maxDistance")]
     MaxDistance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"ignoreHandle"`
     /// -   type: `hkBool`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ignoreHandle", default)]
+    #[serde(rename = "ignoreHandle")]
     IgnoreHandle(Primitive<bool>),
 }
 

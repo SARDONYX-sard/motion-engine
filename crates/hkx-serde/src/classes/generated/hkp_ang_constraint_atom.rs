@@ -27,7 +27,7 @@ pub enum HkpAngConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -35,14 +35,14 @@ pub enum HkpAngConstraintAtom {
     /// -   type: `hkUint8`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "firstConstrainedAxis", default)]
+    #[serde(rename = "firstConstrainedAxis")]
     FirstConstrainedAxis(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"numConstrainedAxes"`
     /// -   type: `hkUint8`
     /// - offset: 3
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numConstrainedAxes", default)]
+    #[serde(rename = "numConstrainedAxes")]
     NumConstrainedAxes(Primitive<u8>),
 }
 

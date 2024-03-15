@@ -26,42 +26,42 @@ pub enum HkpPoweredChainDataConstraintInfo<'a> {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pivotInA", default)]
+    #[serde(rename = "pivotInA")]
     PivotInA(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"pivotInB"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pivotInB", default)]
+    #[serde(rename = "pivotInB")]
     PivotInB(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"aTc"`
     /// -   type: `hkQuaternion`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "aTc", default)]
+    #[serde(rename = "aTc")]
     ATc(Quaternion<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"bTc"`
     /// -   type: `hkQuaternion`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bTc", default)]
+    #[serde(rename = "bTc")]
     BTc(Quaternion<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"motors"`
     /// -   type: `struct hkpConstraintMotor*`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "motors", default)]
+    #[serde(rename = "motors")]
     Motors(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"switchBodies"`
     /// -   type: `hkBool`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "switchBodies", default)]
+    #[serde(rename = "switchBodies")]
     SwitchBodies(Primitive<bool>),
 }
 

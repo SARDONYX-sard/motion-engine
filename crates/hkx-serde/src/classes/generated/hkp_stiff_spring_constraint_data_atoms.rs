@@ -26,14 +26,14 @@ pub enum HkpStiffSpringConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTranslationsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pivots", default)]
+    #[serde(rename = "pivots")]
     Pivots(HkpSetLocalTranslationsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"spring"`
     /// -   type: `struct hkpStiffSpringConstraintAtom`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "spring", default)]
+    #[serde(rename = "spring")]
     Spring(HkpStiffSpringConstraintAtom),
 }
 

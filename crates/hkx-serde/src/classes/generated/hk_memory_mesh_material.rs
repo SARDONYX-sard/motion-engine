@@ -29,14 +29,14 @@ pub enum HkMemoryMeshMaterial<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -46,14 +46,14 @@ pub enum HkMemoryMeshMaterial<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "materialName", default)]
+    #[serde(rename = "materialName")]
     MaterialName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"textures"`
     /// -   type: `hkArray&lt;hkMeshTexture*&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "textures", default)]
+    #[serde(rename = "textures")]
     Textures(HkArrayRef<Cow<'a, str>>),
 }
 

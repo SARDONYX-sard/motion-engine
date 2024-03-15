@@ -26,14 +26,14 @@ pub enum HkAabb {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "min", default)]
+    #[serde(rename = "min")]
     Min(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"max"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "max", default)]
+    #[serde(rename = "max")]
     Max(Vector4<f32>),
 }
 

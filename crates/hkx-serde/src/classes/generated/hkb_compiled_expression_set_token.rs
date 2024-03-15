@@ -26,21 +26,21 @@ pub enum HkbCompiledExpressionSetToken {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "data", default)]
+    #[serde(rename = "data")]
     Data(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum TokenType`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<TokenType>),
     /// # C++ Class Fields Info
     /// -   name:`"operator"`
     /// -   type: `enum Operator`
     /// - offset: 5
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "operator", default)]
+    #[serde(rename = "operator")]
     Operator(Primitive<Operator>),
 }
 

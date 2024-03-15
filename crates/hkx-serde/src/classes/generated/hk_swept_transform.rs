@@ -26,35 +26,35 @@ pub enum HkSweptTransform {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "centerOfMass0", default)]
+    #[serde(rename = "centerOfMass0")]
     CenterOfMass0(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"centerOfMass1"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "centerOfMass1", default)]
+    #[serde(rename = "centerOfMass1")]
     CenterOfMass1(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"rotation0"`
     /// -   type: `hkQuaternion`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotation0", default)]
+    #[serde(rename = "rotation0")]
     Rotation0(Quaternion<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"rotation1"`
     /// -   type: `hkQuaternion`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotation1", default)]
+    #[serde(rename = "rotation1")]
     Rotation1(Quaternion<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"centerOfMassLocal"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "centerOfMassLocal", default)]
+    #[serde(rename = "centerOfMassLocal")]
     CenterOfMassLocal(Vector4<f32>),
 }
 

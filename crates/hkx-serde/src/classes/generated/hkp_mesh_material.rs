@@ -26,7 +26,7 @@ pub enum HkpMeshMaterial {
     /// -   type: `hkUint32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "filterInfo", default)]
+    #[serde(rename = "filterInfo")]
     FilterInfo(Primitive<u32>),
 }
 

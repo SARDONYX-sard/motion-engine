@@ -27,7 +27,7 @@ pub enum HkpTriangleShape {
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "radius", default)]
+    #[serde(rename = "radius")]
     Radius(Primitive<f32>),
 
     // `hkpSphereRepShape`(Parent class) has no fields
@@ -37,14 +37,14 @@ pub enum HkpTriangleShape {
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "type", default, skip_serializing)]
+    #[serde(rename = "type", skip_serializing)]
     Type(Primitive<Unknown>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -52,14 +52,14 @@ pub enum HkpTriangleShape {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -69,49 +69,49 @@ pub enum HkpTriangleShape {
     /// -   type: `hkUint16`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "weldingInfo", default)]
+    #[serde(rename = "weldingInfo")]
     WeldingInfo(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"weldingType"`
     /// -   type: `enum WeldingType`
     /// - offset: 22
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "weldingType", default)]
+    #[serde(rename = "weldingType")]
     WeldingType(Primitive<WeldingType>),
     /// # C++ Class Fields Info
     /// -   name:`"isExtruded"`
     /// -   type: `hkUint8`
     /// - offset: 23
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isExtruded", default)]
+    #[serde(rename = "isExtruded")]
     IsExtruded(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexA"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexA", default)]
+    #[serde(rename = "vertexA")]
     VertexA(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexB"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexB", default)]
+    #[serde(rename = "vertexB")]
     VertexB(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexC"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexC", default)]
+    #[serde(rename = "vertexC")]
     VertexC(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"extrusion"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "extrusion", default)]
+    #[serde(rename = "extrusion")]
     Extrusion(Vector4<f32>),
 }
 

@@ -26,21 +26,21 @@ pub enum HkpStiffSpringChainDataConstraintInfo {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pivotInA", default)]
+    #[serde(rename = "pivotInA")]
     PivotInA(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"pivotInB"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pivotInB", default)]
+    #[serde(rename = "pivotInB")]
     PivotInB(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"springLength"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "springLength", default)]
+    #[serde(rename = "springLength")]
     SpringLength(Primitive<f32>),
 }
 

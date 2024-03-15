@@ -26,14 +26,14 @@ pub enum HkaSplineCompressedAnimationAnimationCompressionParams {
     /// -   type: `hkUint16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxFramesPerBlock", default)]
+    #[serde(rename = "maxFramesPerBlock")]
     MaxFramesPerBlock(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"enableSampleSingleTracks"`
     /// -   type: `hkBool`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enableSampleSingleTracks", default)]
+    #[serde(rename = "enableSampleSingleTracks")]
     EnableSampleSingleTracks(Primitive<bool>),
 }
 

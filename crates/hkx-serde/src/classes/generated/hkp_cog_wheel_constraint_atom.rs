@@ -27,7 +27,7 @@ pub enum HkpCogWheelConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -35,42 +35,42 @@ pub enum HkpCogWheelConstraintAtom {
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "cogWheelRadiusA", default)]
+    #[serde(rename = "cogWheelRadiusA")]
     CogWheelRadiusA(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"cogWheelRadiusB"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "cogWheelRadiusB", default)]
+    #[serde(rename = "cogWheelRadiusB")]
     CogWheelRadiusB(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"isScrew"`
     /// -   type: `hkBool`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isScrew", default)]
+    #[serde(rename = "isScrew")]
     IsScrew(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"memOffsetToInitialAngleOffset"`
     /// -   type: `hkInt8`
     /// - offset: 13
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "memOffsetToInitialAngleOffset", default)]
+    #[serde(rename = "memOffsetToInitialAngleOffset")]
     MemOffsetToInitialAngleOffset(Primitive<i8>),
     /// # C++ Class Fields Info
     /// -   name:`"memOffsetToPrevAngle"`
     /// -   type: `hkInt8`
     /// - offset: 14
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "memOffsetToPrevAngle", default)]
+    #[serde(rename = "memOffsetToPrevAngle")]
     MemOffsetToPrevAngle(Primitive<i8>),
     /// # C++ Class Fields Info
     /// -   name:`"memOffsetToRevolutionCounter"`
     /// -   type: `hkInt8`
     /// - offset: 15
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "memOffsetToRevolutionCounter", default)]
+    #[serde(rename = "memOffsetToRevolutionCounter")]
     MemOffsetToRevolutionCounter(Primitive<i8>),
 }
 

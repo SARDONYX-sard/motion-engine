@@ -26,14 +26,14 @@ pub enum HkbIntVariableSequencedDataSample {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "time", default)]
+    #[serde(rename = "time")]
     Time(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"value"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "value", default)]
+    #[serde(rename = "value")]
     Value(Primitive<i32>),
 }
 

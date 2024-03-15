@@ -27,7 +27,7 @@ pub enum HkpNamedMeshMaterial<'a> {
     /// -   type: `hkUint32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "filterInfo", default)]
+    #[serde(rename = "filterInfo")]
     FilterInfo(Primitive<u32>),
 
     /// # C++ Class Fields Info
@@ -35,7 +35,7 @@ pub enum HkpNamedMeshMaterial<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
 }
 

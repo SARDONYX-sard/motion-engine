@@ -26,35 +26,35 @@ pub enum HkContactPointMaterial {
     /// -   type: `hkUlong`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Class Fields Info
     /// -   name:`"friction"`
     /// -   type: `hkUint8`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "friction", default)]
+    #[serde(rename = "friction")]
     Friction(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"restitution"`
     /// -   type: `hkUint8`
     /// - offset: 5
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "restitution", default)]
+    #[serde(rename = "restitution")]
     Restitution(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"maxImpulse"`
     /// -   type: `hkUint8`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxImpulse", default)]
+    #[serde(rename = "maxImpulse")]
     MaxImpulse(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `hkUint8`
     /// - offset: 7
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "flags", default)]
+    #[serde(rename = "flags")]
     Flags(Primitive<u8>),
 }
 

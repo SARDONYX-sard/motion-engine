@@ -27,14 +27,14 @@ pub enum HkxMeshSection<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,28 +44,28 @@ pub enum HkxMeshSection<'a> {
     /// -   type: `struct hkxVertexBuffer*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexBuffer", default)]
+    #[serde(rename = "vertexBuffer")]
     VertexBuffer(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"indexBuffers"`
     /// -   type: `hkArray&lt;hkxIndexBuffer*&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "indexBuffers", default)]
+    #[serde(rename = "indexBuffers")]
     IndexBuffers(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"material"`
     /// -   type: `struct hkxMaterial*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "material", default)]
+    #[serde(rename = "material")]
     Material(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"userChannels"`
     /// -   type: `hkArray&lt;hkReferencedObject*&gt;`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userChannels", default)]
+    #[serde(rename = "userChannels")]
     UserChannels(HkArrayRef<Cow<'a, str>>),
 }
 

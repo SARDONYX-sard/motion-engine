@@ -26,21 +26,21 @@ pub enum HkbStateMachineProspectiveTransitionInfo {
     /// -   type: `struct hkbStateMachineTransitionInfoReference`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transitionInfoReference", default)]
+    #[serde(rename = "transitionInfoReference")]
     TransitionInfoReference(HkbStateMachineTransitionInfoReference),
     /// # C++ Class Fields Info
     /// -   name:`"transitionInfoReferenceForTE"`
     /// -   type: `struct hkbStateMachineTransitionInfoReference`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transitionInfoReferenceForTE", default)]
+    #[serde(rename = "transitionInfoReferenceForTE")]
     TransitionInfoReferenceForTe(HkbStateMachineTransitionInfoReference),
     /// # C++ Class Fields Info
     /// -   name:`"toStateId"`
     /// -   type: `hkInt32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "toStateId", default)]
+    #[serde(rename = "toStateId")]
     ToStateId(Primitive<i32>),
 }
 

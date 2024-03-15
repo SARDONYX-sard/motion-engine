@@ -26,7 +26,7 @@ pub enum HkSphere {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pos", default)]
+    #[serde(rename = "pos")]
     Pos(Vector4<f32>),
 }
 

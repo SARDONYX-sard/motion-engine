@@ -26,14 +26,14 @@ pub enum HkbRigidBodyRagdollControlData {
     /// -   type: `struct hkaKeyFrameHierarchyUtilityControlData`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "keyFrameHierarchyControlData", default)]
+    #[serde(rename = "keyFrameHierarchyControlData")]
     KeyFrameHierarchyControlData(HkaKeyFrameHierarchyUtilityControlData),
     /// # C++ Class Fields Info
     /// -   name:`"durationToBlend"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "durationToBlend", default)]
+    #[serde(rename = "durationToBlend")]
     DurationToBlend(Primitive<f32>),
 }
 

@@ -26,14 +26,14 @@ pub enum HkpEntityExtendedListeners {
     /// -   type: `struct hkpEntitySmallArraySerializeOverrideType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "activationListeners", default, skip_serializing)]
+    #[serde(rename = "activationListeners", skip_serializing)]
     ActivationListeners(HkpEntitySmallArraySerializeOverrideType),
     /// # C++ Class Fields Info
     /// -   name:`"entityListeners"`
     /// -   type: `struct hkpEntitySmallArraySerializeOverrideType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "entityListeners", default, skip_serializing)]
+    #[serde(rename = "entityListeners", skip_serializing)]
     EntityListeners(HkpEntitySmallArraySerializeOverrideType),
 }
 

@@ -27,7 +27,7 @@ pub enum HkxMaterial<'a> {
     /// -   type: `hkArray&lt;struct hkxAttributeGroup&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "attributeGroups", default)]
+    #[serde(rename = "attributeGroups")]
     AttributeGroups(HkArrayClass<HkxAttributeGroup>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -35,14 +35,14 @@ pub enum HkxMaterial<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -52,63 +52,63 @@ pub enum HkxMaterial<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"stages"`
     /// -   type: `hkArray&lt;struct hkxMaterialTextureStage&gt;`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "stages", default)]
+    #[serde(rename = "stages")]
     Stages(HkArrayClass<HkxMaterialTextureStage>),
     /// # C++ Class Fields Info
     /// -   name:`"diffuseColor"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "diffuseColor", default)]
+    #[serde(rename = "diffuseColor")]
     DiffuseColor(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"ambientColor"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ambientColor", default)]
+    #[serde(rename = "ambientColor")]
     AmbientColor(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"specularColor"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "specularColor", default)]
+    #[serde(rename = "specularColor")]
     SpecularColor(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"emissiveColor"`
     /// -   type: `hkVector4`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "emissiveColor", default)]
+    #[serde(rename = "emissiveColor")]
     EmissiveColor(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"subMaterials"`
     /// -   type: `hkArray&lt;hkxMaterial*&gt;`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "subMaterials", default)]
+    #[serde(rename = "subMaterials")]
     SubMaterials(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"extraData"`
     /// -   type: `struct hkReferencedObject*`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "extraData", default)]
+    #[serde(rename = "extraData")]
     ExtraData(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"properties"`
     /// -   type: `hkArray&lt;struct hkxMaterialProperty&gt;`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "properties", default)]
+    #[serde(rename = "properties")]
     Properties(HkArrayClass<HkxMaterialProperty>),
 }
 

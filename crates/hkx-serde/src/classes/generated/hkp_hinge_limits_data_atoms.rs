@@ -26,21 +26,21 @@ pub enum HkpHingeLimitsDataAtoms {
     /// -   type: `struct hkpSetLocalRotationsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotations", default)]
+    #[serde(rename = "rotations")]
     Rotations(HkpSetLocalRotationsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"angLimit"`
     /// -   type: `struct hkpAngLimitConstraintAtom`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "angLimit", default)]
+    #[serde(rename = "angLimit")]
     AngLimit(HkpAngLimitConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"2dAng"`
     /// -   type: `struct hkp2dAngConstraintAtom`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "2dAng", default)]
+    #[serde(rename = "2dAng")]
     2DAng(Hkp2DAngConstraintAtom),
 }
 

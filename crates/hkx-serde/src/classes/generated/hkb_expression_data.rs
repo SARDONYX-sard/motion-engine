@@ -26,42 +26,42 @@ pub enum HkbExpressionData<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "expression", default)]
+    #[serde(rename = "expression")]
     Expression(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"assignmentVariableIndex"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "assignmentVariableIndex", default)]
+    #[serde(rename = "assignmentVariableIndex")]
     AssignmentVariableIndex(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"assignmentEventIndex"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "assignmentEventIndex", default)]
+    #[serde(rename = "assignmentEventIndex")]
     AssignmentEventIndex(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"eventMode"`
     /// -   type: `enum ExpressionEventMode`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "eventMode", default)]
+    #[serde(rename = "eventMode")]
     EventMode(Primitive<ExpressionEventMode>),
     /// # C++ Class Fields Info
     /// -   name:`"raisedEvent"`
     /// -   type: `hkBool`
     /// - offset: 13
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "raisedEvent", default, skip_serializing)]
+    #[serde(rename = "raisedEvent", skip_serializing)]
     RaisedEvent(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"wasTrueInPreviousFrame"`
     /// -   type: `hkBool`
     /// - offset: 14
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "wasTrueInPreviousFrame", default, skip_serializing)]
+    #[serde(rename = "wasTrueInPreviousFrame", skip_serializing)]
     WasTrueInPreviousFrame(Primitive<bool>),
 }
 

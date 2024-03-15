@@ -27,7 +27,7 @@ pub enum HkpRagdollMotorConstraintAtom<'a> {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -35,35 +35,35 @@ pub enum HkpRagdollMotorConstraintAtom<'a> {
     /// -   type: `hkBool`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isEnabled", default)]
+    #[serde(rename = "isEnabled")]
     IsEnabled(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"initializedOffset"`
     /// -   type: `hkInt16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "initializedOffset", default)]
+    #[serde(rename = "initializedOffset")]
     InitializedOffset(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"previousTargetAnglesOffset"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "previousTargetAnglesOffset", default)]
+    #[serde(rename = "previousTargetAnglesOffset")]
     PreviousTargetAnglesOffset(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"target_bRca"`
     /// -   type: `hkMatrix3`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "target_bRca", default)]
+    #[serde(rename = "target_bRca")]
     TargetBRca(Matrix3<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"motors"`
     /// -   type: `struct hkpConstraintMotor*`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "motors", default)]
+    #[serde(rename = "motors")]
     Motors(Primitive<Cow<'a, str>>),
 }
 

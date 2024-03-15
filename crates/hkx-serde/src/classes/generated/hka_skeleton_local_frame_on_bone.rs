@@ -26,14 +26,14 @@ pub enum HkaSkeletonLocalFrameOnBone<'a> {
     /// -   type: `struct hkLocalFrame*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "localFrame", default)]
+    #[serde(rename = "localFrame")]
     LocalFrame(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"boneIndex"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "boneIndex", default)]
+    #[serde(rename = "boneIndex")]
     BoneIndex(Primitive<i32>),
 }
 

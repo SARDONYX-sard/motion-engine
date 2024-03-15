@@ -27,7 +27,7 @@ pub enum HkpTypedBroadPhaseHandle {
     /// -   type: `hkUint32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "id", default, skip_serializing)]
+    #[serde(rename = "id", skip_serializing)]
     Id(Primitive<u32>),
 
     /// # C++ Class Fields Info
@@ -35,28 +35,28 @@ pub enum HkpTypedBroadPhaseHandle {
     /// -   type: `hkInt8`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<i8>),
     /// # C++ Class Fields Info
     /// -   name:`"ownerOffset"`
     /// -   type: `hkInt8`
     /// - offset: 5
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "ownerOffset", default, skip_serializing)]
+    #[serde(rename = "ownerOffset", skip_serializing)]
     OwnerOffset(Primitive<i8>),
     /// # C++ Class Fields Info
     /// -   name:`"objectQualityType"`
     /// -   type: `hkInt8`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "objectQualityType", default)]
+    #[serde(rename = "objectQualityType")]
     ObjectQualityType(Primitive<i8>),
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilterInfo"`
     /// -   type: `hkUint32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "collisionFilterInfo", default)]
+    #[serde(rename = "collisionFilterInfo")]
     CollisionFilterInfo(Primitive<u32>),
 }
 

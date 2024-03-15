@@ -27,14 +27,14 @@ pub enum HkbSenseHandleModifier<'a> {
     /// -   type: `hkBool`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enable", default)]
+    #[serde(rename = "enable")]
     Enable(Primitive<bool>),
     /// # C++ Parent class(`hkbModifier`, parent: `hkbNode`) field Info
     /// -   name:`"padModifier"`
     /// -   type: `hkBool[3]`
     /// - offset: 41
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "padModifier", default, skip_serializing)]
+    #[serde(rename = "padModifier", skip_serializing)]
     PadModifier([Primitive<bool>; 3]),
 
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
@@ -42,35 +42,35 @@ pub enum HkbSenseHandleModifier<'a> {
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "id", default, skip_serializing)]
+    #[serde(rename = "id", skip_serializing)]
     Id(Primitive<i16>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cloneState", default, skip_serializing)]
+    #[serde(rename = "cloneState", skip_serializing)]
     CloneState(Primitive<Unknown>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "padNode", default, skip_serializing)]
+    #[serde(rename = "padNode", skip_serializing)]
     PadNode([Primitive<bool>; 1]),
 
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
@@ -78,21 +78,21 @@ pub enum HkbSenseHandleModifier<'a> {
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "variableBindingSet", default)]
+    #[serde(rename = "variableBindingSet")]
     VariableBindingSet(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cachedBindables", default, skip_serializing)]
+    #[serde(rename = "cachedBindables", skip_serializing)]
     CachedBindables(HkArrayRef<Primitive<()>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "areBindablesCached", default, skip_serializing)]
+    #[serde(rename = "areBindablesCached", skip_serializing)]
     AreBindablesCached(Primitive<bool>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -100,14 +100,14 @@ pub enum HkbSenseHandleModifier<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -117,133 +117,133 @@ pub enum HkbSenseHandleModifier<'a> {
     /// -   type: `struct hkbHandle`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "handle", default, skip_serializing)]
+    #[serde(rename = "handle", skip_serializing)]
     Handle(HkbHandle),
     /// # C++ Class Fields Info
     /// -   name:`"sensorLocalOffset"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sensorLocalOffset", default)]
+    #[serde(rename = "sensorLocalOffset")]
     SensorLocalOffset(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"ranges"`
     /// -   type: `hkArray&lt;struct hkbSenseHandleModifierRange&gt;`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ranges", default)]
+    #[serde(rename = "ranges")]
     Ranges(HkArrayClass<HkbSenseHandleModifierRange>),
     /// # C++ Class Fields Info
     /// -   name:`"handleOut"`
     /// -   type: `struct hkbHandle*`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "handleOut", default)]
+    #[serde(rename = "handleOut")]
     HandleOut(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"handleIn"`
     /// -   type: `struct hkbHandle*`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "handleIn", default)]
+    #[serde(rename = "handleIn")]
     HandleIn(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"localFrameName"`
     /// -   type: `hkStringPtr`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "localFrameName", default)]
+    #[serde(rename = "localFrameName")]
     LocalFrameName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"sensorLocalFrameName"`
     /// -   type: `hkStringPtr`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sensorLocalFrameName", default)]
+    #[serde(rename = "sensorLocalFrameName")]
     SensorLocalFrameName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"minDistance"`
     /// -   type: `hkReal`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minDistance", default)]
+    #[serde(rename = "minDistance")]
     MinDistance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxDistance"`
     /// -   type: `hkReal`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxDistance", default)]
+    #[serde(rename = "maxDistance")]
     MaxDistance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"distanceOut"`
     /// -   type: `hkReal`
     /// - offset: 132
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "distanceOut", default)]
+    #[serde(rename = "distanceOut")]
     DistanceOut(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilterInfo"`
     /// -   type: `hkUint32`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "collisionFilterInfo", default)]
+    #[serde(rename = "collisionFilterInfo")]
     CollisionFilterInfo(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"sensorRagdollBoneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 140
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sensorRagdollBoneIndex", default)]
+    #[serde(rename = "sensorRagdollBoneIndex")]
     SensorRagdollBoneIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"sensorAnimationBoneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 142
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sensorAnimationBoneIndex", default)]
+    #[serde(rename = "sensorAnimationBoneIndex")]
     SensorAnimationBoneIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"sensingMode"`
     /// -   type: `enum SensingMode`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sensingMode", default)]
+    #[serde(rename = "sensingMode")]
     SensingMode(Primitive<SensingMode>),
     /// # C++ Class Fields Info
     /// -   name:`"extrapolateSensorPosition"`
     /// -   type: `hkBool`
     /// - offset: 145
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "extrapolateSensorPosition", default)]
+    #[serde(rename = "extrapolateSensorPosition")]
     ExtrapolateSensorPosition(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"keepFirstSensedHandle"`
     /// -   type: `hkBool`
     /// - offset: 146
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "keepFirstSensedHandle", default)]
+    #[serde(rename = "keepFirstSensedHandle")]
     KeepFirstSensedHandle(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"foundHandleOut"`
     /// -   type: `hkBool`
     /// - offset: 147
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "foundHandleOut", default)]
+    #[serde(rename = "foundHandleOut")]
     FoundHandleOut(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"timeSinceLastModify"`
     /// -   type: `hkReal`
     /// - offset: 148
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "timeSinceLastModify", default, skip_serializing)]
+    #[serde(rename = "timeSinceLastModify", skip_serializing)]
     TimeSinceLastModify(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"rangeIndexForEventToSendNextUpdate"`
     /// -   type: `hkInt32`
     /// - offset: 152
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "rangeIndexForEventToSendNextUpdate", default, skip_serializing)]
+    #[serde(rename = "rangeIndexForEventToSendNextUpdate", skip_serializing)]
     RangeIndexForEventToSendNextUpdate(Primitive<i32>),
 }
 

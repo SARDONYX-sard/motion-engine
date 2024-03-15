@@ -21,48 +21,48 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkaSplineCompressedAnimation {
+pub enum HkaSplineCompressedAnimation<'a> {
     /// # C++ Parent class(`hkaAnimation`, parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum AnimationType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AnimationType>),
     /// # C++ Parent class(`hkaAnimation`, parent: `hkReferencedObject`) field Info
     /// -   name:`"duration"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "duration", default)]
+    #[serde(rename = "duration")]
     Duration(Primitive<f32>),
     /// # C++ Parent class(`hkaAnimation`, parent: `hkReferencedObject`) field Info
     /// -   name:`"numberOfTransformTracks"`
     /// -   type: `hkInt32`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numberOfTransformTracks", default)]
+    #[serde(rename = "numberOfTransformTracks")]
     NumberOfTransformTracks(Primitive<i32>),
     /// # C++ Parent class(`hkaAnimation`, parent: `hkReferencedObject`) field Info
     /// -   name:`"numberOfFloatTracks"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numberOfFloatTracks", default)]
+    #[serde(rename = "numberOfFloatTracks")]
     NumberOfFloatTracks(Primitive<i32>),
     /// # C++ Parent class(`hkaAnimation`, parent: `hkReferencedObject`) field Info
     /// -   name:`"extractedMotion"`
     /// -   type: `struct hkaAnimatedReferenceFrame*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "extractedMotion", default)]
+    #[serde(rename = "extractedMotion")]
     ExtractedMotion(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkaAnimation`, parent: `hkReferencedObject`) field Info
     /// -   name:`"annotationTracks"`
     /// -   type: `hkArray&lt;struct hkaAnnotationTrack&gt;`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "annotationTracks", default)]
+    #[serde(rename = "annotationTracks")]
     AnnotationTracks(HkArrayClass<HkaAnnotationTrack>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -70,14 +70,14 @@ pub enum HkaSplineCompressedAnimation {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -87,91 +87,91 @@ pub enum HkaSplineCompressedAnimation {
     /// -   type: `hkInt32`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numFrames", default)]
+    #[serde(rename = "numFrames")]
     NumFrames(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"numBlocks"`
     /// -   type: `hkInt32`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numBlocks", default)]
+    #[serde(rename = "numBlocks")]
     NumBlocks(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxFramesPerBlock"`
     /// -   type: `hkInt32`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxFramesPerBlock", default)]
+    #[serde(rename = "maxFramesPerBlock")]
     MaxFramesPerBlock(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"maskAndQuantizationSize"`
     /// -   type: `hkInt32`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maskAndQuantizationSize", default)]
+    #[serde(rename = "maskAndQuantizationSize")]
     MaskAndQuantizationSize(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"blockDuration"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "blockDuration", default)]
+    #[serde(rename = "blockDuration")]
     BlockDuration(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"blockInverseDuration"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "blockInverseDuration", default)]
+    #[serde(rename = "blockInverseDuration")]
     BlockInverseDuration(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"frameDuration"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "frameDuration", default)]
+    #[serde(rename = "frameDuration")]
     FrameDuration(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"blockOffsets"`
     /// -   type: `hkArray&lt;hkUint32&gt;`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "blockOffsets", default)]
+    #[serde(rename = "blockOffsets")]
     BlockOffsets(HkArrayRef<Primitive<u32>>),
     /// # C++ Class Fields Info
     /// -   name:`"floatBlockOffsets"`
     /// -   type: `hkArray&lt;hkUint32&gt;`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "floatBlockOffsets", default)]
+    #[serde(rename = "floatBlockOffsets")]
     FloatBlockOffsets(HkArrayRef<Primitive<u32>>),
     /// # C++ Class Fields Info
     /// -   name:`"transformOffsets"`
     /// -   type: `hkArray&lt;hkUint32&gt;`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformOffsets", default)]
+    #[serde(rename = "transformOffsets")]
     TransformOffsets(HkArrayRef<Primitive<u32>>),
     /// # C++ Class Fields Info
     /// -   name:`"floatOffsets"`
     /// -   type: `hkArray&lt;hkUint32&gt;`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "floatOffsets", default)]
+    #[serde(rename = "floatOffsets")]
     FloatOffsets(HkArrayRef<Primitive<u32>>),
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "data", default)]
+    #[serde(rename = "data")]
     Data(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"endian"`
     /// -   type: `hkInt32`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "endian", default)]
+    #[serde(rename = "endian")]
     Endian(Primitive<i32>),
 }
 

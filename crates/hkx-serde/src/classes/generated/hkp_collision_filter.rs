@@ -27,14 +27,14 @@ pub enum HkpCollisionFilter {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,21 +44,21 @@ pub enum HkpCollisionFilter {
     /// -   type: `hkUint32[2]`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "prepad", default)]
+    #[serde(rename = "prepad")]
     Prepad([Primitive<u32>; 2]),
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum hkpFilterType`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<HkpFilterType>),
     /// # C++ Class Fields Info
     /// -   name:`"postpad"`
     /// -   type: `hkUint32[3]`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "postpad", default)]
+    #[serde(rename = "postpad")]
     Postpad([Primitive<u32>; 3]),
 }
 

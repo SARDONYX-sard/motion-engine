@@ -27,7 +27,7 @@ pub enum HkpConeLimitConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -35,56 +35,56 @@ pub enum HkpConeLimitConstraintAtom {
     /// -   type: `hkUint8`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isEnabled", default)]
+    #[serde(rename = "isEnabled")]
     IsEnabled(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"twistAxisInA"`
     /// -   type: `hkUint8`
     /// - offset: 3
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "twistAxisInA", default)]
+    #[serde(rename = "twistAxisInA")]
     TwistAxisInA(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"refAxisInB"`
     /// -   type: `hkUint8`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "refAxisInB", default)]
+    #[serde(rename = "refAxisInB")]
     RefAxisInB(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"angleMeasurementMode"`
     /// -   type: `enum MeasurementMode`
     /// - offset: 5
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "angleMeasurementMode", default)]
+    #[serde(rename = "angleMeasurementMode")]
     AngleMeasurementMode(Primitive<MeasurementMode>),
     /// # C++ Class Fields Info
     /// -   name:`"memOffsetToAngleOffset"`
     /// -   type: `hkUint8`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "memOffsetToAngleOffset", default)]
+    #[serde(rename = "memOffsetToAngleOffset")]
     MemOffsetToAngleOffset(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"minAngle"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minAngle", default)]
+    #[serde(rename = "minAngle")]
     MinAngle(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxAngle"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxAngle", default)]
+    #[serde(rename = "maxAngle")]
     MaxAngle(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"angularLimitsTauFactor"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "angularLimitsTauFactor", default)]
+    #[serde(rename = "angularLimitsTauFactor")]
     AngularLimitsTauFactor(Primitive<f32>),
 }
 

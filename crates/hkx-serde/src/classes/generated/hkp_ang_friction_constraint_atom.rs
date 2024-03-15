@@ -27,7 +27,7 @@ pub enum HkpAngFrictionConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -35,28 +35,28 @@ pub enum HkpAngFrictionConstraintAtom {
     /// -   type: `hkUint8`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isEnabled", default)]
+    #[serde(rename = "isEnabled")]
     IsEnabled(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"firstFrictionAxis"`
     /// -   type: `hkUint8`
     /// - offset: 3
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "firstFrictionAxis", default)]
+    #[serde(rename = "firstFrictionAxis")]
     FirstFrictionAxis(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"numFrictionAxes"`
     /// -   type: `hkUint8`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numFrictionAxes", default)]
+    #[serde(rename = "numFrictionAxes")]
     NumFrictionAxes(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"maxFrictionTorque"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxFrictionTorque", default)]
+    #[serde(rename = "maxFrictionTorque")]
     MaxFrictionTorque(Primitive<f32>),
 }
 

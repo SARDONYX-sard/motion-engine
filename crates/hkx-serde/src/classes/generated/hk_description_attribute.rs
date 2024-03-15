@@ -26,7 +26,7 @@ pub enum HkDescriptionAttribute<'a> {
     /// -   type: `char*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "string", default)]
+    #[serde(rename = "string")]
     String(Primitive<Cow<'a, str>>),
 }
 

@@ -26,56 +26,56 @@ pub enum HkpCompressedMeshShapeChunk {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "offset", default)]
+    #[serde(rename = "offset")]
     Offset(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"vertices"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertices", default)]
+    #[serde(rename = "vertices")]
     Vertices(HkArrayRef<Primitive<u16>>),
     /// # C++ Class Fields Info
     /// -   name:`"indices"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "indices", default)]
+    #[serde(rename = "indices")]
     Indices(HkArrayRef<Primitive<u16>>),
     /// # C++ Class Fields Info
     /// -   name:`"stripLengths"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "stripLengths", default)]
+    #[serde(rename = "stripLengths")]
     StripLengths(HkArrayRef<Primitive<u16>>),
     /// # C++ Class Fields Info
     /// -   name:`"weldingInfo"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "weldingInfo", default)]
+    #[serde(rename = "weldingInfo")]
     WeldingInfo(HkArrayRef<Primitive<u16>>),
     /// # C++ Class Fields Info
     /// -   name:`"materialInfo"`
     /// -   type: `hkUint32`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "materialInfo", default)]
+    #[serde(rename = "materialInfo")]
     MaterialInfo(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"reference"`
     /// -   type: `hkUint16`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "reference", default)]
+    #[serde(rename = "reference")]
     Reference(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"transformIndex"`
     /// -   type: `hkUint16`
     /// - offset: 70
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformIndex", default)]
+    #[serde(rename = "transformIndex")]
     TransformIndex(Primitive<u16>),
 }
 

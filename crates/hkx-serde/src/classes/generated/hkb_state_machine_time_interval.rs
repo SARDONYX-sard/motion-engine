@@ -26,28 +26,28 @@ pub enum HkbStateMachineTimeInterval {
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enterEventId", default)]
+    #[serde(rename = "enterEventId")]
     EnterEventId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"exitEventId"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "exitEventId", default)]
+    #[serde(rename = "exitEventId")]
     ExitEventId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"enterTime"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enterTime", default)]
+    #[serde(rename = "enterTime")]
     EnterTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"exitTime"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "exitTime", default)]
+    #[serde(rename = "exitTime")]
     ExitTime(Primitive<f32>),
 }
 

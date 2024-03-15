@@ -27,14 +27,14 @@ pub enum HkaAnimationBinding<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,35 +44,35 @@ pub enum HkaAnimationBinding<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "originalSkeletonName", default)]
+    #[serde(rename = "originalSkeletonName")]
     OriginalSkeletonName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"animation"`
     /// -   type: `struct hkaAnimation*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "animation", default)]
+    #[serde(rename = "animation")]
     Animation(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"transformTrackToBoneIndices"`
     /// -   type: `hkArray&lt;hkInt16&gt;`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformTrackToBoneIndices", default)]
+    #[serde(rename = "transformTrackToBoneIndices")]
     TransformTrackToBoneIndices(HkArrayRef<Primitive<i16>>),
     /// # C++ Class Fields Info
     /// -   name:`"floatTrackToFloatSlotIndices"`
     /// -   type: `hkArray&lt;hkInt16&gt;`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "floatTrackToFloatSlotIndices", default)]
+    #[serde(rename = "floatTrackToFloatSlotIndices")]
     FloatTrackToFloatSlotIndices(HkArrayRef<Primitive<i16>>),
     /// # C++ Class Fields Info
     /// -   name:`"blendHint"`
     /// -   type: `enum BlendHint`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "blendHint", default)]
+    #[serde(rename = "blendHint")]
     BlendHint(Primitive<BlendHint>),
 }
 

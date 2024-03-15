@@ -27,14 +27,14 @@ pub enum HkbBehaviorGraphData<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,56 +44,56 @@ pub enum HkbBehaviorGraphData<'a> {
     /// -   type: `hkArray&lt;hkReal&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "attributeDefaults", default)]
+    #[serde(rename = "attributeDefaults")]
     AttributeDefaults(HkArrayRef<Primitive<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"variableInfos"`
     /// -   type: `hkArray&lt;struct hkbVariableInfo&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "variableInfos", default)]
+    #[serde(rename = "variableInfos")]
     VariableInfos(HkArrayClass<HkbVariableInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"characterPropertyInfos"`
     /// -   type: `hkArray&lt;struct hkbVariableInfo&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "characterPropertyInfos", default)]
+    #[serde(rename = "characterPropertyInfos")]
     CharacterPropertyInfos(HkArrayClass<HkbVariableInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"eventInfos"`
     /// -   type: `hkArray&lt;struct hkbEventInfo&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "eventInfos", default)]
+    #[serde(rename = "eventInfos")]
     EventInfos(HkArrayClass<HkbEventInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"wordMinVariableValues"`
     /// -   type: `hkArray&lt;struct hkbVariableValue&gt;`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wordMinVariableValues", default)]
+    #[serde(rename = "wordMinVariableValues")]
     WordMinVariableValues(HkArrayClass<HkbVariableValue>),
     /// # C++ Class Fields Info
     /// -   name:`"wordMaxVariableValues"`
     /// -   type: `hkArray&lt;struct hkbVariableValue&gt;`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wordMaxVariableValues", default)]
+    #[serde(rename = "wordMaxVariableValues")]
     WordMaxVariableValues(HkArrayClass<HkbVariableValue>),
     /// # C++ Class Fields Info
     /// -   name:`"variableInitialValues"`
     /// -   type: `struct hkbVariableValueSet*`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "variableInitialValues", default)]
+    #[serde(rename = "variableInitialValues")]
     VariableInitialValues(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"stringData"`
     /// -   type: `struct hkbBehaviorGraphStringData*`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "stringData", default)]
+    #[serde(rename = "stringData")]
     StringData(Primitive<Cow<'a, str>>),
 }
 

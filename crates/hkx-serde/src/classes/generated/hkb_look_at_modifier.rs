@@ -21,20 +21,20 @@ use std::borrow::Cow;
 /// -   version: 3
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbLookAtModifier {
+pub enum HkbLookAtModifier<'a> {
     /// # C++ Parent class(`hkbModifier`, parent: `hkbNode`) field Info
     /// -   name:`"enable"`
     /// -   type: `hkBool`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enable", default)]
+    #[serde(rename = "enable")]
     Enable(Primitive<bool>),
     /// # C++ Parent class(`hkbModifier`, parent: `hkbNode`) field Info
     /// -   name:`"padModifier"`
     /// -   type: `hkBool[3]`
     /// - offset: 41
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "padModifier", default, skip_serializing)]
+    #[serde(rename = "padModifier", skip_serializing)]
     PadModifier([Primitive<bool>; 3]),
 
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
@@ -42,35 +42,35 @@ pub enum HkbLookAtModifier {
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "id", default, skip_serializing)]
+    #[serde(rename = "id", skip_serializing)]
     Id(Primitive<i16>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cloneState", default, skip_serializing)]
+    #[serde(rename = "cloneState", skip_serializing)]
     CloneState(Primitive<Unknown>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "padNode", default, skip_serializing)]
+    #[serde(rename = "padNode", skip_serializing)]
     PadNode([Primitive<bool>; 1]),
 
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
@@ -78,21 +78,21 @@ pub enum HkbLookAtModifier {
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "variableBindingSet", default)]
+    #[serde(rename = "variableBindingSet")]
     VariableBindingSet(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cachedBindables", default, skip_serializing)]
+    #[serde(rename = "cachedBindables", skip_serializing)]
     CachedBindables(HkArrayRef<Primitive<()>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "areBindablesCached", default, skip_serializing)]
+    #[serde(rename = "areBindablesCached", skip_serializing)]
     AreBindablesCached(Primitive<bool>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -100,14 +100,14 @@ pub enum HkbLookAtModifier {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -117,140 +117,140 @@ pub enum HkbLookAtModifier {
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "targetWS", default)]
+    #[serde(rename = "targetWS")]
     TargetWs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"headForwardLS"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "headForwardLS", default)]
+    #[serde(rename = "headForwardLS")]
     HeadForwardLs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"neckForwardLS"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "neckForwardLS", default)]
+    #[serde(rename = "neckForwardLS")]
     NeckForwardLs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"neckRightLS"`
     /// -   type: `hkVector4`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "neckRightLS", default)]
+    #[serde(rename = "neckRightLS")]
     NeckRightLs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"eyePositionHS"`
     /// -   type: `hkVector4`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "eyePositionHS", default)]
+    #[serde(rename = "eyePositionHS")]
     EyePositionHs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"newTargetGain"`
     /// -   type: `hkReal`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "newTargetGain", default)]
+    #[serde(rename = "newTargetGain")]
     NewTargetGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"onGain"`
     /// -   type: `hkReal`
     /// - offset: 132
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "onGain", default)]
+    #[serde(rename = "onGain")]
     OnGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"offGain"`
     /// -   type: `hkReal`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "offGain", default)]
+    #[serde(rename = "offGain")]
     OffGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"limitAngleDegrees"`
     /// -   type: `hkReal`
     /// - offset: 140
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "limitAngleDegrees", default)]
+    #[serde(rename = "limitAngleDegrees")]
     LimitAngleDegrees(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"limitAngleLeft"`
     /// -   type: `hkReal`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "limitAngleLeft", default)]
+    #[serde(rename = "limitAngleLeft")]
     LimitAngleLeft(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"limitAngleRight"`
     /// -   type: `hkReal`
     /// - offset: 148
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "limitAngleRight", default)]
+    #[serde(rename = "limitAngleRight")]
     LimitAngleRight(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"limitAngleUp"`
     /// -   type: `hkReal`
     /// - offset: 152
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "limitAngleUp", default)]
+    #[serde(rename = "limitAngleUp")]
     LimitAngleUp(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"limitAngleDown"`
     /// -   type: `hkReal`
     /// - offset: 156
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "limitAngleDown", default)]
+    #[serde(rename = "limitAngleDown")]
     LimitAngleDown(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"headIndex"`
     /// -   type: `hkInt16`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "headIndex", default)]
+    #[serde(rename = "headIndex")]
     HeadIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"neckIndex"`
     /// -   type: `hkInt16`
     /// - offset: 162
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "neckIndex", default)]
+    #[serde(rename = "neckIndex")]
     NeckIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"isOn"`
     /// -   type: `hkBool`
     /// - offset: 164
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isOn", default)]
+    #[serde(rename = "isOn")]
     IsOn(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"individualLimitsOn"`
     /// -   type: `hkBool`
     /// - offset: 165
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "individualLimitsOn", default)]
+    #[serde(rename = "individualLimitsOn")]
     IndividualLimitsOn(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"isTargetInsideLimitCone"`
     /// -   type: `hkBool`
     /// - offset: 166
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isTargetInsideLimitCone", default)]
+    #[serde(rename = "isTargetInsideLimitCone")]
     IsTargetInsideLimitCone(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"lookAtLastTargetWS"`
     /// -   type: `hkVector4`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "lookAtLastTargetWS", default, skip_serializing)]
+    #[serde(rename = "lookAtLastTargetWS", skip_serializing)]
     LookAtLastTargetWs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"lookAtWeight"`
     /// -   type: `hkReal`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "lookAtWeight", default, skip_serializing)]
+    #[serde(rename = "lookAtWeight", skip_serializing)]
     LookAtWeight(Primitive<f32>),
 }
 

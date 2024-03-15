@@ -26,21 +26,21 @@ pub enum HkGizmoAttribute<'a> {
     /// -   type: `hkBool`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "visible", default)]
+    #[serde(rename = "visible")]
     Visible(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"label"`
     /// -   type: `char*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "label", default)]
+    #[serde(rename = "label")]
     Label(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum GizmoType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<GizmoType>),
 }
 

@@ -27,14 +27,14 @@ pub enum HkbAttachmentSetup {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,56 +44,56 @@ pub enum HkbAttachmentSetup {
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "blendInTime", default)]
+    #[serde(rename = "blendInTime")]
     BlendInTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"moveAttacherFraction"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "moveAttacherFraction", default)]
+    #[serde(rename = "moveAttacherFraction")]
     MoveAttacherFraction(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"gain"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "gain", default)]
+    #[serde(rename = "gain")]
     Gain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"extrapolationTimeStep"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "extrapolationTimeStep", default)]
+    #[serde(rename = "extrapolationTimeStep")]
     ExtrapolationTimeStep(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"fixUpGain"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fixUpGain", default)]
+    #[serde(rename = "fixUpGain")]
     FixUpGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxLinearDistance"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxLinearDistance", default)]
+    #[serde(rename = "maxLinearDistance")]
     MaxLinearDistance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxAngularDistance"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxAngularDistance", default)]
+    #[serde(rename = "maxAngularDistance")]
     MaxAngularDistance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"attachmentType"`
     /// -   type: `enum AttachmentType`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "attachmentType", default)]
+    #[serde(rename = "attachmentType")]
     AttachmentType(Primitive<AttachmentType>),
 }
 

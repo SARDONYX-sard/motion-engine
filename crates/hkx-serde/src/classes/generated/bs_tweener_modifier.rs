@@ -21,20 +21,20 @@ use std::borrow::Cow;
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum BsTweenerModifier {
+pub enum BsTweenerModifier<'a> {
     /// # C++ Parent class(`hkbModifier`, parent: `hkbNode`) field Info
     /// -   name:`"enable"`
     /// -   type: `hkBool`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enable", default)]
+    #[serde(rename = "enable")]
     Enable(Primitive<bool>),
     /// # C++ Parent class(`hkbModifier`, parent: `hkbNode`) field Info
     /// -   name:`"padModifier"`
     /// -   type: `hkBool[3]`
     /// - offset: 41
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "padModifier", default, skip_serializing)]
+    #[serde(rename = "padModifier", skip_serializing)]
     PadModifier([Primitive<bool>; 3]),
 
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
@@ -42,35 +42,35 @@ pub enum BsTweenerModifier {
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "id", default, skip_serializing)]
+    #[serde(rename = "id", skip_serializing)]
     Id(Primitive<i16>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cloneState", default, skip_serializing)]
+    #[serde(rename = "cloneState", skip_serializing)]
     CloneState(Primitive<Unknown>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "padNode", default, skip_serializing)]
+    #[serde(rename = "padNode", skip_serializing)]
     PadNode([Primitive<bool>; 1]),
 
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
@@ -78,21 +78,21 @@ pub enum BsTweenerModifier {
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "variableBindingSet", default)]
+    #[serde(rename = "variableBindingSet")]
     VariableBindingSet(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cachedBindables", default, skip_serializing)]
+    #[serde(rename = "cachedBindables", skip_serializing)]
     CachedBindables(HkArrayRef<Primitive<()>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "areBindablesCached", default, skip_serializing)]
+    #[serde(rename = "areBindablesCached", skip_serializing)]
     AreBindablesCached(Primitive<bool>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -100,14 +100,14 @@ pub enum BsTweenerModifier {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -117,63 +117,63 @@ pub enum BsTweenerModifier {
     /// -   type: `hkBool`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "tweenPosition", default)]
+    #[serde(rename = "tweenPosition")]
     TweenPosition(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"tweenRotation"`
     /// -   type: `hkBool`
     /// - offset: 45
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "tweenRotation", default)]
+    #[serde(rename = "tweenRotation")]
     TweenRotation(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"useTweenDuration"`
     /// -   type: `hkBool`
     /// - offset: 46
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "useTweenDuration", default)]
+    #[serde(rename = "useTweenDuration")]
     UseTweenDuration(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"tweenDuration"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "tweenDuration", default)]
+    #[serde(rename = "tweenDuration")]
     TweenDuration(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"targetPosition"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "targetPosition", default)]
+    #[serde(rename = "targetPosition")]
     TargetPosition(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"targetRotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "targetRotation", default)]
+    #[serde(rename = "targetRotation")]
     TargetRotation(Quaternion<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"duration"`
     /// -   type: `hkReal`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "duration", default, skip_serializing)]
+    #[serde(rename = "duration", skip_serializing)]
     Duration(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"startTransform"`
     /// -   type: `hkQsTransform`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "startTransform", default, skip_serializing)]
+    #[serde(rename = "startTransform", skip_serializing)]
     StartTransform(QsTransform<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"time"`
     /// -   type: `hkReal`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "time", default, skip_serializing)]
+    #[serde(rename = "time", skip_serializing)]
     Time(Primitive<f32>),
 }
 

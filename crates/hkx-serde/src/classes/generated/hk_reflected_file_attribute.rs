@@ -26,7 +26,7 @@ pub enum HkReflectedFileAttribute<'a> {
     /// -   type: `char*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "value", default)]
+    #[serde(rename = "value")]
     Value(Primitive<Cow<'a, str>>),
 }
 

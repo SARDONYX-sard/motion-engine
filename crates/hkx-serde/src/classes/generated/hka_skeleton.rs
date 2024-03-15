@@ -27,14 +27,14 @@ pub enum HkaSkeleton<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,49 +44,49 @@ pub enum HkaSkeleton<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"parentIndices"`
     /// -   type: `hkArray&lt;hkInt16&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "parentIndices", default)]
+    #[serde(rename = "parentIndices")]
     ParentIndices(HkArrayRef<Primitive<i16>>),
     /// # C++ Class Fields Info
     /// -   name:`"bones"`
     /// -   type: `hkArray&lt;struct hkaBone&gt;`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bones", default)]
+    #[serde(rename = "bones")]
     Bones(HkArrayClass<HkaBone>),
     /// # C++ Class Fields Info
     /// -   name:`"referencePose"`
     /// -   type: `hkArray&lt;hkQsTransform&gt;`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "referencePose", default)]
+    #[serde(rename = "referencePose")]
     ReferencePose(HkArrayVector<QsTransform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"referenceFloats"`
     /// -   type: `hkArray&lt;hkReal&gt;`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "referenceFloats", default)]
+    #[serde(rename = "referenceFloats")]
     ReferenceFloats(HkArrayRef<Primitive<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"floatSlots"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "floatSlots", default)]
+    #[serde(rename = "floatSlots")]
     FloatSlots(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"localFrames"`
     /// -   type: `hkArray&lt;struct hkaSkeletonLocalFrameOnBone&gt;`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "localFrames", default)]
+    #[serde(rename = "localFrames")]
     LocalFrames(HkArrayClass<HkaSkeletonLocalFrameOnBone>),
 }
 

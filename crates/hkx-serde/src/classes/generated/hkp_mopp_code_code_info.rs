@@ -26,7 +26,7 @@ pub enum HkpMoppCodeCodeInfo {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "offset", default)]
+    #[serde(rename = "offset")]
     Offset(Vector4<f32>),
 }
 

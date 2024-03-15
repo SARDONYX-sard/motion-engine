@@ -27,14 +27,14 @@ pub enum HkpRemoveTerminalsMoppModifier<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,14 +44,14 @@ pub enum HkpRemoveTerminalsMoppModifier<'a> {
     /// -   type: `hkArray&lt;hkUint32&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "removeInfo", default)]
+    #[serde(rename = "removeInfo")]
     RemoveInfo(HkArrayRef<Primitive<u32>>),
     /// # C++ Class Fields Info
     /// -   name:`"tempShapesToRemove"`
     /// -   type: `void*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "tempShapesToRemove", default, skip_serializing)]
+    #[serde(rename = "tempShapesToRemove", skip_serializing)]
     TempShapesToRemove(Primitive<Cow<'a, str>>),
 }
 

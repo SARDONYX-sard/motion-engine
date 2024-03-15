@@ -26,49 +26,49 @@ pub enum HkbStateMachineActiveTransitionInfo<'a> {
     /// -   type: `void*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "transitionEffect", default, skip_serializing)]
+    #[serde(rename = "transitionEffect", skip_serializing)]
     TransitionEffect(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"transitionEffectInternalStateInfo"`
     /// -   type: `struct hkbNodeInternalStateInfo*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transitionEffectInternalStateInfo", default)]
+    #[serde(rename = "transitionEffectInternalStateInfo")]
     TransitionEffectInternalStateInfo(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"transitionInfoReference"`
     /// -   type: `struct hkbStateMachineTransitionInfoReference`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transitionInfoReference", default)]
+    #[serde(rename = "transitionInfoReference")]
     TransitionInfoReference(HkbStateMachineTransitionInfoReference),
     /// # C++ Class Fields Info
     /// -   name:`"transitionInfoReferenceForTE"`
     /// -   type: `struct hkbStateMachineTransitionInfoReference`
     /// - offset: 14
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transitionInfoReferenceForTE", default)]
+    #[serde(rename = "transitionInfoReferenceForTE")]
     TransitionInfoReferenceForTe(HkbStateMachineTransitionInfoReference),
     /// # C++ Class Fields Info
     /// -   name:`"fromStateId"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fromStateId", default)]
+    #[serde(rename = "fromStateId")]
     FromStateId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"toStateId"`
     /// -   type: `hkInt32`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "toStateId", default)]
+    #[serde(rename = "toStateId")]
     ToStateId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"isReturnToPreviousState"`
     /// -   type: `hkBool`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isReturnToPreviousState", default)]
+    #[serde(rename = "isReturnToPreviousState")]
     IsReturnToPreviousState(Primitive<bool>),
 }
 

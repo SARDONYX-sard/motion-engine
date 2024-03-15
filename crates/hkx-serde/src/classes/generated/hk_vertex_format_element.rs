@@ -26,42 +26,42 @@ pub enum HkVertexFormatElement {
     /// -   type: `enum ComponentType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "dataType", default)]
+    #[serde(rename = "dataType")]
     DataType(Primitive<ComponentType>),
     /// # C++ Class Fields Info
     /// -   name:`"numValues"`
     /// -   type: `hkUint8`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numValues", default)]
+    #[serde(rename = "numValues")]
     NumValues(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"usage"`
     /// -   type: `enum ComponentUsage`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "usage", default)]
+    #[serde(rename = "usage")]
     Usage(Primitive<ComponentUsage>),
     /// # C++ Class Fields Info
     /// -   name:`"subUsage"`
     /// -   type: `hkUint8`
     /// - offset: 3
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "subUsage", default)]
+    #[serde(rename = "subUsage")]
     SubUsage(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `flags HintFlags`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "flags", default)]
+    #[serde(rename = "flags")]
     Flags(Primitive<HintFlags>),
     /// # C++ Class Fields Info
     /// -   name:`"pad"`
     /// -   type: `hkUint8[3]`
     /// - offset: 5
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pad", default)]
+    #[serde(rename = "pad")]
     Pad([Primitive<u8>; 3]),
 }
 

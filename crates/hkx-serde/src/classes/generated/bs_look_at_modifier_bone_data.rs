@@ -26,49 +26,49 @@ pub enum BsLookAtModifierBoneData {
     /// -   type: `hkInt16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "index", default)]
+    #[serde(rename = "index")]
     Index(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"fwdAxisLS"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fwdAxisLS", default)]
+    #[serde(rename = "fwdAxisLS")]
     FwdAxisLs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"limitAngleDegrees"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "limitAngleDegrees", default)]
+    #[serde(rename = "limitAngleDegrees")]
     LimitAngleDegrees(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"onGain"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "onGain", default)]
+    #[serde(rename = "onGain")]
     OnGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"offGain"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "offGain", default)]
+    #[serde(rename = "offGain")]
     OffGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"enabled"`
     /// -   type: `hkBool`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enabled", default)]
+    #[serde(rename = "enabled")]
     Enabled(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"currentFwdAxisLS"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "currentFwdAxisLS", default, skip_serializing)]
+    #[serde(rename = "currentFwdAxisLS", skip_serializing)]
     CurrentFwdAxisLs(Vector4<f32>),
 }
 

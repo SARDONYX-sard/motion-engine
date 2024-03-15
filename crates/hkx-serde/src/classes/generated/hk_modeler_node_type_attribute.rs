@@ -26,7 +26,7 @@ pub enum HkModelerNodeTypeAttribute {
     /// -   type: `enum ModelerType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<ModelerType>),
 }
 

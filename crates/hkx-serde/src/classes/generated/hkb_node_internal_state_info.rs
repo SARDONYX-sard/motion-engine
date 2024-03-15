@@ -27,14 +27,14 @@ pub enum HkbNodeInternalStateInfo<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,35 +44,35 @@ pub enum HkbNodeInternalStateInfo<'a> {
     /// -   type: `struct hkbGeneratorSyncInfo`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "syncInfo", default)]
+    #[serde(rename = "syncInfo")]
     SyncInfo(HkbGeneratorSyncInfo),
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"internalState"`
     /// -   type: `struct hkReferencedObject*`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "internalState", default)]
+    #[serde(rename = "internalState")]
     InternalState(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"nodeId"`
     /// -   type: `hkInt16`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "nodeId", default)]
+    #[serde(rename = "nodeId")]
     NodeId(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"hasActivateBeenCalled"`
     /// -   type: `hkBool`
     /// - offset: 98
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "hasActivateBeenCalled", default)]
+    #[serde(rename = "hasActivateBeenCalled")]
     HasActivateBeenCalled(Primitive<bool>),
 }
 

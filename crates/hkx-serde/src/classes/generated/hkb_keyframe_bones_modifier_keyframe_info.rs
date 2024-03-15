@@ -26,28 +26,28 @@ pub enum HkbKeyframeBonesModifierKeyframeInfo {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "keyframedPosition", default)]
+    #[serde(rename = "keyframedPosition")]
     KeyframedPosition(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"keyframedRotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "keyframedRotation", default)]
+    #[serde(rename = "keyframedRotation")]
     KeyframedRotation(Quaternion<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"boneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "boneIndex", default)]
+    #[serde(rename = "boneIndex")]
     BoneIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"isValid"`
     /// -   type: `hkBool`
     /// - offset: 34
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isValid", default)]
+    #[serde(rename = "isValid")]
     IsValid(Primitive<bool>),
 }
 

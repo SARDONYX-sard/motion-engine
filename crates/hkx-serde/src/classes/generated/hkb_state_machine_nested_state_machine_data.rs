@@ -26,14 +26,14 @@ pub enum HkbStateMachineNestedStateMachineData<'a> {
     /// -   type: `void*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "nestedStateMachine", default, skip_serializing)]
+    #[serde(rename = "nestedStateMachine", skip_serializing)]
     NestedStateMachine(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"eventIdMap"`
     /// -   type: `void*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "eventIdMap", default, skip_serializing)]
+    #[serde(rename = "eventIdMap", skip_serializing)]
     EventIdMap(Primitive<Cow<'a, str>>),
 }
 

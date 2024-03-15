@@ -27,14 +27,14 @@ pub enum HkpSimpleMeshShape {
     /// -   type: `hkBool`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "disableWelding", default)]
+    #[serde(rename = "disableWelding")]
     DisableWelding(Primitive<bool>),
     /// # C++ Parent class(`hkpShapeCollection`, parent: `hkpShape`) field Info
     /// -   name:`"collectionType"`
     /// -   type: `enum CollectionType`
     /// - offset: 21
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "collectionType", default)]
+    #[serde(rename = "collectionType")]
     CollectionType(Primitive<CollectionType>),
 
     /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
@@ -42,14 +42,14 @@ pub enum HkpSimpleMeshShape {
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "type", default, skip_serializing)]
+    #[serde(rename = "type", skip_serializing)]
     Type(Primitive<Unknown>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -57,14 +57,14 @@ pub enum HkpSimpleMeshShape {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -74,35 +74,35 @@ pub enum HkpSimpleMeshShape {
     /// -   type: `hkArray&lt;hkVector4&gt;`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertices", default)]
+    #[serde(rename = "vertices")]
     Vertices(HkArrayVector<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"triangles"`
     /// -   type: `hkArray&lt;struct hkpSimpleMeshShapeTriangle&gt;`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "triangles", default)]
+    #[serde(rename = "triangles")]
     Triangles(HkArrayClass<HkpSimpleMeshShapeTriangle>),
     /// # C++ Class Fields Info
     /// -   name:`"materialIndices"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "materialIndices", default)]
+    #[serde(rename = "materialIndices")]
     MaterialIndices(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"radius"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "radius", default)]
+    #[serde(rename = "radius")]
     Radius(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"weldingType"`
     /// -   type: `enum WeldingType`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "weldingType", default)]
+    #[serde(rename = "weldingType")]
     WeldingType(Primitive<WeldingType>),
 }
 

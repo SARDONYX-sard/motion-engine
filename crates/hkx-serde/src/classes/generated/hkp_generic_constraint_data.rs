@@ -27,7 +27,7 @@ pub enum HkpGenericConstraintData {
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -35,14 +35,14 @@ pub enum HkpGenericConstraintData {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -52,14 +52,14 @@ pub enum HkpGenericConstraintData {
     /// -   type: `struct hkpBridgeAtoms`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "atoms", default)]
+    #[serde(rename = "atoms")]
     Atoms(HkpBridgeAtoms),
     /// # C++ Class Fields Info
     /// -   name:`"scheme"`
     /// -   type: `struct hkpGenericConstraintDataScheme`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "scheme", default)]
+    #[serde(rename = "scheme")]
     Scheme(HkpGenericConstraintDataScheme),
 }
 

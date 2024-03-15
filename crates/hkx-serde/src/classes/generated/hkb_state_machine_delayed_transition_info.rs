@@ -26,28 +26,28 @@ pub enum HkbStateMachineDelayedTransitionInfo {
     /// -   type: `struct hkbStateMachineProspectiveTransitionInfo`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "delayedTransition", default)]
+    #[serde(rename = "delayedTransition")]
     DelayedTransition(HkbStateMachineProspectiveTransitionInfo),
     /// # C++ Class Fields Info
     /// -   name:`"timeDelayed"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "timeDelayed", default)]
+    #[serde(rename = "timeDelayed")]
     TimeDelayed(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"isDelayedTransitionReturnToPreviousState"`
     /// -   type: `hkBool`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isDelayedTransitionReturnToPreviousState", default)]
+    #[serde(rename = "isDelayedTransitionReturnToPreviousState")]
     IsDelayedTransitionReturnToPreviousState(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"wasInAbutRangeLastFrame"`
     /// -   type: `hkBool`
     /// - offset: 21
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wasInAbutRangeLastFrame", default)]
+    #[serde(rename = "wasInAbutRangeLastFrame")]
     WasInAbutRangeLastFrame(Primitive<bool>),
 }
 

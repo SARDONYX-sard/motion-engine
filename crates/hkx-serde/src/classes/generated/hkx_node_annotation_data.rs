@@ -26,14 +26,14 @@ pub enum HkxNodeAnnotationData<'a> {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "time", default)]
+    #[serde(rename = "time")]
     Time(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"description"`
     /// -   type: `hkStringPtr`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "description", default)]
+    #[serde(rename = "description")]
     Description(Primitive<Cow<'a, str>>),
 }
 

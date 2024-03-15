@@ -27,7 +27,7 @@ pub enum HkpStorageExtendedMeshShapeMaterial {
     /// -   type: `hkUint32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "filterInfo", default)]
+    #[serde(rename = "filterInfo")]
     FilterInfo(Primitive<u32>),
 
     /// # C++ Class Fields Info
@@ -35,21 +35,21 @@ pub enum HkpStorageExtendedMeshShapeMaterial {
     /// -   type: `hkHalf`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "restitution", default)]
+    #[serde(rename = "restitution")]
     Restitution(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"friction"`
     /// -   type: `hkHalf`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "friction", default)]
+    #[serde(rename = "friction")]
     Friction(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
 }
 

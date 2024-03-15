@@ -26,35 +26,35 @@ pub enum HkxVertexDescriptionElementDecl {
     /// -   type: `hkUint32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "byteOffset", default)]
+    #[serde(rename = "byteOffset")]
     ByteOffset(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum DataType`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<DataType>),
     /// # C++ Class Fields Info
     /// -   name:`"usage"`
     /// -   type: `enum DataUsage`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "usage", default)]
+    #[serde(rename = "usage")]
     Usage(Primitive<DataUsage>),
     /// # C++ Class Fields Info
     /// -   name:`"byteStride"`
     /// -   type: `hkUint32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "byteStride", default)]
+    #[serde(rename = "byteStride")]
     ByteStride(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"numElements"`
     /// -   type: `hkUint8`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numElements", default)]
+    #[serde(rename = "numElements")]
     NumElements(Primitive<u8>),
 }
 

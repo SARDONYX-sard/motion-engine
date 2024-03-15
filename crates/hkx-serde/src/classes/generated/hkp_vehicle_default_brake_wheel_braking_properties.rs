@@ -26,21 +26,21 @@ pub enum HkpVehicleDefaultBrakeWheelBrakingProperties {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxBreakingTorque", default)]
+    #[serde(rename = "maxBreakingTorque")]
     MaxBreakingTorque(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"minPedalInputToBlock"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minPedalInputToBlock", default)]
+    #[serde(rename = "minPedalInputToBlock")]
     MinPedalInputToBlock(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"isConnectedToHandbrake"`
     /// -   type: `hkBool`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isConnectedToHandbrake", default)]
+    #[serde(rename = "isConnectedToHandbrake")]
     IsConnectedToHandbrake(Primitive<bool>),
 }
 

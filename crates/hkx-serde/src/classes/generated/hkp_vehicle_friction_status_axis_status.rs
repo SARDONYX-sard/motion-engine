@@ -26,63 +26,63 @@ pub enum HkpVehicleFrictionStatusAxisStatus {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "forward_slip_velocity", default)]
+    #[serde(rename = "forward_slip_velocity")]
     ForwardSlipVelocity(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"side_slip_velocity"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "side_slip_velocity", default)]
+    #[serde(rename = "side_slip_velocity")]
     SideSlipVelocity(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"skid_energy_density"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "skid_energy_density", default)]
+    #[serde(rename = "skid_energy_density")]
     SkidEnergyDensity(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"side_force"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "side_force", default)]
+    #[serde(rename = "side_force")]
     SideForce(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"delayed_forward_impulse"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "delayed_forward_impulse", default)]
+    #[serde(rename = "delayed_forward_impulse")]
     DelayedForwardImpulse(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"sideRhs"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sideRhs", default)]
+    #[serde(rename = "sideRhs")]
     SideRhs(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"forwardRhs"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "forwardRhs", default)]
+    #[serde(rename = "forwardRhs")]
     ForwardRhs(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"relativeSideForce"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "relativeSideForce", default)]
+    #[serde(rename = "relativeSideForce")]
     RelativeSideForce(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"relativeForwardForce"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "relativeForwardForce", default)]
+    #[serde(rename = "relativeForwardForce")]
     RelativeForwardForce(Primitive<f32>),
 }
 

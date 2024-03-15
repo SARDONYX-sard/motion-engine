@@ -26,14 +26,14 @@ pub enum HkbGeneratorSyncInfoSyncPoint {
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "id", default)]
+    #[serde(rename = "id")]
     Id(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"time"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "time", default)]
+    #[serde(rename = "time")]
     Time(Primitive<f32>),
 }
 

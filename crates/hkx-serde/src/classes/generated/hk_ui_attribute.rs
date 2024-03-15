@@ -26,56 +26,56 @@ pub enum HkUiAttribute<'a> {
     /// -   type: `hkBool`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "visible", default)]
+    #[serde(rename = "visible")]
     Visible(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"hideInModeler"`
     /// -   type: `enum HideInModeler`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "hideInModeler", default)]
+    #[serde(rename = "hideInModeler")]
     HideInModeler(Primitive<HideInModeler>),
     /// # C++ Class Fields Info
     /// -   name:`"label"`
     /// -   type: `char*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "label", default)]
+    #[serde(rename = "label")]
     Label(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"group"`
     /// -   type: `char*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "group", default)]
+    #[serde(rename = "group")]
     Group(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"hideBaseClassMembers"`
     /// -   type: `char*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "hideBaseClassMembers", default)]
+    #[serde(rename = "hideBaseClassMembers")]
     HideBaseClassMembers(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"endGroup"`
     /// -   type: `hkBool`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "endGroup", default)]
+    #[serde(rename = "endGroup")]
     EndGroup(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"endGroup2"`
     /// -   type: `hkBool`
     /// - offset: 17
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "endGroup2", default)]
+    #[serde(rename = "endGroup2")]
     EndGroup2(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"advanced"`
     /// -   type: `hkBool`
     /// - offset: 18
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "advanced", default)]
+    #[serde(rename = "advanced")]
     Advanced(Primitive<bool>),
 }
 

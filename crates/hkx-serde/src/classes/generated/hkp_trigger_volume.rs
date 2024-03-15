@@ -27,14 +27,14 @@ pub enum HkpTriggerVolume<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,28 +44,28 @@ pub enum HkpTriggerVolume<'a> {
     /// -   type: `hkArray&lt;hkpRigidBody*&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "overlappingBodies", default)]
+    #[serde(rename = "overlappingBodies")]
     OverlappingBodies(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"eventQueue"`
     /// -   type: `hkArray&lt;struct hkpTriggerVolumeEventInfo&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "eventQueue", default)]
+    #[serde(rename = "eventQueue")]
     EventQueue(HkArrayClass<HkpTriggerVolumeEventInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"triggerBody"`
     /// -   type: `struct hkpRigidBody*`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "triggerBody", default)]
+    #[serde(rename = "triggerBody")]
     TriggerBody(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"sequenceNumber"`
     /// -   type: `hkUint32`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sequenceNumber", default)]
+    #[serde(rename = "sequenceNumber")]
     SequenceNumber(Primitive<u32>),
 }
 

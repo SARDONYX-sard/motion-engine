@@ -27,7 +27,7 @@ pub enum HkpSetLocalTranslationsConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -35,14 +35,14 @@ pub enum HkpSetLocalTranslationsConstraintAtom {
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "translationA", default)]
+    #[serde(rename = "translationA")]
     TranslationA(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"translationB"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "translationB", default)]
+    #[serde(rename = "translationB")]
     TranslationB(Vector4<f32>),
 }
 

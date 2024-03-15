@@ -29,14 +29,14 @@ pub enum HkaDefaultAnimatedReferenceFrame {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -46,28 +46,28 @@ pub enum HkaDefaultAnimatedReferenceFrame {
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "up", default)]
+    #[serde(rename = "up")]
     Up(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"forward"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "forward", default)]
+    #[serde(rename = "forward")]
     Forward(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"duration"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "duration", default)]
+    #[serde(rename = "duration")]
     Duration(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"referenceFrameSamples"`
     /// -   type: `hkArray&lt;hkVector4&gt;`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "referenceFrameSamples", default)]
+    #[serde(rename = "referenceFrameSamples")]
     ReferenceFrameSamples(HkArrayVector<Vector4<f32>>),
 }
 

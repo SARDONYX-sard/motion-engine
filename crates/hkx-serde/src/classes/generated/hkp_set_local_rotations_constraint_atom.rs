@@ -27,7 +27,7 @@ pub enum HkpSetLocalRotationsConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -35,14 +35,14 @@ pub enum HkpSetLocalRotationsConstraintAtom {
     /// -   type: `hkRotation`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotationA", default)]
+    #[serde(rename = "rotationA")]
     RotationA(Rotation<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"rotationB"`
     /// -   type: `hkRotation`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotationB", default)]
+    #[serde(rename = "rotationB")]
     RotationB(Rotation<f32>),
 }
 

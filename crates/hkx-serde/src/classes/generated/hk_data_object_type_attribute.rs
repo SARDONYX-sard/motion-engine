@@ -26,7 +26,7 @@ pub enum HkDataObjectTypeAttribute<'a> {
     /// -   type: `char*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "typeName", default)]
+    #[serde(rename = "typeName")]
     TypeName(Primitive<Cow<'a, str>>),
 }
 

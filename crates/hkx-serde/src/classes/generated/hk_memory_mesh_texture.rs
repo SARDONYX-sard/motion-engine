@@ -29,14 +29,14 @@ pub enum HkMemoryMeshTexture<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -46,49 +46,49 @@ pub enum HkMemoryMeshTexture<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "filename", default)]
+    #[serde(rename = "filename")]
     Filename(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "data", default)]
+    #[serde(rename = "data")]
     Data(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"format"`
     /// -   type: `enum Format`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "format", default)]
+    #[serde(rename = "format")]
     Format(Primitive<Format>),
     /// # C++ Class Fields Info
     /// -   name:`"hasMipMaps"`
     /// -   type: `hkBool`
     /// - offset: 25
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "hasMipMaps", default)]
+    #[serde(rename = "hasMipMaps")]
     HasMipMaps(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"filterMode"`
     /// -   type: `enum FilterMode`
     /// - offset: 26
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "filterMode", default)]
+    #[serde(rename = "filterMode")]
     FilterMode(Primitive<FilterMode>),
     /// # C++ Class Fields Info
     /// -   name:`"usageHint"`
     /// -   type: `enum TextureUsageType`
     /// - offset: 27
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "usageHint", default)]
+    #[serde(rename = "usageHint")]
     UsageHint(Primitive<TextureUsageType>),
     /// # C++ Class Fields Info
     /// -   name:`"textureCoordChannel"`
     /// -   type: `hkInt32`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "textureCoordChannel", default)]
+    #[serde(rename = "textureCoordChannel")]
     TextureCoordChannel(Primitive<i32>),
 }
 

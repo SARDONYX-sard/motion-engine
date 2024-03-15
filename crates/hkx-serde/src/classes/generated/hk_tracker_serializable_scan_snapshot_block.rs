@@ -26,42 +26,42 @@ pub enum HkTrackerSerializableScanSnapshotBlock {
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "typeIndex", default)]
+    #[serde(rename = "typeIndex")]
     TypeIndex(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"start"`
     /// -   type: `hkUlong`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "start", default)]
+    #[serde(rename = "start")]
     Start(Primitive<usize>),
     /// # C++ Class Fields Info
     /// -   name:`"size"`
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "size", default)]
+    #[serde(rename = "size")]
     Size(Primitive<usize>),
     /// # C++ Class Fields Info
     /// -   name:`"arraySize"`
     /// -   type: `hkInt32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "arraySize", default)]
+    #[serde(rename = "arraySize")]
     ArraySize(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"startReferenceIndex"`
     /// -   type: `hkInt32`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "startReferenceIndex", default)]
+    #[serde(rename = "startReferenceIndex")]
     StartReferenceIndex(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"numReferences"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numReferences", default)]
+    #[serde(rename = "numReferences")]
     NumReferences(Primitive<i32>),
 }
 

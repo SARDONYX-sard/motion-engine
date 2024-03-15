@@ -26,21 +26,21 @@ pub enum HkpPairCollisionFilterMapPairFilterKeyOverrideType<'a> {
     /// -   type: `void*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "elem", default, skip_serializing)]
+    #[serde(rename = "elem", skip_serializing)]
     Elem(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"numElems"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numElems", default)]
+    #[serde(rename = "numElems")]
     NumElems(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"hashMod"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "hashMod", default)]
+    #[serde(rename = "hashMod")]
     HashMod(Primitive<i32>),
 }
 

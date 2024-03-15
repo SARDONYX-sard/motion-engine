@@ -26,14 +26,14 @@ pub enum HkbFootIkModifierInternalLegData<'a> {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "groundPosition", default)]
+    #[serde(rename = "groundPosition")]
     GroundPosition(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"footIkSolver"`
     /// -   type: `void*`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "footIkSolver", default, skip_serializing)]
+    #[serde(rename = "footIkSolver", skip_serializing)]
     FootIkSolver(Primitive<Cow<'a, str>>),
 }
 

@@ -26,35 +26,35 @@ pub enum HkpAgent1NSector {
     /// -   type: `hkUint32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bytesAllocated", default)]
+    #[serde(rename = "bytesAllocated")]
     BytesAllocated(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"pad0"`
     /// -   type: `hkUint32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pad0", default)]
+    #[serde(rename = "pad0")]
     Pad0(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"pad1"`
     /// -   type: `hkUint32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pad1", default)]
+    #[serde(rename = "pad1")]
     Pad1(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"pad2"`
     /// -   type: `hkUint32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pad2", default)]
+    #[serde(rename = "pad2")]
     Pad2(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `hkUint8[496]`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "data", default)]
+    #[serde(rename = "data")]
     Data([Primitive<u8>; 496]),
 }
 

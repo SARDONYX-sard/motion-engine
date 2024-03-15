@@ -26,7 +26,7 @@ pub enum HkPostFinishAttribute<'a> {
     /// -   type: `void*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "postFinishFunction", default, skip_serializing)]
+    #[serde(rename = "postFinishFunction", skip_serializing)]
     PostFinishFunction(Primitive<Cow<'a, str>>),
 }
 

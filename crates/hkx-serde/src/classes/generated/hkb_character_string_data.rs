@@ -27,14 +27,14 @@ pub enum HkbCharacterStringData<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,91 +44,91 @@ pub enum HkbCharacterStringData<'a> {
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "deformableSkinNames", default)]
+    #[serde(rename = "deformableSkinNames")]
     DeformableSkinNames(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"rigidSkinNames"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rigidSkinNames", default)]
+    #[serde(rename = "rigidSkinNames")]
     RigidSkinNames(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"animationNames"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "animationNames", default)]
+    #[serde(rename = "animationNames")]
     AnimationNames(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"animationFilenames"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "animationFilenames", default)]
+    #[serde(rename = "animationFilenames")]
     AnimationFilenames(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"characterPropertyNames"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "characterPropertyNames", default)]
+    #[serde(rename = "characterPropertyNames")]
     CharacterPropertyNames(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"retargetingSkeletonMapperFilenames"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "retargetingSkeletonMapperFilenames", default)]
+    #[serde(rename = "retargetingSkeletonMapperFilenames")]
     RetargetingSkeletonMapperFilenames(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"lodNames"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lodNames", default)]
+    #[serde(rename = "lodNames")]
     LodNames(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"mirroredSyncPointSubstringsA"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "mirroredSyncPointSubstringsA", default)]
+    #[serde(rename = "mirroredSyncPointSubstringsA")]
     MirroredSyncPointSubstringsA(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"mirroredSyncPointSubstringsB"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "mirroredSyncPointSubstringsB", default)]
+    #[serde(rename = "mirroredSyncPointSubstringsB")]
     MirroredSyncPointSubstringsB(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"rigName"`
     /// -   type: `hkStringPtr`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rigName", default)]
+    #[serde(rename = "rigName")]
     RigName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"ragdollName"`
     /// -   type: `hkStringPtr`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ragdollName", default)]
+    #[serde(rename = "ragdollName")]
     RagdollName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"behaviorFilename"`
     /// -   type: `hkStringPtr`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "behaviorFilename", default)]
+    #[serde(rename = "behaviorFilename")]
     BehaviorFilename(Primitive<Cow<'a, str>>),
 }
 

@@ -26,35 +26,35 @@ pub enum HkbFootIkControlsModifierLeg {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "groundPosition", default)]
+    #[serde(rename = "groundPosition")]
     GroundPosition(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"ungroundedEvent"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ungroundedEvent", default)]
+    #[serde(rename = "ungroundedEvent")]
     UngroundedEvent(HkbEventProperty),
     /// # C++ Class Fields Info
     /// -   name:`"verticalError"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "verticalError", default)]
+    #[serde(rename = "verticalError")]
     VerticalError(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"hitSomething"`
     /// -   type: `hkBool`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "hitSomething", default)]
+    #[serde(rename = "hitSomething")]
     HitSomething(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"isPlantedMS"`
     /// -   type: `hkBool`
     /// - offset: 29
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isPlantedMS", default)]
+    #[serde(rename = "isPlantedMS")]
     IsPlantedMs(Primitive<bool>),
 }
 

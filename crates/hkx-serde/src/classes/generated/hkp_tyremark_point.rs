@@ -26,14 +26,14 @@ pub enum HkpTyremarkPoint {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pointLeft", default)]
+    #[serde(rename = "pointLeft")]
     PointLeft(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"pointRight"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pointRight", default)]
+    #[serde(rename = "pointRight")]
     PointRight(Vector4<f32>),
 }
 

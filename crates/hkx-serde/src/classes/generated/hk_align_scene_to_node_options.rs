@@ -27,14 +27,14 @@ pub enum HkAlignSceneToNodeOptions<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,63 +44,63 @@ pub enum HkAlignSceneToNodeOptions<'a> {
     /// -   type: `hkBool`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "invert", default)]
+    #[serde(rename = "invert")]
     Invert(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"transformPositionX"`
     /// -   type: `hkBool`
     /// - offset: 9
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformPositionX", default)]
+    #[serde(rename = "transformPositionX")]
     TransformPositionX(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"transformPositionY"`
     /// -   type: `hkBool`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformPositionY", default)]
+    #[serde(rename = "transformPositionY")]
     TransformPositionY(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"transformPositionZ"`
     /// -   type: `hkBool`
     /// - offset: 11
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformPositionZ", default)]
+    #[serde(rename = "transformPositionZ")]
     TransformPositionZ(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"transformRotation"`
     /// -   type: `hkBool`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformRotation", default)]
+    #[serde(rename = "transformRotation")]
     TransformRotation(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"transformScale"`
     /// -   type: `hkBool`
     /// - offset: 13
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformScale", default)]
+    #[serde(rename = "transformScale")]
     TransformScale(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"transformSkew"`
     /// -   type: `hkBool`
     /// - offset: 14
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformSkew", default)]
+    #[serde(rename = "transformSkew")]
     TransformSkew(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"keyframe"`
     /// -   type: `hkInt32`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "keyframe", default)]
+    #[serde(rename = "keyframe")]
     Keyframe(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"nodeName"`
     /// -   type: `hkStringPtr`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "nodeName", default)]
+    #[serde(rename = "nodeName")]
     NodeName(Primitive<Cow<'a, str>>),
 }
 

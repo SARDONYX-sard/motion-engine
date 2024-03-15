@@ -26,14 +26,14 @@ pub enum HkaAnnotationTrackAnnotation<'a> {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "time", default)]
+    #[serde(rename = "time")]
     Time(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"text"`
     /// -   type: `hkStringPtr`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "text", default)]
+    #[serde(rename = "text")]
     Text(Primitive<Cow<'a, str>>),
 }
 

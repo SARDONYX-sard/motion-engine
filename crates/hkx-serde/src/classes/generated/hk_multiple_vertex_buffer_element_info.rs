@@ -26,14 +26,14 @@ pub enum HkMultipleVertexBufferElementInfo {
     /// -   type: `hkUint8`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexBufferIndex", default)]
+    #[serde(rename = "vertexBufferIndex")]
     VertexBufferIndex(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"elementIndex"`
     /// -   type: `hkUint8`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "elementIndex", default)]
+    #[serde(rename = "elementIndex")]
     ElementIndex(Primitive<u8>),
 }
 

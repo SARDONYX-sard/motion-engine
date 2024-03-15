@@ -27,14 +27,14 @@ pub enum HkbProxyModifier<'a> {
     /// -   type: `hkBool`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enable", default)]
+    #[serde(rename = "enable")]
     Enable(Primitive<bool>),
     /// # C++ Parent class(`hkbModifier`, parent: `hkbNode`) field Info
     /// -   name:`"padModifier"`
     /// -   type: `hkBool[3]`
     /// - offset: 41
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "padModifier", default, skip_serializing)]
+    #[serde(rename = "padModifier", skip_serializing)]
     PadModifier([Primitive<bool>; 3]),
 
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
@@ -42,35 +42,35 @@ pub enum HkbProxyModifier<'a> {
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "id", default, skip_serializing)]
+    #[serde(rename = "id", skip_serializing)]
     Id(Primitive<i16>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cloneState", default, skip_serializing)]
+    #[serde(rename = "cloneState", skip_serializing)]
     CloneState(Primitive<Unknown>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "padNode", default, skip_serializing)]
+    #[serde(rename = "padNode", skip_serializing)]
     PadNode([Primitive<bool>; 1]),
 
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
@@ -78,21 +78,21 @@ pub enum HkbProxyModifier<'a> {
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "variableBindingSet", default)]
+    #[serde(rename = "variableBindingSet")]
     VariableBindingSet(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cachedBindables", default, skip_serializing)]
+    #[serde(rename = "cachedBindables", skip_serializing)]
     CachedBindables(HkArrayRef<Primitive<()>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "areBindablesCached", default, skip_serializing)]
+    #[serde(rename = "areBindablesCached", skip_serializing)]
     AreBindablesCached(Primitive<bool>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -100,14 +100,14 @@ pub enum HkbProxyModifier<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -117,203 +117,203 @@ pub enum HkbProxyModifier<'a> {
     /// -   type: `struct hkbProxyModifierProxyInfo`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "proxyInfo", default)]
+    #[serde(rename = "proxyInfo")]
     ProxyInfo(HkbProxyModifierProxyInfo),
     /// # C++ Class Fields Info
     /// -   name:`"linearVelocity"`
     /// -   type: `hkVector4`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "linearVelocity", default)]
+    #[serde(rename = "linearVelocity")]
     LinearVelocity(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"horizontalGain"`
     /// -   type: `hkReal`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "horizontalGain", default)]
+    #[serde(rename = "horizontalGain")]
     HorizontalGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"verticalGain"`
     /// -   type: `hkReal`
     /// - offset: 148
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "verticalGain", default)]
+    #[serde(rename = "verticalGain")]
     VerticalGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxHorizontalSeparation"`
     /// -   type: `hkReal`
     /// - offset: 152
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxHorizontalSeparation", default)]
+    #[serde(rename = "maxHorizontalSeparation")]
     MaxHorizontalSeparation(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxVerticalSeparation"`
     /// -   type: `hkReal`
     /// - offset: 156
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxVerticalSeparation", default)]
+    #[serde(rename = "maxVerticalSeparation")]
     MaxVerticalSeparation(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"verticalDisplacementError"`
     /// -   type: `hkReal`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "verticalDisplacementError", default)]
+    #[serde(rename = "verticalDisplacementError")]
     VerticalDisplacementError(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"verticalDisplacementErrorGain"`
     /// -   type: `hkReal`
     /// - offset: 164
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "verticalDisplacementErrorGain", default)]
+    #[serde(rename = "verticalDisplacementErrorGain")]
     VerticalDisplacementErrorGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxVerticalDisplacement"`
     /// -   type: `hkReal`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxVerticalDisplacement", default)]
+    #[serde(rename = "maxVerticalDisplacement")]
     MaxVerticalDisplacement(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"minVerticalDisplacement"`
     /// -   type: `hkReal`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minVerticalDisplacement", default)]
+    #[serde(rename = "minVerticalDisplacement")]
     MinVerticalDisplacement(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"capsuleHeight"`
     /// -   type: `hkReal`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "capsuleHeight", default)]
+    #[serde(rename = "capsuleHeight")]
     CapsuleHeight(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"capsuleRadius"`
     /// -   type: `hkReal`
     /// - offset: 180
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "capsuleRadius", default)]
+    #[serde(rename = "capsuleRadius")]
     CapsuleRadius(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxSlopeForRotation"`
     /// -   type: `hkReal`
     /// - offset: 184
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxSlopeForRotation", default)]
+    #[serde(rename = "maxSlopeForRotation")]
     MaxSlopeForRotation(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilterInfo"`
     /// -   type: `hkUint32`
     /// - offset: 188
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "collisionFilterInfo", default)]
+    #[serde(rename = "collisionFilterInfo")]
     CollisionFilterInfo(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"phantomType"`
     /// -   type: `enum PhantomType`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "phantomType", default)]
+    #[serde(rename = "phantomType")]
     PhantomType(Primitive<PhantomType>),
     /// # C++ Class Fields Info
     /// -   name:`"linearVelocityMode"`
     /// -   type: `enum LinearVelocityMode`
     /// - offset: 193
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "linearVelocityMode", default)]
+    #[serde(rename = "linearVelocityMode")]
     LinearVelocityMode(Primitive<LinearVelocityMode>),
     /// # C++ Class Fields Info
     /// -   name:`"ignoreIncomingRotation"`
     /// -   type: `hkBool`
     /// - offset: 194
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ignoreIncomingRotation", default)]
+    #[serde(rename = "ignoreIncomingRotation")]
     IgnoreIncomingRotation(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"ignoreCollisionDuringRotation"`
     /// -   type: `hkBool`
     /// - offset: 195
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ignoreCollisionDuringRotation", default)]
+    #[serde(rename = "ignoreCollisionDuringRotation")]
     IgnoreCollisionDuringRotation(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"ignoreIncomingTranslation"`
     /// -   type: `hkBool`
     /// - offset: 196
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ignoreIncomingTranslation", default)]
+    #[serde(rename = "ignoreIncomingTranslation")]
     IgnoreIncomingTranslation(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"includeDownwardMomentum"`
     /// -   type: `hkBool`
     /// - offset: 197
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "includeDownwardMomentum", default)]
+    #[serde(rename = "includeDownwardMomentum")]
     IncludeDownwardMomentum(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"followWorldFromModel"`
     /// -   type: `hkBool`
     /// - offset: 198
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "followWorldFromModel", default)]
+    #[serde(rename = "followWorldFromModel")]
     FollowWorldFromModel(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"isTouchingGround"`
     /// -   type: `hkBool`
     /// - offset: 199
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isTouchingGround", default)]
+    #[serde(rename = "isTouchingGround")]
     IsTouchingGround(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"characterProxy"`
     /// -   type: `void*`
     /// - offset: 200
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "characterProxy", default, skip_serializing)]
+    #[serde(rename = "characterProxy", skip_serializing)]
     CharacterProxy(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"phantom"`
     /// -   type: `void*`
     /// - offset: 204
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "phantom", default, skip_serializing)]
+    #[serde(rename = "phantom", skip_serializing)]
     Phantom(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"phantomShape"`
     /// -   type: `void*`
     /// - offset: 208
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "phantomShape", default, skip_serializing)]
+    #[serde(rename = "phantomShape", skip_serializing)]
     PhantomShape(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"horizontalDisplacement"`
     /// -   type: `hkVector4`
     /// - offset: 224
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "horizontalDisplacement", default, skip_serializing)]
+    #[serde(rename = "horizontalDisplacement", skip_serializing)]
     HorizontalDisplacement(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"verticalDisplacement"`
     /// -   type: `hkReal`
     /// - offset: 240
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "verticalDisplacement", default, skip_serializing)]
+    #[serde(rename = "verticalDisplacement", skip_serializing)]
     VerticalDisplacement(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"timestep"`
     /// -   type: `hkReal`
     /// - offset: 244
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "timestep", default, skip_serializing)]
+    #[serde(rename = "timestep", skip_serializing)]
     Timestep(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"previousFrameFollowWorldFromModel"`
     /// -   type: `hkBool`
     /// - offset: 248
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "previousFrameFollowWorldFromModel", default, skip_serializing)]
+    #[serde(rename = "previousFrameFollowWorldFromModel", skip_serializing)]
     PreviousFrameFollowWorldFromModel(Primitive<bool>),
 }
 

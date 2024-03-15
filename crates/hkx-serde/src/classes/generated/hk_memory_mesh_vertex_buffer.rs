@@ -29,14 +29,14 @@ pub enum HkMemoryMeshVertexBuffer {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -46,56 +46,56 @@ pub enum HkMemoryMeshVertexBuffer {
     /// -   type: `struct hkVertexFormat`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "format", default)]
+    #[serde(rename = "format")]
     Format(HkVertexFormat),
     /// # C++ Class Fields Info
     /// -   name:`"elementOffsets"`
     /// -   type: `hkInt32[32]`
     /// - offset: 268
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "elementOffsets", default)]
+    #[serde(rename = "elementOffsets")]
     ElementOffsets([Primitive<i32>; 32]),
     /// # C++ Class Fields Info
     /// -   name:`"memory"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 396
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "memory", default)]
+    #[serde(rename = "memory")]
     Memory(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexStride"`
     /// -   type: `hkInt32`
     /// - offset: 408
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexStride", default)]
+    #[serde(rename = "vertexStride")]
     VertexStride(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"locked"`
     /// -   type: `hkBool`
     /// - offset: 412
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "locked", default)]
+    #[serde(rename = "locked")]
     Locked(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"numVertices"`
     /// -   type: `hkInt32`
     /// - offset: 416
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numVertices", default)]
+    #[serde(rename = "numVertices")]
     NumVertices(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"isBigEndian"`
     /// -   type: `hkBool`
     /// - offset: 420
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isBigEndian", default)]
+    #[serde(rename = "isBigEndian")]
     IsBigEndian(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"isSharable"`
     /// -   type: `hkBool`
     /// - offset: 421
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isSharable", default)]
+    #[serde(rename = "isSharable")]
     IsSharable(Primitive<bool>),
 }
 

@@ -27,14 +27,14 @@ pub enum HkbHandle<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,28 +44,28 @@ pub enum HkbHandle<'a> {
     /// -   type: `struct hkLocalFrame*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "frame", default)]
+    #[serde(rename = "frame")]
     Frame(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"rigidBody"`
     /// -   type: `struct hkpRigidBody*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rigidBody", default)]
+    #[serde(rename = "rigidBody")]
     RigidBody(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"character"`
     /// -   type: `struct hkbCharacter*`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "character", default)]
+    #[serde(rename = "character")]
     Character(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"animationBoneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "animationBoneIndex", default)]
+    #[serde(rename = "animationBoneIndex")]
     AnimationBoneIndex(Primitive<i16>),
 }
 

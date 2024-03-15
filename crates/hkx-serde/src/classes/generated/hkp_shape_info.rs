@@ -27,14 +27,14 @@ pub enum HkpShapeInfo<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,42 +44,42 @@ pub enum HkpShapeInfo<'a> {
     /// -   type: `struct hkpShape*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "shape", default)]
+    #[serde(rename = "shape")]
     Shape(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"isHierarchicalCompound"`
     /// -   type: `hkBool`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isHierarchicalCompound", default)]
+    #[serde(rename = "isHierarchicalCompound")]
     IsHierarchicalCompound(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"hkdShapesCollected"`
     /// -   type: `hkBool`
     /// - offset: 13
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "hkdShapesCollected", default)]
+    #[serde(rename = "hkdShapesCollected")]
     HkdShapesCollected(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"childShapeNames"`
     /// -   type: `hkArray&lt;hkStringPtr&gt;`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "childShapeNames", default)]
+    #[serde(rename = "childShapeNames")]
     ChildShapeNames(HkArrayStringPtr<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"childTransforms"`
     /// -   type: `hkArray&lt;hkTransform&gt;`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "childTransforms", default)]
+    #[serde(rename = "childTransforms")]
     ChildTransforms(HkArrayVector<Transform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"transform"`
     /// -   type: `hkTransform`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transform", default)]
+    #[serde(rename = "transform")]
     Transform(Transform<f32>),
 }
 

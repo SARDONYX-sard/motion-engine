@@ -26,14 +26,14 @@ pub enum HkMonitorStreamColorTableColorPair<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "colorName", default)]
+    #[serde(rename = "colorName")]
     ColorName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"color"`
     /// -   type: `enum ExtendedColors`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "color", default)]
+    #[serde(rename = "color")]
     Color(Primitive<ExtendedColors>),
 }
 

@@ -26,14 +26,14 @@ pub enum HkpPulleyConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTranslationsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "translations", default)]
+    #[serde(rename = "translations")]
     Translations(HkpSetLocalTranslationsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"pulley"`
     /// -   type: `struct hkpPulleyConstraintAtom`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pulley", default)]
+    #[serde(rename = "pulley")]
     Pulley(HkpPulleyConstraintAtom),
 }
 

@@ -26,21 +26,21 @@ pub enum HkTrackerSerializableScanSnapshotAllocation {
     /// -   type: `hkUlong`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "start", default)]
+    #[serde(rename = "start")]
     Start(Primitive<usize>),
     /// # C++ Class Fields Info
     /// -   name:`"size"`
     /// -   type: `hkUlong`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "size", default)]
+    #[serde(rename = "size")]
     Size(Primitive<usize>),
     /// # C++ Class Fields Info
     /// -   name:`"traceId"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "traceId", default)]
+    #[serde(rename = "traceId")]
     TraceId(Primitive<i32>),
 }
 

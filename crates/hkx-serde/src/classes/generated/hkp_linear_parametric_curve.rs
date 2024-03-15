@@ -29,14 +29,14 @@ pub enum HkpLinearParametricCurve {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -46,35 +46,35 @@ pub enum HkpLinearParametricCurve {
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "smoothingFactor", default)]
+    #[serde(rename = "smoothingFactor")]
     SmoothingFactor(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"closedLoop"`
     /// -   type: `hkBool`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "closedLoop", default)]
+    #[serde(rename = "closedLoop")]
     ClosedLoop(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"dirNotParallelToTangentAlongWholePath"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "dirNotParallelToTangentAlongWholePath", default)]
+    #[serde(rename = "dirNotParallelToTangentAlongWholePath")]
     DirNotParallelToTangentAlongWholePath(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"points"`
     /// -   type: `hkArray&lt;hkVector4&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "points", default)]
+    #[serde(rename = "points")]
     Points(HkArrayVector<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"distance"`
     /// -   type: `hkArray&lt;hkReal&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "distance", default)]
+    #[serde(rename = "distance")]
     Distance(HkArrayRef<Primitive<f32>>),
 }
 

@@ -26,14 +26,14 @@ pub enum HkbMessageLog<'a> {
     /// -   type: `void*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "messages", default, skip_serializing)]
+    #[serde(rename = "messages", skip_serializing)]
     Messages(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"maxMessages"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "maxMessages", default, skip_serializing)]
+    #[serde(rename = "maxMessages", skip_serializing)]
     MaxMessages(Primitive<i32>),
 }
 

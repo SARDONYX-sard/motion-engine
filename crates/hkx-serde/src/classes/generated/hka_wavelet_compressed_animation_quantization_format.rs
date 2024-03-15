@@ -26,42 +26,42 @@ pub enum HkaWaveletCompressedAnimationQuantizationFormat {
     /// -   type: `hkUint8`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxBitWidth", default)]
+    #[serde(rename = "maxBitWidth")]
     MaxBitWidth(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"preserved"`
     /// -   type: `hkUint8`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "preserved", default)]
+    #[serde(rename = "preserved")]
     Preserved(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"numD"`
     /// -   type: `hkUint32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numD", default)]
+    #[serde(rename = "numD")]
     NumD(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"offsetIdx"`
     /// -   type: `hkUint32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "offsetIdx", default)]
+    #[serde(rename = "offsetIdx")]
     OffsetIdx(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"scaleIdx"`
     /// -   type: `hkUint32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "scaleIdx", default)]
+    #[serde(rename = "scaleIdx")]
     ScaleIdx(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"bitWidthIdx"`
     /// -   type: `hkUint32`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bitWidthIdx", default)]
+    #[serde(rename = "bitWidthIdx")]
     BitWidthIdx(Primitive<u32>),
 }
 

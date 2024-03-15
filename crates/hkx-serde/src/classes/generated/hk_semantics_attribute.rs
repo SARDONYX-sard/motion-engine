@@ -26,7 +26,7 @@ pub enum HkSemanticsAttribute {
     /// -   type: `enum Semantics`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<Semantics>),
 }
 

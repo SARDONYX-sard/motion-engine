@@ -26,14 +26,14 @@ pub enum HkVertexFormat {
     /// -   type: `struct hkVertexFormatElement[32]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "elements", default)]
+    #[serde(rename = "elements")]
     Elements([HkVertexFormatElement; 32]),
     /// # C++ Class Fields Info
     /// -   name:`"numElements"`
     /// -   type: `hkInt32`
     /// - offset: 256
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numElements", default)]
+    #[serde(rename = "numElements")]
     NumElements(Primitive<i32>),
 }
 

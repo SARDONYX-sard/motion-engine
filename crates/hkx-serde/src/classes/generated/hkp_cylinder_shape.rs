@@ -27,7 +27,7 @@ pub enum HkpCylinderShape {
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "radius", default)]
+    #[serde(rename = "radius")]
     Radius(Primitive<f32>),
 
     // `hkpSphereRepShape`(Parent class) has no fields
@@ -37,14 +37,14 @@ pub enum HkpCylinderShape {
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "type", default, skip_serializing)]
+    #[serde(rename = "type", skip_serializing)]
     Type(Primitive<Unknown>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -52,14 +52,14 @@ pub enum HkpCylinderShape {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -69,42 +69,42 @@ pub enum HkpCylinderShape {
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "cylRadius", default)]
+    #[serde(rename = "cylRadius")]
     CylRadius(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"cylBaseRadiusFactorForHeightFieldCollisions"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "cylBaseRadiusFactorForHeightFieldCollisions", default)]
+    #[serde(rename = "cylBaseRadiusFactorForHeightFieldCollisions")]
     CylBaseRadiusFactorForHeightFieldCollisions(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexA"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexA", default)]
+    #[serde(rename = "vertexA")]
     VertexA(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexB"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexB", default)]
+    #[serde(rename = "vertexB")]
     VertexB(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"perpendicular1"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "perpendicular1", default)]
+    #[serde(rename = "perpendicular1")]
     Perpendicular1(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"perpendicular2"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "perpendicular2", default)]
+    #[serde(rename = "perpendicular2")]
     Perpendicular2(Vector4<f32>),
 }
 

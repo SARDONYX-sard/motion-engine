@@ -26,70 +26,70 @@ pub enum HkMotionState {
     /// -   type: `hkTransform`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transform", default)]
+    #[serde(rename = "transform")]
     Transform(Transform<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"sweptTransform"`
     /// -   type: `struct hkSweptTransform`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sweptTransform", default)]
+    #[serde(rename = "sweptTransform")]
     SweptTransform(HkSweptTransform),
     /// # C++ Class Fields Info
     /// -   name:`"deltaAngle"`
     /// -   type: `hkVector4`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "deltaAngle", default)]
+    #[serde(rename = "deltaAngle")]
     DeltaAngle(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"objectRadius"`
     /// -   type: `hkReal`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "objectRadius", default)]
+    #[serde(rename = "objectRadius")]
     ObjectRadius(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"linearDamping"`
     /// -   type: `hkHalf`
     /// - offset: 164
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "linearDamping", default)]
+    #[serde(rename = "linearDamping")]
     LinearDamping(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"angularDamping"`
     /// -   type: `hkHalf`
     /// - offset: 166
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "angularDamping", default)]
+    #[serde(rename = "angularDamping")]
     AngularDamping(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"timeFactor"`
     /// -   type: `hkHalf`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "timeFactor", default)]
+    #[serde(rename = "timeFactor")]
     TimeFactor(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxLinearVelocity"`
     /// -   type: `hkUint8`
     /// - offset: 170
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxLinearVelocity", default)]
+    #[serde(rename = "maxLinearVelocity")]
     MaxLinearVelocity(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"maxAngularVelocity"`
     /// -   type: `hkUint8`
     /// - offset: 171
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxAngularVelocity", default)]
+    #[serde(rename = "maxAngularVelocity")]
     MaxAngularVelocity(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"deactivationClass"`
     /// -   type: `hkUint8`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "deactivationClass", default)]
+    #[serde(rename = "deactivationClass")]
     DeactivationClass(Primitive<u8>),
 }
 

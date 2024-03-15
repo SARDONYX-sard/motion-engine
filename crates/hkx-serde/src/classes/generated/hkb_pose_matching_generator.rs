@@ -27,112 +27,112 @@ pub enum HkbPoseMatchingGenerator<'a> {
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "referencePoseWeightThreshold", default)]
+    #[serde(rename = "referencePoseWeightThreshold")]
     ReferencePoseWeightThreshold(Primitive<f32>),
     /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
     /// -   name:`"blendParameter"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "blendParameter", default)]
+    #[serde(rename = "blendParameter")]
     BlendParameter(Primitive<f32>),
     /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
     /// -   name:`"minCyclicBlendParameter"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minCyclicBlendParameter", default)]
+    #[serde(rename = "minCyclicBlendParameter")]
     MinCyclicBlendParameter(Primitive<f32>),
     /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
     /// -   name:`"maxCyclicBlendParameter"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxCyclicBlendParameter", default)]
+    #[serde(rename = "maxCyclicBlendParameter")]
     MaxCyclicBlendParameter(Primitive<f32>),
     /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
     /// -   name:`"indexOfSyncMasterChild"`
     /// -   type: `hkInt16`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "indexOfSyncMasterChild", default)]
+    #[serde(rename = "indexOfSyncMasterChild")]
     IndexOfSyncMasterChild(Primitive<i16>),
     /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
     /// -   name:`"flags"`
     /// -   type: `hkInt16`
     /// - offset: 58
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "flags", default)]
+    #[serde(rename = "flags")]
     Flags(Primitive<i16>),
     /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
     /// -   name:`"subtractLastChild"`
     /// -   type: `hkBool`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "subtractLastChild", default)]
+    #[serde(rename = "subtractLastChild")]
     SubtractLastChild(Primitive<bool>),
     /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
     /// -   name:`"children"`
     /// -   type: `hkArray&lt;hkbBlenderGeneratorChild*&gt;`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "children", default)]
+    #[serde(rename = "children")]
     Children(HkArrayRef<Cow<'a, str>>),
     /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
     /// -   name:`"childrenInternalStates"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "childrenInternalStates", default, skip_serializing)]
+    #[serde(rename = "childrenInternalStates", skip_serializing)]
     ChildrenInternalStates(HkArrayRef<Primitive<()>>),
     /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
     /// -   name:`"sortedChildren"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "sortedChildren", default, skip_serializing)]
+    #[serde(rename = "sortedChildren", skip_serializing)]
     SortedChildren(HkArrayRef<Primitive<()>>),
     /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
     /// -   name:`"endIntervalWeight"`
     /// -   type: `hkReal`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "endIntervalWeight", default, skip_serializing)]
+    #[serde(rename = "endIntervalWeight", skip_serializing)]
     EndIntervalWeight(Primitive<f32>),
     /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
     /// -   name:`"numActiveChildren"`
     /// -   type: `hkInt32`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "numActiveChildren", default, skip_serializing)]
+    #[serde(rename = "numActiveChildren", skip_serializing)]
     NumActiveChildren(Primitive<i32>),
     /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
     /// -   name:`"beginIntervalIndex"`
     /// -   type: `hkInt16`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "beginIntervalIndex", default, skip_serializing)]
+    #[serde(rename = "beginIntervalIndex", skip_serializing)]
     BeginIntervalIndex(Primitive<i16>),
     /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
     /// -   name:`"endIntervalIndex"`
     /// -   type: `hkInt16`
     /// - offset: 110
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "endIntervalIndex", default, skip_serializing)]
+    #[serde(rename = "endIntervalIndex", skip_serializing)]
     EndIntervalIndex(Primitive<i16>),
     /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
     /// -   name:`"initSync"`
     /// -   type: `hkBool`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "initSync", default, skip_serializing)]
+    #[serde(rename = "initSync", skip_serializing)]
     InitSync(Primitive<bool>),
     /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
     /// -   name:`"doSubtractiveBlend"`
     /// -   type: `hkBool`
     /// - offset: 113
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "doSubtractiveBlend", default, skip_serializing)]
+    #[serde(rename = "doSubtractiveBlend", skip_serializing)]
     DoSubtractiveBlend(Primitive<bool>),
 
     // `hkbGenerator`(Parent class) has no fields
@@ -142,35 +142,35 @@ pub enum HkbPoseMatchingGenerator<'a> {
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "id", default, skip_serializing)]
+    #[serde(rename = "id", skip_serializing)]
     Id(Primitive<i16>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cloneState", default, skip_serializing)]
+    #[serde(rename = "cloneState", skip_serializing)]
     CloneState(Primitive<Unknown>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "padNode", default, skip_serializing)]
+    #[serde(rename = "padNode", skip_serializing)]
     PadNode([Primitive<bool>; 1]),
 
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
@@ -178,21 +178,21 @@ pub enum HkbPoseMatchingGenerator<'a> {
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "variableBindingSet", default)]
+    #[serde(rename = "variableBindingSet")]
     VariableBindingSet(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cachedBindables", default, skip_serializing)]
+    #[serde(rename = "cachedBindables", skip_serializing)]
     CachedBindables(HkArrayRef<Primitive<()>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "areBindablesCached", default, skip_serializing)]
+    #[serde(rename = "areBindablesCached", skip_serializing)]
     AreBindablesCached(Primitive<bool>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -200,14 +200,14 @@ pub enum HkbPoseMatchingGenerator<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -217,126 +217,126 @@ pub enum HkbPoseMatchingGenerator<'a> {
     /// -   type: `hkQuaternion`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "worldFromModelRotation", default)]
+    #[serde(rename = "worldFromModelRotation")]
     WorldFromModelRotation(Quaternion<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"blendSpeed"`
     /// -   type: `hkReal`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "blendSpeed", default)]
+    #[serde(rename = "blendSpeed")]
     BlendSpeed(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"minSpeedToSwitch"`
     /// -   type: `hkReal`
     /// - offset: 148
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minSpeedToSwitch", default)]
+    #[serde(rename = "minSpeedToSwitch")]
     MinSpeedToSwitch(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"minSwitchTimeNoError"`
     /// -   type: `hkReal`
     /// - offset: 152
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minSwitchTimeNoError", default)]
+    #[serde(rename = "minSwitchTimeNoError")]
     MinSwitchTimeNoError(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"minSwitchTimeFullError"`
     /// -   type: `hkReal`
     /// - offset: 156
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minSwitchTimeFullError", default)]
+    #[serde(rename = "minSwitchTimeFullError")]
     MinSwitchTimeFullError(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"startPlayingEventId"`
     /// -   type: `hkInt32`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "startPlayingEventId", default)]
+    #[serde(rename = "startPlayingEventId")]
     StartPlayingEventId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"startMatchingEventId"`
     /// -   type: `hkInt32`
     /// - offset: 164
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "startMatchingEventId", default)]
+    #[serde(rename = "startMatchingEventId")]
     StartMatchingEventId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"rootBoneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rootBoneIndex", default)]
+    #[serde(rename = "rootBoneIndex")]
     RootBoneIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"otherBoneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 170
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "otherBoneIndex", default)]
+    #[serde(rename = "otherBoneIndex")]
     OtherBoneIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"anotherBoneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "anotherBoneIndex", default)]
+    #[serde(rename = "anotherBoneIndex")]
     AnotherBoneIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"pelvisIndex"`
     /// -   type: `hkInt16`
     /// - offset: 174
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pelvisIndex", default)]
+    #[serde(rename = "pelvisIndex")]
     PelvisIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"mode"`
     /// -   type: `enum Mode`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "mode", default)]
+    #[serde(rename = "mode")]
     Mode(Primitive<Mode>),
     /// # C++ Class Fields Info
     /// -   name:`"currentMatch"`
     /// -   type: `hkInt32`
     /// - offset: 180
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "currentMatch", default, skip_serializing)]
+    #[serde(rename = "currentMatch", skip_serializing)]
     CurrentMatch(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"bestMatch"`
     /// -   type: `hkInt32`
     /// - offset: 184
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "bestMatch", default, skip_serializing)]
+    #[serde(rename = "bestMatch", skip_serializing)]
     BestMatch(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"timeSinceBetterMatch"`
     /// -   type: `hkReal`
     /// - offset: 188
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "timeSinceBetterMatch", default, skip_serializing)]
+    #[serde(rename = "timeSinceBetterMatch", skip_serializing)]
     TimeSinceBetterMatch(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"error"`
     /// -   type: `hkReal`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "error", default, skip_serializing)]
+    #[serde(rename = "error", skip_serializing)]
     Error(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"resetCurrentMatchLocalTime"`
     /// -   type: `hkBool`
     /// - offset: 196
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "resetCurrentMatchLocalTime", default, skip_serializing)]
+    #[serde(rename = "resetCurrentMatchLocalTime", skip_serializing)]
     ResetCurrentMatchLocalTime(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"poseMatchingUtility"`
     /// -   type: `void*`
     /// - offset: 200
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "poseMatchingUtility", default, skip_serializing)]
+    #[serde(rename = "poseMatchingUtility", skip_serializing)]
     PoseMatchingUtility(Primitive<Cow<'a, str>>),
 }
 

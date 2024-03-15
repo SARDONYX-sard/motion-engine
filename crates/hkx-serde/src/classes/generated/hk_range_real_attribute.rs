@@ -26,28 +26,28 @@ pub enum HkRangeRealAttribute {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "absmin", default)]
+    #[serde(rename = "absmin")]
     Absmin(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"absmax"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "absmax", default)]
+    #[serde(rename = "absmax")]
     Absmax(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"softmin"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "softmin", default)]
+    #[serde(rename = "softmin")]
     Softmin(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"softmax"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "softmax", default)]
+    #[serde(rename = "softmax")]
     Softmax(Primitive<f32>),
 }
 

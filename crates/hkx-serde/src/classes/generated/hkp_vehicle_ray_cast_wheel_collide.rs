@@ -27,14 +27,14 @@ pub enum HkpVehicleRayCastWheelCollide<'a> {
     /// -   type: `hkBool`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "alreadyUsed", default)]
+    #[serde(rename = "alreadyUsed")]
     AlreadyUsed(Primitive<bool>),
     /// # C++ Parent class(`hkpVehicleWheelCollide`, parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 9
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "type", default, skip_serializing)]
+    #[serde(rename = "type", skip_serializing)]
     Type(Primitive<Unknown>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -42,14 +42,14 @@ pub enum HkpVehicleRayCastWheelCollide<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -59,21 +59,21 @@ pub enum HkpVehicleRayCastWheelCollide<'a> {
     /// -   type: `hkUint32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wheelCollisionFilterInfo", default)]
+    #[serde(rename = "wheelCollisionFilterInfo")]
     WheelCollisionFilterInfo(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"phantom"`
     /// -   type: `struct hkpAabbPhantom*`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "phantom", default)]
+    #[serde(rename = "phantom")]
     Phantom(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"rejectRayChassisListener"`
     /// -   type: `struct hkpRejectChassisListener`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rejectRayChassisListener", default)]
+    #[serde(rename = "rejectRayChassisListener")]
     RejectRayChassisListener(HkpRejectChassisListener),
 }
 

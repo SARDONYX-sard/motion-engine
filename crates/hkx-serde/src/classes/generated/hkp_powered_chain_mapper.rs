@@ -27,14 +27,14 @@ pub enum HkpPoweredChainMapper<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,21 +44,21 @@ pub enum HkpPoweredChainMapper<'a> {
     /// -   type: `hkArray&lt;struct hkpPoweredChainMapperLinkInfo&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "links", default)]
+    #[serde(rename = "links")]
     Links(HkArrayClass<HkpPoweredChainMapperLinkInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"targets"`
     /// -   type: `hkArray&lt;struct hkpPoweredChainMapperTarget&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "targets", default)]
+    #[serde(rename = "targets")]
     Targets(HkArrayClass<HkpPoweredChainMapperTarget>),
     /// # C++ Class Fields Info
     /// -   name:`"chains"`
     /// -   type: `hkArray&lt;hkpConstraintChainInstance*&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "chains", default)]
+    #[serde(rename = "chains")]
     Chains(HkArrayRef<Cow<'a, str>>),
 }
 

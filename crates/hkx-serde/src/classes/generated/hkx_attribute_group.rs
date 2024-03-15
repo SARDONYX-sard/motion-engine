@@ -26,14 +26,14 @@ pub enum HkxAttributeGroup<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"attributes"`
     /// -   type: `hkArray&lt;struct hkxAttribute&gt;`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "attributes", default)]
+    #[serde(rename = "attributes")]
     Attributes(HkArrayClass<HkxAttribute>),
 }
 

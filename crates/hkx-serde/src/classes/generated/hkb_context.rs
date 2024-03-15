@@ -26,70 +26,70 @@ pub enum HkbContext<'a> {
     /// -   type: `void*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "character", default, skip_serializing)]
+    #[serde(rename = "character", skip_serializing)]
     Character(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"behavior"`
     /// -   type: `void*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "behavior", default, skip_serializing)]
+    #[serde(rename = "behavior", skip_serializing)]
     Behavior(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"nodeToIndexMap"`
     /// -   type: `void*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "nodeToIndexMap", default, skip_serializing)]
+    #[serde(rename = "nodeToIndexMap", skip_serializing)]
     NodeToIndexMap(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"eventQueue"`
     /// -   type: `void*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "eventQueue", default, skip_serializing)]
+    #[serde(rename = "eventQueue", skip_serializing)]
     EventQueue(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"sharedEventQueue"`
     /// -   type: `void*`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "sharedEventQueue", default, skip_serializing)]
+    #[serde(rename = "sharedEventQueue", skip_serializing)]
     SharedEventQueue(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"generatorOutputListener"`
     /// -   type: `struct hkbGeneratorOutputListener*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "generatorOutputListener", default)]
+    #[serde(rename = "generatorOutputListener")]
     GeneratorOutputListener(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"eventTriggeredTransition"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "eventTriggeredTransition", default, skip_serializing)]
+    #[serde(rename = "eventTriggeredTransition", skip_serializing)]
     EventTriggeredTransition(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"world"`
     /// -   type: `void*`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "world", default, skip_serializing)]
+    #[serde(rename = "world", skip_serializing)]
     World(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"attachmentManager"`
     /// -   type: `void*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "attachmentManager", default, skip_serializing)]
+    #[serde(rename = "attachmentManager", skip_serializing)]
     AttachmentManager(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"animationCache"`
     /// -   type: `void*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "animationCache", default, skip_serializing)]
+    #[serde(rename = "animationCache", skip_serializing)]
     AnimationCache(Primitive<Cow<'a, str>>),
 }
 

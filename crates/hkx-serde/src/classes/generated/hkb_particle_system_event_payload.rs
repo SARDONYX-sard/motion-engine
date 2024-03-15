@@ -29,14 +29,14 @@ pub enum HkbParticleSystemEventPayload {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -46,42 +46,42 @@ pub enum HkbParticleSystemEventPayload {
     /// -   type: `enum SystemType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<SystemType>),
     /// # C++ Class Fields Info
     /// -   name:`"emitBoneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "emitBoneIndex", default)]
+    #[serde(rename = "emitBoneIndex")]
     EmitBoneIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"offset"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "offset", default)]
+    #[serde(rename = "offset")]
     Offset(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"direction"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "direction", default)]
+    #[serde(rename = "direction")]
     Direction(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"numParticles"`
     /// -   type: `hkInt32`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numParticles", default)]
+    #[serde(rename = "numParticles")]
     NumParticles(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"speed"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "speed", default)]
+    #[serde(rename = "speed")]
     Speed(Primitive<f32>),
 }
 

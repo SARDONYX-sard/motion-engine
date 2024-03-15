@@ -26,49 +26,49 @@ pub enum HkpLimitedHingeConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTransformsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transforms", default)]
+    #[serde(rename = "transforms")]
     Transforms(HkpSetLocalTransformsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"setupStabilization"`
     /// -   type: `struct hkpSetupStabilizationAtom`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "setupStabilization", default)]
+    #[serde(rename = "setupStabilization")]
     SetupStabilization(HkpSetupStabilizationAtom),
     /// # C++ Class Fields Info
     /// -   name:`"angMotor"`
     /// -   type: `struct hkpAngMotorConstraintAtom`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "angMotor", default)]
+    #[serde(rename = "angMotor")]
     AngMotor(HkpAngMotorConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"angFriction"`
     /// -   type: `struct hkpAngFrictionConstraintAtom`
     /// - offset: 180
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "angFriction", default)]
+    #[serde(rename = "angFriction")]
     AngFriction(HkpAngFrictionConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"angLimit"`
     /// -   type: `struct hkpAngLimitConstraintAtom`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "angLimit", default)]
+    #[serde(rename = "angLimit")]
     AngLimit(HkpAngLimitConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"2dAng"`
     /// -   type: `struct hkp2dAngConstraintAtom`
     /// - offset: 208
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "2dAng", default)]
+    #[serde(rename = "2dAng")]
     2DAng(Hkp2DAngConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"ballSocket"`
     /// -   type: `struct hkpBallSocketConstraintAtom`
     /// - offset: 212
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ballSocket", default)]
+    #[serde(rename = "ballSocket")]
     BallSocket(HkpBallSocketConstraintAtom),
 }
 

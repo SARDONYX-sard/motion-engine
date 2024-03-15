@@ -27,14 +27,14 @@ pub enum HkbCharacterSteppedInfo {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,35 +44,35 @@ pub enum HkbCharacterSteppedInfo {
     /// -   type: `hkUint64`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "characterId", default)]
+    #[serde(rename = "characterId")]
     CharacterId(Primitive<u64>),
     /// # C++ Class Fields Info
     /// -   name:`"deltaTime"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "deltaTime", default)]
+    #[serde(rename = "deltaTime")]
     DeltaTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"worldFromModel"`
     /// -   type: `hkQsTransform`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "worldFromModel", default)]
+    #[serde(rename = "worldFromModel")]
     WorldFromModel(QsTransform<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"poseModelSpace"`
     /// -   type: `hkArray&lt;hkQsTransform&gt;`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "poseModelSpace", default)]
+    #[serde(rename = "poseModelSpace")]
     PoseModelSpace(HkArrayVector<QsTransform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"rigidAttachmentTransforms"`
     /// -   type: `hkArray&lt;hkQsTransform&gt;`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rigidAttachmentTransforms", default)]
+    #[serde(rename = "rigidAttachmentTransforms")]
     RigidAttachmentTransforms(HkArrayVector<QsTransform<f32>>),
 }
 

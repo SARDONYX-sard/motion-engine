@@ -26,28 +26,28 @@ pub enum HkpRagdollLimitsDataAtoms {
     /// -   type: `struct hkpSetLocalRotationsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotations", default)]
+    #[serde(rename = "rotations")]
     Rotations(HkpSetLocalRotationsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"twistLimit"`
     /// -   type: `struct hkpTwistLimitConstraintAtom`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "twistLimit", default)]
+    #[serde(rename = "twistLimit")]
     TwistLimit(HkpTwistLimitConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"coneLimit"`
     /// -   type: `struct hkpConeLimitConstraintAtom`
     /// - offset: 132
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "coneLimit", default)]
+    #[serde(rename = "coneLimit")]
     ConeLimit(HkpConeLimitConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"planesLimit"`
     /// -   type: `struct hkpConeLimitConstraintAtom`
     /// - offset: 152
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "planesLimit", default)]
+    #[serde(rename = "planesLimit")]
     PlanesLimit(HkpConeLimitConstraintAtom),
 }
 

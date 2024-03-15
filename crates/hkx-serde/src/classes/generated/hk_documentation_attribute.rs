@@ -26,7 +26,7 @@ pub enum HkDocumentationAttribute<'a> {
     /// -   type: `char*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "docsSectionTag", default)]
+    #[serde(rename = "docsSectionTag")]
     DocsSectionTag(Primitive<Cow<'a, str>>),
 }
 

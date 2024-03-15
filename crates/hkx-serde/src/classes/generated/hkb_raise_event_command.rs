@@ -27,14 +27,14 @@ pub enum HkbRaiseEventCommand {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,21 +44,21 @@ pub enum HkbRaiseEventCommand {
     /// -   type: `hkUint64`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "characterId", default)]
+    #[serde(rename = "characterId")]
     CharacterId(Primitive<u64>),
     /// # C++ Class Fields Info
     /// -   name:`"global"`
     /// -   type: `hkBool`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "global", default)]
+    #[serde(rename = "global")]
     Global(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"externalId"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "externalId", default)]
+    #[serde(rename = "externalId")]
     ExternalId(Primitive<i32>),
 }
 

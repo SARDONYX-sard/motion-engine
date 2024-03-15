@@ -26,28 +26,28 @@ pub enum HkbWorldFromModelModeData {
     /// -   type: `hkInt16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "poseMatchingBone0", default)]
+    #[serde(rename = "poseMatchingBone0")]
     PoseMatchingBone0(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"poseMatchingBone1"`
     /// -   type: `hkInt16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "poseMatchingBone1", default)]
+    #[serde(rename = "poseMatchingBone1")]
     PoseMatchingBone1(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"poseMatchingBone2"`
     /// -   type: `hkInt16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "poseMatchingBone2", default)]
+    #[serde(rename = "poseMatchingBone2")]
     PoseMatchingBone2(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"mode"`
     /// -   type: `enum WorldFromModelMode`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "mode", default)]
+    #[serde(rename = "mode")]
     Mode(Primitive<WorldFromModelMode>),
 }
 

@@ -26,7 +26,7 @@ pub enum HkpVehicleFrictionStatus {
     /// -   type: `struct hkpVehicleFrictionStatusAxisStatus[2]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "axis", default)]
+    #[serde(rename = "axis")]
     Axis([HkpVehicleFrictionStatusAxisStatus; 2]),
 }
 

@@ -29,14 +29,14 @@ pub enum HkMemoryMeshBody<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -46,35 +46,35 @@ pub enum HkMemoryMeshBody<'a> {
     /// -   type: `hkMatrix4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transform", default)]
+    #[serde(rename = "transform")]
     Transform(Matrix4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"transformSet"`
     /// -   type: `struct hkIndexedTransformSet*`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformSet", default)]
+    #[serde(rename = "transformSet")]
     TransformSet(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"shape"`
     /// -   type: `struct hkMeshShape*`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "shape", default)]
+    #[serde(rename = "shape")]
     Shape(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexBuffers"`
     /// -   type: `hkArray&lt;hkMeshVertexBuffer*&gt;`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexBuffers", default)]
+    #[serde(rename = "vertexBuffers")]
     VertexBuffers(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
 }
 

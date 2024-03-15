@@ -26,70 +26,70 @@ pub enum HkpVehicleFrictionDescriptionAxisDescription {
     /// -   type: `hkReal[16]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "frictionCircleYtab", default)]
+    #[serde(rename = "frictionCircleYtab")]
     FrictionCircleYtab([Primitive<f32>; 16]),
     /// # C++ Class Fields Info
     /// -   name:`"xStep"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "xStep", default)]
+    #[serde(rename = "xStep")]
     XStep(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"xStart"`
     /// -   type: `hkReal`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "xStart", default)]
+    #[serde(rename = "xStart")]
     XStart(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"wheelSurfaceInertia"`
     /// -   type: `hkReal`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wheelSurfaceInertia", default)]
+    #[serde(rename = "wheelSurfaceInertia")]
     WheelSurfaceInertia(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"wheelSurfaceInertiaInv"`
     /// -   type: `hkReal`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wheelSurfaceInertiaInv", default)]
+    #[serde(rename = "wheelSurfaceInertiaInv")]
     WheelSurfaceInertiaInv(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"wheelChassisMassRatio"`
     /// -   type: `hkReal`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wheelChassisMassRatio", default)]
+    #[serde(rename = "wheelChassisMassRatio")]
     WheelChassisMassRatio(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"wheelRadius"`
     /// -   type: `hkReal`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wheelRadius", default)]
+    #[serde(rename = "wheelRadius")]
     WheelRadius(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"wheelRadiusInv"`
     /// -   type: `hkReal`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wheelRadiusInv", default)]
+    #[serde(rename = "wheelRadiusInv")]
     WheelRadiusInv(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"wheelDownForceFactor"`
     /// -   type: `hkReal`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wheelDownForceFactor", default)]
+    #[serde(rename = "wheelDownForceFactor")]
     WheelDownForceFactor(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"wheelDownForceSumFactor"`
     /// -   type: `hkReal`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wheelDownForceSumFactor", default)]
+    #[serde(rename = "wheelDownForceSumFactor")]
     WheelDownForceSumFactor(Primitive<f32>),
 }
 

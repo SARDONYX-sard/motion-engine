@@ -27,14 +27,14 @@ pub enum HkaBoneAttachment<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,35 +44,35 @@ pub enum HkaBoneAttachment<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "originalSkeletonName", default)]
+    #[serde(rename = "originalSkeletonName")]
     OriginalSkeletonName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"boneFromAttachment"`
     /// -   type: `hkMatrix4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "boneFromAttachment", default)]
+    #[serde(rename = "boneFromAttachment")]
     BoneFromAttachment(Matrix4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"attachment"`
     /// -   type: `struct hkReferencedObject*`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "attachment", default)]
+    #[serde(rename = "attachment")]
     Attachment(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"boneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "boneIndex", default)]
+    #[serde(rename = "boneIndex")]
     BoneIndex(Primitive<i16>),
 }
 

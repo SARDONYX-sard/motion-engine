@@ -26,21 +26,21 @@ pub enum HkRootLevelContainerNamedVariant<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"className"`
     /// -   type: `hkStringPtr`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "className", default)]
+    #[serde(rename = "className")]
     ClassName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"variant"`
     /// -   type: `struct hkReferencedObject*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "variant", default)]
+    #[serde(rename = "variant")]
     Variant(Primitive<Cow<'a, str>>),
 }
 

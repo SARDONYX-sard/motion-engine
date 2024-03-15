@@ -27,14 +27,14 @@ pub enum HkxVertexBuffer {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,14 +44,14 @@ pub enum HkxVertexBuffer {
     /// -   type: `struct hkxVertexBufferVertexData`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "data", default)]
+    #[serde(rename = "data")]
     Data(HkxVertexBufferVertexData),
     /// # C++ Class Fields Info
     /// -   name:`"desc"`
     /// -   type: `struct hkxVertexDescription`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "desc", default)]
+    #[serde(rename = "desc")]
     Desc(HkxVertexDescription),
 }
 

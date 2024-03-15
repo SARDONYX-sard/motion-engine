@@ -26,21 +26,21 @@ pub enum HkbHandIkControlsModifierHand {
     /// -   type: `struct hkbHandIkControlData`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "controlData", default)]
+    #[serde(rename = "controlData")]
     ControlData(HkbHandIkControlData),
     /// # C++ Class Fields Info
     /// -   name:`"handIndex"`
     /// -   type: `hkInt32`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "handIndex", default)]
+    #[serde(rename = "handIndex")]
     HandIndex(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"enable"`
     /// -   type: `hkBool`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enable", default)]
+    #[serde(rename = "enable")]
     Enable(Primitive<bool>),
 }
 

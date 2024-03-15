@@ -27,7 +27,7 @@ pub enum HkpAngMotorConstraintAtom<'a> {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -35,49 +35,49 @@ pub enum HkpAngMotorConstraintAtom<'a> {
     /// -   type: `hkBool`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isEnabled", default)]
+    #[serde(rename = "isEnabled")]
     IsEnabled(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"motorAxis"`
     /// -   type: `hkUint8`
     /// - offset: 3
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "motorAxis", default)]
+    #[serde(rename = "motorAxis")]
     MotorAxis(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"initializedOffset"`
     /// -   type: `hkInt16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "initializedOffset", default)]
+    #[serde(rename = "initializedOffset")]
     InitializedOffset(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"previousTargetAngleOffset"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "previousTargetAngleOffset", default)]
+    #[serde(rename = "previousTargetAngleOffset")]
     PreviousTargetAngleOffset(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"correspondingAngLimitSolverResultOffset"`
     /// -   type: `hkInt16`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "correspondingAngLimitSolverResultOffset", default)]
+    #[serde(rename = "correspondingAngLimitSolverResultOffset")]
     CorrespondingAngLimitSolverResultOffset(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"targetAngle"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "targetAngle", default)]
+    #[serde(rename = "targetAngle")]
     TargetAngle(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"motor"`
     /// -   type: `struct hkpConstraintMotor*`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "motor", default)]
+    #[serde(rename = "motor")]
     Motor(Primitive<Cow<'a, str>>),
 }
 

@@ -27,7 +27,7 @@ pub enum HkpPointToPathConstraintData<'a> {
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -35,14 +35,14 @@ pub enum HkpPointToPathConstraintData<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -52,35 +52,35 @@ pub enum HkpPointToPathConstraintData<'a> {
     /// -   type: `struct hkpBridgeAtoms`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "atoms", default)]
+    #[serde(rename = "atoms")]
     Atoms(HkpBridgeAtoms),
     /// # C++ Class Fields Info
     /// -   name:`"path"`
     /// -   type: `struct hkpParametricCurve*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "path", default)]
+    #[serde(rename = "path")]
     Path(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"maxFrictionForce"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxFrictionForce", default)]
+    #[serde(rename = "maxFrictionForce")]
     MaxFrictionForce(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"angularConstrainedDOF"`
     /// -   type: `enum OrientationConstraintType`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "angularConstrainedDOF", default)]
+    #[serde(rename = "angularConstrainedDOF")]
     AngularConstrainedDof(Primitive<OrientationConstraintType>),
     /// # C++ Class Fields Info
     /// -   name:`"transform_OS_KS"`
     /// -   type: `hkTransform[2]`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transform_OS_KS", default)]
+    #[serde(rename = "transform_OS_KS")]
     TransformOsKs([Transform<f32>; 2]),
 }
 

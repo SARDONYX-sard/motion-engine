@@ -27,7 +27,7 @@ pub enum HkpSetLocalTransformsConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -35,14 +35,14 @@ pub enum HkpSetLocalTransformsConstraintAtom {
     /// -   type: `hkTransform`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformA", default)]
+    #[serde(rename = "transformA")]
     TransformA(Transform<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"transformB"`
     /// -   type: `hkTransform`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformB", default)]
+    #[serde(rename = "transformB")]
     TransformB(Transform<f32>),
 }
 

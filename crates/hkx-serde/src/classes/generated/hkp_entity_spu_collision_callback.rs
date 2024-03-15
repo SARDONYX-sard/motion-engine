@@ -26,28 +26,28 @@ pub enum HkpEntitySpuCollisionCallback<'a> {
     /// -   type: `void*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "util", default, skip_serializing)]
+    #[serde(rename = "util", skip_serializing)]
     Util(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"capacity"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "capacity", default, skip_serializing)]
+    #[serde(rename = "capacity", skip_serializing)]
     Capacity(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"eventFilter"`
     /// -   type: `hkUint8`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "eventFilter", default)]
+    #[serde(rename = "eventFilter")]
     EventFilter(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"userFilter"`
     /// -   type: `hkUint8`
     /// - offset: 7
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userFilter", default)]
+    #[serde(rename = "userFilter")]
     UserFilter(Primitive<u8>),
 }
 

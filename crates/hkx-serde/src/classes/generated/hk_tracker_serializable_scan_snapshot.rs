@@ -27,14 +27,14 @@ pub enum HkTrackerSerializableScanSnapshot {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,49 +44,49 @@ pub enum HkTrackerSerializableScanSnapshot {
     /// -   type: `hkArray&lt;struct hkTrackerSerializableScanSnapshotAllocation&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "allocations", default)]
+    #[serde(rename = "allocations")]
     Allocations(HkArrayClass<HkTrackerSerializableScanSnapshotAllocation>),
     /// # C++ Class Fields Info
     /// -   name:`"blocks"`
     /// -   type: `hkArray&lt;struct hkTrackerSerializableScanSnapshotBlock&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "blocks", default)]
+    #[serde(rename = "blocks")]
     Blocks(HkArrayClass<HkTrackerSerializableScanSnapshotBlock>),
     /// # C++ Class Fields Info
     /// -   name:`"refs"`
     /// -   type: `hkArray&lt;hkInt32&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "refs", default)]
+    #[serde(rename = "refs")]
     Refs(HkArrayRef<Primitive<i32>>),
     /// # C++ Class Fields Info
     /// -   name:`"typeNames"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "typeNames", default)]
+    #[serde(rename = "typeNames")]
     TypeNames(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"traceText"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "traceText", default)]
+    #[serde(rename = "traceText")]
     TraceText(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"traceAddrs"`
     /// -   type: `hkArray&lt;hkUint64&gt;`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "traceAddrs", default)]
+    #[serde(rename = "traceAddrs")]
     TraceAddrs(HkArrayRef<Primitive<u64>>),
     /// # C++ Class Fields Info
     /// -   name:`"traceParents"`
     /// -   type: `hkArray&lt;hkInt32&gt;`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "traceParents", default)]
+    #[serde(rename = "traceParents")]
     TraceParents(HkArrayRef<Primitive<i32>>),
 }
 

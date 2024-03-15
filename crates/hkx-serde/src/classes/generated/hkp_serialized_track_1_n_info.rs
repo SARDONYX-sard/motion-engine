@@ -26,14 +26,14 @@ pub enum HkpSerializedTrack1NInfo<'a> {
     /// -   type: `hkArray&lt;hkpAgent1nSector*&gt;`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sectors", default)]
+    #[serde(rename = "sectors")]
     Sectors(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"subTracks"`
     /// -   type: `hkArray&lt;hkpSerializedSubTrack1nInfo*&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "subTracks", default)]
+    #[serde(rename = "subTracks")]
     SubTracks(HkArrayRef<Cow<'a, str>>),
 }
 

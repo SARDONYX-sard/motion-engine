@@ -26,7 +26,7 @@ pub enum HkpPropertyValue {
     /// -   type: `hkUint64`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "data", default)]
+    #[serde(rename = "data")]
     Data(Primitive<u64>),
 }
 

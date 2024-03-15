@@ -26,28 +26,28 @@ pub enum HkMultiThreadCheck {
     /// -   type: `hkUint32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "threadId", default, skip_serializing)]
+    #[serde(rename = "threadId", skip_serializing)]
     ThreadId(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"stackTraceId"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "stackTraceId", default, skip_serializing)]
+    #[serde(rename = "stackTraceId", skip_serializing)]
     StackTraceId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"markCount"`
     /// -   type: `hkUint16`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "markCount", default, skip_serializing)]
+    #[serde(rename = "markCount", skip_serializing)]
     MarkCount(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"markBitStack"`
     /// -   type: `hkUint16`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "markBitStack", default, skip_serializing)]
+    #[serde(rename = "markBitStack", skip_serializing)]
     MarkBitStack(Primitive<u16>),
 }
 

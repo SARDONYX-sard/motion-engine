@@ -26,49 +26,49 @@ pub enum HkMultipleVertexBufferLockedElement {
     /// -   type: `hkUint8`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexBufferIndex", default)]
+    #[serde(rename = "vertexBufferIndex")]
     VertexBufferIndex(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"elementIndex"`
     /// -   type: `hkUint8`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "elementIndex", default)]
+    #[serde(rename = "elementIndex")]
     ElementIndex(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"lockedBufferIndex"`
     /// -   type: `hkUint8`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lockedBufferIndex", default)]
+    #[serde(rename = "lockedBufferIndex")]
     LockedBufferIndex(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexFormatIndex"`
     /// -   type: `hkUint8`
     /// - offset: 3
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexFormatIndex", default)]
+    #[serde(rename = "vertexFormatIndex")]
     VertexFormatIndex(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"lockFlags"`
     /// -   type: `hkUint8`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lockFlags", default)]
+    #[serde(rename = "lockFlags")]
     LockFlags(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"outputBufferIndex"`
     /// -   type: `hkUint8`
     /// - offset: 5
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "outputBufferIndex", default)]
+    #[serde(rename = "outputBufferIndex")]
     OutputBufferIndex(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"emulatedIndex"`
     /// -   type: `hkInt8`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "emulatedIndex", default)]
+    #[serde(rename = "emulatedIndex")]
     EmulatedIndex(Primitive<i8>),
 }
 

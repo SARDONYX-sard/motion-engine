@@ -26,28 +26,28 @@ pub enum HkpListShapeChildInfo<'a> {
     /// -   type: `struct hkpShape*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "shape", default)]
+    #[serde(rename = "shape")]
     Shape(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilterInfo"`
     /// -   type: `hkUint32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "collisionFilterInfo", default)]
+    #[serde(rename = "collisionFilterInfo")]
     CollisionFilterInfo(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"shapeSize"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "shapeSize", default, skip_serializing)]
+    #[serde(rename = "shapeSize", skip_serializing)]
     ShapeSize(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"numChildShapes"`
     /// -   type: `hkInt32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "numChildShapes", default, skip_serializing)]
+    #[serde(rename = "numChildShapes", skip_serializing)]
     NumChildShapes(Primitive<i32>),
 }
 

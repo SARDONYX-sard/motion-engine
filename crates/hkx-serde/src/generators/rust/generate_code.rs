@@ -38,8 +38,53 @@ pub fn generate_code(cpp_class_name: &str, classes_map: IndexMap<String, ClassIn
         .unwrap_or_default();
 
     let rust_enum_class_name = class_name.to_case(Case::Pascal);
-    let life_time = get_life_time(members);
 
+    // ! The lifetime annotation of a structure cannot be made without first calculating whether or not the field has a lifetime.
+    //? - Flatten the C++ parent's inherited moves to the fields of the current class.
+    let mut all_fields_code = String::new();
+    let mut fields = IndexMap::new();
+    let mut current_parent_class_name = parent
+        .as_ref()
+        .map(|(name, _sig)| name.clone())
+        .unwrap_or_default();
+    while let Some(parent_class) = classes_map.get(&current_parent_class_name) {
+        let (fields_code, field) = generate_fields(&parent_class.members);
+        fields.extend(field);
+
+        let parent_name = &parent_class.name;
+        let parent_of_parent = &parent_class
+            .parent
+            .as_ref()
+            .map(|(name, _)| name.as_str())
+            .unwrap_or("None");
+
+        let fields_code = match fields_code.is_empty() {
+            true => format!("    // `{parent_name}`(Parent class) has no fields\n"),
+            false => fields_code.replace(
+                "C++ Class Fields Info",
+                &format!(
+                    "C++ Parent class(`{parent_name}`, parent: `{parent_of_parent}`) field Info"
+                ),
+            ),
+        };
+        all_fields_code.push_str(&format!("{fields_code}\n",));
+        if let Some((parent_name, _parent_signature)) = parent_class.parent.clone() {
+            current_parent_class_name = parent_name;
+        } else {
+            break; // No more parent to process
+        }
+    }
+    //? - Current C++ class fields
+    let (fields_code, field) = generate_fields(&class.members);
+    fields.extend(field);
+    all_fields_code.push_str(&format!("{fields_code}}}\n"));
+
+    let life_time = if all_fields_code.contains("'a") {
+        "<'a>"
+    } else {
+        ""
+    };
+    //? - Generate Struct
     rust_code.push_str(&format!(
         r#"//! Rust [`serde::Serializer`]/[`serde::Deserializer`] corresponding to C++ class `{class_name}`
 //!
@@ -67,45 +112,7 @@ pub enum {rust_enum_class_name}{life_time} {{
 "#
     ));
 
-    let mut fields = IndexMap::new();
-
-    //? - Flatten the C++ parent's inherited moves to the fields of the current class.
-    let mut current_parent_class_name = parent
-        .as_ref()
-        .map(|(name, _sig)| name.clone())
-        .unwrap_or_default();
-    while let Some(parent_class) = classes_map.get(&current_parent_class_name) {
-        let (fields_code, field) = generate_fields(&parent_class.members);
-        fields.extend(field);
-
-        let parent_name = &parent_class.name;
-        let parent_of_parent = &parent_class
-            .parent
-            .as_ref()
-            .map(|(name, _)| name.as_str())
-            .unwrap_or("None");
-
-        let fields_code = match fields_code.is_empty() {
-            true => format!("    // `{parent_name}`(Parent class) has no fields\n"),
-            false => fields_code.replace(
-                "C++ Class Fields Info",
-                &format!(
-                    "C++ Parent class(`{parent_name}`, parent: `{parent_of_parent}`) field Info"
-                ),
-            ),
-        };
-        rust_code.push_str(&format!("{fields_code}\n",));
-        if let Some((parent_name, _parent_signature)) = parent_class.parent.clone() {
-            current_parent_class_name = parent_name;
-        } else {
-            break; // No more parent to process
-        }
-    }
-
-    //? - Current C++ class fields
-    let (fields_code, field) = generate_fields(&class.members);
-    fields.extend(field);
-    rust_code.push_str(&format!("{fields_code}}}\n"));
+    rust_code.push_str(&all_fields_code);
 
     //? - Impl Deserialization
     let life_time = get_life_time(members).replace("'a", "'de");
@@ -162,7 +169,7 @@ fn generate_fields(members: &[MemberInfo]) -> (String, IndexMap<&String, (String
     /// -   type: `{type_name}`
     /// - offset: {offset}
     /// -  flags: `{flags}`
-    #[serde(rename = "{member_name}", default{skip_serializing_attr})]
+    #[serde(rename = "{member_name}"{skip_serializing_attr})]
     {tag_name}({rust_type}),
 "#
         ));

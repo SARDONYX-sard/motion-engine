@@ -27,14 +27,14 @@ pub enum BsDirectAtModifier<'a> {
     /// -   type: `hkBool`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enable", default)]
+    #[serde(rename = "enable")]
     Enable(Primitive<bool>),
     /// # C++ Parent class(`hkbModifier`, parent: `hkbNode`) field Info
     /// -   name:`"padModifier"`
     /// -   type: `hkBool[3]`
     /// - offset: 41
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "padModifier", default, skip_serializing)]
+    #[serde(rename = "padModifier", skip_serializing)]
     PadModifier([Primitive<bool>; 3]),
 
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
@@ -42,35 +42,35 @@ pub enum BsDirectAtModifier<'a> {
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "id", default, skip_serializing)]
+    #[serde(rename = "id", skip_serializing)]
     Id(Primitive<i16>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cloneState", default, skip_serializing)]
+    #[serde(rename = "cloneState", skip_serializing)]
     CloneState(Primitive<Unknown>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "padNode", default, skip_serializing)]
+    #[serde(rename = "padNode", skip_serializing)]
     PadNode([Primitive<bool>; 1]),
 
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
@@ -78,21 +78,21 @@ pub enum BsDirectAtModifier<'a> {
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "variableBindingSet", default)]
+    #[serde(rename = "variableBindingSet")]
     VariableBindingSet(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cachedBindables", default, skip_serializing)]
+    #[serde(rename = "cachedBindables", skip_serializing)]
     CachedBindables(HkArrayRef<Primitive<()>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "areBindablesCached", default, skip_serializing)]
+    #[serde(rename = "areBindablesCached", skip_serializing)]
     AreBindablesCached(Primitive<bool>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -100,14 +100,14 @@ pub enum BsDirectAtModifier<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -117,168 +117,168 @@ pub enum BsDirectAtModifier<'a> {
     /// -   type: `hkBool`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "directAtTarget", default)]
+    #[serde(rename = "directAtTarget")]
     DirectAtTarget(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"sourceBoneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 46
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sourceBoneIndex", default)]
+    #[serde(rename = "sourceBoneIndex")]
     SourceBoneIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"startBoneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "startBoneIndex", default)]
+    #[serde(rename = "startBoneIndex")]
     StartBoneIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"endBoneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 50
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "endBoneIndex", default)]
+    #[serde(rename = "endBoneIndex")]
     EndBoneIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"limitHeadingDegrees"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "limitHeadingDegrees", default)]
+    #[serde(rename = "limitHeadingDegrees")]
     LimitHeadingDegrees(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"limitPitchDegrees"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "limitPitchDegrees", default)]
+    #[serde(rename = "limitPitchDegrees")]
     LimitPitchDegrees(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"offsetHeadingDegrees"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "offsetHeadingDegrees", default)]
+    #[serde(rename = "offsetHeadingDegrees")]
     OffsetHeadingDegrees(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"offsetPitchDegrees"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "offsetPitchDegrees", default)]
+    #[serde(rename = "offsetPitchDegrees")]
     OffsetPitchDegrees(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"onGain"`
     /// -   type: `hkReal`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "onGain", default)]
+    #[serde(rename = "onGain")]
     OnGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"offGain"`
     /// -   type: `hkReal`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "offGain", default)]
+    #[serde(rename = "offGain")]
     OffGain(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"targetLocation"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "targetLocation", default)]
+    #[serde(rename = "targetLocation")]
     TargetLocation(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"userInfo"`
     /// -   type: `hkUint32`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userInfo", default)]
+    #[serde(rename = "userInfo")]
     UserInfo(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"directAtCamera"`
     /// -   type: `hkBool`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "directAtCamera", default)]
+    #[serde(rename = "directAtCamera")]
     DirectAtCamera(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"directAtCameraX"`
     /// -   type: `hkReal`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "directAtCameraX", default)]
+    #[serde(rename = "directAtCameraX")]
     DirectAtCameraX(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"directAtCameraY"`
     /// -   type: `hkReal`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "directAtCameraY", default)]
+    #[serde(rename = "directAtCameraY")]
     DirectAtCameraY(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"directAtCameraZ"`
     /// -   type: `hkReal`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "directAtCameraZ", default)]
+    #[serde(rename = "directAtCameraZ")]
     DirectAtCameraZ(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"active"`
     /// -   type: `hkBool`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "active", default)]
+    #[serde(rename = "active")]
     Active(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"currentHeadingOffset"`
     /// -   type: `hkReal`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "currentHeadingOffset", default)]
+    #[serde(rename = "currentHeadingOffset")]
     CurrentHeadingOffset(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"currentPitchOffset"`
     /// -   type: `hkReal`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "currentPitchOffset", default)]
+    #[serde(rename = "currentPitchOffset")]
     CurrentPitchOffset(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"timeStep"`
     /// -   type: `hkReal`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "timeStep", default, skip_serializing)]
+    #[serde(rename = "timeStep", skip_serializing)]
     TimeStep(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"pSkeletonMemory"`
     /// -   type: `void*`
     /// - offset: 132
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "pSkeletonMemory", default, skip_serializing)]
+    #[serde(rename = "pSkeletonMemory", skip_serializing)]
     PSkeletonMemory(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"hasTarget"`
     /// -   type: `hkBool`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "hasTarget", default, skip_serializing)]
+    #[serde(rename = "hasTarget", skip_serializing)]
     HasTarget(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"directAtTargetLocation"`
     /// -   type: `hkVector4`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "directAtTargetLocation", default, skip_serializing)]
+    #[serde(rename = "directAtTargetLocation", skip_serializing)]
     DirectAtTargetLocation(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"boneChainIndices"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "boneChainIndices", default, skip_serializing)]
+    #[serde(rename = "boneChainIndices", skip_serializing)]
     BoneChainIndices(HkArrayRef<Primitive<()>>),
 }
 

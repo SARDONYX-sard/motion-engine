@@ -27,14 +27,14 @@ pub enum HkbGeneratorTransitionEffectInternalState {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,70 +44,70 @@ pub enum HkbGeneratorTransitionEffectInternalState {
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "timeInTransition", default)]
+    #[serde(rename = "timeInTransition")]
     TimeInTransition(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"duration"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "duration", default)]
+    #[serde(rename = "duration")]
     Duration(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"effectiveBlendInDuration"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "effectiveBlendInDuration", default)]
+    #[serde(rename = "effectiveBlendInDuration")]
     EffectiveBlendInDuration(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"effectiveBlendOutDuration"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "effectiveBlendOutDuration", default)]
+    #[serde(rename = "effectiveBlendOutDuration")]
     EffectiveBlendOutDuration(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"toGeneratorState"`
     /// -   type: `enum ToGeneratorState`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "toGeneratorState", default)]
+    #[serde(rename = "toGeneratorState")]
     ToGeneratorState(Primitive<ToGeneratorState>),
     /// # C++ Class Fields Info
     /// -   name:`"echoTransitionGenerator"`
     /// -   type: `hkBool`
     /// - offset: 25
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "echoTransitionGenerator", default)]
+    #[serde(rename = "echoTransitionGenerator")]
     EchoTransitionGenerator(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"echoToGenerator"`
     /// -   type: `hkBool`
     /// - offset: 26
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "echoToGenerator", default)]
+    #[serde(rename = "echoToGenerator")]
     EchoToGenerator(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"justActivated"`
     /// -   type: `hkBool`
     /// - offset: 27
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "justActivated", default)]
+    #[serde(rename = "justActivated")]
     JustActivated(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"updateActiveNodes"`
     /// -   type: `hkBool`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "updateActiveNodes", default)]
+    #[serde(rename = "updateActiveNodes")]
     UpdateActiveNodes(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"stage"`
     /// -   type: `enum Stage`
     /// - offset: 29
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "stage", default)]
+    #[serde(rename = "stage")]
     Stage(Primitive<Stage>),
 }
 

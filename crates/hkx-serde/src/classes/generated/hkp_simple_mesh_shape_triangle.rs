@@ -26,28 +26,28 @@ pub enum HkpSimpleMeshShapeTriangle {
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "a", default)]
+    #[serde(rename = "a")]
     A(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"b"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "b", default)]
+    #[serde(rename = "b")]
     B(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"c"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "c", default)]
+    #[serde(rename = "c")]
     C(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"weldingInfo"`
     /// -   type: `hkUint16`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "weldingInfo", default)]
+    #[serde(rename = "weldingInfo")]
     WeldingInfo(Primitive<u16>),
 }
 

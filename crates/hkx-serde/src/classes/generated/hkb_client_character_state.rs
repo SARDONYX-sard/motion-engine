@@ -27,14 +27,14 @@ pub enum HkbClientCharacterState<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,133 +44,133 @@ pub enum HkbClientCharacterState<'a> {
     /// -   type: `hkArray&lt;hkUint64&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "deformableSkinIds", default)]
+    #[serde(rename = "deformableSkinIds")]
     DeformableSkinIds(HkArrayRef<Primitive<u64>>),
     /// # C++ Class Fields Info
     /// -   name:`"rigidSkinIds"`
     /// -   type: `hkArray&lt;hkUint64&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rigidSkinIds", default)]
+    #[serde(rename = "rigidSkinIds")]
     RigidSkinIds(HkArrayRef<Primitive<u64>>),
     /// # C++ Class Fields Info
     /// -   name:`"externalEventIds"`
     /// -   type: `hkArray&lt;hkInt16&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "externalEventIds", default)]
+    #[serde(rename = "externalEventIds")]
     ExternalEventIds(HkArrayRef<Primitive<i16>>),
     /// # C++ Class Fields Info
     /// -   name:`"auxiliaryInfo"`
     /// -   type: `hkArray&lt;hkbAuxiliaryNodeInfo*&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "auxiliaryInfo", default)]
+    #[serde(rename = "auxiliaryInfo")]
     AuxiliaryInfo(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"activeEventIds"`
     /// -   type: `hkArray&lt;hkInt16&gt;`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "activeEventIds", default)]
+    #[serde(rename = "activeEventIds")]
     ActiveEventIds(HkArrayRef<Primitive<i16>>),
     /// # C++ Class Fields Info
     /// -   name:`"activeVariableIds"`
     /// -   type: `hkArray&lt;hkInt16&gt;`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "activeVariableIds", default)]
+    #[serde(rename = "activeVariableIds")]
     ActiveVariableIds(HkArrayRef<Primitive<i16>>),
     /// # C++ Class Fields Info
     /// -   name:`"characterId"`
     /// -   type: `hkUint64`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "characterId", default)]
+    #[serde(rename = "characterId")]
     CharacterId(Primitive<u64>),
     /// # C++ Class Fields Info
     /// -   name:`"instanceName"`
     /// -   type: `hkStringPtr`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "instanceName", default)]
+    #[serde(rename = "instanceName")]
     InstanceName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"templateName"`
     /// -   type: `hkStringPtr`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "templateName", default)]
+    #[serde(rename = "templateName")]
     TemplateName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"fullPathToProject"`
     /// -   type: `hkStringPtr`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fullPathToProject", default)]
+    #[serde(rename = "fullPathToProject")]
     FullPathToProject(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"behaviorData"`
     /// -   type: `struct hkbBehaviorGraphData*`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "behaviorData", default)]
+    #[serde(rename = "behaviorData")]
     BehaviorData(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"behaviorInternalState"`
     /// -   type: `struct hkbBehaviorGraphInternalState*`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "behaviorInternalState", default)]
+    #[serde(rename = "behaviorInternalState")]
     BehaviorInternalState(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"nodeIdToInternalStateMap"`
     /// -   type: `void*`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "nodeIdToInternalStateMap", default, skip_serializing)]
+    #[serde(rename = "nodeIdToInternalStateMap", skip_serializing)]
     NodeIdToInternalStateMap(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"visible"`
     /// -   type: `hkBool`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "visible", default)]
+    #[serde(rename = "visible")]
     Visible(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"elapsedSimulationTime"`
     /// -   type: `hkReal`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "elapsedSimulationTime", default)]
+    #[serde(rename = "elapsedSimulationTime")]
     ElapsedSimulationTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"skeleton"`
     /// -   type: `struct hkaSkeleton*`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "skeleton", default)]
+    #[serde(rename = "skeleton")]
     Skeleton(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"worldFromModel"`
     /// -   type: `hkQsTransform`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "worldFromModel", default)]
+    #[serde(rename = "worldFromModel")]
     WorldFromModel(QsTransform<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"poseModelSpace"`
     /// -   type: `hkArray&lt;hkQsTransform&gt;`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "poseModelSpace", default)]
+    #[serde(rename = "poseModelSpace")]
     PoseModelSpace(HkArrayVector<QsTransform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"rigidAttachmentTransforms"`
     /// -   type: `hkArray&lt;hkQsTransform&gt;`
     /// - offset: 188
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rigidAttachmentTransforms", default)]
+    #[serde(rename = "rigidAttachmentTransforms")]
     RigidAttachmentTransforms(HkArrayVector<QsTransform<f32>>),
 }
 

@@ -27,49 +27,49 @@ pub enum HkpPhysicsSystemWithContacts<'a> {
     /// -   type: `hkArray&lt;hkpRigidBody*&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rigidBodies", default)]
+    #[serde(rename = "rigidBodies")]
     RigidBodies(HkArrayRef<Cow<'a, str>>),
     /// # C++ Parent class(`hkpPhysicsSystem`, parent: `hkReferencedObject`) field Info
     /// -   name:`"constraints"`
     /// -   type: `hkArray&lt;hkpConstraintInstance*&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "constraints", default)]
+    #[serde(rename = "constraints")]
     Constraints(HkArrayRef<Cow<'a, str>>),
     /// # C++ Parent class(`hkpPhysicsSystem`, parent: `hkReferencedObject`) field Info
     /// -   name:`"actions"`
     /// -   type: `hkArray&lt;hkpAction*&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "actions", default)]
+    #[serde(rename = "actions")]
     Actions(HkArrayRef<Cow<'a, str>>),
     /// # C++ Parent class(`hkpPhysicsSystem`, parent: `hkReferencedObject`) field Info
     /// -   name:`"phantoms"`
     /// -   type: `hkArray&lt;hkpPhantom*&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "phantoms", default)]
+    #[serde(rename = "phantoms")]
     Phantoms(HkArrayRef<Cow<'a, str>>),
     /// # C++ Parent class(`hkpPhysicsSystem`, parent: `hkReferencedObject`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpPhysicsSystem`, parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkpPhysicsSystem`, parent: `hkReferencedObject`) field Info
     /// -   name:`"active"`
     /// -   type: `hkBool`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "active", default)]
+    #[serde(rename = "active")]
     Active(Primitive<bool>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -77,14 +77,14 @@ pub enum HkpPhysicsSystemWithContacts<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -94,7 +94,7 @@ pub enum HkpPhysicsSystemWithContacts<'a> {
     /// -   type: `hkArray&lt;hkpSerializedAgentNnEntry*&gt;`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "contacts", default)]
+    #[serde(rename = "contacts")]
     Contacts(HkArrayRef<Cow<'a, str>>),
 }
 

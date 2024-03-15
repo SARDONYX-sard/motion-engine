@@ -21,34 +21,34 @@ use std::borrow::Cow;
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpMassChangerModifierConstraintAtom {
+pub enum HkpMassChangerModifierConstraintAtom<'a> {
     /// # C++ Parent class(`hkpModifierConstraintAtom`, parent: `hkpConstraintAtom`) field Info
     /// -   name:`"modifierAtomSize"`
     /// -   type: `hkUint16`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "modifierAtomSize", default)]
+    #[serde(rename = "modifierAtomSize")]
     ModifierAtomSize(Primitive<u16>),
     /// # C++ Parent class(`hkpModifierConstraintAtom`, parent: `hkpConstraintAtom`) field Info
     /// -   name:`"childSize"`
     /// -   type: `hkUint16`
     /// - offset: 18
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "childSize", default)]
+    #[serde(rename = "childSize")]
     ChildSize(Primitive<u16>),
     /// # C++ Parent class(`hkpModifierConstraintAtom`, parent: `hkpConstraintAtom`) field Info
     /// -   name:`"child"`
     /// -   type: `struct hkpConstraintAtom*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "child", default)]
+    #[serde(rename = "child")]
     Child(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpModifierConstraintAtom`, parent: `hkpConstraintAtom`) field Info
     /// -   name:`"pad"`
     /// -   type: `hkUint32[2]`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pad", default)]
+    #[serde(rename = "pad")]
     Pad([Primitive<u32>; 2]),
 
     /// # C++ Parent class(`hkpConstraintAtom`, parent: `None`) field Info
@@ -56,7 +56,7 @@ pub enum HkpMassChangerModifierConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -64,14 +64,14 @@ pub enum HkpMassChangerModifierConstraintAtom {
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "factorA", default)]
+    #[serde(rename = "factorA")]
     FactorA(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"factorB"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "factorB", default)]
+    #[serde(rename = "factorB")]
     FactorB(Vector4<f32>),
 }
 

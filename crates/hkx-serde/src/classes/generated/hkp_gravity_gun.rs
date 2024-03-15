@@ -27,28 +27,28 @@ pub enum HkpGravityGun<'a> {
     /// -   type: `enum unknown`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "type", default, skip_serializing)]
+    #[serde(rename = "type", skip_serializing)]
     Type(Primitive<Unknown>),
     /// # C++ Parent class(`hkpFirstPersonGun`, parent: `hkReferencedObject`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpFirstPersonGun`, parent: `hkReferencedObject`) field Info
     /// -   name:`"keyboardKey"`
     /// -   type: `enum KeyboardKey`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "keyboardKey", default)]
+    #[serde(rename = "keyboardKey")]
     KeyboardKey(Primitive<KeyboardKey>),
     /// # C++ Parent class(`hkpFirstPersonGun`, parent: `hkReferencedObject`) field Info
     /// -   name:`"listeners"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "listeners", default, skip_serializing)]
+    #[serde(rename = "listeners", skip_serializing)]
     Listeners(HkArrayRef<Cow<'a, str>>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -56,14 +56,14 @@ pub enum HkpGravityGun<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -73,56 +73,56 @@ pub enum HkpGravityGun<'a> {
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "grabbedBodies", default, skip_serializing)]
+    #[serde(rename = "grabbedBodies", skip_serializing)]
     GrabbedBodies(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"maxNumObjectsPicked"`
     /// -   type: `hkInt32`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxNumObjectsPicked", default)]
+    #[serde(rename = "maxNumObjectsPicked")]
     MaxNumObjectsPicked(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxMassOfObjectPicked"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxMassOfObjectPicked", default)]
+    #[serde(rename = "maxMassOfObjectPicked")]
     MaxMassOfObjectPicked(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxDistOfObjectPicked"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxDistOfObjectPicked", default)]
+    #[serde(rename = "maxDistOfObjectPicked")]
     MaxDistOfObjectPicked(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"impulseAppliedWhenObjectNotPicked"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "impulseAppliedWhenObjectNotPicked", default)]
+    #[serde(rename = "impulseAppliedWhenObjectNotPicked")]
     ImpulseAppliedWhenObjectNotPicked(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"throwVelocity"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "throwVelocity", default)]
+    #[serde(rename = "throwVelocity")]
     ThrowVelocity(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"capturedObjectPosition"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "capturedObjectPosition", default)]
+    #[serde(rename = "capturedObjectPosition")]
     CapturedObjectPosition(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"capturedObjectsOffset"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "capturedObjectsOffset", default)]
+    #[serde(rename = "capturedObjectsOffset")]
     CapturedObjectsOffset(Vector4<f32>),
 }
 

@@ -26,21 +26,21 @@ pub enum HkbStateMachineTransitionInfoReference {
     /// -   type: `hkInt16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fromStateIndex", default)]
+    #[serde(rename = "fromStateIndex")]
     FromStateIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"transitionIndex"`
     /// -   type: `hkInt16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transitionIndex", default)]
+    #[serde(rename = "transitionIndex")]
     TransitionIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"stateMachineId"`
     /// -   type: `hkInt16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "stateMachineId", default)]
+    #[serde(rename = "stateMachineId")]
     StateMachineId(Primitive<i16>),
 }
 

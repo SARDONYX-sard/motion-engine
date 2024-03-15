@@ -27,14 +27,14 @@ pub enum HkaMeshBinding<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,35 +44,35 @@ pub enum HkaMeshBinding<'a> {
     /// -   type: `struct hkxMesh*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "mesh", default)]
+    #[serde(rename = "mesh")]
     Mesh(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"originalSkeletonName"`
     /// -   type: `hkStringPtr`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "originalSkeletonName", default)]
+    #[serde(rename = "originalSkeletonName")]
     OriginalSkeletonName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"skeleton"`
     /// -   type: `struct hkaSkeleton*`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "skeleton", default)]
+    #[serde(rename = "skeleton")]
     Skeleton(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"mappings"`
     /// -   type: `hkArray&lt;struct hkaMeshBindingMapping&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "mappings", default)]
+    #[serde(rename = "mappings")]
     Mappings(HkArrayClass<HkaMeshBindingMapping>),
     /// # C++ Class Fields Info
     /// -   name:`"boneFromSkinMeshTransforms"`
     /// -   type: `hkArray&lt;hkTransform&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "boneFromSkinMeshTransforms", default)]
+    #[serde(rename = "boneFromSkinMeshTransforms")]
     BoneFromSkinMeshTransforms(HkArrayVector<Transform<f32>>),
 }
 

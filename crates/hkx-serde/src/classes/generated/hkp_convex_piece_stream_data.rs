@@ -27,14 +27,14 @@ pub enum HkpConvexPieceStreamData {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,21 +44,21 @@ pub enum HkpConvexPieceStreamData {
     /// -   type: `hkArray&lt;hkUint32&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "convexPieceStream", default)]
+    #[serde(rename = "convexPieceStream")]
     ConvexPieceStream(HkArrayRef<Primitive<u32>>),
     /// # C++ Class Fields Info
     /// -   name:`"convexPieceOffsets"`
     /// -   type: `hkArray&lt;hkUint32&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "convexPieceOffsets", default)]
+    #[serde(rename = "convexPieceOffsets")]
     ConvexPieceOffsets(HkArrayRef<Primitive<u32>>),
     /// # C++ Class Fields Info
     /// -   name:`"convexPieceSingleTriangles"`
     /// -   type: `hkArray&lt;hkUint32&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "convexPieceSingleTriangles", default)]
+    #[serde(rename = "convexPieceSingleTriangles")]
     ConvexPieceSingleTriangles(HkArrayRef<Primitive<u32>>),
 }
 

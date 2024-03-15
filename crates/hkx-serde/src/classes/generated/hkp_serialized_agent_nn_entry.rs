@@ -27,14 +27,14 @@ pub enum HkpSerializedAgentNnEntry<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,98 +44,98 @@ pub enum HkpSerializedAgentNnEntry<'a> {
     /// -   type: `struct hkpEntity*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bodyA", default)]
+    #[serde(rename = "bodyA")]
     BodyA(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"bodyB"`
     /// -   type: `struct hkpEntity*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bodyB", default)]
+    #[serde(rename = "bodyB")]
     BodyB(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"bodyAId"`
     /// -   type: `hkUlong`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bodyAId", default)]
+    #[serde(rename = "bodyAId")]
     BodyAId(Primitive<usize>),
     /// # C++ Class Fields Info
     /// -   name:`"bodyBId"`
     /// -   type: `hkUlong`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bodyBId", default)]
+    #[serde(rename = "bodyBId")]
     BodyBId(Primitive<usize>),
     /// # C++ Class Fields Info
     /// -   name:`"useEntityIds"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "useEntityIds", default)]
+    #[serde(rename = "useEntityIds")]
     UseEntityIds(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"agentType"`
     /// -   type: `enum SerializedAgentType`
     /// - offset: 25
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "agentType", default)]
+    #[serde(rename = "agentType")]
     AgentType(Primitive<SerializedAgentType>),
     /// # C++ Class Fields Info
     /// -   name:`"atom"`
     /// -   type: `struct hkpSimpleContactConstraintAtom`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "atom", default)]
+    #[serde(rename = "atom")]
     Atom(HkpSimpleContactConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"propertiesStream"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "propertiesStream", default)]
+    #[serde(rename = "propertiesStream")]
     PropertiesStream(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"contactPoints"`
     /// -   type: `hkArray&lt;struct hkContactPoint&gt;`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "contactPoints", default)]
+    #[serde(rename = "contactPoints")]
     ContactPoints(HkArrayClass<HkContactPoint>),
     /// # C++ Class Fields Info
     /// -   name:`"cpIdMgr"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "cpIdMgr", default)]
+    #[serde(rename = "cpIdMgr")]
     CpIdMgr(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"nnEntryData"`
     /// -   type: `hkUint8[160]`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "nnEntryData", default)]
+    #[serde(rename = "nnEntryData")]
     NnEntryData([Primitive<u8>; 160]),
     /// # C++ Class Fields Info
     /// -   name:`"trackInfo"`
     /// -   type: `struct hkpSerializedTrack1nInfo`
     /// - offset: 276
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "trackInfo", default)]
+    #[serde(rename = "trackInfo")]
     TrackInfo(HkpSerializedTrack1NInfo),
     /// # C++ Class Fields Info
     /// -   name:`"endianCheckBuffer"`
     /// -   type: `hkUint8[4]`
     /// - offset: 300
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "endianCheckBuffer", default)]
+    #[serde(rename = "endianCheckBuffer")]
     EndianCheckBuffer([Primitive<u8>; 4]),
     /// # C++ Class Fields Info
     /// -   name:`"version"`
     /// -   type: `hkUint32`
     /// - offset: 304
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "version", default)]
+    #[serde(rename = "version")]
     Version(Primitive<u32>),
 }
 

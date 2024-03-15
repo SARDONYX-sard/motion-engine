@@ -27,14 +27,14 @@ pub enum HkbBehaviorGraphInternalStateInfo<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,35 +44,35 @@ pub enum HkbBehaviorGraphInternalStateInfo<'a> {
     /// -   type: `hkUint64`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "characterId", default)]
+    #[serde(rename = "characterId")]
     CharacterId(Primitive<u64>),
     /// # C++ Class Fields Info
     /// -   name:`"internalState"`
     /// -   type: `struct hkbBehaviorGraphInternalState*`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "internalState", default)]
+    #[serde(rename = "internalState")]
     InternalState(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"auxiliaryNodeInfo"`
     /// -   type: `hkArray&lt;hkbAuxiliaryNodeInfo*&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "auxiliaryNodeInfo", default)]
+    #[serde(rename = "auxiliaryNodeInfo")]
     AuxiliaryNodeInfo(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"activeEventIds"`
     /// -   type: `hkArray&lt;hkInt16&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "activeEventIds", default)]
+    #[serde(rename = "activeEventIds")]
     ActiveEventIds(HkArrayRef<Primitive<i16>>),
     /// # C++ Class Fields Info
     /// -   name:`"activeVariableIds"`
     /// -   type: `hkArray&lt;hkInt16&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "activeVariableIds", default)]
+    #[serde(rename = "activeVariableIds")]
     ActiveVariableIds(HkArrayRef<Primitive<i16>>),
 }
 

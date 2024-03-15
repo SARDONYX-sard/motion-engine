@@ -27,7 +27,7 @@ pub enum HkpLinLimitConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -35,21 +35,21 @@ pub enum HkpLinLimitConstraintAtom {
     /// -   type: `hkUint8`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "axisIndex", default)]
+    #[serde(rename = "axisIndex")]
     AxisIndex(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"min"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "min", default)]
+    #[serde(rename = "min")]
     Min(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"max"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "max", default)]
+    #[serde(rename = "max")]
     Max(Primitive<f32>),
 }
 

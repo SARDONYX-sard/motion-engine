@@ -27,14 +27,14 @@ pub enum HkbClipGeneratorInternalState {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,70 +44,70 @@ pub enum HkbClipGeneratorInternalState {
     /// -   type: `hkQsTransform`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "extractedMotion", default)]
+    #[serde(rename = "extractedMotion")]
     ExtractedMotion(QsTransform<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"echos"`
     /// -   type: `hkArray&lt;struct hkbClipGeneratorEcho&gt;`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "echos", default)]
+    #[serde(rename = "echos")]
     Echos(HkArrayClass<HkbClipGeneratorEcho>),
     /// # C++ Class Fields Info
     /// -   name:`"localTime"`
     /// -   type: `hkReal`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "localTime", default)]
+    #[serde(rename = "localTime")]
     LocalTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"time"`
     /// -   type: `hkReal`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "time", default)]
+    #[serde(rename = "time")]
     Time(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"previousUserControlledTimeFraction"`
     /// -   type: `hkReal`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "previousUserControlledTimeFraction", default)]
+    #[serde(rename = "previousUserControlledTimeFraction")]
     PreviousUserControlledTimeFraction(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"bufferSize"`
     /// -   type: `hkInt32`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bufferSize", default)]
+    #[serde(rename = "bufferSize")]
     BufferSize(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"echoBufferSize"`
     /// -   type: `hkInt32`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "echoBufferSize", default)]
+    #[serde(rename = "echoBufferSize")]
     EchoBufferSize(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"atEnd"`
     /// -   type: `hkBool`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "atEnd", default)]
+    #[serde(rename = "atEnd")]
     AtEnd(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"ignoreStartTime"`
     /// -   type: `hkBool`
     /// - offset: 97
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ignoreStartTime", default)]
+    #[serde(rename = "ignoreStartTime")]
     IgnoreStartTime(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"pingPongBackward"`
     /// -   type: `hkBool`
     /// - offset: 98
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pingPongBackward", default)]
+    #[serde(rename = "pingPongBackward")]
     PingPongBackward(Primitive<bool>),
 }
 

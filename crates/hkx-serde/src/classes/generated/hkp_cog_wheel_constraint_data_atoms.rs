@@ -26,14 +26,14 @@ pub enum HkpCogWheelConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTransformsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transforms", default)]
+    #[serde(rename = "transforms")]
     Transforms(HkpSetLocalTransformsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"cogWheels"`
     /// -   type: `struct hkpCogWheelConstraintAtom`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "cogWheels", default)]
+    #[serde(rename = "cogWheels")]
     CogWheels(HkpCogWheelConstraintAtom),
 }
 

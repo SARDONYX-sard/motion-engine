@@ -26,21 +26,21 @@ pub enum HkMultipleVertexBufferVertexBufferInfo<'a> {
     /// -   type: `struct hkMeshVertexBuffer*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertexBuffer", default)]
+    #[serde(rename = "vertexBuffer")]
     VertexBuffer(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"lockedVertices"`
     /// -   type: `void*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "lockedVertices", default, skip_serializing)]
+    #[serde(rename = "lockedVertices", skip_serializing)]
     LockedVertices(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"isLocked"`
     /// -   type: `hkBool`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isLocked", default)]
+    #[serde(rename = "isLocked")]
     IsLocked(Primitive<bool>),
 }
 

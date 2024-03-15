@@ -26,14 +26,14 @@ pub enum HkbEventBase<'a> {
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "id", default)]
+    #[serde(rename = "id")]
     Id(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"payload"`
     /// -   type: `struct hkbEventPayload*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "payload", default)]
+    #[serde(rename = "payload")]
     Payload(Primitive<Cow<'a, str>>),
 }
 

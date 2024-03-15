@@ -21,20 +21,20 @@ use std::borrow::Cow;
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum BsEventOnFalseToTrueModifier {
+pub enum BsEventOnFalseToTrueModifier<'a> {
     /// # C++ Parent class(`hkbModifier`, parent: `hkbNode`) field Info
     /// -   name:`"enable"`
     /// -   type: `hkBool`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enable", default)]
+    #[serde(rename = "enable")]
     Enable(Primitive<bool>),
     /// # C++ Parent class(`hkbModifier`, parent: `hkbNode`) field Info
     /// -   name:`"padModifier"`
     /// -   type: `hkBool[3]`
     /// - offset: 41
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "padModifier", default, skip_serializing)]
+    #[serde(rename = "padModifier", skip_serializing)]
     PadModifier([Primitive<bool>; 3]),
 
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
@@ -42,35 +42,35 @@ pub enum BsEventOnFalseToTrueModifier {
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "id", default, skip_serializing)]
+    #[serde(rename = "id", skip_serializing)]
     Id(Primitive<i16>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cloneState", default, skip_serializing)]
+    #[serde(rename = "cloneState", skip_serializing)]
     CloneState(Primitive<Unknown>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "padNode", default, skip_serializing)]
+    #[serde(rename = "padNode", skip_serializing)]
     PadNode([Primitive<bool>; 1]),
 
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
@@ -78,21 +78,21 @@ pub enum BsEventOnFalseToTrueModifier {
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "variableBindingSet", default)]
+    #[serde(rename = "variableBindingSet")]
     VariableBindingSet(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cachedBindables", default, skip_serializing)]
+    #[serde(rename = "cachedBindables", skip_serializing)]
     CachedBindables(HkArrayRef<Primitive<()>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "areBindablesCached", default, skip_serializing)]
+    #[serde(rename = "areBindablesCached", skip_serializing)]
     AreBindablesCached(Primitive<bool>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -100,14 +100,14 @@ pub enum BsEventOnFalseToTrueModifier {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -117,84 +117,84 @@ pub enum BsEventOnFalseToTrueModifier {
     /// -   type: `hkBool`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bEnableEvent1", default)]
+    #[serde(rename = "bEnableEvent1")]
     BEnableEvent1(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"bVariableToTest1"`
     /// -   type: `hkBool`
     /// - offset: 45
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bVariableToTest1", default)]
+    #[serde(rename = "bVariableToTest1")]
     BVariableToTest1(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"EventToSend1"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "EventToSend1", default)]
+    #[serde(rename = "EventToSend1")]
     EventToSend1(HkbEventProperty),
     /// # C++ Class Fields Info
     /// -   name:`"bEnableEvent2"`
     /// -   type: `hkBool`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bEnableEvent2", default)]
+    #[serde(rename = "bEnableEvent2")]
     BEnableEvent2(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"bVariableToTest2"`
     /// -   type: `hkBool`
     /// - offset: 57
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bVariableToTest2", default)]
+    #[serde(rename = "bVariableToTest2")]
     BVariableToTest2(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"EventToSend2"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "EventToSend2", default)]
+    #[serde(rename = "EventToSend2")]
     EventToSend2(HkbEventProperty),
     /// # C++ Class Fields Info
     /// -   name:`"bEnableEvent3"`
     /// -   type: `hkBool`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bEnableEvent3", default)]
+    #[serde(rename = "bEnableEvent3")]
     BEnableEvent3(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"bVariableToTest3"`
     /// -   type: `hkBool`
     /// - offset: 69
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bVariableToTest3", default)]
+    #[serde(rename = "bVariableToTest3")]
     BVariableToTest3(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"EventToSend3"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "EventToSend3", default)]
+    #[serde(rename = "EventToSend3")]
     EventToSend3(HkbEventProperty),
     /// # C++ Class Fields Info
     /// -   name:`"bSlot1ActivatedLastFrame"`
     /// -   type: `hkBool`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "bSlot1ActivatedLastFrame", default, skip_serializing)]
+    #[serde(rename = "bSlot1ActivatedLastFrame", skip_serializing)]
     BSlot1ActivatedLastFrame(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"bSlot2ActivatedLastFrame"`
     /// -   type: `hkBool`
     /// - offset: 81
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "bSlot2ActivatedLastFrame", default, skip_serializing)]
+    #[serde(rename = "bSlot2ActivatedLastFrame", skip_serializing)]
     BSlot2ActivatedLastFrame(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"bSlot3ActivatedLastFrame"`
     /// -   type: `hkBool`
     /// - offset: 82
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "bSlot3ActivatedLastFrame", default, skip_serializing)]
+    #[serde(rename = "bSlot3ActivatedLastFrame", skip_serializing)]
     BSlot3ActivatedLastFrame(Primitive<bool>),
 }
 

@@ -26,21 +26,21 @@ pub enum HkxMaterialTextureStage<'a> {
     /// -   type: `struct hkReferencedObject*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "texture", default)]
+    #[serde(rename = "texture")]
     Texture(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"usageHint"`
     /// -   type: `enum TextureType`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "usageHint", default)]
+    #[serde(rename = "usageHint")]
     UsageHint(Primitive<TextureType>),
     /// # C++ Class Fields Info
     /// -   name:`"tcoordChannel"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "tcoordChannel", default)]
+    #[serde(rename = "tcoordChannel")]
     TcoordChannel(Primitive<i32>),
 }
 

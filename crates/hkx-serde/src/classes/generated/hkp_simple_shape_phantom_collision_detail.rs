@@ -26,7 +26,7 @@ pub enum HkpSimpleShapePhantomCollisionDetail<'a> {
     /// -   type: `struct hkpCollidable*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "collidable", default)]
+    #[serde(rename = "collidable")]
     Collidable(Primitive<Cow<'a, str>>),
 }
 

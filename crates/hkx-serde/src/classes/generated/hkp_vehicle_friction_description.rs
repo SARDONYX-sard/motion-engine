@@ -26,21 +26,21 @@ pub enum HkpVehicleFrictionDescription {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wheelDistance", default)]
+    #[serde(rename = "wheelDistance")]
     WheelDistance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"chassisMassInv"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "chassisMassInv", default)]
+    #[serde(rename = "chassisMassInv")]
     ChassisMassInv(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"axleDescr"`
     /// -   type: `struct hkpVehicleFrictionDescriptionAxisDescription[2]`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "axleDescr", default)]
+    #[serde(rename = "axleDescr")]
     AxleDescr([HkpVehicleFrictionDescriptionAxisDescription; 2]),
 }
 

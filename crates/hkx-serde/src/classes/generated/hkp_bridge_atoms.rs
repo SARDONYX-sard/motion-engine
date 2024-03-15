@@ -26,7 +26,7 @@ pub enum HkpBridgeAtoms {
     /// -   type: `struct hkpBridgeConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bridgeAtom", default)]
+    #[serde(rename = "bridgeAtom")]
     BridgeAtom(HkpBridgeConstraintAtom),
 }
 

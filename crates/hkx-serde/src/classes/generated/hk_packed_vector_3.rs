@@ -26,7 +26,7 @@ pub enum HkPackedVector3 {
     /// -   type: `hkInt16[4]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "values", default)]
+    #[serde(rename = "values")]
     Values([Primitive<i16>; 4]),
 }
 

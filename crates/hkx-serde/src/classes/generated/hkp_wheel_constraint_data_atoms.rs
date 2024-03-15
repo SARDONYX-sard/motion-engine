@@ -26,49 +26,49 @@ pub enum HkpWheelConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTransformsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "suspensionBase", default)]
+    #[serde(rename = "suspensionBase")]
     SuspensionBase(HkpSetLocalTransformsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"lin0Limit"`
     /// -   type: `struct hkpLinLimitConstraintAtom`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lin0Limit", default)]
+    #[serde(rename = "lin0Limit")]
     Lin0Limit(HkpLinLimitConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"lin0Soft"`
     /// -   type: `struct hkpLinSoftConstraintAtom`
     /// - offset: 156
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lin0Soft", default)]
+    #[serde(rename = "lin0Soft")]
     Lin0Soft(HkpLinSoftConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"lin1"`
     /// -   type: `struct hkpLinConstraintAtom`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lin1", default)]
+    #[serde(rename = "lin1")]
     Lin1(HkpLinConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"lin2"`
     /// -   type: `struct hkpLinConstraintAtom`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lin2", default)]
+    #[serde(rename = "lin2")]
     Lin2(HkpLinConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"steeringBase"`
     /// -   type: `struct hkpSetLocalRotationsConstraintAtom`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "steeringBase", default)]
+    #[serde(rename = "steeringBase")]
     SteeringBase(HkpSetLocalRotationsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"2dAng"`
     /// -   type: `struct hkp2dAngConstraintAtom`
     /// - offset: 288
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "2dAng", default)]
+    #[serde(rename = "2dAng")]
     2DAng(Hkp2DAngConstraintAtom),
 }
 

@@ -27,14 +27,14 @@ pub enum HkpWorld<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,609 +44,609 @@ pub enum HkpWorld<'a> {
     /// -   type: `struct hkpSimulation*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "simulation", default)]
+    #[serde(rename = "simulation")]
     Simulation(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"gravity"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "gravity", default)]
+    #[serde(rename = "gravity")]
     Gravity(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"fixedIsland"`
     /// -   type: `void*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "fixedIsland", default, skip_serializing)]
+    #[serde(rename = "fixedIsland", skip_serializing)]
     FixedIsland(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"fixedRigidBody"`
     /// -   type: `struct hkpRigidBody*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fixedRigidBody", default)]
+    #[serde(rename = "fixedRigidBody")]
     FixedRigidBody(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"activeSimulationIslands"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "activeSimulationIslands", default, skip_serializing)]
+    #[serde(rename = "activeSimulationIslands", skip_serializing)]
     ActiveSimulationIslands(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"inactiveSimulationIslands"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "inactiveSimulationIslands", default, skip_serializing)]
+    #[serde(rename = "inactiveSimulationIslands", skip_serializing)]
     InactiveSimulationIslands(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"dirtySimulationIslands"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "dirtySimulationIslands", default, skip_serializing)]
+    #[serde(rename = "dirtySimulationIslands", skip_serializing)]
     DirtySimulationIslands(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"maintenanceMgr"`
     /// -   type: `void*`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "maintenanceMgr", default, skip_serializing)]
+    #[serde(rename = "maintenanceMgr", skip_serializing)]
     MaintenanceMgr(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"memoryWatchDog"`
     /// -   type: `void*`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memoryWatchDog", default, skip_serializing)]
+    #[serde(rename = "memoryWatchDog", skip_serializing)]
     MemoryWatchDog(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"assertOnRunningOutOfSolverMemory"`
     /// -   type: `hkBool`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "assertOnRunningOutOfSolverMemory", default, skip_serializing)]
+    #[serde(rename = "assertOnRunningOutOfSolverMemory", skip_serializing)]
     AssertOnRunningOutOfSolverMemory(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"broadPhase"`
     /// -   type: `void*`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "broadPhase", default, skip_serializing)]
+    #[serde(rename = "broadPhase", skip_serializing)]
     BroadPhase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"kdTreeManager"`
     /// -   type: `void*`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "kdTreeManager", default, skip_serializing)]
+    #[serde(rename = "kdTreeManager", skip_serializing)]
     KdTreeManager(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"autoUpdateTree"`
     /// -   type: `hkBool`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "autoUpdateTree", default)]
+    #[serde(rename = "autoUpdateTree")]
     AutoUpdateTree(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseDispatcher"`
     /// -   type: `void*`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "broadPhaseDispatcher", default, skip_serializing)]
+    #[serde(rename = "broadPhaseDispatcher", skip_serializing)]
     BroadPhaseDispatcher(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"phantomBroadPhaseListener"`
     /// -   type: `void*`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "phantomBroadPhaseListener", default, skip_serializing)]
+    #[serde(rename = "phantomBroadPhaseListener", skip_serializing)]
     PhantomBroadPhaseListener(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"entityEntityBroadPhaseListener"`
     /// -   type: `void*`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "entityEntityBroadPhaseListener", default, skip_serializing)]
+    #[serde(rename = "entityEntityBroadPhaseListener", skip_serializing)]
     EntityEntityBroadPhaseListener(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseBorderListener"`
     /// -   type: `void*`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "broadPhaseBorderListener", default, skip_serializing)]
+    #[serde(rename = "broadPhaseBorderListener", skip_serializing)]
     BroadPhaseBorderListener(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"multithreadedSimulationJobData"`
     /// -   type: `void*`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "multithreadedSimulationJobData", default, skip_serializing)]
+    #[serde(rename = "multithreadedSimulationJobData", skip_serializing)]
     MultithreadedSimulationJobData(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"collisionInput"`
     /// -   type: `void*`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "collisionInput", default, skip_serializing)]
+    #[serde(rename = "collisionInput", skip_serializing)]
     CollisionInput(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilter"`
     /// -   type: `void*`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "collisionFilter", default, skip_serializing)]
+    #[serde(rename = "collisionFilter", skip_serializing)]
     CollisionFilter(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"collisionDispatcher"`
     /// -   type: `void*`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "collisionDispatcher", default, skip_serializing)]
+    #[serde(rename = "collisionDispatcher", skip_serializing)]
     CollisionDispatcher(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"convexListFilter"`
     /// -   type: `void*`
     /// - offset: 132
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "convexListFilter", default, skip_serializing)]
+    #[serde(rename = "convexListFilter", skip_serializing)]
     ConvexListFilter(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"pendingOperations"`
     /// -   type: `void*`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "pendingOperations", default, skip_serializing)]
+    #[serde(rename = "pendingOperations", skip_serializing)]
     PendingOperations(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"pendingOperationsCount"`
     /// -   type: `hkInt32`
     /// - offset: 140
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pendingOperationsCount", default)]
+    #[serde(rename = "pendingOperationsCount")]
     PendingOperationsCount(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"pendingBodyOperationsCount"`
     /// -   type: `hkInt32`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "pendingBodyOperationsCount", default, skip_serializing)]
+    #[serde(rename = "pendingBodyOperationsCount", skip_serializing)]
     PendingBodyOperationsCount(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"criticalOperationsLockCount"`
     /// -   type: `hkInt32`
     /// - offset: 148
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "criticalOperationsLockCount", default)]
+    #[serde(rename = "criticalOperationsLockCount")]
     CriticalOperationsLockCount(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"criticalOperationsLockCountForPhantoms"`
     /// -   type: `hkInt32`
     /// - offset: 152
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "criticalOperationsLockCountForPhantoms", default)]
+    #[serde(rename = "criticalOperationsLockCountForPhantoms")]
     CriticalOperationsLockCountForPhantoms(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"blockExecutingPendingOperations"`
     /// -   type: `hkBool`
     /// - offset: 156
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "blockExecutingPendingOperations", default)]
+    #[serde(rename = "blockExecutingPendingOperations")]
     BlockExecutingPendingOperations(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"criticalOperationsAllowed"`
     /// -   type: `hkBool`
     /// - offset: 157
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "criticalOperationsAllowed", default)]
+    #[serde(rename = "criticalOperationsAllowed")]
     CriticalOperationsAllowed(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"pendingOperationQueues"`
     /// -   type: `void*`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "pendingOperationQueues", default, skip_serializing)]
+    #[serde(rename = "pendingOperationQueues", skip_serializing)]
     PendingOperationQueues(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"pendingOperationQueueCount"`
     /// -   type: `hkInt32`
     /// - offset: 164
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pendingOperationQueueCount", default)]
+    #[serde(rename = "pendingOperationQueueCount")]
     PendingOperationQueueCount(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"multiThreadCheck"`
     /// -   type: `struct hkMultiThreadCheck`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "multiThreadCheck", default, skip_serializing)]
+    #[serde(rename = "multiThreadCheck", skip_serializing)]
     MultiThreadCheck(HkMultiThreadCheck),
     /// # C++ Class Fields Info
     /// -   name:`"processActionsInSingleThread"`
     /// -   type: `hkBool`
     /// - offset: 180
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "processActionsInSingleThread", default)]
+    #[serde(rename = "processActionsInSingleThread")]
     ProcessActionsInSingleThread(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"allowIntegrationOfIslandsWithoutConstraintsInASeparateJob"`
     /// -   type: `hkBool`
     /// - offset: 181
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "allowIntegrationOfIslandsWithoutConstraintsInASeparateJob", default)]
+    #[serde(rename = "allowIntegrationOfIslandsWithoutConstraintsInASeparateJob")]
     AllowIntegrationOfIslandsWithoutConstraintsInASeparateJob(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"minDesiredIslandSize"`
     /// -   type: `hkUint32`
     /// - offset: 184
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minDesiredIslandSize", default)]
+    #[serde(rename = "minDesiredIslandSize")]
     MinDesiredIslandSize(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"modifyConstraintCriticalSection"`
     /// -   type: `void*`
     /// - offset: 188
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "modifyConstraintCriticalSection", default, skip_serializing)]
+    #[serde(rename = "modifyConstraintCriticalSection", skip_serializing)]
     ModifyConstraintCriticalSection(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"isLocked"`
     /// -   type: `hkInt32`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isLocked", default)]
+    #[serde(rename = "isLocked")]
     IsLocked(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"islandDirtyListCriticalSection"`
     /// -   type: `void*`
     /// - offset: 196
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "islandDirtyListCriticalSection", default, skip_serializing)]
+    #[serde(rename = "islandDirtyListCriticalSection", skip_serializing)]
     IslandDirtyListCriticalSection(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"propertyMasterLock"`
     /// -   type: `void*`
     /// - offset: 200
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "propertyMasterLock", default, skip_serializing)]
+    #[serde(rename = "propertyMasterLock", skip_serializing)]
     PropertyMasterLock(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"wantSimulationIslands"`
     /// -   type: `hkBool`
     /// - offset: 204
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wantSimulationIslands", default)]
+    #[serde(rename = "wantSimulationIslands")]
     WantSimulationIslands(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"useHybridBroadphase"`
     /// -   type: `hkBool`
     /// - offset: 205
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "useHybridBroadphase", default, skip_serializing)]
+    #[serde(rename = "useHybridBroadphase", skip_serializing)]
     UseHybridBroadphase(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"snapCollisionToConvexEdgeThreshold"`
     /// -   type: `hkReal`
     /// - offset: 208
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "snapCollisionToConvexEdgeThreshold", default)]
+    #[serde(rename = "snapCollisionToConvexEdgeThreshold")]
     SnapCollisionToConvexEdgeThreshold(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"snapCollisionToConcaveEdgeThreshold"`
     /// -   type: `hkReal`
     /// - offset: 212
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "snapCollisionToConcaveEdgeThreshold", default)]
+    #[serde(rename = "snapCollisionToConcaveEdgeThreshold")]
     SnapCollisionToConcaveEdgeThreshold(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"enableToiWeldRejection"`
     /// -   type: `hkBool`
     /// - offset: 216
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enableToiWeldRejection", default)]
+    #[serde(rename = "enableToiWeldRejection")]
     EnableToiWeldRejection(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"wantDeactivation"`
     /// -   type: `hkBool`
     /// - offset: 217
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wantDeactivation", default)]
+    #[serde(rename = "wantDeactivation")]
     WantDeactivation(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"shouldActivateOnRigidBodyTransformChange"`
     /// -   type: `hkBool`
     /// - offset: 218
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "shouldActivateOnRigidBodyTransformChange", default)]
+    #[serde(rename = "shouldActivateOnRigidBodyTransformChange")]
     ShouldActivateOnRigidBodyTransformChange(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"deactivationReferenceDistance"`
     /// -   type: `hkReal`
     /// - offset: 220
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "deactivationReferenceDistance", default)]
+    #[serde(rename = "deactivationReferenceDistance")]
     DeactivationReferenceDistance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"toiCollisionResponseRotateNormal"`
     /// -   type: `hkReal`
     /// - offset: 224
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "toiCollisionResponseRotateNormal", default)]
+    #[serde(rename = "toiCollisionResponseRotateNormal")]
     ToiCollisionResponseRotateNormal(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxSectorsPerMidphaseCollideTask"`
     /// -   type: `hkInt32`
     /// - offset: 228
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxSectorsPerMidphaseCollideTask", default)]
+    #[serde(rename = "maxSectorsPerMidphaseCollideTask")]
     MaxSectorsPerMidphaseCollideTask(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxSectorsPerNarrowphaseCollideTask"`
     /// -   type: `hkInt32`
     /// - offset: 232
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxSectorsPerNarrowphaseCollideTask", default)]
+    #[serde(rename = "maxSectorsPerNarrowphaseCollideTask")]
     MaxSectorsPerNarrowphaseCollideTask(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"processToisMultithreaded"`
     /// -   type: `hkBool`
     /// - offset: 236
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "processToisMultithreaded", default)]
+    #[serde(rename = "processToisMultithreaded")]
     ProcessToisMultithreaded(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"maxEntriesPerToiMidphaseCollideTask"`
     /// -   type: `hkInt32`
     /// - offset: 240
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxEntriesPerToiMidphaseCollideTask", default)]
+    #[serde(rename = "maxEntriesPerToiMidphaseCollideTask")]
     MaxEntriesPerToiMidphaseCollideTask(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxEntriesPerToiNarrowphaseCollideTask"`
     /// -   type: `hkInt32`
     /// - offset: 244
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxEntriesPerToiNarrowphaseCollideTask", default)]
+    #[serde(rename = "maxEntriesPerToiNarrowphaseCollideTask")]
     MaxEntriesPerToiNarrowphaseCollideTask(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxNumToiCollisionPairsSinglethreaded"`
     /// -   type: `hkInt32`
     /// - offset: 248
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxNumToiCollisionPairsSinglethreaded", default)]
+    #[serde(rename = "maxNumToiCollisionPairsSinglethreaded")]
     MaxNumToiCollisionPairsSinglethreaded(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"simulationType"`
     /// -   type: `enum unknown`
     /// - offset: 252
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "simulationType", default, skip_serializing)]
+    #[serde(rename = "simulationType", skip_serializing)]
     SimulationType(Primitive<Unknown>),
     /// # C++ Class Fields Info
     /// -   name:`"numToisTillAllowedPenetrationSimplifiedToi"`
     /// -   type: `hkReal`
     /// - offset: 256
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numToisTillAllowedPenetrationSimplifiedToi", default)]
+    #[serde(rename = "numToisTillAllowedPenetrationSimplifiedToi")]
     NumToisTillAllowedPenetrationSimplifiedToi(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"numToisTillAllowedPenetrationToi"`
     /// -   type: `hkReal`
     /// - offset: 260
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numToisTillAllowedPenetrationToi", default)]
+    #[serde(rename = "numToisTillAllowedPenetrationToi")]
     NumToisTillAllowedPenetrationToi(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"numToisTillAllowedPenetrationToiHigher"`
     /// -   type: `hkReal`
     /// - offset: 264
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numToisTillAllowedPenetrationToiHigher", default)]
+    #[serde(rename = "numToisTillAllowedPenetrationToiHigher")]
     NumToisTillAllowedPenetrationToiHigher(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"numToisTillAllowedPenetrationToiForced"`
     /// -   type: `hkReal`
     /// - offset: 268
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numToisTillAllowedPenetrationToiForced", default)]
+    #[serde(rename = "numToisTillAllowedPenetrationToiForced")]
     NumToisTillAllowedPenetrationToiForced(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"lastEntityUid"`
     /// -   type: `hkUint32`
     /// - offset: 272
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lastEntityUid", default)]
+    #[serde(rename = "lastEntityUid")]
     LastEntityUid(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"lastIslandUid"`
     /// -   type: `hkUint32`
     /// - offset: 276
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lastIslandUid", default)]
+    #[serde(rename = "lastIslandUid")]
     LastIslandUid(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"lastConstraintUid"`
     /// -   type: `hkUint32`
     /// - offset: 280
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lastConstraintUid", default)]
+    #[serde(rename = "lastConstraintUid")]
     LastConstraintUid(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"phantoms"`
     /// -   type: `hkArray&lt;hkpPhantom*&gt;`
     /// - offset: 284
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "phantoms", default)]
+    #[serde(rename = "phantoms")]
     Phantoms(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"actionListeners"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 296
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "actionListeners", default, skip_serializing)]
+    #[serde(rename = "actionListeners", skip_serializing)]
     ActionListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"entityListeners"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 308
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "entityListeners", default, skip_serializing)]
+    #[serde(rename = "entityListeners", skip_serializing)]
     EntityListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"phantomListeners"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 320
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "phantomListeners", default, skip_serializing)]
+    #[serde(rename = "phantomListeners", skip_serializing)]
     PhantomListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"constraintListeners"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 332
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "constraintListeners", default, skip_serializing)]
+    #[serde(rename = "constraintListeners", skip_serializing)]
     ConstraintListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"worldDeletionListeners"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 344
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "worldDeletionListeners", default, skip_serializing)]
+    #[serde(rename = "worldDeletionListeners", skip_serializing)]
     WorldDeletionListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"islandActivationListeners"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 356
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "islandActivationListeners", default, skip_serializing)]
+    #[serde(rename = "islandActivationListeners", skip_serializing)]
     IslandActivationListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"worldPostSimulationListeners"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 368
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "worldPostSimulationListeners", default, skip_serializing)]
+    #[serde(rename = "worldPostSimulationListeners", skip_serializing)]
     WorldPostSimulationListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"worldPostIntegrateListeners"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 380
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "worldPostIntegrateListeners", default, skip_serializing)]
+    #[serde(rename = "worldPostIntegrateListeners", skip_serializing)]
     WorldPostIntegrateListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"worldPostCollideListeners"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 392
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "worldPostCollideListeners", default, skip_serializing)]
+    #[serde(rename = "worldPostCollideListeners", skip_serializing)]
     WorldPostCollideListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"islandPostIntegrateListeners"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 404
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "islandPostIntegrateListeners", default, skip_serializing)]
+    #[serde(rename = "islandPostIntegrateListeners", skip_serializing)]
     IslandPostIntegrateListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"islandPostCollideListeners"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 416
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "islandPostCollideListeners", default, skip_serializing)]
+    #[serde(rename = "islandPostCollideListeners", skip_serializing)]
     IslandPostCollideListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"contactListeners"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 428
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "contactListeners", default, skip_serializing)]
+    #[serde(rename = "contactListeners", skip_serializing)]
     ContactListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"contactImpulseLimitBreachedListeners"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 440
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "contactImpulseLimitBreachedListeners", default, skip_serializing)]
+    #[serde(rename = "contactImpulseLimitBreachedListeners", skip_serializing)]
     ContactImpulseLimitBreachedListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"worldExtensions"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 452
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "worldExtensions", default, skip_serializing)]
+    #[serde(rename = "worldExtensions", skip_serializing)]
     WorldExtensions(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"violatedConstraintArray"`
     /// -   type: `void*`
     /// - offset: 464
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "violatedConstraintArray", default, skip_serializing)]
+    #[serde(rename = "violatedConstraintArray", skip_serializing)]
     ViolatedConstraintArray(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseBorder"`
     /// -   type: `void*`
     /// - offset: 468
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "broadPhaseBorder", default, skip_serializing)]
+    #[serde(rename = "broadPhaseBorder", skip_serializing)]
     BroadPhaseBorder(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"destructionWorld"`
     /// -   type: `void*`
     /// - offset: 472
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "destructionWorld", default, skip_serializing)]
+    #[serde(rename = "destructionWorld", skip_serializing)]
     DestructionWorld(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"npWorld"`
     /// -   type: `void*`
     /// - offset: 476
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "npWorld", default, skip_serializing)]
+    #[serde(rename = "npWorld", skip_serializing)]
     NpWorld(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseExtents"`
     /// -   type: `hkVector4[2]`
     /// - offset: 800
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "broadPhaseExtents", default)]
+    #[serde(rename = "broadPhaseExtents")]
     BroadPhaseExtents([Vector4<f32>; 2]),
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseNumMarkers"`
     /// -   type: `hkInt32`
     /// - offset: 832
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "broadPhaseNumMarkers", default)]
+    #[serde(rename = "broadPhaseNumMarkers")]
     BroadPhaseNumMarkers(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"sizeOfToiEventQueue"`
     /// -   type: `hkInt32`
     /// - offset: 836
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sizeOfToiEventQueue", default)]
+    #[serde(rename = "sizeOfToiEventQueue")]
     SizeOfToiEventQueue(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseQuerySize"`
     /// -   type: `hkInt32`
     /// - offset: 840
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "broadPhaseQuerySize", default)]
+    #[serde(rename = "broadPhaseQuerySize")]
     BroadPhaseQuerySize(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseUpdateSize"`
     /// -   type: `hkInt32`
     /// - offset: 844
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "broadPhaseUpdateSize", default)]
+    #[serde(rename = "broadPhaseUpdateSize")]
     BroadPhaseUpdateSize(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"contactPointGeneration"`
     /// -   type: `enum unknown`
     /// - offset: 848
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "contactPointGeneration", default, skip_serializing)]
+    #[serde(rename = "contactPointGeneration", skip_serializing)]
     ContactPointGeneration(Primitive<Unknown>),
 }
 

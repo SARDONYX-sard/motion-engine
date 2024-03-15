@@ -27,7 +27,7 @@ pub enum HkpBallSocketConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -35,35 +35,35 @@ pub enum HkpBallSocketConstraintAtom {
     /// -   type: `enum SolvingMethod`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "solvingMethod", default)]
+    #[serde(rename = "solvingMethod")]
     SolvingMethod(Primitive<SolvingMethod>),
     /// # C++ Class Fields Info
     /// -   name:`"bodiesToNotify"`
     /// -   type: `hkUint8`
     /// - offset: 3
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bodiesToNotify", default)]
+    #[serde(rename = "bodiesToNotify")]
     BodiesToNotify(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"velocityStabilizationFactor"`
     /// -   type: `hkUint8`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "velocityStabilizationFactor", default)]
+    #[serde(rename = "velocityStabilizationFactor")]
     VelocityStabilizationFactor(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"maxImpulse"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxImpulse", default)]
+    #[serde(rename = "maxImpulse")]
     MaxImpulse(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"inertiaStabilizationFactor"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "inertiaStabilizationFactor", default)]
+    #[serde(rename = "inertiaStabilizationFactor")]
     InertiaStabilizationFactor(Primitive<f32>),
 }
 

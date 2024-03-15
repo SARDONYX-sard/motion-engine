@@ -29,14 +29,14 @@ pub enum HkpVehicleDefaultTransmission {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -46,49 +46,49 @@ pub enum HkpVehicleDefaultTransmission {
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "downshiftRPM", default)]
+    #[serde(rename = "downshiftRPM")]
     DownshiftRpm(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"upshiftRPM"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "upshiftRPM", default)]
+    #[serde(rename = "upshiftRPM")]
     UpshiftRpm(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"primaryTransmissionRatio"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "primaryTransmissionRatio", default)]
+    #[serde(rename = "primaryTransmissionRatio")]
     PrimaryTransmissionRatio(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"clutchDelayTime"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "clutchDelayTime", default)]
+    #[serde(rename = "clutchDelayTime")]
     ClutchDelayTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"reverseGearRatio"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "reverseGearRatio", default)]
+    #[serde(rename = "reverseGearRatio")]
     ReverseGearRatio(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"gearsRatio"`
     /// -   type: `hkArray&lt;hkReal&gt;`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "gearsRatio", default)]
+    #[serde(rename = "gearsRatio")]
     GearsRatio(HkArrayRef<Primitive<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"wheelsTorqueRatio"`
     /// -   type: `hkArray&lt;hkReal&gt;`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wheelsTorqueRatio", default)]
+    #[serde(rename = "wheelsTorqueRatio")]
     WheelsTorqueRatio(HkArrayRef<Primitive<f32>>),
 }
 

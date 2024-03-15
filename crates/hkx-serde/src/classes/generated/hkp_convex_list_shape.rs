@@ -27,7 +27,7 @@ pub enum HkpConvexListShape<'a> {
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "radius", default)]
+    #[serde(rename = "radius")]
     Radius(Primitive<f32>),
 
     // `hkpSphereRepShape`(Parent class) has no fields
@@ -37,14 +37,14 @@ pub enum HkpConvexListShape<'a> {
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "type", default, skip_serializing)]
+    #[serde(rename = "type", skip_serializing)]
     Type(Primitive<Unknown>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -52,14 +52,14 @@ pub enum HkpConvexListShape<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -69,35 +69,35 @@ pub enum HkpConvexListShape<'a> {
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minDistanceToUseConvexHullForGetClosestPoints", default)]
+    #[serde(rename = "minDistanceToUseConvexHullForGetClosestPoints")]
     MinDistanceToUseConvexHullForGetClosestPoints(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"aabbHalfExtents"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "aabbHalfExtents", default)]
+    #[serde(rename = "aabbHalfExtents")]
     AabbHalfExtents(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"aabbCenter"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "aabbCenter", default)]
+    #[serde(rename = "aabbCenter")]
     AabbCenter(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"useCachedAabb"`
     /// -   type: `hkBool`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "useCachedAabb", default)]
+    #[serde(rename = "useCachedAabb")]
     UseCachedAabb(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"childShapes"`
     /// -   type: `hkArray&lt;hkpConvexShape*&gt;`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "childShapes", default)]
+    #[serde(rename = "childShapes")]
     ChildShapes(HkArrayRef<Cow<'a, str>>),
 }
 

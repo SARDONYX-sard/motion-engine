@@ -26,7 +26,7 @@ pub enum HkbEventInfo {
     /// -   type: `flags Flags`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "flags", default)]
+    #[serde(rename = "flags")]
     Flags(Primitive<Flags>),
 }
 

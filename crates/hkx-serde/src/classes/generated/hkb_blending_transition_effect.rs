@@ -27,21 +27,21 @@ pub enum HkbBlendingTransitionEffect<'a> {
     /// -   type: `enum SelfTransitionMode`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "selfTransitionMode", default)]
+    #[serde(rename = "selfTransitionMode")]
     SelfTransitionMode(Primitive<SelfTransitionMode>),
     /// # C++ Parent class(`hkbTransitionEffect`, parent: `hkbGenerator`) field Info
     /// -   name:`"eventMode"`
     /// -   type: `enum EventMode`
     /// - offset: 41
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "eventMode", default)]
+    #[serde(rename = "eventMode")]
     EventMode(Primitive<EventMode>),
     /// # C++ Parent class(`hkbTransitionEffect`, parent: `hkbGenerator`) field Info
     /// -   name:`"defaultEventMode"`
     /// -   type: `enum unknown`
     /// - offset: 42
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "defaultEventMode", default, skip_serializing)]
+    #[serde(rename = "defaultEventMode", skip_serializing)]
     DefaultEventMode(Primitive<Unknown>),
 
     // `hkbGenerator`(Parent class) has no fields
@@ -51,35 +51,35 @@ pub enum HkbBlendingTransitionEffect<'a> {
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "id", default, skip_serializing)]
+    #[serde(rename = "id", skip_serializing)]
     Id(Primitive<i16>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cloneState", default, skip_serializing)]
+    #[serde(rename = "cloneState", skip_serializing)]
     CloneState(Primitive<Unknown>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "padNode", default, skip_serializing)]
+    #[serde(rename = "padNode", skip_serializing)]
     PadNode([Primitive<bool>; 1]),
 
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
@@ -87,21 +87,21 @@ pub enum HkbBlendingTransitionEffect<'a> {
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "variableBindingSet", default)]
+    #[serde(rename = "variableBindingSet")]
     VariableBindingSet(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cachedBindables", default, skip_serializing)]
+    #[serde(rename = "cachedBindables", skip_serializing)]
     CachedBindables(HkArrayRef<Primitive<()>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "areBindablesCached", default, skip_serializing)]
+    #[serde(rename = "areBindablesCached", skip_serializing)]
     AreBindablesCached(Primitive<bool>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -109,14 +109,14 @@ pub enum HkbBlendingTransitionEffect<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -126,84 +126,84 @@ pub enum HkbBlendingTransitionEffect<'a> {
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "duration", default)]
+    #[serde(rename = "duration")]
     Duration(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"toGeneratorStartTimeFraction"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "toGeneratorStartTimeFraction", default)]
+    #[serde(rename = "toGeneratorStartTimeFraction")]
     ToGeneratorStartTimeFraction(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `flags FlagBits`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "flags", default)]
+    #[serde(rename = "flags")]
     Flags(Primitive<FlagBits>),
     /// # C++ Class Fields Info
     /// -   name:`"endMode"`
     /// -   type: `enum EndMode`
     /// - offset: 54
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "endMode", default)]
+    #[serde(rename = "endMode")]
     EndMode(Primitive<EndMode>),
     /// # C++ Class Fields Info
     /// -   name:`"blendCurve"`
     /// -   type: `enum BlendCurve`
     /// - offset: 55
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "blendCurve", default)]
+    #[serde(rename = "blendCurve")]
     BlendCurve(Primitive<BlendCurve>),
     /// # C++ Class Fields Info
     /// -   name:`"fromGenerator"`
     /// -   type: `void*`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "fromGenerator", default, skip_serializing)]
+    #[serde(rename = "fromGenerator", skip_serializing)]
     FromGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"toGenerator"`
     /// -   type: `void*`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "toGenerator", default, skip_serializing)]
+    #[serde(rename = "toGenerator", skip_serializing)]
     ToGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"characterPoseAtBeginningOfTransition"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "characterPoseAtBeginningOfTransition", default, skip_serializing)]
+    #[serde(rename = "characterPoseAtBeginningOfTransition", skip_serializing)]
     CharacterPoseAtBeginningOfTransition(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"timeRemaining"`
     /// -   type: `hkReal`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "timeRemaining", default, skip_serializing)]
+    #[serde(rename = "timeRemaining", skip_serializing)]
     TimeRemaining(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"timeInTransition"`
     /// -   type: `hkReal`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "timeInTransition", default, skip_serializing)]
+    #[serde(rename = "timeInTransition", skip_serializing)]
     TimeInTransition(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"applySelfTransition"`
     /// -   type: `hkBool`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "applySelfTransition", default, skip_serializing)]
+    #[serde(rename = "applySelfTransition", skip_serializing)]
     ApplySelfTransition(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"initializeCharacterPose"`
     /// -   type: `hkBool`
     /// - offset: 85
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "initializeCharacterPose", default, skip_serializing)]
+    #[serde(rename = "initializeCharacterPose", skip_serializing)]
     InitializeCharacterPose(Primitive<bool>),
 }
 

@@ -26,14 +26,14 @@ pub enum HkbEvaluateExpressionModifierInternalExpressionData {
     /// -   type: `hkBool`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "raisedEvent", default)]
+    #[serde(rename = "raisedEvent")]
     RaisedEvent(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"wasTrueInPreviousFrame"`
     /// -   type: `hkBool`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wasTrueInPreviousFrame", default)]
+    #[serde(rename = "wasTrueInPreviousFrame")]
     WasTrueInPreviousFrame(Primitive<bool>),
 }
 

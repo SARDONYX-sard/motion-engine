@@ -26,84 +26,84 @@ pub enum HkaSplineCompressedAnimationTrackCompressionParams {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotationTolerance", default)]
+    #[serde(rename = "rotationTolerance")]
     RotationTolerance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"translationTolerance"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "translationTolerance", default)]
+    #[serde(rename = "translationTolerance")]
     TranslationTolerance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"scaleTolerance"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "scaleTolerance", default)]
+    #[serde(rename = "scaleTolerance")]
     ScaleTolerance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"floatingTolerance"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "floatingTolerance", default)]
+    #[serde(rename = "floatingTolerance")]
     FloatingTolerance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"rotationDegree"`
     /// -   type: `hkUint16`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotationDegree", default)]
+    #[serde(rename = "rotationDegree")]
     RotationDegree(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"translationDegree"`
     /// -   type: `hkUint16`
     /// - offset: 18
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "translationDegree", default)]
+    #[serde(rename = "translationDegree")]
     TranslationDegree(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"scaleDegree"`
     /// -   type: `hkUint16`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "scaleDegree", default)]
+    #[serde(rename = "scaleDegree")]
     ScaleDegree(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"floatingDegree"`
     /// -   type: `hkUint16`
     /// - offset: 22
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "floatingDegree", default)]
+    #[serde(rename = "floatingDegree")]
     FloatingDegree(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"rotationQuantizationType"`
     /// -   type: `enum RotationQuantization`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotationQuantizationType", default)]
+    #[serde(rename = "rotationQuantizationType")]
     RotationQuantizationType(Primitive<RotationQuantization>),
     /// # C++ Class Fields Info
     /// -   name:`"translationQuantizationType"`
     /// -   type: `enum ScalarQuantization`
     /// - offset: 25
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "translationQuantizationType", default)]
+    #[serde(rename = "translationQuantizationType")]
     TranslationQuantizationType(Primitive<ScalarQuantization>),
     /// # C++ Class Fields Info
     /// -   name:`"scaleQuantizationType"`
     /// -   type: `enum ScalarQuantization`
     /// - offset: 26
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "scaleQuantizationType", default)]
+    #[serde(rename = "scaleQuantizationType")]
     ScaleQuantizationType(Primitive<ScalarQuantization>),
     /// # C++ Class Fields Info
     /// -   name:`"floatQuantizationType"`
     /// -   type: `enum ScalarQuantization`
     /// - offset: 27
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "floatQuantizationType", default)]
+    #[serde(rename = "floatQuantizationType")]
     FloatQuantizationType(Primitive<ScalarQuantization>),
 }
 

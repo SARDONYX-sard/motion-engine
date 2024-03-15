@@ -27,14 +27,14 @@ pub enum HkbSetBehaviorCommand<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,49 +44,49 @@ pub enum HkbSetBehaviorCommand<'a> {
     /// -   type: `hkUint64`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "characterId", default)]
+    #[serde(rename = "characterId")]
     CharacterId(Primitive<u64>),
     /// # C++ Class Fields Info
     /// -   name:`"behavior"`
     /// -   type: `struct hkbBehaviorGraph*`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "behavior", default)]
+    #[serde(rename = "behavior")]
     Behavior(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"rootGenerator"`
     /// -   type: `struct hkbGenerator*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rootGenerator", default)]
+    #[serde(rename = "rootGenerator")]
     RootGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"referencedBehaviors"`
     /// -   type: `hkArray&lt;hkbBehaviorGraph*&gt;`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "referencedBehaviors", default)]
+    #[serde(rename = "referencedBehaviors")]
     ReferencedBehaviors(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"startStateIndex"`
     /// -   type: `hkInt32`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "startStateIndex", default)]
+    #[serde(rename = "startStateIndex")]
     StartStateIndex(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"randomizeSimulation"`
     /// -   type: `hkBool`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "randomizeSimulation", default)]
+    #[serde(rename = "randomizeSimulation")]
     RandomizeSimulation(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"padding"`
     /// -   type: `hkInt32`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "padding", default)]
+    #[serde(rename = "padding")]
     Padding(Primitive<i32>),
 }
 

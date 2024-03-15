@@ -26,14 +26,14 @@ pub enum HkbVariableInfo {
     /// -   type: `struct hkbRoleAttribute`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "role", default)]
+    #[serde(rename = "role")]
     Role(HkbRoleAttribute),
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum VariableType`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<VariableType>),
 }
 

@@ -26,42 +26,42 @@ pub enum HkpCompressedMeshShapeConvexPiece {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "offset", default)]
+    #[serde(rename = "offset")]
     Offset(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"vertices"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "vertices", default)]
+    #[serde(rename = "vertices")]
     Vertices(HkArrayRef<Primitive<u16>>),
     /// # C++ Class Fields Info
     /// -   name:`"faceVertices"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "faceVertices", default)]
+    #[serde(rename = "faceVertices")]
     FaceVertices(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"faceOffsets"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "faceOffsets", default)]
+    #[serde(rename = "faceOffsets")]
     FaceOffsets(HkArrayRef<Primitive<u16>>),
     /// # C++ Class Fields Info
     /// -   name:`"reference"`
     /// -   type: `hkUint16`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "reference", default)]
+    #[serde(rename = "reference")]
     Reference(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"transformIndex"`
     /// -   type: `hkUint16`
     /// - offset: 54
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformIndex", default)]
+    #[serde(rename = "transformIndex")]
     TransformIndex(Primitive<u16>),
 }
 

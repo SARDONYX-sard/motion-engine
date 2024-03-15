@@ -27,7 +27,7 @@ pub enum HkpSimpleContactConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -35,56 +35,56 @@ pub enum HkpSimpleContactConstraintAtom {
     /// -   type: `hkUint16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sizeOfAllAtoms", default)]
+    #[serde(rename = "sizeOfAllAtoms")]
     SizeOfAllAtoms(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"numContactPoints"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numContactPoints", default)]
+    #[serde(rename = "numContactPoints")]
     NumContactPoints(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"numReservedContactPoints"`
     /// -   type: `hkUint16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numReservedContactPoints", default)]
+    #[serde(rename = "numReservedContactPoints")]
     NumReservedContactPoints(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"numUserDatasForBodyA"`
     /// -   type: `hkUint8`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numUserDatasForBodyA", default)]
+    #[serde(rename = "numUserDatasForBodyA")]
     NumUserDatasForBodyA(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"numUserDatasForBodyB"`
     /// -   type: `hkUint8`
     /// - offset: 9
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numUserDatasForBodyB", default)]
+    #[serde(rename = "numUserDatasForBodyB")]
     NumUserDatasForBodyB(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"contactPointPropertiesStriding"`
     /// -   type: `hkUint8`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "contactPointPropertiesStriding", default)]
+    #[serde(rename = "contactPointPropertiesStriding")]
     ContactPointPropertiesStriding(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"maxNumContactPoints"`
     /// -   type: `hkUint16`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxNumContactPoints", default)]
+    #[serde(rename = "maxNumContactPoints")]
     MaxNumContactPoints(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"info"`
     /// -   type: `struct hkpSimpleContactConstraintDataInfo`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "info", default)]
+    #[serde(rename = "info")]
     Info(HkpSimpleContactConstraintDataInfo),
 }
 

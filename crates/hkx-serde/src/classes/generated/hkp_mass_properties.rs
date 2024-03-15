@@ -26,28 +26,28 @@ pub enum HkpMassProperties {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "volume", default)]
+    #[serde(rename = "volume")]
     Volume(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"mass"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "mass", default)]
+    #[serde(rename = "mass")]
     Mass(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"centerOfMass"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "centerOfMass", default)]
+    #[serde(rename = "centerOfMass")]
     CenterOfMass(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"inertiaTensor"`
     /// -   type: `hkMatrix3`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "inertiaTensor", default)]
+    #[serde(rename = "inertiaTensor")]
     InertiaTensor(Matrix3<f32>),
 }
 

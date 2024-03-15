@@ -26,28 +26,28 @@ pub enum HkClassEnum<'a> {
     /// -   type: `char*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"items"`
     /// -   type: `hkSimpleArray&lt;struct hkClassEnumItem&gt;`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "items", default)]
+    #[serde(rename = "items")]
     Items(HkArrayClass<HkClassEnumItem>),
     /// # C++ Class Fields Info
     /// -   name:`"attributes"`
     /// -   type: `struct hkCustomAttributes*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "attributes", default, skip_serializing)]
+    #[serde(rename = "attributes", skip_serializing)]
     Attributes(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `flags FlagValues`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "flags", default)]
+    #[serde(rename = "flags")]
     Flags(Primitive<FlagValues>),
 }
 

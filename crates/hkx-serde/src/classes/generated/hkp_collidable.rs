@@ -21,34 +21,34 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpCollidable {
+pub enum HkpCollidable<'a> {
     /// # C++ Parent class(`hkpCdBody`, parent: `None`) field Info
     /// -   name:`"shape"`
     /// -   type: `struct hkpShape*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "shape", default)]
+    #[serde(rename = "shape")]
     Shape(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpCdBody`, parent: `None`) field Info
     /// -   name:`"shapeKey"`
     /// -   type: `hkUint32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "shapeKey", default)]
+    #[serde(rename = "shapeKey")]
     ShapeKey(Primitive<u32>),
     /// # C++ Parent class(`hkpCdBody`, parent: `None`) field Info
     /// -   name:`"motion"`
     /// -   type: `void*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "motion", default, skip_serializing)]
+    #[serde(rename = "motion", skip_serializing)]
     Motion(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpCdBody`, parent: `None`) field Info
     /// -   name:`"parent"`
     /// -   type: `struct hkpCdBody*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "parent", default, skip_serializing)]
+    #[serde(rename = "parent", skip_serializing)]
     Parent(Primitive<Cow<'a, str>>),
 
     /// # C++ Class Fields Info
@@ -56,42 +56,42 @@ pub enum HkpCollidable {
     /// -   type: `hkInt8`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "ownerOffset", default, skip_serializing)]
+    #[serde(rename = "ownerOffset", skip_serializing)]
     OwnerOffset(Primitive<i8>),
     /// # C++ Class Fields Info
     /// -   name:`"forceCollideOntoPpu"`
     /// -   type: `hkUint8`
     /// - offset: 17
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "forceCollideOntoPpu", default)]
+    #[serde(rename = "forceCollideOntoPpu")]
     ForceCollideOntoPpu(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"shapeSizeOnSpu"`
     /// -   type: `hkUint16`
     /// - offset: 18
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "shapeSizeOnSpu", default, skip_serializing)]
+    #[serde(rename = "shapeSizeOnSpu", skip_serializing)]
     ShapeSizeOnSpu(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseHandle"`
     /// -   type: `struct hkpTypedBroadPhaseHandle`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "broadPhaseHandle", default)]
+    #[serde(rename = "broadPhaseHandle")]
     BroadPhaseHandle(HkpTypedBroadPhaseHandle),
     /// # C++ Class Fields Info
     /// -   name:`"boundingVolumeData"`
     /// -   type: `struct hkpCollidableBoundingVolumeData`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "boundingVolumeData", default, skip_serializing)]
+    #[serde(rename = "boundingVolumeData", skip_serializing)]
     BoundingVolumeData(HkpCollidableBoundingVolumeData),
     /// # C++ Class Fields Info
     /// -   name:`"allowedPenetrationDepth"`
     /// -   type: `hkReal`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "allowedPenetrationDepth", default)]
+    #[serde(rename = "allowedPenetrationDepth")]
     AllowedPenetrationDepth(Primitive<f32>),
 }
 

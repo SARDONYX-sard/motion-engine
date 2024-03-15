@@ -26,21 +26,21 @@ pub enum HkpConvexVerticesShapeFourVectors {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "x", default)]
+    #[serde(rename = "x")]
     X(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"y"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "y", default)]
+    #[serde(rename = "y")]
     Y(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"z"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "z", default)]
+    #[serde(rename = "z")]
     Z(Vector4<f32>),
 }
 

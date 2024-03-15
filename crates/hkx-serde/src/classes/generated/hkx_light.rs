@@ -27,14 +27,14 @@ pub enum HkxLight {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,35 +44,35 @@ pub enum HkxLight {
     /// -   type: `enum LightType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<LightType>),
     /// # C++ Class Fields Info
     /// -   name:`"position"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "position", default)]
+    #[serde(rename = "position")]
     Position(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"direction"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "direction", default)]
+    #[serde(rename = "direction")]
     Direction(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"color"`
     /// -   type: `hkUint32`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "color", default)]
+    #[serde(rename = "color")]
     Color(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"angle"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "angle", default)]
+    #[serde(rename = "angle")]
     Angle(Primitive<f32>),
 }
 

@@ -26,21 +26,21 @@ pub enum HkpVehicleSuspensionSuspensionWheelParameters {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "hardpointChassisSpace", default)]
+    #[serde(rename = "hardpointChassisSpace")]
     HardpointChassisSpace(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"directionChassisSpace"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "directionChassisSpace", default)]
+    #[serde(rename = "directionChassisSpace")]
     DirectionChassisSpace(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"length"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "length", default)]
+    #[serde(rename = "length")]
     Length(Primitive<f32>),
 }
 

@@ -26,21 +26,21 @@ pub enum HkpProperty {
     /// -   type: `hkUint32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "key", default)]
+    #[serde(rename = "key")]
     Key(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"alignmentPadding"`
     /// -   type: `hkUint32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "alignmentPadding", default)]
+    #[serde(rename = "alignmentPadding")]
     AlignmentPadding(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"value"`
     /// -   type: `struct hkpPropertyValue`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "value", default)]
+    #[serde(rename = "value")]
     Value(HkpPropertyValue),
 }
 

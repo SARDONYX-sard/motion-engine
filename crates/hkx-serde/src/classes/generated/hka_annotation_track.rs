@@ -26,14 +26,14 @@ pub enum HkaAnnotationTrack<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "trackName", default)]
+    #[serde(rename = "trackName")]
     TrackName(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"annotations"`
     /// -   type: `hkArray&lt;struct hkaAnnotationTrackAnnotation&gt;`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "annotations", default)]
+    #[serde(rename = "annotations")]
     Annotations(HkArrayClass<HkaAnnotationTrackAnnotation>),
 }
 

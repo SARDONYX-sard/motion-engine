@@ -27,14 +27,14 @@ pub enum HkpConstraintInstance<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,84 +44,84 @@ pub enum HkpConstraintInstance<'a> {
     /// -   type: `void*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "owner", default, skip_serializing)]
+    #[serde(rename = "owner", skip_serializing)]
     Owner(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `struct hkpConstraintData*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "data", default)]
+    #[serde(rename = "data")]
     Data(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"constraintModifiers"`
     /// -   type: `struct hkpModifierConstraintAtom*`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "constraintModifiers", default)]
+    #[serde(rename = "constraintModifiers")]
     ConstraintModifiers(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"entities"`
     /// -   type: `struct hkpEntity*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "entities", default)]
+    #[serde(rename = "entities")]
     Entities(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"priority"`
     /// -   type: `enum ConstraintPriority`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "priority", default)]
+    #[serde(rename = "priority")]
     Priority(Primitive<ConstraintPriority>),
     /// # C++ Class Fields Info
     /// -   name:`"wantRuntime"`
     /// -   type: `hkBool`
     /// - offset: 29
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wantRuntime", default)]
+    #[serde(rename = "wantRuntime")]
     WantRuntime(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"destructionRemapInfo"`
     /// -   type: `enum OnDestructionRemapInfo`
     /// - offset: 30
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "destructionRemapInfo", default)]
+    #[serde(rename = "destructionRemapInfo")]
     DestructionRemapInfo(Primitive<OnDestructionRemapInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"listeners"`
     /// -   type: `struct hkpConstraintInstanceSmallArraySerializeOverrideType`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "listeners", default, skip_serializing)]
+    #[serde(rename = "listeners", skip_serializing)]
     Listeners(HkpConstraintInstanceSmallArraySerializeOverrideType),
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Class Fields Info
     /// -   name:`"internal"`
     /// -   type: `void*`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "internal", default, skip_serializing)]
+    #[serde(rename = "internal", skip_serializing)]
     Internal(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"uid"`
     /// -   type: `hkUint32`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "uid", default, skip_serializing)]
+    #[serde(rename = "uid", skip_serializing)]
     Uid(Primitive<u32>),
 }
 

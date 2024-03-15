@@ -27,7 +27,7 @@ pub enum HkpSetupStabilizationAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -35,21 +35,21 @@ pub enum HkpSetupStabilizationAtom {
     /// -   type: `hkBool`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enabled", default)]
+    #[serde(rename = "enabled")]
     Enabled(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"maxAngle"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxAngle", default)]
+    #[serde(rename = "maxAngle")]
     MaxAngle(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"padding"`
     /// -   type: `hkUint8[8]`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "padding", default)]
+    #[serde(rename = "padding")]
     Padding([Primitive<u8>; 8]),
 }
 

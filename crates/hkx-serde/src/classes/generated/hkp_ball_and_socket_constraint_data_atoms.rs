@@ -26,21 +26,21 @@ pub enum HkpBallAndSocketConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTranslationsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pivots", default)]
+    #[serde(rename = "pivots")]
     Pivots(HkpSetLocalTranslationsConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"setupStabilization"`
     /// -   type: `struct hkpSetupStabilizationAtom`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "setupStabilization", default)]
+    #[serde(rename = "setupStabilization")]
     SetupStabilization(HkpSetupStabilizationAtom),
     /// # C++ Class Fields Info
     /// -   name:`"ballSocket"`
     /// -   type: `struct hkpBallSocketConstraintAtom`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ballSocket", default)]
+    #[serde(rename = "ballSocket")]
     BallSocket(HkpBallSocketConstraintAtom),
 }
 

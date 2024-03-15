@@ -26,77 +26,77 @@ pub enum HkbVariableBindingSetBinding<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "memberPath", default)]
+    #[serde(rename = "memberPath")]
     MemberPath(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"memberClass"`
     /// -   type: `void*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memberClass", default, skip_serializing)]
+    #[serde(rename = "memberClass", skip_serializing)]
     MemberClass(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"offsetInObjectPlusOne"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "offsetInObjectPlusOne", default, skip_serializing)]
+    #[serde(rename = "offsetInObjectPlusOne", skip_serializing)]
     OffsetInObjectPlusOne(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"offsetInArrayPlusOne"`
     /// -   type: `hkInt32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "offsetInArrayPlusOne", default, skip_serializing)]
+    #[serde(rename = "offsetInArrayPlusOne", skip_serializing)]
     OffsetInArrayPlusOne(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"rootVariableIndex"`
     /// -   type: `hkInt32`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "rootVariableIndex", default, skip_serializing)]
+    #[serde(rename = "rootVariableIndex", skip_serializing)]
     RootVariableIndex(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"variableIndex"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "variableIndex", default)]
+    #[serde(rename = "variableIndex")]
     VariableIndex(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"bitIndex"`
     /// -   type: `hkInt8`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bitIndex", default)]
+    #[serde(rename = "bitIndex")]
     BitIndex(Primitive<i8>),
     /// # C++ Class Fields Info
     /// -   name:`"bindingType"`
     /// -   type: `enum BindingType`
     /// - offset: 25
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bindingType", default)]
+    #[serde(rename = "bindingType")]
     BindingType(Primitive<BindingType>),
     /// # C++ Class Fields Info
     /// -   name:`"memberType"`
     /// -   type: `enum unknown`
     /// - offset: 26
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memberType", default, skip_serializing)]
+    #[serde(rename = "memberType", skip_serializing)]
     MemberType(Primitive<Unknown>),
     /// # C++ Class Fields Info
     /// -   name:`"variableType"`
     /// -   type: `hkInt8`
     /// - offset: 27
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "variableType", default, skip_serializing)]
+    #[serde(rename = "variableType", skip_serializing)]
     VariableType(Primitive<i8>),
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `flags unknown`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "flags", default, skip_serializing)]
+    #[serde(rename = "flags", skip_serializing)]
     Flags(Primitive<Unknown>),
 }
 

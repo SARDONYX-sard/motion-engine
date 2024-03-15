@@ -27,7 +27,7 @@ pub enum HkpTwistLimitConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -35,42 +35,42 @@ pub enum HkpTwistLimitConstraintAtom {
     /// -   type: `hkUint8`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isEnabled", default)]
+    #[serde(rename = "isEnabled")]
     IsEnabled(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"twistAxis"`
     /// -   type: `hkUint8`
     /// - offset: 3
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "twistAxis", default)]
+    #[serde(rename = "twistAxis")]
     TwistAxis(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"refAxis"`
     /// -   type: `hkUint8`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "refAxis", default)]
+    #[serde(rename = "refAxis")]
     RefAxis(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"minAngle"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minAngle", default)]
+    #[serde(rename = "minAngle")]
     MinAngle(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxAngle"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxAngle", default)]
+    #[serde(rename = "maxAngle")]
     MaxAngle(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"angularLimitsTauFactor"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "angularLimitsTauFactor", default)]
+    #[serde(rename = "angularLimitsTauFactor")]
     AngularLimitsTauFactor(Primitive<f32>),
 }
 

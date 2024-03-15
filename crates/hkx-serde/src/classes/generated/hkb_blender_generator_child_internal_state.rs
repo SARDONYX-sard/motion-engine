@@ -26,14 +26,14 @@ pub enum HkbBlenderGeneratorChildInternalState {
     /// -   type: `hkBool`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isActive", default)]
+    #[serde(rename = "isActive")]
     IsActive(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"syncNextFrame"`
     /// -   type: `hkBool`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "syncNextFrame", default)]
+    #[serde(rename = "syncNextFrame")]
     SyncNextFrame(Primitive<bool>),
 }
 

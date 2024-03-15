@@ -26,98 +26,98 @@ pub enum HkbHandIkDriverInfoHand<'a> {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "elbowAxisLS", default)]
+    #[serde(rename = "elbowAxisLS")]
     ElbowAxisLs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"backHandNormalLS"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "backHandNormalLS", default)]
+    #[serde(rename = "backHandNormalLS")]
     BackHandNormalLs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"handOffsetLS"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "handOffsetLS", default)]
+    #[serde(rename = "handOffsetLS")]
     HandOffsetLs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"handOrienationOffsetLS"`
     /// -   type: `hkQuaternion`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "handOrienationOffsetLS", default)]
+    #[serde(rename = "handOrienationOffsetLS")]
     HandOrienationOffsetLs(Quaternion<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxElbowAngleDegrees"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxElbowAngleDegrees", default)]
+    #[serde(rename = "maxElbowAngleDegrees")]
     MaxElbowAngleDegrees(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"minElbowAngleDegrees"`
     /// -   type: `hkReal`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minElbowAngleDegrees", default)]
+    #[serde(rename = "minElbowAngleDegrees")]
     MinElbowAngleDegrees(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"shoulderIndex"`
     /// -   type: `hkInt16`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "shoulderIndex", default)]
+    #[serde(rename = "shoulderIndex")]
     ShoulderIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"shoulderSiblingIndex"`
     /// -   type: `hkInt16`
     /// - offset: 74
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "shoulderSiblingIndex", default)]
+    #[serde(rename = "shoulderSiblingIndex")]
     ShoulderSiblingIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"elbowIndex"`
     /// -   type: `hkInt16`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "elbowIndex", default)]
+    #[serde(rename = "elbowIndex")]
     ElbowIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"elbowSiblingIndex"`
     /// -   type: `hkInt16`
     /// - offset: 78
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "elbowSiblingIndex", default)]
+    #[serde(rename = "elbowSiblingIndex")]
     ElbowSiblingIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"wristIndex"`
     /// -   type: `hkInt16`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wristIndex", default)]
+    #[serde(rename = "wristIndex")]
     WristIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"enforceEndPosition"`
     /// -   type: `hkBool`
     /// - offset: 82
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enforceEndPosition", default)]
+    #[serde(rename = "enforceEndPosition")]
     EnforceEndPosition(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"enforceEndRotation"`
     /// -   type: `hkBool`
     /// - offset: 83
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "enforceEndRotation", default)]
+    #[serde(rename = "enforceEndRotation")]
     EnforceEndRotation(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"localFrameName"`
     /// -   type: `hkStringPtr`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "localFrameName", default)]
+    #[serde(rename = "localFrameName")]
     LocalFrameName(Primitive<Cow<'a, str>>),
 }
 

@@ -27,14 +27,14 @@ pub enum HkxCamera {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,49 +44,49 @@ pub enum HkxCamera {
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "from", default)]
+    #[serde(rename = "from")]
     From(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"focus"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "focus", default)]
+    #[serde(rename = "focus")]
     Focus(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"up"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "up", default)]
+    #[serde(rename = "up")]
     Up(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"fov"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fov", default)]
+    #[serde(rename = "fov")]
     Fov(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"far"`
     /// -   type: `hkReal`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "far", default)]
+    #[serde(rename = "far")]
     Far(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"near"`
     /// -   type: `hkReal`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "near", default)]
+    #[serde(rename = "near")]
     Near(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"leftHanded"`
     /// -   type: `hkBool`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "leftHanded", default)]
+    #[serde(rename = "leftHanded")]
     LeftHanded(Primitive<bool>),
 }
 

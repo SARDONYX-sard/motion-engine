@@ -26,84 +26,84 @@ pub enum HkbHandIkControlData<'a> {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "targetPosition", default)]
+    #[serde(rename = "targetPosition")]
     TargetPosition(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"targetRotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "targetRotation", default)]
+    #[serde(rename = "targetRotation")]
     TargetRotation(Quaternion<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"targetNormal"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "targetNormal", default)]
+    #[serde(rename = "targetNormal")]
     TargetNormal(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"targetHandle"`
     /// -   type: `struct hkbHandle*`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "targetHandle", default)]
+    #[serde(rename = "targetHandle")]
     TargetHandle(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"transformOnFraction"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformOnFraction", default)]
+    #[serde(rename = "transformOnFraction")]
     TransformOnFraction(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"normalOnFraction"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "normalOnFraction", default)]
+    #[serde(rename = "normalOnFraction")]
     NormalOnFraction(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"fadeInDuration"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fadeInDuration", default)]
+    #[serde(rename = "fadeInDuration")]
     FadeInDuration(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"fadeOutDuration"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fadeOutDuration", default)]
+    #[serde(rename = "fadeOutDuration")]
     FadeOutDuration(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"extrapolationTimeStep"`
     /// -   type: `hkReal`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "extrapolationTimeStep", default)]
+    #[serde(rename = "extrapolationTimeStep")]
     ExtrapolationTimeStep(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"handleChangeSpeed"`
     /// -   type: `hkReal`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "handleChangeSpeed", default)]
+    #[serde(rename = "handleChangeSpeed")]
     HandleChangeSpeed(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"handleChangeMode"`
     /// -   type: `enum HandleChangeMode`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "handleChangeMode", default)]
+    #[serde(rename = "handleChangeMode")]
     HandleChangeMode(Primitive<HandleChangeMode>),
     /// # C++ Class Fields Info
     /// -   name:`"fixUp"`
     /// -   type: `hkBool`
     /// - offset: 77
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fixUp", default)]
+    #[serde(rename = "fixUp")]
     FixUp(Primitive<bool>),
 }
 

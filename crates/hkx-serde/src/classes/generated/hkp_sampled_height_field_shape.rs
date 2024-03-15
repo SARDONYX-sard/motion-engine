@@ -29,14 +29,14 @@ pub enum HkpSampledHeightFieldShape {
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "type", default, skip_serializing)]
+    #[serde(rename = "type", skip_serializing)]
     Type(Primitive<Unknown>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -44,14 +44,14 @@ pub enum HkpSampledHeightFieldShape {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -61,63 +61,63 @@ pub enum HkpSampledHeightFieldShape {
     /// -   type: `hkInt32`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "xRes", default)]
+    #[serde(rename = "xRes")]
     XRes(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"zRes"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "zRes", default)]
+    #[serde(rename = "zRes")]
     ZRes(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"heightCenter"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "heightCenter", default)]
+    #[serde(rename = "heightCenter")]
     HeightCenter(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"useProjectionBasedHeight"`
     /// -   type: `hkBool`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "useProjectionBasedHeight", default)]
+    #[serde(rename = "useProjectionBasedHeight")]
     UseProjectionBasedHeight(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"heightfieldType"`
     /// -   type: `enum HeightFieldType`
     /// - offset: 29
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "heightfieldType", default)]
+    #[serde(rename = "heightfieldType")]
     HeightfieldType(Primitive<HeightFieldType>),
     /// # C++ Class Fields Info
     /// -   name:`"intToFloatScale"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "intToFloatScale", default)]
+    #[serde(rename = "intToFloatScale")]
     IntToFloatScale(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"floatToIntScale"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "floatToIntScale", default)]
+    #[serde(rename = "floatToIntScale")]
     FloatToIntScale(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"floatToIntOffsetFloorCorrected"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "floatToIntOffsetFloorCorrected", default)]
+    #[serde(rename = "floatToIntOffsetFloorCorrected")]
     FloatToIntOffsetFloorCorrected(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"extents"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "extents", default)]
+    #[serde(rename = "extents")]
     Extents(Vector4<f32>),
 }
 

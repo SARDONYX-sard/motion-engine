@@ -26,14 +26,14 @@ pub enum HkpMoppCodeReindexedTerminal {
     /// -   type: `hkUint32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "origShapeKey", default)]
+    #[serde(rename = "origShapeKey")]
     OrigShapeKey(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"reindexedShapeKey"`
     /// -   type: `hkUint32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "reindexedShapeKey", default)]
+    #[serde(rename = "reindexedShapeKey")]
     ReindexedShapeKey(Primitive<u32>),
 }
 

@@ -26,28 +26,28 @@ pub enum HkaQuantizedAnimationTrackCompressionParams {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotationTolerance", default)]
+    #[serde(rename = "rotationTolerance")]
     RotationTolerance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"translationTolerance"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "translationTolerance", default)]
+    #[serde(rename = "translationTolerance")]
     TranslationTolerance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"scaleTolerance"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "scaleTolerance", default)]
+    #[serde(rename = "scaleTolerance")]
     ScaleTolerance(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"floatingTolerance"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "floatingTolerance", default)]
+    #[serde(rename = "floatingTolerance")]
     FloatingTolerance(Primitive<f32>),
 }
 

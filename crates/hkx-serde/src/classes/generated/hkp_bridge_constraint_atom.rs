@@ -27,7 +27,7 @@ pub enum HkpBridgeConstraintAtom<'a> {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -35,14 +35,14 @@ pub enum HkpBridgeConstraintAtom<'a> {
     /// -   type: `void*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "buildJacobianFunc", default, skip_serializing)]
+    #[serde(rename = "buildJacobianFunc", skip_serializing)]
     BuildJacobianFunc(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"constraintData"`
     /// -   type: `struct hkpConstraintData*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | NOT_OWNED`
-    #[serde(rename = "constraintData", default)]
+    #[serde(rename = "constraintData")]
     ConstraintData(Primitive<Cow<'a, str>>),
 }
 

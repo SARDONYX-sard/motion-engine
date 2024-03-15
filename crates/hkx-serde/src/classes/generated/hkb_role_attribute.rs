@@ -26,14 +26,14 @@ pub enum HkbRoleAttribute {
     /// -   type: `enum Role`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "role", default)]
+    #[serde(rename = "role")]
     Role(Primitive<Role>),
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `flags RoleFlags`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "flags", default)]
+    #[serde(rename = "flags")]
     Flags(Primitive<RoleFlags>),
 }
 

@@ -26,7 +26,7 @@ pub enum HkCustomAttributes {
     /// -   type: `hkSimpleArray&lt;struct hkCustomAttributesAttribute&gt;`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "attributes", default)]
+    #[serde(rename = "attributes")]
     Attributes(HkArrayClass<HkCustomAttributesAttribute>),
 }
 

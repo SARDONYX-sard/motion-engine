@@ -26,42 +26,42 @@ pub enum HkpCompressedMeshShapeBigTriangle {
     /// -   type: `hkUint16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "a", default)]
+    #[serde(rename = "a")]
     A(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"b"`
     /// -   type: `hkUint16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "b", default)]
+    #[serde(rename = "b")]
     B(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"c"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "c", default)]
+    #[serde(rename = "c")]
     C(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"material"`
     /// -   type: `hkUint32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "material", default)]
+    #[serde(rename = "material")]
     Material(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"weldingInfo"`
     /// -   type: `hkUint16`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "weldingInfo", default)]
+    #[serde(rename = "weldingInfo")]
     WeldingInfo(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"transformIndex"`
     /// -   type: `hkUint16`
     /// - offset: 14
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transformIndex", default)]
+    #[serde(rename = "transformIndex")]
     TransformIndex(Primitive<u16>),
 }
 

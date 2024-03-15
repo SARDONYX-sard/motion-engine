@@ -26,91 +26,91 @@ pub enum HkbFootIkDriverInfoLeg {
     /// -   type: `hkQuaternion`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "prevAnkleRotLS", default, skip_serializing)]
+    #[serde(rename = "prevAnkleRotLS", skip_serializing)]
     PrevAnkleRotLs(Quaternion<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"kneeAxisLS"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "kneeAxisLS", default)]
+    #[serde(rename = "kneeAxisLS")]
     KneeAxisLs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"footEndLS"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "footEndLS", default)]
+    #[serde(rename = "footEndLS")]
     FootEndLs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"footPlantedAnkleHeightMS"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "footPlantedAnkleHeightMS", default)]
+    #[serde(rename = "footPlantedAnkleHeightMS")]
     FootPlantedAnkleHeightMs(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"footRaisedAnkleHeightMS"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "footRaisedAnkleHeightMS", default)]
+    #[serde(rename = "footRaisedAnkleHeightMS")]
     FootRaisedAnkleHeightMs(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxAnkleHeightMS"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxAnkleHeightMS", default)]
+    #[serde(rename = "maxAnkleHeightMS")]
     MaxAnkleHeightMs(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"minAnkleHeightMS"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minAnkleHeightMS", default)]
+    #[serde(rename = "minAnkleHeightMS")]
     MinAnkleHeightMs(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxKneeAngleDegrees"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxKneeAngleDegrees", default)]
+    #[serde(rename = "maxKneeAngleDegrees")]
     MaxKneeAngleDegrees(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"minKneeAngleDegrees"`
     /// -   type: `hkReal`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minKneeAngleDegrees", default)]
+    #[serde(rename = "minKneeAngleDegrees")]
     MinKneeAngleDegrees(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxAnkleAngleDegrees"`
     /// -   type: `hkReal`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxAnkleAngleDegrees", default)]
+    #[serde(rename = "maxAnkleAngleDegrees")]
     MaxAnkleAngleDegrees(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"hipIndex"`
     /// -   type: `hkInt16`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "hipIndex", default)]
+    #[serde(rename = "hipIndex")]
     HipIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"kneeIndex"`
     /// -   type: `hkInt16`
     /// - offset: 78
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "kneeIndex", default)]
+    #[serde(rename = "kneeIndex")]
     KneeIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"ankleIndex"`
     /// -   type: `hkInt16`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "ankleIndex", default)]
+    #[serde(rename = "ankleIndex")]
     AnkleIndex(Primitive<i16>),
 }
 

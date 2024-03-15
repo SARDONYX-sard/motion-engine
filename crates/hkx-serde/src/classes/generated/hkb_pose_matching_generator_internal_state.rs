@@ -27,14 +27,14 @@ pub enum HkbPoseMatchingGeneratorInternalState {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,35 +44,35 @@ pub enum HkbPoseMatchingGeneratorInternalState {
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "currentMatch", default)]
+    #[serde(rename = "currentMatch")]
     CurrentMatch(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"bestMatch"`
     /// -   type: `hkInt32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bestMatch", default)]
+    #[serde(rename = "bestMatch")]
     BestMatch(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"timeSinceBetterMatch"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "timeSinceBetterMatch", default)]
+    #[serde(rename = "timeSinceBetterMatch")]
     TimeSinceBetterMatch(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"error"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "error", default)]
+    #[serde(rename = "error")]
     Error(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"resetCurrentMatchLocalTime"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "resetCurrentMatchLocalTime", default)]
+    #[serde(rename = "resetCurrentMatchLocalTime")]
     ResetCurrentMatchLocalTime(Primitive<bool>),
 }
 

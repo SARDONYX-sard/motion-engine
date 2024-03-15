@@ -26,21 +26,21 @@ pub enum HkbEventRangeData {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "upperBound", default)]
+    #[serde(rename = "upperBound")]
     UpperBound(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"event"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "event", default)]
+    #[serde(rename = "event")]
     Event(HkbEventProperty),
     /// # C++ Class Fields Info
     /// -   name:`"eventMode"`
     /// -   type: `enum EventRangeMode`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "eventMode", default)]
+    #[serde(rename = "eventMode")]
     EventMode(Primitive<EventRangeMode>),
 }
 

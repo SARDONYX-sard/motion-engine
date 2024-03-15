@@ -26,14 +26,14 @@ pub enum HkQTransform {
     /// -   type: `hkQuaternion`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotation", default)]
+    #[serde(rename = "rotation")]
     Rotation(Quaternion<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"translation"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "translation", default)]
+    #[serde(rename = "translation")]
     Translation(Vector4<f32>),
 }
 

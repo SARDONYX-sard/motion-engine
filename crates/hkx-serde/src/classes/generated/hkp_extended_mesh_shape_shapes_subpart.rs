@@ -27,56 +27,56 @@ pub enum HkpExtendedMeshShapeShapesSubpart<'a> {
     /// -   type: `enum SubpartType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<SubpartType>),
     /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
     /// -   name:`"materialIndexStridingType"`
     /// -   type: `enum MaterialIndexStridingType`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "materialIndexStridingType", default)]
+    #[serde(rename = "materialIndexStridingType")]
     MaterialIndexStridingType(Primitive<MaterialIndexStridingType>),
     /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
     /// -   name:`"materialStriding"`
     /// -   type: `hkInt16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "materialStriding", default, skip_serializing)]
+    #[serde(rename = "materialStriding", skip_serializing)]
     MaterialStriding(Primitive<i16>),
     /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
     /// -   name:`"materialIndexBase"`
     /// -   type: `void*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "materialIndexBase", default, skip_serializing)]
+    #[serde(rename = "materialIndexBase", skip_serializing)]
     MaterialIndexBase(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
     /// -   name:`"materialIndexStriding"`
     /// -   type: `hkUint16`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "materialIndexStriding", default)]
+    #[serde(rename = "materialIndexStriding")]
     MaterialIndexStriding(Primitive<u16>),
     /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
     /// -   name:`"numMaterials"`
     /// -   type: `hkUint16`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numMaterials", default)]
+    #[serde(rename = "numMaterials")]
     NumMaterials(Primitive<u16>),
     /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
     /// -   name:`"materialBase"`
     /// -   type: `void*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "materialBase", default, skip_serializing)]
+    #[serde(rename = "materialBase", skip_serializing)]
     MaterialBase(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
 
     /// # C++ Class Fields Info
@@ -84,21 +84,21 @@ pub enum HkpExtendedMeshShapeShapesSubpart<'a> {
     /// -   type: `hkArray&lt;hkpConvexShape*&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "childShapes", default)]
+    #[serde(rename = "childShapes")]
     ChildShapes(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"rotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "rotation", default)]
+    #[serde(rename = "rotation")]
     Rotation(Quaternion<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"translation"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "translation", default)]
+    #[serde(rename = "translation")]
     Translation(Vector4<f32>),
 }
 

@@ -26,21 +26,21 @@ pub enum HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "strength", default)]
+    #[serde(rename = "strength")]
     Strength(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"dampingCompression"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "dampingCompression", default)]
+    #[serde(rename = "dampingCompression")]
     DampingCompression(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"dampingRelaxation"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "dampingRelaxation", default)]
+    #[serde(rename = "dampingRelaxation")]
     DampingRelaxation(Primitive<f32>),
 }
 

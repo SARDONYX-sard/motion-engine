@@ -26,7 +26,7 @@ pub enum HkRootLevelContainer {
     /// -   type: `hkArray&lt;struct hkRootLevelContainerNamedVariant&gt;`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "namedVariants", default)]
+    #[serde(rename = "namedVariants")]
     NamedVariants(HkArrayClass<HkRootLevelContainerNamedVariant>),
 }
 

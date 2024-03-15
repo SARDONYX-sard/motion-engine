@@ -29,35 +29,35 @@ pub enum HkbStateMachine<'a> {
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "id", default, skip_serializing)]
+    #[serde(rename = "id", skip_serializing)]
     Id(Primitive<i16>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cloneState", default, skip_serializing)]
+    #[serde(rename = "cloneState", skip_serializing)]
     CloneState(Primitive<Unknown>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "padNode", default, skip_serializing)]
+    #[serde(rename = "padNode", skip_serializing)]
     PadNode([Primitive<bool>; 1]),
 
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
@@ -65,21 +65,21 @@ pub enum HkbStateMachine<'a> {
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "variableBindingSet", default)]
+    #[serde(rename = "variableBindingSet")]
     VariableBindingSet(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cachedBindables", default, skip_serializing)]
+    #[serde(rename = "cachedBindables", skip_serializing)]
     CachedBindables(HkArrayRef<Primitive<()>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "areBindablesCached", default, skip_serializing)]
+    #[serde(rename = "areBindablesCached", skip_serializing)]
     AreBindablesCached(Primitive<bool>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -87,14 +87,14 @@ pub enum HkbStateMachine<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -104,196 +104,196 @@ pub enum HkbStateMachine<'a> {
     /// -   type: `struct hkbEvent`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "eventToSendWhenStateOrTransitionChanges", default)]
+    #[serde(rename = "eventToSendWhenStateOrTransitionChanges")]
     EventToSendWhenStateOrTransitionChanges(HkbEvent),
     /// # C++ Class Fields Info
     /// -   name:`"startStateChooser"`
     /// -   type: `struct hkbStateChooser*`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "startStateChooser", default)]
+    #[serde(rename = "startStateChooser")]
     StartStateChooser(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"startStateId"`
     /// -   type: `hkInt32`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "startStateId", default)]
+    #[serde(rename = "startStateId")]
     StartStateId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"returnToPreviousStateEventId"`
     /// -   type: `hkInt32`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "returnToPreviousStateEventId", default)]
+    #[serde(rename = "returnToPreviousStateEventId")]
     ReturnToPreviousStateEventId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"randomTransitionEventId"`
     /// -   type: `hkInt32`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "randomTransitionEventId", default)]
+    #[serde(rename = "randomTransitionEventId")]
     RandomTransitionEventId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"transitionToNextHigherStateEventId"`
     /// -   type: `hkInt32`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transitionToNextHigherStateEventId", default)]
+    #[serde(rename = "transitionToNextHigherStateEventId")]
     TransitionToNextHigherStateEventId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"transitionToNextLowerStateEventId"`
     /// -   type: `hkInt32`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "transitionToNextLowerStateEventId", default)]
+    #[serde(rename = "transitionToNextLowerStateEventId")]
     TransitionToNextLowerStateEventId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"syncVariableIndex"`
     /// -   type: `hkInt32`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "syncVariableIndex", default)]
+    #[serde(rename = "syncVariableIndex")]
     SyncVariableIndex(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"currentStateId"`
     /// -   type: `hkInt32`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "currentStateId", default, skip_serializing)]
+    #[serde(rename = "currentStateId", skip_serializing)]
     CurrentStateId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"wrapAroundStateId"`
     /// -   type: `hkBool`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wrapAroundStateId", default)]
+    #[serde(rename = "wrapAroundStateId")]
     WrapAroundStateId(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"maxSimultaneousTransitions"`
     /// -   type: `hkInt8`
     /// - offset: 85
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxSimultaneousTransitions", default)]
+    #[serde(rename = "maxSimultaneousTransitions")]
     MaxSimultaneousTransitions(Primitive<i8>),
     /// # C++ Class Fields Info
     /// -   name:`"startStateMode"`
     /// -   type: `enum StartStateMode`
     /// - offset: 86
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "startStateMode", default)]
+    #[serde(rename = "startStateMode")]
     StartStateMode(Primitive<StartStateMode>),
     /// # C++ Class Fields Info
     /// -   name:`"selfTransitionMode"`
     /// -   type: `enum StateMachineSelfTransitionMode`
     /// - offset: 87
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "selfTransitionMode", default)]
+    #[serde(rename = "selfTransitionMode")]
     SelfTransitionMode(Primitive<StateMachineSelfTransitionMode>),
     /// # C++ Class Fields Info
     /// -   name:`"isActive"`
     /// -   type: `hkBool`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "isActive", default, skip_serializing)]
+    #[serde(rename = "isActive", skip_serializing)]
     IsActive(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"states"`
     /// -   type: `hkArray&lt;hkbStateMachineStateInfo*&gt;`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "states", default)]
+    #[serde(rename = "states")]
     States(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"wildcardTransitions"`
     /// -   type: `struct hkbStateMachineTransitionInfoArray*`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "wildcardTransitions", default)]
+    #[serde(rename = "wildcardTransitions")]
     WildcardTransitions(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"stateIdToIndexMap"`
     /// -   type: `void*`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "stateIdToIndexMap", default, skip_serializing)]
+    #[serde(rename = "stateIdToIndexMap", skip_serializing)]
     StateIdToIndexMap(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"activeTransitions"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "activeTransitions", default, skip_serializing)]
+    #[serde(rename = "activeTransitions", skip_serializing)]
     ActiveTransitions(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"transitionFlags"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "transitionFlags", default, skip_serializing)]
+    #[serde(rename = "transitionFlags", skip_serializing)]
     TransitionFlags(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"wildcardTransitionFlags"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "wildcardTransitionFlags", default, skip_serializing)]
+    #[serde(rename = "wildcardTransitionFlags", skip_serializing)]
     WildcardTransitionFlags(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"delayedTransitions"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 148
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "delayedTransitions", default, skip_serializing)]
+    #[serde(rename = "delayedTransitions", skip_serializing)]
     DelayedTransitions(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"timeInState"`
     /// -   type: `hkReal`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "timeInState", default, skip_serializing)]
+    #[serde(rename = "timeInState", skip_serializing)]
     TimeInState(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"lastLocalTime"`
     /// -   type: `hkReal`
     /// - offset: 164
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "lastLocalTime", default, skip_serializing)]
+    #[serde(rename = "lastLocalTime", skip_serializing)]
     LastLocalTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"previousStateId"`
     /// -   type: `hkInt32`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "previousStateId", default, skip_serializing)]
+    #[serde(rename = "previousStateId", skip_serializing)]
     PreviousStateId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"nextStartStateIndexOverride"`
     /// -   type: `hkInt32`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "nextStartStateIndexOverride", default, skip_serializing)]
+    #[serde(rename = "nextStartStateIndexOverride", skip_serializing)]
     NextStartStateIndexOverride(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"stateOrTransitionChanged"`
     /// -   type: `hkBool`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "stateOrTransitionChanged", default, skip_serializing)]
+    #[serde(rename = "stateOrTransitionChanged", skip_serializing)]
     StateOrTransitionChanged(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"echoNextUpdate"`
     /// -   type: `hkBool`
     /// - offset: 177
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "echoNextUpdate", default, skip_serializing)]
+    #[serde(rename = "echoNextUpdate", skip_serializing)]
     EchoNextUpdate(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"sCurrentStateIndexAndEntered"`
     /// -   type: `hkUint16`
     /// - offset: 178
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "sCurrentStateIndexAndEntered", default, skip_serializing)]
+    #[serde(rename = "sCurrentStateIndexAndEntered", skip_serializing)]
     SCurrentStateIndexAndEntered(Primitive<u16>),
 }
 

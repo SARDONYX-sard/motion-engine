@@ -27,7 +27,7 @@ pub enum HkpStiffSpringConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -35,7 +35,7 @@ pub enum HkpStiffSpringConstraintAtom {
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "length", default)]
+    #[serde(rename = "length")]
     Length(Primitive<f32>),
 }
 

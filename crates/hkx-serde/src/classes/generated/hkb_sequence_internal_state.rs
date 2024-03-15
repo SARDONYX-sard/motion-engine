@@ -27,14 +27,14 @@ pub enum HkbSequenceInternalState {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,42 +44,42 @@ pub enum HkbSequenceInternalState {
     /// -   type: `hkArray&lt;hkInt32&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "nextSampleEvents", default)]
+    #[serde(rename = "nextSampleEvents")]
     NextSampleEvents(HkArrayRef<Primitive<i32>>),
     /// # C++ Class Fields Info
     /// -   name:`"nextSampleReals"`
     /// -   type: `hkArray&lt;hkInt32&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "nextSampleReals", default)]
+    #[serde(rename = "nextSampleReals")]
     NextSampleReals(HkArrayRef<Primitive<i32>>),
     /// # C++ Class Fields Info
     /// -   name:`"nextSampleBools"`
     /// -   type: `hkArray&lt;hkInt32&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "nextSampleBools", default)]
+    #[serde(rename = "nextSampleBools")]
     NextSampleBools(HkArrayRef<Primitive<i32>>),
     /// # C++ Class Fields Info
     /// -   name:`"nextSampleInts"`
     /// -   type: `hkArray&lt;hkInt32&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "nextSampleInts", default)]
+    #[serde(rename = "nextSampleInts")]
     NextSampleInts(HkArrayRef<Primitive<i32>>),
     /// # C++ Class Fields Info
     /// -   name:`"time"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "time", default)]
+    #[serde(rename = "time")]
     Time(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"isEnabled"`
     /// -   type: `hkBool`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isEnabled", default)]
+    #[serde(rename = "isEnabled")]
     IsEnabled(Primitive<bool>),
 }
 

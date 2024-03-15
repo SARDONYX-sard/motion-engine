@@ -29,14 +29,14 @@ pub enum HkpVehicleDefaultEngine {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -46,70 +46,70 @@ pub enum HkpVehicleDefaultEngine {
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "minRPM", default)]
+    #[serde(rename = "minRPM")]
     MinRpm(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"optRPM"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "optRPM", default)]
+    #[serde(rename = "optRPM")]
     OptRpm(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxRPM"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxRPM", default)]
+    #[serde(rename = "maxRPM")]
     MaxRpm(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxTorque"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxTorque", default)]
+    #[serde(rename = "maxTorque")]
     MaxTorque(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"torqueFactorAtMinRPM"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "torqueFactorAtMinRPM", default)]
+    #[serde(rename = "torqueFactorAtMinRPM")]
     TorqueFactorAtMinRpm(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"torqueFactorAtMaxRPM"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "torqueFactorAtMaxRPM", default)]
+    #[serde(rename = "torqueFactorAtMaxRPM")]
     TorqueFactorAtMaxRpm(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"resistanceFactorAtMinRPM"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "resistanceFactorAtMinRPM", default)]
+    #[serde(rename = "resistanceFactorAtMinRPM")]
     ResistanceFactorAtMinRpm(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"resistanceFactorAtOptRPM"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "resistanceFactorAtOptRPM", default)]
+    #[serde(rename = "resistanceFactorAtOptRPM")]
     ResistanceFactorAtOptRpm(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"resistanceFactorAtMaxRPM"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "resistanceFactorAtMaxRPM", default)]
+    #[serde(rename = "resistanceFactorAtMaxRPM")]
     ResistanceFactorAtMaxRpm(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"clutchSlipRPM"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "clutchSlipRPM", default)]
+    #[serde(rename = "clutchSlipRPM")]
     ClutchSlipRpm(Primitive<f32>),
 }
 

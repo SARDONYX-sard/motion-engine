@@ -26,56 +26,56 @@ pub enum HkaSkeletonMapperData<'a> {
     /// -   type: `struct hkaSkeleton*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "skeletonA", default)]
+    #[serde(rename = "skeletonA")]
     SkeletonA(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"skeletonB"`
     /// -   type: `struct hkaSkeleton*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "skeletonB", default)]
+    #[serde(rename = "skeletonB")]
     SkeletonB(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"simpleMappings"`
     /// -   type: `hkArray&lt;struct hkaSkeletonMapperDataSimpleMapping&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "simpleMappings", default)]
+    #[serde(rename = "simpleMappings")]
     SimpleMappings(HkArrayClass<HkaSkeletonMapperDataSimpleMapping>),
     /// # C++ Class Fields Info
     /// -   name:`"chainMappings"`
     /// -   type: `hkArray&lt;struct hkaSkeletonMapperDataChainMapping&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "chainMappings", default)]
+    #[serde(rename = "chainMappings")]
     ChainMappings(HkArrayClass<HkaSkeletonMapperDataChainMapping>),
     /// # C++ Class Fields Info
     /// -   name:`"unmappedBones"`
     /// -   type: `hkArray&lt;hkInt16&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "unmappedBones", default)]
+    #[serde(rename = "unmappedBones")]
     UnmappedBones(HkArrayRef<Primitive<i16>>),
     /// # C++ Class Fields Info
     /// -   name:`"extractedMotionMapping"`
     /// -   type: `hkQsTransform`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "extractedMotionMapping", default)]
+    #[serde(rename = "extractedMotionMapping")]
     ExtractedMotionMapping(QsTransform<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"keepUnmappedLocal"`
     /// -   type: `hkBool`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "keepUnmappedLocal", default)]
+    #[serde(rename = "keepUnmappedLocal")]
     KeepUnmappedLocal(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"mappingType"`
     /// -   type: `enum MappingType`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "mappingType", default)]
+    #[serde(rename = "mappingType")]
     MappingType(Primitive<MappingType>),
 }
 

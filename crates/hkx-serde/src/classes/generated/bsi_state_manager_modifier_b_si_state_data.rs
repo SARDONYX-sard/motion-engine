@@ -26,21 +26,21 @@ pub enum BsiStateManagerModifierBSiStateData<'a> {
     /// -   type: `struct hkbGenerator*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pStateMachine", default)]
+    #[serde(rename = "pStateMachine")]
     PStateMachine(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"StateID"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "StateID", default)]
+    #[serde(rename = "StateID")]
     StateId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"iStateToSetAs"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "iStateToSetAs", default)]
+    #[serde(rename = "iStateToSetAs")]
     IStateToSetAs(Primitive<i32>),
 }
 

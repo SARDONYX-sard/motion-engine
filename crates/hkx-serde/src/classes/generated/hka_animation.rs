@@ -27,14 +27,14 @@ pub enum HkaAnimation<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,42 +44,42 @@ pub enum HkaAnimation<'a> {
     /// -   type: `enum AnimationType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AnimationType>),
     /// # C++ Class Fields Info
     /// -   name:`"duration"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "duration", default)]
+    #[serde(rename = "duration")]
     Duration(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"numberOfTransformTracks"`
     /// -   type: `hkInt32`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numberOfTransformTracks", default)]
+    #[serde(rename = "numberOfTransformTracks")]
     NumberOfTransformTracks(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"numberOfFloatTracks"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numberOfFloatTracks", default)]
+    #[serde(rename = "numberOfFloatTracks")]
     NumberOfFloatTracks(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"extractedMotion"`
     /// -   type: `struct hkaAnimatedReferenceFrame*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "extractedMotion", default)]
+    #[serde(rename = "extractedMotion")]
     ExtractedMotion(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"annotationTracks"`
     /// -   type: `hkArray&lt;struct hkaAnnotationTrack&gt;`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "annotationTracks", default)]
+    #[serde(rename = "annotationTracks")]
     AnnotationTracks(HkArrayClass<HkaAnnotationTrack>),
 }
 

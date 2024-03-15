@@ -26,35 +26,35 @@ pub enum HkbPoweredRagdollControlData {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "maxForce", default)]
+    #[serde(rename = "maxForce")]
     MaxForce(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"tau"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "tau", default)]
+    #[serde(rename = "tau")]
     Tau(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"damping"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "damping", default)]
+    #[serde(rename = "damping")]
     Damping(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"proportionalRecoveryVelocity"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "proportionalRecoveryVelocity", default)]
+    #[serde(rename = "proportionalRecoveryVelocity")]
     ProportionalRecoveryVelocity(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"constantRecoveryVelocity"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "constantRecoveryVelocity", default)]
+    #[serde(rename = "constantRecoveryVelocity")]
     ConstantRecoveryVelocity(Primitive<f32>),
 }
 

@@ -26,7 +26,7 @@ pub enum HkHalf8 {
     /// -   type: `hkHalf[8]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "quad", default)]
+    #[serde(rename = "quad")]
     Quad([Primitive<f32>; 8]),
 }
 

@@ -26,84 +26,84 @@ pub enum HkPackfileHeader {
     /// -   type: `hkInt32[2]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "magic", default)]
+    #[serde(rename = "magic")]
     Magic([Primitive<i32>; 2]),
     /// # C++ Class Fields Info
     /// -   name:`"userTag"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userTag", default)]
+    #[serde(rename = "userTag")]
     UserTag(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"fileVersion"`
     /// -   type: `hkInt32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fileVersion", default)]
+    #[serde(rename = "fileVersion")]
     FileVersion(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"layoutRules"`
     /// -   type: `hkUint8[4]`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "layoutRules", default)]
+    #[serde(rename = "layoutRules")]
     LayoutRules([Primitive<u8>; 4]),
     /// # C++ Class Fields Info
     /// -   name:`"numSections"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numSections", default)]
+    #[serde(rename = "numSections")]
     NumSections(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"contentsSectionIndex"`
     /// -   type: `hkInt32`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "contentsSectionIndex", default)]
+    #[serde(rename = "contentsSectionIndex")]
     ContentsSectionIndex(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"contentsSectionOffset"`
     /// -   type: `hkInt32`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "contentsSectionOffset", default)]
+    #[serde(rename = "contentsSectionOffset")]
     ContentsSectionOffset(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"contentsClassNameSectionIndex"`
     /// -   type: `hkInt32`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "contentsClassNameSectionIndex", default)]
+    #[serde(rename = "contentsClassNameSectionIndex")]
     ContentsClassNameSectionIndex(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"contentsClassNameSectionOffset"`
     /// -   type: `hkInt32`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "contentsClassNameSectionOffset", default)]
+    #[serde(rename = "contentsClassNameSectionOffset")]
     ContentsClassNameSectionOffset(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"contentsVersion"`
     /// -   type: `hkChar[16]`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "contentsVersion", default)]
+    #[serde(rename = "contentsVersion")]
     ContentsVersion([Primitive<char>; 16]),
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `hkInt32`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "flags", default)]
+    #[serde(rename = "flags")]
     Flags(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"pad"`
     /// -   type: `hkInt32[1]`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pad", default)]
+    #[serde(rename = "pad")]
     Pad([Primitive<i32>; 1]),
 }
 

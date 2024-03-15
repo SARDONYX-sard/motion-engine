@@ -27,7 +27,7 @@ pub enum HkpRackAndPinionConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -35,35 +35,35 @@ pub enum HkpRackAndPinionConstraintAtom {
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pinionRadiusOrScrewPitch", default)]
+    #[serde(rename = "pinionRadiusOrScrewPitch")]
     PinionRadiusOrScrewPitch(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"isScrew"`
     /// -   type: `hkBool`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isScrew", default)]
+    #[serde(rename = "isScrew")]
     IsScrew(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"memOffsetToInitialAngleOffset"`
     /// -   type: `hkInt8`
     /// - offset: 9
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "memOffsetToInitialAngleOffset", default)]
+    #[serde(rename = "memOffsetToInitialAngleOffset")]
     MemOffsetToInitialAngleOffset(Primitive<i8>),
     /// # C++ Class Fields Info
     /// -   name:`"memOffsetToPrevAngle"`
     /// -   type: `hkInt8`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "memOffsetToPrevAngle", default)]
+    #[serde(rename = "memOffsetToPrevAngle")]
     MemOffsetToPrevAngle(Primitive<i8>),
     /// # C++ Class Fields Info
     /// -   name:`"memOffsetToRevolutionCounter"`
     /// -   type: `hkInt8`
     /// - offset: 11
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "memOffsetToRevolutionCounter", default)]
+    #[serde(rename = "memOffsetToRevolutionCounter")]
     MemOffsetToRevolutionCounter(Primitive<i8>),
 }
 

@@ -21,13 +21,13 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpSimpleShapePhantom {
+pub enum HkpSimpleShapePhantom<'a> {
     /// # C++ Parent class(`hkpShapePhantom`, parent: `hkpPhantom`) field Info
     /// -   name:`"motionState"`
     /// -   type: `struct hkMotionState`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "motionState", default)]
+    #[serde(rename = "motionState")]
     MotionState(HkMotionState),
 
     /// # C++ Parent class(`hkpPhantom`, parent: `hkpWorldObject`) field Info
@@ -35,14 +35,14 @@ pub enum HkpSimpleShapePhantom {
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 140
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "overlapListeners", default, skip_serializing)]
+    #[serde(rename = "overlapListeners", skip_serializing)]
     OverlapListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Parent class(`hkpPhantom`, parent: `hkpWorldObject`) field Info
     /// -   name:`"phantomListeners"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 152
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "phantomListeners", default, skip_serializing)]
+    #[serde(rename = "phantomListeners", skip_serializing)]
     PhantomListeners(HkArrayRef<Cow<'a, str>>),
 
     /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
@@ -50,49 +50,49 @@ pub enum HkpSimpleShapePhantom {
     /// -   type: `void*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "world", default, skip_serializing)]
+    #[serde(rename = "world", skip_serializing)]
     World(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
     /// -   name:`"collidable"`
     /// -   type: `struct hkpLinkedCollidable`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "collidable", default)]
+    #[serde(rename = "collidable")]
     Collidable(HkpLinkedCollidable),
     /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
     /// -   name:`"multiThreadCheck"`
     /// -   type: `struct hkMultiThreadCheck`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "multiThreadCheck", default)]
+    #[serde(rename = "multiThreadCheck")]
     MultiThreadCheck(HkMultiThreadCheck),
     /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
     /// -   name:`"properties"`
     /// -   type: `hkArray&lt;struct hkpProperty&gt;`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "properties", default)]
+    #[serde(rename = "properties")]
     Properties(HkArrayClass<HkpProperty>),
     /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
     /// -   name:`"treeData"`
     /// -   type: `void*`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "treeData", default, skip_serializing)]
+    #[serde(rename = "treeData", skip_serializing)]
     TreeData(Primitive<Cow<'a, str>>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -100,14 +100,14 @@ pub enum HkpSimpleShapePhantom {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -117,14 +117,14 @@ pub enum HkpSimpleShapePhantom {
     /// -   type: `hkArray&lt;struct hkpSimpleShapePhantomCollisionDetail&gt;`
     /// - offset: 352
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "collisionDetails", default, skip_serializing)]
+    #[serde(rename = "collisionDetails", skip_serializing)]
     CollisionDetails(HkArrayClass<HkpSimpleShapePhantomCollisionDetail>),
     /// # C++ Class Fields Info
     /// -   name:`"orderDirty"`
     /// -   type: `hkBool`
     /// - offset: 364
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "orderDirty", default, skip_serializing)]
+    #[serde(rename = "orderDirty", skip_serializing)]
     OrderDirty(Primitive<bool>),
 }
 

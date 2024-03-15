@@ -27,14 +27,14 @@ pub enum HkbLookAtModifierInternalState {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,21 +44,21 @@ pub enum HkbLookAtModifierInternalState {
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lookAtLastTargetWS", default)]
+    #[serde(rename = "lookAtLastTargetWS")]
     LookAtLastTargetWs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"lookAtWeight"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "lookAtWeight", default)]
+    #[serde(rename = "lookAtWeight")]
     LookAtWeight(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"isTargetInsideLimitCone"`
     /// -   type: `hkBool`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isTargetInsideLimitCone", default)]
+    #[serde(rename = "isTargetInsideLimitCone")]
     IsTargetInsideLimitCone(Primitive<bool>),
 }
 

@@ -26,14 +26,14 @@ pub enum HkpMultiRayShapeRay {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "start", default)]
+    #[serde(rename = "start")]
     Start(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"end"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "end", default)]
+    #[serde(rename = "end")]
     End(Vector4<f32>),
 }
 

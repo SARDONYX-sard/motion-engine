@@ -29,35 +29,35 @@ pub enum BsSynchronizedClipGenerator<'a> {
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData", default)]
+    #[serde(rename = "userData")]
     UserData(Primitive<usize>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "name", default)]
+    #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "id", default, skip_serializing)]
+    #[serde(rename = "id", skip_serializing)]
     Id(Primitive<i16>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cloneState", default, skip_serializing)]
+    #[serde(rename = "cloneState", skip_serializing)]
     CloneState(Primitive<Unknown>),
     /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "padNode", default, skip_serializing)]
+    #[serde(rename = "padNode", skip_serializing)]
     PadNode([Primitive<bool>; 1]),
 
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
@@ -65,21 +65,21 @@ pub enum BsSynchronizedClipGenerator<'a> {
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "variableBindingSet", default)]
+    #[serde(rename = "variableBindingSet")]
     VariableBindingSet(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "cachedBindables", default, skip_serializing)]
+    #[serde(rename = "cachedBindables", skip_serializing)]
     CachedBindables(HkArrayRef<Primitive<()>>),
     /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "areBindablesCached", default, skip_serializing)]
+    #[serde(rename = "areBindablesCached", skip_serializing)]
     AreBindablesCached(Primitive<bool>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
@@ -87,14 +87,14 @@ pub enum BsSynchronizedClipGenerator<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -104,133 +104,133 @@ pub enum BsSynchronizedClipGenerator<'a> {
     /// -   type: `struct hkbGenerator*`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE | ALIGN16`
-    #[serde(rename = "pClipGenerator", default)]
+    #[serde(rename = "pClipGenerator")]
     PClipGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"SyncAnimPrefix"`
     /// -   type: `char*`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "SyncAnimPrefix", default)]
+    #[serde(rename = "SyncAnimPrefix")]
     SyncAnimPrefix(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"bSyncClipIgnoreMarkPlacement"`
     /// -   type: `hkBool`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bSyncClipIgnoreMarkPlacement", default)]
+    #[serde(rename = "bSyncClipIgnoreMarkPlacement")]
     BSyncClipIgnoreMarkPlacement(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"fGetToMarkTime"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fGetToMarkTime", default)]
+    #[serde(rename = "fGetToMarkTime")]
     FGetToMarkTime(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"fMarkErrorThreshold"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "fMarkErrorThreshold", default)]
+    #[serde(rename = "fMarkErrorThreshold")]
     FMarkErrorThreshold(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"bLeadCharacter"`
     /// -   type: `hkBool`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bLeadCharacter", default)]
+    #[serde(rename = "bLeadCharacter")]
     BLeadCharacter(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"bReorientSupportChar"`
     /// -   type: `hkBool`
     /// - offset: 69
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bReorientSupportChar", default)]
+    #[serde(rename = "bReorientSupportChar")]
     BReorientSupportChar(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"bApplyMotionFromRoot"`
     /// -   type: `hkBool`
     /// - offset: 70
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bApplyMotionFromRoot", default)]
+    #[serde(rename = "bApplyMotionFromRoot")]
     BApplyMotionFromRoot(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"pSyncScene"`
     /// -   type: `void*`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "pSyncScene", default, skip_serializing)]
+    #[serde(rename = "pSyncScene", skip_serializing)]
     PSyncScene(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"StartMarkWS"`
     /// -   type: `hkQsTransform`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "StartMarkWS", default, skip_serializing)]
+    #[serde(rename = "StartMarkWS", skip_serializing)]
     StartMarkWs(QsTransform<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"EndMarkWS"`
     /// -   type: `hkQsTransform`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "EndMarkWS", default, skip_serializing)]
+    #[serde(rename = "EndMarkWS", skip_serializing)]
     EndMarkWs(QsTransform<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"StartMarkMS"`
     /// -   type: `hkQsTransform`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "StartMarkMS", default, skip_serializing)]
+    #[serde(rename = "StartMarkMS", skip_serializing)]
     StartMarkMs(QsTransform<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"fCurrentLerp"`
     /// -   type: `hkReal`
     /// - offset: 224
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "fCurrentLerp", default, skip_serializing)]
+    #[serde(rename = "fCurrentLerp", skip_serializing)]
     FCurrentLerp(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"pLocalSyncBinding"`
     /// -   type: `void*`
     /// - offset: 228
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "pLocalSyncBinding", default, skip_serializing)]
+    #[serde(rename = "pLocalSyncBinding", skip_serializing)]
     PLocalSyncBinding(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"pEventMap"`
     /// -   type: `void*`
     /// - offset: 232
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "pEventMap", default, skip_serializing)]
+    #[serde(rename = "pEventMap", skip_serializing)]
     PEventMap(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"sAnimationBindingIndex"`
     /// -   type: `hkInt16`
     /// - offset: 236
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sAnimationBindingIndex", default)]
+    #[serde(rename = "sAnimationBindingIndex")]
     SAnimationBindingIndex(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"bAtMark"`
     /// -   type: `hkBool`
     /// - offset: 238
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "bAtMark", default, skip_serializing)]
+    #[serde(rename = "bAtMark", skip_serializing)]
     BAtMark(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"bAllCharactersInScene"`
     /// -   type: `hkBool`
     /// - offset: 239
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "bAllCharactersInScene", default, skip_serializing)]
+    #[serde(rename = "bAllCharactersInScene", skip_serializing)]
     BAllCharactersInScene(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"bAllCharactersAtMarks"`
     /// -   type: `hkBool`
     /// - offset: 240
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "bAllCharactersAtMarks", default, skip_serializing)]
+    #[serde(rename = "bAllCharactersAtMarks", skip_serializing)]
     BAllCharactersAtMarks(Primitive<bool>),
 }
 

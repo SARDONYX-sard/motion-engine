@@ -27,7 +27,7 @@ pub enum HkpLinFrictionConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<AtomType>),
 
     /// # C++ Class Fields Info
@@ -35,21 +35,21 @@ pub enum HkpLinFrictionConstraintAtom {
     /// -   type: `hkUint8`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "isEnabled", default)]
+    #[serde(rename = "isEnabled")]
     IsEnabled(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"frictionAxis"`
     /// -   type: `hkUint8`
     /// - offset: 3
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "frictionAxis", default)]
+    #[serde(rename = "frictionAxis")]
     FrictionAxis(Primitive<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"maxFrictionForce"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "maxFrictionForce", default)]
+    #[serde(rename = "maxFrictionForce")]
     MaxFrictionForce(Primitive<f32>),
 }
 

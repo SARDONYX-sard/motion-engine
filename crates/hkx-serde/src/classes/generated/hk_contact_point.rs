@@ -26,14 +26,14 @@ pub enum HkContactPoint {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "position", default)]
+    #[serde(rename = "position")]
     Position(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"separatingNormal"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "separatingNormal", default)]
+    #[serde(rename = "separatingNormal")]
     SeparatingNormal(Vector4<f32>),
 }
 

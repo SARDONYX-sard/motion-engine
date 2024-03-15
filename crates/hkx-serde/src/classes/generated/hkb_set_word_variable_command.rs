@@ -27,14 +27,14 @@ pub enum HkbSetWordVariableCommand {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,42 +44,42 @@ pub enum HkbSetWordVariableCommand {
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "quadValue", default)]
+    #[serde(rename = "quadValue")]
     QuadValue(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"characterId"`
     /// -   type: `hkUint64`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "characterId", default)]
+    #[serde(rename = "characterId")]
     CharacterId(Primitive<u64>),
     /// # C++ Class Fields Info
     /// -   name:`"variableId"`
     /// -   type: `hkInt32`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "variableId", default)]
+    #[serde(rename = "variableId")]
     VariableId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"value"`
     /// -   type: `struct hkbVariableValue`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "value", default)]
+    #[serde(rename = "value")]
     Value(HkbVariableValue),
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum VariableType`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "type", default)]
+    #[serde(rename = "type")]
     Type(Primitive<VariableType>),
     /// # C++ Class Fields Info
     /// -   name:`"global"`
     /// -   type: `hkBool`
     /// - offset: 49
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "global", default)]
+    #[serde(rename = "global")]
     Global(Primitive<bool>),
 }
 

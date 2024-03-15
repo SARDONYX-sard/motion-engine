@@ -27,14 +27,14 @@ pub enum HkaAnimationContainer<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", default, skip_serializing)]
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", default, skip_serializing)]
+    #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
@@ -44,35 +44,35 @@ pub enum HkaAnimationContainer<'a> {
     /// -   type: `hkArray&lt;hkaSkeleton*&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "skeletons", default)]
+    #[serde(rename = "skeletons")]
     Skeletons(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"animations"`
     /// -   type: `hkArray&lt;hkaAnimation*&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "animations", default)]
+    #[serde(rename = "animations")]
     Animations(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"bindings"`
     /// -   type: `hkArray&lt;hkaAnimationBinding*&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "bindings", default)]
+    #[serde(rename = "bindings")]
     Bindings(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"attachments"`
     /// -   type: `hkArray&lt;hkaBoneAttachment*&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "attachments", default)]
+    #[serde(rename = "attachments")]
     Attachments(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"skins"`
     /// -   type: `hkArray&lt;hkaMeshBinding*&gt;`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "skins", default)]
+    #[serde(rename = "skins")]
     Skins(HkArrayRef<Cow<'a, str>>),
 }
 

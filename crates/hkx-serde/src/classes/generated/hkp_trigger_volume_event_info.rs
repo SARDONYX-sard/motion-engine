@@ -26,21 +26,21 @@ pub enum HkpTriggerVolumeEventInfo<'a> {
     /// -   type: `hkUint64`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "sortValue", default)]
+    #[serde(rename = "sortValue")]
     SortValue(Primitive<u64>),
     /// # C++ Class Fields Info
     /// -   name:`"body"`
     /// -   type: `struct hkpRigidBody*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "body", default)]
+    #[serde(rename = "body")]
     Body(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"operation"`
     /// -   type: `enum Operation`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "operation", default)]
+    #[serde(rename = "operation")]
     Operation(Primitive<Operation>),
 }
 

@@ -69,7 +69,7 @@ pub enum HkpWheelConstraintDataAtoms {
     /// - offset: 288
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "2dAng")]
-    2DAng(Hkp2DAngConstraintAtom),
+    _2DAng(Hkp2DAngConstraintAtom),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -81,7 +81,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("lin1" => Lin1(HkpLinConstraintAtom)),
     ("lin2" => Lin2(HkpLinConstraintAtom)),
     ("steeringBase" => SteeringBase(HkpSetLocalRotationsConstraintAtom)),
-    ("2dAng" => 2DAng(Hkp2DAngConstraintAtom)),
+    ("2dAng" => _2DAng(Hkp2DAngConstraintAtom)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

@@ -34,7 +34,7 @@ pub enum HkClassEnum<'a> {
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "items")]
-    Items(HkArrayClass<HkClassEnumItem>),
+    Items(HkArrayClass<HkClassEnumItem<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"attributes"`
     /// -   type: `struct hkCustomAttributes*`

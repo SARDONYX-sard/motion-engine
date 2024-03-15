@@ -55,14 +55,14 @@ pub enum HkClass<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "declaredEnums")]
-    DeclaredEnums(HkArrayClass<HkClassEnum>),
+    DeclaredEnums(HkArrayClass<HkClassEnum<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"declaredMembers"`
     /// -   type: `hkSimpleArray&lt;struct hkClassMember&gt;`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "declaredMembers")]
-    DeclaredMembers(HkArrayClass<HkClassMember>),
+    DeclaredMembers(HkArrayClass<HkClassMember<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"defaults"`
     /// -   type: `void*`
@@ -100,8 +100,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("parent" => Parent(Primitive<Cow<'de, str>>)),
     ("objectSize" => ObjectSize(Primitive<i32>)),
     ("numImplementedInterfaces" => NumImplementedInterfaces(Primitive<i32>)),
-    ("declaredEnums" => DeclaredEnums(HkArrayClass<HkClassEnum>)),
-    ("declaredMembers" => DeclaredMembers(HkArrayClass<HkClassMember>)),
+    ("declaredEnums" => DeclaredEnums(HkArrayClass<HkClassEnum<'de>>)),
+    ("declaredMembers" => DeclaredMembers(HkArrayClass<HkClassMember<'de>>)),
     ("defaults" => Defaults(Primitive<Cow<'de, str>>)),
     ("attributes" => Attributes(Primitive<Cow<'de, str>>)),
     ("flags" => Flags(Primitive<FlagValues>)),

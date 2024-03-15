@@ -125,19 +125,19 @@ pub enum BsiStateManagerModifier<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "stateData")]
-    StateData(HkArrayClass<BsiStateManagerModifierBSiStateData>),
+    StateData(HkArrayClass<BsiStateManagerModifierBSiStateData<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"myStateListener"`
     /// -   type: `struct BSIStateManagerModifierBSIStateManagerStateListener`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "myStateListener", skip_serializing)]
-    MyStateListener(BsiStateManagerModifierBsiStateManagerStateListener),
+    MyStateListener(BsiStateManagerModifierBsiStateManagerStateListener<'a>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    BsiStateManagerModifier, "@name",
+    BsiStateManagerModifier<'de>, "@name",
     ("enable" => Enable(Primitive<bool>)),
     ("padModifier" => PadModifier([Primitive<bool>; 3])),
     ("userData" => UserData(Primitive<usize>)),
@@ -151,6 +151,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("iStateVar" => IStateVar(Primitive<i32>)),
-    ("stateData" => StateData(HkArrayClass<BsiStateManagerModifierBSiStateData>)),
-    ("myStateListener" => MyStateListener(BsiStateManagerModifierBsiStateManagerStateListener)),
+    ("stateData" => StateData(HkArrayClass<BsiStateManagerModifierBSiStateData<'de>>)),
+    ("myStateListener" => MyStateListener(BsiStateManagerModifierBsiStateManagerStateListener<'de>)),
 }

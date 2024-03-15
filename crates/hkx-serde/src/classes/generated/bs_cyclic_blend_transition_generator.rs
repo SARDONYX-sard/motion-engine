@@ -112,14 +112,14 @@ pub enum BsCyclicBlendTransitionGenerator<'a> {
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "EventToFreezeBlendValue")]
-    EventToFreezeBlendValue(HkbEventProperty),
+    EventToFreezeBlendValue(HkbEventProperty<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"EventToCrossBlend"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "EventToCrossBlend")]
-    EventToCrossBlend(HkbEventProperty),
+    EventToCrossBlend(HkbEventProperty<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"fBlendParameter"`
     /// -   type: `hkReal`
@@ -178,8 +178,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("pBlenderGenerator" => PBlenderGenerator(Primitive<Cow<'de, str>>)),
-    ("EventToFreezeBlendValue" => EventToFreezeBlendValue(HkbEventProperty)),
-    ("EventToCrossBlend" => EventToCrossBlend(HkbEventProperty)),
+    ("EventToFreezeBlendValue" => EventToFreezeBlendValue(HkbEventProperty<'de>)),
+    ("EventToCrossBlend" => EventToCrossBlend(HkbEventProperty<'de>)),
     ("fBlendParameter" => FBlendParameter(Primitive<f32>)),
     ("fTransitionDuration" => FTransitionDuration(Primitive<f32>)),
     ("eBlendCurve" => EBlendCurve(Primitive<BlendCurve>)),

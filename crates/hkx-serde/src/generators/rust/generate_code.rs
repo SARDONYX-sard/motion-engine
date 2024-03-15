@@ -115,7 +115,7 @@ pub enum {rust_enum_class_name}{life_time} {{
     rust_code.push_str(&all_fields_code);
 
     //? - Impl Deserialization
-    let life_time = get_life_time(members).replace("'a", "'de");
+    let life_time = life_time.replace("'a", "'de");
     rust_code.push_str(&format!(
         r#"
 // Manual implementation to branch the process using the value of the `name` attribute as the key.

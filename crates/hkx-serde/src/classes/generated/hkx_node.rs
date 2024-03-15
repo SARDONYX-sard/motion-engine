@@ -81,7 +81,7 @@ pub enum HkxNode<'a> {
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "annotations")]
-    Annotations(HkArrayClass<HkxNodeAnnotationData>),
+    Annotations(HkArrayClass<HkxNodeAnnotationData<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"userProperties"`
     /// -   type: `hkStringPtr`
@@ -108,7 +108,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("object" => Object(Primitive<Cow<'de, str>>)),
     ("keyFrames" => KeyFrames(HkArrayVector<Matrix4<f32>>)),
     ("children" => Children(HkArrayRef<Cow<'de, str>>)),
-    ("annotations" => Annotations(HkArrayClass<HkxNodeAnnotationData>)),
+    ("annotations" => Annotations(HkArrayClass<HkxNodeAnnotationData<'de>>)),
     ("userProperties" => UserProperties(Primitive<Cow<'de, str>>)),
     ("selected" => Selected(Primitive<bool>)),
 }

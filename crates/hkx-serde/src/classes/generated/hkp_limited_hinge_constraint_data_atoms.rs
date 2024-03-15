@@ -62,7 +62,7 @@ pub enum HkpLimitedHingeConstraintDataAtoms {
     /// - offset: 208
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "2dAng")]
-    2DAng(Hkp2DAngConstraintAtom),
+    _2DAng(Hkp2DAngConstraintAtom),
     /// # C++ Class Fields Info
     /// -   name:`"ballSocket"`
     /// -   type: `struct hkpBallSocketConstraintAtom`
@@ -80,7 +80,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("angMotor" => AngMotor(HkpAngMotorConstraintAtom)),
     ("angFriction" => AngFriction(HkpAngFrictionConstraintAtom)),
     ("angLimit" => AngLimit(HkpAngLimitConstraintAtom)),
-    ("2dAng" => 2DAng(Hkp2DAngConstraintAtom)),
+    ("2dAng" => _2DAng(Hkp2DAngConstraintAtom)),
     ("ballSocket" => BallSocket(HkpBallSocketConstraintAtom)),
 }
 

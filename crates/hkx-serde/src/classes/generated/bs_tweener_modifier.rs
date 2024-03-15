@@ -111,7 +111,6 @@ pub enum BsTweenerModifier<'a> {
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
-
     /// # C++ Class Fields Info
     /// -   name:`"tweenPosition"`
     /// -   type: `hkBool`
@@ -179,7 +178,7 @@ pub enum BsTweenerModifier<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    BsTweenerModifier, "@name",
+    BsTweenerModifier<'de>, "@name",
     ("enable" => Enable(Primitive<bool>)),
     ("padModifier" => PadModifier([Primitive<bool>; 3])),
     ("userData" => UserData(Primitive<usize>)),

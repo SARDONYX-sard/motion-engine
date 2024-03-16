@@ -22,14 +22,14 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpShapePhantom<'a> {
-    /// # C++ Parent class(`hkpPhantom`, parent: `hkpWorldObject`) field Info
+    /// # C++ Parent class(`hkpPhantom` => parent: `hkpWorldObject`) field Info
     /// -   name:`"overlapListeners"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 140
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "overlapListeners", skip_serializing)]
     OverlapListeners(HkArrayRef<Cow<'a, str>>),
-    /// # C++ Parent class(`hkpPhantom`, parent: `hkpWorldObject`) field Info
+    /// # C++ Parent class(`hkpPhantom` => parent: `hkpWorldObject`) field Info
     /// -   name:`"phantomListeners"`
     /// -   type: `hkArray&lt;void*&gt;`
     /// - offset: 152
@@ -37,49 +37,49 @@ pub enum HkpShapePhantom<'a> {
     #[serde(rename = "phantomListeners", skip_serializing)]
     PhantomListeners(HkArrayRef<Cow<'a, str>>),
 
-    /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"world"`
     /// -   type: `void*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "world", skip_serializing)]
     World(Primitive<Cow<'a, str>>),
-    /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "userData")]
     UserData(Primitive<usize>),
-    /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"collidable"`
     /// -   type: `struct hkpLinkedCollidable`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "collidable")]
     Collidable(HkpLinkedCollidable<'a>),
-    /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"multiThreadCheck"`
     /// -   type: `struct hkMultiThreadCheck`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "multiThreadCheck")]
     MultiThreadCheck(HkMultiThreadCheck),
-    /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
-    /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"properties"`
     /// -   type: `hkArray&lt;struct hkpProperty&gt;`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "properties")]
     Properties(HkArrayClass<HkpProperty>),
-    /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"treeData"`
     /// -   type: `void*`
     /// - offset: 136
@@ -87,14 +87,14 @@ pub enum HkpShapePhantom<'a> {
     #[serde(rename = "treeData", skip_serializing)]
     TreeData(Primitive<Cow<'a, str>>),
 
-    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
-    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
@@ -102,7 +102,7 @@ pub enum HkpShapePhantom<'a> {
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
-    // `hkBaseObject`(Parent class) has no fields
+    // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
 
     /// # C++ Class Fields Info
     /// -   name:`"motionState"`

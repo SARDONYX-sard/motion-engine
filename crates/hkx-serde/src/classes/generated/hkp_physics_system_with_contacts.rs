@@ -22,49 +22,49 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpPhysicsSystemWithContacts<'a> {
-    /// # C++ Parent class(`hkpPhysicsSystem`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpPhysicsSystem` => parent: `hkReferencedObject`) field Info
     /// -   name:`"rigidBodies"`
     /// -   type: `hkArray&lt;hkpRigidBody*&gt;`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rigidBodies")]
     RigidBodies(HkArrayRef<Cow<'a, str>>),
-    /// # C++ Parent class(`hkpPhysicsSystem`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpPhysicsSystem` => parent: `hkReferencedObject`) field Info
     /// -   name:`"constraints"`
     /// -   type: `hkArray&lt;hkpConstraintInstance*&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "constraints")]
     Constraints(HkArrayRef<Cow<'a, str>>),
-    /// # C++ Parent class(`hkpPhysicsSystem`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpPhysicsSystem` => parent: `hkReferencedObject`) field Info
     /// -   name:`"actions"`
     /// -   type: `hkArray&lt;hkpAction*&gt;`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "actions")]
     Actions(HkArrayRef<Cow<'a, str>>),
-    /// # C++ Parent class(`hkpPhysicsSystem`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpPhysicsSystem` => parent: `hkReferencedObject`) field Info
     /// -   name:`"phantoms"`
     /// -   type: `hkArray&lt;hkpPhantom*&gt;`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "phantoms")]
     Phantoms(HkArrayRef<Cow<'a, str>>),
-    /// # C++ Parent class(`hkpPhysicsSystem`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpPhysicsSystem` => parent: `hkReferencedObject`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
-    /// # C++ Parent class(`hkpPhysicsSystem`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpPhysicsSystem` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "userData")]
     UserData(Primitive<usize>),
-    /// # C++ Parent class(`hkpPhysicsSystem`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpPhysicsSystem` => parent: `hkReferencedObject`) field Info
     /// -   name:`"active"`
     /// -   type: `hkBool`
     /// - offset: 64
@@ -72,14 +72,14 @@ pub enum HkpPhysicsSystemWithContacts<'a> {
     #[serde(rename = "active")]
     Active(Primitive<bool>),
 
-    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
-    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
@@ -87,7 +87,7 @@ pub enum HkpPhysicsSystemWithContacts<'a> {
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
-    // `hkBaseObject`(Parent class) has no fields
+    // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
 
     /// # C++ Class Fields Info
     /// -   name:`"contacts"`

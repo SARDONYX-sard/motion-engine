@@ -22,63 +22,63 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpCompressedSampledHeightFieldShape {
-    /// # C++ Parent class(`hkpSampledHeightFieldShape`, parent: `hkpHeightFieldShape`) field Info
+    /// # C++ Parent class(`hkpSampledHeightFieldShape` => parent: `hkpHeightFieldShape`) field Info
     /// -   name:`"xRes"`
     /// -   type: `hkInt32`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "xRes")]
     XRes(Primitive<i32>),
-    /// # C++ Parent class(`hkpSampledHeightFieldShape`, parent: `hkpHeightFieldShape`) field Info
+    /// # C++ Parent class(`hkpSampledHeightFieldShape` => parent: `hkpHeightFieldShape`) field Info
     /// -   name:`"zRes"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "zRes")]
     ZRes(Primitive<i32>),
-    /// # C++ Parent class(`hkpSampledHeightFieldShape`, parent: `hkpHeightFieldShape`) field Info
+    /// # C++ Parent class(`hkpSampledHeightFieldShape` => parent: `hkpHeightFieldShape`) field Info
     /// -   name:`"heightCenter"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "heightCenter")]
     HeightCenter(Primitive<f32>),
-    /// # C++ Parent class(`hkpSampledHeightFieldShape`, parent: `hkpHeightFieldShape`) field Info
+    /// # C++ Parent class(`hkpSampledHeightFieldShape` => parent: `hkpHeightFieldShape`) field Info
     /// -   name:`"useProjectionBasedHeight"`
     /// -   type: `hkBool`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "useProjectionBasedHeight")]
     UseProjectionBasedHeight(Primitive<bool>),
-    /// # C++ Parent class(`hkpSampledHeightFieldShape`, parent: `hkpHeightFieldShape`) field Info
+    /// # C++ Parent class(`hkpSampledHeightFieldShape` => parent: `hkpHeightFieldShape`) field Info
     /// -   name:`"heightfieldType"`
     /// -   type: `enum HeightFieldType`
     /// - offset: 29
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "heightfieldType")]
     HeightfieldType(Primitive<HeightFieldType>),
-    /// # C++ Parent class(`hkpSampledHeightFieldShape`, parent: `hkpHeightFieldShape`) field Info
+    /// # C++ Parent class(`hkpSampledHeightFieldShape` => parent: `hkpHeightFieldShape`) field Info
     /// -   name:`"intToFloatScale"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "intToFloatScale")]
     IntToFloatScale(Vector4<f32>),
-    /// # C++ Parent class(`hkpSampledHeightFieldShape`, parent: `hkpHeightFieldShape`) field Info
+    /// # C++ Parent class(`hkpSampledHeightFieldShape` => parent: `hkpHeightFieldShape`) field Info
     /// -   name:`"floatToIntScale"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "floatToIntScale")]
     FloatToIntScale(Vector4<f32>),
-    /// # C++ Parent class(`hkpSampledHeightFieldShape`, parent: `hkpHeightFieldShape`) field Info
+    /// # C++ Parent class(`hkpSampledHeightFieldShape` => parent: `hkpHeightFieldShape`) field Info
     /// -   name:`"floatToIntOffsetFloorCorrected"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "floatToIntOffsetFloorCorrected")]
     FloatToIntOffsetFloorCorrected(Vector4<f32>),
-    /// # C++ Parent class(`hkpSampledHeightFieldShape`, parent: `hkpHeightFieldShape`) field Info
+    /// # C++ Parent class(`hkpSampledHeightFieldShape` => parent: `hkpHeightFieldShape`) field Info
     /// -   name:`"extents"`
     /// -   type: `hkVector4`
     /// - offset: 80
@@ -86,16 +86,16 @@ pub enum HkpCompressedSampledHeightFieldShape {
     #[serde(rename = "extents")]
     Extents(Vector4<f32>),
 
-    // `hkpHeightFieldShape`(Parent class) has no fields
+    // C++ Parent class(`hkpHeightFieldShape` => parent: `hkpShape`) has no fields
 
-    /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "userData")]
     UserData(Primitive<usize>),
-    /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 12
@@ -103,14 +103,14 @@ pub enum HkpCompressedSampledHeightFieldShape {
     #[serde(rename = "type", skip_serializing)]
     Type(Primitive<Unknown>),
 
-    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
-    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
@@ -118,7 +118,7 @@ pub enum HkpCompressedSampledHeightFieldShape {
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
-    // `hkBaseObject`(Parent class) has no fields
+    // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
 
     /// # C++ Class Fields Info
     /// -   name:`"storage"`

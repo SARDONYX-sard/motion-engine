@@ -22,14 +22,14 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbEventProperty<'a> {
-    /// # C++ Parent class(`hkbEventBase`, parent: `None`) field Info
+    /// # C++ Parent class(`hkbEventBase` => parent: `None`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "id")]
     Id(Primitive<i32>),
-    /// # C++ Parent class(`hkbEventBase`, parent: `None`) field Info
+    /// # C++ Parent class(`hkbEventBase` => parent: `None`) field Info
     /// -   name:`"payload"`
     /// -   type: `struct hkbEventPayload*`
     /// - offset: 4

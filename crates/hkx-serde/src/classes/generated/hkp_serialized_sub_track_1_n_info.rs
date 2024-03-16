@@ -22,14 +22,14 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpSerializedSubTrack1NInfo<'a> {
-    /// # C++ Parent class(`hkpSerializedTrack1nInfo`, parent: `None`) field Info
+    /// # C++ Parent class(`hkpSerializedTrack1nInfo` => parent: `None`) field Info
     /// -   name:`"sectors"`
     /// -   type: `hkArray&lt;hkpAgent1nSector*&gt;`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "sectors")]
     Sectors(HkArrayRef<Cow<'a, str>>),
-    /// # C++ Parent class(`hkpSerializedTrack1nInfo`, parent: `None`) field Info
+    /// # C++ Parent class(`hkpSerializedTrack1nInfo` => parent: `None`) field Info
     /// -   name:`"subTracks"`
     /// -   type: `hkArray&lt;hkpSerializedSubTrack1nInfo*&gt;`
     /// - offset: 12

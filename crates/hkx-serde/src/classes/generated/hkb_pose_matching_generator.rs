@@ -22,112 +22,112 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbPoseMatchingGenerator<'a> {
-    /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
+    /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"referencePoseWeightThreshold"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "referencePoseWeightThreshold")]
     ReferencePoseWeightThreshold(Primitive<f32>),
-    /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
+    /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"blendParameter"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "blendParameter")]
     BlendParameter(Primitive<f32>),
-    /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
+    /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"minCyclicBlendParameter"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "minCyclicBlendParameter")]
     MinCyclicBlendParameter(Primitive<f32>),
-    /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
+    /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"maxCyclicBlendParameter"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "maxCyclicBlendParameter")]
     MaxCyclicBlendParameter(Primitive<f32>),
-    /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
+    /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"indexOfSyncMasterChild"`
     /// -   type: `hkInt16`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "indexOfSyncMasterChild")]
     IndexOfSyncMasterChild(Primitive<i16>),
-    /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
+    /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"flags"`
     /// -   type: `hkInt16`
     /// - offset: 58
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "flags")]
     Flags(Primitive<i16>),
-    /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
+    /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"subtractLastChild"`
     /// -   type: `hkBool`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "subtractLastChild")]
     SubtractLastChild(Primitive<bool>),
-    /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
+    /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"children"`
     /// -   type: `hkArray&lt;hkbBlenderGeneratorChild*&gt;`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "children")]
     Children(HkArrayRef<Cow<'a, str>>),
-    /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
+    /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"childrenInternalStates"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "childrenInternalStates", skip_serializing)]
     ChildrenInternalStates(HkArrayRef<Primitive<()>>),
-    /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
+    /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"sortedChildren"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "sortedChildren", skip_serializing)]
     SortedChildren(HkArrayRef<Primitive<()>>),
-    /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
+    /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"endIntervalWeight"`
     /// -   type: `hkReal`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "endIntervalWeight", skip_serializing)]
     EndIntervalWeight(Primitive<f32>),
-    /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
+    /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"numActiveChildren"`
     /// -   type: `hkInt32`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "numActiveChildren", skip_serializing)]
     NumActiveChildren(Primitive<i32>),
-    /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
+    /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"beginIntervalIndex"`
     /// -   type: `hkInt16`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "beginIntervalIndex", skip_serializing)]
     BeginIntervalIndex(Primitive<i16>),
-    /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
+    /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"endIntervalIndex"`
     /// -   type: `hkInt16`
     /// - offset: 110
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "endIntervalIndex", skip_serializing)]
     EndIntervalIndex(Primitive<i16>),
-    /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
+    /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"initSync"`
     /// -   type: `hkBool`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "initSync", skip_serializing)]
     InitSync(Primitive<bool>),
-    /// # C++ Parent class(`hkbBlenderGenerator`, parent: `hkbGenerator`) field Info
+    /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"doSubtractiveBlend"`
     /// -   type: `hkBool`
     /// - offset: 113
@@ -135,37 +135,37 @@ pub enum HkbPoseMatchingGenerator<'a> {
     #[serde(rename = "doSubtractiveBlend", skip_serializing)]
     DoSubtractiveBlend(Primitive<bool>),
 
-    // `hkbGenerator`(Parent class) has no fields
+    // C++ Parent class(`hkbGenerator` => parent: `hkbNode`) has no fields
 
-    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "userData")]
     UserData(Primitive<usize>),
-    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
-    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "id", skip_serializing)]
     Id(Primitive<i16>),
-    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "cloneState", skip_serializing)]
     CloneState(Primitive<Unknown>),
-    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
@@ -173,21 +173,21 @@ pub enum HkbPoseMatchingGenerator<'a> {
     #[serde(rename = "padNode", skip_serializing)]
     PadNode([Primitive<bool>; 1]),
 
-    /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"variableBindingSet"`
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "variableBindingSet")]
     VariableBindingSet(Primitive<Cow<'a, str>>),
-    /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
     CachedBindables(HkArrayRef<Primitive<()>>),
-    /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
@@ -195,14 +195,14 @@ pub enum HkbPoseMatchingGenerator<'a> {
     #[serde(rename = "areBindablesCached", skip_serializing)]
     AreBindablesCached(Primitive<bool>),
 
-    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
-    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
@@ -210,7 +210,7 @@ pub enum HkbPoseMatchingGenerator<'a> {
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
-    // `hkBaseObject`(Parent class) has no fields
+    // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
 
     /// # C++ Class Fields Info
     /// -   name:`"worldFromModelRotation"`

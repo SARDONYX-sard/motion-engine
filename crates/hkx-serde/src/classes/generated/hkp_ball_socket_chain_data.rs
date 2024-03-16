@@ -22,9 +22,9 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpBallSocketChainData {
-    // `hkpConstraintChainData`(Parent class) has no fields
+    // C++ Parent class(`hkpConstraintChainData` => parent: `hkpConstraintData`) has no fields
 
-    /// # C++ Parent class(`hkpConstraintData`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpConstraintData` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 8
@@ -32,14 +32,14 @@ pub enum HkpBallSocketChainData {
     #[serde(rename = "userData")]
     UserData(Primitive<usize>),
 
-    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
-    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
@@ -47,7 +47,7 @@ pub enum HkpBallSocketChainData {
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
-    // `hkBaseObject`(Parent class) has no fields
+    // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
 
     /// # C++ Class Fields Info
     /// -   name:`"atoms"`

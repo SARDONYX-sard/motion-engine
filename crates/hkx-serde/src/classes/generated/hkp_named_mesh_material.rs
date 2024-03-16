@@ -22,7 +22,7 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpNamedMeshMaterial<'a> {
-    /// # C++ Parent class(`hkpMeshMaterial`, parent: `None`) field Info
+    /// # C++ Parent class(`hkpMeshMaterial` => parent: `None`) field Info
     /// -   name:`"filterInfo"`
     /// -   type: `hkUint32`
     /// - offset: 0

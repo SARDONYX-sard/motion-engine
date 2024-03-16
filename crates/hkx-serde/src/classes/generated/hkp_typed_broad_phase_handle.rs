@@ -22,7 +22,7 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpTypedBroadPhaseHandle {
-    /// # C++ Parent class(`hkpBroadPhaseHandle`, parent: `None`) field Info
+    /// # C++ Parent class(`hkpBroadPhaseHandle` => parent: `None`) field Info
     /// -   name:`"id"`
     /// -   type: `hkUint32`
     /// - offset: 0

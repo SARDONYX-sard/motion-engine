@@ -22,7 +22,7 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpVehicleRayCastBatchingManager<'a> {
-    /// # C++ Parent class(`hkpVehicleCastBatchingManager`, parent: `hkpVehicleManager`) field Info
+    /// # C++ Parent class(`hkpVehicleCastBatchingManager` => parent: `hkpVehicleManager`) field Info
     /// -   name:`"totalNumWheels"`
     /// -   type: `hkUint16`
     /// - offset: 20
@@ -30,7 +30,7 @@ pub enum HkpVehicleRayCastBatchingManager<'a> {
     #[serde(rename = "totalNumWheels")]
     TotalNumWheels(Primitive<u16>),
 
-    /// # C++ Parent class(`hkpVehicleManager`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpVehicleManager` => parent: `hkReferencedObject`) field Info
     /// -   name:`"registeredVehicles"`
     /// -   type: `hkArray&lt;hkpVehicleInstance*&gt;`
     /// - offset: 8
@@ -38,14 +38,14 @@ pub enum HkpVehicleRayCastBatchingManager<'a> {
     #[serde(rename = "registeredVehicles")]
     RegisteredVehicles(HkArrayRef<Cow<'a, str>>),
 
-    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
-    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
@@ -53,7 +53,7 @@ pub enum HkpVehicleRayCastBatchingManager<'a> {
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
-    // `hkBaseObject`(Parent class) has no fields
+    // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
 
 }
 

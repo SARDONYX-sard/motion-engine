@@ -22,28 +22,28 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpMovingSurfaceModifierConstraintAtom<'a> {
-    /// # C++ Parent class(`hkpModifierConstraintAtom`, parent: `hkpConstraintAtom`) field Info
+    /// # C++ Parent class(`hkpModifierConstraintAtom` => parent: `hkpConstraintAtom`) field Info
     /// -   name:`"modifierAtomSize"`
     /// -   type: `hkUint16`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE | ALIGN16`
     #[serde(rename = "modifierAtomSize")]
     ModifierAtomSize(Primitive<u16>),
-    /// # C++ Parent class(`hkpModifierConstraintAtom`, parent: `hkpConstraintAtom`) field Info
+    /// # C++ Parent class(`hkpModifierConstraintAtom` => parent: `hkpConstraintAtom`) field Info
     /// -   name:`"childSize"`
     /// -   type: `hkUint16`
     /// - offset: 18
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "childSize")]
     ChildSize(Primitive<u16>),
-    /// # C++ Parent class(`hkpModifierConstraintAtom`, parent: `hkpConstraintAtom`) field Info
+    /// # C++ Parent class(`hkpModifierConstraintAtom` => parent: `hkpConstraintAtom`) field Info
     /// -   name:`"child"`
     /// -   type: `struct hkpConstraintAtom*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "child")]
     Child(Primitive<Cow<'a, str>>),
-    /// # C++ Parent class(`hkpModifierConstraintAtom`, parent: `hkpConstraintAtom`) field Info
+    /// # C++ Parent class(`hkpModifierConstraintAtom` => parent: `hkpConstraintAtom`) field Info
     /// -   name:`"pad"`
     /// -   type: `hkUint32[2]`
     /// - offset: 24
@@ -51,7 +51,7 @@ pub enum HkpMovingSurfaceModifierConstraintAtom<'a> {
     #[serde(rename = "pad")]
     Pad([Primitive<u32>; 2]),
 
-    /// # C++ Parent class(`hkpConstraintAtom`, parent: `None`) field Info
+    /// # C++ Parent class(`hkpConstraintAtom` => parent: `None`) field Info
     /// -   name:`"type"`
     /// -   type: `enum AtomType`
     /// - offset: 0

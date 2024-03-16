@@ -22,28 +22,28 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpCollidable<'a> {
-    /// # C++ Parent class(`hkpCdBody`, parent: `None`) field Info
+    /// # C++ Parent class(`hkpCdBody` => parent: `None`) field Info
     /// -   name:`"shape"`
     /// -   type: `struct hkpShape*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "shape")]
     Shape(Primitive<Cow<'a, str>>),
-    /// # C++ Parent class(`hkpCdBody`, parent: `None`) field Info
+    /// # C++ Parent class(`hkpCdBody` => parent: `None`) field Info
     /// -   name:`"shapeKey"`
     /// -   type: `hkUint32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "shapeKey")]
     ShapeKey(Primitive<u32>),
-    /// # C++ Parent class(`hkpCdBody`, parent: `None`) field Info
+    /// # C++ Parent class(`hkpCdBody` => parent: `None`) field Info
     /// -   name:`"motion"`
     /// -   type: `void*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "motion", skip_serializing)]
     Motion(Primitive<Cow<'a, str>>),
-    /// # C++ Parent class(`hkpCdBody`, parent: `None`) field Info
+    /// # C++ Parent class(`hkpCdBody` => parent: `None`) field Info
     /// -   name:`"parent"`
     /// -   type: `struct hkpCdBody*`
     /// - offset: 12

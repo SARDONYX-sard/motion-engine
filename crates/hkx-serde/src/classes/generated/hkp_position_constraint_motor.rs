@@ -22,14 +22,14 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpPositionConstraintMotor {
-    /// # C++ Parent class(`hkpLimitedForceConstraintMotor`, parent: `hkpConstraintMotor`) field Info
+    /// # C++ Parent class(`hkpLimitedForceConstraintMotor` => parent: `hkpConstraintMotor`) field Info
     /// -   name:`"minForce"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "minForce")]
     MinForce(Primitive<f32>),
-    /// # C++ Parent class(`hkpLimitedForceConstraintMotor`, parent: `hkpConstraintMotor`) field Info
+    /// # C++ Parent class(`hkpLimitedForceConstraintMotor` => parent: `hkpConstraintMotor`) field Info
     /// -   name:`"maxForce"`
     /// -   type: `hkReal`
     /// - offset: 16
@@ -37,7 +37,7 @@ pub enum HkpPositionConstraintMotor {
     #[serde(rename = "maxForce")]
     MaxForce(Primitive<f32>),
 
-    /// # C++ Parent class(`hkpConstraintMotor`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpConstraintMotor` => parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum MotorType`
     /// - offset: 8
@@ -45,14 +45,14 @@ pub enum HkpPositionConstraintMotor {
     #[serde(rename = "type")]
     Type(Primitive<MotorType>),
 
-    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
-    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
@@ -60,7 +60,7 @@ pub enum HkpPositionConstraintMotor {
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
-    // `hkBaseObject`(Parent class) has no fields
+    // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
 
     /// # C++ Class Fields Info
     /// -   name:`"tau"`

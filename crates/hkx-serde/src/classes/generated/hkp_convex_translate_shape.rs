@@ -22,14 +22,14 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpConvexTranslateShape<'a> {
-    /// # C++ Parent class(`hkpConvexTransformShapeBase`, parent: `hkpConvexShape`) field Info
+    /// # C++ Parent class(`hkpConvexTransformShapeBase` => parent: `hkpConvexShape`) field Info
     /// -   name:`"childShape"`
     /// -   type: `struct hkpSingleShapeContainer`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "childShape")]
     ChildShape(HkpSingleShapeContainer<'a>),
-    /// # C++ Parent class(`hkpConvexTransformShapeBase`, parent: `hkpConvexShape`) field Info
+    /// # C++ Parent class(`hkpConvexTransformShapeBase` => parent: `hkpConvexShape`) field Info
     /// -   name:`"childShapeSize"`
     /// -   type: `hkInt32`
     /// - offset: 28
@@ -37,7 +37,7 @@ pub enum HkpConvexTranslateShape<'a> {
     #[serde(rename = "childShapeSize", skip_serializing)]
     ChildShapeSize(Primitive<i32>),
 
-    /// # C++ Parent class(`hkpConvexShape`, parent: `hkpSphereRepShape`) field Info
+    /// # C++ Parent class(`hkpConvexShape` => parent: `hkpSphereRepShape`) field Info
     /// -   name:`"radius"`
     /// -   type: `hkReal`
     /// - offset: 16
@@ -45,16 +45,16 @@ pub enum HkpConvexTranslateShape<'a> {
     #[serde(rename = "radius")]
     Radius(Primitive<f32>),
 
-    // `hkpSphereRepShape`(Parent class) has no fields
+    // C++ Parent class(`hkpSphereRepShape` => parent: `hkpShape`) has no fields
 
-    /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "userData")]
     UserData(Primitive<usize>),
-    /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 12
@@ -62,14 +62,14 @@ pub enum HkpConvexTranslateShape<'a> {
     #[serde(rename = "type", skip_serializing)]
     Type(Primitive<Unknown>),
 
-    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
-    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
@@ -77,7 +77,7 @@ pub enum HkpConvexTranslateShape<'a> {
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
-    // `hkBaseObject`(Parent class) has no fields
+    // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
 
     /// # C++ Class Fields Info
     /// -   name:`"translation"`

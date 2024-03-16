@@ -22,42 +22,42 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkaQuantizedAnimation<'a> {
-    /// # C++ Parent class(`hkaAnimation`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkaAnimation` => parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum AnimationType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
     Type(Primitive<AnimationType>),
-    /// # C++ Parent class(`hkaAnimation`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkaAnimation` => parent: `hkReferencedObject`) field Info
     /// -   name:`"duration"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "duration")]
     Duration(Primitive<f32>),
-    /// # C++ Parent class(`hkaAnimation`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkaAnimation` => parent: `hkReferencedObject`) field Info
     /// -   name:`"numberOfTransformTracks"`
     /// -   type: `hkInt32`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "numberOfTransformTracks")]
     NumberOfTransformTracks(Primitive<i32>),
-    /// # C++ Parent class(`hkaAnimation`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkaAnimation` => parent: `hkReferencedObject`) field Info
     /// -   name:`"numberOfFloatTracks"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "numberOfFloatTracks")]
     NumberOfFloatTracks(Primitive<i32>),
-    /// # C++ Parent class(`hkaAnimation`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkaAnimation` => parent: `hkReferencedObject`) field Info
     /// -   name:`"extractedMotion"`
     /// -   type: `struct hkaAnimatedReferenceFrame*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "extractedMotion")]
     ExtractedMotion(Primitive<Cow<'a, str>>),
-    /// # C++ Parent class(`hkaAnimation`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkaAnimation` => parent: `hkReferencedObject`) field Info
     /// -   name:`"annotationTracks"`
     /// -   type: `hkArray&lt;struct hkaAnnotationTrack&gt;`
     /// - offset: 28
@@ -65,14 +65,14 @@ pub enum HkaQuantizedAnimation<'a> {
     #[serde(rename = "annotationTracks")]
     AnnotationTracks(HkArrayClass<HkaAnnotationTrack<'a>>),
 
-    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
-    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
@@ -80,7 +80,7 @@ pub enum HkaQuantizedAnimation<'a> {
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
-    // `hkBaseObject`(Parent class) has no fields
+    // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
 
     /// # C++ Class Fields Info
     /// -   name:`"data"`

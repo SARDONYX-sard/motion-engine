@@ -22,14 +22,14 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpSpringAction<'a> {
-    /// # C++ Parent class(`hkpBinaryAction`, parent: `hkpAction`) field Info
+    /// # C++ Parent class(`hkpBinaryAction` => parent: `hkpAction`) field Info
     /// -   name:`"entityA"`
     /// -   type: `struct hkpEntity*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "entityA")]
     EntityA(Primitive<Cow<'a, str>>),
-    /// # C++ Parent class(`hkpBinaryAction`, parent: `hkpAction`) field Info
+    /// # C++ Parent class(`hkpBinaryAction` => parent: `hkpAction`) field Info
     /// -   name:`"entityB"`
     /// -   type: `struct hkpEntity*`
     /// - offset: 28
@@ -37,28 +37,28 @@ pub enum HkpSpringAction<'a> {
     #[serde(rename = "entityB")]
     EntityB(Primitive<Cow<'a, str>>),
 
-    /// # C++ Parent class(`hkpAction`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpAction` => parent: `hkReferencedObject`) field Info
     /// -   name:`"world"`
     /// -   type: `void*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "world", skip_serializing)]
     World(Primitive<Cow<'a, str>>),
-    /// # C++ Parent class(`hkpAction`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpAction` => parent: `hkReferencedObject`) field Info
     /// -   name:`"island"`
     /// -   type: `void*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "island", skip_serializing)]
     Island(Primitive<Cow<'a, str>>),
-    /// # C++ Parent class(`hkpAction`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpAction` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "userData")]
     UserData(Primitive<usize>),
-    /// # C++ Parent class(`hkpAction`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkpAction` => parent: `hkReferencedObject`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 20
@@ -66,14 +66,14 @@ pub enum HkpSpringAction<'a> {
     #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
 
-    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
-    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
@@ -81,7 +81,7 @@ pub enum HkpSpringAction<'a> {
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
-    // `hkBaseObject`(Parent class) has no fields
+    // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
 
     /// # C++ Class Fields Info
     /// -   name:`"lastForce"`

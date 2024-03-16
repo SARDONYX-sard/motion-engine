@@ -22,7 +22,7 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbDelayedModifier<'a> {
-    /// # C++ Parent class(`hkbModifierWrapper`, parent: `hkbModifier`) field Info
+    /// # C++ Parent class(`hkbModifierWrapper` => parent: `hkbModifier`) field Info
     /// -   name:`"modifier"`
     /// -   type: `struct hkbModifier*`
     /// - offset: 44
@@ -30,14 +30,14 @@ pub enum HkbDelayedModifier<'a> {
     #[serde(rename = "modifier")]
     Modifier(Primitive<Cow<'a, str>>),
 
-    /// # C++ Parent class(`hkbModifier`, parent: `hkbNode`) field Info
+    /// # C++ Parent class(`hkbModifier` => parent: `hkbNode`) field Info
     /// -   name:`"enable"`
     /// -   type: `hkBool`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "enable")]
     Enable(Primitive<bool>),
-    /// # C++ Parent class(`hkbModifier`, parent: `hkbNode`) field Info
+    /// # C++ Parent class(`hkbModifier` => parent: `hkbNode`) field Info
     /// -   name:`"padModifier"`
     /// -   type: `hkBool[3]`
     /// - offset: 41
@@ -45,35 +45,35 @@ pub enum HkbDelayedModifier<'a> {
     #[serde(rename = "padModifier", skip_serializing)]
     PadModifier([Primitive<bool>; 3]),
 
-    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "userData")]
     UserData(Primitive<usize>),
-    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),
-    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "id", skip_serializing)]
     Id(Primitive<i16>),
-    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "cloneState", skip_serializing)]
     CloneState(Primitive<Unknown>),
-    /// # C++ Parent class(`hkbNode`, parent: `hkbBindable`) field Info
+    /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
@@ -81,21 +81,21 @@ pub enum HkbDelayedModifier<'a> {
     #[serde(rename = "padNode", skip_serializing)]
     PadNode([Primitive<bool>; 1]),
 
-    /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"variableBindingSet"`
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "variableBindingSet")]
     VariableBindingSet(Primitive<Cow<'a, str>>),
-    /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray&lt;void&gt;`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
     CachedBindables(HkArrayRef<Primitive<()>>),
-    /// # C++ Parent class(`hkbBindable`, parent: `hkReferencedObject`) field Info
+    /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
@@ -103,14 +103,14 @@ pub enum HkbDelayedModifier<'a> {
     #[serde(rename = "areBindablesCached", skip_serializing)]
     AreBindablesCached(Primitive<bool>),
 
-    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
-    /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
+    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
@@ -118,7 +118,7 @@ pub enum HkbDelayedModifier<'a> {
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
-    // `hkBaseObject`(Parent class) has no fields
+    // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
 
     /// # C++ Class Fields Info
     /// -   name:`"delaySeconds"`

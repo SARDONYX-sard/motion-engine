@@ -22,7 +22,7 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpAngLimitConstraintAtom {
-    /// # C++ Parent class(`hkpConstraintAtom`, parent: `None`) field Info
+    /// # C++ Parent class(`hkpConstraintAtom` => parent: `None`) field Info
     /// -   name:`"type"`
     /// -   type: `enum AtomType`
     /// - offset: 0

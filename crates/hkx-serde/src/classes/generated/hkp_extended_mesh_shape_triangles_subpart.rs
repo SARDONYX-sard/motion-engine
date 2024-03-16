@@ -22,56 +22,56 @@ use std::borrow::Cow;
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpExtendedMeshShapeTrianglesSubpart<'a> {
-    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
+    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart` => parent: `None`) field Info
     /// -   name:`"type"`
     /// -   type: `enum SubpartType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
     Type(Primitive<SubpartType>),
-    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
+    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart` => parent: `None`) field Info
     /// -   name:`"materialIndexStridingType"`
     /// -   type: `enum MaterialIndexStridingType`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "materialIndexStridingType")]
     MaterialIndexStridingType(Primitive<MaterialIndexStridingType>),
-    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
+    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart` => parent: `None`) field Info
     /// -   name:`"materialStriding"`
     /// -   type: `hkInt16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "materialStriding", skip_serializing)]
     MaterialStriding(Primitive<i16>),
-    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
+    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart` => parent: `None`) field Info
     /// -   name:`"materialIndexBase"`
     /// -   type: `void*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "materialIndexBase", skip_serializing)]
     MaterialIndexBase(Primitive<Cow<'a, str>>),
-    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
+    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart` => parent: `None`) field Info
     /// -   name:`"materialIndexStriding"`
     /// -   type: `hkUint16`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "materialIndexStriding")]
     MaterialIndexStriding(Primitive<u16>),
-    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
+    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart` => parent: `None`) field Info
     /// -   name:`"numMaterials"`
     /// -   type: `hkUint16`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "numMaterials")]
     NumMaterials(Primitive<u16>),
-    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
+    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart` => parent: `None`) field Info
     /// -   name:`"materialBase"`
     /// -   type: `void*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "materialBase", skip_serializing)]
     MaterialBase(Primitive<Cow<'a, str>>),
-    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart`, parent: `None`) field Info
+    /// # C++ Parent class(`hkpExtendedMeshShapeSubpart` => parent: `None`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 16

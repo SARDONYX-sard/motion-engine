@@ -1,14 +1,15 @@
+//! If you use the `HkArray` implementation as is, the serialization will include `numelements` attribute.
+//! If I set it to [`Option`] and branch the process, I don't know if it is an error or not.
+//! Therefore, the code is almost the same, but the code is divided.
 use serde::{Deserialize, Serialize};
 
 /// In C++, this is the case when the type of the in-class field is a class.
 ///
 /// In XML, A type to hold another class of `hkparam` as an array within `hkparam`.
 ///
-/// e.g. `wordVariableValues` field of `hkbVariableValueSet` class
-///
 /// # XML Example
 /// ```xml
-/// <hkparam name="variantVariableValues" numelements="2">
+/// <hkparam name="variantVariableValues">
 ///     <hkobject>
 ///         <hkparam name="class_field">#0063</hkparam>
 ///     </hkobject>
@@ -18,58 +19,60 @@ use serde::{Deserialize, Serialize};
 /// </hkparam>
 /// ```
 ///
-/// # Note
-/// The `name` attribute is required for `hkparam` but is not included in this structure.
-/// This is because the value of the `name` attribute corresponds to a C++ field name,
-/// and the processing must be changed according to the value.
-/// And to do that, we need the parent enum that wraps this structure.
+/// This is almost the same as for `hkArrayClass`, but with the following differences.
+/// - There is no `numelements` attribute.
+/// - The number of elements is limited.
 ///
-/// In summary, the parent enum determines and retrieves the `name` attribute, so it is not included in this structure.
+/// # Note
+/// - Extra values are ignored.(e.g. `[i32; 10]` => `[i32; 5]`)
+/// - In summary, the parent enum determines and retrieves the `name` attribute, so it is not included in this structure.
+///
+///   The `name` attribute is required for `hkparam` but is not included in this structure.
+///   This is because the value of the `name` attribute corresponds to a C++ field name,
+///   and the processing must be changed according to the value.
+///   And to do that, we need the parent enum that wraps this structure.
+///
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 #[serde(rename = "hkparam")]
-pub struct HkArrayClass<T> {
-    /// Length of the class
-    #[serde(rename = "@numelements")]
-    pub numelements: usize,
+pub struct CStyleArrayClass<T> {
     /// An array that receives `hkparam` of a certain class.
     ///
     /// The XML for this class does not require `name` and `signature`, but only encloses `hkobject` tags without attributes.
     #[serde(rename = "hkobject")]
-    pub classes: Vec<HkArrayClassParam<T>>,
+    pub classes: Vec<CStyleArrayClassParam<T>>,
 }
 
-impl<T> From<Vec<HkArrayClassParam<T>>> for HkArrayClass<T> {
-    fn from(classes: Vec<HkArrayClassParam<T>>) -> Self {
-        Self {
-            numelements: classes.len(),
-            classes,
-        }
+impl<T> From<Vec<CStyleArrayClassParam<T>>> for CStyleArrayClass<T> {
+    fn from(classes: Vec<CStyleArrayClassParam<T>>) -> Self {
+        Self { classes }
     }
 }
 
-impl<T> From<Vec<T>> for HkArrayClass<T> {
+impl<T> From<Vec<T>> for CStyleArrayClass<T> {
     fn from(classes: Vec<T>) -> Self {
         Self {
-            numelements: classes.len(),
-            classes: classes.into_iter().map(HkArrayClassParam::from).collect(),
+            classes: classes
+                .into_iter()
+                .map(CStyleArrayClassParam::from)
+                .collect(),
         }
     }
 }
 
-/// One class of `HkArray`
+/// Field(`hkparam`) of C++ Class(`hkobject`)
 ///
 /// ```xml
 /// <hkobject>
-///     <hkparam>#0063</hkparam>
+///     <hkparam>#0063</hkparam> <!-- This line -->
 /// </hkobject>
 /// ````
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct HkArrayClassParam<T> {
+pub struct CStyleArrayClassParam<T> {
     #[serde(rename = "hkparam")]
     pub hkparam: T,
 }
 
-impl<T> From<T> for HkArrayClassParam<T> {
+impl<T> From<T> for CStyleArrayClassParam<T> {
     fn from(value: T) -> Self {
         Self { hkparam: value }
     }
@@ -82,11 +85,11 @@ mod tests {
 
     #[test]
     fn should_serialize() {
-        let data: HkArrayClass<i32> = vec![1045220557, 0].into();
+        let data: CStyleArrayClass<i32> = vec![1045220557, 0].into();
         let serialized = quick_xml::se::to_string(&data).unwrap();
 
         let expected_xml = "\
-            <hkparam numelements=\"2\">\
+            <hkparam>\
                 <hkobject>\
                     <hkparam>\
                         1045220557\
@@ -106,7 +109,7 @@ mod tests {
     #[test]
     fn should_deserialize() {
         let xml = r###"
-            <hkparam name="variantVariableValues" numelements="2">
+            <hkparam name="variantVariableValues">
                 <hkobject>
                     <hkparam>#0063</hkparam>
                 </hkobject>
@@ -115,15 +118,9 @@ mod tests {
                 </hkobject>
             </hkparam>
         "###;
-        let deserialized: HkArrayClass<&str> = quick_xml::de::from_str(xml).unwrap();
+        let deserialized: CStyleArrayClass<&str> = quick_xml::de::from_str(xml).unwrap();
 
-        let expected = HkArrayClass {
-            numelements: 2,
-            classes: vec![
-                HkArrayClassParam { hkparam: "#0063" },
-                HkArrayClassParam { hkparam: "#0064" },
-            ],
-        };
+        let expected = vec!["#0063", "#0064"].into();
 
         assert_eq!(deserialized, expected);
     }

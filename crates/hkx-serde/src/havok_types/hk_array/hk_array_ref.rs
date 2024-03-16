@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-/// A structure for parsing XML that takes a pointer to a C++ structure.
+/// A structure for parsing XML that takes a pointer to a C++ structure, or primitive.
 ///
 /// In XML, it is just an array of space-delimited class name strings.
 ///

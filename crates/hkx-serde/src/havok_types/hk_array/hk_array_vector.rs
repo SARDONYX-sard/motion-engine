@@ -176,7 +176,7 @@ mod tests {
     use pretty_assertions::assert_eq;
 
     #[test]
-    fn should_serialize() {
+    fn should_serialize_vector4() {
         let data: HkArrayVector<_> = vec![
             Vector4::from((0.0, 0.0, f32::NAN, 0.0)),
             Vector4::from((0.0, 1.0, 0.0, 0.0)),
@@ -195,7 +195,7 @@ mod tests {
     }
 
     #[test]
-    fn should_deserialize() {
+    fn should_deserialize_vector4() {
         let xml = r###"
             <hkparam name="variantVariableValues" numelements="2">
                 (0.000000 0.000000 0.000000 0.000000)

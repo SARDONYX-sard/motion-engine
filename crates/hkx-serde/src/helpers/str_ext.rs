@@ -63,6 +63,14 @@ impl SplitExt for &str {
     }
 }
 
+pub fn valid_string(text: &str) -> Option<&str> {
+    const NULL_CHAR: &str = "\u{2400}";
+    match text == NULL_CHAR {
+        true => None,
+        false => Some(str::trim(text)),
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

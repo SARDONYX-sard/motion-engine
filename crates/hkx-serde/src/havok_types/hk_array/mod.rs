@@ -1,36 +1,9 @@
-mod hk_array_c_style;
 mod hk_array_class;
 mod hk_array_ref;
 mod hk_array_string_ptr;
 mod hk_array_vector;
 
-use crate::helpers::float::cpp_to_rust_float_str;
-pub use hk_array_c_style::HkArrayCStyle;
 pub use hk_array_class::{HkArrayClass, HkArrayClassParam};
 pub use hk_array_ref::HkArrayRef;
 pub use hk_array_string_ptr::HkArrayStringPtr;
 pub use hk_array_vector::{HkArrayMatrix3, HkArrayMatrix4, HkArrayVector};
-use std::borrow::Cow;
-
-/// Separate vectors classified by `()`, `,` space, etc.
-///
-/// # Note
-/// C++ non-numbers and infinities are converted to Rust numeric strings.
-pub fn normalize(str: &str) -> Vec<Cow<'_, str>> {
-    str.split(&['(', ')', ',', ' ', '\n', '\r', '\t'][..])
-        .filter(|&x| !x.is_empty())
-        .map(|s| cpp_to_rust_float_str(s).into())
-        .collect()
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use pretty_assertions::assert_eq;
-
-    #[test]
-    fn should_normalize() {
-        let input = "1.0 (2.0, 3.0) -1.#IND00";
-        assert_eq!(normalize(input), vec!["1.0", "2.0", "3.0", "nan"]);
-    }
-}

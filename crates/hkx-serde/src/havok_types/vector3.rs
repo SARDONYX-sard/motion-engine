@@ -1,5 +1,4 @@
-use crate::havok_types::hk_array::normalize;
-use crate::helpers::float::rust_to_cpp_float_str;
+use crate::helpers::{float::rust_to_cpp_float_str, vector::normalize};
 use core::{fmt, str::FromStr};
 use ordered_float::{FloatCore, OrderedFloat};
 use serde::{Deserialize, Serialize, Serializer};

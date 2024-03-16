@@ -104,12 +104,6 @@ fn parse_vector(input: &str) -> IResult<&str, Cow<'_, str>> {
 
 /// Has limit array. like `[3]`
 fn parse_array_type(input: &str) -> IResult<&str, Cow<'_, str>> {
-    let (input, base_type) = alt((
-        parse_primitive_type_non_wrapper,
-        parse_vector,
-        parse_struct_type,
-    ))(input)?;
-
     fn parse_array_len(input: &str) -> IResult<&str, usize> {
         let (input, _) = tag("[")(input)?;
         let (input, size) = map_res(digit1, str::parse)(input)?;
@@ -117,9 +111,30 @@ fn parse_array_type(input: &str) -> IResult<&str, Cow<'_, str>> {
         Ok((input, size))
     }
 
+    let (input, base_type) = alt((
+        parse_primitive_type_non_wrapper,
+        parse_vector,
+        parse_struct_type,
+    ))(input)?;
     let (input, size) = parse_array_len(input)?;
-    let c_style_array = format!("HkArrayCStyle<[{base_type}; {size}]>").into();
-    Ok((input, c_style_array))
+
+    let array_type = match base_type.as_ref() {
+        "char*" | "hkBool" | "hkChar" | "hkHalf" | "hkInt16" | "hkInt32" | "hkInt8" | "hkReal"
+        | "hkUint16" | "hkUint32" | "hkUint64" | "hkUint8" | "hkUlong" | "hkVariant" | "void" => {
+            format!("HkArrayCStyle<[{base_type}; {size}]>").into()
+        }
+
+        "hkMatrix3" | "hkQsTransform" | "hkRotation" => {
+            format!("HkArrayMatrix3<{base_type}>").into()
+        }
+
+        "hkMatrix4" | "hkTransform" => format!("HkArrayMatrix4<{base_type}, {size}>").into(),
+        "hkQuaternion" | "hkVector4" => format!("HkArrayVector<{base_type}, {size}>").into(),
+
+        any => format!("HkArrayClass<{any}, {size}>").into(),
+    };
+
+    Ok((input, array_type))
 }
 
 /// Convert to [`Vec`] since `hkArray` has no length limit.

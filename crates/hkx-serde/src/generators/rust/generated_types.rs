@@ -459,7 +459,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkArray&lt;hkMatrix4&gt;",
-        "HkArrayVector<Matrix4<f32>>",
+        "HkArrayMatrix4<Matrix4<f32>>",
     ),
     (
         "hkArray&lt;hkMemoryResourceContainer*&gt;",
@@ -479,7 +479,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkArray&lt;hkQsTransform&gt;",
-        "HkArrayVector<QsTransform<f32>>",
+        "HkArrayMatrix3<QsTransform<f32>>",
     ),
     (
         "hkArray&lt;hkQuaternion&gt;",
@@ -499,7 +499,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkArray&lt;hkTransform&gt;",
-        "HkArrayVector<Transform<f32>>",
+        "HkArrayMatrix4<Transform<f32>>",
     ),
     (
         "hkArray&lt;hkUint16&gt;",
@@ -1107,11 +1107,11 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkBool[1]",
-        "[Primitive<bool>; 1]",
+        "HkArrayCStyle<[bool; 1]>",
     ),
     (
         "hkBool[3]",
-        "[Primitive<bool>; 3]",
+        "HkArrayCStyle<[bool; 3]>",
     ),
     (
         "hkChar",
@@ -1119,19 +1119,19 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkChar[16]",
-        "[Primitive<char>; 16]",
+        "HkArrayCStyle<[char; 16]>",
     ),
     (
         "hkChar[19]",
-        "[Primitive<char>; 19]",
+        "HkArrayCStyle<[char; 19]>",
     ),
     (
         "hkChar[32]",
-        "[Primitive<char>; 32]",
+        "HkArrayCStyle<[char; 32]>",
     ),
     (
         "hkChar[4]",
-        "[Primitive<char>; 4]",
+        "HkArrayCStyle<[char; 4]>",
     ),
     (
         "hkHalf",
@@ -1139,7 +1139,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkHalf[8]",
-        "[Primitive<f32>; 8]",
+        "HkArrayCStyle<[f32; 8]>",
     ),
     (
         "hkInt16",
@@ -1147,7 +1147,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkInt16[4]",
-        "[Primitive<i16>; 4]",
+        "HkArrayCStyle<[i16; 4]>",
     ),
     (
         "hkInt32",
@@ -1155,19 +1155,19 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkInt32[1]",
-        "[Primitive<i32>; 1]",
+        "HkArrayCStyle<[i32; 1]>",
     ),
     (
         "hkInt32[2]",
-        "[Primitive<i32>; 2]",
+        "HkArrayCStyle<[i32; 2]>",
     ),
     (
         "hkInt32[32]",
-        "[Primitive<i32>; 32]",
+        "HkArrayCStyle<[i32; 32]>",
     ),
     (
         "hkInt32[3]",
-        "[Primitive<i32>; 3]",
+        "HkArrayCStyle<[i32; 3]>",
     ),
     (
         "hkInt8",
@@ -1195,7 +1195,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkReal[16]",
-        "[Primitive<f32>; 16]",
+        "HkArrayCStyle<[f32; 16]>",
     ),
     (
         "hkRotation",
@@ -1231,7 +1231,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkTransform[2]",
-        "[Transform<f32>; 2]",
+        "HkArrayCStyle<[Transform<f32>; 2]>",
     ),
     (
         "hkUint16",
@@ -1239,11 +1239,11 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkUint16[2]",
-        "[Primitive<u16>; 2]",
+        "HkArrayCStyle<[u16; 2]>",
     ),
     (
         "hkUint16[6]",
-        "[Primitive<u16>; 6]",
+        "HkArrayCStyle<[u16; 6]>",
     ),
     (
         "hkUint32",
@@ -1251,23 +1251,23 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkUint32[2]",
-        "[Primitive<u32>; 2]",
+        "HkArrayCStyle<[u32; 2]>",
     ),
     (
         "hkUint32[32]",
-        "[Primitive<u32>; 32]",
+        "HkArrayCStyle<[u32; 32]>",
     ),
     (
         "hkUint32[3]",
-        "[Primitive<u32>; 3]",
+        "HkArrayCStyle<[u32; 3]>",
     ),
     (
         "hkUint32[5]",
-        "[Primitive<u32>; 5]",
+        "HkArrayCStyle<[u32; 5]>",
     ),
     (
         "hkUint32[8]",
-        "[Primitive<u32>; 8]",
+        "HkArrayCStyle<[u32; 8]>",
     ),
     (
         "hkUint64",
@@ -1279,27 +1279,27 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkUint8[12]",
-        "[Primitive<u8>; 12]",
+        "HkArrayCStyle<[u8; 12]>",
     ),
     (
         "hkUint8[160]",
-        "[Primitive<u8>; 160]",
+        "HkArrayCStyle<[u8; 160]>",
     ),
     (
         "hkUint8[3]",
-        "[Primitive<u8>; 3]",
+        "HkArrayCStyle<[u8; 3]>",
     ),
     (
         "hkUint8[496]",
-        "[Primitive<u8>; 496]",
+        "HkArrayCStyle<[u8; 496]>",
     ),
     (
         "hkUint8[4]",
-        "[Primitive<u8>; 4]",
+        "HkArrayCStyle<[u8; 4]>",
     ),
     (
         "hkUint8[8]",
-        "[Primitive<u8>; 8]",
+        "HkArrayCStyle<[u8; 8]>",
     ),
     (
         "hkUlong",
@@ -1315,15 +1315,15 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkVector4[2]",
-        "[Vector4<f32>; 2]",
+        "HkArrayCStyle<[Vector4<f32>; 2]>",
     ),
     (
         "hkVector4[4]",
-        "[Vector4<f32>; 4]",
+        "HkArrayCStyle<[Vector4<f32>; 4]>",
     ),
     (
         "hkVector4[8]",
-        "[Vector4<f32>; 8]",
+        "HkArrayCStyle<[Vector4<f32>; 8]>",
     ),
     (
         "struct BSIStateManagerModifierBSIStateManagerStateListener",
@@ -1403,7 +1403,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkVertexFormatElement[32]",
-        "[HkVertexFormatElement; 32]",
+        "HkArrayCStyle<[HkVertexFormatElement; 32]>",
     ),
     (
         "struct hkWorldMemoryAvailableWatchDog*",
@@ -1547,7 +1547,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkbGeneratorSyncInfoSyncPoint[8]",
-        "[HkbGeneratorSyncInfoSyncPoint; 8]",
+        "HkArrayCStyle<[HkbGeneratorSyncInfoSyncPoint; 8]>",
     ),
     (
         "struct hkbHandIkControlData",
@@ -2019,7 +2019,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkpVehicleFrictionDescriptionAxisDescription[2]",
-        "[HkpVehicleFrictionDescriptionAxisDescription; 2]",
+        "HkArrayCStyle<[HkpVehicleFrictionDescriptionAxisDescription; 2]>",
     ),
     (
         "struct hkpVehicleFrictionStatus",
@@ -2027,7 +2027,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkpVehicleFrictionStatusAxisStatus[2]",
-        "[HkpVehicleFrictionStatusAxisStatus; 2]",
+        "HkArrayCStyle<[HkpVehicleFrictionStatusAxisStatus; 2]>",
     ),
     (
         "struct hkpVehicleSteering*",

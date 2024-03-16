@@ -197,7 +197,7 @@ mod tests {
     fn should_deserialize() {
         let xml = "
         <Root>\
-            (0.000000 0.000000  0.000000)(-0.000000 0.000000 -0.000000)(1.000000 1.000000 1.000000)
+            (0.000000 0.000000 0.000000)(-0.000000 0.000000 -0.000000)(1.000000 1.000000 1.000000)
         </Root>";
         let deserialized: TestRoot<Matrix3<f32>> = quick_xml::de::from_str(xml).unwrap();
 

@@ -58,6 +58,34 @@ fn parse_primitive_type(input: &str) -> IResult<&str, Cow<'_, str>> {
     )(input)
 }
 
+/// primitive non wrapper
+///
+/// Need a wrapper structure to get the value directly under the value tag in quick_xml,
+/// but you don't need a wrapper for the fixed array `[T; N]` in CStyle.
+fn parse_primitive_type_non_wrapper(input: &str) -> IResult<&str, Cow<'_, str>> {
+    map(
+        alt((
+            map(tag("char*"), |_| "Cow<'a, str>"),
+            map(tag("hkBool"), |_| "bool"),
+            map(tag("hkChar"), |_| "char"),
+            map(tag("hkHalf"), |_| "f32"), // f16
+            map(tag("hkInt16"), |_| "i16"),
+            map(tag("hkInt32"), |_| "i32"),
+            map(tag("hkInt8"), |_| "i8"),
+            map(tag("hkReal"), |_| "f32"), // C++ float
+            map(tag("hkUint16"), |_| "u16"),
+            map(tag("hkUint32"), |_| "u32"),
+            map(tag("hkUint64"), |_| "u64"),
+            map(tag("hkUint8"), |_| "u8"),
+            map(tag("hkUlong"), |_| "usize"),
+            map(tag("hkStringPtr"), |_| "Cow<'a, str>"),
+            map(tag("hkVariant"), |_| "u64"), // Fill in appropriate type for Variant
+            map(tag("void"), |_| "()"),
+        )),
+        Cow::from,
+    )(input)
+}
+
 /// vector
 fn parse_vector(input: &str) -> IResult<&str, Cow<'_, str>> {
     map(
@@ -76,7 +104,11 @@ fn parse_vector(input: &str) -> IResult<&str, Cow<'_, str>> {
 
 /// Has limit array. like `[3]`
 fn parse_array_type(input: &str) -> IResult<&str, Cow<'_, str>> {
-    let (input, base_type) = alt((parse_primitive_type, parse_vector, parse_struct_type))(input)?;
+    let (input, base_type) = alt((
+        parse_primitive_type_non_wrapper,
+        parse_vector,
+        parse_struct_type,
+    ))(input)?;
 
     fn parse_array_len(input: &str) -> IResult<&str, usize> {
         let (input, _) = tag("[")(input)?;
@@ -86,7 +118,8 @@ fn parse_array_type(input: &str) -> IResult<&str, Cow<'_, str>> {
     }
 
     let (input, size) = parse_array_len(input)?;
-    Ok((input, format!("[{}; {}]", base_type, size).into()))
+    let c_style_array = format!("HkArrayCStyle<[{base_type}; {size}]>").into();
+    Ok((input, c_style_array))
 }
 
 /// Convert to [`Vec`] since `hkArray` has no length limit.
@@ -103,8 +136,17 @@ fn parse_hk_array_type(input: &str) -> IResult<&str, Cow<'_, str>> {
 
         "hkStringPtr" => Ok((input, "HkArrayStringPtr<'a>".into())),
 
-        "hkMatrix3" | "hkMatrix4" | "hkQsTransform" | "hkQuaternion" | "hkRotation"
-        | "hkTransform" | "hkVector4" => {
+        "hkMatrix3" | "hkQsTransform" | "hkRotation" => {
+            let (input, v) = parse_vector(generics)?;
+            Ok((input, format!("HkArrayMatrix3<{v}>").into()))
+        }
+
+        "hkMatrix4" | "hkTransform" => {
+            let (input, v) = parse_vector(generics)?;
+            Ok((input, format!("HkArrayMatrix4<{v}>").into()))
+        }
+
+        "hkQuaternion" | "hkVector4" => {
             let (input, v) = parse_vector(generics)?;
             Ok((input, format!("HkArrayVector<{v}>").into()))
         }

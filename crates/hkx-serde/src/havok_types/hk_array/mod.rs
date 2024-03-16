@@ -1,13 +1,15 @@
+mod hk_array_c_style;
 mod hk_array_class;
 mod hk_array_ref;
 mod hk_array_string_ptr;
 mod hk_array_vector;
 
 use crate::helpers::float::cpp_to_rust_float_str;
+pub use hk_array_c_style::HkArrayCStyle;
 pub use hk_array_class::{HkArrayClass, HkArrayClassParam};
 pub use hk_array_ref::HkArrayRef;
 pub use hk_array_string_ptr::HkArrayStringPtr;
-pub use hk_array_vector::HkArrayVector;
+pub use hk_array_vector::{HkArrayMatrix3, HkArrayMatrix4, HkArrayVector};
 use std::borrow::Cow;
 
 /// Separate vectors classified by `()`, `,` space, etc.

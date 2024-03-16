@@ -138,10 +138,10 @@ pub fn generate_all_fields<'a>(
             .unwrap_or("None");
 
         let fields_code = match fields_code.is_empty() {
-            true => format!("    // `{parent_name}`(Parent class) has no fields\n"),
+            true => format!("    // C++ Parent class(`{parent_name}` => parent: `{parent_of_parent}`) has no fields\n"),
             false => {
                 let parent_info = format!(
-                    "C++ Parent class(`{parent_name}`, parent: `{parent_of_parent}`) field Info"
+                    "C++ Parent class(`{parent_name}` => parent: `{parent_of_parent}`) field Info"
                 );
                 fields_code.replace("C++ Class Fields Info", &parent_info)
             }

@@ -63,7 +63,7 @@ pub enum HkMemoryResourceHandle<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "references")]
-    References(HkArrayClass<HkMemoryResourceHandleExternalLink>),
+    References(HkArrayClass<HkMemoryResourceHandleExternalLink<'a>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -73,5 +73,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("variant" => Variant(Primitive<Cow<'de, str>>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
-    ("references" => References(HkArrayClass<HkMemoryResourceHandleExternalLink>)),
+    ("references" => References(HkArrayClass<HkMemoryResourceHandleExternalLink<'de>>)),
 }

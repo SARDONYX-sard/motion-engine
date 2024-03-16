@@ -111,6 +111,7 @@ pub enum BsTweenerModifier<'a> {
     ReferenceCount(Primitive<i16>),
 
     // `hkBaseObject`(Parent class) has no fields
+
     /// # C++ Class Fields Info
     /// -   name:`"tweenPosition"`
     /// -   type: `hkBool`

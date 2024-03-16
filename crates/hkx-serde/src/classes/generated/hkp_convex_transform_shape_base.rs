@@ -21,7 +21,7 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpConvexTransformShapeBase {
+pub enum HkpConvexTransformShapeBase<'a> {
     /// # C++ Parent class(`hkpConvexShape`, parent: `hkpSphereRepShape`) field Info
     /// -   name:`"radius"`
     /// -   type: `hkReal`
@@ -70,7 +70,7 @@ pub enum HkpConvexTransformShapeBase {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "childShape")]
-    ChildShape(HkpSingleShapeContainer),
+    ChildShape(HkpSingleShapeContainer<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"childShapeSize"`
     /// -   type: `hkInt32`
@@ -82,12 +82,12 @@ pub enum HkpConvexTransformShapeBase {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpConvexTransformShapeBase, "@name",
+    HkpConvexTransformShapeBase<'de>, "@name",
     ("radius" => Radius(Primitive<f32>)),
     ("userData" => UserData(Primitive<usize>)),
     ("type" => Type(Primitive<Unknown>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("childShape" => ChildShape(HkpSingleShapeContainer)),
+    ("childShape" => ChildShape(HkpSingleShapeContainer<'de>)),
     ("childShapeSize" => ChildShapeSize(Primitive<i32>)),
 }

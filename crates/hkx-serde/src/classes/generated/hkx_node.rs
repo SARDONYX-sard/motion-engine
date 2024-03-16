@@ -28,7 +28,7 @@ pub enum HkxNode<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "attributeGroups")]
-    AttributeGroups(HkArrayClass<HkxAttributeGroup>),
+    AttributeGroups(HkArrayClass<HkxAttributeGroup<'a>>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
@@ -101,7 +101,7 @@ pub enum HkxNode<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkxNode<'de>, "@name",
-    ("attributeGroups" => AttributeGroups(HkArrayClass<HkxAttributeGroup>)),
+    ("attributeGroups" => AttributeGroups(HkArrayClass<HkxAttributeGroup<'de>>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),

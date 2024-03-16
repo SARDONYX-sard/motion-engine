@@ -108,7 +108,7 @@ pub enum HkpMotorAction<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpMotorAction, "@name",
+    HkpMotorAction<'de>, "@name",
     ("entity" => Entity(Primitive<Cow<'de, str>>)),
     ("world" => World(Primitive<Cow<'de, str>>)),
     ("island" => Island(Primitive<Cow<'de, str>>)),

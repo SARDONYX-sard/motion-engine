@@ -57,7 +57,7 @@ pub enum HkpShapePhantom<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "collidable")]
-    Collidable(HkpLinkedCollidable),
+    Collidable(HkpLinkedCollidable<'a>),
     /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
     /// -   name:`"multiThreadCheck"`
     /// -   type: `struct hkMultiThreadCheck`
@@ -115,12 +115,12 @@ pub enum HkpShapePhantom<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpShapePhantom, "@name",
+    HkpShapePhantom<'de>, "@name",
     ("overlapListeners" => OverlapListeners(HkArrayRef<Cow<'de, str>>)),
     ("phantomListeners" => PhantomListeners(HkArrayRef<Cow<'de, str>>)),
     ("world" => World(Primitive<Cow<'de, str>>)),
     ("userData" => UserData(Primitive<usize>)),
-    ("collidable" => Collidable(HkpLinkedCollidable)),
+    ("collidable" => Collidable(HkpLinkedCollidable<'de>)),
     ("multiThreadCheck" => MultiThreadCheck(HkMultiThreadCheck)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("properties" => Properties(HkArrayClass<HkpProperty>)),

@@ -237,7 +237,7 @@ pub enum HkbFootIkModifier<'a> {
     /// - offset: 184
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "internalLegData", skip_serializing)]
-    InternalLegData(HkArrayClass<HkbFootIkModifierInternalLegData>),
+    InternalLegData(HkArrayClass<HkbFootIkModifierInternalLegData<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"prevIsFootIkEnabled"`
     /// -   type: `hkReal`
@@ -270,7 +270,7 @@ pub enum HkbFootIkModifier<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbFootIkModifier, "@name",
+    HkbFootIkModifier<'de>, "@name",
     ("enable" => Enable(Primitive<bool>)),
     ("padModifier" => PadModifier([Primitive<bool>; 3])),
     ("userData" => UserData(Primitive<usize>)),
@@ -300,7 +300,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("lockFeetWhenPlanted" => LockFeetWhenPlanted(Primitive<bool>)),
     ("useCharacterUpVector" => UseCharacterUpVector(Primitive<bool>)),
     ("alignMode" => AlignMode(Primitive<AlignMode>)),
-    ("internalLegData" => InternalLegData(HkArrayClass<HkbFootIkModifierInternalLegData>)),
+    ("internalLegData" => InternalLegData(HkArrayClass<HkbFootIkModifierInternalLegData<'de>>)),
     ("prevIsFootIkEnabled" => PrevIsFootIkEnabled(Primitive<f32>)),
     ("isSetUp" => IsSetUp(Primitive<bool>)),
     ("isGroundPositionValid" => IsGroundPositionValid(Primitive<bool>)),

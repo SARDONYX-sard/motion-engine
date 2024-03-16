@@ -21,7 +21,7 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkMonitorStreamColorTable {
+pub enum HkMonitorStreamColorTable<'a> {
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -45,7 +45,7 @@ pub enum HkMonitorStreamColorTable {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "colorPairs")]
-    ColorPairs(HkArrayClass<HkMonitorStreamColorTableColorPair>),
+    ColorPairs(HkArrayClass<HkMonitorStreamColorTableColorPair<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"defaultColor"`
     /// -   type: `hkUint32`
@@ -57,9 +57,9 @@ pub enum HkMonitorStreamColorTable {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkMonitorStreamColorTable, "@name",
+    HkMonitorStreamColorTable<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("colorPairs" => ColorPairs(HkArrayClass<HkMonitorStreamColorTableColorPair>)),
+    ("colorPairs" => ColorPairs(HkArrayClass<HkMonitorStreamColorTableColorPair<'de>>)),
     ("defaultColor" => DefaultColor(Primitive<u32>)),
 }

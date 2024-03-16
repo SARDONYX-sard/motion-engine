@@ -115,7 +115,7 @@ pub enum HkbModifier<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbModifier, "@name",
+    HkbModifier<'de>, "@name",
     ("userData" => UserData(Primitive<usize>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("id" => Id(Primitive<i16>)),

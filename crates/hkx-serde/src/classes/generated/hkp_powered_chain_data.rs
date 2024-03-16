@@ -21,7 +21,7 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpPoweredChainData {
+pub enum HkpPoweredChainData<'a> {
     // `hkpConstraintChainData`(Parent class) has no fields
 
     /// # C++ Parent class(`hkpConstraintData`, parent: `hkReferencedObject`) field Info
@@ -62,7 +62,7 @@ pub enum HkpPoweredChainData {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "infos")]
-    Infos(HkArrayClass<HkpPoweredChainDataConstraintInfo>),
+    Infos(HkArrayClass<HkpPoweredChainDataConstraintInfo<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"tau"`
     /// -   type: `hkReal`
@@ -116,12 +116,12 @@ pub enum HkpPoweredChainData {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpPoweredChainData, "@name",
+    HkpPoweredChainData<'de>, "@name",
     ("userData" => UserData(Primitive<usize>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("atoms" => Atoms(HkpBridgeAtoms)),
-    ("infos" => Infos(HkArrayClass<HkpPoweredChainDataConstraintInfo>)),
+    ("infos" => Infos(HkArrayClass<HkpPoweredChainDataConstraintInfo<'de>>)),
     ("tau" => Tau(Primitive<f32>)),
     ("damping" => Damping(Primitive<f32>)),
     ("cfmLinAdd" => CfmLinAdd(Primitive<f32>)),

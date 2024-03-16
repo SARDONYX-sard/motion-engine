@@ -65,7 +65,7 @@ pub enum HkpSimpleShapePhantom<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "collidable")]
-    Collidable(HkpLinkedCollidable),
+    Collidable(HkpLinkedCollidable<'a>),
     /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
     /// -   name:`"multiThreadCheck"`
     /// -   type: `struct hkMultiThreadCheck`
@@ -118,7 +118,7 @@ pub enum HkpSimpleShapePhantom<'a> {
     /// - offset: 352
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "collisionDetails", skip_serializing)]
-    CollisionDetails(HkArrayClass<HkpSimpleShapePhantomCollisionDetail>),
+    CollisionDetails(HkArrayClass<HkpSimpleShapePhantomCollisionDetail<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"orderDirty"`
     /// -   type: `hkBool`
@@ -130,19 +130,19 @@ pub enum HkpSimpleShapePhantom<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpSimpleShapePhantom, "@name",
+    HkpSimpleShapePhantom<'de>, "@name",
     ("motionState" => MotionState(HkMotionState)),
     ("overlapListeners" => OverlapListeners(HkArrayRef<Cow<'de, str>>)),
     ("phantomListeners" => PhantomListeners(HkArrayRef<Cow<'de, str>>)),
     ("world" => World(Primitive<Cow<'de, str>>)),
     ("userData" => UserData(Primitive<usize>)),
-    ("collidable" => Collidable(HkpLinkedCollidable)),
+    ("collidable" => Collidable(HkpLinkedCollidable<'de>)),
     ("multiThreadCheck" => MultiThreadCheck(HkMultiThreadCheck)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("properties" => Properties(HkArrayClass<HkpProperty>)),
     ("treeData" => TreeData(Primitive<Cow<'de, str>>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("collisionDetails" => CollisionDetails(HkArrayClass<HkpSimpleShapePhantomCollisionDetail>)),
+    ("collisionDetails" => CollisionDetails(HkArrayClass<HkpSimpleShapePhantomCollisionDetail<'de>>)),
     ("orderDirty" => OrderDirty(Primitive<bool>)),
 }

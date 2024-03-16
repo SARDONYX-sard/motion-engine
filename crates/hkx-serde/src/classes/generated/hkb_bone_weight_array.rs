@@ -72,7 +72,7 @@ pub enum HkbBoneWeightArray<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbBoneWeightArray, "@name",
+    HkbBoneWeightArray<'de>, "@name",
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
     ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),

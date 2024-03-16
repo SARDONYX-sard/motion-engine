@@ -105,7 +105,7 @@ pub enum HkbStateMachine<'a> {
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "eventToSendWhenStateOrTransitionChanges")]
-    EventToSendWhenStateOrTransitionChanges(HkbEvent),
+    EventToSendWhenStateOrTransitionChanges(HkbEvent<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"startStateChooser"`
     /// -   type: `struct hkbStateChooser*`
@@ -310,7 +310,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("eventToSendWhenStateOrTransitionChanges" => EventToSendWhenStateOrTransitionChanges(HkbEvent)),
+    ("eventToSendWhenStateOrTransitionChanges" => EventToSendWhenStateOrTransitionChanges(HkbEvent<'de>)),
     ("startStateChooser" => StartStateChooser(Primitive<Cow<'de, str>>)),
     ("startStateId" => StartStateId(Primitive<i32>)),
     ("returnToPreviousStateEventId" => ReturnToPreviousStateEventId(Primitive<i32>)),

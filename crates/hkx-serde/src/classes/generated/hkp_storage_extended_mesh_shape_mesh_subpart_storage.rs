@@ -21,7 +21,7 @@ use std::borrow::Cow;
 /// -   version: 3
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpStorageExtendedMeshShapeMeshSubpartStorage {
+pub enum HkpStorageExtendedMeshShapeMeshSubpartStorage<'a> {
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -87,7 +87,7 @@ pub enum HkpStorageExtendedMeshShapeMeshSubpartStorage {
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "namedMaterials")]
-    NamedMaterials(HkArrayClass<HkpNamedMeshMaterial>),
+    NamedMaterials(HkArrayClass<HkpNamedMeshMaterial<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"materialIndices16"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
@@ -99,7 +99,7 @@ pub enum HkpStorageExtendedMeshShapeMeshSubpartStorage {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpStorageExtendedMeshShapeMeshSubpartStorage, "@name",
+    HkpStorageExtendedMeshShapeMeshSubpartStorage<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("vertices" => Vertices(HkArrayVector<Vector4<f32>>)),
@@ -108,6 +108,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("indices32" => Indices32(HkArrayRef<Primitive<u32>>)),
     ("materialIndices" => MaterialIndices(HkArrayRef<Primitive<u8>>)),
     ("materials" => Materials(HkArrayClass<HkpStorageExtendedMeshShapeMaterial>)),
-    ("namedMaterials" => NamedMaterials(HkArrayClass<HkpNamedMeshMaterial>)),
+    ("namedMaterials" => NamedMaterials(HkArrayClass<HkpNamedMeshMaterial<'de>>)),
     ("materialIndices16" => MaterialIndices16(HkArrayRef<Primitive<u16>>)),
 }

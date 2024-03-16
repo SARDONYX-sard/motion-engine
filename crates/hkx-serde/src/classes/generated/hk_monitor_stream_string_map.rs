@@ -20,18 +20,18 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkMonitorStreamStringMap {
+pub enum HkMonitorStreamStringMap<'a> {
     /// # C++ Class Fields Info
     /// -   name:`"map"`
     /// -   type: `hkArray&lt;struct hkMonitorStreamStringMapStringMap&gt;`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "map")]
-    Map(HkArrayClass<HkMonitorStreamStringMapStringMap>),
+    Map(HkArrayClass<HkMonitorStreamStringMapStringMap<'a>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkMonitorStreamStringMap, "@name",
-    ("map" => Map(HkArrayClass<HkMonitorStreamStringMapStringMap>)),
+    HkMonitorStreamStringMap<'de>, "@name",
+    ("map" => Map(HkArrayClass<HkMonitorStreamStringMapStringMap<'de>>)),
 }

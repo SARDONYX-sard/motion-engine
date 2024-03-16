@@ -159,7 +159,7 @@ pub enum HkpVehicleInstance<'a> {
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "wheelsInfo")]
-    WheelsInfo(HkArrayClass<HkpVehicleInstanceWheelInfo>),
+    WheelsInfo(HkArrayClass<HkpVehicleInstanceWheelInfo<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"frictionStatus"`
     /// -   type: `struct hkpVehicleFrictionStatus`
@@ -274,7 +274,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("wheelCollide" => WheelCollide(Primitive<Cow<'de, str>>)),
     ("tyreMarks" => TyreMarks(Primitive<Cow<'de, str>>)),
     ("velocityDamper" => VelocityDamper(Primitive<Cow<'de, str>>)),
-    ("wheelsInfo" => WheelsInfo(HkArrayClass<HkpVehicleInstanceWheelInfo>)),
+    ("wheelsInfo" => WheelsInfo(HkArrayClass<HkpVehicleInstanceWheelInfo<'de>>)),
     ("frictionStatus" => FrictionStatus(HkpVehicleFrictionStatus)),
     ("deviceStatus" => DeviceStatus(Primitive<Cow<'de, str>>)),
     ("isFixed" => IsFixed(HkArrayRef<Primitive<bool>>)),

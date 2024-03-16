@@ -21,7 +21,7 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpListShape {
+pub enum HkpListShape<'a> {
     /// # C++ Parent class(`hkpShapeCollection`, parent: `hkpShape`) field Info
     /// -   name:`"disableWelding"`
     /// -   type: `hkBool`
@@ -75,7 +75,7 @@ pub enum HkpListShape {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "childInfo")]
-    ChildInfo(HkArrayClass<HkpListShapeChildInfo>),
+    ChildInfo(HkArrayClass<HkpListShapeChildInfo<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `hkUint16`
@@ -115,14 +115,14 @@ pub enum HkpListShape {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpListShape, "@name",
+    HkpListShape<'de>, "@name",
     ("disableWelding" => DisableWelding(Primitive<bool>)),
     ("collectionType" => CollectionType(Primitive<CollectionType>)),
     ("userData" => UserData(Primitive<usize>)),
     ("type" => Type(Primitive<Unknown>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("childInfo" => ChildInfo(HkArrayClass<HkpListShapeChildInfo>)),
+    ("childInfo" => ChildInfo(HkArrayClass<HkpListShapeChildInfo<'de>>)),
     ("flags" => Flags(Primitive<u16>)),
     ("numDisabledChildren" => NumDisabledChildren(Primitive<u16>)),
     ("aabbHalfExtents" => AabbHalfExtents(Vector4<f32>)),

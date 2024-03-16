@@ -28,7 +28,7 @@ pub enum HkpConstraintCollisionFilter<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "disabledPairs", skip_serializing)]
-    DisabledPairs(HkpPairCollisionFilterMapPairFilterKeyOverrideType),
+    DisabledPairs(HkpPairCollisionFilterMapPairFilterKeyOverrideType<'a>),
     /// # C++ Parent class(`hkpPairCollisionFilter`, parent: `hkpCollisionFilter`) field Info
     /// -   name:`"childFilter"`
     /// -   type: `struct hkpCollisionFilter*`
@@ -80,8 +80,8 @@ pub enum HkpConstraintCollisionFilter<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpConstraintCollisionFilter, "@name",
-    ("disabledPairs" => DisabledPairs(HkpPairCollisionFilterMapPairFilterKeyOverrideType)),
+    HkpConstraintCollisionFilter<'de>, "@name",
+    ("disabledPairs" => DisabledPairs(HkpPairCollisionFilterMapPairFilterKeyOverrideType<'de>)),
     ("childFilter" => ChildFilter(Primitive<Cow<'de, str>>)),
     ("prepad" => Prepad([Primitive<u32>; 2])),
     ("type" => Type(Primitive<HkpFilterType>)),

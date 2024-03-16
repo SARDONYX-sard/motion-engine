@@ -20,7 +20,7 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpPrismaticConstraintDataAtoms {
+pub enum HkpPrismaticConstraintDataAtoms<'a> {
     /// # C++ Class Fields Info
     /// -   name:`"transforms"`
     /// -   type: `struct hkpSetLocalTransformsConstraintAtom`
@@ -34,7 +34,7 @@ pub enum HkpPrismaticConstraintDataAtoms {
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "motor")]
-    Motor(HkpLinMotorConstraintAtom),
+    Motor(HkpLinMotorConstraintAtom<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"friction"`
     /// -   type: `struct hkpLinFrictionConstraintAtom`
@@ -74,9 +74,9 @@ pub enum HkpPrismaticConstraintDataAtoms {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpPrismaticConstraintDataAtoms, "@name",
+    HkpPrismaticConstraintDataAtoms<'de>, "@name",
     ("transforms" => Transforms(HkpSetLocalTransformsConstraintAtom)),
-    ("motor" => Motor(HkpLinMotorConstraintAtom)),
+    ("motor" => Motor(HkpLinMotorConstraintAtom<'de>)),
     ("friction" => Friction(HkpLinFrictionConstraintAtom)),
     ("ang" => Ang(HkpAngConstraintAtom)),
     ("lin0" => Lin0(HkpLinConstraintAtom)),

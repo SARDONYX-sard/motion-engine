@@ -21,7 +21,7 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpFastMeshShape {
+pub enum HkpFastMeshShape<'a> {
     /// # C++ Parent class(`hkpMeshShape`, parent: `hkpShapeCollection`) field Info
     /// -   name:`"scaling"`
     /// -   type: `hkVector4`
@@ -42,7 +42,7 @@ pub enum HkpFastMeshShape {
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "subparts")]
-    Subparts(HkArrayClass<HkpMeshShapeSubpart>),
+    Subparts(HkArrayClass<HkpMeshShapeSubpart<'a>>),
     /// # C++ Parent class(`hkpMeshShape`, parent: `hkpShapeCollection`) field Info
     /// -   name:`"weldingInfo"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
@@ -123,10 +123,10 @@ pub enum HkpFastMeshShape {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpFastMeshShape, "@name",
+    HkpFastMeshShape<'de>, "@name",
     ("scaling" => Scaling(Vector4<f32>)),
     ("numBitsForSubpartIndex" => NumBitsForSubpartIndex(Primitive<i32>)),
-    ("subparts" => Subparts(HkArrayClass<HkpMeshShapeSubpart>)),
+    ("subparts" => Subparts(HkArrayClass<HkpMeshShapeSubpart<'de>>)),
     ("weldingInfo" => WeldingInfo(HkArrayRef<Primitive<u16>>)),
     ("weldingType" => WeldingType(Primitive<WeldingType>)),
     ("radius" => Radius(Primitive<f32>)),

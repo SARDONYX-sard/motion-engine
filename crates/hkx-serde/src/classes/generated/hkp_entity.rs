@@ -42,7 +42,7 @@ pub enum HkpEntity<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "collidable")]
-    Collidable(HkpLinkedCollidable),
+    Collidable(HkpLinkedCollidable<'a>),
     /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
     /// -   name:`"multiThreadCheck"`
     /// -   type: `struct hkMultiThreadCheck`
@@ -144,7 +144,7 @@ pub enum HkpEntity<'a> {
     /// - offset: 172
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "constraintsMaster", skip_serializing)]
-    ConstraintsMaster(HkpEntitySmallArraySerializeOverrideType),
+    ConstraintsMaster(HkpEntitySmallArraySerializeOverrideType<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"constraintsSlave"`
     /// -   type: `hkArray&lt;hkpConstraintInstance*&gt;`
@@ -200,28 +200,28 @@ pub enum HkpEntity<'a> {
     /// - offset: 216
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "spuCollisionCallback")]
-    SpuCollisionCallback(HkpEntitySpuCollisionCallback),
+    SpuCollisionCallback(HkpEntitySpuCollisionCallback<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"motion"`
     /// -   type: `struct hkpMaxSizeMotion`
     /// - offset: 224
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "motion")]
-    Motion(HkpMaxSizeMotion),
+    Motion(HkpMaxSizeMotion<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"contactListeners"`
     /// -   type: `struct hkpEntitySmallArraySerializeOverrideType`
     /// - offset: 512
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "contactListeners", skip_serializing)]
-    ContactListeners(HkpEntitySmallArraySerializeOverrideType),
+    ContactListeners(HkpEntitySmallArraySerializeOverrideType<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"actions"`
     /// -   type: `struct hkpEntitySmallArraySerializeOverrideType`
     /// - offset: 520
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "actions", skip_serializing)]
-    Actions(HkpEntitySmallArraySerializeOverrideType),
+    Actions(HkpEntitySmallArraySerializeOverrideType<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"localFrame"`
     /// -   type: `struct hkLocalFrame*`
@@ -250,7 +250,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpEntity<'de>, "@name",
     ("world" => World(Primitive<Cow<'de, str>>)),
     ("userData" => UserData(Primitive<usize>)),
-    ("collidable" => Collidable(HkpLinkedCollidable)),
+    ("collidable" => Collidable(HkpLinkedCollidable<'de>)),
     ("multiThreadCheck" => MultiThreadCheck(HkMultiThreadCheck)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("properties" => Properties(HkArrayClass<HkpProperty>)),
@@ -264,7 +264,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("solverData" => SolverData(Primitive<u32>)),
     ("storageIndex" => StorageIndex(Primitive<u16>)),
     ("contactPointCallbackDelay" => ContactPointCallbackDelay(Primitive<u16>)),
-    ("constraintsMaster" => ConstraintsMaster(HkpEntitySmallArraySerializeOverrideType)),
+    ("constraintsMaster" => ConstraintsMaster(HkpEntitySmallArraySerializeOverrideType<'de>)),
     ("constraintsSlave" => ConstraintsSlave(HkArrayRef<Cow<'de, str>>)),
     ("constraintRuntime" => ConstraintRuntime(HkArrayRef<Primitive<u8>>)),
     ("simulationIsland" => SimulationIsland(Primitive<Cow<'de, str>>)),
@@ -272,10 +272,10 @@ impl_deserialize_for_internally_tagged_enum! {
     ("numShapeKeysInContactPointProperties" => NumShapeKeysInContactPointProperties(Primitive<u8>)),
     ("responseModifierFlags" => ResponseModifierFlags(Primitive<u8>)),
     ("uid" => Uid(Primitive<u32>)),
-    ("spuCollisionCallback" => SpuCollisionCallback(HkpEntitySpuCollisionCallback)),
-    ("motion" => Motion(HkpMaxSizeMotion)),
-    ("contactListeners" => ContactListeners(HkpEntitySmallArraySerializeOverrideType)),
-    ("actions" => Actions(HkpEntitySmallArraySerializeOverrideType)),
+    ("spuCollisionCallback" => SpuCollisionCallback(HkpEntitySpuCollisionCallback<'de>)),
+    ("motion" => Motion(HkpMaxSizeMotion<'de>)),
+    ("contactListeners" => ContactListeners(HkpEntitySmallArraySerializeOverrideType<'de>)),
+    ("actions" => Actions(HkpEntitySmallArraySerializeOverrideType<'de>)),
     ("localFrame" => LocalFrame(Primitive<Cow<'de, str>>)),
     ("extendedListeners" => ExtendedListeners(Primitive<Cow<'de, str>>)),
     ("npData" => NpData(Primitive<u32>)),

@@ -20,7 +20,7 @@ use std::borrow::Cow;
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpLimitedHingeConstraintDataAtoms {
+pub enum HkpLimitedHingeConstraintDataAtoms<'a> {
     /// # C++ Class Fields Info
     /// -   name:`"transforms"`
     /// -   type: `struct hkpSetLocalTransformsConstraintAtom`
@@ -41,7 +41,7 @@ pub enum HkpLimitedHingeConstraintDataAtoms {
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "angMotor")]
-    AngMotor(HkpAngMotorConstraintAtom),
+    AngMotor(HkpAngMotorConstraintAtom<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"angFriction"`
     /// -   type: `struct hkpAngFrictionConstraintAtom`
@@ -74,10 +74,10 @@ pub enum HkpLimitedHingeConstraintDataAtoms {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpLimitedHingeConstraintDataAtoms, "@name",
+    HkpLimitedHingeConstraintDataAtoms<'de>, "@name",
     ("transforms" => Transforms(HkpSetLocalTransformsConstraintAtom)),
     ("setupStabilization" => SetupStabilization(HkpSetupStabilizationAtom)),
-    ("angMotor" => AngMotor(HkpAngMotorConstraintAtom)),
+    ("angMotor" => AngMotor(HkpAngMotorConstraintAtom<'de>)),
     ("angFriction" => AngFriction(HkpAngFrictionConstraintAtom)),
     ("angLimit" => AngLimit(HkpAngLimitConstraintAtom)),
     ("2dAng" => _2DAng(Hkp2DAngConstraintAtom)),

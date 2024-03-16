@@ -21,7 +21,7 @@ use std::borrow::Cow;
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkxAttributeHolder {
+pub enum HkxAttributeHolder<'a> {
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -45,13 +45,13 @@ pub enum HkxAttributeHolder {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "attributeGroups")]
-    AttributeGroups(HkArrayClass<HkxAttributeGroup>),
+    AttributeGroups(HkArrayClass<HkxAttributeGroup<'a>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkxAttributeHolder, "@name",
+    HkxAttributeHolder<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("attributeGroups" => AttributeGroups(HkArrayClass<HkxAttributeGroup>)),
+    ("attributeGroups" => AttributeGroups(HkArrayClass<HkxAttributeGroup<'de>>)),
 }

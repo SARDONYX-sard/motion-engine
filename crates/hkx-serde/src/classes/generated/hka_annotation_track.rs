@@ -34,12 +34,12 @@ pub enum HkaAnnotationTrack<'a> {
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "annotations")]
-    Annotations(HkArrayClass<HkaAnnotationTrackAnnotation>),
+    Annotations(HkArrayClass<HkaAnnotationTrackAnnotation<'a>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkaAnnotationTrack<'de>, "@name",
     ("trackName" => TrackName(Primitive<Cow<'de, str>>)),
-    ("annotations" => Annotations(HkArrayClass<HkaAnnotationTrackAnnotation>)),
+    ("annotations" => Annotations(HkArrayClass<HkaAnnotationTrackAnnotation<'de>>)),
 }

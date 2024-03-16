@@ -122,7 +122,7 @@ pub enum HkpSerializedAgentNnEntry<'a> {
     /// - offset: 276
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "trackInfo")]
-    TrackInfo(HkpSerializedTrack1NInfo),
+    TrackInfo(HkpSerializedTrack1NInfo<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"endianCheckBuffer"`
     /// -   type: `hkUint8[4]`
@@ -155,7 +155,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("contactPoints" => ContactPoints(HkArrayClass<HkContactPoint>)),
     ("cpIdMgr" => CpIdMgr(HkArrayRef<Primitive<u8>>)),
     ("nnEntryData" => NnEntryData([Primitive<u8>; 160])),
-    ("trackInfo" => TrackInfo(HkpSerializedTrack1NInfo)),
+    ("trackInfo" => TrackInfo(HkpSerializedTrack1NInfo<'de>)),
     ("endianCheckBuffer" => EndianCheckBuffer([Primitive<u8>; 4])),
     ("version" => Version(Primitive<u32>)),
 }

@@ -42,7 +42,7 @@ pub enum HkpStorageMeshShape<'a> {
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "subparts")]
-    Subparts(HkArrayClass<HkpMeshShapeSubpart>),
+    Subparts(HkArrayClass<HkpMeshShapeSubpart<'a>>),
     /// # C++ Parent class(`hkpMeshShape`, parent: `hkpShapeCollection`) field Info
     /// -   name:`"weldingInfo"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
@@ -133,7 +133,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpStorageMeshShape<'de>, "@name",
     ("scaling" => Scaling(Vector4<f32>)),
     ("numBitsForSubpartIndex" => NumBitsForSubpartIndex(Primitive<i32>)),
-    ("subparts" => Subparts(HkArrayClass<HkpMeshShapeSubpart>)),
+    ("subparts" => Subparts(HkArrayClass<HkpMeshShapeSubpart<'de>>)),
     ("weldingInfo" => WeldingInfo(HkArrayRef<Primitive<u16>>)),
     ("weldingType" => WeldingType(Primitive<WeldingType>)),
     ("radius" => Radius(Primitive<f32>)),

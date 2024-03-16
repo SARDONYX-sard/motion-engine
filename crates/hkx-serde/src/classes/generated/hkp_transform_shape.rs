@@ -21,7 +21,7 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpTransformShape {
+pub enum HkpTransformShape<'a> {
     /// # C++ Parent class(`hkpShape`, parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -60,7 +60,7 @@ pub enum HkpTransformShape {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "childShape")]
-    ChildShape(HkpSingleShapeContainer),
+    ChildShape(HkpSingleShapeContainer<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"childShapeSize"`
     /// -   type: `hkInt32`
@@ -86,12 +86,12 @@ pub enum HkpTransformShape {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpTransformShape, "@name",
+    HkpTransformShape<'de>, "@name",
     ("userData" => UserData(Primitive<usize>)),
     ("type" => Type(Primitive<Unknown>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("childShape" => ChildShape(HkpSingleShapeContainer)),
+    ("childShape" => ChildShape(HkpSingleShapeContainer<'de>)),
     ("childShapeSize" => ChildShapeSize(Primitive<i32>)),
     ("rotation" => Rotation(Quaternion<f32>)),
     ("transform" => Transform(Transform<f32>)),

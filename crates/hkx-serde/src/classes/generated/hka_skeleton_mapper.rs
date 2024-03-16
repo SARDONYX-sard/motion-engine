@@ -21,7 +21,7 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkaSkeletonMapper {
+pub enum HkaSkeletonMapper<'a> {
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -45,15 +45,15 @@ pub enum HkaSkeletonMapper {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "mapping")]
-    Mapping(HkaSkeletonMapperData),
+    Mapping(HkaSkeletonMapperData<'a>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkaSkeletonMapper, "@name",
+    HkaSkeletonMapper<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("mapping" => Mapping(HkaSkeletonMapperData)),
+    ("mapping" => Mapping(HkaSkeletonMapperData<'de>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

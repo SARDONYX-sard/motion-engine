@@ -21,7 +21,7 @@ use std::borrow::Cow;
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkxEnvironment {
+pub enum HkxEnvironment<'a> {
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -45,13 +45,13 @@ pub enum HkxEnvironment {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "variables")]
-    Variables(HkArrayClass<HkxEnvironmentVariable>),
+    Variables(HkArrayClass<HkxEnvironmentVariable<'a>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkxEnvironment, "@name",
+    HkxEnvironment<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("variables" => Variables(HkArrayClass<HkxEnvironmentVariable>)),
+    ("variables" => Variables(HkArrayClass<HkxEnvironmentVariable<'de>>)),
 }

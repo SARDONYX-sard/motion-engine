@@ -63,7 +63,7 @@ pub enum HkaWaveletCompressedAnimation<'a> {
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "annotationTracks")]
-    AnnotationTracks(HkArrayClass<HkaAnnotationTrack>),
+    AnnotationTracks(HkArrayClass<HkaAnnotationTrack<'a>>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
@@ -170,13 +170,13 @@ pub enum HkaWaveletCompressedAnimation<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkaWaveletCompressedAnimation, "@name",
+    HkaWaveletCompressedAnimation<'de>, "@name",
     ("type" => Type(Primitive<AnimationType>)),
     ("duration" => Duration(Primitive<f32>)),
     ("numberOfTransformTracks" => NumberOfTransformTracks(Primitive<i32>)),
     ("numberOfFloatTracks" => NumberOfFloatTracks(Primitive<i32>)),
     ("extractedMotion" => ExtractedMotion(Primitive<Cow<'de, str>>)),
-    ("annotationTracks" => AnnotationTracks(HkArrayClass<HkaAnnotationTrack>)),
+    ("annotationTracks" => AnnotationTracks(HkArrayClass<HkaAnnotationTrack<'de>>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("numberOfPoses" => NumberOfPoses(Primitive<i32>)),

@@ -21,7 +21,7 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpTriSampledHeightFieldBvTreeShape {
+pub enum HkpTriSampledHeightFieldBvTreeShape<'a> {
     /// # C++ Parent class(`hkpBvTreeShape`, parent: `hkpShape`) field Info
     /// -   name:`"bvTreeType"`
     /// -   type: `enum BvTreeType`
@@ -68,7 +68,7 @@ pub enum HkpTriSampledHeightFieldBvTreeShape {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "childContainer")]
-    ChildContainer(HkpSingleShapeContainer),
+    ChildContainer(HkpSingleShapeContainer<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"childSize"`
     /// -   type: `hkInt32`
@@ -94,13 +94,13 @@ pub enum HkpTriSampledHeightFieldBvTreeShape {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpTriSampledHeightFieldBvTreeShape, "@name",
+    HkpTriSampledHeightFieldBvTreeShape<'de>, "@name",
     ("bvTreeType" => BvTreeType(Primitive<BvTreeType>)),
     ("userData" => UserData(Primitive<usize>)),
     ("type" => Type(Primitive<Unknown>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("childContainer" => ChildContainer(HkpSingleShapeContainer)),
+    ("childContainer" => ChildContainer(HkpSingleShapeContainer<'de>)),
     ("childSize" => ChildSize(Primitive<i32>)),
     ("wantAabbRejectionTest" => WantAabbRejectionTest(Primitive<bool>)),
     ("padding" => Padding([Primitive<u8>; 12])),

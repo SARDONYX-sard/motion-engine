@@ -74,7 +74,7 @@ pub enum HkpVehicleRayCastWheelCollide<'a> {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rejectRayChassisListener")]
-    RejectRayChassisListener(HkpRejectChassisListener),
+    RejectRayChassisListener(HkpRejectChassisListener<'a>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -86,5 +86,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("wheelCollisionFilterInfo" => WheelCollisionFilterInfo(Primitive<u32>)),
     ("phantom" => Phantom(Primitive<Cow<'de, str>>)),
-    ("rejectRayChassisListener" => RejectRayChassisListener(HkpRejectChassisListener)),
+    ("rejectRayChassisListener" => RejectRayChassisListener(HkpRejectChassisListener<'de>)),
 }

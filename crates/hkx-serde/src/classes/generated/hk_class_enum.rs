@@ -55,7 +55,7 @@ pub enum HkClassEnum<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkClassEnum<'de>, "@name",
     ("name" => Name(Primitive<Cow<'de, str>>)),
-    ("items" => Items(HkArrayClass<HkClassEnumItem>)),
+    ("items" => Items(HkArrayClass<HkClassEnumItem<'de>>)),
     ("attributes" => Attributes(Primitive<Cow<'de, str>>)),
     ("flags" => Flags(Primitive<FlagValues>)),
 }

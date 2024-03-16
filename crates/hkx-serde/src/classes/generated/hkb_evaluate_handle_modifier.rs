@@ -167,7 +167,7 @@ pub enum HkbEvaluateHandleModifier<'a> {
     /// - offset: 96
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "oldHandle", skip_serializing)]
-    OldHandle(HkbHandle),
+    OldHandle(HkbHandle<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"oldHandlePosition"`
     /// -   type: `hkVector4`
@@ -220,7 +220,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("extrapolationTimeStep" => ExtrapolationTimeStep(Primitive<f32>)),
     ("handleChangeSpeed" => HandleChangeSpeed(Primitive<f32>)),
     ("handleChangeMode" => HandleChangeMode(Primitive<HandleChangeMode>)),
-    ("oldHandle" => OldHandle(HkbHandle)),
+    ("oldHandle" => OldHandle(HkbHandle<'de>)),
     ("oldHandlePosition" => OldHandlePosition(Vector4<f32>)),
     ("oldHandleRotation" => OldHandleRotation(Quaternion<f32>)),
     ("timeSinceLastModify" => TimeSinceLastModify(Primitive<f32>)),

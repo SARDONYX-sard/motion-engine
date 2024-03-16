@@ -20,7 +20,7 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbFootIkControlsModifierLeg {
+pub enum HkbFootIkControlsModifierLeg<'a> {
     /// # C++ Class Fields Info
     /// -   name:`"groundPosition"`
     /// -   type: `hkVector4`
@@ -34,7 +34,7 @@ pub enum HkbFootIkControlsModifierLeg {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "ungroundedEvent")]
-    UngroundedEvent(HkbEventProperty),
+    UngroundedEvent(HkbEventProperty<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"verticalError"`
     /// -   type: `hkReal`
@@ -60,9 +60,9 @@ pub enum HkbFootIkControlsModifierLeg {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbFootIkControlsModifierLeg, "@name",
+    HkbFootIkControlsModifierLeg<'de>, "@name",
     ("groundPosition" => GroundPosition(Vector4<f32>)),
-    ("ungroundedEvent" => UngroundedEvent(HkbEventProperty)),
+    ("ungroundedEvent" => UngroundedEvent(HkbEventProperty<'de>)),
     ("verticalError" => VerticalError(Primitive<f32>)),
     ("hitSomething" => HitSomething(Primitive<bool>)),
     ("isPlantedMS" => IsPlantedMs(Primitive<bool>)),

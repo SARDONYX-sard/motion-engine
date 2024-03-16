@@ -118,28 +118,28 @@ pub enum HkbAttachmentModifier<'a> {
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "sendToAttacherOnAttach")]
-    SendToAttacherOnAttach(HkbEventProperty),
+    SendToAttacherOnAttach(HkbEventProperty<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"sendToAttacheeOnAttach"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "sendToAttacheeOnAttach")]
-    SendToAttacheeOnAttach(HkbEventProperty),
+    SendToAttacheeOnAttach(HkbEventProperty<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"sendToAttacherOnDetach"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "sendToAttacherOnDetach")]
-    SendToAttacherOnDetach(HkbEventProperty),
+    SendToAttacherOnDetach(HkbEventProperty<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"sendToAttacheeOnDetach"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "sendToAttacheeOnDetach")]
-    SendToAttacheeOnDetach(HkbEventProperty),
+    SendToAttacheeOnDetach(HkbEventProperty<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"attachmentSetup"`
     /// -   type: `struct hkbAttachmentSetup*`
@@ -213,10 +213,10 @@ impl_deserialize_for_internally_tagged_enum! {
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("sendToAttacherOnAttach" => SendToAttacherOnAttach(HkbEventProperty)),
-    ("sendToAttacheeOnAttach" => SendToAttacheeOnAttach(HkbEventProperty)),
-    ("sendToAttacherOnDetach" => SendToAttacherOnDetach(HkbEventProperty)),
-    ("sendToAttacheeOnDetach" => SendToAttacheeOnDetach(HkbEventProperty)),
+    ("sendToAttacherOnAttach" => SendToAttacherOnAttach(HkbEventProperty<'de>)),
+    ("sendToAttacheeOnAttach" => SendToAttacheeOnAttach(HkbEventProperty<'de>)),
+    ("sendToAttacherOnDetach" => SendToAttacherOnDetach(HkbEventProperty<'de>)),
+    ("sendToAttacheeOnDetach" => SendToAttacheeOnDetach(HkbEventProperty<'de>)),
     ("attachmentSetup" => AttachmentSetup(Primitive<Cow<'de, str>>)),
     ("attacherHandle" => AttacherHandle(Primitive<Cow<'de, str>>)),
     ("attacheeHandle" => AttacheeHandle(Primitive<Cow<'de, str>>)),

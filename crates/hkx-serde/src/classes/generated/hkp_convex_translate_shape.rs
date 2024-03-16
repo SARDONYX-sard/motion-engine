@@ -21,14 +21,14 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpConvexTranslateShape {
+pub enum HkpConvexTranslateShape<'a> {
     /// # C++ Parent class(`hkpConvexTransformShapeBase`, parent: `hkpConvexShape`) field Info
     /// -   name:`"childShape"`
     /// -   type: `struct hkpSingleShapeContainer`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "childShape")]
-    ChildShape(HkpSingleShapeContainer),
+    ChildShape(HkpSingleShapeContainer<'a>),
     /// # C++ Parent class(`hkpConvexTransformShapeBase`, parent: `hkpConvexShape`) field Info
     /// -   name:`"childShapeSize"`
     /// -   type: `hkInt32`
@@ -90,8 +90,8 @@ pub enum HkpConvexTranslateShape {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpConvexTranslateShape, "@name",
-    ("childShape" => ChildShape(HkpSingleShapeContainer)),
+    HkpConvexTranslateShape<'de>, "@name",
+    ("childShape" => ChildShape(HkpSingleShapeContainer<'de>)),
     ("childShapeSize" => ChildShapeSize(Primitive<i32>)),
     ("radius" => Radius(Primitive<f32>)),
     ("userData" => UserData(Primitive<usize>)),

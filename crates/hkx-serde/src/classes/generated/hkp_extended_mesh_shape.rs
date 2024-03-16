@@ -75,7 +75,7 @@ pub enum HkpExtendedMeshShape<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "embeddedTrianglesSubpart")]
-    EmbeddedTrianglesSubpart(HkpExtendedMeshShapeTrianglesSubpart),
+    EmbeddedTrianglesSubpart(HkpExtendedMeshShapeTrianglesSubpart<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"aabbHalfExtents"`
     /// -   type: `hkVector4`
@@ -110,14 +110,14 @@ pub enum HkpExtendedMeshShape<'a> {
     /// - offset: 184
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "trianglesSubparts")]
-    TrianglesSubparts(HkArrayClass<HkpExtendedMeshShapeTrianglesSubpart>),
+    TrianglesSubparts(HkArrayClass<HkpExtendedMeshShapeTrianglesSubpart<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"shapesSubparts"`
     /// -   type: `hkArray&lt;struct hkpExtendedMeshShapeShapesSubpart&gt;`
     /// - offset: 196
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "shapesSubparts")]
-    ShapesSubparts(HkArrayClass<HkpExtendedMeshShapeShapesSubpart>),
+    ShapesSubparts(HkArrayClass<HkpExtendedMeshShapeShapesSubpart<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"weldingInfo"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
@@ -171,13 +171,13 @@ impl_deserialize_for_internally_tagged_enum! {
     ("type" => Type(Primitive<Unknown>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("embeddedTrianglesSubpart" => EmbeddedTrianglesSubpart(HkpExtendedMeshShapeTrianglesSubpart)),
+    ("embeddedTrianglesSubpart" => EmbeddedTrianglesSubpart(HkpExtendedMeshShapeTrianglesSubpart<'de>)),
     ("aabbHalfExtents" => AabbHalfExtents(Vector4<f32>)),
     ("aabbCenter" => AabbCenter(Vector4<f32>)),
     ("materialClass" => MaterialClass(Primitive<Cow<'de, str>>)),
     ("numBitsForSubpartIndex" => NumBitsForSubpartIndex(Primitive<i32>)),
-    ("trianglesSubparts" => TrianglesSubparts(HkArrayClass<HkpExtendedMeshShapeTrianglesSubpart>)),
-    ("shapesSubparts" => ShapesSubparts(HkArrayClass<HkpExtendedMeshShapeShapesSubpart>)),
+    ("trianglesSubparts" => TrianglesSubparts(HkArrayClass<HkpExtendedMeshShapeTrianglesSubpart<'de>>)),
+    ("shapesSubparts" => ShapesSubparts(HkArrayClass<HkpExtendedMeshShapeShapesSubpart<'de>>)),
     ("weldingInfo" => WeldingInfo(HkArrayRef<Primitive<u16>>)),
     ("weldingType" => WeldingType(Primitive<WeldingType>)),
     ("defaultCollisionFilterInfo" => DefaultCollisionFilterInfo(Primitive<u32>)),

@@ -80,7 +80,7 @@ pub enum HkaAnimation<'a> {
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "annotationTracks")]
-    AnnotationTracks(HkArrayClass<HkaAnnotationTrack>),
+    AnnotationTracks(HkArrayClass<HkaAnnotationTrack<'a>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -93,7 +93,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("numberOfTransformTracks" => NumberOfTransformTracks(Primitive<i32>)),
     ("numberOfFloatTracks" => NumberOfFloatTracks(Primitive<i32>)),
     ("extractedMotion" => ExtractedMotion(Primitive<Cow<'de, str>>)),
-    ("annotationTracks" => AnnotationTracks(HkArrayClass<HkaAnnotationTrack>)),
+    ("annotationTracks" => AnnotationTracks(HkArrayClass<HkaAnnotationTrack<'de>>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

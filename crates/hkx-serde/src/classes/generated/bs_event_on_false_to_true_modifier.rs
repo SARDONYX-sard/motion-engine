@@ -132,7 +132,7 @@ pub enum BsEventOnFalseToTrueModifier<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "EventToSend1")]
-    EventToSend1(HkbEventProperty),
+    EventToSend1(HkbEventProperty<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"bEnableEvent2"`
     /// -   type: `hkBool`
@@ -153,7 +153,7 @@ pub enum BsEventOnFalseToTrueModifier<'a> {
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "EventToSend2")]
-    EventToSend2(HkbEventProperty),
+    EventToSend2(HkbEventProperty<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"bEnableEvent3"`
     /// -   type: `hkBool`
@@ -174,7 +174,7 @@ pub enum BsEventOnFalseToTrueModifier<'a> {
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "EventToSend3")]
-    EventToSend3(HkbEventProperty),
+    EventToSend3(HkbEventProperty<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"bSlot1ActivatedLastFrame"`
     /// -   type: `hkBool`
@@ -200,7 +200,7 @@ pub enum BsEventOnFalseToTrueModifier<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    BsEventOnFalseToTrueModifier, "@name",
+    BsEventOnFalseToTrueModifier<'de>, "@name",
     ("enable" => Enable(Primitive<bool>)),
     ("padModifier" => PadModifier([Primitive<bool>; 3])),
     ("userData" => UserData(Primitive<usize>)),
@@ -215,13 +215,13 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("bEnableEvent1" => BEnableEvent1(Primitive<bool>)),
     ("bVariableToTest1" => BVariableToTest1(Primitive<bool>)),
-    ("EventToSend1" => EventToSend1(HkbEventProperty)),
+    ("EventToSend1" => EventToSend1(HkbEventProperty<'de>)),
     ("bEnableEvent2" => BEnableEvent2(Primitive<bool>)),
     ("bVariableToTest2" => BVariableToTest2(Primitive<bool>)),
-    ("EventToSend2" => EventToSend2(HkbEventProperty)),
+    ("EventToSend2" => EventToSend2(HkbEventProperty<'de>)),
     ("bEnableEvent3" => BEnableEvent3(Primitive<bool>)),
     ("bVariableToTest3" => BVariableToTest3(Primitive<bool>)),
-    ("EventToSend3" => EventToSend3(HkbEventProperty)),
+    ("EventToSend3" => EventToSend3(HkbEventProperty<'de>)),
     ("bSlot1ActivatedLastFrame" => BSlot1ActivatedLastFrame(Primitive<bool>)),
     ("bSlot2ActivatedLastFrame" => BSlot2ActivatedLastFrame(Primitive<bool>)),
     ("bSlot3ActivatedLastFrame" => BSlot3ActivatedLastFrame(Primitive<bool>)),

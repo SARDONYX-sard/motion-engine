@@ -21,7 +21,7 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbStateMachineInternalState {
+pub enum HkbStateMachineInternalState<'a> {
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -45,7 +45,7 @@ pub enum HkbStateMachineInternalState {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "activeTransitions")]
-    ActiveTransitions(HkArrayClass<HkbStateMachineActiveTransitionInfo>),
+    ActiveTransitions(HkArrayClass<HkbStateMachineActiveTransitionInfo<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"transitionFlags"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
@@ -120,10 +120,10 @@ pub enum HkbStateMachineInternalState {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbStateMachineInternalState, "@name",
+    HkbStateMachineInternalState<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("activeTransitions" => ActiveTransitions(HkArrayClass<HkbStateMachineActiveTransitionInfo>)),
+    ("activeTransitions" => ActiveTransitions(HkArrayClass<HkbStateMachineActiveTransitionInfo<'de>>)),
     ("transitionFlags" => TransitionFlags(HkArrayRef<Primitive<u8>>)),
     ("wildcardTransitionFlags" => WildcardTransitionFlags(HkArrayRef<Primitive<u8>>)),
     ("delayedTransitions" => DelayedTransitions(HkArrayClass<HkbStateMachineDelayedTransitionInfo>)),

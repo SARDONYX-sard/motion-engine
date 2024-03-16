@@ -20,7 +20,7 @@ use std::borrow::Cow;
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpRagdollConstraintDataAtoms {
+pub enum HkpRagdollConstraintDataAtoms<'a> {
     /// # C++ Class Fields Info
     /// -   name:`"transforms"`
     /// -   type: `struct hkpSetLocalTransformsConstraintAtom`
@@ -41,7 +41,7 @@ pub enum HkpRagdollConstraintDataAtoms {
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "ragdollMotors")]
-    RagdollMotors(HkpRagdollMotorConstraintAtom),
+    RagdollMotors(HkpRagdollMotorConstraintAtom<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"angFriction"`
     /// -   type: `struct hkpAngFrictionConstraintAtom`
@@ -81,10 +81,10 @@ pub enum HkpRagdollConstraintDataAtoms {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpRagdollConstraintDataAtoms, "@name",
+    HkpRagdollConstraintDataAtoms<'de>, "@name",
     ("transforms" => Transforms(HkpSetLocalTransformsConstraintAtom)),
     ("setupStabilization" => SetupStabilization(HkpSetupStabilizationAtom)),
-    ("ragdollMotors" => RagdollMotors(HkpRagdollMotorConstraintAtom)),
+    ("ragdollMotors" => RagdollMotors(HkpRagdollMotorConstraintAtom<'de>)),
     ("angFriction" => AngFriction(HkpAngFrictionConstraintAtom)),
     ("twistLimit" => TwistLimit(HkpTwistLimitConstraintAtom)),
     ("coneLimit" => ConeLimit(HkpConeLimitConstraintAtom)),

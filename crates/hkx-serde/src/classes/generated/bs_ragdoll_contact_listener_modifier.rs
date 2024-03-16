@@ -118,7 +118,7 @@ pub enum BsRagdollContactListenerModifier<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "contactEvent")]
-    ContactEvent(HkbEventProperty),
+    ContactEvent(HkbEventProperty<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"bones"`
     /// -   type: `struct hkbBoneIndexArray*`
@@ -157,7 +157,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("contactEvent" => ContactEvent(HkbEventProperty)),
+    ("contactEvent" => ContactEvent(HkbEventProperty<'de>)),
     ("bones" => Bones(Primitive<Cow<'de, str>>)),
     ("throwEvent" => ThrowEvent(Primitive<bool>)),
     ("ragdollRigidBodies" => RagdollRigidBodies(HkArrayRef<Cow<'de, str>>)),

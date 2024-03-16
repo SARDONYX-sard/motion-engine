@@ -20,14 +20,14 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbHandIkControlsModifierHand {
+pub enum HkbHandIkControlsModifierHand<'a> {
     /// # C++ Class Fields Info
     /// -   name:`"controlData"`
     /// -   type: `struct hkbHandIkControlData`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "controlData")]
-    ControlData(HkbHandIkControlData),
+    ControlData(HkbHandIkControlData<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"handIndex"`
     /// -   type: `hkInt32`
@@ -46,8 +46,8 @@ pub enum HkbHandIkControlsModifierHand {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbHandIkControlsModifierHand, "@name",
-    ("controlData" => ControlData(HkbHandIkControlData)),
+    HkbHandIkControlsModifierHand<'de>, "@name",
+    ("controlData" => ControlData(HkbHandIkControlData<'de>)),
     ("handIndex" => HandIndex(Primitive<i32>)),
     ("enable" => Enable(Primitive<bool>)),
 }

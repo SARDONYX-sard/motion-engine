@@ -20,18 +20,18 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpBridgeAtoms {
+pub enum HkpBridgeAtoms<'a> {
     /// # C++ Class Fields Info
     /// -   name:`"bridgeAtom"`
     /// -   type: `struct hkpBridgeConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "bridgeAtom")]
-    BridgeAtom(HkpBridgeConstraintAtom),
+    BridgeAtom(HkpBridgeConstraintAtom<'a>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpBridgeAtoms, "@name",
-    ("bridgeAtom" => BridgeAtom(HkpBridgeConstraintAtom)),
+    HkpBridgeAtoms<'de>, "@name",
+    ("bridgeAtom" => BridgeAtom(HkpBridgeConstraintAtom<'de>)),
 }

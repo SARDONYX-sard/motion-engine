@@ -20,7 +20,7 @@ use std::borrow::Cow;
 /// -   version: 2
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbFootIkModifierLeg {
+pub enum HkbFootIkModifierLeg<'a> {
     /// # C++ Class Fields Info
     /// -   name:`"originalAnkleTransformMS"`
     /// -   type: `hkQsTransform`
@@ -55,7 +55,7 @@ pub enum HkbFootIkModifierLeg {
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "ungroundedEvent")]
-    UngroundedEvent(HkbEventProperty),
+    UngroundedEvent(HkbEventProperty<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"footPlantedAnkleHeightMS"`
     /// -   type: `hkReal`
@@ -158,12 +158,12 @@ pub enum HkbFootIkModifierLeg {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbFootIkModifierLeg, "@name",
+    HkbFootIkModifierLeg<'de>, "@name",
     ("originalAnkleTransformMS" => OriginalAnkleTransformMs(QsTransform<f32>)),
     ("prevAnkleRotLS" => PrevAnkleRotLs(Quaternion<f32>)),
     ("kneeAxisLS" => KneeAxisLs(Vector4<f32>)),
     ("footEndLS" => FootEndLs(Vector4<f32>)),
-    ("ungroundedEvent" => UngroundedEvent(HkbEventProperty)),
+    ("ungroundedEvent" => UngroundedEvent(HkbEventProperty<'de>)),
     ("footPlantedAnkleHeightMS" => FootPlantedAnkleHeightMs(Primitive<f32>)),
     ("footRaisedAnkleHeightMS" => FootRaisedAnkleHeightMs(Primitive<f32>)),
     ("maxAnkleHeightMS" => MaxAnkleHeightMs(Primitive<f32>)),

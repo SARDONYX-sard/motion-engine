@@ -20,18 +20,18 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkRootLevelContainer {
+pub enum HkRootLevelContainer<'a> {
     /// # C++ Class Fields Info
     /// -   name:`"namedVariants"`
     /// -   type: `hkArray&lt;struct hkRootLevelContainerNamedVariant&gt;`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "namedVariants")]
-    NamedVariants(HkArrayClass<HkRootLevelContainerNamedVariant>),
+    NamedVariants(HkArrayClass<HkRootLevelContainerNamedVariant<'a>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkRootLevelContainer, "@name",
-    ("namedVariants" => NamedVariants(HkArrayClass<HkRootLevelContainerNamedVariant>)),
+    HkRootLevelContainer<'de>, "@name",
+    ("namedVariants" => NamedVariants(HkArrayClass<HkRootLevelContainerNamedVariant<'de>>)),
 }

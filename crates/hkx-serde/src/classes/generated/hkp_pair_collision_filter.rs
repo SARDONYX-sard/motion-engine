@@ -67,7 +67,7 @@ pub enum HkpPairCollisionFilter<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "disabledPairs", skip_serializing)]
-    DisabledPairs(HkpPairCollisionFilterMapPairFilterKeyOverrideType),
+    DisabledPairs(HkpPairCollisionFilterMapPairFilterKeyOverrideType<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"childFilter"`
     /// -   type: `struct hkpCollisionFilter*`
@@ -85,6 +85,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("postpad" => Postpad([Primitive<u32>; 3])),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("disabledPairs" => DisabledPairs(HkpPairCollisionFilterMapPairFilterKeyOverrideType)),
+    ("disabledPairs" => DisabledPairs(HkpPairCollisionFilterMapPairFilterKeyOverrideType<'de>)),
     ("childFilter" => ChildFilter(Primitive<Cow<'de, str>>)),
 }

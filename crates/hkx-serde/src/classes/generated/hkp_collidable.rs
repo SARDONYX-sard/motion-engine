@@ -85,7 +85,7 @@ pub enum HkpCollidable<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "boundingVolumeData", skip_serializing)]
-    BoundingVolumeData(HkpCollidableBoundingVolumeData),
+    BoundingVolumeData(HkpCollidableBoundingVolumeData<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"allowedPenetrationDepth"`
     /// -   type: `hkReal`
@@ -97,7 +97,7 @@ pub enum HkpCollidable<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpCollidable, "@name",
+    HkpCollidable<'de>, "@name",
     ("shape" => Shape(Primitive<Cow<'de, str>>)),
     ("shapeKey" => ShapeKey(Primitive<u32>)),
     ("motion" => Motion(Primitive<Cow<'de, str>>)),
@@ -106,7 +106,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("forceCollideOntoPpu" => ForceCollideOntoPpu(Primitive<u8>)),
     ("shapeSizeOnSpu" => ShapeSizeOnSpu(Primitive<u16>)),
     ("broadPhaseHandle" => BroadPhaseHandle(HkpTypedBroadPhaseHandle)),
-    ("boundingVolumeData" => BoundingVolumeData(HkpCollidableBoundingVolumeData)),
+    ("boundingVolumeData" => BoundingVolumeData(HkpCollidableBoundingVolumeData<'de>)),
     ("allowedPenetrationDepth" => AllowedPenetrationDepth(Primitive<f32>)),
 }
 

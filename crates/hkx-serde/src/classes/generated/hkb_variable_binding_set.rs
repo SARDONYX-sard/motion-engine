@@ -21,7 +21,7 @@ use std::borrow::Cow;
 /// -   version: 2
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbVariableBindingSet {
+pub enum HkbVariableBindingSet<'a> {
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -45,7 +45,7 @@ pub enum HkbVariableBindingSet {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "bindings")]
-    Bindings(HkArrayClass<HkbVariableBindingSetBinding>),
+    Bindings(HkArrayClass<HkbVariableBindingSetBinding<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"indexOfBindingToEnable"`
     /// -   type: `hkInt32`
@@ -64,10 +64,10 @@ pub enum HkbVariableBindingSet {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbVariableBindingSet, "@name",
+    HkbVariableBindingSet<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("bindings" => Bindings(HkArrayClass<HkbVariableBindingSetBinding>)),
+    ("bindings" => Bindings(HkArrayClass<HkbVariableBindingSetBinding<'de>>)),
     ("indexOfBindingToEnable" => IndexOfBindingToEnable(Primitive<i32>)),
     ("hasOutputBinding" => HasOutputBinding(Primitive<bool>)),
 }

@@ -165,7 +165,7 @@ pub enum HkbComputeRotationToTargetModifier<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbComputeRotationToTargetModifier, "@name",
+    HkbComputeRotationToTargetModifier<'de>, "@name",
     ("enable" => Enable(Primitive<bool>)),
     ("padModifier" => PadModifier([Primitive<bool>; 3])),
     ("userData" => UserData(Primitive<usize>)),

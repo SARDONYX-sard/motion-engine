@@ -125,7 +125,7 @@ pub enum HkbTimerModifier<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "alarmEvent")]
-    AlarmEvent(HkbEventProperty),
+    AlarmEvent(HkbEventProperty<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"secondsElapsed"`
     /// -   type: `hkReal`
@@ -137,7 +137,7 @@ pub enum HkbTimerModifier<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbTimerModifier, "@name",
+    HkbTimerModifier<'de>, "@name",
     ("enable" => Enable(Primitive<bool>)),
     ("padModifier" => PadModifier([Primitive<bool>; 3])),
     ("userData" => UserData(Primitive<usize>)),
@@ -151,6 +151,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("alarmTimeSeconds" => AlarmTimeSeconds(Primitive<f32>)),
-    ("alarmEvent" => AlarmEvent(HkbEventProperty)),
+    ("alarmEvent" => AlarmEvent(HkbEventProperty<'de>)),
     ("secondsElapsed" => SecondsElapsed(Primitive<f32>)),
 }

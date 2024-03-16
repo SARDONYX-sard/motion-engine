@@ -139,7 +139,7 @@ pub enum BsPassByTargetTriggerModifier<'a> {
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "triggerEvent")]
-    TriggerEvent(HkbEventProperty),
+    TriggerEvent(HkbEventProperty<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"targetPassed"`
     /// -   type: `hkBool`
@@ -151,7 +151,7 @@ pub enum BsPassByTargetTriggerModifier<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    BsPassByTargetTriggerModifier, "@name",
+    BsPassByTargetTriggerModifier<'de>, "@name",
     ("enable" => Enable(Primitive<bool>)),
     ("padModifier" => PadModifier([Primitive<bool>; 3])),
     ("userData" => UserData(Primitive<usize>)),
@@ -167,6 +167,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("targetPosition" => TargetPosition(Vector4<f32>)),
     ("radius" => Radius(Primitive<f32>)),
     ("movementDirection" => MovementDirection(Vector4<f32>)),
-    ("triggerEvent" => TriggerEvent(HkbEventProperty)),
+    ("triggerEvent" => TriggerEvent(HkbEventProperty<'de>)),
     ("targetPassed" => TargetPassed(Primitive<bool>)),
 }

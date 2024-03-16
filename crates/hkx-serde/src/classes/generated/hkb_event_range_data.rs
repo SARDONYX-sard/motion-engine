@@ -20,7 +20,7 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbEventRangeData {
+pub enum HkbEventRangeData<'a> {
     /// # C++ Class Fields Info
     /// -   name:`"upperBound"`
     /// -   type: `hkReal`
@@ -34,7 +34,7 @@ pub enum HkbEventRangeData {
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "event")]
-    Event(HkbEventProperty),
+    Event(HkbEventProperty<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"eventMode"`
     /// -   type: `enum EventRangeMode`
@@ -46,9 +46,9 @@ pub enum HkbEventRangeData {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbEventRangeData, "@name",
+    HkbEventRangeData<'de>, "@name",
     ("upperBound" => UpperBound(Primitive<f32>)),
-    ("event" => Event(HkbEventProperty)),
+    ("event" => Event(HkbEventProperty<'de>)),
     ("eventMode" => EventMode(Primitive<EventRangeMode>)),
 }
 

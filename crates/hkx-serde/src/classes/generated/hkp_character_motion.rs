@@ -128,7 +128,7 @@ pub enum HkpCharacterMotion<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpCharacterMotion, "@name",
+    HkpCharacterMotion<'de>, "@name",
     ("type" => Type(Primitive<MotionType>)),
     ("deactivationIntegrateCounter" => DeactivationIntegrateCounter(Primitive<u8>)),
     ("deactivationNumInactiveFrames" => DeactivationNumInactiveFrames([Primitive<u16>; 2])),

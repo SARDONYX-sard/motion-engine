@@ -59,7 +59,7 @@ pub enum HkaSkeleton<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "bones")]
-    Bones(HkArrayClass<HkaBone>),
+    Bones(HkArrayClass<HkaBone<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"referencePose"`
     /// -   type: `hkArray&lt;hkQsTransform&gt;`
@@ -87,7 +87,7 @@ pub enum HkaSkeleton<'a> {
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "localFrames")]
-    LocalFrames(HkArrayClass<HkaSkeletonLocalFrameOnBone>),
+    LocalFrames(HkArrayClass<HkaSkeletonLocalFrameOnBone<'a>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -97,9 +97,9 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("parentIndices" => ParentIndices(HkArrayRef<Primitive<i16>>)),
-    ("bones" => Bones(HkArrayClass<HkaBone>)),
+    ("bones" => Bones(HkArrayClass<HkaBone<'de>>)),
     ("referencePose" => ReferencePose(HkArrayVector<QsTransform<f32>>)),
     ("referenceFloats" => ReferenceFloats(HkArrayRef<Primitive<f32>>)),
     ("floatSlots" => FloatSlots(HkArrayStringPtr<'de>)),
-    ("localFrames" => LocalFrames(HkArrayClass<HkaSkeletonLocalFrameOnBone>)),
+    ("localFrames" => LocalFrames(HkArrayClass<HkaSkeletonLocalFrameOnBone<'de>>)),
 }

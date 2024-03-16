@@ -139,12 +139,12 @@ pub enum BsDistTriggerModifier<'a> {
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "triggerEvent")]
-    TriggerEvent(HkbEventProperty),
+    TriggerEvent(HkbEventProperty<'a>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    BsDistTriggerModifier, "@name",
+    BsDistTriggerModifier<'de>, "@name",
     ("enable" => Enable(Primitive<bool>)),
     ("padModifier" => PadModifier([Primitive<bool>; 3])),
     ("userData" => UserData(Primitive<usize>)),
@@ -160,5 +160,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("targetPosition" => TargetPosition(Vector4<f32>)),
     ("distance" => Distance(Primitive<f32>)),
     ("distanceTrigger" => DistanceTrigger(Primitive<f32>)),
-    ("triggerEvent" => TriggerEvent(HkbEventProperty)),
+    ("triggerEvent" => TriggerEvent(HkbEventProperty<'de>)),
 }

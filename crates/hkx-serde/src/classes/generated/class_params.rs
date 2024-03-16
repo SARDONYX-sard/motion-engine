@@ -36,32 +36,40 @@ pub enum ClassParams<'a> {
     BsCyclicBlendTransitionGenerator(Vec<BsCyclicBlendTransitionGenerator<'a>>),
 
     #[serde(rename = "0x31f6b8b6")]
-    BsDecomposeVectorModifier(Vec<BsDecomposeVectorModifier>),
+    #[serde(bound(deserialize = "Vec<BsDecomposeVectorModifier<'a>>: Deserialize<'de>"))]
+    BsDecomposeVectorModifier(Vec<BsDecomposeVectorModifier<'a>>),
 
     #[serde(rename = "0x19a005c0")]
     #[serde(bound(deserialize = "Vec<BsDirectAtModifier<'a>>: Deserialize<'de>"))]
     BsDirectAtModifier(Vec<BsDirectAtModifier<'a>>),
 
     #[serde(rename = "0xb34d2bbd")]
-    BsDistTriggerModifier(Vec<BsDistTriggerModifier>),
+    #[serde(bound(deserialize = "Vec<BsDistTriggerModifier<'a>>: Deserialize<'de>"))]
+    BsDistTriggerModifier(Vec<BsDistTriggerModifier<'a>>),
 
     #[serde(rename = "0x6030970c")]
-    BsEventEveryNEventsModifier(Vec<BsEventEveryNEventsModifier>),
+    #[serde(bound(deserialize = "Vec<BsEventEveryNEventsModifier<'a>>: Deserialize<'de>"))]
+    BsEventEveryNEventsModifier(Vec<BsEventEveryNEventsModifier<'a>>),
 
     #[serde(rename = "0x1062d993")]
-    BsEventOnDeactivateModifier(Vec<BsEventOnDeactivateModifier>),
+    #[serde(bound(deserialize = "Vec<BsEventOnDeactivateModifier<'a>>: Deserialize<'de>"))]
+    BsEventOnDeactivateModifier(Vec<BsEventOnDeactivateModifier<'a>>),
 
     #[serde(rename = "0x81d0777a")]
-    BsEventOnFalseToTrueModifier(Vec<BsEventOnFalseToTrueModifier>),
+    #[serde(bound(deserialize = "Vec<BsEventOnFalseToTrueModifier<'a>>: Deserialize<'de>"))]
+    BsEventOnFalseToTrueModifier(Vec<BsEventOnFalseToTrueModifier<'a>>),
 
     #[serde(rename = "0xbda33bfe")]
-    BsGetTimeStepModifier(Vec<BsGetTimeStepModifier>),
+    #[serde(bound(deserialize = "Vec<BsGetTimeStepModifier<'a>>: Deserialize<'de>"))]
+    BsGetTimeStepModifier(Vec<BsGetTimeStepModifier<'a>>),
 
     #[serde(rename = "0x29adc802")]
-    BsInterpValueModifier(Vec<BsInterpValueModifier>),
+    #[serde(bound(deserialize = "Vec<BsInterpValueModifier<'a>>: Deserialize<'de>"))]
+    BsInterpValueModifier(Vec<BsInterpValueModifier<'a>>),
 
     #[serde(rename = "0xb0fde45a")]
-    BsIsActiveModifier(Vec<BsIsActiveModifier>),
+    #[serde(bound(deserialize = "Vec<BsIsActiveModifier<'a>>: Deserialize<'de>"))]
+    BsIsActiveModifier(Vec<BsIsActiveModifier<'a>>),
 
     #[serde(rename = "0x6b8a15fc")]
     #[serde(bound(deserialize = "Vec<BsiStateManagerModifierBSiStateData<'a>>: Deserialize<'de>"))]
@@ -72,7 +80,8 @@ pub enum ClassParams<'a> {
     BsiStateManagerModifierBsiStateManagerStateListener(Vec<BsiStateManagerModifierBsiStateManagerStateListener<'a>>),
 
     #[serde(rename = "0x6cb24f2e")]
-    BsiStateManagerModifier(Vec<BsiStateManagerModifier>),
+    #[serde(bound(deserialize = "Vec<BsiStateManagerModifier<'a>>: Deserialize<'de>"))]
+    BsiStateManagerModifier(Vec<BsiStateManagerModifier<'a>>),
 
     #[serde(rename = "0xf0826fc1")]
     #[serde(bound(deserialize = "Vec<BSiStateTaggingGenerator<'a>>: Deserialize<'de>"))]
@@ -98,24 +107,28 @@ pub enum ClassParams<'a> {
     BsOffsetAnimationGenerator(Vec<BsOffsetAnimationGenerator<'a>>),
 
     #[serde(rename = "0x703d7b66")]
-    BsPassByTargetTriggerModifier(Vec<BsPassByTargetTriggerModifier>),
+    #[serde(bound(deserialize = "Vec<BsPassByTargetTriggerModifier<'a>>: Deserialize<'de>"))]
+    BsPassByTargetTriggerModifier(Vec<BsPassByTargetTriggerModifier<'a>>),
 
     #[serde(rename = "0x8003d8ce")]
     #[serde(bound(deserialize = "Vec<BsRagdollContactListenerModifier<'a>>: Deserialize<'de>"))]
     BsRagdollContactListenerModifier(Vec<BsRagdollContactListenerModifier<'a>>),
 
     #[serde(rename = "0xd297fda9")]
-    BsSpeedSamplerModifier(Vec<BsSpeedSamplerModifier>),
+    #[serde(bound(deserialize = "Vec<BsSpeedSamplerModifier<'a>>: Deserialize<'de>"))]
+    BsSpeedSamplerModifier(Vec<BsSpeedSamplerModifier<'a>>),
 
     #[serde(rename = "0xd83bea64")]
     #[serde(bound(deserialize = "Vec<BsSynchronizedClipGenerator<'a>>: Deserialize<'de>"))]
     BsSynchronizedClipGenerator(Vec<BsSynchronizedClipGenerator<'a>>),
 
     #[serde(rename = "0x531f3292")]
-    BsTimerModifier(Vec<BsTimerModifier>),
+    #[serde(bound(deserialize = "Vec<BsTimerModifier<'a>>: Deserialize<'de>"))]
+    BsTimerModifier(Vec<BsTimerModifier<'a>>),
 
     #[serde(rename = "0xd2d9a04")]
-    BsTweenerModifier(Vec<BsTweenerModifier>),
+    #[serde(bound(deserialize = "Vec<BsTweenerModifier<'a>>: Deserialize<'de>"))]
+    BsTweenerModifier(Vec<BsTweenerModifier<'a>>),
 
     #[serde(rename = "0x1d716a17")]
     HkAabbHalf(Vec<HkAabbHalf>),
@@ -167,7 +180,8 @@ pub enum ClassParams<'a> {
     HkaDeltaCompressedAnimationQuantizationFormat(Vec<HkaDeltaCompressedAnimationQuantizationFormat>),
 
     #[serde(rename = "0x90a68d40")]
-    HkaDeltaCompressedAnimation(Vec<HkaDeltaCompressedAnimation>),
+    #[serde(bound(deserialize = "Vec<HkaDeltaCompressedAnimation<'a>>: Deserialize<'de>"))]
+    HkaDeltaCompressedAnimation(Vec<HkaDeltaCompressedAnimation<'a>>),
 
     #[serde(rename = "0x1d81207c")]
     #[serde(bound(deserialize = "Vec<HkaFootstepAnalysisInfoContainer<'a>>: Deserialize<'de>"))]
@@ -177,7 +191,8 @@ pub enum ClassParams<'a> {
     HkaFootstepAnalysisInfo(Vec<HkaFootstepAnalysisInfo>),
 
     #[serde(rename = "0x930af031")]
-    HkaInterleavedUncompressedAnimation(Vec<HkaInterleavedUncompressedAnimation>),
+    #[serde(bound(deserialize = "Vec<HkaInterleavedUncompressedAnimation<'a>>: Deserialize<'de>"))]
+    HkaInterleavedUncompressedAnimation(Vec<HkaInterleavedUncompressedAnimation<'a>>),
 
     #[serde(rename = "0xa3d0ac71")]
     HkaKeyFrameHierarchyUtilityControlData(Vec<HkaKeyFrameHierarchyUtilityControlData>),
@@ -225,7 +240,8 @@ pub enum ClassParams<'a> {
     HkaSkeletonMapperData(Vec<HkaSkeletonMapperData<'a>>),
 
     #[serde(rename = "0x12df42a5")]
-    HkaSkeletonMapper(Vec<HkaSkeletonMapper>),
+    #[serde(bound(deserialize = "Vec<HkaSkeletonMapper<'a>>: Deserialize<'de>"))]
+    HkaSkeletonMapper(Vec<HkaSkeletonMapper<'a>>),
 
     #[serde(rename = "0x366e8220")]
     #[serde(bound(deserialize = "Vec<HkaSkeleton<'a>>: Deserialize<'de>"))]
@@ -238,7 +254,8 @@ pub enum ClassParams<'a> {
     HkaSplineCompressedAnimationTrackCompressionParams(Vec<HkaSplineCompressedAnimationTrackCompressionParams>),
 
     #[serde(rename = "0x792ee0bb")]
-    HkaSplineCompressedAnimation(Vec<HkaSplineCompressedAnimation>),
+    #[serde(bound(deserialize = "Vec<HkaSplineCompressedAnimation<'a>>: Deserialize<'de>"))]
+    HkaSplineCompressedAnimation(Vec<HkaSplineCompressedAnimation<'a>>),
 
     #[serde(rename = "0x27c6cafa")]
     HkaWaveletCompressedAnimationCompressionParams(Vec<HkaWaveletCompressedAnimationCompressionParams>),
@@ -247,7 +264,8 @@ pub enum ClassParams<'a> {
     HkaWaveletCompressedAnimationQuantizationFormat(Vec<HkaWaveletCompressedAnimationQuantizationFormat>),
 
     #[serde(rename = "0x77cf0962")]
-    HkaWaveletCompressedAnimation(Vec<HkaWaveletCompressedAnimation>),
+    #[serde(bound(deserialize = "Vec<HkaWaveletCompressedAnimation<'a>>: Deserialize<'de>"))]
+    HkaWaveletCompressedAnimation(Vec<HkaWaveletCompressedAnimation<'a>>),
 
     #[serde(rename = "0xe0708a00")]
     HkBaseObject(Vec<HkBaseObject>),
@@ -263,7 +281,8 @@ pub enum ClassParams<'a> {
     HkbAttributeModifierAssignment(Vec<HkbAttributeModifierAssignment>),
 
     #[serde(rename = "0x1245d97d")]
-    HkbAttributeModifier(Vec<HkbAttributeModifier>),
+    #[serde(bound(deserialize = "Vec<HkbAttributeModifier<'a>>: Deserialize<'de>"))]
+    HkbAttributeModifier(Vec<HkbAttributeModifier<'a>>),
 
     #[serde(rename = "0xca0888ca")]
     #[serde(bound(deserialize = "Vec<HkbAuxiliaryNodeInfo<'a>>: Deserialize<'de>"))]
@@ -333,10 +352,12 @@ pub enum ClassParams<'a> {
     HkbBlendingTransitionEffect(Vec<HkbBlendingTransitionEffect<'a>>),
 
     #[serde(rename = "0xaa8619")]
-    HkbBoneIndexArray(Vec<HkbBoneIndexArray>),
+    #[serde(bound(deserialize = "Vec<HkbBoneIndexArray<'a>>: Deserialize<'de>"))]
+    HkbBoneIndexArray(Vec<HkbBoneIndexArray<'a>>),
 
     #[serde(rename = "0xcd902b77")]
-    HkbBoneWeightArray(Vec<HkbBoneWeightArray>),
+    #[serde(bound(deserialize = "Vec<HkbBoneWeightArray<'a>>: Deserialize<'de>"))]
+    HkbBoneWeightArray(Vec<HkbBoneWeightArray<'a>>),
 
     #[serde(rename = "0x514763dc")]
     HkbBoolVariableSequencedDataSample(Vec<HkbBoolVariableSequencedDataSample>),
@@ -361,7 +382,8 @@ pub enum ClassParams<'a> {
     HkbCharacterControllerModifierInternalState(Vec<HkbCharacterControllerModifierInternalState>),
 
     #[serde(rename = "0xf675d6fb")]
-    HkbCharacterControllerModifier(Vec<HkbCharacterControllerModifier>),
+    #[serde(bound(deserialize = "Vec<HkbCharacterControllerModifier<'a>>: Deserialize<'de>"))]
+    HkbCharacterControllerModifier(Vec<HkbCharacterControllerModifier<'a>>),
 
     #[serde(rename = "0xa0f415bf")]
     #[serde(bound(deserialize = "Vec<HkbCharacterDataCharacterControllerInfo<'a>>: Deserialize<'de>"))]
@@ -410,13 +432,15 @@ pub enum ClassParams<'a> {
     HkbClipTriggerArray(Vec<HkbClipTriggerArray>),
 
     #[serde(rename = "0x7eb45cea")]
-    HkbClipTrigger(Vec<HkbClipTrigger>),
+    #[serde(bound(deserialize = "Vec<HkbClipTrigger<'a>>: Deserialize<'de>"))]
+    HkbClipTrigger(Vec<HkbClipTrigger<'a>>),
 
     #[serde(rename = "0xa92ed39f")]
     HkbCombineTransformsModifierInternalState(Vec<HkbCombineTransformsModifierInternalState>),
 
     #[serde(rename = "0xfd1f0b79")]
-    HkbCombineTransformsModifier(Vec<HkbCombineTransformsModifier>),
+    #[serde(bound(deserialize = "Vec<HkbCombineTransformsModifier<'a>>: Deserialize<'de>"))]
+    HkbCombineTransformsModifier(Vec<HkbCombineTransformsModifier<'a>>),
 
     #[serde(rename = "0xc6aaccc8")]
     HkbCompiledExpressionSetToken(Vec<HkbCompiledExpressionSetToken>),
@@ -428,19 +452,22 @@ pub enum ClassParams<'a> {
     HkbComputeDirectionModifierInternalState(Vec<HkbComputeDirectionModifierInternalState>),
 
     #[serde(rename = "0xdf358bd3")]
-    HkbComputeDirectionModifier(Vec<HkbComputeDirectionModifier>),
+    #[serde(bound(deserialize = "Vec<HkbComputeDirectionModifier<'a>>: Deserialize<'de>"))]
+    HkbComputeDirectionModifier(Vec<HkbComputeDirectionModifier<'a>>),
 
     #[serde(rename = "0x71cd1eb0")]
     HkbComputeRotationFromAxisAngleModifierInternalState(Vec<HkbComputeRotationFromAxisAngleModifierInternalState>),
 
     #[serde(rename = "0x9b3f6936")]
-    HkbComputeRotationFromAxisAngleModifier(Vec<HkbComputeRotationFromAxisAngleModifier>),
+    #[serde(bound(deserialize = "Vec<HkbComputeRotationFromAxisAngleModifier<'a>>: Deserialize<'de>"))]
+    HkbComputeRotationFromAxisAngleModifier(Vec<HkbComputeRotationFromAxisAngleModifier<'a>>),
 
     #[serde(rename = "0x71cd1eb0")]
     HkbComputeRotationToTargetModifierInternalState(Vec<HkbComputeRotationToTargetModifierInternalState>),
 
     #[serde(rename = "0x47665f1c")]
-    HkbComputeRotationToTargetModifier(Vec<HkbComputeRotationToTargetModifier>),
+    #[serde(bound(deserialize = "Vec<HkbComputeRotationToTargetModifier<'a>>: Deserialize<'de>"))]
+    HkbComputeRotationToTargetModifier(Vec<HkbComputeRotationToTargetModifier<'a>>),
 
     #[serde(rename = "0xda8c7d7d")]
     HkbCondition(Vec<HkbCondition>),
@@ -453,7 +480,8 @@ pub enum ClassParams<'a> {
     HkbDampingModifierInternalState(Vec<HkbDampingModifierInternalState>),
 
     #[serde(rename = "0x9a040f03")]
-    HkbDampingModifier(Vec<HkbDampingModifier>),
+    #[serde(bound(deserialize = "Vec<HkbDampingModifier<'a>>: Deserialize<'de>"))]
+    HkbDampingModifier(Vec<HkbDampingModifier<'a>>),
 
     #[serde(rename = "0x7bd5c66f")]
     HkbDefaultMessageLog(Vec<HkbDefaultMessageLog>),
@@ -462,13 +490,15 @@ pub enum ClassParams<'a> {
     HkbDelayedModifierInternalState(Vec<HkbDelayedModifierInternalState>),
 
     #[serde(rename = "0x8e101a7a")]
-    HkbDelayedModifier(Vec<HkbDelayedModifier>),
+    #[serde(bound(deserialize = "Vec<HkbDelayedModifier<'a>>: Deserialize<'de>"))]
+    HkbDelayedModifier(Vec<HkbDelayedModifier<'a>>),
 
     #[serde(rename = "0x7b32d942")]
     HkbDetectCloseToGroundModifierInternalState(Vec<HkbDetectCloseToGroundModifierInternalState>),
 
     #[serde(rename = "0x981687b2")]
-    HkbDetectCloseToGroundModifier(Vec<HkbDetectCloseToGroundModifier>),
+    #[serde(bound(deserialize = "Vec<HkbDetectCloseToGroundModifier<'a>>: Deserialize<'de>"))]
+    HkbDetectCloseToGroundModifier(Vec<HkbDetectCloseToGroundModifier<'a>>),
 
     #[serde(rename = "0xb8686f6b")]
     HkbEvaluateExpressionModifierInternalExpressionData(Vec<HkbEvaluateExpressionModifierInternalExpressionData>),
@@ -492,7 +522,8 @@ pub enum ClassParams<'a> {
     HkbEventDrivenModifierInternalState(Vec<HkbEventDrivenModifierInternalState>),
 
     #[serde(rename = "0x7ed3f44e")]
-    HkbEventDrivenModifier(Vec<HkbEventDrivenModifier>),
+    #[serde(bound(deserialize = "Vec<HkbEventDrivenModifier<'a>>: Deserialize<'de>"))]
+    HkbEventDrivenModifier(Vec<HkbEventDrivenModifier<'a>>),
 
     #[serde(rename = "0x5874eed4")]
     HkbEventInfo(Vec<HkbEventInfo>),
@@ -505,7 +536,8 @@ pub enum ClassParams<'a> {
     HkbEventPayload(Vec<HkbEventPayload>),
 
     #[serde(rename = "0xdb38a15")]
-    HkbEventProperty(Vec<HkbEventProperty>),
+    #[serde(bound(deserialize = "Vec<HkbEventProperty<'a>>: Deserialize<'de>"))]
+    HkbEventProperty(Vec<HkbEventProperty<'a>>),
 
     #[serde(rename = "0xc02da3")]
     #[serde(bound(deserialize = "Vec<HkbEventRaisedInfo<'a>>: Deserialize<'de>"))]
@@ -515,10 +547,12 @@ pub enum ClassParams<'a> {
     HkbEventRangeDataArray(Vec<HkbEventRangeDataArray>),
 
     #[serde(rename = "0x6cb92c76")]
-    HkbEventRangeData(Vec<HkbEventRangeData>),
+    #[serde(bound(deserialize = "Vec<HkbEventRangeData<'a>>: Deserialize<'de>"))]
+    HkbEventRangeData(Vec<HkbEventRangeData<'a>>),
 
     #[serde(rename = "0x9139b821")]
-    HkbEventSequencedDataSequencedEvent(Vec<HkbEventSequencedDataSequencedEvent>),
+    #[serde(bound(deserialize = "Vec<HkbEventSequencedDataSequencedEvent<'a>>: Deserialize<'de>"))]
+    HkbEventSequencedDataSequencedEvent(Vec<HkbEventSequencedDataSequencedEvent<'a>>),
 
     #[serde(rename = "0x76798eb8")]
     HkbEventSequencedData(Vec<HkbEventSequencedData>),
@@ -539,23 +573,27 @@ pub enum ClassParams<'a> {
     HkbExpressionCondition(Vec<HkbExpressionCondition<'a>>),
 
     #[serde(rename = "0x4b9ee1a2")]
-    HkbExpressionDataArray(Vec<HkbExpressionDataArray>),
+    #[serde(bound(deserialize = "Vec<HkbExpressionDataArray<'a>>: Deserialize<'de>"))]
+    HkbExpressionDataArray(Vec<HkbExpressionDataArray<'a>>),
 
     #[serde(rename = "0x6740042a")]
     #[serde(bound(deserialize = "Vec<HkbExpressionData<'a>>: Deserialize<'de>"))]
     HkbExpressionData(Vec<HkbExpressionData<'a>>),
 
     #[serde(rename = "0x804dcbab")]
-    HkbExtractRagdollPoseModifier(Vec<HkbExtractRagdollPoseModifier>),
+    #[serde(bound(deserialize = "Vec<HkbExtractRagdollPoseModifier<'a>>: Deserialize<'de>"))]
+    HkbExtractRagdollPoseModifier(Vec<HkbExtractRagdollPoseModifier<'a>>),
 
     #[serde(rename = "0xa111b704")]
     HkbFootIkControlData(Vec<HkbFootIkControlData>),
 
     #[serde(rename = "0x9e17091a")]
-    HkbFootIkControlsModifierLeg(Vec<HkbFootIkControlsModifierLeg>),
+    #[serde(bound(deserialize = "Vec<HkbFootIkControlsModifierLeg<'a>>: Deserialize<'de>"))]
+    HkbFootIkControlsModifierLeg(Vec<HkbFootIkControlsModifierLeg<'a>>),
 
     #[serde(rename = "0xe5b6f544")]
-    HkbFootIkControlsModifier(Vec<HkbFootIkControlsModifier>),
+    #[serde(bound(deserialize = "Vec<HkbFootIkControlsModifier<'a>>: Deserialize<'de>"))]
+    HkbFootIkControlsModifier(Vec<HkbFootIkControlsModifier<'a>>),
 
     #[serde(rename = "0x224b18d1")]
     HkbFootIkDriverInfoLeg(Vec<HkbFootIkDriverInfoLeg>),
@@ -571,10 +609,12 @@ pub enum ClassParams<'a> {
     HkbFootIkModifierInternalLegData(Vec<HkbFootIkModifierInternalLegData<'a>>),
 
     #[serde(rename = "0x9f3e3a04")]
-    HkbFootIkModifierLeg(Vec<HkbFootIkModifierLeg>),
+    #[serde(bound(deserialize = "Vec<HkbFootIkModifierLeg<'a>>: Deserialize<'de>"))]
+    HkbFootIkModifierLeg(Vec<HkbFootIkModifierLeg<'a>>),
 
     #[serde(rename = "0xed8966c0")]
-    HkbFootIkModifier(Vec<HkbFootIkModifier>),
+    #[serde(bound(deserialize = "Vec<HkbFootIkModifier<'a>>: Deserialize<'de>"))]
+    HkbFootIkModifier(Vec<HkbFootIkModifier<'a>>),
 
     #[serde(rename = "0xda8c7d7d")]
     HkbGeneratorOutputListener(Vec<HkbGeneratorOutputListener>),
@@ -593,7 +633,8 @@ pub enum ClassParams<'a> {
     HkbGeneratorTransitionEffect(Vec<HkbGeneratorTransitionEffect<'a>>),
 
     #[serde(rename = "0xd68aefc")]
-    HkbGenerator(Vec<HkbGenerator>),
+    #[serde(bound(deserialize = "Vec<HkbGenerator<'a>>: Deserialize<'de>"))]
+    HkbGenerator(Vec<HkbGenerator<'a>>),
 
     #[serde(rename = "0x50c34a17")]
     #[serde(bound(deserialize = "Vec<HkbGetHandleOnBoneModifier<'a>>: Deserialize<'de>"))]
@@ -603,37 +644,43 @@ pub enum ClassParams<'a> {
     HkbGetUpModifierInternalState(Vec<HkbGetUpModifierInternalState>),
 
     #[serde(rename = "0x61cb7ac0")]
-    HkbGetUpModifier(Vec<HkbGetUpModifier>),
+    #[serde(bound(deserialize = "Vec<HkbGetUpModifier<'a>>: Deserialize<'de>"))]
+    HkbGetUpModifier(Vec<HkbGetUpModifier<'a>>),
 
     #[serde(rename = "0xa92ed39f")]
     HkbGetWorldFromModelModifierInternalState(Vec<HkbGetWorldFromModelModifierInternalState>),
 
     #[serde(rename = "0x873fc6f7")]
-    HkbGetWorldFromModelModifier(Vec<HkbGetWorldFromModelModifier>),
+    #[serde(bound(deserialize = "Vec<HkbGetWorldFromModelModifier<'a>>: Deserialize<'de>"))]
+    HkbGetWorldFromModelModifier(Vec<HkbGetWorldFromModelModifier<'a>>),
 
     #[serde(rename = "0xd72b8d17")]
     #[serde(bound(deserialize = "Vec<HkbHandIkControlData<'a>>: Deserialize<'de>"))]
     HkbHandIkControlData(Vec<HkbHandIkControlData<'a>>),
 
     #[serde(rename = "0x9c72e9e3")]
-    HkbHandIkControlsModifierHand(Vec<HkbHandIkControlsModifierHand>),
+    #[serde(bound(deserialize = "Vec<HkbHandIkControlsModifierHand<'a>>: Deserialize<'de>"))]
+    HkbHandIkControlsModifierHand(Vec<HkbHandIkControlsModifierHand<'a>>),
 
     #[serde(rename = "0x9f0488bb")]
-    HkbHandIkControlsModifier(Vec<HkbHandIkControlsModifier>),
+    #[serde(bound(deserialize = "Vec<HkbHandIkControlsModifier<'a>>: Deserialize<'de>"))]
+    HkbHandIkControlsModifier(Vec<HkbHandIkControlsModifier<'a>>),
 
     #[serde(rename = "0x14dfe1dd")]
     #[serde(bound(deserialize = "Vec<HkbHandIkDriverInfoHand<'a>>: Deserialize<'de>"))]
     HkbHandIkDriverInfoHand(Vec<HkbHandIkDriverInfoHand<'a>>),
 
     #[serde(rename = "0xc299090a")]
-    HkbHandIkDriverInfo(Vec<HkbHandIkDriverInfo>),
+    #[serde(bound(deserialize = "Vec<HkbHandIkDriverInfo<'a>>: Deserialize<'de>"))]
+    HkbHandIkDriverInfo(Vec<HkbHandIkDriverInfo<'a>>),
 
     #[serde(rename = "0x14dfe1dd")]
     #[serde(bound(deserialize = "Vec<HkbHandIkModifierHand<'a>>: Deserialize<'de>"))]
     HkbHandIkModifierHand(Vec<HkbHandIkModifierHand<'a>>),
 
     #[serde(rename = "0xef8bc2f7")]
-    HkbHandIkModifier(Vec<HkbHandIkModifier>),
+    #[serde(bound(deserialize = "Vec<HkbHandIkModifier<'a>>: Deserialize<'de>"))]
+    HkbHandIkModifier(Vec<HkbHandIkModifier<'a>>),
 
     #[serde(rename = "0xd8b6401c")]
     #[serde(bound(deserialize = "Vec<HkbHandle<'a>>: Deserialize<'de>"))]
@@ -666,7 +713,8 @@ pub enum ClassParams<'a> {
     HkbLookAtModifierInternalState(Vec<HkbLookAtModifierInternalState>),
 
     #[serde(rename = "0x3d28e066")]
-    HkbLookAtModifier(Vec<HkbLookAtModifier>),
+    #[serde(bound(deserialize = "Vec<HkbLookAtModifier<'a>>: Deserialize<'de>"))]
+    HkbLookAtModifier(Vec<HkbLookAtModifier<'a>>),
 
     #[serde(rename = "0x492c6137")]
     HkbManualSelectorGeneratorInternalState(Vec<HkbManualSelectorGeneratorInternalState>),
@@ -683,7 +731,8 @@ pub enum ClassParams<'a> {
     HkbMirroredSkeletonInfo(Vec<HkbMirroredSkeletonInfo>),
 
     #[serde(rename = "0xa9a271ea")]
-    HkbMirrorModifier(Vec<HkbMirrorModifier>),
+    #[serde(bound(deserialize = "Vec<HkbMirrorModifier<'a>>: Deserialize<'de>"))]
+    HkbMirrorModifier(Vec<HkbMirrorModifier<'a>>),
 
     #[serde(rename = "0x1f81fae6")]
     #[serde(bound(deserialize = "Vec<HkbModifierGenerator<'a>>: Deserialize<'de>"))]
@@ -698,23 +747,27 @@ pub enum ClassParams<'a> {
     HkbModifierWrapper(Vec<HkbModifierWrapper<'a>>),
 
     #[serde(rename = "0x96ec5ced")]
-    HkbModifier(Vec<HkbModifier>),
+    #[serde(bound(deserialize = "Vec<HkbModifier<'a>>: Deserialize<'de>"))]
+    HkbModifier(Vec<HkbModifier<'a>>),
 
     #[serde(rename = "0x28f67ba0")]
     HkbMoveCharacterModifierInternalState(Vec<HkbMoveCharacterModifierInternalState>),
 
     #[serde(rename = "0x8f7492a0")]
-    HkbMoveCharacterModifier(Vec<HkbMoveCharacterModifier>),
+    #[serde(bound(deserialize = "Vec<HkbMoveCharacterModifier<'a>>: Deserialize<'de>"))]
+    HkbMoveCharacterModifier(Vec<HkbMoveCharacterModifier<'a>>),
 
     #[serde(rename = "0x65bdd3a0")]
     #[serde(bound(deserialize = "Vec<HkbNamedEventPayload<'a>>: Deserialize<'de>"))]
     HkbNamedEventPayload(Vec<HkbNamedEventPayload<'a>>),
 
     #[serde(rename = "0x3c99bda4")]
-    HkbNamedIntEventPayload(Vec<HkbNamedIntEventPayload>),
+    #[serde(bound(deserialize = "Vec<HkbNamedIntEventPayload<'a>>: Deserialize<'de>"))]
+    HkbNamedIntEventPayload(Vec<HkbNamedIntEventPayload<'a>>),
 
     #[serde(rename = "0x9c99fd70")]
-    HkbNamedRealEventPayload(Vec<HkbNamedRealEventPayload>),
+    #[serde(bound(deserialize = "Vec<HkbNamedRealEventPayload<'a>>: Deserialize<'de>"))]
+    HkbNamedRealEventPayload(Vec<HkbNamedRealEventPayload<'a>>),
 
     #[serde(rename = "0x6caa9113")]
     #[serde(bound(deserialize = "Vec<HkbNamedStringEventPayload<'a>>: Deserialize<'de>"))]
@@ -794,10 +847,12 @@ pub enum ClassParams<'a> {
     HkbRotateCharacterModifierInternalState(Vec<HkbRotateCharacterModifierInternalState>),
 
     #[serde(rename = "0x877ebc0b")]
-    HkbRotateCharacterModifier(Vec<HkbRotateCharacterModifier>),
+    #[serde(bound(deserialize = "Vec<HkbRotateCharacterModifier<'a>>: Deserialize<'de>"))]
+    HkbRotateCharacterModifier(Vec<HkbRotateCharacterModifier<'a>>),
 
     #[serde(rename = "0xfb56b692")]
-    HkbSenseHandleModifierRange(Vec<HkbSenseHandleModifierRange>),
+    #[serde(bound(deserialize = "Vec<HkbSenseHandleModifierRange<'a>>: Deserialize<'de>"))]
+    HkbSenseHandleModifierRange(Vec<HkbSenseHandleModifierRange<'a>>),
 
     #[serde(rename = "0x2a064d99")]
     #[serde(bound(deserialize = "Vec<HkbSenseHandleModifier<'a>>: Deserialize<'de>"))]
@@ -832,7 +887,8 @@ pub enum ClassParams<'a> {
     HkbSetWordVariableCommand(Vec<HkbSetWordVariableCommand>),
 
     #[serde(rename = "0xafcfa211")]
-    HkbSetWorldFromModelModifier(Vec<HkbSetWorldFromModelModifier>),
+    #[serde(bound(deserialize = "Vec<HkbSetWorldFromModelModifier<'a>>: Deserialize<'de>"))]
+    HkbSetWorldFromModelModifier(Vec<HkbSetWorldFromModelModifier<'a>>),
 
     #[serde(rename = "0x2a241367")]
     HkbSimulationControlCommand(Vec<HkbSimulationControlCommand>),
@@ -854,10 +910,12 @@ pub enum ClassParams<'a> {
     HkbStateMachineDelayedTransitionInfo(Vec<HkbStateMachineDelayedTransitionInfo>),
 
     #[serde(rename = "0xb07b4388")]
-    HkbStateMachineEventPropertyArray(Vec<HkbStateMachineEventPropertyArray>),
+    #[serde(bound(deserialize = "Vec<HkbStateMachineEventPropertyArray<'a>>: Deserialize<'de>"))]
+    HkbStateMachineEventPropertyArray(Vec<HkbStateMachineEventPropertyArray<'a>>),
 
     #[serde(rename = "0xbd1a7502")]
-    HkbStateMachineInternalState(Vec<HkbStateMachineInternalState>),
+    #[serde(bound(deserialize = "Vec<HkbStateMachineInternalState<'a>>: Deserialize<'de>"))]
+    HkbStateMachineInternalState(Vec<HkbStateMachineInternalState<'a>>),
 
     #[serde(rename = "0x7358f5da")]
     #[serde(bound(deserialize = "Vec<HkbStateMachineNestedStateMachineData<'a>>: Deserialize<'de>"))]
@@ -874,7 +932,8 @@ pub enum ClassParams<'a> {
     HkbStateMachineTimeInterval(Vec<HkbStateMachineTimeInterval>),
 
     #[serde(rename = "0xe397b11e")]
-    HkbStateMachineTransitionInfoArray(Vec<HkbStateMachineTransitionInfoArray>),
+    #[serde(bound(deserialize = "Vec<HkbStateMachineTransitionInfoArray<'a>>: Deserialize<'de>"))]
+    HkbStateMachineTransitionInfoArray(Vec<HkbStateMachineTransitionInfoArray<'a>>),
 
     #[serde(rename = "0x9810c2d0")]
     HkbStateMachineTransitionInfoReference(Vec<HkbStateMachineTransitionInfoReference>),
@@ -903,26 +962,31 @@ pub enum ClassParams<'a> {
     HkbTimerModifierInternalState(Vec<HkbTimerModifierInternalState>),
 
     #[serde(rename = "0x338b4879")]
-    HkbTimerModifier(Vec<HkbTimerModifier>),
+    #[serde(bound(deserialize = "Vec<HkbTimerModifier<'a>>: Deserialize<'de>"))]
+    HkbTimerModifier(Vec<HkbTimerModifier<'a>>),
 
     #[serde(rename = "0x5ca91c99")]
     HkbTransformVectorModifierInternalState(Vec<HkbTransformVectorModifierInternalState>),
 
     #[serde(rename = "0xf93e0e24")]
-    HkbTransformVectorModifier(Vec<HkbTransformVectorModifier>),
+    #[serde(bound(deserialize = "Vec<HkbTransformVectorModifier<'a>>: Deserialize<'de>"))]
+    HkbTransformVectorModifier(Vec<HkbTransformVectorModifier<'a>>),
 
     #[serde(rename = "0x945da157")]
-    HkbTransitionEffect(Vec<HkbTransitionEffect>),
+    #[serde(bound(deserialize = "Vec<HkbTransitionEffect<'a>>: Deserialize<'de>"))]
+    HkbTransitionEffect(Vec<HkbTransitionEffect<'a>>),
 
     #[serde(rename = "0xb6b76b32")]
-    HkbTwistModifier(Vec<HkbTwistModifier>),
+    #[serde(bound(deserialize = "Vec<HkbTwistModifier<'a>>: Deserialize<'de>"))]
+    HkbTwistModifier(Vec<HkbTwistModifier<'a>>),
 
     #[serde(rename = "0x4d592f72")]
     #[serde(bound(deserialize = "Vec<HkbVariableBindingSetBinding<'a>>: Deserialize<'de>"))]
     HkbVariableBindingSetBinding(Vec<HkbVariableBindingSetBinding<'a>>),
 
     #[serde(rename = "0x338ad4ff")]
-    HkbVariableBindingSet(Vec<HkbVariableBindingSet>),
+    #[serde(bound(deserialize = "Vec<HkbVariableBindingSet<'a>>: Deserialize<'de>"))]
+    HkbVariableBindingSet(Vec<HkbVariableBindingSet<'a>>),
 
     #[serde(rename = "0x9e746ba2")]
     HkbVariableInfo(Vec<HkbVariableInfo>),
@@ -970,7 +1034,8 @@ pub enum ClassParams<'a> {
     HkCustomAttributesAttribute(Vec<HkCustomAttributesAttribute<'a>>),
 
     #[serde(rename = "0xbff19005")]
-    HkCustomAttributes(Vec<HkCustomAttributes>),
+    #[serde(bound(deserialize = "Vec<HkCustomAttributes<'a>>: Deserialize<'de>"))]
+    HkCustomAttributes(Vec<HkCustomAttributes<'a>>),
 
     #[serde(rename = "0x1e3857bb")]
     #[serde(bound(deserialize = "Vec<HkDataObjectTypeAttribute<'a>>: Deserialize<'de>"))]
@@ -1079,7 +1144,8 @@ pub enum ClassParams<'a> {
     HkMonitorStreamColorTableColorPair(Vec<HkMonitorStreamColorTableColorPair<'a>>),
 
     #[serde(rename = "0x79e53e85")]
-    HkMonitorStreamColorTable(Vec<HkMonitorStreamColorTable>),
+    #[serde(bound(deserialize = "Vec<HkMonitorStreamColorTable<'a>>: Deserialize<'de>"))]
+    HkMonitorStreamColorTable(Vec<HkMonitorStreamColorTable<'a>>),
 
     #[serde(rename = "0x7798b7db")]
     #[serde(bound(deserialize = "Vec<HkMonitorStreamFrameInfo<'a>>: Deserialize<'de>"))]
@@ -1090,7 +1156,8 @@ pub enum ClassParams<'a> {
     HkMonitorStreamStringMapStringMap(Vec<HkMonitorStreamStringMapStringMap<'a>>),
 
     #[serde(rename = "0xc4d3a8b4")]
-    HkMonitorStreamStringMap(Vec<HkMonitorStreamStringMap>),
+    #[serde(bound(deserialize = "Vec<HkMonitorStreamStringMap<'a>>: Deserialize<'de>"))]
+    HkMonitorStreamStringMap(Vec<HkMonitorStreamStringMap<'a>>),
 
     #[serde(rename = "0x7c338c66")]
     #[serde(bound(deserialize = "Vec<HkMoppBvTreeShapeBase<'a>>: Deserialize<'de>"))]
@@ -1153,7 +1220,8 @@ pub enum ClassParams<'a> {
     HkpAngMotorConstraintAtom(Vec<HkpAngMotorConstraintAtom<'a>>),
 
     #[serde(rename = "0x35f4c487")]
-    HkpAngularDashpotAction(Vec<HkpAngularDashpotAction>),
+    #[serde(bound(deserialize = "Vec<HkpAngularDashpotAction<'a>>: Deserialize<'de>"))]
+    HkpAngularDashpotAction(Vec<HkpAngularDashpotAction<'a>>),
 
     #[serde(rename = "0x674bcd2d")]
     #[serde(bound(deserialize = "Vec<HkpArrayAction<'a>>: Deserialize<'de>"))]
@@ -1183,7 +1251,8 @@ pub enum ClassParams<'a> {
     HkpBinaryAction(Vec<HkpBinaryAction<'a>>),
 
     #[serde(rename = "0xbafa2bb7")]
-    HkpBoxMotion(Vec<HkpBoxMotion>),
+    #[serde(bound(deserialize = "Vec<HkpBoxMotion<'a>>: Deserialize<'de>"))]
+    HkpBoxMotion(Vec<HkpBoxMotion<'a>>),
 
     #[serde(rename = "0x3444d2d5")]
     HkpBoxShape(Vec<HkpBoxShape>),
@@ -1196,7 +1265,8 @@ pub enum ClassParams<'a> {
     HkpBreakableConstraintData(Vec<HkpBreakableConstraintData<'a>>),
 
     #[serde(rename = "0xde152a4d")]
-    HkpBridgeAtoms(Vec<HkpBridgeAtoms>),
+    #[serde(bound(deserialize = "Vec<HkpBridgeAtoms<'a>>: Deserialize<'de>"))]
+    HkpBridgeAtoms(Vec<HkpBridgeAtoms<'a>>),
 
     #[serde(rename = "0x87a4f31b")]
     #[serde(bound(deserialize = "Vec<HkpBridgeConstraintAtom<'a>>: Deserialize<'de>"))]
@@ -1213,7 +1283,8 @@ pub enum ClassParams<'a> {
     HkpBvTreeShape(Vec<HkpBvTreeShape>),
 
     #[serde(rename = "0xcf227f58")]
-    HkpCachingShapePhantom(Vec<HkpCachingShapePhantom>),
+    #[serde(bound(deserialize = "Vec<HkpCachingShapePhantom<'a>>: Deserialize<'de>"))]
+    HkpCachingShapePhantom(Vec<HkpCachingShapePhantom<'a>>),
 
     #[serde(rename = "0xafcd79ad")]
     #[serde(bound(deserialize = "Vec<HkpCallbackConstraintMotor<'a>>: Deserialize<'de>"))]
@@ -1227,13 +1298,15 @@ pub enum ClassParams<'a> {
     HkpCdBody(Vec<HkpCdBody<'a>>),
 
     #[serde(rename = "0x1d7dbdd2")]
-    HkpCenterOfMassChangerModifierConstraintAtom(Vec<HkpCenterOfMassChangerModifierConstraintAtom>),
+    #[serde(bound(deserialize = "Vec<HkpCenterOfMassChangerModifierConstraintAtom<'a>>: Deserialize<'de>"))]
+    HkpCenterOfMassChangerModifierConstraintAtom(Vec<HkpCenterOfMassChangerModifierConstraintAtom<'a>>),
 
     #[serde(rename = "0xda8c7d7d")]
     HkpCharacterControllerCinfo(Vec<HkpCharacterControllerCinfo>),
 
     #[serde(rename = "0xbafa2bb7")]
-    HkpCharacterMotion(Vec<HkpCharacterMotion>),
+    #[serde(bound(deserialize = "Vec<HkpCharacterMotion<'a>>: Deserialize<'de>"))]
+    HkpCharacterMotion(Vec<HkpCharacterMotion<'a>>),
 
     #[serde(rename = "0x586d97b2")]
     #[serde(bound(deserialize = "Vec<HkpCharacterProxyCinfo<'a>>: Deserialize<'de>"))]
@@ -1260,7 +1333,8 @@ pub enum ClassParams<'a> {
     HkpCollidableCollidableFilter(Vec<HkpCollidableCollidableFilter>),
 
     #[serde(rename = "0x9a0e42a5")]
-    HkpCollidable(Vec<HkpCollidable>),
+    #[serde(bound(deserialize = "Vec<HkpCollidable<'a>>: Deserialize<'de>"))]
+    HkpCollidable(Vec<HkpCollidable<'a>>),
 
     #[serde(rename = "0x2603bf04")]
     #[serde(bound(deserialize = "Vec<HkpCollisionFilterList<'a>>: Deserialize<'de>"))]
@@ -1307,7 +1381,8 @@ pub enum ClassParams<'a> {
     HkpConstraintChainInstance(Vec<HkpConstraintChainInstance<'a>>),
 
     #[serde(rename = "0xc3b577b1")]
-    HkpConstraintCollisionFilter(Vec<HkpConstraintCollisionFilter>),
+    #[serde(bound(deserialize = "Vec<HkpConstraintCollisionFilter<'a>>: Deserialize<'de>"))]
+    HkpConstraintCollisionFilter(Vec<HkpConstraintCollisionFilter<'a>>),
 
     #[serde(rename = "0x80559a4e")]
     HkpConstraintData(Vec<HkpConstraintData>),
@@ -1341,13 +1416,16 @@ pub enum ClassParams<'a> {
     HkpConvexShape(Vec<HkpConvexShape>),
 
     #[serde(rename = "0xfbd72f9")]
-    HkpConvexTransformShapeBase(Vec<HkpConvexTransformShapeBase>),
+    #[serde(bound(deserialize = "Vec<HkpConvexTransformShapeBase<'a>>: Deserialize<'de>"))]
+    HkpConvexTransformShapeBase(Vec<HkpConvexTransformShapeBase<'a>>),
 
     #[serde(rename = "0xae3e5017")]
-    HkpConvexTransformShape(Vec<HkpConvexTransformShape>),
+    #[serde(bound(deserialize = "Vec<HkpConvexTransformShape<'a>>: Deserialize<'de>"))]
+    HkpConvexTransformShape(Vec<HkpConvexTransformShape<'a>>),
 
     #[serde(rename = "0x5ba0a5f7")]
-    HkpConvexTranslateShape(Vec<HkpConvexTranslateShape>),
+    #[serde(bound(deserialize = "Vec<HkpConvexTranslateShape<'a>>: Deserialize<'de>"))]
+    HkpConvexTranslateShape(Vec<HkpConvexTranslateShape<'a>>),
 
     #[serde(rename = "0x63d38e9c")]
     HkpConvexVerticesConnectivity(Vec<HkpConvexVerticesConnectivity>),
@@ -1363,7 +1441,8 @@ pub enum ClassParams<'a> {
     HkpCylinderShape(Vec<HkpCylinderShape>),
 
     #[serde(rename = "0x50746c6e")]
-    HkpDashpotAction(Vec<HkpDashpotAction>),
+    #[serde(bound(deserialize = "Vec<HkpDashpotAction<'a>>: Deserialize<'de>"))]
+    HkpDashpotAction(Vec<HkpDashpotAction<'a>>),
 
     #[serde(rename = "0xb69c1c02")]
     HkpDefaultConvexListFilter(Vec<HkpDefaultConvexListFilter>),
@@ -1388,7 +1467,8 @@ pub enum ClassParams<'a> {
     HkpDisplayBindingData(Vec<HkpDisplayBindingData<'a>>),
 
     #[serde(rename = "0xf557023c")]
-    HkpEntityExtendedListeners(Vec<HkpEntityExtendedListeners>),
+    #[serde(bound(deserialize = "Vec<HkpEntityExtendedListeners<'a>>: Deserialize<'de>"))]
+    HkpEntityExtendedListeners(Vec<HkpEntityExtendedListeners<'a>>),
 
     #[serde(rename = "0xee3c2aec")]
     #[serde(bound(deserialize = "Vec<HkpEntitySmallArraySerializeOverrideType<'a>>: Deserialize<'de>"))]
@@ -1419,14 +1499,16 @@ pub enum ClassParams<'a> {
     HkpExtendedMeshShape(Vec<HkpExtendedMeshShape<'a>>),
 
     #[serde(rename = "0x3d3da311")]
-    HkpFastMeshShape(Vec<HkpFastMeshShape>),
+    #[serde(bound(deserialize = "Vec<HkpFastMeshShape<'a>>: Deserialize<'de>"))]
+    HkpFastMeshShape(Vec<HkpFastMeshShape<'a>>),
 
     #[serde(rename = "0x852ab70b")]
     #[serde(bound(deserialize = "Vec<HkpFirstPersonGun<'a>>: Deserialize<'de>"))]
     HkpFirstPersonGun(Vec<HkpFirstPersonGun<'a>>),
 
     #[serde(rename = "0x64abf85c")]
-    HkpFixedRigidMotion(Vec<HkpFixedRigidMotion>),
+    #[serde(bound(deserialize = "Vec<HkpFixedRigidMotion<'a>>: Deserialize<'de>"))]
+    HkpFixedRigidMotion(Vec<HkpFixedRigidMotion<'a>>),
 
     #[serde(rename = "0xd6421f19")]
     HkpGenericConstraintDataSchemeConstraintInfo(Vec<HkpGenericConstraintDataSchemeConstraintInfo>),
@@ -1436,7 +1518,8 @@ pub enum ClassParams<'a> {
     HkpGenericConstraintDataScheme(Vec<HkpGenericConstraintDataScheme<'a>>),
 
     #[serde(rename = "0xfa824640")]
-    HkpGenericConstraintData(Vec<HkpGenericConstraintData>),
+    #[serde(bound(deserialize = "Vec<HkpGenericConstraintData<'a>>: Deserialize<'de>"))]
+    HkpGenericConstraintData(Vec<HkpGenericConstraintData<'a>>),
 
     #[serde(rename = "0x5e2754cd")]
     #[serde(bound(deserialize = "Vec<HkpGravityGun<'a>>: Deserialize<'de>"))]
@@ -1464,16 +1547,19 @@ pub enum ClassParams<'a> {
     HkpHingeLimitsData(Vec<HkpHingeLimitsData>),
 
     #[serde(rename = "0x5c6aa14d")]
-    HkpIgnoreModifierConstraintAtom(Vec<HkpIgnoreModifierConstraintAtom>),
+    #[serde(bound(deserialize = "Vec<HkpIgnoreModifierConstraintAtom<'a>>: Deserialize<'de>"))]
+    HkpIgnoreModifierConstraintAtom(Vec<HkpIgnoreModifierConstraintAtom<'a>>),
 
     #[serde(rename = "0xbafa2bb7")]
-    HkpKeyframedRigidMotion(Vec<HkpKeyframedRigidMotion>),
+    #[serde(bound(deserialize = "Vec<HkpKeyframedRigidMotion<'a>>: Deserialize<'de>"))]
+    HkpKeyframedRigidMotion(Vec<HkpKeyframedRigidMotion<'a>>),
 
     #[serde(rename = "0x3377b0b0")]
     HkpLimitedForceConstraintMotor(Vec<HkpLimitedForceConstraintMotor>),
 
     #[serde(rename = "0x54c7715b")]
-    HkpLimitedHingeConstraintDataAtoms(Vec<HkpLimitedHingeConstraintDataAtoms>),
+    #[serde(bound(deserialize = "Vec<HkpLimitedHingeConstraintDataAtoms<'a>>: Deserialize<'de>"))]
+    HkpLimitedHingeConstraintDataAtoms(Vec<HkpLimitedHingeConstraintDataAtoms<'a>>),
 
     #[serde(rename = "0x7c15bb6b")]
     HkpLimitedHingeConstraintData(Vec<HkpLimitedHingeConstraintData>),
@@ -1488,7 +1574,8 @@ pub enum ClassParams<'a> {
     HkpLinFrictionConstraintAtom(Vec<HkpLinFrictionConstraintAtom>),
 
     #[serde(rename = "0xe1a81497")]
-    HkpLinkedCollidable(Vec<HkpLinkedCollidable>),
+    #[serde(bound(deserialize = "Vec<HkpLinkedCollidable<'a>>: Deserialize<'de>"))]
+    HkpLinkedCollidable(Vec<HkpLinkedCollidable<'a>>),
 
     #[serde(rename = "0xa44d1b07")]
     HkpLinLimitConstraintAtom(Vec<HkpLinLimitConstraintAtom>),
@@ -1505,14 +1592,16 @@ pub enum ClassParams<'a> {
     HkpListShapeChildInfo(Vec<HkpListShapeChildInfo<'a>>),
 
     #[serde(rename = "0xa1937cbd")]
-    HkpListShape(Vec<HkpListShape>),
+    #[serde(bound(deserialize = "Vec<HkpListShape<'a>>: Deserialize<'de>"))]
+    HkpListShape(Vec<HkpListShape<'a>>),
 
     #[serde(rename = "0x6748b2cf")]
     #[serde(bound(deserialize = "Vec<HkpMalleableConstraintData<'a>>: Deserialize<'de>"))]
     HkpMalleableConstraintData(Vec<HkpMalleableConstraintData<'a>>),
 
     #[serde(rename = "0xb6b28240")]
-    HkpMassChangerModifierConstraintAtom(Vec<HkpMassChangerModifierConstraintAtom>),
+    #[serde(bound(deserialize = "Vec<HkpMassChangerModifierConstraintAtom<'a>>: Deserialize<'de>"))]
+    HkpMassChangerModifierConstraintAtom(Vec<HkpMassChangerModifierConstraintAtom<'a>>),
 
     #[serde(rename = "0x68a56834")]
     HkpMassProperties(Vec<HkpMassProperties>),
@@ -1521,7 +1610,8 @@ pub enum ClassParams<'a> {
     HkpMaterial(Vec<HkpMaterial>),
 
     #[serde(rename = "0x64abf85c")]
-    HkpMaxSizeMotion(Vec<HkpMaxSizeMotion>),
+    #[serde(bound(deserialize = "Vec<HkpMaxSizeMotion<'a>>: Deserialize<'de>"))]
+    HkpMaxSizeMotion(Vec<HkpMaxSizeMotion<'a>>),
 
     #[serde(rename = "0x886cde0c")]
     HkpMeshMaterial(Vec<HkpMeshMaterial>),
@@ -1531,14 +1621,16 @@ pub enum ClassParams<'a> {
     HkpMeshShapeSubpart(Vec<HkpMeshShapeSubpart<'a>>),
 
     #[serde(rename = "0x3bf12c0f")]
-    HkpMeshShape(Vec<HkpMeshShape>),
+    #[serde(bound(deserialize = "Vec<HkpMeshShape<'a>>: Deserialize<'de>"))]
+    HkpMeshShape(Vec<HkpMeshShape<'a>>),
 
     #[serde(rename = "0xb13fef1f")]
     #[serde(bound(deserialize = "Vec<HkpModifierConstraintAtom<'a>>: Deserialize<'de>"))]
     HkpModifierConstraintAtom(Vec<HkpModifierConstraintAtom<'a>>),
 
     #[serde(rename = "0x90b29d39")]
-    HkpMoppBvTreeShape(Vec<HkpMoppBvTreeShape>),
+    #[serde(bound(deserialize = "Vec<HkpMoppBvTreeShape<'a>>: Deserialize<'de>"))]
+    HkpMoppBvTreeShape(Vec<HkpMoppBvTreeShape<'a>>),
 
     #[serde(rename = "0xd8fdbb08")]
     HkpMoppCodeCodeInfo(Vec<HkpMoppCodeCodeInfo>),
@@ -1554,17 +1646,20 @@ pub enum ClassParams<'a> {
     HkpMotion(Vec<HkpMotion<'a>>),
 
     #[serde(rename = "0x8ff131d9")]
-    HkpMotorAction(Vec<HkpMotorAction>),
+    #[serde(bound(deserialize = "Vec<HkpMotorAction<'a>>: Deserialize<'de>"))]
+    HkpMotorAction(Vec<HkpMotorAction<'a>>),
 
     #[serde(rename = "0x6791ffce")]
-    HkpMountedBallGun(Vec<HkpMountedBallGun>),
+    #[serde(bound(deserialize = "Vec<HkpMountedBallGun<'a>>: Deserialize<'de>"))]
+    HkpMountedBallGun(Vec<HkpMountedBallGun<'a>>),
 
     #[serde(rename = "0x6e087fd6")]
     #[serde(bound(deserialize = "Vec<HkpMouseSpringAction<'a>>: Deserialize<'de>"))]
     HkpMouseSpringAction(Vec<HkpMouseSpringAction<'a>>),
 
     #[serde(rename = "0x79ab517d")]
-    HkpMovingSurfaceModifierConstraintAtom(Vec<HkpMovingSurfaceModifierConstraintAtom>),
+    #[serde(bound(deserialize = "Vec<HkpMovingSurfaceModifierConstraintAtom<'a>>: Deserialize<'de>"))]
+    HkpMovingSurfaceModifierConstraintAtom(Vec<HkpMovingSurfaceModifierConstraintAtom<'a>>),
 
     #[serde(rename = "0xffdc0b65")]
     HkpMultiRayShapeRay(Vec<HkpMultiRayShapeRay>),
@@ -1576,7 +1671,8 @@ pub enum ClassParams<'a> {
     HkpMultiSphereShape(Vec<HkpMultiSphereShape>),
 
     #[serde(rename = "0xc03af40d")]
-    HkpMultithreadedVehicleManager(Vec<HkpMultithreadedVehicleManager>),
+    #[serde(bound(deserialize = "Vec<HkpMultithreadedVehicleManager<'a>>: Deserialize<'de>"))]
+    HkpMultithreadedVehicleManager(Vec<HkpMultithreadedVehicleManager<'a>>),
 
     #[serde(rename = "0x66b42df1")]
     #[serde(bound(deserialize = "Vec<HkpNamedMeshMaterial<'a>>: Deserialize<'de>"))]
@@ -1643,7 +1739,8 @@ pub enum ClassParams<'a> {
     HkpPoweredChainDataConstraintInfo(Vec<HkpPoweredChainDataConstraintInfo<'a>>),
 
     #[serde(rename = "0x38aeafc3")]
-    HkpPoweredChainData(Vec<HkpPoweredChainData>),
+    #[serde(bound(deserialize = "Vec<HkpPoweredChainData<'a>>: Deserialize<'de>"))]
+    HkpPoweredChainData(Vec<HkpPoweredChainData<'a>>),
 
     #[serde(rename = "0xcf071a1b")]
     #[serde(bound(deserialize = "Vec<HkpPoweredChainMapperLinkInfo<'a>>: Deserialize<'de>"))]
@@ -1658,7 +1755,8 @@ pub enum ClassParams<'a> {
     HkpPoweredChainMapper(Vec<HkpPoweredChainMapper<'a>>),
 
     #[serde(rename = "0x7f516137")]
-    HkpPrismaticConstraintDataAtoms(Vec<HkpPrismaticConstraintDataAtoms>),
+    #[serde(bound(deserialize = "Vec<HkpPrismaticConstraintDataAtoms<'a>>: Deserialize<'de>"))]
+    HkpPrismaticConstraintDataAtoms(Vec<HkpPrismaticConstraintDataAtoms<'a>>),
 
     #[serde(rename = "0x3996c387")]
     HkpPrismaticConstraintData(Vec<HkpPrismaticConstraintData>),
@@ -1692,7 +1790,8 @@ pub enum ClassParams<'a> {
     HkpRackAndPinionConstraintData(Vec<HkpRackAndPinionConstraintData>),
 
     #[serde(rename = "0xeed76b00")]
-    HkpRagdollConstraintDataAtoms(Vec<HkpRagdollConstraintDataAtoms>),
+    #[serde(bound(deserialize = "Vec<HkpRagdollConstraintDataAtoms<'a>>: Deserialize<'de>"))]
+    HkpRagdollConstraintDataAtoms(Vec<HkpRagdollConstraintDataAtoms<'a>>),
 
     #[serde(rename = "0x8fb5dd29")]
     HkpRagdollConstraintData(Vec<HkpRagdollConstraintData>),
@@ -1722,10 +1821,12 @@ pub enum ClassParams<'a> {
     HkpRemoveTerminalsMoppModifier(Vec<HkpRemoveTerminalsMoppModifier<'a>>),
 
     #[serde(rename = "0x2dc0ec6a")]
-    HkpReorientAction(Vec<HkpReorientAction>),
+    #[serde(bound(deserialize = "Vec<HkpReorientAction<'a>>: Deserialize<'de>"))]
+    HkpReorientAction(Vec<HkpReorientAction<'a>>),
 
     #[serde(rename = "0x75f8d805")]
-    HkpRigidBody(Vec<HkpRigidBody>),
+    #[serde(bound(deserialize = "Vec<HkpRigidBody<'a>>: Deserialize<'de>"))]
+    HkpRigidBody(Vec<HkpRigidBody<'a>>),
 
     #[serde(rename = "0xa0c64586")]
     HkpRotationalConstraintDataAtoms(Vec<HkpRotationalConstraintDataAtoms>),
@@ -1752,10 +1853,12 @@ pub enum ClassParams<'a> {
     HkpSerializedDisplayRbTransformsDisplayTransformPair(Vec<HkpSerializedDisplayRbTransformsDisplayTransformPair<'a>>),
 
     #[serde(rename = "0xc18650ac")]
-    HkpSerializedDisplayRbTransforms(Vec<HkpSerializedDisplayRbTransforms>),
+    #[serde(bound(deserialize = "Vec<HkpSerializedDisplayRbTransforms<'a>>: Deserialize<'de>"))]
+    HkpSerializedDisplayRbTransforms(Vec<HkpSerializedDisplayRbTransforms<'a>>),
 
     #[serde(rename = "0x10155a")]
-    HkpSerializedSubTrack1NInfo(Vec<HkpSerializedSubTrack1NInfo>),
+    #[serde(bound(deserialize = "Vec<HkpSerializedSubTrack1NInfo<'a>>: Deserialize<'de>"))]
+    HkpSerializedSubTrack1NInfo(Vec<HkpSerializedSubTrack1NInfo<'a>>),
 
     #[serde(rename = "0xf12d48d9")]
     #[serde(bound(deserialize = "Vec<HkpSerializedTrack1NInfo<'a>>: Deserialize<'de>"))]
@@ -1790,7 +1893,8 @@ pub enum ClassParams<'a> {
     HkpShapeModifier(Vec<HkpShapeModifier>),
 
     #[serde(rename = "0xcb22fbcd")]
-    HkpShapePhantom(Vec<HkpShapePhantom>),
+    #[serde(bound(deserialize = "Vec<HkpShapePhantom<'a>>: Deserialize<'de>"))]
+    HkpShapePhantom(Vec<HkpShapePhantom<'a>>),
 
     #[serde(rename = "0x666490a1")]
     HkpShape(Vec<HkpShape>),
@@ -1812,7 +1916,8 @@ pub enum ClassParams<'a> {
     HkpSimpleShapePhantomCollisionDetail(Vec<HkpSimpleShapePhantomCollisionDetail<'a>>),
 
     #[serde(rename = "0x32a2a8a8")]
-    HkpSimpleShapePhantom(Vec<HkpSimpleShapePhantom>),
+    #[serde(bound(deserialize = "Vec<HkpSimpleShapePhantom<'a>>: Deserialize<'de>"))]
+    HkpSimpleShapePhantom(Vec<HkpSimpleShapePhantom<'a>>),
 
     #[serde(rename = "0x97aba922")]
     #[serde(bound(deserialize = "Vec<HkpSimulation<'a>>: Deserialize<'de>"))]
@@ -1823,10 +1928,12 @@ pub enum ClassParams<'a> {
     HkpSingleShapeContainer(Vec<HkpSingleShapeContainer<'a>>),
 
     #[serde(rename = "0xecb34e27")]
-    HkpSoftContactModifierConstraintAtom(Vec<HkpSoftContactModifierConstraintAtom>),
+    #[serde(bound(deserialize = "Vec<HkpSoftContactModifierConstraintAtom<'a>>: Deserialize<'de>"))]
+    HkpSoftContactModifierConstraintAtom(Vec<HkpSoftContactModifierConstraintAtom<'a>>),
 
     #[serde(rename = "0xbafa2bb7")]
-    HkpSphereMotion(Vec<HkpSphereMotion>),
+    #[serde(bound(deserialize = "Vec<HkpSphereMotion<'a>>: Deserialize<'de>"))]
+    HkpSphereMotion(Vec<HkpSphereMotion<'a>>),
 
     #[serde(rename = "0xe7eca7eb")]
     HkpSphereRepShape(Vec<HkpSphereRepShape>),
@@ -1835,7 +1942,8 @@ pub enum ClassParams<'a> {
     HkpSphereShape(Vec<HkpSphereShape>),
 
     #[serde(rename = "0x88fc09fa")]
-    HkpSpringAction(Vec<HkpSpringAction>),
+    #[serde(bound(deserialize = "Vec<HkpSpringAction<'a>>: Deserialize<'de>"))]
+    HkpSpringAction(Vec<HkpSpringAction<'a>>),
 
     #[serde(rename = "0x7ead26f6")]
     HkpSpringDamperConstraintMotor(Vec<HkpSpringDamperConstraintMotor>),
@@ -1859,7 +1967,8 @@ pub enum ClassParams<'a> {
     HkpStorageExtendedMeshShapeMaterial(Vec<HkpStorageExtendedMeshShapeMaterial>),
 
     #[serde(rename = "0x5aad4de6")]
-    HkpStorageExtendedMeshShapeMeshSubpartStorage(Vec<HkpStorageExtendedMeshShapeMeshSubpartStorage>),
+    #[serde(bound(deserialize = "Vec<HkpStorageExtendedMeshShapeMeshSubpartStorage<'a>>: Deserialize<'de>"))]
+    HkpStorageExtendedMeshShapeMeshSubpartStorage(Vec<HkpStorageExtendedMeshShapeMeshSubpartStorage<'a>>),
 
     #[serde(rename = "0x3f7d804c")]
     HkpStorageExtendedMeshShapeShapeSubpartStorage(Vec<HkpStorageExtendedMeshShapeShapeSubpartStorage>),
@@ -1879,10 +1988,12 @@ pub enum ClassParams<'a> {
     HkpStorageSampledHeightFieldShape(Vec<HkpStorageSampledHeightFieldShape>),
 
     #[serde(rename = "0x64abf85c")]
-    HkpThinBoxMotion(Vec<HkpThinBoxMotion>),
+    #[serde(bound(deserialize = "Vec<HkpThinBoxMotion<'a>>: Deserialize<'de>"))]
+    HkpThinBoxMotion(Vec<HkpThinBoxMotion<'a>>),
 
     #[serde(rename = "0x787ef513")]
-    HkpTransformShape(Vec<HkpTransformShape>),
+    #[serde(bound(deserialize = "Vec<HkpTransformShape<'a>>: Deserialize<'de>"))]
+    HkpTransformShape(Vec<HkpTransformShape<'a>>),
 
     #[serde(rename = "0x95ad1a25")]
     HkpTriangleShape(Vec<HkpTriangleShape>),
@@ -1896,7 +2007,8 @@ pub enum ClassParams<'a> {
     HkpTriggerVolume(Vec<HkpTriggerVolume<'a>>),
 
     #[serde(rename = "0x58e1e585")]
-    HkpTriSampledHeightFieldBvTreeShape(Vec<HkpTriSampledHeightFieldBvTreeShape>),
+    #[serde(bound(deserialize = "Vec<HkpTriSampledHeightFieldBvTreeShape<'a>>: Deserialize<'de>"))]
+    HkpTriSampledHeightFieldBvTreeShape(Vec<HkpTriSampledHeightFieldBvTreeShape<'a>>),
 
     #[serde(rename = "0xc291ddde")]
     #[serde(bound(deserialize = "Vec<HkpTriSampledHeightFieldCollection<'a>>: Deserialize<'de>"))]
@@ -1929,7 +2041,8 @@ pub enum ClassParams<'a> {
     HkpVehicleBrake(Vec<HkpVehicleBrake>),
 
     #[serde(rename = "0x53340a9")]
-    HkpVehicleCastBatchingManager(Vec<HkpVehicleCastBatchingManager>),
+    #[serde(bound(deserialize = "Vec<HkpVehicleCastBatchingManager<'a>>: Deserialize<'de>"))]
+    HkpVehicleCastBatchingManager(Vec<HkpVehicleCastBatchingManager<'a>>),
 
     #[serde(rename = "0x82fe40e0")]
     HkpVehicleDataWheelComponentParams(Vec<HkpVehicleDataWheelComponentParams>),
@@ -2000,21 +2113,24 @@ pub enum ClassParams<'a> {
     HkpVehicleInstance(Vec<HkpVehicleInstance<'a>>),
 
     #[serde(rename = "0xed529f13")]
-    HkpVehicleLinearCastBatchingManager(Vec<HkpVehicleLinearCastBatchingManager>),
+    #[serde(bound(deserialize = "Vec<HkpVehicleLinearCastBatchingManager<'a>>: Deserialize<'de>"))]
+    HkpVehicleLinearCastBatchingManager(Vec<HkpVehicleLinearCastBatchingManager<'a>>),
 
     #[serde(rename = "0x2a9acf98")]
     #[serde(bound(deserialize = "Vec<HkpVehicleLinearCastWheelCollideWheelState<'a>>: Deserialize<'de>"))]
     HkpVehicleLinearCastWheelCollideWheelState(Vec<HkpVehicleLinearCastWheelCollideWheelState<'a>>),
 
     #[serde(rename = "0xc59399d0")]
-    HkpVehicleLinearCastWheelCollide(Vec<HkpVehicleLinearCastWheelCollide>),
+    #[serde(bound(deserialize = "Vec<HkpVehicleLinearCastWheelCollide<'a>>: Deserialize<'de>"))]
+    HkpVehicleLinearCastWheelCollide(Vec<HkpVehicleLinearCastWheelCollide<'a>>),
 
     #[serde(rename = "0xe2f7d6a7")]
     #[serde(bound(deserialize = "Vec<HkpVehicleManager<'a>>: Deserialize<'de>"))]
     HkpVehicleManager(Vec<HkpVehicleManager<'a>>),
 
     #[serde(rename = "0xed529f13")]
-    HkpVehicleRayCastBatchingManager(Vec<HkpVehicleRayCastBatchingManager>),
+    #[serde(bound(deserialize = "Vec<HkpVehicleRayCastBatchingManager<'a>>: Deserialize<'de>"))]
+    HkpVehicleRayCastBatchingManager(Vec<HkpVehicleRayCastBatchingManager<'a>>),
 
     #[serde(rename = "0x41efd9e3")]
     #[serde(bound(deserialize = "Vec<HkpVehicleRayCastWheelCollide<'a>>: Deserialize<'de>"))]
@@ -2042,7 +2158,8 @@ pub enum ClassParams<'a> {
     HkpVelocityConstraintMotor(Vec<HkpVelocityConstraintMotor>),
 
     #[serde(rename = "0x5c6aa14d")]
-    HkpViscousSurfaceModifierConstraintAtom(Vec<HkpViscousSurfaceModifierConstraintAtom>),
+    #[serde(bound(deserialize = "Vec<HkpViscousSurfaceModifierConstraintAtom<'a>>: Deserialize<'de>"))]
+    HkpViscousSurfaceModifierConstraintAtom(Vec<HkpViscousSurfaceModifierConstraintAtom<'a>>),
 
     #[serde(rename = "0xb2b41feb")]
     HkpWeldingUtility(Vec<HkpWeldingUtility>),
@@ -2095,7 +2212,8 @@ pub enum ClassParams<'a> {
     HkRootLevelContainerNamedVariant(Vec<HkRootLevelContainerNamedVariant<'a>>),
 
     #[serde(rename = "0x2772c11e")]
-    HkRootLevelContainer(Vec<HkRootLevelContainer>),
+    #[serde(bound(deserialize = "Vec<HkRootLevelContainer<'a>>: Deserialize<'de>"))]
+    HkRootLevelContainer(Vec<HkRootLevelContainer<'a>>),
 
     #[serde(rename = "0x837099c3")]
     HkSemanticsAttribute(Vec<HkSemanticsAttribute>),
@@ -2152,7 +2270,8 @@ pub enum ClassParams<'a> {
     HkxAttributeGroup(Vec<HkxAttributeGroup<'a>>),
 
     #[serde(rename = "0x7468cc44")]
-    HkxAttributeHolder(Vec<HkxAttributeHolder>),
+    #[serde(bound(deserialize = "Vec<HkxAttributeHolder<'a>>: Deserialize<'de>"))]
+    HkxAttributeHolder(Vec<HkxAttributeHolder<'a>>),
 
     #[serde(rename = "0x7375cae3")]
     #[serde(bound(deserialize = "Vec<HkxAttribute<'a>>: Deserialize<'de>"))]
@@ -2169,14 +2288,16 @@ pub enum ClassParams<'a> {
     HkxEnumItem(Vec<HkxEnumItem<'a>>),
 
     #[serde(rename = "0xc4e1211")]
-    HkxEnum(Vec<HkxEnum>),
+    #[serde(bound(deserialize = "Vec<HkxEnum<'a>>: Deserialize<'de>"))]
+    HkxEnum(Vec<HkxEnum<'a>>),
 
     #[serde(rename = "0xa6815115")]
     #[serde(bound(deserialize = "Vec<HkxEnvironmentVariable<'a>>: Deserialize<'de>"))]
     HkxEnvironmentVariable(Vec<HkxEnvironmentVariable<'a>>),
 
     #[serde(rename = "0x41e1aa5")]
-    HkxEnvironment(Vec<HkxEnvironment>),
+    #[serde(bound(deserialize = "Vec<HkxEnvironment<'a>>: Deserialize<'de>"))]
+    HkxEnvironment(Vec<HkxEnvironment<'a>>),
 
     #[serde(rename = "0xc12c8197")]
     HkxIndexBuffer(Vec<HkxIndexBuffer>),

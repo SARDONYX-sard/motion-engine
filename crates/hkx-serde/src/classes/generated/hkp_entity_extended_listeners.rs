@@ -20,26 +20,26 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpEntityExtendedListeners {
+pub enum HkpEntityExtendedListeners<'a> {
     /// # C++ Class Fields Info
     /// -   name:`"activationListeners"`
     /// -   type: `struct hkpEntitySmallArraySerializeOverrideType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "activationListeners", skip_serializing)]
-    ActivationListeners(HkpEntitySmallArraySerializeOverrideType),
+    ActivationListeners(HkpEntitySmallArraySerializeOverrideType<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"entityListeners"`
     /// -   type: `struct hkpEntitySmallArraySerializeOverrideType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "entityListeners", skip_serializing)]
-    EntityListeners(HkpEntitySmallArraySerializeOverrideType),
+    EntityListeners(HkpEntitySmallArraySerializeOverrideType<'a>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpEntityExtendedListeners, "@name",
-    ("activationListeners" => ActivationListeners(HkpEntitySmallArraySerializeOverrideType)),
-    ("entityListeners" => EntityListeners(HkpEntitySmallArraySerializeOverrideType)),
+    HkpEntityExtendedListeners<'de>, "@name",
+    ("activationListeners" => ActivationListeners(HkpEntitySmallArraySerializeOverrideType<'de>)),
+    ("entityListeners" => EntityListeners(HkpEntitySmallArraySerializeOverrideType<'de>)),
 }

@@ -59,7 +59,7 @@ pub enum HkbBehaviorInfo<'a> {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "idToNamePairs")]
-    IdToNamePairs(HkArrayClass<HkbBehaviorInfoIdToNamePair>),
+    IdToNamePairs(HkArrayClass<HkbBehaviorInfoIdToNamePair<'a>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -69,5 +69,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("characterId" => CharacterId(Primitive<u64>)),
     ("data" => Data(Primitive<Cow<'de, str>>)),
-    ("idToNamePairs" => IdToNamePairs(HkArrayClass<HkbBehaviorInfoIdToNamePair>)),
+    ("idToNamePairs" => IdToNamePairs(HkArrayClass<HkbBehaviorInfoIdToNamePair<'de>>)),
 }

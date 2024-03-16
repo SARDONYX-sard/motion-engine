@@ -21,7 +21,7 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbHandIkDriverInfo {
+pub enum HkbHandIkDriverInfo<'a> {
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -45,7 +45,7 @@ pub enum HkbHandIkDriverInfo {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "hands")]
-    Hands(HkArrayClass<HkbHandIkDriverInfoHand>),
+    Hands(HkArrayClass<HkbHandIkDriverInfoHand<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"fadeInOutCurve"`
     /// -   type: `enum BlendCurve`
@@ -57,9 +57,9 @@ pub enum HkbHandIkDriverInfo {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbHandIkDriverInfo, "@name",
+    HkbHandIkDriverInfo<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("hands" => Hands(HkArrayClass<HkbHandIkDriverInfoHand>)),
+    ("hands" => Hands(HkArrayClass<HkbHandIkDriverInfoHand<'de>>)),
     ("fadeInOutCurve" => FadeInOutCurve(Primitive<BlendCurve>)),
 }

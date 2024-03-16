@@ -20,18 +20,18 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkCustomAttributes {
+pub enum HkCustomAttributes<'a> {
     /// # C++ Class Fields Info
     /// -   name:`"attributes"`
     /// -   type: `hkSimpleArray&lt;struct hkCustomAttributesAttribute&gt;`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "attributes")]
-    Attributes(HkArrayClass<HkCustomAttributesAttribute>),
+    Attributes(HkArrayClass<HkCustomAttributesAttribute<'a>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkCustomAttributes, "@name",
-    ("attributes" => Attributes(HkArrayClass<HkCustomAttributesAttribute>)),
+    HkCustomAttributes<'de>, "@name",
+    ("attributes" => Attributes(HkArrayClass<HkCustomAttributesAttribute<'de>>)),
 }

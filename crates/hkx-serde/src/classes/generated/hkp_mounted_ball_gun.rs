@@ -129,7 +129,7 @@ pub enum HkpMountedBallGun<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpMountedBallGun, "@name",
+    HkpMountedBallGun<'de>, "@name",
     ("bulletRadius" => BulletRadius(Primitive<f32>)),
     ("bulletVelocity" => BulletVelocity(Primitive<f32>)),
     ("bulletMass" => BulletMass(Primitive<f32>)),

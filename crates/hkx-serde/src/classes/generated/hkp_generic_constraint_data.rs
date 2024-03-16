@@ -21,7 +21,7 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpGenericConstraintData {
+pub enum HkpGenericConstraintData<'a> {
     /// # C++ Parent class(`hkpConstraintData`, parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -60,15 +60,15 @@ pub enum HkpGenericConstraintData {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "scheme")]
-    Scheme(HkpGenericConstraintDataScheme),
+    Scheme(HkpGenericConstraintDataScheme<'a>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpGenericConstraintData, "@name",
+    HkpGenericConstraintData<'de>, "@name",
     ("userData" => UserData(Primitive<usize>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("atoms" => Atoms(HkpBridgeAtoms)),
-    ("scheme" => Scheme(HkpGenericConstraintDataScheme)),
+    ("scheme" => Scheme(HkpGenericConstraintDataScheme<'de>)),
 }

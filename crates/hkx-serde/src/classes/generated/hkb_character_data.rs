@@ -45,7 +45,7 @@ pub enum HkbCharacterData<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "characterControllerInfo")]
-    CharacterControllerInfo(HkbCharacterDataCharacterControllerInfo),
+    CharacterControllerInfo(HkbCharacterDataCharacterControllerInfo<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"modelUpMS"`
     /// -   type: `hkVector4`
@@ -144,7 +144,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbCharacterData<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("characterControllerInfo" => CharacterControllerInfo(HkbCharacterDataCharacterControllerInfo)),
+    ("characterControllerInfo" => CharacterControllerInfo(HkbCharacterDataCharacterControllerInfo<'de>)),
     ("modelUpMS" => ModelUpMs(Vector4<f32>)),
     ("modelForwardMS" => ModelForwardMs(Vector4<f32>)),
     ("modelRightMS" => ModelRightMs(Vector4<f32>)),

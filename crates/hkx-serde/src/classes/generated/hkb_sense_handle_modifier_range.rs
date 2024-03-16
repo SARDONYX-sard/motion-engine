@@ -20,14 +20,14 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbSenseHandleModifierRange {
+pub enum HkbSenseHandleModifierRange<'a> {
     /// # C++ Class Fields Info
     /// -   name:`"event"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "event")]
-    Event(HkbEventProperty),
+    Event(HkbEventProperty<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"minDistance"`
     /// -   type: `hkReal`
@@ -53,8 +53,8 @@ pub enum HkbSenseHandleModifierRange {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbSenseHandleModifierRange, "@name",
-    ("event" => Event(HkbEventProperty)),
+    HkbSenseHandleModifierRange<'de>, "@name",
+    ("event" => Event(HkbEventProperty<'de>)),
     ("minDistance" => MinDistance(Primitive<f32>)),
     ("maxDistance" => MaxDistance(Primitive<f32>)),
     ("ignoreHandle" => IgnoreHandle(Primitive<bool>)),

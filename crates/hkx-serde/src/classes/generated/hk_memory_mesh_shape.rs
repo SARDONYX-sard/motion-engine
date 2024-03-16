@@ -47,7 +47,7 @@ pub enum HkMemoryMeshShape<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "sections")]
-    Sections(HkArrayClass<HkMeshSectionCinfo>),
+    Sections(HkArrayClass<HkMeshSectionCinfo<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"indices16"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
@@ -76,7 +76,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkMemoryMeshShape<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("sections" => Sections(HkArrayClass<HkMeshSectionCinfo>)),
+    ("sections" => Sections(HkArrayClass<HkMeshSectionCinfo<'de>>)),
     ("indices16" => Indices16(HkArrayRef<Primitive<u16>>)),
     ("indices32" => Indices32(HkArrayRef<Primitive<u32>>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),

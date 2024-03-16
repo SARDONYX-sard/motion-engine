@@ -21,7 +21,7 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpVehicleLinearCastWheelCollide {
+pub enum HkpVehicleLinearCastWheelCollide<'a> {
     /// # C++ Parent class(`hkpVehicleWheelCollide`, parent: `hkReferencedObject`) field Info
     /// -   name:`"alreadyUsed"`
     /// -   type: `hkBool`
@@ -67,14 +67,14 @@ pub enum HkpVehicleLinearCastWheelCollide {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "wheelStates")]
-    WheelStates(HkArrayClass<HkpVehicleLinearCastWheelCollideWheelState>),
+    WheelStates(HkArrayClass<HkpVehicleLinearCastWheelCollideWheelState<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"rejectChassisListener"`
     /// -   type: `struct hkpRejectChassisListener`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rejectChassisListener")]
-    RejectChassisListener(HkpRejectChassisListener),
+    RejectChassisListener(HkpRejectChassisListener<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"maxExtraPenetration"`
     /// -   type: `hkReal`
@@ -93,14 +93,14 @@ pub enum HkpVehicleLinearCastWheelCollide {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpVehicleLinearCastWheelCollide, "@name",
+    HkpVehicleLinearCastWheelCollide<'de>, "@name",
     ("alreadyUsed" => AlreadyUsed(Primitive<bool>)),
     ("type" => Type(Primitive<Unknown>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("wheelCollisionFilterInfo" => WheelCollisionFilterInfo(Primitive<u32>)),
-    ("wheelStates" => WheelStates(HkArrayClass<HkpVehicleLinearCastWheelCollideWheelState>)),
-    ("rejectChassisListener" => RejectChassisListener(HkpRejectChassisListener)),
+    ("wheelStates" => WheelStates(HkArrayClass<HkpVehicleLinearCastWheelCollideWheelState<'de>>)),
+    ("rejectChassisListener" => RejectChassisListener(HkpRejectChassisListener<'de>)),
     ("maxExtraPenetration" => MaxExtraPenetration(Primitive<f32>)),
     ("startPointTolerance" => StartPointTolerance(Primitive<f32>)),
 }

@@ -34,12 +34,12 @@ pub enum HkxAttributeGroup<'a> {
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "attributes")]
-    Attributes(HkArrayClass<HkxAttribute>),
+    Attributes(HkArrayClass<HkxAttribute<'a>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkxAttributeGroup<'de>, "@name",
     ("name" => Name(Primitive<Cow<'de, str>>)),
-    ("attributes" => Attributes(HkArrayClass<HkxAttribute>)),
+    ("attributes" => Attributes(HkArrayClass<HkxAttribute<'de>>)),
 }

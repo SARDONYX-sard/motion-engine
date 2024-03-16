@@ -67,7 +67,7 @@ pub enum HkpBvShape<'a> {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "childShape")]
-    ChildShape(HkpSingleShapeContainer),
+    ChildShape(HkpSingleShapeContainer<'a>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -78,5 +78,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("boundingVolumeShape" => BoundingVolumeShape(Primitive<Cow<'de, str>>)),
-    ("childShape" => ChildShape(HkpSingleShapeContainer)),
+    ("childShape" => ChildShape(HkpSingleShapeContainer<'de>)),
 }

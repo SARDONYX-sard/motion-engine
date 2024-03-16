@@ -45,14 +45,14 @@ pub enum HkpPoweredChainMapper<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "links")]
-    Links(HkArrayClass<HkpPoweredChainMapperLinkInfo>),
+    Links(HkArrayClass<HkpPoweredChainMapperLinkInfo<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"targets"`
     /// -   type: `hkArray&lt;struct hkpPoweredChainMapperTarget&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "targets")]
-    Targets(HkArrayClass<HkpPoweredChainMapperTarget>),
+    Targets(HkArrayClass<HkpPoweredChainMapperTarget<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"chains"`
     /// -   type: `hkArray&lt;hkpConstraintChainInstance*&gt;`
@@ -67,7 +67,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpPoweredChainMapper<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("links" => Links(HkArrayClass<HkpPoweredChainMapperLinkInfo>)),
-    ("targets" => Targets(HkArrayClass<HkpPoweredChainMapperTarget>)),
+    ("links" => Links(HkArrayClass<HkpPoweredChainMapperLinkInfo<'de>>)),
+    ("targets" => Targets(HkArrayClass<HkpPoweredChainMapperTarget<'de>>)),
     ("chains" => Chains(HkArrayRef<Cow<'de, str>>)),
 }

@@ -118,7 +118,7 @@ pub enum HkbSenseHandleModifier<'a> {
     /// - offset: 44
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "handle", skip_serializing)]
-    Handle(HkbHandle),
+    Handle(HkbHandle<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"sensorLocalOffset"`
     /// -   type: `hkVector4`
@@ -262,7 +262,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("handle" => Handle(HkbHandle)),
+    ("handle" => Handle(HkbHandle<'de>)),
     ("sensorLocalOffset" => SensorLocalOffset(Vector4<f32>)),
     ("ranges" => Ranges(HkArrayClass<HkbSenseHandleModifierRange>)),
     ("handleOut" => HandleOut(Primitive<Cow<'de, str>>)),

@@ -55,7 +55,7 @@ pub enum HkpSerializedSubTrack1NInfo<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpSerializedSubTrack1NInfo, "@name",
+    HkpSerializedSubTrack1NInfo<'de>, "@name",
     ("sectors" => Sectors(HkArrayRef<Cow<'de, str>>)),
     ("subTracks" => SubTracks(HkArrayRef<Cow<'de, str>>)),
     ("sectorIndex" => SectorIndex(Primitive<i32>)),

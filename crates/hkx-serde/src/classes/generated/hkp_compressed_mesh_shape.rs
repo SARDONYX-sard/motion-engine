@@ -222,7 +222,7 @@ pub enum HkpCompressedMeshShape<'a> {
     /// - offset: 204
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "namedMaterials")]
-    NamedMaterials(HkArrayClass<HkpNamedMeshMaterial>),
+    NamedMaterials(HkArrayClass<HkpNamedMeshMaterial<'a>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -255,7 +255,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("meshMaterials" => MeshMaterials(Primitive<Cow<'de, str>>)),
     ("materialStriding" => MaterialStriding(Primitive<u16>)),
     ("numMaterials" => NumMaterials(Primitive<u16>)),
-    ("namedMaterials" => NamedMaterials(HkArrayClass<HkpNamedMeshMaterial>)),
+    ("namedMaterials" => NamedMaterials(HkArrayClass<HkpNamedMeshMaterial<'de>>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

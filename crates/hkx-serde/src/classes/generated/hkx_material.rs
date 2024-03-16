@@ -28,7 +28,7 @@ pub enum HkxMaterial<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "attributeGroups")]
-    AttributeGroups(HkArrayClass<HkxAttributeGroup>),
+    AttributeGroups(HkArrayClass<HkxAttributeGroup<'a>>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
@@ -60,7 +60,7 @@ pub enum HkxMaterial<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "stages")]
-    Stages(HkArrayClass<HkxMaterialTextureStage>),
+    Stages(HkArrayClass<HkxMaterialTextureStage<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"diffuseColor"`
     /// -   type: `hkVector4`
@@ -115,11 +115,11 @@ pub enum HkxMaterial<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkxMaterial<'de>, "@name",
-    ("attributeGroups" => AttributeGroups(HkArrayClass<HkxAttributeGroup>)),
+    ("attributeGroups" => AttributeGroups(HkArrayClass<HkxAttributeGroup<'de>>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
-    ("stages" => Stages(HkArrayClass<HkxMaterialTextureStage>)),
+    ("stages" => Stages(HkArrayClass<HkxMaterialTextureStage<'de>>)),
     ("diffuseColor" => DiffuseColor(Vector4<f32>)),
     ("ambientColor" => AmbientColor(Vector4<f32>)),
     ("specularColor" => SpecularColor(Vector4<f32>)),

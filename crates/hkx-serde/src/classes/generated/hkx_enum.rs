@@ -21,7 +21,7 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkxEnum {
+pub enum HkxEnum<'a> {
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -45,13 +45,13 @@ pub enum HkxEnum {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "items")]
-    Items(HkArrayClass<HkxEnumItem>),
+    Items(HkArrayClass<HkxEnumItem<'a>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkxEnum, "@name",
+    HkxEnum<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("items" => Items(HkArrayClass<HkxEnumItem>)),
+    ("items" => Items(HkArrayClass<HkxEnumItem<'de>>)),
 }

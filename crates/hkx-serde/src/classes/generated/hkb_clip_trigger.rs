@@ -20,7 +20,7 @@ use std::borrow::Cow;
 /// -   version: 1
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbClipTrigger {
+pub enum HkbClipTrigger<'a> {
     /// # C++ Class Fields Info
     /// -   name:`"localTime"`
     /// -   type: `hkReal`
@@ -34,7 +34,7 @@ pub enum HkbClipTrigger {
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "event")]
-    Event(HkbEventProperty),
+    Event(HkbEventProperty<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"relativeToEndOfClip"`
     /// -   type: `hkBool`
@@ -60,9 +60,9 @@ pub enum HkbClipTrigger {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbClipTrigger, "@name",
+    HkbClipTrigger<'de>, "@name",
     ("localTime" => LocalTime(Primitive<f32>)),
-    ("event" => Event(HkbEventProperty)),
+    ("event" => Event(HkbEventProperty<'de>)),
     ("relativeToEndOfClip" => RelativeToEndOfClip(Primitive<bool>)),
     ("acyclic" => Acyclic(Primitive<bool>)),
     ("isAnnotation" => IsAnnotation(Primitive<bool>)),

@@ -195,7 +195,7 @@ pub enum BsLookAtModifier<'a> {
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "targetOutOfLimitEvent")]
-    TargetOutOfLimitEvent(HkbEventProperty),
+    TargetOutOfLimitEvent(HkbEventProperty<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"lookAtCamera"`
     /// -   type: `hkBool`
@@ -273,7 +273,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("useBoneGains" => UseBoneGains(Primitive<bool>)),
     ("targetLocation" => TargetLocation(Vector4<f32>)),
     ("targetOutsideLimits" => TargetOutsideLimits(Primitive<bool>)),
-    ("targetOutOfLimitEvent" => TargetOutOfLimitEvent(HkbEventProperty)),
+    ("targetOutOfLimitEvent" => TargetOutOfLimitEvent(HkbEventProperty<'de>)),
     ("lookAtCamera" => LookAtCamera(Primitive<bool>)),
     ("lookAtCameraX" => LookAtCameraX(Primitive<f32>)),
     ("lookAtCameraY" => LookAtCameraY(Primitive<f32>)),

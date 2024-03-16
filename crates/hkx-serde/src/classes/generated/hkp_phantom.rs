@@ -42,7 +42,7 @@ pub enum HkpPhantom<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "collidable")]
-    Collidable(HkpLinkedCollidable),
+    Collidable(HkpLinkedCollidable<'a>),
     /// # C++ Parent class(`hkpWorldObject`, parent: `hkReferencedObject`) field Info
     /// -   name:`"multiThreadCheck"`
     /// -   type: `struct hkMultiThreadCheck`
@@ -110,7 +110,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpPhantom<'de>, "@name",
     ("world" => World(Primitive<Cow<'de, str>>)),
     ("userData" => UserData(Primitive<usize>)),
-    ("collidable" => Collidable(HkpLinkedCollidable)),
+    ("collidable" => Collidable(HkpLinkedCollidable<'de>)),
     ("multiThreadCheck" => MultiThreadCheck(HkMultiThreadCheck)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("properties" => Properties(HkArrayClass<HkpProperty>)),

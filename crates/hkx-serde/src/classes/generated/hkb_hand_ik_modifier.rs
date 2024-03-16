@@ -118,7 +118,7 @@ pub enum HkbHandIkModifier<'a> {
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "hands")]
-    Hands(HkArrayClass<HkbHandIkModifierHand>),
+    Hands(HkArrayClass<HkbHandIkModifierHand<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"fadeInOutCurve"`
     /// -   type: `enum BlendCurve`
@@ -137,7 +137,7 @@ pub enum HkbHandIkModifier<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbHandIkModifier, "@name",
+    HkbHandIkModifier<'de>, "@name",
     ("enable" => Enable(Primitive<bool>)),
     ("padModifier" => PadModifier([Primitive<bool>; 3])),
     ("userData" => UserData(Primitive<usize>)),
@@ -150,7 +150,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("hands" => Hands(HkArrayClass<HkbHandIkModifierHand>)),
+    ("hands" => Hands(HkArrayClass<HkbHandIkModifierHand<'de>>)),
     ("fadeInOutCurve" => FadeInOutCurve(Primitive<BlendCurve>)),
     ("internalHandData" => InternalHandData(HkArrayRef<Primitive<()>>)),
 }

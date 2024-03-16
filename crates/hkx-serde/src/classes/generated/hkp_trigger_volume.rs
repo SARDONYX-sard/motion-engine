@@ -52,7 +52,7 @@ pub enum HkpTriggerVolume<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "eventQueue")]
-    EventQueue(HkArrayClass<HkpTriggerVolumeEventInfo>),
+    EventQueue(HkArrayClass<HkpTriggerVolumeEventInfo<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"triggerBody"`
     /// -   type: `struct hkpRigidBody*`
@@ -75,7 +75,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("overlappingBodies" => OverlappingBodies(HkArrayRef<Cow<'de, str>>)),
-    ("eventQueue" => EventQueue(HkArrayClass<HkpTriggerVolumeEventInfo>)),
+    ("eventQueue" => EventQueue(HkArrayClass<HkpTriggerVolumeEventInfo<'de>>)),
     ("triggerBody" => TriggerBody(Primitive<Cow<'de, str>>)),
     ("sequenceNumber" => SequenceNumber(Primitive<u32>)),
 }

@@ -118,12 +118,12 @@ pub enum BsEventOnDeactivateModifier<'a> {
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "event")]
-    Event(HkbEventProperty),
+    Event(HkbEventProperty<'a>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    BsEventOnDeactivateModifier, "@name",
+    BsEventOnDeactivateModifier<'de>, "@name",
     ("enable" => Enable(Primitive<bool>)),
     ("padModifier" => PadModifier([Primitive<bool>; 3])),
     ("userData" => UserData(Primitive<usize>)),
@@ -136,5 +136,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("event" => Event(HkbEventProperty)),
+    ("event" => Event(HkbEventProperty<'de>)),
 }

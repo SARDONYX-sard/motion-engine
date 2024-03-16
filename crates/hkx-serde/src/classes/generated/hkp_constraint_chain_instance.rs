@@ -77,7 +77,7 @@ pub enum HkpConstraintChainInstance<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "listeners", skip_serializing)]
-    Listeners(HkpConstraintInstanceSmallArraySerializeOverrideType),
+    Listeners(HkpConstraintInstanceSmallArraySerializeOverrideType<'a>),
     /// # C++ Parent class(`hkpConstraintInstance`, parent: `hkReferencedObject`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
@@ -150,7 +150,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("priority" => Priority(Primitive<ConstraintPriority>)),
     ("wantRuntime" => WantRuntime(Primitive<bool>)),
     ("destructionRemapInfo" => DestructionRemapInfo(Primitive<OnDestructionRemapInfo>)),
-    ("listeners" => Listeners(HkpConstraintInstanceSmallArraySerializeOverrideType)),
+    ("listeners" => Listeners(HkpConstraintInstanceSmallArraySerializeOverrideType<'de>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("userData" => UserData(Primitive<usize>)),
     ("internal" => Internal(Primitive<Cow<'de, str>>)),

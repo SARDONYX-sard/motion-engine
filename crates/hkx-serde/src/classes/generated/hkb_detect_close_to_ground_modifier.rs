@@ -118,7 +118,7 @@ pub enum HkbDetectCloseToGroundModifier<'a> {
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "closeToGroundEvent")]
-    CloseToGroundEvent(HkbEventProperty),
+    CloseToGroundEvent(HkbEventProperty<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"closeToGroundHeight"`
     /// -   type: `hkReal`
@@ -165,7 +165,7 @@ pub enum HkbDetectCloseToGroundModifier<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbDetectCloseToGroundModifier, "@name",
+    HkbDetectCloseToGroundModifier<'de>, "@name",
     ("enable" => Enable(Primitive<bool>)),
     ("padModifier" => PadModifier([Primitive<bool>; 3])),
     ("userData" => UserData(Primitive<usize>)),
@@ -178,7 +178,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("closeToGroundEvent" => CloseToGroundEvent(HkbEventProperty)),
+    ("closeToGroundEvent" => CloseToGroundEvent(HkbEventProperty<'de>)),
     ("closeToGroundHeight" => CloseToGroundHeight(Primitive<f32>)),
     ("raycastDistanceDown" => RaycastDistanceDown(Primitive<f32>)),
     ("collisionFilterInfo" => CollisionFilterInfo(Primitive<u32>)),

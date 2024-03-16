@@ -63,7 +63,7 @@ pub enum HkaQuantizedAnimation<'a> {
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "annotationTracks")]
-    AnnotationTracks(HkArrayClass<HkaAnnotationTrack>),
+    AnnotationTracks(HkArrayClass<HkaAnnotationTrack<'a>>),
 
     /// # C++ Parent class(`hkReferencedObject`, parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
@@ -113,7 +113,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("numberOfTransformTracks" => NumberOfTransformTracks(Primitive<i32>)),
     ("numberOfFloatTracks" => NumberOfFloatTracks(Primitive<i32>)),
     ("extractedMotion" => ExtractedMotion(Primitive<Cow<'de, str>>)),
-    ("annotationTracks" => AnnotationTracks(HkArrayClass<HkaAnnotationTrack>)),
+    ("annotationTracks" => AnnotationTracks(HkArrayClass<HkaAnnotationTrack<'de>>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("data" => Data(HkArrayRef<Primitive<u8>>)),

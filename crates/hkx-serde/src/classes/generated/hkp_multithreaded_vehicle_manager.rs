@@ -51,7 +51,7 @@ pub enum HkpMultithreadedVehicleManager<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpMultithreadedVehicleManager, "@name",
+    HkpMultithreadedVehicleManager<'de>, "@name",
     ("registeredVehicles" => RegisteredVehicles(HkArrayRef<Cow<'de, str>>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),

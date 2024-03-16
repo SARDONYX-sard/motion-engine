@@ -63,7 +63,7 @@ pub enum HkpViscousSurfaceModifierConstraintAtom<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpViscousSurfaceModifierConstraintAtom, "@name",
+    HkpViscousSurfaceModifierConstraintAtom<'de>, "@name",
     ("modifierAtomSize" => ModifierAtomSize(Primitive<u16>)),
     ("childSize" => ChildSize(Primitive<u16>)),
     ("child" => Child(Primitive<Cow<'de, str>>)),

@@ -21,7 +21,7 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpMeshShape {
+pub enum HkpMeshShape<'a> {
     /// # C++ Parent class(`hkpShapeCollection`, parent: `hkpShape`) field Info
     /// -   name:`"disableWelding"`
     /// -   type: `hkBool`
@@ -89,7 +89,7 @@ pub enum HkpMeshShape {
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "subparts")]
-    Subparts(HkArrayClass<HkpMeshShapeSubpart>),
+    Subparts(HkArrayClass<HkpMeshShapeSubpart<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"weldingInfo"`
     /// -   type: `hkArray&lt;hkUint16&gt;`
@@ -122,7 +122,7 @@ pub enum HkpMeshShape {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpMeshShape, "@name",
+    HkpMeshShape<'de>, "@name",
     ("disableWelding" => DisableWelding(Primitive<bool>)),
     ("collectionType" => CollectionType(Primitive<CollectionType>)),
     ("userData" => UserData(Primitive<usize>)),
@@ -131,7 +131,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("scaling" => Scaling(Vector4<f32>)),
     ("numBitsForSubpartIndex" => NumBitsForSubpartIndex(Primitive<i32>)),
-    ("subparts" => Subparts(HkArrayClass<HkpMeshShapeSubpart>)),
+    ("subparts" => Subparts(HkArrayClass<HkpMeshShapeSubpart<'de>>)),
     ("weldingInfo" => WeldingInfo(HkArrayRef<Primitive<u16>>)),
     ("weldingType" => WeldingType(Primitive<WeldingType>)),
     ("radius" => Radius(Primitive<f32>)),

@@ -97,7 +97,7 @@ pub enum HkpMoppBvTreeShape<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "child")]
-    Child(HkpSingleShapeContainer),
+    Child(HkpSingleShapeContainer<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"childSize"`
     /// -   type: `hkInt32`
@@ -109,7 +109,7 @@ pub enum HkpMoppBvTreeShape<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpMoppBvTreeShape, "@name",
+    HkpMoppBvTreeShape<'de>, "@name",
     ("code" => Code(Primitive<Cow<'de, str>>)),
     ("moppData" => MoppData(Primitive<Cow<'de, str>>)),
     ("moppDataSize" => MoppDataSize(Primitive<u32>)),
@@ -119,6 +119,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("type" => Type(Primitive<Unknown>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("child" => Child(HkpSingleShapeContainer)),
+    ("child" => Child(HkpSingleShapeContainer<'de>)),
     ("childSize" => ChildSize(Primitive<i32>)),
 }

@@ -152,7 +152,7 @@ pub enum HkbEventDrivenModifier<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbEventDrivenModifier, "@name",
+    HkbEventDrivenModifier<'de>, "@name",
     ("modifier" => Modifier(Primitive<Cow<'de, str>>)),
     ("enable" => Enable(Primitive<bool>)),
     ("padModifier" => PadModifier([Primitive<bool>; 3])),

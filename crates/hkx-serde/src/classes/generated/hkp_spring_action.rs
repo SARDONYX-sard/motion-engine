@@ -143,7 +143,7 @@ pub enum HkpSpringAction<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpSpringAction, "@name",
+    HkpSpringAction<'de>, "@name",
     ("entityA" => EntityA(Primitive<Cow<'de, str>>)),
     ("entityB" => EntityB(Primitive<Cow<'de, str>>)),
     ("world" => World(Primitive<Cow<'de, str>>)),

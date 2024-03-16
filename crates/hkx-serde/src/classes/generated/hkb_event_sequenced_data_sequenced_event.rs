@@ -20,14 +20,14 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbEventSequencedDataSequencedEvent {
+pub enum HkbEventSequencedDataSequencedEvent<'a> {
     /// # C++ Class Fields Info
     /// -   name:`"event"`
     /// -   type: `struct hkbEvent`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "event")]
-    Event(HkbEvent),
+    Event(HkbEvent<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"time"`
     /// -   type: `hkReal`
@@ -39,7 +39,7 @@ pub enum HkbEventSequencedDataSequencedEvent {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbEventSequencedDataSequencedEvent, "@name",
-    ("event" => Event(HkbEvent)),
+    HkbEventSequencedDataSequencedEvent<'de>, "@name",
+    ("event" => Event(HkbEvent<'de>)),
     ("time" => Time(Primitive<f32>)),
 }

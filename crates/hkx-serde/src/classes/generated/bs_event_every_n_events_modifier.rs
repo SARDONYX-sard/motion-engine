@@ -118,14 +118,14 @@ pub enum BsEventEveryNEventsModifier<'a> {
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "eventToCheckFor")]
-    EventToCheckFor(HkbEventProperty),
+    EventToCheckFor(HkbEventProperty<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"eventToSend"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "eventToSend")]
-    EventToSend(HkbEventProperty),
+    EventToSend(HkbEventProperty<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"numberOfEventsBeforeSend"`
     /// -   type: `hkInt8`
@@ -165,7 +165,7 @@ pub enum BsEventEveryNEventsModifier<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    BsEventEveryNEventsModifier, "@name",
+    BsEventEveryNEventsModifier<'de>, "@name",
     ("enable" => Enable(Primitive<bool>)),
     ("padModifier" => PadModifier([Primitive<bool>; 3])),
     ("userData" => UserData(Primitive<usize>)),
@@ -178,8 +178,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("eventToCheckFor" => EventToCheckFor(HkbEventProperty)),
-    ("eventToSend" => EventToSend(HkbEventProperty)),
+    ("eventToCheckFor" => EventToCheckFor(HkbEventProperty<'de>)),
+    ("eventToSend" => EventToSend(HkbEventProperty<'de>)),
     ("numberOfEventsBeforeSend" => NumberOfEventsBeforeSend(Primitive<i8>)),
     ("minimumNumberOfEventsBeforeSend" => MinimumNumberOfEventsBeforeSend(Primitive<i8>)),
     ("randomizeNumberOfEvents" => RandomizeNumberOfEvents(Primitive<bool>)),

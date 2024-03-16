@@ -10,7 +10,7 @@ mod parse_rpt;
 
 use crate::{generators::rust::generate_code, parse_rpt::parse_class};
 use convert_case::{Case, Casing};
-use generators::rust::generate_class_params;
+use generators::rust::{generate_all_fields, generate_class_params, get_lifetime_from_map};
 use indexmap::IndexMap;
 
 pub fn generate_classes() {
@@ -25,9 +25,8 @@ pub fn generate_classes() {
         .join("hkxcmd_help")
         .join("rpt");
 
-    let mut class_map: IndexMap<String, parse_rpt::ClassInfo> = IndexMap::new();
+    let mut class_map = IndexMap::new();
     let mut mod_indexes = Vec::new();
-
     for entry in jwalk::WalkDir::new(rpt_dir).into_iter() {
         let path = entry.unwrap().path();
         if !path.is_file() && path.extension() != Some(std::ffi::OsStr::new("xml")) {
@@ -63,20 +62,33 @@ pub fn generate_classes() {
         tracing::debug!("class = {:?}", class);
 
         mod_indexes.push(format!("mod {file_stem};\nuse {file_stem}::*;\n"));
-        class_map.insert(class.name.clone(), class);
+
+        let class_name = class.name.clone();
+        class_map.insert(class_name.clone(), class.clone());
     }
     mod_indexes.push("pub mod class_params;\n".into());
     std::fs::write(output_dir.join("mod.rs"), mod_indexes.join("\n")).unwrap();
 
+    //? Create life time map (cpp class name, rust struct name with life time)
+    let mut life_time_name_map = IndexMap::new();
     for (_sig, class) in class_map.clone().into_iter() {
-        let rust_code = generate_code(&class.name, class_map.clone());
+        let (_rust_fields_code, fields) = generate_all_fields(&class, &class_map, None);
+        // IndexMap<"C++ field name", ("rust enum tag name", "rust type name")>
+        let life_time = get_lifetime_from_map(&fields);
+        let rust_struct_name = class.name.to_case(Case::Pascal);
+        life_time_name_map.insert(
+            rust_struct_name.clone(),
+            format!("{rust_struct_name}{life_time}"),
+        );
+    }
 
-        let name = class.name.to_case(Case::Snake);
-        let rust_file = output_dir.join(format!("{name}.rs"));
+    for (_sig, class) in class_map.clone().into_iter() {
+        let rust_file = output_dir.join(format!("{}.rs", class.name.to_case(Case::Snake)));
+        let rust_code = generate_code(&class.name, class_map.clone(), life_time_name_map.clone());
         std::fs::write(rust_file, rust_code).unwrap();
     }
 
-    let class_params = generate_class_params(class_map);
+    let class_params = generate_class_params(class_map, life_time_name_map.clone());
     std::fs::write(output_dir.join("class_params.rs"), class_params).unwrap();
 }
 

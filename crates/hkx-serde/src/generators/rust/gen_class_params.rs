@@ -1,14 +1,18 @@
-use super::get_life_time;
-use crate::parse_rpt::ClassInfo;
+use super::{
+    generate_all_fields,
+    generate_code::{ClassMap, LifeTimeMap},
+    get_lifetime_from_map,
+};
 use convert_case::{Case, Casing as _};
-use indexmap::IndexMap;
 
 /// Generate all havok C++ class enums.
 ///
-/// Pass `key: class name, value: class information` mapping as information.
+/// Pass `{ key: class name, value: class information }` mapping as information.
 ///
-/// The reason we don't take a signature is that this is not a unique value. (**It may inherit the signature of the parent class! **. Example: `hkpShapeContainer` and `baseObject`)
-pub fn generate_class_params(class_map: IndexMap<String, ClassInfo>) -> String {
+/// The reason we don't take a signature is that this is not a unique value.
+///
+/// (**It may inherit the signature of the parent class**. e.g. `hkpShapeContainer`, `baseObject`, etc.)
+pub fn generate_class_params(class_map: ClassMap, life_time_map: LifeTimeMap) -> String {
     let mut class_params = String::new();
 
     class_params.push_str(
@@ -35,17 +39,21 @@ pub enum ClassParams<'a> {
     for (_cpp_class_name, class) in class_map.clone().into_iter() {
         let sig = class.signature;
         let struct_name = class.name.to_case(Case::Pascal);
-        let life_time = get_life_time(&class.members);
 
-        let bound = if !life_time.is_empty() {
-            format!("\n    #[serde(bound(deserialize = \"Vec<{struct_name}{life_time}>: Deserialize<'de>\"))]")
+        let (_rust_fields_code, fields) =
+            generate_all_fields(&class, &class_map, Some(&life_time_map));
+        let life_time = get_lifetime_from_map(&fields);
+        let rust_class_name_with_life_time = format!("{struct_name}{life_time}");
+
+        let life_time_bound = if rust_class_name_with_life_time.ends_with("<'a>") {
+            format!("\n    #[serde(bound(deserialize = \"Vec<{rust_class_name_with_life_time}>: Deserialize<'de>\"))]")
         } else {
             "".into()
         };
 
         class_params.push_str(&format!(
-            r#"    #[serde(rename = "0x{sig:x}")]{bound}
-    {struct_name}(Vec<{struct_name}{life_time}>),
+            r#"    #[serde(rename = "0x{sig:x}")]{life_time_bound}
+    {struct_name}(Vec<{rust_class_name_with_life_time}>),
 
 "#
         ));

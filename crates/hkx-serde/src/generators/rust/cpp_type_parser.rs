@@ -26,6 +26,11 @@ pub fn parse_cpp_type(input: &str) -> IResult<&str, Cow<'_, str>> {
         input if input.starts_with("hkArray&lt;") || input.starts_with("hkSimpleArray&lt;") => {
             parse_hk_array_type(input)
         }
+
+        // `unknown` means that the information does not exist and is passed over with `()` and ignored.
+        // All `unknown` type C++ class fields have `SKIP_SERIALIZE` flag, so this operation may be safe.
+        "flags unknown" | "enum unknown" => Ok(("", "Primitive<()>".into())),
+
         input if input.starts_with("enum") => parse_enum_type(input),
         input if input.starts_with("flag") => parse_flags_type(input),
         input if input.ends_with(']') => parse_array_type(input),

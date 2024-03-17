@@ -399,7 +399,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "enum unknown",
-        "Primitive<Unknown>",
+        "Primitive<()>",
     ),
     (
         "flags FlagBits",
@@ -427,7 +427,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "flags unknown",
-        "Primitive<Unknown>",
+        "Primitive<()>",
     ),
     (
         "hkArray&lt;BSBoneSwitchGeneratorBoneData*&gt;",

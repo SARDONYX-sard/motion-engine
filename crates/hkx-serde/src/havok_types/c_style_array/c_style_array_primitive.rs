@@ -2,7 +2,9 @@ use serde::{Deserialize, Serialize};
 
 /// Size-limited C Style arrays and for performing normal (De)serialization.
 ///
-/// `HkArrayCStyle<[u32; 8]>`, etc.
+/// # Usage
+///
+/// `CStyleArray<[u32; 8]>`, etc.
 ///
 /// # Example XML
 /// `padding`(`hkUint[8]`) in `hkpSetupStabilizationAtom`

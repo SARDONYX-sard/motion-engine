@@ -135,7 +135,7 @@ fn parse_array_type(input: &str) -> IResult<&str, Cow<'_, str>> {
 
     let array_type = match base_type.as_ref() {
         "bool" | "char" | "i8" | "i16" | "i32" | "i64" | "isize" | "u8" | "u16" | "u32" | "u64"
-        | "usize" | "f32" | "f64" => format!("CStyleArray<{base_type}, {size}>").into(),
+        | "usize" | "f32" | "f64" => format!("CStyleArray<[{base_type}; {size}]>").into(),
 
         vec_type if vec_type.starts_with("Vector4") || vec_type.starts_with("Transform") => {
             format!("CStyleArrayVector<{vec_type}, {size}>").into()

@@ -1107,11 +1107,11 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkBool[1]",
-        "CStyleArray<bool, 1>",
+        "CStyleArray<[bool; 1]>",
     ),
     (
         "hkBool[3]",
-        "CStyleArray<bool, 3>",
+        "CStyleArray<[bool; 3]>",
     ),
     (
         "hkChar",
@@ -1119,19 +1119,19 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkChar[16]",
-        "CStyleArray<char, 16>",
+        "CStyleArray<[char; 16]>",
     ),
     (
         "hkChar[19]",
-        "CStyleArray<char, 19>",
+        "CStyleArray<[char; 19]>",
     ),
     (
         "hkChar[32]",
-        "CStyleArray<char, 32>",
+        "CStyleArray<[char; 32]>",
     ),
     (
         "hkChar[4]",
-        "CStyleArray<char, 4>",
+        "CStyleArray<[char; 4]>",
     ),
     (
         "hkHalf",
@@ -1139,7 +1139,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkHalf[8]",
-        "CStyleArray<f32, 8>",
+        "CStyleArray<[f32; 8]>",
     ),
     (
         "hkInt16",
@@ -1147,7 +1147,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkInt16[4]",
-        "CStyleArray<i16, 4>",
+        "CStyleArray<[i16; 4]>",
     ),
     (
         "hkInt32",
@@ -1155,19 +1155,19 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkInt32[1]",
-        "CStyleArray<i32, 1>",
+        "CStyleArray<[i32; 1]>",
     ),
     (
         "hkInt32[2]",
-        "CStyleArray<i32, 2>",
+        "CStyleArray<[i32; 2]>",
     ),
     (
         "hkInt32[32]",
-        "CStyleArray<i32, 32>",
+        "CStyleArray<[i32; 32]>",
     ),
     (
         "hkInt32[3]",
-        "CStyleArray<i32, 3>",
+        "CStyleArray<[i32; 3]>",
     ),
     (
         "hkInt8",
@@ -1195,7 +1195,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkReal[16]",
-        "CStyleArray<f32, 16>",
+        "CStyleArray<[f32; 16]>",
     ),
     (
         "hkRotation",
@@ -1239,11 +1239,11 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkUint16[2]",
-        "CStyleArray<u16, 2>",
+        "CStyleArray<[u16; 2]>",
     ),
     (
         "hkUint16[6]",
-        "CStyleArray<u16, 6>",
+        "CStyleArray<[u16; 6]>",
     ),
     (
         "hkUint32",
@@ -1251,23 +1251,23 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkUint32[2]",
-        "CStyleArray<u32, 2>",
+        "CStyleArray<[u32; 2]>",
     ),
     (
         "hkUint32[32]",
-        "CStyleArray<u32, 32>",
+        "CStyleArray<[u32; 32]>",
     ),
     (
         "hkUint32[3]",
-        "CStyleArray<u32, 3>",
+        "CStyleArray<[u32; 3]>",
     ),
     (
         "hkUint32[5]",
-        "CStyleArray<u32, 5>",
+        "CStyleArray<[u32; 5]>",
     ),
     (
         "hkUint32[8]",
-        "CStyleArray<u32, 8>",
+        "CStyleArray<[u32; 8]>",
     ),
     (
         "hkUint64",
@@ -1279,27 +1279,27 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkUint8[12]",
-        "CStyleArray<u8, 12>",
+        "CStyleArray<[u8; 12]>",
     ),
     (
         "hkUint8[160]",
-        "CStyleArray<u8, 160>",
+        "CStyleArray<[u8; 160]>",
     ),
     (
         "hkUint8[3]",
-        "CStyleArray<u8, 3>",
+        "CStyleArray<[u8; 3]>",
     ),
     (
         "hkUint8[496]",
-        "CStyleArray<u8, 496>",
+        "CStyleArray<[u8; 496]>",
     ),
     (
         "hkUint8[4]",
-        "CStyleArray<u8, 4>",
+        "CStyleArray<[u8; 4]>",
     ),
     (
         "hkUint8[8]",
-        "CStyleArray<u8, 8>",
+        "CStyleArray<[u8; 8]>",
     ),
     (
         "hkUlong",

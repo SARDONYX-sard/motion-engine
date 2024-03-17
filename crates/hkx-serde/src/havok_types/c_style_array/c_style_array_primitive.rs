@@ -20,13 +20,13 @@ use serde::{Deserialize, Serialize};
 ///   And to do that, we need the parent enum that wraps this structure.
 #[derive(Debug, Clone, Default, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
 #[serde(rename = "hkparam")]
-pub struct HkArrayCStyle<T> {
+pub struct CStyleArray<T> {
     /// Limit Array which stores [`[u32; 4`], etc.
     #[serde(rename = "$text", default)]
     pub value: T,
 }
 
-impl<T> From<T> for HkArrayCStyle<T> {
+impl<T> From<T> for CStyleArray<T> {
     fn from(value: T) -> Self {
         Self { value }
     }
@@ -39,7 +39,7 @@ mod tests {
 
     #[test]
     fn should_serialize() {
-        let data = HkArrayCStyle {
+        let data = CStyleArray {
             value: [0, 1, 2, 3, 4, 5, 6, 7],
         };
         let serialized = quick_xml::se::to_string(&data).unwrap();
@@ -50,7 +50,7 @@ mod tests {
     #[test]
     fn should_deserialize() {
         let xml = " <hkparam name=\"padding\">0 1 2 3 4 5 6 7 8</hkparam>";
-        let deserialized: HkArrayCStyle<[i32; 8]> = quick_xml::de::from_str(xml).unwrap();
+        let deserialized: CStyleArray<[i32; 8]> = quick_xml::de::from_str(xml).unwrap();
 
         assert_eq!(deserialized, [0, 1, 2, 3, 4, 5, 6, 7].into());
     }

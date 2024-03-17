@@ -44,7 +44,7 @@ pub type CStyleArrayClass<T, const N: usize> = CStyleArrayClassT<[CStyleArrayCla
 #[serde(rename = "hkparam")]
 pub struct CStyleArrayClassT<T>
 where
-    T: core::fmt::Debug + Clone,
+    T: core::fmt::Debug,
 {
     /// An array that receives `hkparam` of a certain class.
     ///
@@ -55,12 +55,12 @@ where
 
 impl<T, const N: usize> From<[T; N]> for CStyleArrayClass<T, N>
 where
-    T: core::fmt::Debug + Clone,
+    T: core::fmt::Debug,
 {
     fn from(classes: [T; N]) -> Self {
         let classes = classes
-            .iter()
-            .map(|value| CStyleArrayClassParam::from(value.clone()))
+            .into_iter()
+            .map(|value| CStyleArrayClassParam::from(value))
             .collect::<Vec<_>>();
         CStyleArrayClass {
             classes: classes.try_into().unwrap(),
@@ -120,10 +120,10 @@ mod tests {
         let xml = r###"
             <hkparam name="variantVariableValues">
                 <hkobject>
-                    <hkparam>#0063</hkparam>
+                    <hkparam name="class_field">#0063</hkparam>
                 </hkobject>
                 <hkobject>
-                    <hkparam>#0064</hkparam>
+                    <hkparam name="another_class_field">#0064</hkparam>
                 </hkobject>
             </hkparam>
         "###;
@@ -137,10 +137,10 @@ mod tests {
         let xml = r###"
             <hkparam name="variantVariableValues">
                 <hkobject>
-                    <hkparam>#0063</hkparam>
+                    <hkparam name="class_field">#0063</hkparam>
                 </hkobject>
                 <hkobject>
-                    <hkparam>#0064</hkparam>
+                    <hkparam name="another_class_field">#0064</hkparam>
                 </hkobject>
                 <hkobject>
                     <hkparam>#0065</hkparam>

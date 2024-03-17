@@ -121,17 +121,17 @@ fn parse_array_type(input: &str) -> IResult<&str, Cow<'_, str>> {
     let array_type = match base_type.as_ref() {
         "char*" | "hkBool" | "hkChar" | "hkHalf" | "hkInt16" | "hkInt32" | "hkInt8" | "hkReal"
         | "hkUint16" | "hkUint32" | "hkUint64" | "hkUint8" | "hkUlong" | "hkVariant" | "void" => {
-            format!("HkArrayCStyle<[{base_type}; {size}]>").into()
+            format!("CStyleArray<[{base_type}; {size}]>").into()
         }
 
         "hkMatrix3" | "hkQsTransform" | "hkRotation" => {
-            format!("HkArrayMatrix3<{base_type}>").into()
+            format!("CStyleArrayMatrix3<{base_type}>").into()
         }
 
-        "hkMatrix4" | "hkTransform" => format!("HkArrayMatrix4<{base_type}, {size}>").into(),
-        "hkQuaternion" | "hkVector4" => format!("HkArrayVector<{base_type}, {size}>").into(),
+        "hkMatrix4" | "hkTransform" => format!("CStyleArrayMatrix4<{base_type}, {size}>").into(),
+        "hkQuaternion" | "hkVector4" => format!("CStyleArrayVector<{base_type}, {size}>").into(),
 
-        any => format!("HkArrayClass<{any}, {size}>").into(),
+        any => format!("CStyleArrayClass<{any}, {size}>").into(),
     };
 
     Ok((input, array_type))

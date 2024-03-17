@@ -134,9 +134,9 @@ macro_rules! impl_serde_for_c_style_array {
     };
 }
 
-impl_serde_for_c_style_array!(HkArrayCStyleMatrix3, ')', 3);
-impl_serde_for_c_style_array!(HkArrayCStyleMatrix4, ')', 4);
-impl_serde_for_c_style_array!(HkArrayCStyleVector, ')', 1);
+impl_serde_for_c_style_array!(CStyleArrayVector, ')', 1);
+impl_serde_for_c_style_array!(CStyleArrayMatrix3, ')', 3);
+impl_serde_for_c_style_array!(CStyleArrayMatrix4, ')', 4);
 
 #[cfg(test)]
 mod tests {
@@ -148,9 +148,9 @@ mod tests {
     fn should_serialize_vector4() {
         #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
         #[serde(rename = "hkparam")]
-        struct Root(HkArrayCStyleVector<Vector4<f32>, 2>);
+        struct Root(CStyleArrayVector<Vector4<f32>, 2>);
 
-        let data: HkArrayCStyleVector<Vector4<f32>, 2> = [
+        let data: CStyleArrayVector<Vector4<f32>, 2> = [
             Vector4::from((0.0, 0.0, f32::NAN, 0.0)),
             Vector4::from((0.0, 1.0, 0.0, 0.0)),
         ]
@@ -176,10 +176,10 @@ mod tests {
                 (0.000000 0.000000 1.000000 0.000000)
             </hkparam>
         "###;
-        let deserialized: HkArrayCStyleVector<Vector4<f32>, 3> =
+        let deserialized: CStyleArrayVector<Vector4<f32>, 3> =
             quick_xml::de::from_str(xml).unwrap();
 
-        let expected = HkArrayCStyleVector {
+        let expected = CStyleArrayVector {
             value: [
                 Vector4::from((0.0, 0.0, 0.0, 0.0)),
                 Vector4::from((0.0, 1.0, 0.0, 0.0)),

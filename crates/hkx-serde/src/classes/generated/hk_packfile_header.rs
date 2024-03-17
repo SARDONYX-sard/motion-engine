@@ -27,7 +27,7 @@ pub enum HkPackfileHeader {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "magic")]
-    Magic([Primitive<i32>; 2]),
+    Magic(CStyleArray<i32, 2>),
     /// # C++ Class Fields Info
     /// -   name:`"userTag"`
     /// -   type: `hkInt32`
@@ -48,7 +48,7 @@ pub enum HkPackfileHeader {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "layoutRules")]
-    LayoutRules([Primitive<u8>; 4]),
+    LayoutRules(CStyleArray<u8, 4>),
     /// # C++ Class Fields Info
     /// -   name:`"numSections"`
     /// -   type: `hkInt32`
@@ -90,7 +90,7 @@ pub enum HkPackfileHeader {
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "contentsVersion")]
-    ContentsVersion([Primitive<char>; 16]),
+    ContentsVersion(CStyleArray<char, 16>),
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `hkInt32`
@@ -104,22 +104,22 @@ pub enum HkPackfileHeader {
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "pad")]
-    Pad([Primitive<i32>; 1]),
+    Pad(CStyleArray<i32, 1>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkPackfileHeader, "@name",
-    ("magic" => Magic([Primitive<i32>; 2])),
+    ("magic" => Magic(CStyleArray<i32, 2>)),
     ("userTag" => UserTag(Primitive<i32>)),
     ("fileVersion" => FileVersion(Primitive<i32>)),
-    ("layoutRules" => LayoutRules([Primitive<u8>; 4])),
+    ("layoutRules" => LayoutRules(CStyleArray<u8, 4>)),
     ("numSections" => NumSections(Primitive<i32>)),
     ("contentsSectionIndex" => ContentsSectionIndex(Primitive<i32>)),
     ("contentsSectionOffset" => ContentsSectionOffset(Primitive<i32>)),
     ("contentsClassNameSectionIndex" => ContentsClassNameSectionIndex(Primitive<i32>)),
     ("contentsClassNameSectionOffset" => ContentsClassNameSectionOffset(Primitive<i32>)),
-    ("contentsVersion" => ContentsVersion([Primitive<char>; 16])),
+    ("contentsVersion" => ContentsVersion(CStyleArray<char, 16>)),
     ("flags" => Flags(Primitive<i32>)),
-    ("pad" => Pad([Primitive<i32>; 1])),
+    ("pad" => Pad(CStyleArray<i32, 1>)),
 }

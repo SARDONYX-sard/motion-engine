@@ -73,7 +73,7 @@ pub enum HkpShapeInfo<'a> {
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "childTransforms")]
-    ChildTransforms(HkArrayVector<Transform<f32>>),
+    ChildTransforms(HkArrayMatrix4<Transform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"transform"`
     /// -   type: `hkTransform`
@@ -92,6 +92,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("isHierarchicalCompound" => IsHierarchicalCompound(Primitive<bool>)),
     ("hkdShapesCollected" => HkdShapesCollected(Primitive<bool>)),
     ("childShapeNames" => ChildShapeNames(HkArrayStringPtr<'de>)),
-    ("childTransforms" => ChildTransforms(HkArrayVector<Transform<f32>>)),
+    ("childTransforms" => ChildTransforms(HkArrayMatrix4<Transform<f32>>)),
     ("transform" => Transform(Transform<f32>)),
 }

@@ -73,7 +73,7 @@ pub enum HkaMeshBinding<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "boneFromSkinMeshTransforms")]
-    BoneFromSkinMeshTransforms(HkArrayVector<Transform<f32>>),
+    BoneFromSkinMeshTransforms(HkArrayMatrix4<Transform<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -85,5 +85,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("originalSkeletonName" => OriginalSkeletonName(Primitive<Cow<'de, str>>)),
     ("skeleton" => Skeleton(Primitive<Cow<'de, str>>)),
     ("mappings" => Mappings(HkArrayClass<HkaMeshBindingMapping>)),
-    ("boneFromSkinMeshTransforms" => BoneFromSkinMeshTransforms(HkArrayVector<Transform<f32>>)),
+    ("boneFromSkinMeshTransforms" => BoneFromSkinMeshTransforms(HkArrayMatrix4<Transform<f32>>)),
 }

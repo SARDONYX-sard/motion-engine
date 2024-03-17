@@ -59,7 +59,7 @@ pub enum HkxSkinBinding<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "bindPose")]
-    BindPose(HkArrayVector<Matrix4<f32>>),
+    BindPose(HkArrayMatrix4<Matrix4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"initSkinTransform"`
     /// -   type: `hkMatrix4`
@@ -76,6 +76,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("mesh" => Mesh(Primitive<Cow<'de, str>>)),
     ("nodeNames" => NodeNames(HkArrayStringPtr<'de>)),
-    ("bindPose" => BindPose(HkArrayVector<Matrix4<f32>>)),
+    ("bindPose" => BindPose(HkArrayMatrix4<Matrix4<f32>>)),
     ("initSkinTransform" => InitSkinTransform(Matrix4<f32>)),
 }

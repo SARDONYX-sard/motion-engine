@@ -66,7 +66,7 @@ pub enum HkaSkeleton<'a> {
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "referencePose")]
-    ReferencePose(HkArrayVector<QsTransform<f32>>),
+    ReferencePose(HkArrayMatrix3<QsTransform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"referenceFloats"`
     /// -   type: `hkArray&lt;hkReal&gt;`
@@ -98,7 +98,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("parentIndices" => ParentIndices(HkArrayRef<Primitive<i16>>)),
     ("bones" => Bones(HkArrayClass<HkaBone<'de>>)),
-    ("referencePose" => ReferencePose(HkArrayVector<QsTransform<f32>>)),
+    ("referencePose" => ReferencePose(HkArrayMatrix3<QsTransform<f32>>)),
     ("referenceFloats" => ReferenceFloats(HkArrayRef<Primitive<f32>>)),
     ("floatSlots" => FloatSlots(HkArrayStringPtr<'de>)),
     ("localFrames" => LocalFrames(HkArrayClass<HkaSkeletonLocalFrameOnBone<'de>>)),

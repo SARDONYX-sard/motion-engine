@@ -69,7 +69,7 @@ pub enum HkpMultiSphereShape {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "spheres")]
-    Spheres([Vector4<f32>; 8]),
+    Spheres(CStyleArrayVector<Vector4<f32>, 8>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -80,5 +80,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("numSpheres" => NumSpheres(Primitive<i32>)),
-    ("spheres" => Spheres([Vector4<f32>; 8])),
+    ("spheres" => Spheres(CStyleArrayVector<Vector4<f32>, 8>)),
 }

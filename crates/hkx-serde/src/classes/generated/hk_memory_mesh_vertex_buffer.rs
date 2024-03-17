@@ -54,7 +54,7 @@ pub enum HkMemoryMeshVertexBuffer {
     /// - offset: 268
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "elementOffsets")]
-    ElementOffsets([Primitive<i32>; 32]),
+    ElementOffsets(CStyleArray<i32, 32>),
     /// # C++ Class Fields Info
     /// -   name:`"memory"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
@@ -105,7 +105,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("format" => Format(HkVertexFormat)),
-    ("elementOffsets" => ElementOffsets([Primitive<i32>; 32])),
+    ("elementOffsets" => ElementOffsets(CStyleArray<i32, 32>)),
     ("memory" => Memory(HkArrayRef<Primitive<u8>>)),
     ("vertexStride" => VertexStride(Primitive<i32>)),
     ("locked" => Locked(Primitive<bool>)),

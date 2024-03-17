@@ -27,7 +27,7 @@ pub enum HkVertexFormat {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "elements")]
-    Elements([HkVertexFormatElement; 32]),
+    Elements(CStyleArrayClass<HkVertexFormatElement, 32>),
     /// # C++ Class Fields Info
     /// -   name:`"numElements"`
     /// -   type: `hkInt32`
@@ -40,7 +40,7 @@ pub enum HkVertexFormat {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkVertexFormat, "@name",
-    ("elements" => Elements([HkVertexFormatElement; 32])),
+    ("elements" => Elements(CStyleArrayClass<HkVertexFormatElement, 32>)),
     ("numElements" => NumElements(Primitive<i32>)),
 }
 

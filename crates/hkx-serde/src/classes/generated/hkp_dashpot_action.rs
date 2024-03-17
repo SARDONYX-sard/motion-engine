@@ -89,7 +89,7 @@ pub enum HkpDashpotAction<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "point")]
-    Point([Vector4<f32>; 2]),
+    Point(CStyleArrayVector<Vector4<f32>, 2>),
     /// # C++ Class Fields Info
     /// -   name:`"strength"`
     /// -   type: `hkReal`
@@ -124,7 +124,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("point" => Point([Vector4<f32>; 2])),
+    ("point" => Point(CStyleArrayVector<Vector4<f32>, 2>)),
     ("strength" => Strength(Primitive<f32>)),
     ("damping" => Damping(Primitive<f32>)),
     ("impulse" => Impulse(Vector4<f32>)),

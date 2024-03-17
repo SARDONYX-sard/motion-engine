@@ -45,7 +45,7 @@ pub enum HkxAnimatedMatrix {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "matrices")]
-    Matrices(HkArrayVector<Matrix4<f32>>),
+    Matrices(HkArrayMatrix4<Matrix4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"hint"`
     /// -   type: `enum Hint`
@@ -60,6 +60,6 @@ impl_deserialize_for_internally_tagged_enum! {
     HkxAnimatedMatrix, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("matrices" => Matrices(HkArrayVector<Matrix4<f32>>)),
+    ("matrices" => Matrices(HkArrayMatrix4<Matrix4<f32>>)),
     ("hint" => Hint(Primitive<Hint>)),
 }

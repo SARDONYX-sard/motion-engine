@@ -45,7 +45,7 @@ pub enum HkpCollisionFilter {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "prepad")]
-    Prepad([Primitive<u32>; 2]),
+    Prepad(CStyleArray<u32, 2>),
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum hkpFilterType`
@@ -59,7 +59,7 @@ pub enum HkpCollisionFilter {
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "postpad")]
-    Postpad([Primitive<u32>; 3]),
+    Postpad(CStyleArray<u32, 3>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -67,9 +67,9 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpCollisionFilter, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("prepad" => Prepad([Primitive<u32>; 2])),
+    ("prepad" => Prepad(CStyleArray<u32, 2>)),
     ("type" => Type(Primitive<HkpFilterType>)),
-    ("postpad" => Postpad([Primitive<u32>; 3])),
+    ("postpad" => Postpad(CStyleArray<u32, 3>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

@@ -27,11 +27,11 @@ pub enum HkPackedVector3 {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "values")]
-    Values([Primitive<i16>; 4]),
+    Values(CStyleArray<i16, 4>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkPackedVector3, "@name",
-    ("values" => Values([Primitive<i16>; 4])),
+    ("values" => Values(CStyleArray<i16, 4>)),
 }

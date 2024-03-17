@@ -27,7 +27,7 @@ pub enum HkbGeneratorSyncInfo {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "syncPoints")]
-    SyncPoints([HkbGeneratorSyncInfoSyncPoint; 8]),
+    SyncPoints(CStyleArrayClass<HkbGeneratorSyncInfoSyncPoint, 8>),
     /// # C++ Class Fields Info
     /// -   name:`"baseFrequency"`
     /// -   type: `hkReal`
@@ -82,7 +82,7 @@ pub enum HkbGeneratorSyncInfo {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbGeneratorSyncInfo, "@name",
-    ("syncPoints" => SyncPoints([HkbGeneratorSyncInfoSyncPoint; 8])),
+    ("syncPoints" => SyncPoints(CStyleArrayClass<HkbGeneratorSyncInfoSyncPoint, 8>)),
     ("baseFrequency" => BaseFrequency(Primitive<f32>)),
     ("localTime" => LocalTime(Primitive<f32>)),
     ("playbackSpeed" => PlaybackSpeed(Primitive<f32>)),

@@ -145,7 +145,7 @@ pub enum HkpCompressedMeshShape<'a> {
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transforms")]
-    Transforms(HkArrayVector<QsTransform<f32>>),
+    Transforms(HkArrayMatrix3<QsTransform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"bigVertices"`
     /// -   type: `hkArray&lt;hkVector4&gt;`
@@ -244,7 +244,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("materials" => Materials(HkArrayRef<Primitive<u32>>)),
     ("materials16" => Materials16(HkArrayRef<Primitive<u16>>)),
     ("materials8" => Materials8(HkArrayRef<Primitive<u8>>)),
-    ("transforms" => Transforms(HkArrayVector<QsTransform<f32>>)),
+    ("transforms" => Transforms(HkArrayMatrix3<QsTransform<f32>>)),
     ("bigVertices" => BigVertices(HkArrayVector<Vector4<f32>>)),
     ("bigTriangles" => BigTriangles(HkArrayClass<HkpCompressedMeshShapeBigTriangle>)),
     ("chunks" => Chunks(HkArrayClass<HkpCompressedMeshShapeChunk>)),

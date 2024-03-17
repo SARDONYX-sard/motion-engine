@@ -81,7 +81,7 @@ pub enum HkpPointToPathConstraintData<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transform_OS_KS")]
-    TransformOsKs([Transform<f32>; 2]),
+    TransformOsKs(CStyleArrayVector<Transform<f32>, 2>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -94,7 +94,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("path" => Path(Primitive<Cow<'de, str>>)),
     ("maxFrictionForce" => MaxFrictionForce(Primitive<f32>)),
     ("angularConstrainedDOF" => AngularConstrainedDof(Primitive<OrientationConstraintType>)),
-    ("transform_OS_KS" => TransformOsKs([Transform<f32>; 2])),
+    ("transform_OS_KS" => TransformOsKs(CStyleArrayVector<Transform<f32>, 2>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

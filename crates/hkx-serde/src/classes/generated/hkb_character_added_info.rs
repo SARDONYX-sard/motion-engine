@@ -87,7 +87,7 @@ pub enum HkbCharacterAddedInfo<'a> {
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "poseModelSpace")]
-    PoseModelSpace(HkArrayVector<QsTransform<f32>>),
+    PoseModelSpace(HkArrayMatrix3<QsTransform<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -101,5 +101,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("fullPathToProject" => FullPathToProject(Primitive<Cow<'de, str>>)),
     ("skeleton" => Skeleton(Primitive<Cow<'de, str>>)),
     ("worldFromModel" => WorldFromModel(QsTransform<f32>)),
-    ("poseModelSpace" => PoseModelSpace(HkArrayVector<QsTransform<f32>>)),
+    ("poseModelSpace" => PoseModelSpace(HkArrayMatrix3<QsTransform<f32>>)),
 }

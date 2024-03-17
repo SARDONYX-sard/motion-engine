@@ -612,7 +612,7 @@ pub enum HkpWorld<'a> {
     /// - offset: 800
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "broadPhaseExtents")]
-    BroadPhaseExtents([Vector4<f32>; 2]),
+    BroadPhaseExtents(CStyleArrayVector<Vector4<f32>, 2>),
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseNumMarkers"`
     /// -   type: `hkInt32`
@@ -736,7 +736,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("broadPhaseBorder" => BroadPhaseBorder(Primitive<Cow<'de, str>>)),
     ("destructionWorld" => DestructionWorld(Primitive<Cow<'de, str>>)),
     ("npWorld" => NpWorld(Primitive<Cow<'de, str>>)),
-    ("broadPhaseExtents" => BroadPhaseExtents([Vector4<f32>; 2])),
+    ("broadPhaseExtents" => BroadPhaseExtents(CStyleArrayVector<Vector4<f32>, 2>)),
     ("broadPhaseNumMarkers" => BroadPhaseNumMarkers(Primitive<i32>)),
     ("sizeOfToiEventQueue" => SizeOfToiEventQueue(Primitive<i32>)),
     ("broadPhaseQuerySize" => BroadPhaseQuerySize(Primitive<i32>)),

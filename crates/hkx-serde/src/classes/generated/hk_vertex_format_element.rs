@@ -62,7 +62,7 @@ pub enum HkVertexFormatElement {
     /// - offset: 5
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "pad")]
-    Pad([Primitive<u8>; 3]),
+    Pad(CStyleArray<u8, 3>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -73,5 +73,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("usage" => Usage(Primitive<ComponentUsage>)),
     ("subUsage" => SubUsage(Primitive<u8>)),
     ("flags" => Flags(Primitive<HintFlags>)),
-    ("pad" => Pad([Primitive<u8>; 3])),
+    ("pad" => Pad(CStyleArray<u8, 3>)),
 }

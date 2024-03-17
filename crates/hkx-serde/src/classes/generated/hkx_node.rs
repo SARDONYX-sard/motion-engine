@@ -67,7 +67,7 @@ pub enum HkxNode<'a> {
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "keyFrames")]
-    KeyFrames(HkArrayVector<Matrix4<f32>>),
+    KeyFrames(HkArrayMatrix4<Matrix4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"children"`
     /// -   type: `hkArray&lt;hkxNode*&gt;`
@@ -106,7 +106,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("object" => Object(Primitive<Cow<'de, str>>)),
-    ("keyFrames" => KeyFrames(HkArrayVector<Matrix4<f32>>)),
+    ("keyFrames" => KeyFrames(HkArrayMatrix4<Matrix4<f32>>)),
     ("children" => Children(HkArrayRef<Cow<'de, str>>)),
     ("annotations" => Annotations(HkArrayClass<HkxNodeAnnotationData<'de>>)),
     ("userProperties" => UserProperties(Primitive<Cow<'de, str>>)),

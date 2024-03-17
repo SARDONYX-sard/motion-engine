@@ -45,7 +45,7 @@ pub enum HkxTextureInplace<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "fileType")]
-    FileType([Primitive<char>; 4]),
+    FileType(CStyleArray<char, 4>),
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `hkArray&lt;hkUint8&gt;`
@@ -74,7 +74,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkxTextureInplace<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("fileType" => FileType([Primitive<char>; 4])),
+    ("fileType" => FileType(CStyleArray<char, 4>)),
     ("data" => Data(HkArrayRef<Primitive<u8>>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("originalFilename" => OriginalFilename(Primitive<Cow<'de, str>>)),

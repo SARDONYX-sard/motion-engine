@@ -28,7 +28,7 @@ pub enum HkpGroupFilter {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "prepad")]
-    Prepad([Primitive<u32>; 2]),
+    Prepad(CStyleArray<u32, 2>),
     /// # C++ Parent class(`hkpCollisionFilter` => parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum hkpFilterType`
@@ -42,7 +42,7 @@ pub enum HkpGroupFilter {
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "postpad")]
-    Postpad([Primitive<u32>; 3]),
+    Postpad(CStyleArray<u32, 3>),
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
@@ -74,25 +74,25 @@ pub enum HkpGroupFilter {
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "collisionLookupTable")]
-    CollisionLookupTable([Primitive<u32>; 32]),
+    CollisionLookupTable(CStyleArray<u32, 32>),
     /// # C++ Class Fields Info
     /// -   name:`"pad256"`
     /// -   type: `hkVector4[4]`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "pad256")]
-    Pad256([Vector4<f32>; 4]),
+    Pad256(CStyleArrayVector<Vector4<f32>, 4>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpGroupFilter, "@name",
-    ("prepad" => Prepad([Primitive<u32>; 2])),
+    ("prepad" => Prepad(CStyleArray<u32, 2>)),
     ("type" => Type(Primitive<HkpFilterType>)),
-    ("postpad" => Postpad([Primitive<u32>; 3])),
+    ("postpad" => Postpad(CStyleArray<u32, 3>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("nextFreeSystemGroup" => NextFreeSystemGroup(Primitive<i32>)),
-    ("collisionLookupTable" => CollisionLookupTable([Primitive<u32>; 32])),
-    ("pad256" => Pad256([Vector4<f32>; 4])),
+    ("collisionLookupTable" => CollisionLookupTable(CStyleArray<u32, 32>)),
+    ("pad256" => Pad256(CStyleArrayVector<Vector4<f32>, 4>)),
 }

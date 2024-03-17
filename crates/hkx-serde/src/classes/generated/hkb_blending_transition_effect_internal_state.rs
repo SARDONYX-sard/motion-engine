@@ -45,7 +45,7 @@ pub enum HkbBlendingTransitionEffectInternalState {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "characterPoseAtBeginningOfTransition")]
-    CharacterPoseAtBeginningOfTransition(HkArrayVector<QsTransform<f32>>),
+    CharacterPoseAtBeginningOfTransition(HkArrayMatrix3<QsTransform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"timeRemaining"`
     /// -   type: `hkReal`
@@ -81,7 +81,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbBlendingTransitionEffectInternalState, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("characterPoseAtBeginningOfTransition" => CharacterPoseAtBeginningOfTransition(HkArrayVector<QsTransform<f32>>)),
+    ("characterPoseAtBeginningOfTransition" => CharacterPoseAtBeginningOfTransition(HkArrayMatrix3<QsTransform<f32>>)),
     ("timeRemaining" => TimeRemaining(Primitive<f32>)),
     ("timeInTransition" => TimeInTransition(Primitive<f32>)),
     ("applySelfTransition" => ApplySelfTransition(Primitive<bool>)),

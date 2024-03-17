@@ -44,7 +44,7 @@ pub enum HkpMaxSizeMotion<'a> {
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "deactivationNumInactiveFrames")]
-    DeactivationNumInactiveFrames([Primitive<u16>; 2]),
+    DeactivationNumInactiveFrames(CStyleArray<u16, 2>),
     /// # C++ Parent class(`hkpMotion` => parent: `hkReferencedObject`) field Info
     /// -   name:`"motionState"`
     /// -   type: `struct hkMotionState`
@@ -79,14 +79,14 @@ pub enum HkpMaxSizeMotion<'a> {
     /// - offset: 240
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "deactivationRefPosition")]
-    DeactivationRefPosition([Vector4<f32>; 2]),
+    DeactivationRefPosition(CStyleArrayVector<Vector4<f32>, 2>),
     /// # C++ Parent class(`hkpMotion` => parent: `hkReferencedObject`) field Info
     /// -   name:`"deactivationRefOrientation"`
     /// -   type: `hkUint32[2]`
     /// - offset: 272
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "deactivationRefOrientation")]
-    DeactivationRefOrientation([Primitive<u32>; 2]),
+    DeactivationRefOrientation(CStyleArray<u32, 2>),
     /// # C++ Parent class(`hkpMotion` => parent: `hkReferencedObject`) field Info
     /// -   name:`"savedMotion"`
     /// -   type: `struct hkpMaxSizeMotion*`
@@ -133,13 +133,13 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpMaxSizeMotion<'de>, "@name",
     ("type" => Type(Primitive<MotionType>)),
     ("deactivationIntegrateCounter" => DeactivationIntegrateCounter(Primitive<u8>)),
-    ("deactivationNumInactiveFrames" => DeactivationNumInactiveFrames([Primitive<u16>; 2])),
+    ("deactivationNumInactiveFrames" => DeactivationNumInactiveFrames(CStyleArray<u16, 2>)),
     ("motionState" => MotionState(HkMotionState)),
     ("inertiaAndMassInv" => InertiaAndMassInv(Vector4<f32>)),
     ("linearVelocity" => LinearVelocity(Vector4<f32>)),
     ("angularVelocity" => AngularVelocity(Vector4<f32>)),
-    ("deactivationRefPosition" => DeactivationRefPosition([Vector4<f32>; 2])),
-    ("deactivationRefOrientation" => DeactivationRefOrientation([Primitive<u32>; 2])),
+    ("deactivationRefPosition" => DeactivationRefPosition(CStyleArrayVector<Vector4<f32>, 2>)),
+    ("deactivationRefOrientation" => DeactivationRefOrientation(CStyleArray<u32, 2>)),
     ("savedMotion" => SavedMotion(Primitive<Cow<'de, str>>)),
     ("savedQualityTypeIndex" => SavedQualityTypeIndex(Primitive<u16>)),
     ("gravityFactor" => GravityFactor(Primitive<f32>)),

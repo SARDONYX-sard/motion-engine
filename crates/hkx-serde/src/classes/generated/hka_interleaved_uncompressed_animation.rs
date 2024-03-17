@@ -88,7 +88,7 @@ pub enum HkaInterleavedUncompressedAnimation<'a> {
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transforms")]
-    Transforms(HkArrayVector<QsTransform<f32>>),
+    Transforms(HkArrayMatrix3<QsTransform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"floats"`
     /// -   type: `hkArray&lt;hkReal&gt;`
@@ -109,6 +109,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("annotationTracks" => AnnotationTracks(HkArrayClass<HkaAnnotationTrack<'de>>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("transforms" => Transforms(HkArrayVector<QsTransform<f32>>)),
+    ("transforms" => Transforms(HkArrayMatrix3<QsTransform<f32>>)),
     ("floats" => Floats(HkArrayRef<Primitive<f32>>)),
 }

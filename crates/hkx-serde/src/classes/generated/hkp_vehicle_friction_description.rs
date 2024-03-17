@@ -41,7 +41,7 @@ pub enum HkpVehicleFrictionDescription {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "axleDescr")]
-    AxleDescr([HkpVehicleFrictionDescriptionAxisDescription; 2]),
+    AxleDescr(CStyleArrayClass<HkpVehicleFrictionDescriptionAxisDescription, 2>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -49,5 +49,5 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpVehicleFrictionDescription, "@name",
     ("wheelDistance" => WheelDistance(Primitive<f32>)),
     ("chassisMassInv" => ChassisMassInv(Primitive<f32>)),
-    ("axleDescr" => AxleDescr([HkpVehicleFrictionDescriptionAxisDescription; 2])),
+    ("axleDescr" => AxleDescr(CStyleArrayClass<HkpVehicleFrictionDescriptionAxisDescription, 2>)),
 }

@@ -66,14 +66,14 @@ pub enum HkbCharacterSteppedInfo {
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "poseModelSpace")]
-    PoseModelSpace(HkArrayVector<QsTransform<f32>>),
+    PoseModelSpace(HkArrayMatrix3<QsTransform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"rigidAttachmentTransforms"`
     /// -   type: `hkArray&lt;hkQsTransform&gt;`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rigidAttachmentTransforms")]
-    RigidAttachmentTransforms(HkArrayVector<QsTransform<f32>>),
+    RigidAttachmentTransforms(HkArrayMatrix3<QsTransform<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -84,6 +84,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("characterId" => CharacterId(Primitive<u64>)),
     ("deltaTime" => DeltaTime(Primitive<f32>)),
     ("worldFromModel" => WorldFromModel(QsTransform<f32>)),
-    ("poseModelSpace" => PoseModelSpace(HkArrayVector<QsTransform<f32>>)),
-    ("rigidAttachmentTransforms" => RigidAttachmentTransforms(HkArrayVector<QsTransform<f32>>)),
+    ("poseModelSpace" => PoseModelSpace(HkArrayMatrix3<QsTransform<f32>>)),
+    ("rigidAttachmentTransforms" => RigidAttachmentTransforms(HkArrayMatrix3<QsTransform<f32>>)),
 }

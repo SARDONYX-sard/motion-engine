@@ -27,11 +27,11 @@ pub enum HkpVehicleFrictionStatus {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "axis")]
-    Axis([HkpVehicleFrictionStatusAxisStatus; 2]),
+    Axis(CStyleArrayClass<HkpVehicleFrictionStatusAxisStatus, 2>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpVehicleFrictionStatus, "@name",
-    ("axis" => Axis([HkpVehicleFrictionStatusAxisStatus; 2])),
+    ("axis" => Axis(CStyleArrayClass<HkpVehicleFrictionStatusAxisStatus, 2>)),
 }

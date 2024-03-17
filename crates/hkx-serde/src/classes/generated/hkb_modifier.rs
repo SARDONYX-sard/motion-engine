@@ -56,7 +56,7 @@ pub enum HkbModifier<'a> {
     /// - offset: 39
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "padNode", skip_serializing)]
-    PadNode([Primitive<bool>; 1]),
+    PadNode(CStyleArray<bool, 1>),
 
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"variableBindingSet"`
@@ -110,7 +110,7 @@ pub enum HkbModifier<'a> {
     /// - offset: 41
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "padModifier", skip_serializing)]
-    PadModifier([Primitive<bool>; 3]),
+    PadModifier(CStyleArray<bool, 3>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -120,12 +120,12 @@ impl_deserialize_for_internally_tagged_enum! {
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("id" => Id(Primitive<i16>)),
     ("cloneState" => CloneState(Primitive<Unknown>)),
-    ("padNode" => PadNode([Primitive<bool>; 1])),
+    ("padNode" => PadNode(CStyleArray<bool, 1>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
     ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("enable" => Enable(Primitive<bool>)),
-    ("padModifier" => PadModifier([Primitive<bool>; 3])),
+    ("padModifier" => PadModifier(CStyleArray<bool, 3>)),
 }

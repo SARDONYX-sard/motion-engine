@@ -45,14 +45,14 @@ pub enum HkIndexedTransformSet<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "matrices")]
-    Matrices(HkArrayVector<Matrix4<f32>>),
+    Matrices(HkArrayMatrix4<Matrix4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"inverseMatrices"`
     /// -   type: `hkArray&lt;hkMatrix4&gt;`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "inverseMatrices")]
-    InverseMatrices(HkArrayVector<Matrix4<f32>>),
+    InverseMatrices(HkArrayMatrix4<Matrix4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"matricesOrder"`
     /// -   type: `hkArray&lt;hkInt16&gt;`
@@ -88,8 +88,8 @@ impl_deserialize_for_internally_tagged_enum! {
     HkIndexedTransformSet<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("matrices" => Matrices(HkArrayVector<Matrix4<f32>>)),
-    ("inverseMatrices" => InverseMatrices(HkArrayVector<Matrix4<f32>>)),
+    ("matrices" => Matrices(HkArrayMatrix4<Matrix4<f32>>)),
+    ("inverseMatrices" => InverseMatrices(HkArrayMatrix4<Matrix4<f32>>)),
     ("matricesOrder" => MatricesOrder(HkArrayRef<Primitive<i16>>)),
     ("matricesNames" => MatricesNames(HkArrayStringPtr<'de>)),
     ("indexMappings" => IndexMappings(HkArrayClass<HkMeshBoneIndexMapping>)),

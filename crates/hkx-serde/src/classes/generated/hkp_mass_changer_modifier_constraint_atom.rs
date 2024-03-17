@@ -49,7 +49,7 @@ pub enum HkpMassChangerModifierConstraintAtom<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "pad")]
-    Pad([Primitive<u32>; 2]),
+    Pad(CStyleArray<u32, 2>),
 
     /// # C++ Parent class(`hkpConstraintAtom` => parent: `None`) field Info
     /// -   name:`"type"`
@@ -81,7 +81,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("modifierAtomSize" => ModifierAtomSize(Primitive<u16>)),
     ("childSize" => ChildSize(Primitive<u16>)),
     ("child" => Child(Primitive<Cow<'de, str>>)),
-    ("pad" => Pad([Primitive<u32>; 2])),
+    ("pad" => Pad(CStyleArray<u32, 2>)),
     ("type" => Type(Primitive<AtomType>)),
     ("factorA" => FactorA(Vector4<f32>)),
     ("factorB" => FactorB(Vector4<f32>)),

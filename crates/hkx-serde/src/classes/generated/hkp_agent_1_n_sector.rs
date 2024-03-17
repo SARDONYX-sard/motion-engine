@@ -55,7 +55,7 @@ pub enum HkpAgent1NSector {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "data")]
-    Data([Primitive<u8>; 496]),
+    Data(CStyleArray<u8, 496>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -65,5 +65,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("pad0" => Pad0(Primitive<u32>)),
     ("pad1" => Pad1(Primitive<u32>)),
     ("pad2" => Pad2(Primitive<u32>)),
-    ("data" => Data([Primitive<u8>; 496])),
+    ("data" => Data(CStyleArray<u8, 496>)),
 }

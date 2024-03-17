@@ -27,14 +27,14 @@ pub enum HkAabbUint32 {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | ALIGN16`
     #[serde(rename = "min")]
-    Min([Primitive<u32>; 3]),
+    Min(CStyleArray<u32, 3>),
     /// # C++ Class Fields Info
     /// -   name:`"expansionMin"`
     /// -   type: `hkUint8[3]`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "expansionMin")]
-    ExpansionMin([Primitive<u8>; 3]),
+    ExpansionMin(CStyleArray<u8, 3>),
     /// # C++ Class Fields Info
     /// -   name:`"expansionShift"`
     /// -   type: `hkUint8`
@@ -48,14 +48,14 @@ pub enum HkAabbUint32 {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "max")]
-    Max([Primitive<u32>; 3]),
+    Max(CStyleArray<u32, 3>),
     /// # C++ Class Fields Info
     /// -   name:`"expansionMax"`
     /// -   type: `hkUint8[3]`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "expansionMax")]
-    ExpansionMax([Primitive<u8>; 3]),
+    ExpansionMax(CStyleArray<u8, 3>),
     /// # C++ Class Fields Info
     /// -   name:`"shapeKeyByte"`
     /// -   type: `hkUint8`
@@ -68,10 +68,10 @@ pub enum HkAabbUint32 {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkAabbUint32, "@name",
-    ("min" => Min([Primitive<u32>; 3])),
-    ("expansionMin" => ExpansionMin([Primitive<u8>; 3])),
+    ("min" => Min(CStyleArray<u32, 3>)),
+    ("expansionMin" => ExpansionMin(CStyleArray<u8, 3>)),
     ("expansionShift" => ExpansionShift(Primitive<u8>)),
-    ("max" => Max([Primitive<u32>; 3])),
-    ("expansionMax" => ExpansionMax([Primitive<u8>; 3])),
+    ("max" => Max(CStyleArray<u32, 3>)),
+    ("expansionMax" => ExpansionMax(CStyleArray<u8, 3>)),
     ("shapeKeyByte" => ShapeKeyByte(Primitive<u8>)),
 }

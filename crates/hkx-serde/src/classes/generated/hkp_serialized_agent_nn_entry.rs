@@ -115,7 +115,7 @@ pub enum HkpSerializedAgentNnEntry<'a> {
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "nnEntryData")]
-    NnEntryData([Primitive<u8>; 160]),
+    NnEntryData(CStyleArray<u8, 160>),
     /// # C++ Class Fields Info
     /// -   name:`"trackInfo"`
     /// -   type: `struct hkpSerializedTrack1nInfo`
@@ -129,7 +129,7 @@ pub enum HkpSerializedAgentNnEntry<'a> {
     /// - offset: 300
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "endianCheckBuffer")]
-    EndianCheckBuffer([Primitive<u8>; 4]),
+    EndianCheckBuffer(CStyleArray<u8, 4>),
     /// # C++ Class Fields Info
     /// -   name:`"version"`
     /// -   type: `hkUint32`
@@ -154,9 +154,9 @@ impl_deserialize_for_internally_tagged_enum! {
     ("propertiesStream" => PropertiesStream(HkArrayRef<Primitive<u8>>)),
     ("contactPoints" => ContactPoints(HkArrayClass<HkContactPoint>)),
     ("cpIdMgr" => CpIdMgr(HkArrayRef<Primitive<u8>>)),
-    ("nnEntryData" => NnEntryData([Primitive<u8>; 160])),
+    ("nnEntryData" => NnEntryData(CStyleArray<u8, 160>)),
     ("trackInfo" => TrackInfo(HkpSerializedTrack1NInfo<'de>)),
-    ("endianCheckBuffer" => EndianCheckBuffer([Primitive<u8>; 4])),
+    ("endianCheckBuffer" => EndianCheckBuffer(CStyleArray<u8, 4>)),
     ("version" => Version(Primitive<u32>)),
 }
 

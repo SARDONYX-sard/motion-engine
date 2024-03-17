@@ -62,7 +62,7 @@ pub enum HkpSimpleContactConstraintDataInfo {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "data")]
-    Data([Primitive<u32>; 5]),
+    Data(CStyleArray<u32, 5>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -73,5 +73,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("internalData0" => InternalData0(Primitive<f32>)),
     ("rollingFrictionMultiplier" => RollingFrictionMultiplier(Primitive<f32>)),
     ("internalData1" => InternalData1(Primitive<f32>)),
-    ("data" => Data([Primitive<u32>; 5])),
+    ("data" => Data(CStyleArray<u32, 5>)),
 }

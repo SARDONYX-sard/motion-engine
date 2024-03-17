@@ -61,7 +61,7 @@ pub fn generate_classes() {
         tracing::debug!("remain = {:?}", remain);
         tracing::debug!("class = {:?}", class);
 
-        mod_indexes.push(format!("mod {file_stem};\nuse {file_stem}::*;\n"));
+        mod_indexes.push(format!("mod {file_stem};\npub use {file_stem}::*;\n"));
 
         let class_name = class.name.clone();
         class_map.insert(class_name.clone(), class.clone());
@@ -74,6 +74,19 @@ pub fn generate_classes() {
     for (_sig, class) in class_map.clone().into_iter() {
         let (_rust_fields_code, fields) = generate_all_fields(&class, &class_map, None);
         // IndexMap<"C++ field name", ("rust enum tag name", "rust type name")>
+        let life_time = get_lifetime_from_map(&fields);
+        let rust_struct_name = class.name.to_case(Case::Pascal);
+        life_time_name_map.insert(
+            rust_struct_name.clone(),
+            format!("{rust_struct_name}{life_time}"),
+        );
+    }
+
+    // I was able to detect the lifetime of `Cow<'a, str>` etc. in the first one, but not the lifetime of the newly attached structure in the case of structures with structure as a field.
+    // Therefore, we will use the HashMap created in the first step to detect further nested lifetimes.
+    for (_sig, class) in class_map.clone().into_iter() {
+        let (_rust_fields_code, fields) =
+            generate_all_fields(&class, &class_map, Some(&life_time_name_map));
         let life_time = get_lifetime_from_map(&fields);
         let rust_struct_name = class.name.to_case(Case::Pascal);
         life_time_name_map.insert(

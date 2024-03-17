@@ -244,6 +244,7 @@ fn generate_enums(enums: &[Enum]) -> String {
     let mut rust_code = String::new();
 
     for (enum_name, enum_info) in enums {
+        let enum_name = enum_name.to_case(Case::Pascal);
         // Generate one enum template prefix
         rust_code.push_str(&format!(
             r#"

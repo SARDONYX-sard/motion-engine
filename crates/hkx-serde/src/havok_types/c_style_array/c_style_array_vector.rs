@@ -103,13 +103,24 @@ macro_rules! impl_serde_for_c_style_array {
 
                                     let text: Cow<'_, str> = map.next_value()?;
                                     let text = text.as_ref();
-                                    let mut chunks = text
+                                    let chunks: Vec<_> = text
                                         .chunk($sep, $chunk_size)
                                         .into_iter()
-                                        .filter(|s| !s.is_empty());
-                                    for i in 0..value_inner.len() {
-                                        let line = chunks.next().unwrap();
-                                        value_inner[i] = T::deserialize(line.into_deserializer())?;
+                                        .filter(|s| !s.is_empty())
+                                        .collect();
+
+                                    let chunk_size = chunks.len();
+                                    if chunk_size != N {
+                                        let err_msg = format!(
+                                            "Expected {N} chunks, but got {chunk_size} in {}",
+                                            stringify!($struct_name)
+                                        );
+                                        return Err(Error::custom(err_msg));
+                                    }
+
+                                    // Expect a string like "(1.0 0.0 0.0 0.0)" for the `unit` variable.
+                                    for (i, unit) in chunks.iter().enumerate() {
+                                        value_inner[i] = T::deserialize(unit.into_deserializer())?;
                                     }
 
                                     value = Some(value_inner);

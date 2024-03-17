@@ -45,7 +45,7 @@ pub enum HkpFirstPersonGun<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "type", skip_serializing)]
-    Type(Primitive<Unknown>),
+    Type(Primitive<()>),
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
@@ -74,7 +74,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpFirstPersonGun<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("type" => Type(Primitive<Unknown>)),
+    ("type" => Type(Primitive<()>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("keyboardKey" => KeyboardKey(Primitive<KeyboardKey>)),
     ("listeners" => Listeners(HkArrayRef<Cow<'de, str>>)),

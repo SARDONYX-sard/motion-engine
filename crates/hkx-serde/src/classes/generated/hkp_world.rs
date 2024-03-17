@@ -423,7 +423,7 @@ pub enum HkpWorld<'a> {
     /// - offset: 252
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "simulationType", skip_serializing)]
-    SimulationType(Primitive<Unknown>),
+    SimulationType(Primitive<()>),
     /// # C++ Class Fields Info
     /// -   name:`"numToisTillAllowedPenetrationSimplifiedToi"`
     /// -   type: `hkReal`
@@ -647,7 +647,7 @@ pub enum HkpWorld<'a> {
     /// - offset: 848
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "contactPointGeneration", skip_serializing)]
-    ContactPointGeneration(Primitive<Unknown>),
+    ContactPointGeneration(Primitive<()>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -709,7 +709,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("maxEntriesPerToiMidphaseCollideTask" => MaxEntriesPerToiMidphaseCollideTask(Primitive<i32>)),
     ("maxEntriesPerToiNarrowphaseCollideTask" => MaxEntriesPerToiNarrowphaseCollideTask(Primitive<i32>)),
     ("maxNumToiCollisionPairsSinglethreaded" => MaxNumToiCollisionPairsSinglethreaded(Primitive<i32>)),
-    ("simulationType" => SimulationType(Primitive<Unknown>)),
+    ("simulationType" => SimulationType(Primitive<()>)),
     ("numToisTillAllowedPenetrationSimplifiedToi" => NumToisTillAllowedPenetrationSimplifiedToi(Primitive<f32>)),
     ("numToisTillAllowedPenetrationToi" => NumToisTillAllowedPenetrationToi(Primitive<f32>)),
     ("numToisTillAllowedPenetrationToiHigher" => NumToisTillAllowedPenetrationToiHigher(Primitive<f32>)),
@@ -741,7 +741,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("sizeOfToiEventQueue" => SizeOfToiEventQueue(Primitive<i32>)),
     ("broadPhaseQuerySize" => BroadPhaseQuerySize(Primitive<i32>)),
     ("broadPhaseUpdateSize" => BroadPhaseUpdateSize(Primitive<i32>)),
-    ("contactPointGeneration" => ContactPointGeneration(Primitive<Unknown>)),
+    ("contactPointGeneration" => ContactPointGeneration(Primitive<()>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

@@ -83,7 +83,7 @@ pub enum HkbVariableBindingSetBinding<'a> {
     /// - offset: 26
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "memberType", skip_serializing)]
-    MemberType(Primitive<Unknown>),
+    MemberType(Primitive<()>),
     /// # C++ Class Fields Info
     /// -   name:`"variableType"`
     /// -   type: `hkInt8`
@@ -97,7 +97,7 @@ pub enum HkbVariableBindingSetBinding<'a> {
     /// - offset: 28
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "flags", skip_serializing)]
-    Flags(Primitive<Unknown>),
+    Flags(Primitive<()>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -111,9 +111,9 @@ impl_deserialize_for_internally_tagged_enum! {
     ("variableIndex" => VariableIndex(Primitive<i32>)),
     ("bitIndex" => BitIndex(Primitive<i8>)),
     ("bindingType" => BindingType(Primitive<BindingType>)),
-    ("memberType" => MemberType(Primitive<Unknown>)),
+    ("memberType" => MemberType(Primitive<()>)),
     ("variableType" => VariableType(Primitive<i8>)),
-    ("flags" => Flags(Primitive<Unknown>)),
+    ("flags" => Flags(Primitive<()>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

@@ -35,7 +35,7 @@ pub enum HkpVehicleLinearCastWheelCollide<'a> {
     /// - offset: 9
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "type", skip_serializing)]
-    Type(Primitive<Unknown>),
+    Type(Primitive<()>),
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
@@ -95,7 +95,7 @@ pub enum HkpVehicleLinearCastWheelCollide<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkpVehicleLinearCastWheelCollide<'de>, "@name",
     ("alreadyUsed" => AlreadyUsed(Primitive<bool>)),
-    ("type" => Type(Primitive<Unknown>)),
+    ("type" => Type(Primitive<()>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("wheelCollisionFilterInfo" => WheelCollisionFilterInfo(Primitive<u32>)),

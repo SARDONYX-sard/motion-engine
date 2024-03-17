@@ -64,7 +64,7 @@ pub enum HkbAttachmentModifier<'a> {
     /// - offset: 38
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "cloneState", skip_serializing)]
-    CloneState(Primitive<Unknown>),
+    CloneState(Primitive<()>),
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
@@ -181,7 +181,7 @@ pub enum HkbAttachmentModifier<'a> {
     /// - offset: 96
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "oldMotionType", skip_serializing)]
-    OldMotionType(Primitive<Unknown>),
+    OldMotionType(Primitive<()>),
     /// # C++ Class Fields Info
     /// -   name:`"oldFilterInfo"`
     /// -   type: `hkInt32`
@@ -206,7 +206,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("userData" => UserData(Primitive<usize>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("id" => Id(Primitive<i16>)),
-    ("cloneState" => CloneState(Primitive<Unknown>)),
+    ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<bool, 1>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
     ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
@@ -222,7 +222,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("attacheeHandle" => AttacheeHandle(Primitive<Cow<'de, str>>)),
     ("attacheeLayer" => AttacheeLayer(Primitive<i32>)),
     ("attacheeRB" => AttacheeRb(Primitive<Cow<'de, str>>)),
-    ("oldMotionType" => OldMotionType(Primitive<Unknown>)),
+    ("oldMotionType" => OldMotionType(Primitive<()>)),
     ("oldFilterInfo" => OldFilterInfo(Primitive<i32>)),
     ("attachment" => Attachment(Primitive<Cow<'de, str>>)),
 }

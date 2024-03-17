@@ -35,7 +35,7 @@ pub enum HkpBvTreeShape {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "type", skip_serializing)]
-    Type(Primitive<Unknown>),
+    Type(Primitive<()>),
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
@@ -67,7 +67,7 @@ pub enum HkpBvTreeShape {
 impl_deserialize_for_internally_tagged_enum! {
     HkpBvTreeShape, "@name",
     ("userData" => UserData(Primitive<usize>)),
-    ("type" => Type(Primitive<Unknown>)),
+    ("type" => Type(Primitive<()>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("bvTreeType" => BvTreeType(Primitive<BvTreeType>)),

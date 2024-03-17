@@ -88,7 +88,7 @@ pub enum HkbNode<'a> {
     /// - offset: 38
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "cloneState", skip_serializing)]
-    CloneState(Primitive<Unknown>),
+    CloneState(Primitive<()>),
     /// # C++ Class Fields Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
@@ -109,7 +109,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("userData" => UserData(Primitive<usize>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("id" => Id(Primitive<i16>)),
-    ("cloneState" => CloneState(Primitive<Unknown>)),
+    ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<bool, 1>)),
 }
 

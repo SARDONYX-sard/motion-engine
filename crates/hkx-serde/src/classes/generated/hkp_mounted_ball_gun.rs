@@ -78,7 +78,7 @@ pub enum HkpMountedBallGun<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "type", skip_serializing)]
-    Type(Primitive<Unknown>),
+    Type(Primitive<()>),
     /// # C++ Parent class(`hkpFirstPersonGun` => parent: `hkReferencedObject`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
@@ -137,7 +137,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("maxBulletsInWorld" => MaxBulletsInWorld(Primitive<i32>)),
     ("bulletOffsetFromCenter" => BulletOffsetFromCenter(Vector4<f32>)),
     ("addedBodies" => AddedBodies(Primitive<Cow<'de, str>>)),
-    ("type" => Type(Primitive<Unknown>)),
+    ("type" => Type(Primitive<()>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("keyboardKey" => KeyboardKey(Primitive<KeyboardKey>)),
     ("listeners" => Listeners(HkArrayRef<Cow<'de, str>>)),

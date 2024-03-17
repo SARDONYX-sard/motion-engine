@@ -28,7 +28,7 @@ pub enum HkpGravityGun<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "type", skip_serializing)]
-    Type(Primitive<Unknown>),
+    Type(Primitive<()>),
     /// # C++ Parent class(`hkpFirstPersonGun` => parent: `hkReferencedObject`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
@@ -129,7 +129,7 @@ pub enum HkpGravityGun<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpGravityGun<'de>, "@name",
-    ("type" => Type(Primitive<Unknown>)),
+    ("type" => Type(Primitive<()>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("keyboardKey" => KeyboardKey(Primitive<KeyboardKey>)),
     ("listeners" => Listeners(HkArrayRef<Cow<'de, str>>)),

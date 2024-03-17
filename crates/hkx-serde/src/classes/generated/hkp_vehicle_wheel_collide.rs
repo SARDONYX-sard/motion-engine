@@ -52,7 +52,7 @@ pub enum HkpVehicleWheelCollide {
     /// - offset: 9
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "type", skip_serializing)]
-    Type(Primitive<Unknown>),
+    Type(Primitive<()>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -61,7 +61,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("alreadyUsed" => AlreadyUsed(Primitive<bool>)),
-    ("type" => Type(Primitive<Unknown>)),
+    ("type" => Type(Primitive<()>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

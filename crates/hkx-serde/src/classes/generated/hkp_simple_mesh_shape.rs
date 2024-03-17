@@ -50,7 +50,7 @@ pub enum HkpSimpleMeshShape {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "type", skip_serializing)]
-    Type(Primitive<Unknown>),
+    Type(Primitive<()>),
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
@@ -112,7 +112,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("disableWelding" => DisableWelding(Primitive<bool>)),
     ("collectionType" => CollectionType(Primitive<CollectionType>)),
     ("userData" => UserData(Primitive<usize>)),
-    ("type" => Type(Primitive<Unknown>)),
+    ("type" => Type(Primitive<()>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("vertices" => Vertices(HkArrayVector<Vector4<f32>>)),

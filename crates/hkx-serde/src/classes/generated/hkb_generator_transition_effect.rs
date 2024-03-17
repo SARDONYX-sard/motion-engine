@@ -42,7 +42,7 @@ pub enum HkbGeneratorTransitionEffect<'a> {
     /// - offset: 42
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "defaultEventMode", skip_serializing)]
-    DefaultEventMode(Primitive<Unknown>),
+    DefaultEventMode(Primitive<()>),
 
     // C++ Parent class(`hkbGenerator` => parent: `hkbNode`) has no fields
 
@@ -73,7 +73,7 @@ pub enum HkbGeneratorTransitionEffect<'a> {
     /// - offset: 38
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "cloneState", skip_serializing)]
-    CloneState(Primitive<Unknown>),
+    CloneState(Primitive<()>),
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
@@ -197,7 +197,7 @@ pub enum HkbGeneratorTransitionEffect<'a> {
     /// - offset: 84
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "toGeneratorState", skip_serializing)]
-    ToGeneratorState(Primitive<Unknown>),
+    ToGeneratorState(Primitive<()>),
     /// # C++ Class Fields Info
     /// -   name:`"echoTransitionGenerator"`
     /// -   type: `hkBool`
@@ -232,7 +232,7 @@ pub enum HkbGeneratorTransitionEffect<'a> {
     /// - offset: 89
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "stage", skip_serializing)]
-    Stage(Primitive<Unknown>),
+    Stage(Primitive<()>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -240,11 +240,11 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbGeneratorTransitionEffect<'de>, "@name",
     ("selfTransitionMode" => SelfTransitionMode(Primitive<SelfTransitionMode>)),
     ("eventMode" => EventMode(Primitive<EventMode>)),
-    ("defaultEventMode" => DefaultEventMode(Primitive<Unknown>)),
+    ("defaultEventMode" => DefaultEventMode(Primitive<()>)),
     ("userData" => UserData(Primitive<usize>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("id" => Id(Primitive<i16>)),
-    ("cloneState" => CloneState(Primitive<Unknown>)),
+    ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<bool, 1>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
     ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
@@ -261,12 +261,12 @@ impl_deserialize_for_internally_tagged_enum! {
     ("duration" => Duration(Primitive<f32>)),
     ("effectiveBlendInDuration" => EffectiveBlendInDuration(Primitive<f32>)),
     ("effectiveBlendOutDuration" => EffectiveBlendOutDuration(Primitive<f32>)),
-    ("toGeneratorState" => ToGeneratorState(Primitive<Unknown>)),
+    ("toGeneratorState" => ToGeneratorState(Primitive<()>)),
     ("echoTransitionGenerator" => EchoTransitionGenerator(Primitive<bool>)),
     ("echoToGenerator" => EchoToGenerator(Primitive<bool>)),
     ("justActivated" => JustActivated(Primitive<bool>)),
     ("updateActiveNodes" => UpdateActiveNodes(Primitive<bool>)),
-    ("stage" => Stage(Primitive<Unknown>)),
+    ("stage" => Stage(Primitive<()>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

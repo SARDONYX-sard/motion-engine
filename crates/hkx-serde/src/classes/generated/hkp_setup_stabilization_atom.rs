@@ -50,7 +50,7 @@ pub enum HkpSetupStabilizationAtom {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "padding")]
-    Padding(CStyleArray<u8, 8>),
+    Padding(CStyleArray<[u8; 8]>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -59,5 +59,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("type" => Type(Primitive<AtomType>)),
     ("enabled" => Enabled(Primitive<bool>)),
     ("maxAngle" => MaxAngle(Primitive<f32>)),
-    ("padding" => Padding(CStyleArray<u8, 8>)),
+    ("padding" => Padding(CStyleArray<[u8; 8]>)),
 }

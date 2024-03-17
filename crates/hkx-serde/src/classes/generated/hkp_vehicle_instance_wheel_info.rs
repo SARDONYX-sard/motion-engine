@@ -48,7 +48,7 @@ pub enum HkpVehicleInstanceWheelInfo<'a> {
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "contactShapeKey")]
-    ContactShapeKey(CStyleArray<u32, 8>),
+    ContactShapeKey(CStyleArray<[u32; 8]>),
     /// # C++ Class Fields Info
     /// -   name:`"hardPointWs"`
     /// -   type: `hkVector4`
@@ -148,7 +148,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("contactPoint" => ContactPoint(HkContactPoint)),
     ("contactFriction" => ContactFriction(Primitive<f32>)),
     ("contactBody" => ContactBody(Primitive<Cow<'de, str>>)),
-    ("contactShapeKey" => ContactShapeKey(CStyleArray<u32, 8>)),
+    ("contactShapeKey" => ContactShapeKey(CStyleArray<[u32; 8]>)),
     ("hardPointWs" => HardPointWs(Vector4<f32>)),
     ("rayEndPointWs" => RayEndPointWs(Vector4<f32>)),
     ("currentSuspensionLength" => CurrentSuspensionLength(Primitive<f32>)),

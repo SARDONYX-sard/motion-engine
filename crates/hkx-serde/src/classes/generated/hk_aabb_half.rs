@@ -27,19 +27,19 @@ pub enum HkAabbHalf {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "data")]
-    Data(CStyleArray<u16, 6>),
+    Data(CStyleArray<[u16; 6]>),
     /// # C++ Class Fields Info
     /// -   name:`"extras"`
     /// -   type: `hkUint16[2]`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "extras")]
-    Extras(CStyleArray<u16, 2>),
+    Extras(CStyleArray<[u16; 2]>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkAabbHalf, "@name",
-    ("data" => Data(CStyleArray<u16, 6>)),
-    ("extras" => Extras(CStyleArray<u16, 2>)),
+    ("data" => Data(CStyleArray<[u16; 6]>)),
+    ("extras" => Extras(CStyleArray<[u16; 2]>)),
 }

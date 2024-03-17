@@ -27,11 +27,11 @@ pub enum HkTraceStreamTitle {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "value")]
-    Value(CStyleArray<char, 32>),
+    Value(CStyleArray<[char; 32]>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkTraceStreamTitle, "@name",
-    ("value" => Value(CStyleArray<char, 32>)),
+    ("value" => Value(CStyleArray<[char; 32]>)),
 }

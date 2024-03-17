@@ -27,7 +27,7 @@ pub enum HkpVehicleFrictionDescriptionAxisDescription {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "frictionCircleYtab")]
-    FrictionCircleYtab(CStyleArray<f32, 16>),
+    FrictionCircleYtab(CStyleArray<[f32; 16]>),
     /// # C++ Class Fields Info
     /// -   name:`"xStep"`
     /// -   type: `hkReal`
@@ -96,7 +96,7 @@ pub enum HkpVehicleFrictionDescriptionAxisDescription {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpVehicleFrictionDescriptionAxisDescription, "@name",
-    ("frictionCircleYtab" => FrictionCircleYtab(CStyleArray<f32, 16>)),
+    ("frictionCircleYtab" => FrictionCircleYtab(CStyleArray<[f32; 16]>)),
     ("xStep" => XStep(Primitive<f32>)),
     ("xStart" => XStart(Primitive<f32>)),
     ("wheelSurfaceInertia" => WheelSurfaceInertia(Primitive<f32>)),

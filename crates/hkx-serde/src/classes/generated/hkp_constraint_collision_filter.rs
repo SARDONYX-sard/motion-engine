@@ -43,7 +43,7 @@ pub enum HkpConstraintCollisionFilter<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "prepad")]
-    Prepad(CStyleArray<u32, 2>),
+    Prepad(CStyleArray<[u32; 2]>),
     /// # C++ Parent class(`hkpCollisionFilter` => parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum hkpFilterType`
@@ -57,7 +57,7 @@ pub enum HkpConstraintCollisionFilter<'a> {
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "postpad")]
-    Postpad(CStyleArray<u32, 3>),
+    Postpad(CStyleArray<[u32; 3]>),
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
@@ -83,9 +83,9 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpConstraintCollisionFilter<'de>, "@name",
     ("disabledPairs" => DisabledPairs(HkpPairCollisionFilterMapPairFilterKeyOverrideType<'de>)),
     ("childFilter" => ChildFilter(Primitive<Cow<'de, str>>)),
-    ("prepad" => Prepad(CStyleArray<u32, 2>)),
+    ("prepad" => Prepad(CStyleArray<[u32; 2]>)),
     ("type" => Type(Primitive<HkpFilterType>)),
-    ("postpad" => Postpad(CStyleArray<u32, 3>)),
+    ("postpad" => Postpad(CStyleArray<[u32; 3]>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
 }

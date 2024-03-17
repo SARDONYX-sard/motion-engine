@@ -89,7 +89,7 @@ pub enum HkpTriSampledHeightFieldBvTreeShape<'a> {
     /// - offset: 33
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "padding")]
-    Padding(CStyleArray<u8, 12>),
+    Padding(CStyleArray<[u8; 12]>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -103,5 +103,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("childContainer" => ChildContainer(HkpSingleShapeContainer<'de>)),
     ("childSize" => ChildSize(Primitive<i32>)),
     ("wantAabbRejectionTest" => WantAabbRejectionTest(Primitive<bool>)),
-    ("padding" => Padding(CStyleArray<u8, 12>)),
+    ("padding" => Padding(CStyleArray<[u8; 12]>)),
 }

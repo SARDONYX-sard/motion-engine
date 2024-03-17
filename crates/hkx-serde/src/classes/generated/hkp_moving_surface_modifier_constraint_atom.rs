@@ -49,7 +49,7 @@ pub enum HkpMovingSurfaceModifierConstraintAtom<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "pad")]
-    Pad(CStyleArray<u32, 2>),
+    Pad(CStyleArray<[u32; 2]>),
 
     /// # C++ Parent class(`hkpConstraintAtom` => parent: `None`) field Info
     /// -   name:`"type"`
@@ -74,7 +74,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("modifierAtomSize" => ModifierAtomSize(Primitive<u16>)),
     ("childSize" => ChildSize(Primitive<u16>)),
     ("child" => Child(Primitive<Cow<'de, str>>)),
-    ("pad" => Pad(CStyleArray<u32, 2>)),
+    ("pad" => Pad(CStyleArray<[u32; 2]>)),
     ("type" => Type(Primitive<AtomType>)),
     ("velocity" => Velocity(Vector4<f32>)),
 }

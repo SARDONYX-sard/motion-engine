@@ -27,11 +27,11 @@ pub enum HkHalf8 {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE | ALIGN16`
     #[serde(rename = "quad")]
-    Quad(CStyleArray<f32, 8>),
+    Quad(CStyleArray<[f32; 8]>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkHalf8, "@name",
-    ("quad" => Quad(CStyleArray<f32, 8>)),
+    ("quad" => Quad(CStyleArray<[f32; 8]>)),
 }

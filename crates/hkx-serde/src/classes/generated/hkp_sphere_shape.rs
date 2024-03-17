@@ -70,7 +70,7 @@ pub enum HkpSphereShape {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "pad16", skip_serializing)]
-    Pad16(CStyleArray<u32, 3>),
+    Pad16(CStyleArray<[u32; 3]>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -81,5 +81,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("type" => Type(Primitive<()>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("pad16" => Pad16(CStyleArray<u32, 3>)),
+    ("pad16" => Pad16(CStyleArray<[u32; 3]>)),
 }

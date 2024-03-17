@@ -58,7 +58,7 @@ pub enum HkbReferencePoseGenerator<'a> {
     /// - offset: 39
     /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
     #[serde(rename = "padNode", skip_serializing)]
-    PadNode(CStyleArray<bool, 1>),
+    PadNode(CStyleArray<[bool; 1]>),
 
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"variableBindingSet"`
@@ -115,7 +115,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("id" => Id(Primitive<i16>)),
     ("cloneState" => CloneState(Primitive<()>)),
-    ("padNode" => PadNode(CStyleArray<bool, 1>)),
+    ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
     ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),

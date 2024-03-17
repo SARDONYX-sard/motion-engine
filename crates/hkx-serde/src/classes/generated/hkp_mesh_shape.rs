@@ -117,7 +117,7 @@ pub enum HkpMeshShape<'a> {
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "pad")]
-    Pad(CStyleArray<i32, 3>),
+    Pad(CStyleArray<[i32; 3]>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -135,7 +135,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("weldingInfo" => WeldingInfo(HkArrayRef<Primitive<u16>>)),
     ("weldingType" => WeldingType(Primitive<WeldingType>)),
     ("radius" => Radius(Primitive<f32>)),
-    ("pad" => Pad(CStyleArray<i32, 3>)),
+    ("pad" => Pad(CStyleArray<[i32; 3]>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

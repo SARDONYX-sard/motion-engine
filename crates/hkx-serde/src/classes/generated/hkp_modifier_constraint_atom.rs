@@ -57,7 +57,7 @@ pub enum HkpModifierConstraintAtom<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "pad")]
-    Pad(CStyleArray<u32, 2>),
+    Pad(CStyleArray<[u32; 2]>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -67,5 +67,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("modifierAtomSize" => ModifierAtomSize(Primitive<u16>)),
     ("childSize" => ChildSize(Primitive<u16>)),
     ("child" => Child(Primitive<Cow<'de, str>>)),
-    ("pad" => Pad(CStyleArray<u32, 2>)),
+    ("pad" => Pad(CStyleArray<[u32; 2]>)),
 }

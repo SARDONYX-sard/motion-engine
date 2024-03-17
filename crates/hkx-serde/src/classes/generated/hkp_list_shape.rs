@@ -110,7 +110,7 @@ pub enum HkpListShape<'a> {
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "enabledChildren")]
-    EnabledChildren(CStyleArray<u32, 8>),
+    EnabledChildren(CStyleArray<[u32; 8]>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -127,7 +127,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("numDisabledChildren" => NumDisabledChildren(Primitive<u16>)),
     ("aabbHalfExtents" => AabbHalfExtents(Vector4<f32>)),
     ("aabbCenter" => AabbCenter(Vector4<f32>)),
-    ("enabledChildren" => EnabledChildren(CStyleArray<u32, 8>)),
+    ("enabledChildren" => EnabledChildren(CStyleArray<[u32; 8]>)),
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

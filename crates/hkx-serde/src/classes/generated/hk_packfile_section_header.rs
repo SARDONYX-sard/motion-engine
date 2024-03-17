@@ -27,7 +27,7 @@ pub enum HkPackfileSectionHeader {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "sectionTag")]
-    SectionTag(CStyleArray<char, 19>),
+    SectionTag(CStyleArray<[char; 19]>),
     /// # C++ Class Fields Info
     /// -   name:`"nullByte"`
     /// -   type: `hkChar`
@@ -89,7 +89,7 @@ pub enum HkPackfileSectionHeader {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkPackfileSectionHeader, "@name",
-    ("sectionTag" => SectionTag(CStyleArray<char, 19>)),
+    ("sectionTag" => SectionTag(CStyleArray<[char; 19]>)),
     ("nullByte" => NullByte(Primitive<char>)),
     ("absoluteDataStart" => AbsoluteDataStart(Primitive<i32>)),
     ("localFixupsOffset" => LocalFixupsOffset(Primitive<i32>)),

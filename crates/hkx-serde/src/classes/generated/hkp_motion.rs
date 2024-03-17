@@ -59,7 +59,7 @@ pub enum HkpMotion<'a> {
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "deactivationNumInactiveFrames")]
-    DeactivationNumInactiveFrames(CStyleArray<u16, 2>),
+    DeactivationNumInactiveFrames(CStyleArray<[u16; 2]>),
     /// # C++ Class Fields Info
     /// -   name:`"motionState"`
     /// -   type: `struct hkMotionState`
@@ -101,7 +101,7 @@ pub enum HkpMotion<'a> {
     /// - offset: 272
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "deactivationRefOrientation")]
-    DeactivationRefOrientation(CStyleArray<u32, 2>),
+    DeactivationRefOrientation(CStyleArray<[u32; 2]>),
     /// # C++ Class Fields Info
     /// -   name:`"savedMotion"`
     /// -   type: `struct hkpMaxSizeMotion*`
@@ -132,13 +132,13 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("type" => Type(Primitive<MotionType>)),
     ("deactivationIntegrateCounter" => DeactivationIntegrateCounter(Primitive<u8>)),
-    ("deactivationNumInactiveFrames" => DeactivationNumInactiveFrames(CStyleArray<u16, 2>)),
+    ("deactivationNumInactiveFrames" => DeactivationNumInactiveFrames(CStyleArray<[u16; 2]>)),
     ("motionState" => MotionState(HkMotionState)),
     ("inertiaAndMassInv" => InertiaAndMassInv(Vector4<f32>)),
     ("linearVelocity" => LinearVelocity(Vector4<f32>)),
     ("angularVelocity" => AngularVelocity(Vector4<f32>)),
     ("deactivationRefPosition" => DeactivationRefPosition(CStyleArrayVector<Vector4<f32>, 2>)),
-    ("deactivationRefOrientation" => DeactivationRefOrientation(CStyleArray<u32, 2>)),
+    ("deactivationRefOrientation" => DeactivationRefOrientation(CStyleArray<[u32; 2]>)),
     ("savedMotion" => SavedMotion(Primitive<Cow<'de, str>>)),
     ("savedQualityTypeIndex" => SavedQualityTypeIndex(Primitive<u16>)),
     ("gravityFactor" => GravityFactor(Primitive<f32>)),

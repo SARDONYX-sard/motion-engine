@@ -23,38 +23,47 @@ use serde::{Deserialize, Serialize};
 /// - There is no `numelements` attribute.
 /// - The number of elements is limited.
 ///
+/// # Error
+/// - If there is an extra array.(e.g. if `[i32; 10]` is gotten when `[i32; 5]` is expected).
+///
 /// # Note
-/// - Extra values are ignored.(e.g. `[i32; 10]` => `[i32; 5]`)
 /// - In summary, the parent enum determines and retrieves the `name` attribute, so it is not included in this structure.
 ///
 ///   The `name` attribute is required for `hkparam` but is not included in this structure.
 ///   This is because the value of the `name` attribute corresponds to a C++ field name,
 ///   and the processing must be changed according to the value.
 ///   And to do that, we need the parent enum that wraps this structure.
+pub type CStyleArrayClass<T, const N: usize> = CStyleArrayClassT<[CStyleArrayClassParam<T>; N]>;
+
+/// # Use the associated type.
+/// The reason for using associated types is that trying to hold `[T; N]` in `classes` results in a trait bound error.
 ///
+/// Therefore, the associated type is used to avoid this error.
+/// This is an internal part of the `classes`, and since `From` is also implemented, there is no need to call it directly.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 #[serde(rename = "hkparam")]
-pub struct CStyleArrayClass<T> {
+pub struct CStyleArrayClassT<T>
+where
+    T: core::fmt::Debug + Clone,
+{
     /// An array that receives `hkparam` of a certain class.
     ///
     /// The XML for this class does not require `name` and `signature`, but only encloses `hkobject` tags without attributes.
     #[serde(rename = "hkobject")]
-    pub classes: Vec<CStyleArrayClassParam<T>>,
+    pub classes: T,
 }
 
-impl<T> From<Vec<CStyleArrayClassParam<T>>> for CStyleArrayClass<T> {
-    fn from(classes: Vec<CStyleArrayClassParam<T>>) -> Self {
-        Self { classes }
-    }
-}
-
-impl<T> From<Vec<T>> for CStyleArrayClass<T> {
-    fn from(classes: Vec<T>) -> Self {
-        Self {
-            classes: classes
-                .into_iter()
-                .map(CStyleArrayClassParam::from)
-                .collect(),
+impl<T, const N: usize> From<[T; N]> for CStyleArrayClass<T, N>
+where
+    T: core::fmt::Debug + Clone,
+{
+    fn from(classes: [T; N]) -> Self {
+        let classes = classes
+            .iter()
+            .map(|value| CStyleArrayClassParam::from(value.clone()))
+            .collect::<Vec<_>>();
+        CStyleArrayClass {
+            classes: classes.try_into().unwrap(),
         }
     }
 }
@@ -85,7 +94,7 @@ mod tests {
 
     #[test]
     fn should_serialize() {
-        let data: CStyleArrayClass<i32> = vec![1045220557, 0].into();
+        let data: CStyleArrayClass<i32, 2> = [1045220557, 0].into();
         let serialized = quick_xml::se::to_string(&data).unwrap();
 
         let expected_xml = "\
@@ -118,10 +127,28 @@ mod tests {
                 </hkobject>
             </hkparam>
         "###;
-        let deserialized: CStyleArrayClass<&str> = quick_xml::de::from_str(xml).unwrap();
+        let deserialized: CStyleArrayClass<&str, 2> = quick_xml::de::from_str(xml).unwrap();
 
-        let expected = vec!["#0063", "#0064"].into();
+        assert_eq!(deserialized, ["#0063", "#0064"].into());
+    }
 
-        assert_eq!(deserialized, expected);
+    #[test]
+    fn should_fail_deserialize_over_limit_elements() {
+        let xml = r###"
+            <hkparam name="variantVariableValues">
+                <hkobject>
+                    <hkparam>#0063</hkparam>
+                </hkobject>
+                <hkobject>
+                    <hkparam>#0064</hkparam>
+                </hkobject>
+                <hkobject>
+                    <hkparam>#0065</hkparam>
+                </hkobject>
+            </hkparam>
+        "###;
+        let result: Result<CStyleArrayClass<&str, 2>, _> = quick_xml::de::from_str(xml);
+
+        assert!(result.is_err());
     }
 }

@@ -37,20 +37,25 @@ pub fn parse_cpp_type(input: &str) -> IResult<&str, Cow<'_, str>> {
 fn parse_primitive_type(input: &str) -> IResult<&str, Cow<'_, str>> {
     map(
         alt((
-            map(tag("char*"), |_| "Primitive<Cow<'a, str>>"),
             map(tag("hkBool"), |_| "Primitive<bool>"),
             map(tag("hkChar"), |_| "Primitive<char>"),
-            map(tag("hkHalf"), |_| "Primitive<f32>"), // f16
+            //
+            map(tag("hkInt8"), |_| "Primitive<i8>"),
             map(tag("hkInt16"), |_| "Primitive<i16>"),
             map(tag("hkInt32"), |_| "Primitive<i32>"),
-            map(tag("hkInt8"), |_| "Primitive<i8>"),
-            map(tag("hkReal"), |_| "Primitive<f32>"), // C++ float
+            //
+            map(tag("hkUint8"), |_| "Primitive<u8>"),
             map(tag("hkUint16"), |_| "Primitive<u16>"),
             map(tag("hkUint32"), |_| "Primitive<u32>"),
             map(tag("hkUint64"), |_| "Primitive<u64>"),
-            map(tag("hkUint8"), |_| "Primitive<u8>"),
             map(tag("hkUlong"), |_| "Primitive<usize>"),
+            //
+            map(tag("hkHalf"), |_| "Primitive<f32>"), // f16
+            map(tag("hkReal"), |_| "Primitive<f32>"), // C++ float
+            //
+            map(tag("char*"), |_| "Primitive<Cow<'a, str>>"),
             map(tag("hkStringPtr"), |_| "Primitive<Cow<'a, str>>"),
+            //
             map(tag("hkVariant"), |_| "Primitive<u64>"), // Fill in appropriate type for Variant
             map(tag("void"), |_| "Primitive<()>"),
         )),
@@ -65,20 +70,25 @@ fn parse_primitive_type(input: &str) -> IResult<&str, Cow<'_, str>> {
 fn parse_primitive_type_non_wrapper(input: &str) -> IResult<&str, Cow<'_, str>> {
     map(
         alt((
-            map(tag("char*"), |_| "Cow<'a, str>"),
             map(tag("hkBool"), |_| "bool"),
             map(tag("hkChar"), |_| "char"),
-            map(tag("hkHalf"), |_| "f32"), // f16
+            //
+            map(tag("hkInt8"), |_| "i8"),
             map(tag("hkInt16"), |_| "i16"),
             map(tag("hkInt32"), |_| "i32"),
-            map(tag("hkInt8"), |_| "i8"),
+            //
+            map(tag("hkHalf"), |_| "f32"), // f16
             map(tag("hkReal"), |_| "f32"), // C++ float
+            //
+            map(tag("hkUint8"), |_| "u8"),
             map(tag("hkUint16"), |_| "u16"),
             map(tag("hkUint32"), |_| "u32"),
             map(tag("hkUint64"), |_| "u64"),
-            map(tag("hkUint8"), |_| "u8"),
             map(tag("hkUlong"), |_| "usize"),
+            //
+            map(tag("char*"), |_| "Cow<'a, str>"),
             map(tag("hkStringPtr"), |_| "Cow<'a, str>"),
+            //
             map(tag("hkVariant"), |_| "u64"), // Fill in appropriate type for Variant
             map(tag("void"), |_| "()"),
         )),
@@ -119,17 +129,22 @@ fn parse_array_type(input: &str) -> IResult<&str, Cow<'_, str>> {
     let (input, size) = parse_array_len(input)?;
 
     let array_type = match base_type.as_ref() {
-        "char*" | "hkBool" | "hkChar" | "hkHalf" | "hkInt16" | "hkInt32" | "hkInt8" | "hkReal"
-        | "hkUint16" | "hkUint32" | "hkUint64" | "hkUint8" | "hkUlong" | "hkVariant" | "void" => {
-            format!("CStyleArray<[{base_type}; {size}]>").into()
-        }
+        "bool" | "char" | "i8" | "i16" | "i32" | "i64" | "isize" | "u8" | "u16" | "u32" | "u64"
+        | "usize" | "f32" | "f64" => format!("CStyleArray<{base_type}, {size}>").into(),
 
-        "hkMatrix3" | "hkQsTransform" | "hkRotation" => {
-            format!("CStyleArrayMatrix3<{base_type}>").into()
+        vec_type if vec_type.starts_with("Vector4") || vec_type.starts_with("Transform") => {
+            format!("CStyleArrayVector<{vec_type}, {size}>").into()
         }
-
-        "hkMatrix4" | "hkTransform" => format!("CStyleArrayMatrix4<{base_type}, {size}>").into(),
-        "hkQuaternion" | "hkVector4" => format!("CStyleArrayVector<{base_type}, {size}>").into(),
+        vec_type
+            if vec_type.starts_with("Matrix3")
+                || vec_type.starts_with("Rotation")
+                || vec_type.starts_with("QsTransform") =>
+        {
+            format!("CStyleArrayMatrix3<{vec_type}, {size}>").into()
+        }
+        vec_type if vec_type.starts_with("Matrix4") || vec_type.starts_with("Quaternion") => {
+            format!("CStyleArrayMatrix4<{vec_type}, {size}>").into()
+        }
 
         any => format!("CStyleArrayClass<{any}, {size}>").into(),
     };

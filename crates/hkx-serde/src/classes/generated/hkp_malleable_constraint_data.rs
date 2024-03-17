@@ -60,7 +60,7 @@ pub enum HkpMalleableConstraintData<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "atoms")]
-    Atoms(HkpBridgeAtoms),
+    Atoms(HkpBridgeAtoms<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"strength"`
     /// -   type: `hkReal`
@@ -77,6 +77,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("constraintData" => ConstraintData(Primitive<Cow<'de, str>>)),
-    ("atoms" => Atoms(HkpBridgeAtoms)),
+    ("atoms" => Atoms(HkpBridgeAtoms<'de>)),
     ("strength" => Strength(Primitive<f32>)),
 }

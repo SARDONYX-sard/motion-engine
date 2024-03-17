@@ -55,7 +55,7 @@ pub enum HkpPoweredChainData<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "atoms")]
-    Atoms(HkpBridgeAtoms),
+    Atoms(HkpBridgeAtoms<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"infos"`
     /// -   type: `hkArray&lt;struct hkpPoweredChainDataConstraintInfo&gt;`
@@ -120,7 +120,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("userData" => UserData(Primitive<usize>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("atoms" => Atoms(HkpBridgeAtoms)),
+    ("atoms" => Atoms(HkpBridgeAtoms<'de>)),
     ("infos" => Infos(HkArrayClass<HkpPoweredChainDataConstraintInfo<'de>>)),
     ("tau" => Tau(Primitive<f32>)),
     ("damping" => Damping(Primitive<f32>)),

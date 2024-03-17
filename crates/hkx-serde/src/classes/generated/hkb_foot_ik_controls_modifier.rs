@@ -125,7 +125,7 @@ pub enum HkbFootIkControlsModifier<'a> {
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "legs")]
-    Legs(HkArrayClass<HkbFootIkControlsModifierLeg>),
+    Legs(HkArrayClass<HkbFootIkControlsModifierLeg<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"errorOutTranslation"`
     /// -   type: `hkVector4`
@@ -158,7 +158,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("controlData" => ControlData(HkbFootIkControlData)),
-    ("legs" => Legs(HkArrayClass<HkbFootIkControlsModifierLeg>)),
+    ("legs" => Legs(HkArrayClass<HkbFootIkControlsModifierLeg<'de>>)),
     ("errorOutTranslation" => ErrorOutTranslation(Vector4<f32>)),
     ("alignWithGroundRotation" => AlignWithGroundRotation(Quaternion<f32>)),
 }

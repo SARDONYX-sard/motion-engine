@@ -429,7 +429,8 @@ pub enum ClassParams<'a> {
     HkbClipGenerator(Vec<HkbClipGenerator<'a>>),
 
     #[serde(rename = "0x59c23a0f")]
-    HkbClipTriggerArray(Vec<HkbClipTriggerArray>),
+    #[serde(bound(deserialize = "Vec<HkbClipTriggerArray<'a>>: Deserialize<'de>"))]
+    HkbClipTriggerArray(Vec<HkbClipTriggerArray<'a>>),
 
     #[serde(rename = "0x7eb45cea")]
     #[serde(bound(deserialize = "Vec<HkbClipTrigger<'a>>: Deserialize<'de>"))]
@@ -544,7 +545,8 @@ pub enum ClassParams<'a> {
     HkbEventRaisedInfo(Vec<HkbEventRaisedInfo<'a>>),
 
     #[serde(rename = "0x330a56ee")]
-    HkbEventRangeDataArray(Vec<HkbEventRangeDataArray>),
+    #[serde(bound(deserialize = "Vec<HkbEventRangeDataArray<'a>>: Deserialize<'de>"))]
+    HkbEventRangeDataArray(Vec<HkbEventRangeDataArray<'a>>),
 
     #[serde(rename = "0x6cb92c76")]
     #[serde(bound(deserialize = "Vec<HkbEventRangeData<'a>>: Deserialize<'de>"))]
@@ -555,7 +557,8 @@ pub enum ClassParams<'a> {
     HkbEventSequencedDataSequencedEvent(Vec<HkbEventSequencedDataSequencedEvent<'a>>),
 
     #[serde(rename = "0x76798eb8")]
-    HkbEventSequencedData(Vec<HkbEventSequencedData>),
+    #[serde(bound(deserialize = "Vec<HkbEventSequencedData<'a>>: Deserialize<'de>"))]
+    HkbEventSequencedData(Vec<HkbEventSequencedData<'a>>),
 
     #[serde(rename = "0xcc47b48d")]
     HkbEventsFromRangeModifierInternalState(Vec<HkbEventsFromRangeModifierInternalState>),
@@ -1241,7 +1244,8 @@ pub enum ClassParams<'a> {
     HkpBallSocketChainDataConstraintInfo(Vec<HkpBallSocketChainDataConstraintInfo>),
 
     #[serde(rename = "0x102aae9c")]
-    HkpBallSocketChainData(Vec<HkpBallSocketChainData>),
+    #[serde(bound(deserialize = "Vec<HkpBallSocketChainData<'a>>: Deserialize<'de>"))]
+    HkpBallSocketChainData(Vec<HkpBallSocketChainData<'a>>),
 
     #[serde(rename = "0xe70e4dfa")]
     HkpBallSocketConstraintAtom(Vec<HkpBallSocketConstraintAtom>),
@@ -1562,7 +1566,8 @@ pub enum ClassParams<'a> {
     HkpLimitedHingeConstraintDataAtoms(Vec<HkpLimitedHingeConstraintDataAtoms<'a>>),
 
     #[serde(rename = "0x7c15bb6b")]
-    HkpLimitedHingeConstraintData(Vec<HkpLimitedHingeConstraintData>),
+    #[serde(bound(deserialize = "Vec<HkpLimitedHingeConstraintData<'a>>: Deserialize<'de>"))]
+    HkpLimitedHingeConstraintData(Vec<HkpLimitedHingeConstraintData<'a>>),
 
     #[serde(rename = "0x7b6b0210")]
     HkpLinConstraintAtom(Vec<HkpLinConstraintAtom>),
@@ -1759,7 +1764,8 @@ pub enum ClassParams<'a> {
     HkpPrismaticConstraintDataAtoms(Vec<HkpPrismaticConstraintDataAtoms<'a>>),
 
     #[serde(rename = "0x3996c387")]
-    HkpPrismaticConstraintData(Vec<HkpPrismaticConstraintData>),
+    #[serde(bound(deserialize = "Vec<HkpPrismaticConstraintData<'a>>: Deserialize<'de>"))]
+    HkpPrismaticConstraintData(Vec<HkpPrismaticConstraintData<'a>>),
 
     #[serde(rename = "0xb4f30148")]
     #[serde(bound(deserialize = "Vec<HkpProjectileGun<'a>>: Deserialize<'de>"))]
@@ -1794,7 +1800,8 @@ pub enum ClassParams<'a> {
     HkpRagdollConstraintDataAtoms(Vec<HkpRagdollConstraintDataAtoms<'a>>),
 
     #[serde(rename = "0x8fb5dd29")]
-    HkpRagdollConstraintData(Vec<HkpRagdollConstraintData>),
+    #[serde(bound(deserialize = "Vec<HkpRagdollConstraintData<'a>>: Deserialize<'de>"))]
+    HkpRagdollConstraintData(Vec<HkpRagdollConstraintData<'a>>),
 
     #[serde(rename = "0x82b894c3")]
     HkpRagdollLimitsDataAtoms(Vec<HkpRagdollLimitsDataAtoms>),
@@ -1952,7 +1959,8 @@ pub enum ClassParams<'a> {
     HkpStiffSpringChainDataConstraintInfo(Vec<HkpStiffSpringChainDataConstraintInfo>),
 
     #[serde(rename = "0xf170356b")]
-    HkpStiffSpringChainData(Vec<HkpStiffSpringChainData>),
+    #[serde(bound(deserialize = "Vec<HkpStiffSpringChainData<'a>>: Deserialize<'de>"))]
+    HkpStiffSpringChainData(Vec<HkpStiffSpringChainData<'a>>),
 
     #[serde(rename = "0x6c128096")]
     HkpStiffSpringConstraintAtom(Vec<HkpStiffSpringConstraintAtom>),

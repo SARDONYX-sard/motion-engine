@@ -73,7 +73,7 @@ impl_deserialize_for_internally_tagged_enum! {
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub enum hkpFilterType {
+pub enum HkpFilterType {
     #[serde(rename = "HK_FILTER_UNKNOWN")]
     HkFilterUnknown = 0,
     #[serde(rename = "HK_FILTER_NULL")]

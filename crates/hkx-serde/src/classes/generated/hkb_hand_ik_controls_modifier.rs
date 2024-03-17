@@ -118,7 +118,7 @@ pub enum HkbHandIkControlsModifier<'a> {
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "hands")]
-    Hands(HkArrayClass<HkbHandIkControlsModifierHand>),
+    Hands(HkArrayClass<HkbHandIkControlsModifierHand<'a>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -136,5 +136,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("hands" => Hands(HkArrayClass<HkbHandIkControlsModifierHand>)),
+    ("hands" => Hands(HkArrayClass<HkbHandIkControlsModifierHand<'de>>)),
 }

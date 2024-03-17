@@ -21,7 +21,7 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbEventRangeDataArray {
+pub enum HkbEventRangeDataArray<'a> {
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -45,13 +45,13 @@ pub enum HkbEventRangeDataArray {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "eventData")]
-    EventData(HkArrayClass<HkbEventRangeData>),
+    EventData(HkArrayClass<HkbEventRangeData<'a>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkbEventRangeDataArray, "@name",
+    HkbEventRangeDataArray<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("eventData" => EventData(HkArrayClass<HkbEventRangeData>)),
+    ("eventData" => EventData(HkArrayClass<HkbEventRangeData<'de>>)),
 }

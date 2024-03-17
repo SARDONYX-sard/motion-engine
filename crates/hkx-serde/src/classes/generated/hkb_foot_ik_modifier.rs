@@ -125,7 +125,7 @@ pub enum HkbFootIkModifier<'a> {
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "legs")]
-    Legs(HkArrayClass<HkbFootIkModifierLeg>),
+    Legs(HkArrayClass<HkbFootIkModifierLeg<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"raycastDistanceUp"`
     /// -   type: `hkReal`
@@ -284,7 +284,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("gains" => Gains(HkbFootIkGains)),
-    ("legs" => Legs(HkArrayClass<HkbFootIkModifierLeg>)),
+    ("legs" => Legs(HkArrayClass<HkbFootIkModifierLeg<'de>>)),
     ("raycastDistanceUp" => RaycastDistanceUp(Primitive<f32>)),
     ("raycastDistanceDown" => RaycastDistanceDown(Primitive<f32>)),
     ("originalGroundHeightMS" => OriginalGroundHeightMs(Primitive<f32>)),

@@ -21,7 +21,7 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpStiffSpringChainData {
+pub enum HkpStiffSpringChainData<'a> {
     // C++ Parent class(`hkpConstraintChainData` => parent: `hkpConstraintData`) has no fields
 
     /// # C++ Parent class(`hkpConstraintData` => parent: `hkReferencedObject`) field Info
@@ -55,7 +55,7 @@ pub enum HkpStiffSpringChainData {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "atoms")]
-    Atoms(HkpBridgeAtoms),
+    Atoms(HkpBridgeAtoms<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"infos"`
     /// -   type: `hkArray&lt;struct hkpStiffSpringChainDataConstraintInfo&gt;`
@@ -88,11 +88,11 @@ pub enum HkpStiffSpringChainData {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkpStiffSpringChainData, "@name",
+    HkpStiffSpringChainData<'de>, "@name",
     ("userData" => UserData(Primitive<usize>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("atoms" => Atoms(HkpBridgeAtoms)),
+    ("atoms" => Atoms(HkpBridgeAtoms<'de>)),
     ("infos" => Infos(HkArrayClass<HkpStiffSpringChainDataConstraintInfo>)),
     ("tau" => Tau(Primitive<f32>)),
     ("damping" => Damping(Primitive<f32>)),

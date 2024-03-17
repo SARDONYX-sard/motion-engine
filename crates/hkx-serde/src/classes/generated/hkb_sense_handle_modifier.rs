@@ -132,7 +132,7 @@ pub enum HkbSenseHandleModifier<'a> {
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "ranges")]
-    Ranges(HkArrayClass<HkbSenseHandleModifierRange>),
+    Ranges(HkArrayClass<HkbSenseHandleModifierRange<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"handleOut"`
     /// -   type: `struct hkbHandle*`
@@ -264,7 +264,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("handle" => Handle(HkbHandle<'de>)),
     ("sensorLocalOffset" => SensorLocalOffset(Vector4<f32>)),
-    ("ranges" => Ranges(HkArrayClass<HkbSenseHandleModifierRange>)),
+    ("ranges" => Ranges(HkArrayClass<HkbSenseHandleModifierRange<'de>>)),
     ("handleOut" => HandleOut(Primitive<Cow<'de, str>>)),
     ("handleIn" => HandleIn(Primitive<Cow<'de, str>>)),
     ("localFrameName" => LocalFrameName(Primitive<Cow<'de, str>>)),

@@ -53,7 +53,7 @@ pub enum HkpBreakableConstraintData<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "atoms")]
-    Atoms(HkpBridgeAtoms),
+    Atoms(HkpBridgeAtoms<'a>),
     /// # C++ Class Fields Info
     /// -   name:`"constraintData"`
     /// -   type: `struct hkpConstraintData*`
@@ -104,7 +104,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("userData" => UserData(Primitive<usize>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("atoms" => Atoms(HkpBridgeAtoms)),
+    ("atoms" => Atoms(HkpBridgeAtoms<'de>)),
     ("constraintData" => ConstraintData(Primitive<Cow<'de, str>>)),
     ("childRuntimeSize" => ChildRuntimeSize(Primitive<u16>)),
     ("childNumSolverResults" => ChildNumSolverResults(Primitive<u16>)),

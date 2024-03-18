@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpStiffSpringConstraintDataAtoms`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x207eb376`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpStiffSpringConstraintDataAtoms {
@@ -27,19 +26,19 @@ pub enum HkpStiffSpringConstraintDataAtoms {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "pivots")]
-    Pivots(HkpSetLocalTranslationsConstraintAtom),
+    Pivots(SingleClass<HkpSetLocalTranslationsConstraintAtom>),
     /// # C++ Class Fields Info
     /// -   name:`"spring"`
     /// -   type: `struct hkpStiffSpringConstraintAtom`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "spring")]
-    Spring(HkpStiffSpringConstraintAtom),
+    Spring(SingleClass<HkpStiffSpringConstraintAtom>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpStiffSpringConstraintDataAtoms, "@name",
-    ("pivots" => Pivots(HkpSetLocalTranslationsConstraintAtom)),
-    ("spring" => Spring(HkpStiffSpringConstraintAtom)),
+    ("pivots" => Pivots(SingleClass<HkpSetLocalTranslationsConstraintAtom>)),
+    ("spring" => Spring(SingleClass<HkpStiffSpringConstraintAtom>)),
 }

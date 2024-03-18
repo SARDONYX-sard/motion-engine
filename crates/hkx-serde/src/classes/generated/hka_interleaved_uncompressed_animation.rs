@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkaInterleavedUncompressedAnimation`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkaAnimation`/`0xa6fa7e88`
 /// - signature: `0x930af031`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkaInterleavedUncompressedAnimation<'a> {
@@ -59,7 +58,7 @@ pub enum HkaInterleavedUncompressedAnimation<'a> {
     ExtractedMotion(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkaAnimation` => parent: `hkReferencedObject`) field Info
     /// -   name:`"annotationTracks"`
-    /// -   type: `hkArray&lt;struct hkaAnnotationTrack&gt;`
+    /// -   type: `hkArray<struct hkaAnnotationTrack>`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "annotationTracks")]
@@ -69,14 +68,14 @@ pub enum HkaInterleavedUncompressedAnimation<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -84,14 +83,14 @@ pub enum HkaInterleavedUncompressedAnimation<'a> {
 
     /// # C++ Class Fields Info
     /// -   name:`"transforms"`
-    /// -   type: `hkArray&lt;hkQsTransform&gt;`
+    /// -   type: `hkArray<hkQsTransform>`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transforms")]
     Transforms(HkArrayMatrix3<QsTransform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"floats"`
-    /// -   type: `hkArray&lt;hkReal&gt;`
+    /// -   type: `hkArray<hkReal>`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "floats")]

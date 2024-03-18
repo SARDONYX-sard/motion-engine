@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpHingeLimitsData`
 ///
@@ -19,48 +17,21 @@ use std::borrow::Cow;
 /// -    parent: `hkpConstraintData`/`0x80559a4e`
 /// - signature: `0xbd46760a`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpHingeLimitsData {
-    /// # C++ Parent class(`hkpConstraintData` => parent: `hkReferencedObject`) field Info
-    /// -   name:`"userData"`
-    /// -   type: `hkUlong`
-    /// - offset: 8
-    /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "userData")]
-    UserData(Primitive<usize>),
-
-    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
-    /// -   name:`"memSizeAndFlags"`
-    /// -   type: `hkUint16`
-    /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", skip_serializing)]
-    MemSizeAndFlags(Primitive<u16>),
-    /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
-    /// -   name:`"referenceCount"`
-    /// -   type: `hkInt16`
-    /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", skip_serializing)]
-    ReferenceCount(Primitive<i16>),
-
-    // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
     /// # C++ Class Fields Info
     /// -   name:`"atoms"`
     /// -   type: `struct hkpHingeLimitsDataAtoms`
     /// - offset: 16
-    /// -  flags: `FLAGS_NONE | ALIGN16`
+    /// -  flags: `FLAGS_NONE|ALIGN16`
     #[serde(rename = "atoms")]
-    Atoms(HkpHingeLimitsDataAtoms),
+    Atoms(SingleClass<HkpHingeLimitsDataAtoms>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpHingeLimitsData, "@name",
-    ("userData" => UserData(Primitive<usize>)),
-    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
-    ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("atoms" => Atoms(HkpHingeLimitsDataAtoms)),
+    ("atoms" => Atoms(SingleClass<HkpHingeLimitsDataAtoms>)),
 }

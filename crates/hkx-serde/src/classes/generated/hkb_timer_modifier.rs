@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkbTimerModifier`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkbModifier`/`0x96ec5ced`
 /// - signature: `0x338b4879`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbTimerModifier<'a> {
@@ -33,7 +32,7 @@ pub enum HkbTimerModifier<'a> {
     /// -   name:`"padModifier"`
     /// -   type: `hkBool[3]`
     /// - offset: 41
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "padModifier", skip_serializing)]
     PadModifier(CStyleArray<[bool; 3]>),
 
@@ -55,21 +54,21 @@ pub enum HkbTimerModifier<'a> {
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "id", skip_serializing)]
     Id(Primitive<i16>),
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cloneState", skip_serializing)]
     CloneState(Primitive<()>),
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "padNode", skip_serializing)]
     PadNode(CStyleArray<[bool; 1]>),
 
@@ -82,16 +81,16 @@ pub enum HkbTimerModifier<'a> {
     VariableBindingSet(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
-    /// -   type: `hkArray&lt;void&gt;`
+    /// -   type: `hkArray<void>`
     /// - offset: 12
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
     CachedBindables(HkArrayRef<Primitive<()>>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "areBindablesCached", skip_serializing)]
     AreBindablesCached(Primitive<bool>),
 
@@ -99,14 +98,14 @@ pub enum HkbTimerModifier<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -125,12 +124,12 @@ pub enum HkbTimerModifier<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "alarmEvent")]
-    AlarmEvent(HkbEventProperty<'a>),
+    AlarmEvent(SingleClass<HkbEventProperty<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"secondsElapsed"`
     /// -   type: `hkReal`
     /// - offset: 56
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "secondsElapsed", skip_serializing)]
     SecondsElapsed(Primitive<f32>),
 }
@@ -151,6 +150,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("alarmTimeSeconds" => AlarmTimeSeconds(Primitive<f32>)),
-    ("alarmEvent" => AlarmEvent(HkbEventProperty<'de>)),
+    ("alarmEvent" => AlarmEvent(SingleClass<HkbEventProperty<'de>>)),
     ("secondsElapsed" => SecondsElapsed(Primitive<f32>)),
 }

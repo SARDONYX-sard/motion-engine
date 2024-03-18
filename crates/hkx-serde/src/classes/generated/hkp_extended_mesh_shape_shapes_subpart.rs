@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpExtendedMeshShapeShapesSubpart`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkpExtendedMeshShapeSubpart`/`0xf4608207`
 /// - signature: `0xf204b155`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpExtendedMeshShapeShapesSubpart<'a> {
@@ -40,14 +39,14 @@ pub enum HkpExtendedMeshShapeShapesSubpart<'a> {
     /// -   name:`"materialStriding"`
     /// -   type: `hkInt16`
     /// - offset: 2
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "materialStriding", skip_serializing)]
     MaterialStriding(Primitive<i16>),
     /// # C++ Parent class(`hkpExtendedMeshShapeSubpart` => parent: `None`) field Info
     /// -   name:`"materialIndexBase"`
     /// -   type: `void*`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "materialIndexBase", skip_serializing)]
     MaterialIndexBase(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpExtendedMeshShapeSubpart` => parent: `None`) field Info
@@ -68,7 +67,7 @@ pub enum HkpExtendedMeshShapeShapesSubpart<'a> {
     /// -   name:`"materialBase"`
     /// -   type: `void*`
     /// - offset: 12
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "materialBase", skip_serializing)]
     MaterialBase(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpExtendedMeshShapeSubpart` => parent: `None`) field Info
@@ -81,7 +80,7 @@ pub enum HkpExtendedMeshShapeShapesSubpart<'a> {
 
     /// # C++ Class Fields Info
     /// -   name:`"childShapes"`
-    /// -   type: `hkArray&lt;hkpConvexShape*&gt;`
+    /// -   type: `hkArray<hkpConvexShape*>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "childShapes")]

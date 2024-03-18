@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpConstraintAtom`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x59d67ef6`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpConstraintAtom {
@@ -36,6 +35,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("type" => Type(Primitive<AtomType>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum AtomType {
     #[serde(rename = "TYPE_INVALID")]
@@ -106,6 +106,7 @@ pub enum AtomType {
     TypeMax = 32,
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum CallbackRequest {
     #[serde(rename = "CALLBACK_REQUEST_NONE")]
@@ -120,6 +121,7 @@ pub enum CallbackRequest {
     CallbackRequestContactPointCallback = 8,
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum SolvingMethod {
     #[serde(rename = "METHOD_STABILIZED")]

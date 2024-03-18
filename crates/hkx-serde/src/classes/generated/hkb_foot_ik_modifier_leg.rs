@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkbFootIkModifierLeg`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x9f3e3a04`
 /// -   version: 2
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbFootIkModifierLeg<'a> {
@@ -32,7 +31,7 @@ pub enum HkbFootIkModifierLeg<'a> {
     /// -   name:`"prevAnkleRotLS"`
     /// -   type: `hkQuaternion`
     /// - offset: 48
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "prevAnkleRotLS", skip_serializing)]
     PrevAnkleRotLs(Quaternion<f32>),
     /// # C++ Class Fields Info
@@ -55,7 +54,7 @@ pub enum HkbFootIkModifierLeg<'a> {
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "ungroundedEvent")]
-    UngroundedEvent(HkbEventProperty<'a>),
+    UngroundedEvent(SingleClass<HkbEventProperty<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"footPlantedAnkleHeightMS"`
     /// -   type: `hkReal`
@@ -163,7 +162,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("prevAnkleRotLS" => PrevAnkleRotLs(Quaternion<f32>)),
     ("kneeAxisLS" => KneeAxisLs(Vector4<f32>)),
     ("footEndLS" => FootEndLs(Vector4<f32>)),
-    ("ungroundedEvent" => UngroundedEvent(HkbEventProperty<'de>)),
+    ("ungroundedEvent" => UngroundedEvent(SingleClass<HkbEventProperty<'de>>)),
     ("footPlantedAnkleHeightMS" => FootPlantedAnkleHeightMs(Primitive<f32>)),
     ("footRaisedAnkleHeightMS" => FootRaisedAnkleHeightMs(Primitive<f32>)),
     ("maxAnkleHeightMS" => MaxAnkleHeightMs(Primitive<f32>)),

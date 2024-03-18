@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpMoppCode`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkReferencedObject`/`0x3b1c1113`
 /// - signature: `0x924c2661`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpMoppCode {
@@ -26,14 +25,14 @@ pub enum HkpMoppCode {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -45,10 +44,10 @@ pub enum HkpMoppCode {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "info")]
-    Info(HkpMoppCodeCodeInfo),
+    Info(SingleClass<HkpMoppCodeCodeInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"data"`
-    /// -   type: `hkArray&lt;hkUint8&gt;`
+    /// -   type: `hkArray<hkUint8>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "data")]
@@ -67,11 +66,12 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpMoppCode, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("info" => Info(HkpMoppCodeCodeInfo)),
+    ("info" => Info(SingleClass<HkpMoppCodeCodeInfo>)),
     ("data" => Data(HkArrayRef<Primitive<u8>>)),
     ("buildType" => BuildType(Primitive<BuildType>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum BuildType {
     #[serde(rename = "BUILT_WITH_CHUNK_SUBDIVISION")]

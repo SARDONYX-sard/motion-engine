@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpPairCollisionFilterMapPairFilterKeyOverrideType`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x36195969`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpPairCollisionFilterMapPairFilterKeyOverrideType<'a> {
@@ -25,7 +24,7 @@ pub enum HkpPairCollisionFilterMapPairFilterKeyOverrideType<'a> {
     /// -   name:`"elem"`
     /// -   type: `void*`
     /// - offset: 0
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "elem", skip_serializing)]
     Elem(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info

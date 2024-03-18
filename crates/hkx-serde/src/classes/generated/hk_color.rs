@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkColor`
 ///
@@ -18,14 +16,9 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x106b96ce`
 /// -   version: 0
-#[derive(Debug, Clone, PartialEq, Serialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(tag = "@name")]
 pub enum HkColor {
-}
-
-// Manual implementation to branch the process using the value of the `name` attribute as the key.
-impl_deserialize_for_internally_tagged_enum! {
-    HkColor, "@name",
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

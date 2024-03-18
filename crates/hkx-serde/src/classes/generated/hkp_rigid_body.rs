@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpRigidBody`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkpEntity`/`0xa03c774b`
 /// - signature: `0x75f8d805`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpRigidBody<'a> {
@@ -28,12 +27,12 @@ pub enum HkpRigidBody<'a> {
     /// - offset: 140
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "material")]
-    Material(HkpMaterial),
+    Material(SingleClass<HkpMaterial>),
     /// # C++ Parent class(`hkpEntity` => parent: `hkpWorldObject`) field Info
     /// -   name:`"limitContactImpulseUtilAndFlag"`
     /// -   type: `void*`
     /// - offset: 152
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "limitContactImpulseUtilAndFlag", skip_serializing)]
     LimitContactImpulseUtilAndFlag(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpEntity` => parent: `hkpWorldObject`) field Info
@@ -47,14 +46,14 @@ pub enum HkpRigidBody<'a> {
     /// -   name:`"breakableBody"`
     /// -   type: `void*`
     /// - offset: 160
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "breakableBody", skip_serializing)]
     BreakableBody(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpEntity` => parent: `hkpWorldObject`) field Info
     /// -   name:`"solverData"`
     /// -   type: `hkUint32`
     /// - offset: 164
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "solverData", skip_serializing)]
     SolverData(Primitive<u32>),
     /// # C++ Parent class(`hkpEntity` => parent: `hkpWorldObject`) field Info
@@ -75,28 +74,28 @@ pub enum HkpRigidBody<'a> {
     /// -   name:`"constraintsMaster"`
     /// -   type: `struct hkpEntitySmallArraySerializeOverrideType`
     /// - offset: 172
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "constraintsMaster", skip_serializing)]
-    ConstraintsMaster(HkpEntitySmallArraySerializeOverrideType<'a>),
+    ConstraintsMaster(SingleClass<HkpEntitySmallArraySerializeOverrideType<'a>>),
     /// # C++ Parent class(`hkpEntity` => parent: `hkpWorldObject`) field Info
     /// -   name:`"constraintsSlave"`
-    /// -   type: `hkArray&lt;hkpConstraintInstance*&gt;`
+    /// -   type: `hkArray<hkpConstraintInstance*>`
     /// - offset: 180
-    /// -  flags: `FLAGS_NONE | NOT_OWNED | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|NOT_OWNED|SERIALIZE_IGNORED`
     #[serde(rename = "constraintsSlave", skip_serializing)]
     ConstraintsSlave(HkArrayRef<Cow<'a, str>>),
     /// # C++ Parent class(`hkpEntity` => parent: `hkpWorldObject`) field Info
     /// -   name:`"constraintRuntime"`
-    /// -   type: `hkArray&lt;hkUint8&gt;`
+    /// -   type: `hkArray<hkUint8>`
     /// - offset: 192
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "constraintRuntime", skip_serializing)]
     ConstraintRuntime(HkArrayRef<Primitive<u8>>),
     /// # C++ Parent class(`hkpEntity` => parent: `hkpWorldObject`) field Info
     /// -   name:`"simulationIsland"`
     /// -   type: `void*`
     /// - offset: 204
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "simulationIsland", skip_serializing)]
     SimulationIsland(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpEntity` => parent: `hkpWorldObject`) field Info
@@ -133,28 +132,28 @@ pub enum HkpRigidBody<'a> {
     /// - offset: 216
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "spuCollisionCallback")]
-    SpuCollisionCallback(HkpEntitySpuCollisionCallback<'a>),
+    SpuCollisionCallback(SingleClass<HkpEntitySpuCollisionCallback<'a>>),
     /// # C++ Parent class(`hkpEntity` => parent: `hkpWorldObject`) field Info
     /// -   name:`"motion"`
     /// -   type: `struct hkpMaxSizeMotion`
     /// - offset: 224
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "motion")]
-    Motion(HkpMaxSizeMotion<'a>),
+    Motion(SingleClass<HkpMaxSizeMotion<'a>>),
     /// # C++ Parent class(`hkpEntity` => parent: `hkpWorldObject`) field Info
     /// -   name:`"contactListeners"`
     /// -   type: `struct hkpEntitySmallArraySerializeOverrideType`
     /// - offset: 512
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "contactListeners", skip_serializing)]
-    ContactListeners(HkpEntitySmallArraySerializeOverrideType<'a>),
+    ContactListeners(SingleClass<HkpEntitySmallArraySerializeOverrideType<'a>>),
     /// # C++ Parent class(`hkpEntity` => parent: `hkpWorldObject`) field Info
     /// -   name:`"actions"`
     /// -   type: `struct hkpEntitySmallArraySerializeOverrideType`
     /// - offset: 520
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "actions", skip_serializing)]
-    Actions(HkpEntitySmallArraySerializeOverrideType<'a>),
+    Actions(SingleClass<HkpEntitySmallArraySerializeOverrideType<'a>>),
     /// # C++ Parent class(`hkpEntity` => parent: `hkpWorldObject`) field Info
     /// -   name:`"localFrame"`
     /// -   type: `struct hkLocalFrame*`
@@ -166,7 +165,7 @@ pub enum HkpRigidBody<'a> {
     /// -   name:`"extendedListeners"`
     /// -   type: `struct hkpEntityExtendedListeners*`
     /// - offset: 532
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "extendedListeners", skip_serializing)]
     ExtendedListeners(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpEntity` => parent: `hkpWorldObject`) field Info
@@ -181,7 +180,7 @@ pub enum HkpRigidBody<'a> {
     /// -   name:`"world"`
     /// -   type: `void*`
     /// - offset: 8
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "world", skip_serializing)]
     World(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
@@ -197,14 +196,14 @@ pub enum HkpRigidBody<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "collidable")]
-    Collidable(HkpLinkedCollidable<'a>),
+    Collidable(SingleClass<HkpLinkedCollidable<'a>>),
     /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"multiThreadCheck"`
     /// -   type: `struct hkMultiThreadCheck`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "multiThreadCheck")]
-    MultiThreadCheck(HkMultiThreadCheck),
+    MultiThreadCheck(SingleClass<HkMultiThreadCheck>),
     /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
@@ -214,7 +213,7 @@ pub enum HkpRigidBody<'a> {
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"properties"`
-    /// -   type: `hkArray&lt;struct hkpProperty&gt;`
+    /// -   type: `hkArray<struct hkpProperty>`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "properties")]
@@ -223,7 +222,7 @@ pub enum HkpRigidBody<'a> {
     /// -   name:`"treeData"`
     /// -   type: `void*`
     /// - offset: 136
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "treeData", skip_serializing)]
     TreeData(Primitive<Cow<'a, str>>),
 
@@ -231,14 +230,14 @@ pub enum HkpRigidBody<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -249,14 +248,14 @@ pub enum HkpRigidBody<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpRigidBody<'de>, "@name",
-    ("material" => Material(HkpMaterial)),
+    ("material" => Material(SingleClass<HkpMaterial>)),
     ("limitContactImpulseUtilAndFlag" => LimitContactImpulseUtilAndFlag(Primitive<Cow<'de, str>>)),
     ("damageMultiplier" => DamageMultiplier(Primitive<f32>)),
     ("breakableBody" => BreakableBody(Primitive<Cow<'de, str>>)),
     ("solverData" => SolverData(Primitive<u32>)),
     ("storageIndex" => StorageIndex(Primitive<u16>)),
     ("contactPointCallbackDelay" => ContactPointCallbackDelay(Primitive<u16>)),
-    ("constraintsMaster" => ConstraintsMaster(HkpEntitySmallArraySerializeOverrideType<'de>)),
+    ("constraintsMaster" => ConstraintsMaster(SingleClass<HkpEntitySmallArraySerializeOverrideType<'de>>)),
     ("constraintsSlave" => ConstraintsSlave(HkArrayRef<Cow<'de, str>>)),
     ("constraintRuntime" => ConstraintRuntime(HkArrayRef<Primitive<u8>>)),
     ("simulationIsland" => SimulationIsland(Primitive<Cow<'de, str>>)),
@@ -264,17 +263,17 @@ impl_deserialize_for_internally_tagged_enum! {
     ("numShapeKeysInContactPointProperties" => NumShapeKeysInContactPointProperties(Primitive<u8>)),
     ("responseModifierFlags" => ResponseModifierFlags(Primitive<u8>)),
     ("uid" => Uid(Primitive<u32>)),
-    ("spuCollisionCallback" => SpuCollisionCallback(HkpEntitySpuCollisionCallback<'de>)),
-    ("motion" => Motion(HkpMaxSizeMotion<'de>)),
-    ("contactListeners" => ContactListeners(HkpEntitySmallArraySerializeOverrideType<'de>)),
-    ("actions" => Actions(HkpEntitySmallArraySerializeOverrideType<'de>)),
+    ("spuCollisionCallback" => SpuCollisionCallback(SingleClass<HkpEntitySpuCollisionCallback<'de>>)),
+    ("motion" => Motion(SingleClass<HkpMaxSizeMotion<'de>>)),
+    ("contactListeners" => ContactListeners(SingleClass<HkpEntitySmallArraySerializeOverrideType<'de>>)),
+    ("actions" => Actions(SingleClass<HkpEntitySmallArraySerializeOverrideType<'de>>)),
     ("localFrame" => LocalFrame(Primitive<Cow<'de, str>>)),
     ("extendedListeners" => ExtendedListeners(Primitive<Cow<'de, str>>)),
     ("npData" => NpData(Primitive<u32>)),
     ("world" => World(Primitive<Cow<'de, str>>)),
     ("userData" => UserData(Primitive<usize>)),
-    ("collidable" => Collidable(HkpLinkedCollidable<'de>)),
-    ("multiThreadCheck" => MultiThreadCheck(HkMultiThreadCheck)),
+    ("collidable" => Collidable(SingleClass<HkpLinkedCollidable<'de>>)),
+    ("multiThreadCheck" => MultiThreadCheck(SingleClass<HkMultiThreadCheck>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("properties" => Properties(HkArrayClass<HkpProperty>)),
     ("treeData" => TreeData(Primitive<Cow<'de, str>>)),

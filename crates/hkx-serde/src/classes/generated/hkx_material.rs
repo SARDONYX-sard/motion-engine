@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkxMaterial`
 ///
@@ -19,12 +17,13 @@ use std::borrow::Cow;
 /// -    parent: `hkxAttributeHolder`/`0x7468cc44`
 /// - signature: `0x2954537a`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkxMaterial<'a> {
     /// # C++ Parent class(`hkxAttributeHolder` => parent: `hkReferencedObject`) field Info
     /// -   name:`"attributeGroups"`
-    /// -   type: `hkArray&lt;struct hkxAttributeGroup&gt;`
+    /// -   type: `hkArray<struct hkxAttributeGroup>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "attributeGroups")]
@@ -34,14 +33,14 @@ pub enum HkxMaterial<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -56,7 +55,7 @@ pub enum HkxMaterial<'a> {
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"stages"`
-    /// -   type: `hkArray&lt;struct hkxMaterialTextureStage&gt;`
+    /// -   type: `hkArray<struct hkxMaterialTextureStage>`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "stages")]
@@ -91,7 +90,7 @@ pub enum HkxMaterial<'a> {
     EmissiveColor(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"subMaterials"`
-    /// -   type: `hkArray&lt;hkxMaterial*&gt;`
+    /// -   type: `hkArray<hkxMaterial*>`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "subMaterials")]
@@ -105,7 +104,7 @@ pub enum HkxMaterial<'a> {
     ExtraData(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"properties"`
-    /// -   type: `hkArray&lt;struct hkxMaterialProperty&gt;`
+    /// -   type: `hkArray<struct hkxMaterialProperty>`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "properties")]
@@ -129,6 +128,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("properties" => Properties(HkArrayClass<HkxMaterialProperty>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum TextureType {
     #[serde(rename = "TEX_UNKNOWN")]
@@ -159,6 +159,7 @@ pub enum TextureType {
     TexNotexported = 12,
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum PropertyKey {
     #[serde(rename = "PROPERTY_MTL_TYPE_BLEND")]

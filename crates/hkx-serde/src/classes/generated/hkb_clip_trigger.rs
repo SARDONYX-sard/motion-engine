@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkbClipTrigger`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x7eb45cea`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbClipTrigger<'a> {
@@ -34,7 +33,7 @@ pub enum HkbClipTrigger<'a> {
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "event")]
-    Event(HkbEventProperty<'a>),
+    Event(SingleClass<HkbEventProperty<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"relativeToEndOfClip"`
     /// -   type: `hkBool`
@@ -62,7 +61,7 @@ pub enum HkbClipTrigger<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkbClipTrigger<'de>, "@name",
     ("localTime" => LocalTime(Primitive<f32>)),
-    ("event" => Event(HkbEventProperty<'de>)),
+    ("event" => Event(SingleClass<HkbEventProperty<'de>>)),
     ("relativeToEndOfClip" => RelativeToEndOfClip(Primitive<bool>)),
     ("acyclic" => Acyclic(Primitive<bool>)),
     ("isAnnotation" => IsAnnotation(Primitive<bool>)),

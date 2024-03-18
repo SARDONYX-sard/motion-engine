@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpWorld`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkReferencedObject`/`0x3b1c1113`
 /// - signature: `0xaadcec37`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpWorld<'a> {
@@ -26,14 +25,14 @@ pub enum HkpWorld<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -57,7 +56,7 @@ pub enum HkpWorld<'a> {
     /// -   name:`"fixedIsland"`
     /// -   type: `void*`
     /// - offset: 32
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "fixedIsland", skip_serializing)]
     FixedIsland(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
@@ -69,58 +68,58 @@ pub enum HkpWorld<'a> {
     FixedRigidBody(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"activeSimulationIslands"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 40
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "activeSimulationIslands", skip_serializing)]
     ActiveSimulationIslands(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"inactiveSimulationIslands"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 52
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "inactiveSimulationIslands", skip_serializing)]
     InactiveSimulationIslands(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"dirtySimulationIslands"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 64
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "dirtySimulationIslands", skip_serializing)]
     DirtySimulationIslands(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"maintenanceMgr"`
     /// -   type: `void*`
     /// - offset: 76
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "maintenanceMgr", skip_serializing)]
     MaintenanceMgr(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"memoryWatchDog"`
     /// -   type: `void*`
     /// - offset: 80
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memoryWatchDog", skip_serializing)]
     MemoryWatchDog(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"assertOnRunningOutOfSolverMemory"`
     /// -   type: `hkBool`
     /// - offset: 84
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "assertOnRunningOutOfSolverMemory", skip_serializing)]
     AssertOnRunningOutOfSolverMemory(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"broadPhase"`
     /// -   type: `void*`
     /// - offset: 88
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "broadPhase", skip_serializing)]
     BroadPhase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"kdTreeManager"`
     /// -   type: `void*`
     /// - offset: 92
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "kdTreeManager", skip_serializing)]
     KdTreeManager(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
@@ -134,70 +133,70 @@ pub enum HkpWorld<'a> {
     /// -   name:`"broadPhaseDispatcher"`
     /// -   type: `void*`
     /// - offset: 100
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "broadPhaseDispatcher", skip_serializing)]
     BroadPhaseDispatcher(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"phantomBroadPhaseListener"`
     /// -   type: `void*`
     /// - offset: 104
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "phantomBroadPhaseListener", skip_serializing)]
     PhantomBroadPhaseListener(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"entityEntityBroadPhaseListener"`
     /// -   type: `void*`
     /// - offset: 108
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "entityEntityBroadPhaseListener", skip_serializing)]
     EntityEntityBroadPhaseListener(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseBorderListener"`
     /// -   type: `void*`
     /// - offset: 112
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "broadPhaseBorderListener", skip_serializing)]
     BroadPhaseBorderListener(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"multithreadedSimulationJobData"`
     /// -   type: `void*`
     /// - offset: 116
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "multithreadedSimulationJobData", skip_serializing)]
     MultithreadedSimulationJobData(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"collisionInput"`
     /// -   type: `void*`
     /// - offset: 120
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "collisionInput", skip_serializing)]
     CollisionInput(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilter"`
     /// -   type: `void*`
     /// - offset: 124
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "collisionFilter", skip_serializing)]
     CollisionFilter(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"collisionDispatcher"`
     /// -   type: `void*`
     /// - offset: 128
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "collisionDispatcher", skip_serializing)]
     CollisionDispatcher(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"convexListFilter"`
     /// -   type: `void*`
     /// - offset: 132
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "convexListFilter", skip_serializing)]
     ConvexListFilter(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"pendingOperations"`
     /// -   type: `void*`
     /// - offset: 136
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "pendingOperations", skip_serializing)]
     PendingOperations(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
@@ -211,7 +210,7 @@ pub enum HkpWorld<'a> {
     /// -   name:`"pendingBodyOperationsCount"`
     /// -   type: `hkInt32`
     /// - offset: 144
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "pendingBodyOperationsCount", skip_serializing)]
     PendingBodyOperationsCount(Primitive<i32>),
     /// # C++ Class Fields Info
@@ -246,7 +245,7 @@ pub enum HkpWorld<'a> {
     /// -   name:`"pendingOperationQueues"`
     /// -   type: `void*`
     /// - offset: 160
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "pendingOperationQueues", skip_serializing)]
     PendingOperationQueues(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
@@ -260,9 +259,9 @@ pub enum HkpWorld<'a> {
     /// -   name:`"multiThreadCheck"`
     /// -   type: `struct hkMultiThreadCheck`
     /// - offset: 168
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "multiThreadCheck", skip_serializing)]
-    MultiThreadCheck(HkMultiThreadCheck),
+    MultiThreadCheck(SingleClass<HkMultiThreadCheck>),
     /// # C++ Class Fields Info
     /// -   name:`"processActionsInSingleThread"`
     /// -   type: `hkBool`
@@ -288,7 +287,7 @@ pub enum HkpWorld<'a> {
     /// -   name:`"modifyConstraintCriticalSection"`
     /// -   type: `void*`
     /// - offset: 188
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "modifyConstraintCriticalSection", skip_serializing)]
     ModifyConstraintCriticalSection(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
@@ -302,14 +301,14 @@ pub enum HkpWorld<'a> {
     /// -   name:`"islandDirtyListCriticalSection"`
     /// -   type: `void*`
     /// - offset: 196
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "islandDirtyListCriticalSection", skip_serializing)]
     IslandDirtyListCriticalSection(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"propertyMasterLock"`
     /// -   type: `void*`
     /// - offset: 200
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "propertyMasterLock", skip_serializing)]
     PropertyMasterLock(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
@@ -323,7 +322,7 @@ pub enum HkpWorld<'a> {
     /// -   name:`"useHybridBroadphase"`
     /// -   type: `hkBool`
     /// - offset: 205
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "useHybridBroadphase", skip_serializing)]
     UseHybridBroadphase(Primitive<bool>),
     /// # C++ Class Fields Info
@@ -421,7 +420,7 @@ pub enum HkpWorld<'a> {
     /// -   name:`"simulationType"`
     /// -   type: `enum unknown`
     /// - offset: 252
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "simulationType", skip_serializing)]
     SimulationType(Primitive<()>),
     /// # C++ Class Fields Info
@@ -475,135 +474,135 @@ pub enum HkpWorld<'a> {
     LastConstraintUid(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"phantoms"`
-    /// -   type: `hkArray&lt;hkpPhantom*&gt;`
+    /// -   type: `hkArray<hkpPhantom*>`
     /// - offset: 284
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "phantoms")]
     Phantoms(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"actionListeners"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 296
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "actionListeners", skip_serializing)]
     ActionListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"entityListeners"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 308
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "entityListeners", skip_serializing)]
     EntityListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"phantomListeners"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 320
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "phantomListeners", skip_serializing)]
     PhantomListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"constraintListeners"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 332
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "constraintListeners", skip_serializing)]
     ConstraintListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"worldDeletionListeners"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 344
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "worldDeletionListeners", skip_serializing)]
     WorldDeletionListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"islandActivationListeners"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 356
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "islandActivationListeners", skip_serializing)]
     IslandActivationListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"worldPostSimulationListeners"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 368
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "worldPostSimulationListeners", skip_serializing)]
     WorldPostSimulationListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"worldPostIntegrateListeners"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 380
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "worldPostIntegrateListeners", skip_serializing)]
     WorldPostIntegrateListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"worldPostCollideListeners"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 392
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "worldPostCollideListeners", skip_serializing)]
     WorldPostCollideListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"islandPostIntegrateListeners"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 404
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "islandPostIntegrateListeners", skip_serializing)]
     IslandPostIntegrateListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"islandPostCollideListeners"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 416
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "islandPostCollideListeners", skip_serializing)]
     IslandPostCollideListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"contactListeners"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 428
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "contactListeners", skip_serializing)]
     ContactListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"contactImpulseLimitBreachedListeners"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 440
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "contactImpulseLimitBreachedListeners", skip_serializing)]
     ContactImpulseLimitBreachedListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"worldExtensions"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 452
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "worldExtensions", skip_serializing)]
     WorldExtensions(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"violatedConstraintArray"`
     /// -   type: `void*`
     /// - offset: 464
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "violatedConstraintArray", skip_serializing)]
     ViolatedConstraintArray(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseBorder"`
     /// -   type: `void*`
     /// - offset: 468
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "broadPhaseBorder", skip_serializing)]
     BroadPhaseBorder(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"destructionWorld"`
     /// -   type: `void*`
     /// - offset: 472
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "destructionWorld", skip_serializing)]
     DestructionWorld(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"npWorld"`
     /// -   type: `void*`
     /// - offset: 476
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "npWorld", skip_serializing)]
     NpWorld(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
@@ -645,7 +644,7 @@ pub enum HkpWorld<'a> {
     /// -   name:`"contactPointGeneration"`
     /// -   type: `enum unknown`
     /// - offset: 848
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "contactPointGeneration", skip_serializing)]
     ContactPointGeneration(Primitive<()>),
 }
@@ -686,7 +685,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("criticalOperationsAllowed" => CriticalOperationsAllowed(Primitive<bool>)),
     ("pendingOperationQueues" => PendingOperationQueues(Primitive<Cow<'de, str>>)),
     ("pendingOperationQueueCount" => PendingOperationQueueCount(Primitive<i32>)),
-    ("multiThreadCheck" => MultiThreadCheck(HkMultiThreadCheck)),
+    ("multiThreadCheck" => MultiThreadCheck(SingleClass<HkMultiThreadCheck>)),
     ("processActionsInSingleThread" => ProcessActionsInSingleThread(Primitive<bool>)),
     ("allowIntegrationOfIslandsWithoutConstraintsInASeparateJob" => AllowIntegrationOfIslandsWithoutConstraintsInASeparateJob(Primitive<bool>)),
     ("minDesiredIslandSize" => MinDesiredIslandSize(Primitive<u32>)),
@@ -744,6 +743,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("contactPointGeneration" => ContactPointGeneration(Primitive<()>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum ReintegrationRecollideMode {
     #[serde(rename = "RR_MODE_REINTEGRATE")]
@@ -756,6 +756,7 @@ pub enum ReintegrationRecollideMode {
     RrModeAll = 7,
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum MtAccessChecking {
     #[serde(rename = "MT_ACCESS_CHECKING_ENABLED")]
@@ -764,6 +765,7 @@ pub enum MtAccessChecking {
     MtAccessCheckingDisabled = 1,
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum CachedAabbUpdate {
     #[serde(rename = "SHIFT_BROADPHASE_UPDATE_ENTITY_AABBS")]

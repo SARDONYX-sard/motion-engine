@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpBridgeConstraintAtom`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkpConstraintAtom`/`0x59d67ef6`
 /// - signature: `0x87a4f31b`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpBridgeConstraintAtom<'a> {
@@ -34,14 +33,14 @@ pub enum HkpBridgeConstraintAtom<'a> {
     /// -   name:`"buildJacobianFunc"`
     /// -   type: `void*`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "buildJacobianFunc", skip_serializing)]
     BuildJacobianFunc(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"constraintData"`
     /// -   type: `struct hkpConstraintData*`
     /// - offset: 8
-    /// -  flags: `FLAGS_NONE | NOT_OWNED`
+    /// -  flags: `FLAGS_NONE|NOT_OWNED`
     #[serde(rename = "constraintData")]
     ConstraintData(Primitive<Cow<'a, str>>),
 }

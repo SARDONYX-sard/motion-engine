@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkbSenseHandleModifierRange`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0xfb56b692`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbSenseHandleModifierRange<'a> {
@@ -27,7 +26,7 @@ pub enum HkbSenseHandleModifierRange<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "event")]
-    Event(HkbEventProperty<'a>),
+    Event(SingleClass<HkbEventProperty<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"minDistance"`
     /// -   type: `hkReal`
@@ -54,7 +53,7 @@ pub enum HkbSenseHandleModifierRange<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbSenseHandleModifierRange<'de>, "@name",
-    ("event" => Event(HkbEventProperty<'de>)),
+    ("event" => Event(SingleClass<HkbEventProperty<'de>>)),
     ("minDistance" => MinDistance(Primitive<f32>)),
     ("maxDistance" => MaxDistance(Primitive<f32>)),
     ("ignoreHandle" => IgnoreHandle(Primitive<bool>)),

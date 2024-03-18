@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpMountedBallGun`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkpBallGun`/`0x57b06d35`
 /// - signature: `0x6791ffce`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpMountedBallGun<'a> {
@@ -68,7 +67,7 @@ pub enum HkpMountedBallGun<'a> {
     /// -   name:`"addedBodies"`
     /// -   type: `void*`
     /// - offset: 80
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "addedBodies", skip_serializing)]
     AddedBodies(Primitive<Cow<'a, str>>),
 
@@ -76,7 +75,7 @@ pub enum HkpMountedBallGun<'a> {
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 8
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "type", skip_serializing)]
     Type(Primitive<()>),
     /// # C++ Parent class(`hkpFirstPersonGun` => parent: `hkReferencedObject`) field Info
@@ -95,9 +94,9 @@ pub enum HkpMountedBallGun<'a> {
     KeyboardKey(Primitive<KeyboardKey>),
     /// # C++ Parent class(`hkpFirstPersonGun` => parent: `hkReferencedObject`) field Info
     /// -   name:`"listeners"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 20
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "listeners", skip_serializing)]
     Listeners(HkArrayRef<Cow<'a, str>>),
 
@@ -105,14 +104,14 @@ pub enum HkpMountedBallGun<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 

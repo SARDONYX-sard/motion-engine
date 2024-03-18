@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkVertexFormat`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0xf11e3ff7`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkVertexFormat {
@@ -44,6 +43,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("numElements" => NumElements(Primitive<i32>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum ComponentType {
     #[serde(rename = "TYPE_NONE")]
@@ -74,6 +74,7 @@ pub enum ComponentType {
     TypeLast = 12,
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum ComponentUsage {
     #[serde(rename = "USAGE_NONE")]
@@ -104,6 +105,7 @@ pub enum ComponentUsage {
     UsageLast = 12,
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum HintFlags {
     #[serde(rename = "FLAG_READ")]
@@ -116,6 +118,7 @@ pub enum HintFlags {
     FlagNotShared = 8,
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum SharingType {
     #[serde(rename = "SHARING_ALL_SHARED")]

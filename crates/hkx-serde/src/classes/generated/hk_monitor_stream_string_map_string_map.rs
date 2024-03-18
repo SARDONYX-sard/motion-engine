@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkMonitorStreamStringMapStringMap`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x2c76ce16`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkMonitorStreamStringMapStringMap<'a> {
@@ -25,7 +24,7 @@ pub enum HkMonitorStreamStringMapStringMap<'a> {
     /// -   name:`"id"`
     /// -   type: `hkUint64`
     /// - offset: 0
-    /// -  flags: `FLAGS_NONE | ALIGN8`
+    /// -  flags: `FLAGS_NONE|ALIGN8`
     #[serde(rename = "id")]
     Id(Primitive<u64>),
     /// # C++ Class Fields Info

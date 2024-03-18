@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpListShapeChildInfo`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x80df0f90`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpListShapeChildInfo<'a> {
@@ -25,7 +24,7 @@ pub enum HkpListShapeChildInfo<'a> {
     /// -   name:`"shape"`
     /// -   type: `struct hkpShape*`
     /// - offset: 0
-    /// -  flags: `FLAGS_NONE | ALIGN16`
+    /// -  flags: `FLAGS_NONE|ALIGN16`
     #[serde(rename = "shape")]
     Shape(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
@@ -39,14 +38,14 @@ pub enum HkpListShapeChildInfo<'a> {
     /// -   name:`"shapeSize"`
     /// -   type: `hkInt32`
     /// - offset: 8
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "shapeSize", skip_serializing)]
     ShapeSize(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"numChildShapes"`
     /// -   type: `hkInt32`
     /// - offset: 12
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "numChildShapes", skip_serializing)]
     NumChildShapes(Primitive<i32>),
 }

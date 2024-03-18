@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkMemoryMeshVertexBuffer`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkMeshVertexBuffer`/`0x534b08c8`
 /// - signature: `0xa2e50753`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkMemoryMeshVertexBuffer {
@@ -28,14 +27,14 @@ pub enum HkMemoryMeshVertexBuffer {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -47,7 +46,7 @@ pub enum HkMemoryMeshVertexBuffer {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "format")]
-    Format(HkVertexFormat),
+    Format(SingleClass<HkVertexFormat>),
     /// # C++ Class Fields Info
     /// -   name:`"elementOffsets"`
     /// -   type: `hkInt32[32]`
@@ -57,7 +56,7 @@ pub enum HkMemoryMeshVertexBuffer {
     ElementOffsets(CStyleArray<[i32; 32]>),
     /// # C++ Class Fields Info
     /// -   name:`"memory"`
-    /// -   type: `hkArray&lt;hkUint8&gt;`
+    /// -   type: `hkArray<hkUint8>`
     /// - offset: 396
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "memory")]
@@ -104,7 +103,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkMemoryMeshVertexBuffer, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("format" => Format(HkVertexFormat)),
+    ("format" => Format(SingleClass<HkVertexFormat>)),
     ("elementOffsets" => ElementOffsets(CStyleArray<[i32; 32]>)),
     ("memory" => Memory(HkArrayRef<Primitive<u8>>)),
     ("vertexStride" => VertexStride(Primitive<i32>)),

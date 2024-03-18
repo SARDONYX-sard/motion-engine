@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkMemoryResourceContainer`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkResourceContainer`/`0x4e94146`
 /// - signature: `0x4762f92a`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkMemoryResourceContainer<'a> {
@@ -30,14 +29,14 @@ pub enum HkMemoryResourceContainer<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -54,19 +53,19 @@ pub enum HkMemoryResourceContainer<'a> {
     /// -   name:`"parent"`
     /// -   type: `struct hkMemoryResourceContainer*`
     /// - offset: 12
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "parent", skip_serializing)]
     Parent(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"resourceHandles"`
-    /// -   type: `hkArray&lt;hkMemoryResourceHandle*&gt;`
+    /// -   type: `hkArray<hkMemoryResourceHandle*>`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "resourceHandles")]
     ResourceHandles(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"children"`
-    /// -   type: `hkArray&lt;hkMemoryResourceContainer*&gt;`
+    /// -   type: `hkArray<hkMemoryResourceContainer*>`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "children")]

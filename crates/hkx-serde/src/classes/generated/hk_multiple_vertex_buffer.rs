@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkMultipleVertexBuffer`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkMeshVertexBuffer`/`0x534b08c8`
 /// - signature: `0xde3ab602`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkMultipleVertexBuffer<'a> {
@@ -28,14 +27,14 @@ pub enum HkMultipleVertexBuffer<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -47,10 +46,10 @@ pub enum HkMultipleVertexBuffer<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertexFormat")]
-    VertexFormat(HkVertexFormat),
+    VertexFormat(SingleClass<HkVertexFormat>),
     /// # C++ Class Fields Info
     /// -   name:`"lockedElements"`
-    /// -   type: `hkArray&lt;struct hkMultipleVertexBufferLockedElement&gt;`
+    /// -   type: `hkArray<struct hkMultipleVertexBufferLockedElement>`
     /// - offset: 268
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "lockedElements")]
@@ -64,14 +63,14 @@ pub enum HkMultipleVertexBuffer<'a> {
     LockedBuffer(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"elementInfos"`
-    /// -   type: `hkArray&lt;struct hkMultipleVertexBufferElementInfo&gt;`
+    /// -   type: `hkArray<struct hkMultipleVertexBufferElementInfo>`
     /// - offset: 284
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "elementInfos")]
     ElementInfos(HkArrayClass<HkMultipleVertexBufferElementInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexBufferInfos"`
-    /// -   type: `hkArray&lt;struct hkMultipleVertexBufferVertexBufferInfo&gt;`
+    /// -   type: `hkArray<struct hkMultipleVertexBufferVertexBufferInfo>`
     /// - offset: 296
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertexBufferInfos")]
@@ -125,7 +124,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkMultipleVertexBuffer<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("vertexFormat" => VertexFormat(HkVertexFormat)),
+    ("vertexFormat" => VertexFormat(SingleClass<HkVertexFormat>)),
     ("lockedElements" => LockedElements(HkArrayClass<HkMultipleVertexBufferLockedElement>)),
     ("lockedBuffer" => LockedBuffer(Primitive<Cow<'de, str>>)),
     ("elementInfos" => ElementInfos(HkArrayClass<HkMultipleVertexBufferElementInfo>)),

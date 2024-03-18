@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkbStateMachineProspectiveTransitionInfo`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x3ab09a2e`
 /// -   version: 2
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbStateMachineProspectiveTransitionInfo {
@@ -27,14 +26,14 @@ pub enum HkbStateMachineProspectiveTransitionInfo {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transitionInfoReference")]
-    TransitionInfoReference(HkbStateMachineTransitionInfoReference),
+    TransitionInfoReference(SingleClass<HkbStateMachineTransitionInfoReference>),
     /// # C++ Class Fields Info
     /// -   name:`"transitionInfoReferenceForTE"`
     /// -   type: `struct hkbStateMachineTransitionInfoReference`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transitionInfoReferenceForTE")]
-    TransitionInfoReferenceForTe(HkbStateMachineTransitionInfoReference),
+    TransitionInfoReferenceForTe(SingleClass<HkbStateMachineTransitionInfoReference>),
     /// # C++ Class Fields Info
     /// -   name:`"toStateId"`
     /// -   type: `hkInt32`
@@ -47,7 +46,7 @@ pub enum HkbStateMachineProspectiveTransitionInfo {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbStateMachineProspectiveTransitionInfo, "@name",
-    ("transitionInfoReference" => TransitionInfoReference(HkbStateMachineTransitionInfoReference)),
-    ("transitionInfoReferenceForTE" => TransitionInfoReferenceForTe(HkbStateMachineTransitionInfoReference)),
+    ("transitionInfoReference" => TransitionInfoReference(SingleClass<HkbStateMachineTransitionInfoReference>)),
+    ("transitionInfoReferenceForTE" => TransitionInfoReferenceForTe(SingleClass<HkbStateMachineTransitionInfoReference>)),
     ("toStateId" => ToStateId(Primitive<i32>)),
 }

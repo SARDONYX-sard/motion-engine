@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkMonitorStreamColorTable`
 ///
@@ -21,7 +19,7 @@ use std::borrow::Cow;
 /// -   version: 0
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkMonitorStreamColorTable<'a> {
+pub enum HkMonitorStreamColorTable {
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -45,7 +43,7 @@ pub enum HkMonitorStreamColorTable<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "colorPairs")]
-    ColorPairs(HkArrayClass<HkMonitorStreamColorTableColorPair<'a>>),
+    ColorPairs(HkArrayClass<HkMonitorStreamColorTableColorPair>),
     /// # C++ Class Fields Info
     /// -   name:`"defaultColor"`
     /// -   type: `hkUint32`
@@ -57,9 +55,9 @@ pub enum HkMonitorStreamColorTable<'a> {
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
-    HkMonitorStreamColorTable<'de>, "@name",
+    HkMonitorStreamColorTable, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("colorPairs" => ColorPairs(HkArrayClass<HkMonitorStreamColorTableColorPair<'de>>)),
+    ("colorPairs" => ColorPairs(HkArrayClass<HkMonitorStreamColorTableColorPair>)),
     ("defaultColor" => DefaultColor(Primitive<u32>)),
 }

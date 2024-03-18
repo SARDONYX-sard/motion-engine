@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpWeldingUtility`
 ///
@@ -18,16 +16,13 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0xb2b41feb`
 /// -   version: 0
-#[derive(Debug, Clone, PartialEq, Serialize)]
+#[allow(clippy::enum_variant_names)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(tag = "@name")]
 pub enum HkpWeldingUtility {
 }
 
-// Manual implementation to branch the process using the value of the `name` attribute as the key.
-impl_deserialize_for_internally_tagged_enum! {
-    HkpWeldingUtility, "@name",
-}
-
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum WeldingType {
     #[serde(rename = "WELDING_TYPE_ANTICLOCKWISE")]
@@ -40,6 +35,7 @@ pub enum WeldingType {
     WeldingTypeNone = 6,
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum SectorType {
     #[serde(rename = "ACCEPT_0")]
@@ -54,6 +50,7 @@ pub enum SectorType {
     Accept1 = 3,
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum NumAngles {
     #[serde(rename = "NUM_ANGLES")]

@@ -1015,17 +1015,6 @@ pub enum ClassParams<'a> {
     #[serde(bound(deserialize = "Vec<HkClassEnum<'a>>: Deserialize<'de>"))]
     HkClassEnum(Vec<HkClassEnum<'a>>),
 
-    #[serde(rename = "0x5c7ea4c2")]
-    #[serde(bound(deserialize = "Vec<HkClassMember<'a>>: Deserialize<'de>"))]
-    HkClassMember(Vec<HkClassMember<'a>>),
-
-    #[serde(rename = "0x75585ef6")]
-    #[serde(bound(deserialize = "Vec<HkClass<'a>>: Deserialize<'de>"))]
-    HkClass(Vec<HkClass<'a>>),
-
-    #[serde(rename = "0x106b96ce")]
-    HkColor(Vec<HkColor>),
-
     #[serde(rename = "0x4e32287c")]
     HkContactPointMaterial(Vec<HkContactPointMaterial>),
 
@@ -1142,14 +1131,6 @@ pub enum ClassParams<'a> {
     #[serde(rename = "0x338c092f")]
     HkModelerNodeTypeAttribute(Vec<HkModelerNodeTypeAttribute>),
 
-    #[serde(rename = "0x738fca05")]
-    #[serde(bound(deserialize = "Vec<HkMonitorStreamColorTableColorPair<'a>>: Deserialize<'de>"))]
-    HkMonitorStreamColorTableColorPair(Vec<HkMonitorStreamColorTableColorPair<'a>>),
-
-    #[serde(rename = "0x79e53e85")]
-    #[serde(bound(deserialize = "Vec<HkMonitorStreamColorTable<'a>>: Deserialize<'de>"))]
-    HkMonitorStreamColorTable(Vec<HkMonitorStreamColorTable<'a>>),
-
     #[serde(rename = "0x7798b7db")]
     #[serde(bound(deserialize = "Vec<HkMonitorStreamFrameInfo<'a>>: Deserialize<'de>"))]
     HkMonitorStreamFrameInfo(Vec<HkMonitorStreamFrameInfo<'a>>),
@@ -1205,9 +1186,6 @@ pub enum ClassParams<'a> {
     #[serde(rename = "0xbdf70a51")]
     #[serde(bound(deserialize = "Vec<HkpAction<'a>>: Deserialize<'de>"))]
     HkpAction(Vec<HkpAction<'a>>),
-
-    #[serde(rename = "0x626e55a")]
-    HkpAgent1NSector(Vec<HkpAgent1NSector>),
 
     #[serde(rename = "0x35bb3cd0")]
     HkpAngConstraintAtom(Vec<HkpAngConstraintAtom>),
@@ -1387,9 +1365,6 @@ pub enum ClassParams<'a> {
     #[serde(rename = "0xc3b577b1")]
     #[serde(bound(deserialize = "Vec<HkpConstraintCollisionFilter<'a>>: Deserialize<'de>"))]
     HkpConstraintCollisionFilter(Vec<HkpConstraintCollisionFilter<'a>>),
-
-    #[serde(rename = "0x80559a4e")]
-    HkpConstraintData(Vec<HkpConstraintData>),
 
     #[serde(rename = "0xee3c2aec")]
     #[serde(bound(deserialize = "Vec<HkpConstraintInstanceSmallArraySerializeOverrideType<'a>>: Deserialize<'de>"))]
@@ -1844,10 +1819,6 @@ pub enum ClassParams<'a> {
     #[serde(rename = "0x11213421")]
     HkpSampledHeightFieldShape(Vec<HkpSampledHeightFieldShape>),
 
-    #[serde(rename = "0x49ec7de3")]
-    #[serde(bound(deserialize = "Vec<HkpSerializedAgentNnEntry<'a>>: Deserialize<'de>"))]
-    HkpSerializedAgentNnEntry(Vec<HkpSerializedAgentNnEntry<'a>>),
-
     #[serde(rename = "0x54785c77")]
     #[serde(bound(deserialize = "Vec<HkpSerializedDisplayMarkerList<'a>>: Deserialize<'de>"))]
     HkpSerializedDisplayMarkerList(Vec<HkpSerializedDisplayMarkerList<'a>>),
@@ -2172,12 +2143,6 @@ pub enum ClassParams<'a> {
     #[serde(rename = "0xb2b41feb")]
     HkpWeldingUtility(Vec<HkpWeldingUtility>),
 
-    #[serde(rename = "0x1188cbe1")]
-    HkpWheelConstraintDataAtoms(Vec<HkpWheelConstraintDataAtoms>),
-
-    #[serde(rename = "0xb4c46671")]
-    HkpWheelConstraintData(Vec<HkpWheelConstraintData>),
-
     #[serde(rename = "0xa5255445")]
     #[serde(bound(deserialize = "Vec<HkpWorldCinfo<'a>>: Deserialize<'de>"))]
     HkpWorldCinfo(Vec<HkpWorldCinfo<'a>>),
@@ -2426,7 +2391,7 @@ impl<'a> Serialize for Class<'a> {
     {
         use serde::ser::SerializeStruct;
 
-        let mut state = serializer.serialize_struct("Class", 678)?;
+        let mut state = serializer.serialize_struct("Class", 668)?;
         state.serialize_field("@name", &self.name)?;
         state.serialize_field("@class", &self.class)?;
         state.serialize_field("@signature", &self.signature)?;
@@ -4090,24 +4055,6 @@ impl<'a> Serialize for Class<'a> {
                 }
             }
 
-            "hkClassMember" => {
-                if let ClassParams::HkClassMember(ref params) = self.hkparams {
-                    state.serialize_field("hkparam", params)?;
-                }
-            }
-
-            "hkClass" => {
-                if let ClassParams::HkClass(ref params) = self.hkparams {
-                    state.serialize_field("hkparam", params)?;
-                }
-            }
-
-            "hkColor" => {
-                if let ClassParams::HkColor(ref params) = self.hkparams {
-                    state.serialize_field("hkparam", params)?;
-                }
-            }
-
             "hkContactPointMaterial" => {
                 if let ClassParams::HkContactPointMaterial(ref params) = self.hkparams {
                     state.serialize_field("hkparam", params)?;
@@ -4306,18 +4253,6 @@ impl<'a> Serialize for Class<'a> {
                 }
             }
 
-            "hkMonitorStreamColorTableColorPair" => {
-                if let ClassParams::HkMonitorStreamColorTableColorPair(ref params) = self.hkparams {
-                    state.serialize_field("hkparam", params)?;
-                }
-            }
-
-            "hkMonitorStreamColorTable" => {
-                if let ClassParams::HkMonitorStreamColorTable(ref params) = self.hkparams {
-                    state.serialize_field("hkparam", params)?;
-                }
-            }
-
             "hkMonitorStreamFrameInfo" => {
                 if let ClassParams::HkMonitorStreamFrameInfo(ref params) = self.hkparams {
                     state.serialize_field("hkparam", params)?;
@@ -4410,12 +4345,6 @@ impl<'a> Serialize for Class<'a> {
 
             "hkpAction" => {
                 if let ClassParams::HkpAction(ref params) = self.hkparams {
-                    state.serialize_field("hkparam", params)?;
-                }
-            }
-
-            "hkpAgent1nSector" => {
-                if let ClassParams::HkpAgent1NSector(ref params) = self.hkparams {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -4722,12 +4651,6 @@ impl<'a> Serialize for Class<'a> {
 
             "hkpConstraintCollisionFilter" => {
                 if let ClassParams::HkpConstraintCollisionFilter(ref params) = self.hkparams {
-                    state.serialize_field("hkparam", params)?;
-                }
-            }
-
-            "hkpConstraintData" => {
-                if let ClassParams::HkpConstraintData(ref params) = self.hkparams {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5494,12 +5417,6 @@ impl<'a> Serialize for Class<'a> {
                 }
             }
 
-            "hkpSerializedAgentNnEntry" => {
-                if let ClassParams::HkpSerializedAgentNnEntry(ref params) = self.hkparams {
-                    state.serialize_field("hkparam", params)?;
-                }
-            }
-
             "hkpSerializedDisplayMarkerList" => {
                 if let ClassParams::HkpSerializedDisplayMarkerList(ref params) = self.hkparams {
                     state.serialize_field("hkparam", params)?;
@@ -6072,18 +5989,6 @@ impl<'a> Serialize for Class<'a> {
 
             "hkpWeldingUtility" => {
                 if let ClassParams::HkpWeldingUtility(ref params) = self.hkparams {
-                    state.serialize_field("hkparam", params)?;
-                }
-            }
-
-            "hkpWheelConstraintDataAtoms" => {
-                if let ClassParams::HkpWheelConstraintDataAtoms(ref params) = self.hkparams {
-                    state.serialize_field("hkparam", params)?;
-                }
-            }
-
-            "hkpWheelConstraintData" => {
-                if let ClassParams::HkpWheelConstraintData(ref params) = self.hkparams {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -7385,15 +7290,6 @@ impl<'de> Deserialize<'de> for Class<'de> {
                                     "hkClassEnum" => {
                                                         ClassParams::HkClassEnum(map.next_value()?)
                                     },
-                                    "hkClassMember" => {
-                                                        ClassParams::HkClassMember(map.next_value()?)
-                                    },
-                                    "hkClass" => {
-                                                        ClassParams::HkClass(map.next_value()?)
-                                    },
-                                    "hkColor" => {
-                                                        ClassParams::HkColor(map.next_value()?)
-                                    },
                                     "hkContactPointMaterial" => {
                                                         ClassParams::HkContactPointMaterial(map.next_value()?)
                                     },
@@ -7493,12 +7389,6 @@ impl<'de> Deserialize<'de> for Class<'de> {
                                     "hkModelerNodeTypeAttribute" => {
                                                         ClassParams::HkModelerNodeTypeAttribute(map.next_value()?)
                                     },
-                                    "hkMonitorStreamColorTableColorPair" => {
-                                                        ClassParams::HkMonitorStreamColorTableColorPair(map.next_value()?)
-                                    },
-                                    "hkMonitorStreamColorTable" => {
-                                                        ClassParams::HkMonitorStreamColorTable(map.next_value()?)
-                                    },
                                     "hkMonitorStreamFrameInfo" => {
                                                         ClassParams::HkMonitorStreamFrameInfo(map.next_value()?)
                                     },
@@ -7546,9 +7436,6 @@ impl<'de> Deserialize<'de> for Class<'de> {
                                     },
                                     "hkpAction" => {
                                                         ClassParams::HkpAction(map.next_value()?)
-                                    },
-                                    "hkpAgent1nSector" => {
-                                                        ClassParams::HkpAgent1NSector(map.next_value()?)
                                     },
                                     "hkpAngConstraintAtom" => {
                                                         ClassParams::HkpAngConstraintAtom(map.next_value()?)
@@ -7702,9 +7589,6 @@ impl<'de> Deserialize<'de> for Class<'de> {
                                     },
                                     "hkpConstraintCollisionFilter" => {
                                                         ClassParams::HkpConstraintCollisionFilter(map.next_value()?)
-                                    },
-                                    "hkpConstraintData" => {
-                                                        ClassParams::HkpConstraintData(map.next_value()?)
                                     },
                                     "hkpConstraintInstanceSmallArraySerializeOverrideType" => {
                                                         ClassParams::HkpConstraintInstanceSmallArraySerializeOverrideType(map.next_value()?)
@@ -8087,9 +7971,6 @@ impl<'de> Deserialize<'de> for Class<'de> {
                                     "hkpSampledHeightFieldShape" => {
                                                         ClassParams::HkpSampledHeightFieldShape(map.next_value()?)
                                     },
-                                    "hkpSerializedAgentNnEntry" => {
-                                                        ClassParams::HkpSerializedAgentNnEntry(map.next_value()?)
-                                    },
                                     "hkpSerializedDisplayMarkerList" => {
                                                         ClassParams::HkpSerializedDisplayMarkerList(map.next_value()?)
                                     },
@@ -8377,12 +8258,6 @@ impl<'de> Deserialize<'de> for Class<'de> {
                                     },
                                     "hkpWeldingUtility" => {
                                                         ClassParams::HkpWeldingUtility(map.next_value()?)
-                                    },
-                                    "hkpWheelConstraintDataAtoms" => {
-                                                        ClassParams::HkpWheelConstraintDataAtoms(map.next_value()?)
-                                    },
-                                    "hkpWheelConstraintData" => {
-                                                        ClassParams::HkpWheelConstraintData(map.next_value()?)
                                     },
                                     "hkpWorldCinfo" => {
                                                         ClassParams::HkpWorldCinfo(map.next_value()?)

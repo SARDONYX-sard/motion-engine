@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkbEventRangeData`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x6cb92c76`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbEventRangeData<'a> {
@@ -34,7 +33,7 @@ pub enum HkbEventRangeData<'a> {
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "event")]
-    Event(HkbEventProperty<'a>),
+    Event(SingleClass<HkbEventProperty<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"eventMode"`
     /// -   type: `enum EventRangeMode`
@@ -48,10 +47,11 @@ pub enum HkbEventRangeData<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkbEventRangeData<'de>, "@name",
     ("upperBound" => UpperBound(Primitive<f32>)),
-    ("event" => Event(HkbEventProperty<'de>)),
+    ("event" => Event(SingleClass<HkbEventProperty<'de>>)),
     ("eventMode" => EventMode(Primitive<EventRangeMode>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum EventRangeMode {
     #[serde(rename = "EVENT_MODE_SEND_ON_ENTER_RANGE")]

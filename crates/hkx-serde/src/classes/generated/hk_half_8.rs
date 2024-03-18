@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkHalf8`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x7684dc80`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkHalf8 {
@@ -25,7 +24,7 @@ pub enum HkHalf8 {
     /// -   name:`"quad"`
     /// -   type: `hkHalf[8]`
     /// - offset: 0
-    /// -  flags: `FLAGS_NONE | ALIGN16`
+    /// -  flags: `FLAGS_NONE|ALIGN16`
     #[serde(rename = "quad")]
     Quad(CStyleArray<[f32; 8]>),
 }

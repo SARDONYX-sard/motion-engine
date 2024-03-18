@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpRagdollLimitsDataAtoms`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x82b894c3`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpRagdollLimitsDataAtoms {
@@ -27,39 +26,40 @@ pub enum HkpRagdollLimitsDataAtoms {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rotations")]
-    Rotations(HkpSetLocalRotationsConstraintAtom),
+    Rotations(SingleClass<HkpSetLocalRotationsConstraintAtom>),
     /// # C++ Class Fields Info
     /// -   name:`"twistLimit"`
     /// -   type: `struct hkpTwistLimitConstraintAtom`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "twistLimit")]
-    TwistLimit(HkpTwistLimitConstraintAtom),
+    TwistLimit(SingleClass<HkpTwistLimitConstraintAtom>),
     /// # C++ Class Fields Info
     /// -   name:`"coneLimit"`
     /// -   type: `struct hkpConeLimitConstraintAtom`
     /// - offset: 132
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "coneLimit")]
-    ConeLimit(HkpConeLimitConstraintAtom),
+    ConeLimit(SingleClass<HkpConeLimitConstraintAtom>),
     /// # C++ Class Fields Info
     /// -   name:`"planesLimit"`
     /// -   type: `struct hkpConeLimitConstraintAtom`
     /// - offset: 152
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "planesLimit")]
-    PlanesLimit(HkpConeLimitConstraintAtom),
+    PlanesLimit(SingleClass<HkpConeLimitConstraintAtom>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpRagdollLimitsDataAtoms, "@name",
-    ("rotations" => Rotations(HkpSetLocalRotationsConstraintAtom)),
-    ("twistLimit" => TwistLimit(HkpTwistLimitConstraintAtom)),
-    ("coneLimit" => ConeLimit(HkpConeLimitConstraintAtom)),
-    ("planesLimit" => PlanesLimit(HkpConeLimitConstraintAtom)),
+    ("rotations" => Rotations(SingleClass<HkpSetLocalRotationsConstraintAtom>)),
+    ("twistLimit" => TwistLimit(SingleClass<HkpTwistLimitConstraintAtom>)),
+    ("coneLimit" => ConeLimit(SingleClass<HkpConeLimitConstraintAtom>)),
+    ("planesLimit" => PlanesLimit(SingleClass<HkpConeLimitConstraintAtom>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum Axis {
     #[serde(rename = "AXIS_TWIST")]

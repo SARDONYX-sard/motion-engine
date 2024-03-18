@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkMotionState`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x5797386e`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkMotionState {
@@ -34,7 +33,7 @@ pub enum HkMotionState {
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "sweptTransform")]
-    SweptTransform(HkSweptTransform),
+    SweptTransform(SingleClass<HkSweptTransform>),
     /// # C++ Class Fields Info
     /// -   name:`"deltaAngle"`
     /// -   type: `hkVector4`
@@ -97,7 +96,7 @@ pub enum HkMotionState {
 impl_deserialize_for_internally_tagged_enum! {
     HkMotionState, "@name",
     ("transform" => Transform(Transform<f32>)),
-    ("sweptTransform" => SweptTransform(HkSweptTransform)),
+    ("sweptTransform" => SweptTransform(SingleClass<HkSweptTransform>)),
     ("deltaAngle" => DeltaAngle(Vector4<f32>)),
     ("objectRadius" => ObjectRadius(Primitive<f32>)),
     ("linearDamping" => LinearDamping(Primitive<f32>)),

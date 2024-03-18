@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpConstraintCollisionFilter`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkpPairCollisionFilter`/`0x4abc140e`
 /// - signature: `0xc3b577b1`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpConstraintCollisionFilter<'a> {
@@ -26,9 +25,9 @@ pub enum HkpConstraintCollisionFilter<'a> {
     /// -   name:`"disabledPairs"`
     /// -   type: `struct hkpPairCollisionFilterMapPairFilterKeyOverrideType`
     /// - offset: 48
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "disabledPairs", skip_serializing)]
-    DisabledPairs(HkpPairCollisionFilterMapPairFilterKeyOverrideType<'a>),
+    DisabledPairs(SingleClass<HkpPairCollisionFilterMapPairFilterKeyOverrideType<'a>>),
     /// # C++ Parent class(`hkpPairCollisionFilter` => parent: `hkpCollisionFilter`) field Info
     /// -   name:`"childFilter"`
     /// -   type: `struct hkpCollisionFilter*`
@@ -63,14 +62,14 @@ pub enum HkpConstraintCollisionFilter<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -81,7 +80,7 @@ pub enum HkpConstraintCollisionFilter<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpConstraintCollisionFilter<'de>, "@name",
-    ("disabledPairs" => DisabledPairs(HkpPairCollisionFilterMapPairFilterKeyOverrideType<'de>)),
+    ("disabledPairs" => DisabledPairs(SingleClass<HkpPairCollisionFilterMapPairFilterKeyOverrideType<'de>>)),
     ("childFilter" => ChildFilter(Primitive<Cow<'de, str>>)),
     ("prepad" => Prepad(CStyleArray<[u32; 2]>)),
     ("type" => Type(Primitive<HkpFilterType>)),

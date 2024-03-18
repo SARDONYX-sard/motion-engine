@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpCollidableBoundingVolumeData`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0xb5f0e6b1`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpCollidableBoundingVolumeData<'a> {
@@ -67,28 +66,28 @@ pub enum HkpCollidableBoundingVolumeData<'a> {
     /// -   name:`"numChildShapeAabbs"`
     /// -   type: `hkUint16`
     /// - offset: 32
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "numChildShapeAabbs", skip_serializing)]
     NumChildShapeAabbs(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"capacityChildShapeAabbs"`
     /// -   type: `hkUint16`
     /// - offset: 34
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "capacityChildShapeAabbs", skip_serializing)]
     CapacityChildShapeAabbs(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"childShapeAabbs"`
     /// -   type: `void*`
     /// - offset: 36
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "childShapeAabbs", skip_serializing)]
     ChildShapeAabbs(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"childShapeKeys"`
     /// -   type: `void*`
     /// - offset: 40
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "childShapeKeys", skip_serializing)]
     ChildShapeKeys(Primitive<Cow<'a, str>>),
 }

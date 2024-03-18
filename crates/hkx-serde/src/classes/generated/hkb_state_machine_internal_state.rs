@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkbStateMachineInternalState`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkReferencedObject`/`0x3b1c1113`
 /// - signature: `0xbd1a7502`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbStateMachineInternalState<'a> {
@@ -26,14 +25,14 @@ pub enum HkbStateMachineInternalState<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -41,28 +40,28 @@ pub enum HkbStateMachineInternalState<'a> {
 
     /// # C++ Class Fields Info
     /// -   name:`"activeTransitions"`
-    /// -   type: `hkArray&lt;struct hkbStateMachineActiveTransitionInfo&gt;`
+    /// -   type: `hkArray<struct hkbStateMachineActiveTransitionInfo>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "activeTransitions")]
     ActiveTransitions(HkArrayClass<HkbStateMachineActiveTransitionInfo<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"transitionFlags"`
-    /// -   type: `hkArray&lt;hkUint8&gt;`
+    /// -   type: `hkArray<hkUint8>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transitionFlags")]
     TransitionFlags(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"wildcardTransitionFlags"`
-    /// -   type: `hkArray&lt;hkUint8&gt;`
+    /// -   type: `hkArray<hkUint8>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "wildcardTransitionFlags")]
     WildcardTransitionFlags(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"delayedTransitions"`
-    /// -   type: `hkArray&lt;struct hkbStateMachineDelayedTransitionInfo&gt;`
+    /// -   type: `hkArray<struct hkbStateMachineDelayedTransitionInfo>`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "delayedTransitions")]

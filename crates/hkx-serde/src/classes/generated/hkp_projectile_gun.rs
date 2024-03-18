@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpProjectileGun`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkpFirstPersonGun`/`0x852ab70b`
 /// - signature: `0xb4f30148`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpProjectileGun<'a> {
@@ -26,7 +25,7 @@ pub enum HkpProjectileGun<'a> {
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 8
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "type", skip_serializing)]
     Type(Primitive<()>),
     /// # C++ Parent class(`hkpFirstPersonGun` => parent: `hkReferencedObject`) field Info
@@ -45,9 +44,9 @@ pub enum HkpProjectileGun<'a> {
     KeyboardKey(Primitive<KeyboardKey>),
     /// # C++ Parent class(`hkpFirstPersonGun` => parent: `hkReferencedObject`) field Info
     /// -   name:`"listeners"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 20
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "listeners", skip_serializing)]
     Listeners(HkArrayRef<Cow<'a, str>>),
 
@@ -55,14 +54,14 @@ pub enum HkpProjectileGun<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -86,28 +85,28 @@ pub enum HkpProjectileGun<'a> {
     /// -   name:`"reload"`
     /// -   type: `hkReal`
     /// - offset: 40
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "reload", skip_serializing)]
     Reload(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"projectiles"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 44
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "projectiles", skip_serializing)]
     Projectiles(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"world"`
     /// -   type: `void*`
     /// - offset: 56
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "world", skip_serializing)]
     World(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"destructionWorld"`
     /// -   type: `void*`
     /// - offset: 60
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "destructionWorld", skip_serializing)]
     DestructionWorld(Primitive<Cow<'a, str>>),
 }

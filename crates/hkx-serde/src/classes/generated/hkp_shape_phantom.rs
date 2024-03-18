@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpShapePhantom`
 ///
@@ -19,21 +17,22 @@ use std::borrow::Cow;
 /// -    parent: `hkpPhantom`/`0x9b7e6f86`
 /// - signature: `0xcb22fbcd`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpShapePhantom<'a> {
     /// # C++ Parent class(`hkpPhantom` => parent: `hkpWorldObject`) field Info
     /// -   name:`"overlapListeners"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 140
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "overlapListeners", skip_serializing)]
     OverlapListeners(HkArrayRef<Cow<'a, str>>),
     /// # C++ Parent class(`hkpPhantom` => parent: `hkpWorldObject`) field Info
     /// -   name:`"phantomListeners"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 152
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "phantomListeners", skip_serializing)]
     PhantomListeners(HkArrayRef<Cow<'a, str>>),
 
@@ -41,7 +40,7 @@ pub enum HkpShapePhantom<'a> {
     /// -   name:`"world"`
     /// -   type: `void*`
     /// - offset: 8
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "world", skip_serializing)]
     World(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
@@ -57,14 +56,14 @@ pub enum HkpShapePhantom<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "collidable")]
-    Collidable(HkpLinkedCollidable<'a>),
+    Collidable(SingleClass<HkpLinkedCollidable<'a>>),
     /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"multiThreadCheck"`
     /// -   type: `struct hkMultiThreadCheck`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "multiThreadCheck")]
-    MultiThreadCheck(HkMultiThreadCheck),
+    MultiThreadCheck(SingleClass<HkMultiThreadCheck>),
     /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
@@ -74,7 +73,7 @@ pub enum HkpShapePhantom<'a> {
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"properties"`
-    /// -   type: `hkArray&lt;struct hkpProperty&gt;`
+    /// -   type: `hkArray<struct hkpProperty>`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "properties")]
@@ -83,7 +82,7 @@ pub enum HkpShapePhantom<'a> {
     /// -   name:`"treeData"`
     /// -   type: `void*`
     /// - offset: 136
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "treeData", skip_serializing)]
     TreeData(Primitive<Cow<'a, str>>),
 
@@ -91,14 +90,14 @@ pub enum HkpShapePhantom<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -110,7 +109,7 @@ pub enum HkpShapePhantom<'a> {
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "motionState")]
-    MotionState(HkMotionState),
+    MotionState(SingleClass<HkMotionState>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -120,12 +119,12 @@ impl_deserialize_for_internally_tagged_enum! {
     ("phantomListeners" => PhantomListeners(HkArrayRef<Cow<'de, str>>)),
     ("world" => World(Primitive<Cow<'de, str>>)),
     ("userData" => UserData(Primitive<usize>)),
-    ("collidable" => Collidable(HkpLinkedCollidable<'de>)),
-    ("multiThreadCheck" => MultiThreadCheck(HkMultiThreadCheck)),
+    ("collidable" => Collidable(SingleClass<HkpLinkedCollidable<'de>>)),
+    ("multiThreadCheck" => MultiThreadCheck(SingleClass<HkMultiThreadCheck>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("properties" => Properties(HkArrayClass<HkpProperty>)),
     ("treeData" => TreeData(Primitive<Cow<'de, str>>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("motionState" => MotionState(HkMotionState)),
+    ("motionState" => MotionState(SingleClass<HkMotionState>)),
 }

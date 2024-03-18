@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpConstraintInstance`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkReferencedObject`/`0x3b1c1113`
 /// - signature: `0x34eba5f`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpConstraintInstance<'a> {
@@ -26,14 +25,14 @@ pub enum HkpConstraintInstance<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -43,7 +42,7 @@ pub enum HkpConstraintInstance<'a> {
     /// -   name:`"owner"`
     /// -   type: `void*`
     /// - offset: 8
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "owner", skip_serializing)]
     Owner(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
@@ -92,9 +91,9 @@ pub enum HkpConstraintInstance<'a> {
     /// -   name:`"listeners"`
     /// -   type: `struct hkpConstraintInstanceSmallArraySerializeOverrideType`
     /// - offset: 32
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "listeners", skip_serializing)]
-    Listeners(HkpConstraintInstanceSmallArraySerializeOverrideType<'a>),
+    Listeners(SingleClass<HkpConstraintInstanceSmallArraySerializeOverrideType<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
@@ -113,14 +112,14 @@ pub enum HkpConstraintInstance<'a> {
     /// -   name:`"internal"`
     /// -   type: `void*`
     /// - offset: 48
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "internal", skip_serializing)]
     Internal(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"uid"`
     /// -   type: `hkUint32`
     /// - offset: 52
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "uid", skip_serializing)]
     Uid(Primitive<u32>),
 }
@@ -137,13 +136,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("priority" => Priority(Primitive<ConstraintPriority>)),
     ("wantRuntime" => WantRuntime(Primitive<bool>)),
     ("destructionRemapInfo" => DestructionRemapInfo(Primitive<OnDestructionRemapInfo>)),
-    ("listeners" => Listeners(HkpConstraintInstanceSmallArraySerializeOverrideType<'de>)),
+    ("listeners" => Listeners(SingleClass<HkpConstraintInstanceSmallArraySerializeOverrideType<'de>>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("userData" => UserData(Primitive<usize>)),
     ("internal" => Internal(Primitive<Cow<'de, str>>)),
     ("uid" => Uid(Primitive<u32>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum ConstraintPriority {
     #[serde(rename = "PRIORITY_INVALID")]
@@ -162,6 +162,7 @@ pub enum ConstraintPriority {
     NumPriorities = 6,
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum InstanceType {
     #[serde(rename = "TYPE_NORMAL")]
@@ -170,6 +171,7 @@ pub enum InstanceType {
     TypeChain = 1,
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum AddReferences {
     #[serde(rename = "DO_NOT_ADD_REFERENCES")]
@@ -178,6 +180,7 @@ pub enum AddReferences {
     DoAddReferences = 1,
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum CloningMode {
     #[serde(rename = "CLONE_SHALLOW_IF_NOT_CONSTRAINED_TO_WORLD")]
@@ -188,6 +191,7 @@ pub enum CloningMode {
     CloneForceShallow = 2,
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum OnDestructionRemapInfo {
     #[serde(rename = "ON_DESTRUCTION_REMAP")]

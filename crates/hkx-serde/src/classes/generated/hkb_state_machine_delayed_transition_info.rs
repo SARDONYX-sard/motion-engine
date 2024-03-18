@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkbStateMachineDelayedTransitionInfo`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x26d5499`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbStateMachineDelayedTransitionInfo {
@@ -27,7 +26,7 @@ pub enum HkbStateMachineDelayedTransitionInfo {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "delayedTransition")]
-    DelayedTransition(HkbStateMachineProspectiveTransitionInfo),
+    DelayedTransition(SingleClass<HkbStateMachineProspectiveTransitionInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"timeDelayed"`
     /// -   type: `hkReal`
@@ -54,7 +53,7 @@ pub enum HkbStateMachineDelayedTransitionInfo {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbStateMachineDelayedTransitionInfo, "@name",
-    ("delayedTransition" => DelayedTransition(HkbStateMachineProspectiveTransitionInfo)),
+    ("delayedTransition" => DelayedTransition(SingleClass<HkbStateMachineProspectiveTransitionInfo>)),
     ("timeDelayed" => TimeDelayed(Primitive<f32>)),
     ("isDelayedTransitionReturnToPreviousState" => IsDelayedTransitionReturnToPreviousState(Primitive<bool>)),
     ("wasInAbutRangeLastFrame" => WasInAbutRangeLastFrame(Primitive<bool>)),

@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkbStateMachineActiveTransitionInfo`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0xbb90d54f`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbStateMachineActiveTransitionInfo<'a> {
@@ -25,7 +24,7 @@ pub enum HkbStateMachineActiveTransitionInfo<'a> {
     /// -   name:`"transitionEffect"`
     /// -   type: `void*`
     /// - offset: 0
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "transitionEffect", skip_serializing)]
     TransitionEffect(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
@@ -41,14 +40,14 @@ pub enum HkbStateMachineActiveTransitionInfo<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transitionInfoReference")]
-    TransitionInfoReference(HkbStateMachineTransitionInfoReference),
+    TransitionInfoReference(SingleClass<HkbStateMachineTransitionInfoReference>),
     /// # C++ Class Fields Info
     /// -   name:`"transitionInfoReferenceForTE"`
     /// -   type: `struct hkbStateMachineTransitionInfoReference`
     /// - offset: 14
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transitionInfoReferenceForTE")]
-    TransitionInfoReferenceForTe(HkbStateMachineTransitionInfoReference),
+    TransitionInfoReferenceForTe(SingleClass<HkbStateMachineTransitionInfoReference>),
     /// # C++ Class Fields Info
     /// -   name:`"fromStateId"`
     /// -   type: `hkInt32`
@@ -77,8 +76,8 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbStateMachineActiveTransitionInfo<'de>, "@name",
     ("transitionEffect" => TransitionEffect(Primitive<Cow<'de, str>>)),
     ("transitionEffectInternalStateInfo" => TransitionEffectInternalStateInfo(Primitive<Cow<'de, str>>)),
-    ("transitionInfoReference" => TransitionInfoReference(HkbStateMachineTransitionInfoReference)),
-    ("transitionInfoReferenceForTE" => TransitionInfoReferenceForTe(HkbStateMachineTransitionInfoReference)),
+    ("transitionInfoReference" => TransitionInfoReference(SingleClass<HkbStateMachineTransitionInfoReference>)),
+    ("transitionInfoReferenceForTE" => TransitionInfoReferenceForTe(SingleClass<HkbStateMachineTransitionInfoReference>)),
     ("fromStateId" => FromStateId(Primitive<i32>)),
     ("toStateId" => ToStateId(Primitive<i32>)),
     ("isReturnToPreviousState" => IsReturnToPreviousState(Primitive<bool>)),

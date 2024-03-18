@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkaDeltaCompressedAnimation`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkaAnimation`/`0xa6fa7e88`
 /// - signature: `0x90a68d40`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkaDeltaCompressedAnimation<'a> {
@@ -59,7 +58,7 @@ pub enum HkaDeltaCompressedAnimation<'a> {
     ExtractedMotion(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkaAnimation` => parent: `hkReferencedObject`) field Info
     /// -   name:`"annotationTracks"`
-    /// -   type: `hkArray&lt;struct hkaAnnotationTrack&gt;`
+    /// -   type: `hkArray<struct hkaAnnotationTrack>`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "annotationTracks")]
@@ -69,14 +68,14 @@ pub enum HkaDeltaCompressedAnimation<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -102,7 +101,7 @@ pub enum HkaDeltaCompressedAnimation<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "qFormat")]
-    QFormat(HkaDeltaCompressedAnimationQuantizationFormat),
+    QFormat(SingleClass<HkaDeltaCompressedAnimationQuantizationFormat>),
     /// # C++ Class Fields Info
     /// -   name:`"quantizedDataIdx"`
     /// -   type: `hkUint32`
@@ -175,7 +174,7 @@ pub enum HkaDeltaCompressedAnimation<'a> {
     LastBlockSize(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"dataBuffer"`
-    /// -   type: `hkArray&lt;hkUint8&gt;`
+    /// -   type: `hkArray<hkUint8>`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "dataBuffer")]
@@ -195,7 +194,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("numberOfPoses" => NumberOfPoses(Primitive<i32>)),
     ("blockSize" => BlockSize(Primitive<i32>)),
-    ("qFormat" => QFormat(HkaDeltaCompressedAnimationQuantizationFormat)),
+    ("qFormat" => QFormat(SingleClass<HkaDeltaCompressedAnimationQuantizationFormat>)),
     ("quantizedDataIdx" => QuantizedDataIdx(Primitive<u32>)),
     ("quantizedDataSize" => QuantizedDataSize(Primitive<u32>)),
     ("staticMaskIdx" => StaticMaskIdx(Primitive<u32>)),

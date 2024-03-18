@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpCollidable`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkpCdBody`/`0x54a4b841`
 /// - signature: `0x9a0e42a5`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpCollidable<'a> {
@@ -40,14 +39,14 @@ pub enum HkpCollidable<'a> {
     /// -   name:`"motion"`
     /// -   type: `void*`
     /// - offset: 8
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "motion", skip_serializing)]
     Motion(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpCdBody` => parent: `None`) field Info
     /// -   name:`"parent"`
     /// -   type: `struct hkpCdBody*`
     /// - offset: 12
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "parent", skip_serializing)]
     Parent(Primitive<Cow<'a, str>>),
 
@@ -55,7 +54,7 @@ pub enum HkpCollidable<'a> {
     /// -   name:`"ownerOffset"`
     /// -   type: `hkInt8`
     /// - offset: 16
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "ownerOffset", skip_serializing)]
     OwnerOffset(Primitive<i8>),
     /// # C++ Class Fields Info
@@ -69,7 +68,7 @@ pub enum HkpCollidable<'a> {
     /// -   name:`"shapeSizeOnSpu"`
     /// -   type: `hkUint16`
     /// - offset: 18
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "shapeSizeOnSpu", skip_serializing)]
     ShapeSizeOnSpu(Primitive<u16>),
     /// # C++ Class Fields Info
@@ -78,14 +77,14 @@ pub enum HkpCollidable<'a> {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "broadPhaseHandle")]
-    BroadPhaseHandle(HkpTypedBroadPhaseHandle),
+    BroadPhaseHandle(SingleClass<HkpTypedBroadPhaseHandle>),
     /// # C++ Class Fields Info
     /// -   name:`"boundingVolumeData"`
     /// -   type: `struct hkpCollidableBoundingVolumeData`
     /// - offset: 32
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "boundingVolumeData", skip_serializing)]
-    BoundingVolumeData(HkpCollidableBoundingVolumeData<'a>),
+    BoundingVolumeData(SingleClass<HkpCollidableBoundingVolumeData<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"allowedPenetrationDepth"`
     /// -   type: `hkReal`
@@ -105,11 +104,12 @@ impl_deserialize_for_internally_tagged_enum! {
     ("ownerOffset" => OwnerOffset(Primitive<i8>)),
     ("forceCollideOntoPpu" => ForceCollideOntoPpu(Primitive<u8>)),
     ("shapeSizeOnSpu" => ShapeSizeOnSpu(Primitive<u16>)),
-    ("broadPhaseHandle" => BroadPhaseHandle(HkpTypedBroadPhaseHandle)),
-    ("boundingVolumeData" => BoundingVolumeData(HkpCollidableBoundingVolumeData<'de>)),
+    ("broadPhaseHandle" => BroadPhaseHandle(SingleClass<HkpTypedBroadPhaseHandle>)),
+    ("boundingVolumeData" => BoundingVolumeData(SingleClass<HkpCollidableBoundingVolumeData<'de>>)),
     ("allowedPenetrationDepth" => AllowedPenetrationDepth(Primitive<f32>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum ForceCollideOntoPpuReasons {
     #[serde(rename = "FORCE_PPU_USER_REQUEST")]

@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpBridgeAtoms`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0xde152a4d`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpBridgeAtoms<'a> {
@@ -27,11 +26,11 @@ pub enum HkpBridgeAtoms<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "bridgeAtom")]
-    BridgeAtom(HkpBridgeConstraintAtom<'a>),
+    BridgeAtom(SingleClass<HkpBridgeConstraintAtom<'a>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpBridgeAtoms<'de>, "@name",
-    ("bridgeAtom" => BridgeAtom(HkpBridgeConstraintAtom<'de>)),
+    ("bridgeAtom" => BridgeAtom(SingleClass<HkpBridgeConstraintAtom<'de>>)),
 }

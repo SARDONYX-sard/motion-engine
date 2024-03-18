@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpMeshShapeSubpart`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x27336e5d`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpMeshShapeSubpart<'a> {
@@ -25,7 +24,7 @@ pub enum HkpMeshShapeSubpart<'a> {
     /// -   name:`"vertexBase"`
     /// -   type: `void*`
     /// - offset: 0
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "vertexBase", skip_serializing)]
     VertexBase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
@@ -46,7 +45,7 @@ pub enum HkpMeshShapeSubpart<'a> {
     /// -   name:`"indexBase"`
     /// -   type: `void*`
     /// - offset: 12
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "indexBase", skip_serializing)]
     IndexBase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
@@ -88,7 +87,7 @@ pub enum HkpMeshShapeSubpart<'a> {
     /// -   name:`"materialIndexBase"`
     /// -   type: `void*`
     /// - offset: 32
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "materialIndexBase", skip_serializing)]
     MaterialIndexBase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
@@ -102,7 +101,7 @@ pub enum HkpMeshShapeSubpart<'a> {
     /// -   name:`"materialBase"`
     /// -   type: `void*`
     /// - offset: 40
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "materialBase", skip_serializing)]
     MaterialBase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info

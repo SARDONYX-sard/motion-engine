@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkGeometry`
 ///
@@ -18,19 +16,20 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x98dd8bdc`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkGeometry {
     /// # C++ Class Fields Info
     /// -   name:`"vertices"`
-    /// -   type: `hkArray&lt;hkVector4&gt;`
+    /// -   type: `hkArray<hkVector4>`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertices")]
     Vertices(HkArrayVector<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"triangles"`
-    /// -   type: `hkArray&lt;struct hkGeometryTriangle&gt;`
+    /// -   type: `hkArray<struct hkGeometryTriangle>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "triangles")]

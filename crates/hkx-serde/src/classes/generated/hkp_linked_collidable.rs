@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpLinkedCollidable`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkpCollidable`/`0x9a0e42a5`
 /// - signature: `0xe1a81497`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpLinkedCollidable<'a> {
@@ -26,7 +25,7 @@ pub enum HkpLinkedCollidable<'a> {
     /// -   name:`"ownerOffset"`
     /// -   type: `hkInt8`
     /// - offset: 16
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "ownerOffset", skip_serializing)]
     OwnerOffset(Primitive<i8>),
     /// # C++ Parent class(`hkpCollidable` => parent: `hkpCdBody`) field Info
@@ -40,7 +39,7 @@ pub enum HkpLinkedCollidable<'a> {
     /// -   name:`"shapeSizeOnSpu"`
     /// -   type: `hkUint16`
     /// - offset: 18
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "shapeSizeOnSpu", skip_serializing)]
     ShapeSizeOnSpu(Primitive<u16>),
     /// # C++ Parent class(`hkpCollidable` => parent: `hkpCdBody`) field Info
@@ -49,14 +48,14 @@ pub enum HkpLinkedCollidable<'a> {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "broadPhaseHandle")]
-    BroadPhaseHandle(HkpTypedBroadPhaseHandle),
+    BroadPhaseHandle(SingleClass<HkpTypedBroadPhaseHandle>),
     /// # C++ Parent class(`hkpCollidable` => parent: `hkpCdBody`) field Info
     /// -   name:`"boundingVolumeData"`
     /// -   type: `struct hkpCollidableBoundingVolumeData`
     /// - offset: 32
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "boundingVolumeData", skip_serializing)]
-    BoundingVolumeData(HkpCollidableBoundingVolumeData<'a>),
+    BoundingVolumeData(SingleClass<HkpCollidableBoundingVolumeData<'a>>),
     /// # C++ Parent class(`hkpCollidable` => parent: `hkpCdBody`) field Info
     /// -   name:`"allowedPenetrationDepth"`
     /// -   type: `hkReal`
@@ -83,22 +82,22 @@ pub enum HkpLinkedCollidable<'a> {
     /// -   name:`"motion"`
     /// -   type: `void*`
     /// - offset: 8
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "motion", skip_serializing)]
     Motion(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpCdBody` => parent: `None`) field Info
     /// -   name:`"parent"`
     /// -   type: `struct hkpCdBody*`
     /// - offset: 12
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "parent", skip_serializing)]
     Parent(Primitive<Cow<'a, str>>),
 
     /// # C++ Class Fields Info
     /// -   name:`"collisionEntries"`
-    /// -   type: `hkArray&lt;void&gt;`
+    /// -   type: `hkArray<void>`
     /// - offset: 80
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "collisionEntries", skip_serializing)]
     CollisionEntries(HkArrayRef<Primitive<()>>),
 }
@@ -109,8 +108,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("ownerOffset" => OwnerOffset(Primitive<i8>)),
     ("forceCollideOntoPpu" => ForceCollideOntoPpu(Primitive<u8>)),
     ("shapeSizeOnSpu" => ShapeSizeOnSpu(Primitive<u16>)),
-    ("broadPhaseHandle" => BroadPhaseHandle(HkpTypedBroadPhaseHandle)),
-    ("boundingVolumeData" => BoundingVolumeData(HkpCollidableBoundingVolumeData<'de>)),
+    ("broadPhaseHandle" => BroadPhaseHandle(SingleClass<HkpTypedBroadPhaseHandle>)),
+    ("boundingVolumeData" => BoundingVolumeData(SingleClass<HkpCollidableBoundingVolumeData<'de>>)),
     ("allowedPenetrationDepth" => AllowedPenetrationDepth(Primitive<f32>)),
     ("shape" => Shape(Primitive<Cow<'de, str>>)),
     ("shapeKey" => ShapeKey(Primitive<u32>)),

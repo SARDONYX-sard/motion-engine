@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkxVertexBufferVertexData`
 ///
@@ -18,40 +16,41 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0xd72b6fd0`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkxVertexBufferVertexData {
     /// # C++ Class Fields Info
     /// -   name:`"vectorData"`
-    /// -   type: `hkArray&lt;hkVector4&gt;`
+    /// -   type: `hkArray<hkVector4>`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vectorData")]
     VectorData(HkArrayVector<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"floatData"`
-    /// -   type: `hkArray&lt;hkReal&gt;`
+    /// -   type: `hkArray<hkReal>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "floatData")]
     FloatData(HkArrayRef<Primitive<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"uint32Data"`
-    /// -   type: `hkArray&lt;hkUint32&gt;`
+    /// -   type: `hkArray<hkUint32>`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "uint32Data")]
     Uint32Data(HkArrayRef<Primitive<u32>>),
     /// # C++ Class Fields Info
     /// -   name:`"uint16Data"`
-    /// -   type: `hkArray&lt;hkUint16&gt;`
+    /// -   type: `hkArray<hkUint16>`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "uint16Data")]
     Uint16Data(HkArrayRef<Primitive<u16>>),
     /// # C++ Class Fields Info
     /// -   name:`"uint8Data"`
-    /// -   type: `hkArray&lt;hkUint8&gt;`
+    /// -   type: `hkArray<hkUint8>`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "uint8Data")]

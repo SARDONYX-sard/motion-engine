@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpMoppBvTreeShape`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkMoppBvTreeShapeBase`/`0x7c338c66`
 /// - signature: `0x90b29d39`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpMoppBvTreeShape<'a> {
@@ -33,21 +32,21 @@ pub enum HkpMoppBvTreeShape<'a> {
     /// -   name:`"moppData"`
     /// -   type: `void*`
     /// - offset: 24
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "moppData", skip_serializing)]
     MoppData(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkMoppBvTreeShapeBase` => parent: `hkpBvTreeShape`) field Info
     /// -   name:`"moppDataSize"`
     /// -   type: `hkUint32`
     /// - offset: 28
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "moppDataSize", skip_serializing)]
     MoppDataSize(Primitive<u32>),
     /// # C++ Parent class(`hkMoppBvTreeShapeBase` => parent: `hkpBvTreeShape`) field Info
     /// -   name:`"codeInfoCopy"`
     /// -   type: `hkVector4`
     /// - offset: 32
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "codeInfoCopy", skip_serializing)]
     CodeInfoCopy(Vector4<f32>),
 
@@ -70,7 +69,7 @@ pub enum HkpMoppBvTreeShape<'a> {
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 12
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "type", skip_serializing)]
     Type(Primitive<()>),
 
@@ -78,14 +77,14 @@ pub enum HkpMoppBvTreeShape<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -97,12 +96,12 @@ pub enum HkpMoppBvTreeShape<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "child")]
-    Child(HkpSingleShapeContainer<'a>),
+    Child(SingleClass<HkpSingleShapeContainer<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"childSize"`
     /// -   type: `hkInt32`
     /// - offset: 56
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "childSize", skip_serializing)]
     ChildSize(Primitive<i32>),
 }
@@ -119,6 +118,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("type" => Type(Primitive<()>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("child" => Child(HkpSingleShapeContainer<'de>)),
+    ("child" => Child(SingleClass<HkpSingleShapeContainer<'de>>)),
     ("childSize" => ChildSize(Primitive<i32>)),
 }

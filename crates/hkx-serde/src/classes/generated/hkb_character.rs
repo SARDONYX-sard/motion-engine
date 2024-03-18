@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkbCharacter`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkReferencedObject`/`0x3b1c1113`
 /// - signature: `0x3088a5c5`
 /// -   version: 2
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbCharacter<'a> {
@@ -26,14 +25,14 @@ pub enum HkbCharacter<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -41,7 +40,7 @@ pub enum HkbCharacter<'a> {
 
     /// # C++ Class Fields Info
     /// -   name:`"nearbyCharacters"`
-    /// -   type: `hkArray&lt;hkbCharacter*&gt;`
+    /// -   type: `hkArray<hkbCharacter*>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "nearbyCharacters")]
@@ -57,7 +56,7 @@ pub enum HkbCharacter<'a> {
     /// -   name:`"numTracksInLod"`
     /// -   type: `hkInt16`
     /// - offset: 22
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "numTracksInLod", skip_serializing)]
     NumTracksInLod(Primitive<i16>),
     /// # C++ Class Fields Info
@@ -71,28 +70,28 @@ pub enum HkbCharacter<'a> {
     /// -   name:`"ragdollDriver"`
     /// -   type: `void*`
     /// - offset: 28
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "ragdollDriver", skip_serializing)]
     RagdollDriver(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"characterControllerDriver"`
     /// -   type: `void*`
     /// - offset: 32
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "characterControllerDriver", skip_serializing)]
     CharacterControllerDriver(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"footIkDriver"`
     /// -   type: `void*`
     /// - offset: 36
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "footIkDriver", skip_serializing)]
     FootIkDriver(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"handIkDriver"`
     /// -   type: `void*`
     /// - offset: 40
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "handIkDriver", skip_serializing)]
     HandIkDriver(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
@@ -120,56 +119,56 @@ pub enum HkbCharacter<'a> {
     /// -   name:`"animationBindingSet"`
     /// -   type: `void*`
     /// - offset: 56
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "animationBindingSet", skip_serializing)]
     AnimationBindingSet(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"raycastInterface"`
     /// -   type: `void*`
     /// - offset: 60
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "raycastInterface", skip_serializing)]
     RaycastInterface(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"world"`
     /// -   type: `void*`
     /// - offset: 64
-    /// -  flags: `FLAGS_NONE | NOT_OWNED | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|NOT_OWNED|SERIALIZE_IGNORED`
     #[serde(rename = "world", skip_serializing)]
     World(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"eventQueue"`
     /// -   type: `void*`
     /// - offset: 68
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "eventQueue", skip_serializing)]
     EventQueue(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"worldFromModel"`
     /// -   type: `void*`
     /// - offset: 72
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "worldFromModel", skip_serializing)]
     WorldFromModel(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"poseLocal"`
-    /// -   type: `hkSimpleArray&lt;void&gt;`
+    /// -   type: `hkSimpleArray<void>`
     /// - offset: 76
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "poseLocal", skip_serializing)]
     PoseLocal(HkArrayRef<Primitive<()>>),
     /// # C++ Class Fields Info
     /// -   name:`"deleteWorldFromModel"`
     /// -   type: `hkBool`
     /// - offset: 84
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "deleteWorldFromModel", skip_serializing)]
     DeleteWorldFromModel(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"deletePoseLocal"`
     /// -   type: `hkBool`
     /// - offset: 85
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "deletePoseLocal", skip_serializing)]
     DeletePoseLocal(Primitive<bool>),
 }

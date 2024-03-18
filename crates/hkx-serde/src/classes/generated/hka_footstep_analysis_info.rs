@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkaFootstepAnalysisInfo`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkReferencedObject`/`0x3b1c1113`
 /// - signature: `0x824faf75`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkaFootstepAnalysisInfo {
@@ -26,14 +25,14 @@ pub enum HkaFootstepAnalysisInfo {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -41,77 +40,77 @@ pub enum HkaFootstepAnalysisInfo {
 
     /// # C++ Class Fields Info
     /// -   name:`"name"`
-    /// -   type: `hkArray&lt;hkChar&gt;`
+    /// -   type: `hkArray<hkChar>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "name")]
     Name(HkArrayRef<Primitive<char>>),
     /// # C++ Class Fields Info
     /// -   name:`"nameStrike"`
-    /// -   type: `hkArray&lt;hkChar&gt;`
+    /// -   type: `hkArray<hkChar>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "nameStrike")]
     NameStrike(HkArrayRef<Primitive<char>>),
     /// # C++ Class Fields Info
     /// -   name:`"nameLift"`
-    /// -   type: `hkArray&lt;hkChar&gt;`
+    /// -   type: `hkArray<hkChar>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "nameLift")]
     NameLift(HkArrayRef<Primitive<char>>),
     /// # C++ Class Fields Info
     /// -   name:`"nameLock"`
-    /// -   type: `hkArray&lt;hkChar&gt;`
+    /// -   type: `hkArray<hkChar>`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "nameLock")]
     NameLock(HkArrayRef<Primitive<char>>),
     /// # C++ Class Fields Info
     /// -   name:`"nameUnlock"`
-    /// -   type: `hkArray&lt;hkChar&gt;`
+    /// -   type: `hkArray<hkChar>`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "nameUnlock")]
     NameUnlock(HkArrayRef<Primitive<char>>),
     /// # C++ Class Fields Info
     /// -   name:`"minPos"`
-    /// -   type: `hkArray&lt;hkReal&gt;`
+    /// -   type: `hkArray<hkReal>`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "minPos")]
     MinPos(HkArrayRef<Primitive<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"maxPos"`
-    /// -   type: `hkArray&lt;hkReal&gt;`
+    /// -   type: `hkArray<hkReal>`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "maxPos")]
     MaxPos(HkArrayRef<Primitive<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"minVel"`
-    /// -   type: `hkArray&lt;hkReal&gt;`
+    /// -   type: `hkArray<hkReal>`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "minVel")]
     MinVel(HkArrayRef<Primitive<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"maxVel"`
-    /// -   type: `hkArray&lt;hkReal&gt;`
+    /// -   type: `hkArray<hkReal>`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "maxVel")]
     MaxVel(HkArrayRef<Primitive<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"allBonesDown"`
-    /// -   type: `hkArray&lt;hkReal&gt;`
+    /// -   type: `hkArray<hkReal>`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "allBonesDown")]
     AllBonesDown(HkArrayRef<Primitive<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"anyBonesDown"`
-    /// -   type: `hkArray&lt;hkReal&gt;`
+    /// -   type: `hkArray<hkReal>`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "anyBonesDown")]

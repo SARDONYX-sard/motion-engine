@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkbStateMachineTransitionInfo`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0xcdec8025`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbStateMachineTransitionInfo<'a> {
@@ -27,14 +26,14 @@ pub enum HkbStateMachineTransitionInfo<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "triggerInterval")]
-    TriggerInterval(HkbStateMachineTimeInterval),
+    TriggerInterval(SingleClass<HkbStateMachineTimeInterval>),
     /// # C++ Class Fields Info
     /// -   name:`"initiateInterval"`
     /// -   type: `struct hkbStateMachineTimeInterval`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "initiateInterval")]
-    InitiateInterval(HkbStateMachineTimeInterval),
+    InitiateInterval(SingleClass<HkbStateMachineTimeInterval>),
     /// # C++ Class Fields Info
     /// -   name:`"transition"`
     /// -   type: `struct hkbTransitionEffect*`
@@ -96,8 +95,8 @@ pub enum HkbStateMachineTransitionInfo<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbStateMachineTransitionInfo<'de>, "@name",
-    ("triggerInterval" => TriggerInterval(HkbStateMachineTimeInterval)),
-    ("initiateInterval" => InitiateInterval(HkbStateMachineTimeInterval)),
+    ("triggerInterval" => TriggerInterval(SingleClass<HkbStateMachineTimeInterval>)),
+    ("initiateInterval" => InitiateInterval(SingleClass<HkbStateMachineTimeInterval>)),
     ("transition" => Transition(Primitive<Cow<'de, str>>)),
     ("condition" => Condition(Primitive<Cow<'de, str>>)),
     ("eventId" => EventId(Primitive<i32>)),
@@ -108,6 +107,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("flags" => Flags(Primitive<TransitionFlags>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum TransitionFlags {
     #[serde(rename = "FLAG_USE_TRIGGER_INTERVAL")]
@@ -142,6 +142,7 @@ pub enum TransitionFlags {
     FlagAbutAtEndOfFromGenerator = 16384,
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum InternalFlagBits {
     #[serde(rename = "FLAG_INTERNAL_IN_TRIGGER_INTERVAL")]

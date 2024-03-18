@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpVehicleInstance`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkpUnaryAction`/`0x895532c0`
 /// - signature: `0x877bb579`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpVehicleInstance<'a> {
@@ -34,14 +33,14 @@ pub enum HkpVehicleInstance<'a> {
     /// -   name:`"world"`
     /// -   type: `void*`
     /// - offset: 8
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "world", skip_serializing)]
     World(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpAction` => parent: `hkReferencedObject`) field Info
     /// -   name:`"island"`
     /// -   type: `void*`
     /// - offset: 12
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "island", skip_serializing)]
     Island(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkpAction` => parent: `hkReferencedObject`) field Info
@@ -63,14 +62,14 @@ pub enum HkpVehicleInstance<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -155,7 +154,7 @@ pub enum HkpVehicleInstance<'a> {
     VelocityDamper(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"wheelsInfo"`
-    /// -   type: `hkArray&lt;struct hkpVehicleInstanceWheelInfo&gt;`
+    /// -   type: `hkArray<struct hkpVehicleInstanceWheelInfo>`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "wheelsInfo")]
@@ -166,7 +165,7 @@ pub enum HkpVehicleInstance<'a> {
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "frictionStatus")]
-    FrictionStatus(HkpVehicleFrictionStatus),
+    FrictionStatus(SingleClass<HkpVehicleFrictionStatus>),
     /// # C++ Class Fields Info
     /// -   name:`"deviceStatus"`
     /// -   type: `struct hkpVehicleDriverInputStatus*`
@@ -176,7 +175,7 @@ pub enum HkpVehicleInstance<'a> {
     DeviceStatus(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"isFixed"`
-    /// -   type: `hkArray&lt;hkBool&gt;`
+    /// -   type: `hkArray<hkBool>`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "isFixed")]
@@ -218,7 +217,7 @@ pub enum HkpVehicleInstance<'a> {
     MainSteeringAngle(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"wheelsSteeringAngle"`
-    /// -   type: `hkArray&lt;hkReal&gt;`
+    /// -   type: `hkArray<hkReal>`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "wheelsSteeringAngle")]
@@ -275,7 +274,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("tyreMarks" => TyreMarks(Primitive<Cow<'de, str>>)),
     ("velocityDamper" => VelocityDamper(Primitive<Cow<'de, str>>)),
     ("wheelsInfo" => WheelsInfo(HkArrayClass<HkpVehicleInstanceWheelInfo<'de>>)),
-    ("frictionStatus" => FrictionStatus(HkpVehicleFrictionStatus)),
+    ("frictionStatus" => FrictionStatus(SingleClass<HkpVehicleFrictionStatus>)),
     ("deviceStatus" => DeviceStatus(Primitive<Cow<'de, str>>)),
     ("isFixed" => IsFixed(HkArrayRef<Primitive<bool>>)),
     ("wheelsTimeSinceMaxPedalInput" => WheelsTimeSinceMaxPedalInput(Primitive<f32>)),

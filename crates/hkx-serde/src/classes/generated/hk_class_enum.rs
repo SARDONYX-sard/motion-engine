@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkClassEnum`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x8a3609cf`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkClassEnum<'a> {
@@ -30,7 +29,7 @@ pub enum HkClassEnum<'a> {
     Name(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"items"`
-    /// -   type: `hkSimpleArray&lt;struct hkClassEnumItem&gt;`
+    /// -   type: `hkSimpleArray<struct hkClassEnumItem>`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "items")]
@@ -39,7 +38,7 @@ pub enum HkClassEnum<'a> {
     /// -   name:`"attributes"`
     /// -   type: `struct hkCustomAttributes*`
     /// - offset: 12
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "attributes", skip_serializing)]
     Attributes(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
@@ -60,6 +59,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("flags" => Flags(Primitive<FlagValues>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum FlagValues {
     #[serde(rename = "FLAGS_NONE")]

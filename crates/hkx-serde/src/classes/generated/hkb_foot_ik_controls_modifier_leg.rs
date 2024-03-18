@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkbFootIkControlsModifierLeg`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x9e17091a`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbFootIkControlsModifierLeg<'a> {
@@ -34,7 +33,7 @@ pub enum HkbFootIkControlsModifierLeg<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "ungroundedEvent")]
-    UngroundedEvent(HkbEventProperty<'a>),
+    UngroundedEvent(SingleClass<HkbEventProperty<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"verticalError"`
     /// -   type: `hkReal`
@@ -62,7 +61,7 @@ pub enum HkbFootIkControlsModifierLeg<'a> {
 impl_deserialize_for_internally_tagged_enum! {
     HkbFootIkControlsModifierLeg<'de>, "@name",
     ("groundPosition" => GroundPosition(Vector4<f32>)),
-    ("ungroundedEvent" => UngroundedEvent(HkbEventProperty<'de>)),
+    ("ungroundedEvent" => UngroundedEvent(SingleClass<HkbEventProperty<'de>>)),
     ("verticalError" => VerticalError(Primitive<f32>)),
     ("hitSomething" => HitSomething(Primitive<bool>)),
     ("isPlantedMS" => IsPlantedMs(Primitive<bool>)),

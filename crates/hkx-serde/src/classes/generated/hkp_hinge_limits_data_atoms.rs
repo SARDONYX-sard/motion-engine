@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpHingeLimitsDataAtoms`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x555876ff`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpHingeLimitsDataAtoms {
@@ -27,31 +26,32 @@ pub enum HkpHingeLimitsDataAtoms {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rotations")]
-    Rotations(HkpSetLocalRotationsConstraintAtom),
+    Rotations(SingleClass<HkpSetLocalRotationsConstraintAtom>),
     /// # C++ Class Fields Info
     /// -   name:`"angLimit"`
     /// -   type: `struct hkpAngLimitConstraintAtom`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "angLimit")]
-    AngLimit(HkpAngLimitConstraintAtom),
+    AngLimit(SingleClass<HkpAngLimitConstraintAtom>),
     /// # C++ Class Fields Info
     /// -   name:`"2dAng"`
     /// -   type: `struct hkp2dAngConstraintAtom`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "2dAng")]
-    _2DAng(Hkp2DAngConstraintAtom),
+    _2DAng(SingleClass<Hkp2DAngConstraintAtom>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpHingeLimitsDataAtoms, "@name",
-    ("rotations" => Rotations(HkpSetLocalRotationsConstraintAtom)),
-    ("angLimit" => AngLimit(HkpAngLimitConstraintAtom)),
-    ("2dAng" => _2DAng(Hkp2DAngConstraintAtom)),
+    ("rotations" => Rotations(SingleClass<HkpSetLocalRotationsConstraintAtom>)),
+    ("angLimit" => AngLimit(SingleClass<HkpAngLimitConstraintAtom>)),
+    ("2dAng" => _2DAng(SingleClass<Hkp2DAngConstraintAtom>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum Axis {
     #[serde(rename = "AXIS_AXLE")]

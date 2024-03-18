@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkClass`
 ///
@@ -62,7 +60,7 @@ pub enum HkClass<'a> {
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "declaredMembers")]
-    DeclaredMembers(HkArrayClass<HkClassMember<'a>>),
+    DeclaredMembers(HkArrayClass<HkClassMember>),
     /// # C++ Class Fields Info
     /// -   name:`"defaults"`
     /// -   type: `void*`
@@ -101,7 +99,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("objectSize" => ObjectSize(Primitive<i32>)),
     ("numImplementedInterfaces" => NumImplementedInterfaces(Primitive<i32>)),
     ("declaredEnums" => DeclaredEnums(HkArrayClass<HkClassEnum<'de>>)),
-    ("declaredMembers" => DeclaredMembers(HkArrayClass<HkClassMember<'de>>)),
+    ("declaredMembers" => DeclaredMembers(HkArrayClass<HkClassMember>)),
     ("defaults" => Defaults(Primitive<Cow<'de, str>>)),
     ("attributes" => Attributes(Primitive<Cow<'de, str>>)),
     ("flags" => Flags(Primitive<FlagValues>)),

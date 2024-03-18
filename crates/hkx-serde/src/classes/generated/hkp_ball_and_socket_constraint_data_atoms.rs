@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpBallAndSocketConstraintDataAtoms`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0xc73dcaf9`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpBallAndSocketConstraintDataAtoms {
@@ -27,27 +26,27 @@ pub enum HkpBallAndSocketConstraintDataAtoms {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "pivots")]
-    Pivots(HkpSetLocalTranslationsConstraintAtom),
+    Pivots(SingleClass<HkpSetLocalTranslationsConstraintAtom>),
     /// # C++ Class Fields Info
     /// -   name:`"setupStabilization"`
     /// -   type: `struct hkpSetupStabilizationAtom`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "setupStabilization")]
-    SetupStabilization(HkpSetupStabilizationAtom),
+    SetupStabilization(SingleClass<HkpSetupStabilizationAtom>),
     /// # C++ Class Fields Info
     /// -   name:`"ballSocket"`
     /// -   type: `struct hkpBallSocketConstraintAtom`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "ballSocket")]
-    BallSocket(HkpBallSocketConstraintAtom),
+    BallSocket(SingleClass<HkpBallSocketConstraintAtom>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpBallAndSocketConstraintDataAtoms, "@name",
-    ("pivots" => Pivots(HkpSetLocalTranslationsConstraintAtom)),
-    ("setupStabilization" => SetupStabilization(HkpSetupStabilizationAtom)),
-    ("ballSocket" => BallSocket(HkpBallSocketConstraintAtom)),
+    ("pivots" => Pivots(SingleClass<HkpSetLocalTranslationsConstraintAtom>)),
+    ("setupStabilization" => SetupStabilization(SingleClass<HkpSetupStabilizationAtom>)),
+    ("ballSocket" => BallSocket(SingleClass<HkpBallSocketConstraintAtom>)),
 }

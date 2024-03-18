@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkbWorldEnums`
 ///
@@ -18,16 +16,13 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x25640b46`
 /// -   version: 0
-#[derive(Debug, Clone, PartialEq, Serialize)]
+#[allow(clippy::enum_variant_names)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(tag = "@name")]
 pub enum HkbWorldEnums {
 }
 
-// Manual implementation to branch the process using the value of the `name` attribute as the key.
-impl_deserialize_for_internally_tagged_enum! {
-    HkbWorldEnums, "@name",
-}
-
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum SimulationState {
     #[serde(rename = "SIMULATION_STATE_PLAY")]
@@ -40,6 +35,7 @@ pub enum SimulationState {
     SimulationStateStop = 3,
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum AccumulateMotionState {
     #[serde(rename = "ACCUMULATE_MOTION")]

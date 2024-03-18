@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkaSkeletonMapperData`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x95687ea0`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkaSkeletonMapperData<'a> {
@@ -37,21 +36,21 @@ pub enum HkaSkeletonMapperData<'a> {
     SkeletonB(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"simpleMappings"`
-    /// -   type: `hkArray&lt;struct hkaSkeletonMapperDataSimpleMapping&gt;`
+    /// -   type: `hkArray<struct hkaSkeletonMapperDataSimpleMapping>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "simpleMappings")]
     SimpleMappings(HkArrayClass<HkaSkeletonMapperDataSimpleMapping>),
     /// # C++ Class Fields Info
     /// -   name:`"chainMappings"`
-    /// -   type: `hkArray&lt;struct hkaSkeletonMapperDataChainMapping&gt;`
+    /// -   type: `hkArray<struct hkaSkeletonMapperDataChainMapping>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "chainMappings")]
     ChainMappings(HkArrayClass<HkaSkeletonMapperDataChainMapping>),
     /// # C++ Class Fields Info
     /// -   name:`"unmappedBones"`
-    /// -   type: `hkArray&lt;hkInt16&gt;`
+    /// -   type: `hkArray<hkInt16>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "unmappedBones")]
@@ -92,6 +91,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("mappingType" => MappingType(Primitive<MappingType>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum MappingType {
     #[serde(rename = "HK_RAGDOLL_MAPPING")]

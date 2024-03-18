@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpExtendedMeshShapeSubpart`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0xf4608207`
 /// -   version: 2
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpExtendedMeshShapeSubpart<'a> {
@@ -39,14 +38,14 @@ pub enum HkpExtendedMeshShapeSubpart<'a> {
     /// -   name:`"materialStriding"`
     /// -   type: `hkInt16`
     /// - offset: 2
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "materialStriding", skip_serializing)]
     MaterialStriding(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"materialIndexBase"`
     /// -   type: `void*`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "materialIndexBase", skip_serializing)]
     MaterialIndexBase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
@@ -67,7 +66,7 @@ pub enum HkpExtendedMeshShapeSubpart<'a> {
     /// -   name:`"materialBase"`
     /// -   type: `void*`
     /// - offset: 12
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "materialBase", skip_serializing)]
     MaterialBase(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info

@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkbGeneratorTransitionEffect`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkbTransitionEffect`/`0x945da157`
 /// - signature: `0x5f771b12`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbGeneratorTransitionEffect<'a> {
@@ -40,7 +39,7 @@ pub enum HkbGeneratorTransitionEffect<'a> {
     /// -   name:`"defaultEventMode"`
     /// -   type: `enum unknown`
     /// - offset: 42
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "defaultEventMode", skip_serializing)]
     DefaultEventMode(Primitive<()>),
 
@@ -64,21 +63,21 @@ pub enum HkbGeneratorTransitionEffect<'a> {
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "id", skip_serializing)]
     Id(Primitive<i16>),
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cloneState", skip_serializing)]
     CloneState(Primitive<()>),
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "padNode", skip_serializing)]
     PadNode(CStyleArray<[bool; 1]>),
 
@@ -91,16 +90,16 @@ pub enum HkbGeneratorTransitionEffect<'a> {
     VariableBindingSet(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
-    /// -   type: `hkArray&lt;void&gt;`
+    /// -   type: `hkArray<void>`
     /// - offset: 12
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
     CachedBindables(HkArrayRef<Primitive<()>>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "areBindablesCached", skip_serializing)]
     AreBindablesCached(Primitive<bool>),
 
@@ -108,14 +107,14 @@ pub enum HkbGeneratorTransitionEffect<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -153,84 +152,84 @@ pub enum HkbGeneratorTransitionEffect<'a> {
     /// -   name:`"fromGenerator"`
     /// -   type: `void*`
     /// - offset: 60
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "fromGenerator", skip_serializing)]
     FromGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"toGenerator"`
     /// -   type: `void*`
     /// - offset: 64
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "toGenerator", skip_serializing)]
     ToGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"timeInTransition"`
     /// -   type: `hkReal`
     /// - offset: 68
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "timeInTransition", skip_serializing)]
     TimeInTransition(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"duration"`
     /// -   type: `hkReal`
     /// - offset: 72
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "duration", skip_serializing)]
     Duration(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"effectiveBlendInDuration"`
     /// -   type: `hkReal`
     /// - offset: 76
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "effectiveBlendInDuration", skip_serializing)]
     EffectiveBlendInDuration(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"effectiveBlendOutDuration"`
     /// -   type: `hkReal`
     /// - offset: 80
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "effectiveBlendOutDuration", skip_serializing)]
     EffectiveBlendOutDuration(Primitive<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"toGeneratorState"`
     /// -   type: `enum unknown`
     /// - offset: 84
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "toGeneratorState", skip_serializing)]
     ToGeneratorState(Primitive<()>),
     /// # C++ Class Fields Info
     /// -   name:`"echoTransitionGenerator"`
     /// -   type: `hkBool`
     /// - offset: 85
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "echoTransitionGenerator", skip_serializing)]
     EchoTransitionGenerator(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"echoToGenerator"`
     /// -   type: `hkBool`
     /// - offset: 86
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "echoToGenerator", skip_serializing)]
     EchoToGenerator(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"justActivated"`
     /// -   type: `hkBool`
     /// - offset: 87
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "justActivated", skip_serializing)]
     JustActivated(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"updateActiveNodes"`
     /// -   type: `hkBool`
     /// - offset: 88
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "updateActiveNodes", skip_serializing)]
     UpdateActiveNodes(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"stage"`
     /// -   type: `enum unknown`
     /// - offset: 89
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "stage", skip_serializing)]
     Stage(Primitive<()>),
 }
@@ -269,6 +268,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("stage" => Stage(Primitive<()>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum ToGeneratorState {
     #[serde(rename = "STATE_INACTIVE")]
@@ -281,6 +281,7 @@ pub enum ToGeneratorState {
     StateActive = 3,
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum Stage {
     #[serde(rename = "STAGE_BLENDING_IN")]

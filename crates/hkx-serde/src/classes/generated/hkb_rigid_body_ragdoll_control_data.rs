@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkbRigidBodyRagdollControlData`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x1e0bc068`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbRigidBodyRagdollControlData {
@@ -25,9 +24,9 @@ pub enum HkbRigidBodyRagdollControlData {
     /// -   name:`"keyFrameHierarchyControlData"`
     /// -   type: `struct hkaKeyFrameHierarchyUtilityControlData`
     /// - offset: 0
-    /// -  flags: `FLAGS_NONE | ALIGN16`
+    /// -  flags: `FLAGS_NONE|ALIGN16`
     #[serde(rename = "keyFrameHierarchyControlData")]
-    KeyFrameHierarchyControlData(HkaKeyFrameHierarchyUtilityControlData),
+    KeyFrameHierarchyControlData(SingleClass<HkaKeyFrameHierarchyUtilityControlData>),
     /// # C++ Class Fields Info
     /// -   name:`"durationToBlend"`
     /// -   type: `hkReal`
@@ -40,6 +39,6 @@ pub enum HkbRigidBodyRagdollControlData {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbRigidBodyRagdollControlData, "@name",
-    ("keyFrameHierarchyControlData" => KeyFrameHierarchyControlData(HkaKeyFrameHierarchyUtilityControlData)),
+    ("keyFrameHierarchyControlData" => KeyFrameHierarchyControlData(SingleClass<HkaKeyFrameHierarchyUtilityControlData>)),
     ("durationToBlend" => DurationToBlend(Primitive<f32>)),
 }

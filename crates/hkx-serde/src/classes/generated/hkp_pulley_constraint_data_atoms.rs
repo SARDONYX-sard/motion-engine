@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpPulleyConstraintDataAtoms`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0xb149e5a`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpPulleyConstraintDataAtoms {
@@ -27,19 +26,19 @@ pub enum HkpPulleyConstraintDataAtoms {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "translations")]
-    Translations(HkpSetLocalTranslationsConstraintAtom),
+    Translations(SingleClass<HkpSetLocalTranslationsConstraintAtom>),
     /// # C++ Class Fields Info
     /// -   name:`"pulley"`
     /// -   type: `struct hkpPulleyConstraintAtom`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "pulley")]
-    Pulley(HkpPulleyConstraintAtom),
+    Pulley(SingleClass<HkpPulleyConstraintAtom>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpPulleyConstraintDataAtoms, "@name",
-    ("translations" => Translations(HkpSetLocalTranslationsConstraintAtom)),
-    ("pulley" => Pulley(HkpPulleyConstraintAtom)),
+    ("translations" => Translations(SingleClass<HkpSetLocalTranslationsConstraintAtom>)),
+    ("pulley" => Pulley(SingleClass<HkpPulleyConstraintAtom>)),
 }

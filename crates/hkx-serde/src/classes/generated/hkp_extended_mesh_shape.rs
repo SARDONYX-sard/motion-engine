@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpExtendedMeshShape`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkpShapeCollection`/`0xe8c3991d`
 /// - signature: `0x177114a2`
 /// -   version: 3
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpExtendedMeshShape<'a> {
@@ -48,7 +47,7 @@ pub enum HkpExtendedMeshShape<'a> {
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 12
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "type", skip_serializing)]
     Type(Primitive<()>),
 
@@ -56,14 +55,14 @@ pub enum HkpExtendedMeshShape<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -75,7 +74,7 @@ pub enum HkpExtendedMeshShape<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "embeddedTrianglesSubpart")]
-    EmbeddedTrianglesSubpart(HkpExtendedMeshShapeTrianglesSubpart<'a>),
+    EmbeddedTrianglesSubpart(SingleClass<HkpExtendedMeshShapeTrianglesSubpart<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"aabbHalfExtents"`
     /// -   type: `hkVector4`
@@ -94,7 +93,7 @@ pub enum HkpExtendedMeshShape<'a> {
     /// -   name:`"materialClass"`
     /// -   type: `void*`
     /// - offset: 176
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "materialClass", skip_serializing)]
     MaterialClass(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
@@ -106,21 +105,21 @@ pub enum HkpExtendedMeshShape<'a> {
     NumBitsForSubpartIndex(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"trianglesSubparts"`
-    /// -   type: `hkArray&lt;struct hkpExtendedMeshShapeTrianglesSubpart&gt;`
+    /// -   type: `hkArray<struct hkpExtendedMeshShapeTrianglesSubpart>`
     /// - offset: 184
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "trianglesSubparts")]
     TrianglesSubparts(HkArrayClass<HkpExtendedMeshShapeTrianglesSubpart<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"shapesSubparts"`
-    /// -   type: `hkArray&lt;struct hkpExtendedMeshShapeShapesSubpart&gt;`
+    /// -   type: `hkArray<struct hkpExtendedMeshShapeShapesSubpart>`
     /// - offset: 196
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "shapesSubparts")]
     ShapesSubparts(HkArrayClass<HkpExtendedMeshShapeShapesSubpart<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"weldingInfo"`
-    /// -   type: `hkArray&lt;hkUint16&gt;`
+    /// -   type: `hkArray<hkUint16>`
     /// - offset: 208
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "weldingInfo")]
@@ -157,7 +156,7 @@ pub enum HkpExtendedMeshShape<'a> {
     /// -   name:`"padding"`
     /// -   type: `hkInt32`
     /// - offset: 236
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "padding", skip_serializing)]
     Padding(Primitive<i32>),
 }
@@ -171,7 +170,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("type" => Type(Primitive<()>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("embeddedTrianglesSubpart" => EmbeddedTrianglesSubpart(HkpExtendedMeshShapeTrianglesSubpart<'de>)),
+    ("embeddedTrianglesSubpart" => EmbeddedTrianglesSubpart(SingleClass<HkpExtendedMeshShapeTrianglesSubpart<'de>>)),
     ("aabbHalfExtents" => AabbHalfExtents(Vector4<f32>)),
     ("aabbCenter" => AabbCenter(Vector4<f32>)),
     ("materialClass" => MaterialClass(Primitive<Cow<'de, str>>)),
@@ -186,6 +185,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("padding" => Padding(Primitive<i32>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum IndexStridingType {
     #[serde(rename = "INDICES_INVALID")]
@@ -200,6 +200,7 @@ pub enum IndexStridingType {
     IndicesMaxId = 4,
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum MaterialIndexStridingType {
     #[serde(rename = "MATERIAL_INDICES_INVALID")]
@@ -212,6 +213,7 @@ pub enum MaterialIndexStridingType {
     MaterialIndicesMaxId = 3,
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum SubpartType {
     #[serde(rename = "SUBPART_TRIANGLES")]

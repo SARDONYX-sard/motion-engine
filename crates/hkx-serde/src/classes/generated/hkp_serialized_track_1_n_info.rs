@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpSerializedTrack1nInfo`
 ///
@@ -18,19 +16,20 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0xf12d48d9`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpSerializedTrack1NInfo<'a> {
     /// # C++ Class Fields Info
     /// -   name:`"sectors"`
-    /// -   type: `hkArray&lt;hkpAgent1nSector*&gt;`
+    /// -   type: `hkArray<hkpAgent1nSector*>`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "sectors")]
     Sectors(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"subTracks"`
-    /// -   type: `hkArray&lt;hkpSerializedSubTrack1nInfo*&gt;`
+    /// -   type: `hkArray<hkpSerializedSubTrack1nInfo*>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "subTracks")]

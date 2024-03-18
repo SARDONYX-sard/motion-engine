@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkbExpressionData`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x6740042a`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbExpressionData<'a> {
@@ -53,14 +52,14 @@ pub enum HkbExpressionData<'a> {
     /// -   name:`"raisedEvent"`
     /// -   type: `hkBool`
     /// - offset: 13
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "raisedEvent", skip_serializing)]
     RaisedEvent(Primitive<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"wasTrueInPreviousFrame"`
     /// -   type: `hkBool`
     /// - offset: 14
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "wasTrueInPreviousFrame", skip_serializing)]
     WasTrueInPreviousFrame(Primitive<bool>),
 }
@@ -76,6 +75,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("wasTrueInPreviousFrame" => WasTrueInPreviousFrame(Primitive<bool>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum ExpressionEventMode {
     #[serde(rename = "EVENT_MODE_SEND_ONCE")]

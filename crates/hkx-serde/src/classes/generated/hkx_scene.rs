@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkxScene`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkReferencedObject`/`0x3b1c1113`
 /// - signature: `0x5f673ddd`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkxScene<'a> {
@@ -26,14 +25,14 @@ pub enum HkxScene<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -69,56 +68,56 @@ pub enum HkxScene<'a> {
     RootNode(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"selectionSets"`
-    /// -   type: `hkArray&lt;hkxNodeSelectionSet*&gt;`
+    /// -   type: `hkArray<hkxNodeSelectionSet*>`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "selectionSets")]
     SelectionSets(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"cameras"`
-    /// -   type: `hkArray&lt;hkxCamera*&gt;`
+    /// -   type: `hkArray<hkxCamera*>`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "cameras")]
     Cameras(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"lights"`
-    /// -   type: `hkArray&lt;hkxLight*&gt;`
+    /// -   type: `hkArray<hkxLight*>`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "lights")]
     Lights(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"meshes"`
-    /// -   type: `hkArray&lt;hkxMesh*&gt;`
+    /// -   type: `hkArray<hkxMesh*>`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "meshes")]
     Meshes(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"materials"`
-    /// -   type: `hkArray&lt;hkxMaterial*&gt;`
+    /// -   type: `hkArray<hkxMaterial*>`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "materials")]
     Materials(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"inplaceTextures"`
-    /// -   type: `hkArray&lt;hkxTextureInplace*&gt;`
+    /// -   type: `hkArray<hkxTextureInplace*>`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "inplaceTextures")]
     InplaceTextures(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"externalTextures"`
-    /// -   type: `hkArray&lt;hkxTextureFile*&gt;`
+    /// -   type: `hkArray<hkxTextureFile*>`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "externalTextures")]
     ExternalTextures(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"skinBindings"`
-    /// -   type: `hkArray&lt;hkxSkinBinding*&gt;`
+    /// -   type: `hkArray<hkxSkinBinding*>`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "skinBindings")]

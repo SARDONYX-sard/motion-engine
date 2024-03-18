@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkMultiThreadCheck`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x11e4408b`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkMultiThreadCheck {
@@ -25,28 +24,28 @@ pub enum HkMultiThreadCheck {
     /// -   name:`"threadId"`
     /// -   type: `hkUint32`
     /// - offset: 0
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "threadId", skip_serializing)]
     ThreadId(Primitive<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"stackTraceId"`
     /// -   type: `hkInt32`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "stackTraceId", skip_serializing)]
     StackTraceId(Primitive<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"markCount"`
     /// -   type: `hkUint16`
     /// - offset: 8
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "markCount", skip_serializing)]
     MarkCount(Primitive<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"markBitStack"`
     /// -   type: `hkUint16`
     /// - offset: 10
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "markBitStack", skip_serializing)]
     MarkBitStack(Primitive<u16>),
 }
@@ -60,6 +59,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("markBitStack" => MarkBitStack(Primitive<u16>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum AccessType {
     #[serde(rename = "HK_ACCESS_IGNORE")]
@@ -70,6 +70,7 @@ pub enum AccessType {
     HkAccessRw = 2,
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum ReadMode {
     #[serde(rename = "THIS_OBJECT_ONLY")]

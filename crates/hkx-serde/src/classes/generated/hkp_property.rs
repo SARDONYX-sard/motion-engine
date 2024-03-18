@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpProperty`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x9ce308e9`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpProperty {
@@ -41,7 +40,7 @@ pub enum HkpProperty {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "value")]
-    Value(HkpPropertyValue),
+    Value(SingleClass<HkpPropertyValue>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -49,5 +48,5 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpProperty, "@name",
     ("key" => Key(Primitive<u32>)),
     ("alignmentPadding" => AlignmentPadding(Primitive<u32>)),
-    ("value" => Value(HkpPropertyValue)),
+    ("value" => Value(SingleClass<HkpPropertyValue>)),
 }

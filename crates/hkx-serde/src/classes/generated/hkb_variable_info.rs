@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkbVariableInfo`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x9e746ba2`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbVariableInfo {
@@ -27,7 +26,7 @@ pub enum HkbVariableInfo {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "role")]
-    Role(HkbRoleAttribute),
+    Role(SingleClass<HkbRoleAttribute>),
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum VariableType`
@@ -40,10 +39,11 @@ pub enum HkbVariableInfo {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbVariableInfo, "@name",
-    ("role" => Role(HkbRoleAttribute)),
+    ("role" => Role(SingleClass<HkbRoleAttribute>)),
     ("type" => Type(Primitive<VariableType>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum VariableType {
     #[serde(rename = "VARIABLE_TYPE_INVALID")]

@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpCogWheelConstraintDataAtoms`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0xf855ba44`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpCogWheelConstraintDataAtoms {
@@ -27,19 +26,19 @@ pub enum HkpCogWheelConstraintDataAtoms {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transforms")]
-    Transforms(HkpSetLocalTransformsConstraintAtom),
+    Transforms(SingleClass<HkpSetLocalTransformsConstraintAtom>),
     /// # C++ Class Fields Info
     /// -   name:`"cogWheels"`
     /// -   type: `struct hkpCogWheelConstraintAtom`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "cogWheels")]
-    CogWheels(HkpCogWheelConstraintAtom),
+    CogWheels(SingleClass<HkpCogWheelConstraintAtom>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpCogWheelConstraintDataAtoms, "@name",
-    ("transforms" => Transforms(HkpSetLocalTransformsConstraintAtom)),
-    ("cogWheels" => CogWheels(HkpCogWheelConstraintAtom)),
+    ("transforms" => Transforms(SingleClass<HkpSetLocalTransformsConstraintAtom>)),
+    ("cogWheels" => CogWheels(SingleClass<HkpCogWheelConstraintAtom>)),
 }

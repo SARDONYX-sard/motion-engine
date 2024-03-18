@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkbCharacterData`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkReferencedObject`/`0x3b1c1113`
 /// - signature: `0x300d6808`
 /// -   version: 7
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbCharacterData<'a> {
@@ -26,14 +25,14 @@ pub enum HkbCharacterData<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -45,7 +44,7 @@ pub enum HkbCharacterData<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "characterControllerInfo")]
-    CharacterControllerInfo(HkbCharacterDataCharacterControllerInfo<'a>),
+    CharacterControllerInfo(SingleClass<HkbCharacterDataCharacterControllerInfo<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"modelUpMS"`
     /// -   type: `hkVector4`
@@ -69,14 +68,14 @@ pub enum HkbCharacterData<'a> {
     ModelRightMs(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"characterPropertyInfos"`
-    /// -   type: `hkArray&lt;struct hkbVariableInfo&gt;`
+    /// -   type: `hkArray<struct hkbVariableInfo>`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "characterPropertyInfos")]
     CharacterPropertyInfos(HkArrayClass<HkbVariableInfo>),
     /// # C++ Class Fields Info
     /// -   name:`"numBonesPerLod"`
-    /// -   type: `hkArray&lt;hkInt32&gt;`
+    /// -   type: `hkArray<hkInt32>`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "numBonesPerLod")]
@@ -127,14 +126,14 @@ pub enum HkbCharacterData<'a> {
     /// -   name:`"numHands"`
     /// -   type: `hkInt16`
     /// - offset: 128
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "numHands", skip_serializing)]
     NumHands(Primitive<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"numFloatSlots"`
     /// -   type: `hkInt16`
     /// - offset: 130
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "numFloatSlots", skip_serializing)]
     NumFloatSlots(Primitive<i16>),
 }
@@ -144,7 +143,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbCharacterData<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("characterControllerInfo" => CharacterControllerInfo(HkbCharacterDataCharacterControllerInfo<'de>)),
+    ("characterControllerInfo" => CharacterControllerInfo(SingleClass<HkbCharacterDataCharacterControllerInfo<'de>>)),
     ("modelUpMS" => ModelUpMs(Vector4<f32>)),
     ("modelForwardMS" => ModelForwardMs(Vector4<f32>)),
     ("modelRightMS" => ModelRightMs(Vector4<f32>)),

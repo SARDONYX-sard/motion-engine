@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpRagdollConstraintDataAtoms`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0xeed76b00`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpRagdollConstraintDataAtoms<'a> {
@@ -27,71 +26,72 @@ pub enum HkpRagdollConstraintDataAtoms<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transforms")]
-    Transforms(HkpSetLocalTransformsConstraintAtom),
+    Transforms(SingleClass<HkpSetLocalTransformsConstraintAtom>),
     /// # C++ Class Fields Info
     /// -   name:`"setupStabilization"`
     /// -   type: `struct hkpSetupStabilizationAtom`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "setupStabilization")]
-    SetupStabilization(HkpSetupStabilizationAtom),
+    SetupStabilization(SingleClass<HkpSetupStabilizationAtom>),
     /// # C++ Class Fields Info
     /// -   name:`"ragdollMotors"`
     /// -   type: `struct hkpRagdollMotorConstraintAtom`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "ragdollMotors")]
-    RagdollMotors(HkpRagdollMotorConstraintAtom<'a>),
+    RagdollMotors(SingleClass<HkpRagdollMotorConstraintAtom<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"angFriction"`
     /// -   type: `struct hkpAngFrictionConstraintAtom`
     /// - offset: 240
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "angFriction")]
-    AngFriction(HkpAngFrictionConstraintAtom),
+    AngFriction(SingleClass<HkpAngFrictionConstraintAtom>),
     /// # C++ Class Fields Info
     /// -   name:`"twistLimit"`
     /// -   type: `struct hkpTwistLimitConstraintAtom`
     /// - offset: 252
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "twistLimit")]
-    TwistLimit(HkpTwistLimitConstraintAtom),
+    TwistLimit(SingleClass<HkpTwistLimitConstraintAtom>),
     /// # C++ Class Fields Info
     /// -   name:`"coneLimit"`
     /// -   type: `struct hkpConeLimitConstraintAtom`
     /// - offset: 272
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "coneLimit")]
-    ConeLimit(HkpConeLimitConstraintAtom),
+    ConeLimit(SingleClass<HkpConeLimitConstraintAtom>),
     /// # C++ Class Fields Info
     /// -   name:`"planesLimit"`
     /// -   type: `struct hkpConeLimitConstraintAtom`
     /// - offset: 292
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "planesLimit")]
-    PlanesLimit(HkpConeLimitConstraintAtom),
+    PlanesLimit(SingleClass<HkpConeLimitConstraintAtom>),
     /// # C++ Class Fields Info
     /// -   name:`"ballSocket"`
     /// -   type: `struct hkpBallSocketConstraintAtom`
     /// - offset: 312
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "ballSocket")]
-    BallSocket(HkpBallSocketConstraintAtom),
+    BallSocket(SingleClass<HkpBallSocketConstraintAtom>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpRagdollConstraintDataAtoms<'de>, "@name",
-    ("transforms" => Transforms(HkpSetLocalTransformsConstraintAtom)),
-    ("setupStabilization" => SetupStabilization(HkpSetupStabilizationAtom)),
-    ("ragdollMotors" => RagdollMotors(HkpRagdollMotorConstraintAtom<'de>)),
-    ("angFriction" => AngFriction(HkpAngFrictionConstraintAtom)),
-    ("twistLimit" => TwistLimit(HkpTwistLimitConstraintAtom)),
-    ("coneLimit" => ConeLimit(HkpConeLimitConstraintAtom)),
-    ("planesLimit" => PlanesLimit(HkpConeLimitConstraintAtom)),
-    ("ballSocket" => BallSocket(HkpBallSocketConstraintAtom)),
+    ("transforms" => Transforms(SingleClass<HkpSetLocalTransformsConstraintAtom>)),
+    ("setupStabilization" => SetupStabilization(SingleClass<HkpSetupStabilizationAtom>)),
+    ("ragdollMotors" => RagdollMotors(SingleClass<HkpRagdollMotorConstraintAtom<'de>>)),
+    ("angFriction" => AngFriction(SingleClass<HkpAngFrictionConstraintAtom>)),
+    ("twistLimit" => TwistLimit(SingleClass<HkpTwistLimitConstraintAtom>)),
+    ("coneLimit" => ConeLimit(SingleClass<HkpConeLimitConstraintAtom>)),
+    ("planesLimit" => PlanesLimit(SingleClass<HkpConeLimitConstraintAtom>)),
+    ("ballSocket" => BallSocket(SingleClass<HkpBallSocketConstraintAtom>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum Axis {
     #[serde(rename = "AXIS_TWIST")]

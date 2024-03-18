@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkbHandIkControlsModifierHand`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x9c72e9e3`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkbHandIkControlsModifierHand<'a> {
@@ -27,7 +26,7 @@ pub enum HkbHandIkControlsModifierHand<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "controlData")]
-    ControlData(HkbHandIkControlData<'a>),
+    ControlData(SingleClass<HkbHandIkControlData<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"handIndex"`
     /// -   type: `hkInt32`
@@ -47,7 +46,7 @@ pub enum HkbHandIkControlsModifierHand<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbHandIkControlsModifierHand<'de>, "@name",
-    ("controlData" => ControlData(HkbHandIkControlData<'de>)),
+    ("controlData" => ControlData(SingleClass<HkbHandIkControlData<'de>>)),
     ("handIndex" => HandIndex(Primitive<i32>)),
     ("enable" => Enable(Primitive<bool>)),
 }

@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkMeshBoneIndexMapping`
 ///
@@ -18,12 +16,13 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x48aceb75`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkMeshBoneIndexMapping {
     /// # C++ Class Fields Info
     /// -   name:`"mapping"`
-    /// -   type: `hkArray&lt;hkInt16&gt;`
+    /// -   type: `hkArray<hkInt16>`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "mapping")]

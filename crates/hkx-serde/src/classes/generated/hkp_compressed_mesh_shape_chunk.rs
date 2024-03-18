@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpCompressedMeshShapeChunk`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x5d0d67bd`
 /// -   version: 4
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpCompressedMeshShapeChunk {
@@ -30,28 +29,28 @@ pub enum HkpCompressedMeshShapeChunk {
     Offset(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"vertices"`
-    /// -   type: `hkArray&lt;hkUint16&gt;`
+    /// -   type: `hkArray<hkUint16>`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertices")]
     Vertices(HkArrayRef<Primitive<u16>>),
     /// # C++ Class Fields Info
     /// -   name:`"indices"`
-    /// -   type: `hkArray&lt;hkUint16&gt;`
+    /// -   type: `hkArray<hkUint16>`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "indices")]
     Indices(HkArrayRef<Primitive<u16>>),
     /// # C++ Class Fields Info
     /// -   name:`"stripLengths"`
-    /// -   type: `hkArray&lt;hkUint16&gt;`
+    /// -   type: `hkArray<hkUint16>`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "stripLengths")]
     StripLengths(HkArrayRef<Primitive<u16>>),
     /// # C++ Class Fields Info
     /// -   name:`"weldingInfo"`
-    /// -   type: `hkArray&lt;hkUint16&gt;`
+    /// -   type: `hkArray<hkUint16>`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "weldingInfo")]

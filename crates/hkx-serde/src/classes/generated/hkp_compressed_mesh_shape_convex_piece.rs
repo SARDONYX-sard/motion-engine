@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpCompressedMeshShapeConvexPiece`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x385bb842`
 /// -   version: 3
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpCompressedMeshShapeConvexPiece {
@@ -30,21 +29,21 @@ pub enum HkpCompressedMeshShapeConvexPiece {
     Offset(Vector4<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"vertices"`
-    /// -   type: `hkArray&lt;hkUint16&gt;`
+    /// -   type: `hkArray<hkUint16>`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertices")]
     Vertices(HkArrayRef<Primitive<u16>>),
     /// # C++ Class Fields Info
     /// -   name:`"faceVertices"`
-    /// -   type: `hkArray&lt;hkUint8&gt;`
+    /// -   type: `hkArray<hkUint8>`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "faceVertices")]
     FaceVertices(HkArrayRef<Primitive<u8>>),
     /// # C++ Class Fields Info
     /// -   name:`"faceOffsets"`
-    /// -   type: `hkArray&lt;hkUint16&gt;`
+    /// -   type: `hkArray<hkUint16>`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "faceOffsets")]

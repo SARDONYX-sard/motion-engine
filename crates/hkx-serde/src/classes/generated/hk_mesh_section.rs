@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkMeshSection`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x1893c365`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkMeshSection<'a> {
@@ -67,7 +66,7 @@ pub enum HkMeshSection<'a> {
     /// -   name:`"indices"`
     /// -   type: `void*`
     /// - offset: 24
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "indices", skip_serializing)]
     Indices(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
@@ -108,6 +107,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("sectionIndex" => SectionIndex(Primitive<i32>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum MeshSectionIndexType {
     #[serde(rename = "INDEX_TYPE_NONE")]
@@ -118,6 +118,7 @@ pub enum MeshSectionIndexType {
     IndexTypeUint32 = 2,
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum PrimitiveType {
     #[serde(rename = "PRIMITIVE_TYPE_UNKNOWN")]

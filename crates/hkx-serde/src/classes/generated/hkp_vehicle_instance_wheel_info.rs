@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpVehicleInstanceWheelInfo`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x99f693f0`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpVehicleInstanceWheelInfo<'a> {
@@ -27,7 +26,7 @@ pub enum HkpVehicleInstanceWheelInfo<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "contactPoint")]
-    ContactPoint(HkContactPoint),
+    ContactPoint(SingleClass<HkContactPoint>),
     /// # C++ Class Fields Info
     /// -   name:`"contactFriction"`
     /// -   type: `hkReal`
@@ -39,7 +38,7 @@ pub enum HkpVehicleInstanceWheelInfo<'a> {
     /// -   name:`"contactBody"`
     /// -   type: `void*`
     /// - offset: 36
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "contactBody", skip_serializing)]
     ContactBody(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
@@ -145,7 +144,7 @@ pub enum HkpVehicleInstanceWheelInfo<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpVehicleInstanceWheelInfo<'de>, "@name",
-    ("contactPoint" => ContactPoint(HkContactPoint)),
+    ("contactPoint" => ContactPoint(SingleClass<HkContactPoint>)),
     ("contactFriction" => ContactFriction(Primitive<f32>)),
     ("contactBody" => ContactBody(Primitive<Cow<'de, str>>)),
     ("contactShapeKey" => ContactShapeKey(CStyleArray<[u32; 8]>)),

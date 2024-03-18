@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `BSCyclicBlendTransitionGenerator`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkbGenerator`/`0xd68aefc`
 /// - signature: `0x5119eb06`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum BsCyclicBlendTransitionGenerator<'a> {
@@ -42,21 +41,21 @@ pub enum BsCyclicBlendTransitionGenerator<'a> {
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "id", skip_serializing)]
     Id(Primitive<i16>),
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cloneState", skip_serializing)]
     CloneState(Primitive<()>),
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "padNode", skip_serializing)]
     PadNode(CStyleArray<[bool; 1]>),
 
@@ -69,16 +68,16 @@ pub enum BsCyclicBlendTransitionGenerator<'a> {
     VariableBindingSet(Primitive<Cow<'a, str>>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
-    /// -   type: `hkArray&lt;void&gt;`
+    /// -   type: `hkArray<void>`
     /// - offset: 12
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
     CachedBindables(HkArrayRef<Primitive<()>>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "areBindablesCached", skip_serializing)]
     AreBindablesCached(Primitive<bool>),
 
@@ -86,14 +85,14 @@ pub enum BsCyclicBlendTransitionGenerator<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -103,7 +102,7 @@ pub enum BsCyclicBlendTransitionGenerator<'a> {
     /// -   name:`"pBlenderGenerator"`
     /// -   type: `struct hkbGenerator*`
     /// - offset: 48
-    /// -  flags: `FLAGS_NONE | ALIGN16`
+    /// -  flags: `FLAGS_NONE|ALIGN16`
     #[serde(rename = "pBlenderGenerator")]
     PBlenderGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
@@ -112,14 +111,14 @@ pub enum BsCyclicBlendTransitionGenerator<'a> {
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "EventToFreezeBlendValue")]
-    EventToFreezeBlendValue(HkbEventProperty<'a>),
+    EventToFreezeBlendValue(SingleClass<HkbEventProperty<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"EventToCrossBlend"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "EventToCrossBlend")]
-    EventToCrossBlend(HkbEventProperty<'a>),
+    EventToCrossBlend(SingleClass<HkbEventProperty<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"fBlendParameter"`
     /// -   type: `hkReal`
@@ -145,21 +144,21 @@ pub enum BsCyclicBlendTransitionGenerator<'a> {
     /// -   name:`"pTransitionBlenderGenerator"`
     /// -   type: `void*`
     /// - offset: 80
-    /// -  flags: `FLAGS_NONE | ALIGN16 | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|ALIGN16|SERIALIZE_IGNORED`
     #[serde(rename = "pTransitionBlenderGenerator", skip_serializing)]
     PTransitionBlenderGenerator(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"pTransitionEffect"`
     /// -   type: `void*`
     /// - offset: 96
-    /// -  flags: `FLAGS_NONE | ALIGN16 | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|ALIGN16|SERIALIZE_IGNORED`
     #[serde(rename = "pTransitionEffect", skip_serializing)]
     PTransitionEffect(Primitive<Cow<'a, str>>),
     /// # C++ Class Fields Info
     /// -   name:`"currentMode"`
     /// -   type: `enum unknown`
     /// - offset: 100
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "currentMode", skip_serializing)]
     CurrentMode(Primitive<()>),
 }
@@ -178,8 +177,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("pBlenderGenerator" => PBlenderGenerator(Primitive<Cow<'de, str>>)),
-    ("EventToFreezeBlendValue" => EventToFreezeBlendValue(HkbEventProperty<'de>)),
-    ("EventToCrossBlend" => EventToCrossBlend(HkbEventProperty<'de>)),
+    ("EventToFreezeBlendValue" => EventToFreezeBlendValue(SingleClass<HkbEventProperty<'de>>)),
+    ("EventToCrossBlend" => EventToCrossBlend(SingleClass<HkbEventProperty<'de>>)),
     ("fBlendParameter" => FBlendParameter(Primitive<f32>)),
     ("fTransitionDuration" => FTransitionDuration(Primitive<f32>)),
     ("eBlendCurve" => EBlendCurve(Primitive<BlendCurve>)),
@@ -188,6 +187,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("currentMode" => CurrentMode(Primitive<()>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum CurrentBlendMode {
     #[serde(rename = "MODE_INACTIVE")]

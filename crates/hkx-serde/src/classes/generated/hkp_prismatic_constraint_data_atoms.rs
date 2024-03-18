@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpPrismaticConstraintDataAtoms`
 ///
@@ -18,6 +16,7 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x7f516137`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpPrismaticConstraintDataAtoms<'a> {
@@ -27,63 +26,64 @@ pub enum HkpPrismaticConstraintDataAtoms<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transforms")]
-    Transforms(HkpSetLocalTransformsConstraintAtom),
+    Transforms(SingleClass<HkpSetLocalTransformsConstraintAtom>),
     /// # C++ Class Fields Info
     /// -   name:`"motor"`
     /// -   type: `struct hkpLinMotorConstraintAtom`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "motor")]
-    Motor(HkpLinMotorConstraintAtom<'a>),
+    Motor(SingleClass<HkpLinMotorConstraintAtom<'a>>),
     /// # C++ Class Fields Info
     /// -   name:`"friction"`
     /// -   type: `struct hkpLinFrictionConstraintAtom`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "friction")]
-    Friction(HkpLinFrictionConstraintAtom),
+    Friction(SingleClass<HkpLinFrictionConstraintAtom>),
     /// # C++ Class Fields Info
     /// -   name:`"ang"`
     /// -   type: `struct hkpAngConstraintAtom`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "ang")]
-    Ang(HkpAngConstraintAtom),
+    Ang(SingleClass<HkpAngConstraintAtom>),
     /// # C++ Class Fields Info
     /// -   name:`"lin0"`
     /// -   type: `struct hkpLinConstraintAtom`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "lin0")]
-    Lin0(HkpLinConstraintAtom),
+    Lin0(SingleClass<HkpLinConstraintAtom>),
     /// # C++ Class Fields Info
     /// -   name:`"lin1"`
     /// -   type: `struct hkpLinConstraintAtom`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "lin1")]
-    Lin1(HkpLinConstraintAtom),
+    Lin1(SingleClass<HkpLinConstraintAtom>),
     /// # C++ Class Fields Info
     /// -   name:`"linLimit"`
     /// -   type: `struct hkpLinLimitConstraintAtom`
     /// - offset: 180
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "linLimit")]
-    LinLimit(HkpLinLimitConstraintAtom),
+    LinLimit(SingleClass<HkpLinLimitConstraintAtom>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpPrismaticConstraintDataAtoms<'de>, "@name",
-    ("transforms" => Transforms(HkpSetLocalTransformsConstraintAtom)),
-    ("motor" => Motor(HkpLinMotorConstraintAtom<'de>)),
-    ("friction" => Friction(HkpLinFrictionConstraintAtom)),
-    ("ang" => Ang(HkpAngConstraintAtom)),
-    ("lin0" => Lin0(HkpLinConstraintAtom)),
-    ("lin1" => Lin1(HkpLinConstraintAtom)),
-    ("linLimit" => LinLimit(HkpLinLimitConstraintAtom)),
+    ("transforms" => Transforms(SingleClass<HkpSetLocalTransformsConstraintAtom>)),
+    ("motor" => Motor(SingleClass<HkpLinMotorConstraintAtom<'de>>)),
+    ("friction" => Friction(SingleClass<HkpLinFrictionConstraintAtom>)),
+    ("ang" => Ang(SingleClass<HkpAngConstraintAtom>)),
+    ("lin0" => Lin0(SingleClass<HkpLinConstraintAtom>)),
+    ("lin1" => Lin1(SingleClass<HkpLinConstraintAtom>)),
+    ("linLimit" => LinLimit(SingleClass<HkpLinLimitConstraintAtom>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum Axis {
     #[serde(rename = "AXIS_SHAFT")]

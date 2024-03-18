@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpIgnoreModifierConstraintAtom`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkpModifierConstraintAtom`/`0xb13fef1f`
 /// - signature: `0x5c6aa14d`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpIgnoreModifierConstraintAtom<'a> {
@@ -26,7 +25,7 @@ pub enum HkpIgnoreModifierConstraintAtom<'a> {
     /// -   name:`"modifierAtomSize"`
     /// -   type: `hkUint16`
     /// - offset: 16
-    /// -  flags: `FLAGS_NONE | ALIGN16`
+    /// -  flags: `FLAGS_NONE|ALIGN16`
     #[serde(rename = "modifierAtomSize")]
     ModifierAtomSize(Primitive<u16>),
     /// # C++ Parent class(`hkpModifierConstraintAtom` => parent: `hkpConstraintAtom`) field Info

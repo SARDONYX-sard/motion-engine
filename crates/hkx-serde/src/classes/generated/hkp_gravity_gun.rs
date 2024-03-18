@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkpGravityGun`
 ///
@@ -19,6 +17,7 @@ use std::borrow::Cow;
 /// -    parent: `hkpFirstPersonGun`/`0x852ab70b`
 /// - signature: `0x5e2754cd`
 /// -   version: 0
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkpGravityGun<'a> {
@@ -26,7 +25,7 @@ pub enum HkpGravityGun<'a> {
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 8
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "type", skip_serializing)]
     Type(Primitive<()>),
     /// # C++ Parent class(`hkpFirstPersonGun` => parent: `hkReferencedObject`) field Info
@@ -45,9 +44,9 @@ pub enum HkpGravityGun<'a> {
     KeyboardKey(Primitive<KeyboardKey>),
     /// # C++ Parent class(`hkpFirstPersonGun` => parent: `hkReferencedObject`) field Info
     /// -   name:`"listeners"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 20
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "listeners", skip_serializing)]
     Listeners(HkArrayRef<Cow<'a, str>>),
 
@@ -55,14 +54,14 @@ pub enum HkpGravityGun<'a> {
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
 
@@ -70,9 +69,9 @@ pub enum HkpGravityGun<'a> {
 
     /// # C++ Class Fields Info
     /// -   name:`"grabbedBodies"`
-    /// -   type: `hkArray&lt;void*&gt;`
+    /// -   type: `hkArray<void*>`
     /// - offset: 32
-    /// -  flags: `FLAGS_NONE | SERIALIZE_IGNORED`
+    /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "grabbedBodies", skip_serializing)]
     GrabbedBodies(HkArrayRef<Cow<'a, str>>),
     /// # C++ Class Fields Info

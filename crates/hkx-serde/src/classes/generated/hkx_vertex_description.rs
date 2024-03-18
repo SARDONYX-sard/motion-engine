@@ -2,11 +2,9 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
 
 /// `hkxVertexDescription`
 ///
@@ -18,12 +16,13 @@ use std::borrow::Cow;
 /// -    vtable: false
 /// - signature: `0x2df6313d`
 /// -   version: 1
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
 pub enum HkxVertexDescription {
     /// # C++ Class Fields Info
     /// -   name:`"decls"`
-    /// -   type: `hkArray&lt;struct hkxVertexDescriptionElementDecl&gt;`
+    /// -   type: `hkArray<struct hkxVertexDescriptionElementDecl>`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "decls")]
@@ -36,6 +35,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("decls" => Decls(HkArrayClass<HkxVertexDescriptionElementDecl>)),
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum DataType {
     #[serde(rename = "HKX_DT_NONE")]
@@ -50,6 +50,7 @@ pub enum DataType {
     HkxDtFloat = 4,
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum DataUsage {
     #[serde(rename = "HKX_DU_NONE")]

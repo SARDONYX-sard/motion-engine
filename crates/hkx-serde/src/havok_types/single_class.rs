@@ -1,19 +1,18 @@
+//! Structure for use in a `hkparam` field containing only one class (`hkobject`)
 use serde::{Deserialize, Serialize};
 
+/// # Single Class
 /// In C++, this is the case when the type of the in-class field is a class.
 ///
-/// In XML, A type to hold another class of `hkparam` as an array within `hkparam`.
+/// In XML, A type to hold another class of `hkparam` within `hkparam`.
 ///
-/// e.g. `wordVariableValues` field of `hkbVariableValueSet` class
+/// e.g. `variableInfos` field of `hkbBehaviorGraphData` class
 ///
 /// # XML Example
 /// ```xml
 /// <hkparam name="variantVariableValues" numelements="2">
 ///     <hkobject>
 ///         <hkparam name="class_field">#0063</hkparam>
-///     </hkobject>
-///     <hkobject>
-///         <hkparam name="another_class_field">#0064</hkparam>
 ///     </hkobject>
 /// </hkparam>
 /// ```
@@ -27,31 +26,24 @@ use serde::{Deserialize, Serialize};
 /// In summary, the parent enum determines and retrieves the `name` attribute, so it is not included in this structure.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 #[serde(rename = "hkparam")]
-pub struct HkArrayClass<T> {
-    /// Length of the class
-    #[serde(rename = "@numelements")]
-    pub numelements: usize,
-    /// An array that receives `hkparam` of a certain class.
+pub struct SingleClass<T> {
+    /// Receives `hkparam` of a certain class.
     ///
     /// The XML for this class does not require `name` and `signature`, but only encloses `hkobject` tags without attributes.
     #[serde(rename = "hkobject")]
-    pub classes: Vec<HkArrayClassParam<T>>,
+    pub class: SingleClassParam<T>,
 }
 
-impl<T> From<Vec<HkArrayClassParam<T>>> for HkArrayClass<T> {
-    fn from(classes: Vec<HkArrayClassParam<T>>) -> Self {
-        Self {
-            numelements: classes.len(),
-            classes,
-        }
+impl<T> From<SingleClassParam<T>> for SingleClass<T> {
+    fn from(class: SingleClassParam<T>) -> Self {
+        Self { class }
     }
 }
 
-impl<T> From<Vec<Vec<T>>> for HkArrayClass<T> {
-    fn from(classes: Vec<Vec<T>>) -> Self {
+impl<T> From<Vec<T>> for SingleClass<T> {
+    fn from(values: Vec<T>) -> Self {
         Self {
-            numelements: classes.len(),
-            classes: classes.into_iter().map(HkArrayClassParam::from).collect(),
+            class: SingleClassParam { hkparam: values },
         }
     }
 }
@@ -64,13 +56,13 @@ impl<T> From<Vec<Vec<T>>> for HkArrayClass<T> {
 ///     <hkparam>#0064</hkparam>
 /// </hkobject>
 /// ````
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct HkArrayClassParam<T> {
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+pub struct SingleClassParam<T> {
     #[serde(rename = "hkparam")]
     pub hkparam: Vec<T>,
 }
 
-impl<T> From<Vec<T>> for HkArrayClassParam<T> {
+impl<T> From<Vec<T>> for SingleClassParam<T> {
     fn from(value: Vec<T>) -> Self {
         Self { hkparam: value }
     }
@@ -83,11 +75,11 @@ mod tests {
 
     #[test]
     fn should_serialize() {
-        let data: HkArrayClass<i32> = vec![vec![1045220557, 0]].into();
+        let data: SingleClass<i32> = vec![1045220557, 0].into();
         let serialized = quick_xml::se::to_string(&data).unwrap();
 
         let expected_xml = "\
-            <hkparam numelements=\"2\">\
+            <hkparam name=\"variableInfos\" numelements=\"2\">\
                 <hkobject>\
                     <hkparam>\
                         1045220557\
@@ -117,18 +109,12 @@ mod tests {
                 </hkobject>
             </hkparam>
         "###;
-        let deserialized: HkArrayClass<&str> = quick_xml::de::from_str(xml).unwrap();
+        let deserialized: SingleClass<&str> = quick_xml::de::from_str(xml).unwrap();
 
-        let expected = HkArrayClass {
-            numelements: 2,
-            classes: vec![
-                HkArrayClassParam {
-                    hkparam: vec!["#0063", "#0063"],
-                },
-                HkArrayClassParam {
-                    hkparam: vec!["#0064"],
-                },
-            ],
+        let expected = SingleClass {
+            class: SingleClassParam {
+                hkparam: vec!["#0063", "#0063"],
+            },
         };
 
         assert_eq!(deserialized, expected);

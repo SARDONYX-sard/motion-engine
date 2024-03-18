@@ -20,4 +20,5 @@ build
 crates/hkx-serde/assets/*
 !crates/hkx-serde/assets/readme.md
 
-/tests/**/
+/tests/
+!/tests/test*.xml

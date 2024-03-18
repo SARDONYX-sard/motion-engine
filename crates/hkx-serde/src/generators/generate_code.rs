@@ -5,24 +5,22 @@ use crate::{
 };
 use convert_case::{Case, Casing};
 use indexmap::IndexMap;
-use std::borrow::Cow;
+use std::{borrow::Cow, collections::HashMap};
 
-pub fn get_lifetime_from_map(index_map: &FieldMap) -> &'static str {
-    for (_field_name, (_, r_type)) in index_map {
-        if r_type.find("'a").is_some() {
-            return "<'a>";
-        }
-    }
-    ""
-}
-
-/// HashMap of (cpp class name, Cpp class info)
+/// (C++ class name, C++ class info)
+///
 /// e.g. `(hkColor, ClassInfo)`
 pub type ClassMap = IndexMap<String, ClassInfo>;
 
-/// HashMap of (rust class name, Rust struct name with lifeTime)
+/// (`rust enum name`, `Rust enum name with lifeTime`)
+///
 /// e.g. `(HkColor, HkColor<'a>)`
-pub type LifeTimeMap = IndexMap<String, String>;
+pub type LifeTimeMap = HashMap<String, String>;
+
+/// `C++ field name`, (`Rust tag name of enum`, `Rust type name`)
+///
+/// e.g. `referenceCount`, (`ReferenceCount`, `Primitive<i16>`)
+pub type FieldMap<'a> = IndexMap<&'a String, (String, Cow<'a, str>)>;
 
 /// Generate Rust XML Serialize/Deserialize structs code from C++ class info>
 pub fn generate_code(
@@ -52,9 +50,17 @@ pub fn generate_code(
     let (rust_fields_code, fields) = generate_all_fields(class, &classes_map, Some(&life_time_map));
 
     // e.g. `HkColor<'a>`
-    let rust_struct_name = class_name.to_case(Case::Pascal);
+    let rust_enum_name = class_name.to_case(Case::Pascal);
     let life_time = get_lifetime_from_map(&fields);
-    let rust_class_name_with_life_time = format!("{rust_struct_name}{life_time}");
+    let rust_enum_name_with_life_time = format!("{rust_enum_name}{life_time}");
+
+    // Because the manual deserializer cannot be implemented if there is nothing in the tag of the enum representing all fields in the C++ Class.
+    // Derive `serde::Deserialize`.
+    let derive_de = if fields.is_empty() {
+        ", Deserialize"
+    } else {
+        ""
+    };
 
     //? - Generate Struct
     rust_code.push_str(&format!(
@@ -62,11 +68,9 @@ pub fn generate_code(
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#[allow(unused)]
 use super::*;
 use crate::havok_types::*;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{{Deserialize, Serialize}};
-use std::borrow::Cow;
 
 /// `{class_name}`
 ///
@@ -78,41 +82,66 @@ use std::borrow::Cow;
 /// -    vtable: {vtable}{parent_info}
 /// - signature: `0x{signature:x}`
 /// -   version: {version}
-#[derive(Debug, Clone, PartialEq, Serialize)]
+#[allow(clippy::enum_variant_names)]
+#[derive(Debug, Clone, PartialEq, Serialize{derive_de})]
 #[serde(tag = "@name")]
-pub enum {rust_class_name_with_life_time} {{
+pub enum {rust_enum_name_with_life_time} {{
 {rust_fields_code}}}
 "#
     ));
 
-    //? - Impl Deserialization
-    let rust_class_name_with_life_time = rust_class_name_with_life_time.replace("'a", "'de");
-    rust_code.push_str(&format!(
-        r#"
-// Manual implementation to branch the process using the value of the `name` attribute as the key.
-impl_deserialize_for_internally_tagged_enum! {{
-    {rust_class_name_with_life_time}, "@name",
-"#
-    ));
-    for (member_name, (tag_name, rust_type)) in fields {
-        let rust_type = rust_type.replace("'a", "'de");
-        rust_code.push_str(&format!(
-            r#"    ("{member_name}" => {tag_name}({rust_type})),
-"#
-        ));
+    // If there is no field, leave it to `derive`. Otherwise, implement manually.
+    if !fields.is_empty() {
+        let deserializer = generate_manual_tagged_de(&rust_enum_name_with_life_time, &fields);
+        rust_code.push_str(&deserializer);
     }
-    rust_code.push_str("}\n");
+    if !class.enums.is_empty() {
+        rust_code.push_str(&generate_enums(&class.enums));
+    }
 
-    rust_code.push_str(&generate_enums(&class.enums));
     rust_code
 }
 
-/// IndexMap<"C++ field name", ("rust enum tag name", "rust type name")>
-pub type FieldMap<'a> = IndexMap<&'a String, (String, Cow<'a, str>)>;
-
-/// The lifetime annotation of a structure cannot be made without first calculating whether or not the field has a lifetime.
+/// Return `"<'a>"` if there is at least one lifetime annotation in the information that has been changed from a C++ field type to a Rust type.
 ///
-/// Flatten the C++ parent's inherited moves to the fields of the current class.
+/// This exists to get the information of the lifetime annotation, because if the field has a lifetime, the lifetime annotation must be declared in advance in struct.
+pub fn get_lifetime_from_map(index_map: &FieldMap) -> &'static str {
+    for (_field_name, (_, r_type)) in index_map {
+        if r_type.find("'a").is_some() {
+            return "<'a>";
+        }
+    }
+    ""
+}
+
+/// Get the given string and generate a modified string with `'a` added
+///
+/// e.g. key `EventProperty` => `EventProperty<'a>` or `EventProperty` value from [`HashMap`]
+fn get_type_with_lifetime<'a>(
+    rust_type_key: &'a str,
+    life_time_map: Option<&'a LifeTimeMap>,
+) -> Option<String> {
+    let type_with_life_time = life_time_map.map(|map: &LifeTimeMap| map.get(rust_type_key))??;
+    Some(type_with_life_time.to_owned())
+}
+
+/// Assign lifetime generics to the passed array type according to the type found in [`HashMap`].
+fn add_lifetime_to_array(rust_type: &str, life_time_map: Option<&LifeTimeMap>) -> String {
+    // Extract the portion between '<' and '>'
+    let start_index = rust_type.find('<').unwrap() + 1;
+    let end_index = rust_type.rfind('>').unwrap();
+    let inner = &rust_type[start_index..end_index];
+    let inner = get_type_with_lifetime(inner, life_time_map).unwrap_or(inner.to_owned());
+
+    // Concatenate the prefix of the original string with the generated string
+    format!("{}{inner}>", &rust_type[..start_index])
+}
+
+/// Return (Rust code, Rust enum tags that C++ Class fields)
+///
+/// # Information
+/// - The lifetime annotation of a structure cannot be made without first calculating whether or not the field has a lifetime.
+/// - Flatten the C++ parent's inherited moves to the fields of the current class.
 pub fn generate_all_fields<'a>(
     class: &'a ClassInfo,
     classes_map: &'a ClassMap,
@@ -126,6 +155,7 @@ pub fn generate_all_fields<'a>(
         .map(|(name, _sig)| name.clone())
         .unwrap_or_default();
 
+    //? - All parent class fields of Current C++ class
     while let Some(parent_class) = classes_map.get(&current_parent_class_name) {
         let (fields_code, field) = generate_fields(&parent_class.members, life_time_map);
         fields.extend(field);
@@ -146,7 +176,9 @@ pub fn generate_all_fields<'a>(
                 fields_code.replace("C++ Class Fields Info", &parent_info)
             }
         };
-        all_fields_code.push_str(&format!("{fields_code}\n",));
+        all_fields_code.push_str(&fields_code);
+        all_fields_code.push('\n');
+
         if let Some((parent_name, _parent_signature)) = &parent_class.parent {
             current_parent_class_name = parent_name.clone();
         } else {
@@ -160,29 +192,6 @@ pub fn generate_all_fields<'a>(
     all_fields_code.push_str(&fields_code);
 
     (all_fields_code, fields)
-}
-
-/// Function to parse the given string and generate a modified string with 'a added
-fn add_lifetime_to_array(rust_type: &str, life_time_map: Option<&LifeTimeMap>) -> String {
-    // Extract the portion between '<' and '>'
-    let start_index = rust_type.find('<').unwrap() + 1;
-    let end_index = rust_type.rfind('>').unwrap();
-    let inner = &rust_type[start_index..end_index];
-    let inner = get_type_with_lifetime(inner, life_time_map).unwrap_or(inner.to_owned());
-
-    // Concatenate the prefix of the original string with the generated string
-    format!("{}{inner}>", &rust_type[..start_index])
-}
-
-/// Function to parse the given string and generate a modified string with 'a added
-fn get_type_with_lifetime<'a>(
-    rust_type_key: &'a str,
-    life_time_map: Option<&'a LifeTimeMap>,
-) -> Option<String> {
-    let t = life_time_map
-        .map(|map: &LifeTimeMap| map.get(rust_type_key))??
-        .to_owned();
-    Some(t)
 }
 
 /// Generates C++ fields to Rust enum
@@ -210,11 +219,17 @@ fn generate_fields<'a>(
         let flags = flags.human_readable();
 
         let (_, rust_type) = parse_cpp_type(type_name).unwrap();
-        let rust_type = match rust_type.starts_with("HkArray") {
-            true => add_lifetime_to_array(&rust_type, life_time_map),
-            false => get_type_with_lifetime(&rust_type, life_time_map)
-                .unwrap_or(rust_type.to_string())
-                .to_string(),
+        let rust_type =
+            match rust_type.starts_with("HkArray") || rust_type.starts_with("SingleClass") {
+                true => add_lifetime_to_array(&rust_type, life_time_map),
+                false => get_type_with_lifetime(&rust_type, life_time_map)
+                    .unwrap_or(rust_type.to_string())
+                    .to_string(),
+            };
+
+        #[cfg(test)]
+        if type_name.starts_with("flags") {
+            tracing::debug!("{type_name} => {rust_type}");
         };
 
         // Enum tag name(If the first letter is a number, escape it with `_`.)
@@ -239,7 +254,33 @@ fn generate_fields<'a>(
     (rust_code, fields)
 }
 
-/// Generate Enum definitions rust code(If exists)
+/// tagged enum(Returns code that implements [`serde::Deserializer`], which branches processing for each value of
+/// the `name` attribute of XML, which is each field of the C++ class.
+fn generate_manual_tagged_de(rust_class_name_with_life_time: &str, fields: &FieldMap) -> String {
+    let mut rust_code = String::new();
+
+    let rust_class_name_with_life_time = rust_class_name_with_life_time.replace("'a", "'de");
+    rust_code.push_str(&format!(
+        r#"
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
+impl_deserialize_for_internally_tagged_enum! {{
+    {rust_class_name_with_life_time}, "@name",
+"#
+    ));
+
+    for (member_name, (tag_name, rust_type)) in fields {
+        let rust_type = rust_type.replace("'a", "'de");
+        rust_code.push_str(&format!(
+            r#"    ("{member_name}" => {tag_name}({rust_type})),
+"#
+        ));
+    }
+
+    rust_code.push_str("}\n");
+    rust_code
+}
+
+/// Generate flags and C++ enum(If exists)
 fn generate_enums(enums: &[Enum]) -> String {
     let mut rust_code = String::new();
 
@@ -248,6 +289,7 @@ fn generate_enums(enums: &[Enum]) -> String {
         // Generate one enum template prefix
         rust_code.push_str(&format!(
             r#"
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum {enum_name} {{
 "#

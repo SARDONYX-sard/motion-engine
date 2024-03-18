@@ -34,7 +34,11 @@ pub fn parse_cpp_type(input: &str) -> IResult<&str, Cow<'_, str>> {
         input if input.starts_with("enum") => parse_enum_type(input),
         input if input.starts_with("flag") => parse_flags_type(input),
         input if input.ends_with(']') => parse_array_type(input),
-        input => parse_struct_type(input),
+        input => {
+            let (input, struct_name) = parse_struct_type(input)?;
+            let struct_name = format!("SingleClass<{struct_name}>");
+            Ok((input, struct_name.into()))
+        }
     }
 }
 
@@ -211,11 +215,10 @@ fn parse_hk_array_type(input: &str) -> IResult<&str, Cow<'_, str>> {
 /// struct
 fn parse_struct_type(input: &str) -> IResult<&str, Cow<'_, str>> {
     let (input, _) = opt(tag("struct"))(input)?;
-
     let (input, struct_name) = take_while(|c| c != '[' && c != '*')(input)?;
-    let struct_name = struct_name.to_case(convert_case::Case::Pascal);
     let (input, _is_ptr) = opt(char('*'))(input)?;
 
+    let struct_name = struct_name.to_case(convert_case::Case::Pascal);
     Ok((input, struct_name.into()))
 }
 
@@ -293,7 +296,7 @@ pub const HK_TYPES: [(&str, &str); {types_len}] = {types:#?};\n"
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::generators::rust::generated_types::HK_TYPES;
+    use crate::generators::generated_types::HK_TYPES;
     use crate::helpers::tracing::init_tracing;
     use pretty_assertions::assert_eq;
 

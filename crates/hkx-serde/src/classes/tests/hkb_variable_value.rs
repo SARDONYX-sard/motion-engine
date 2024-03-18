@@ -1,47 +1,7 @@
-//! A Rust structure that implements a serializer/deserializer corresponding to `hkbVariableValue`, a class defined in C++
-//!
-//! # NOTE
-//! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
-use crate::havok_types::Primitive;
-use quick_xml::impl_deserialize_for_internally_tagged_enum;
-use serde::{Deserialize, Serialize};
-
-/// In XML, the value of the `name` attribute of the `hkparam` tag.
-///
-/// In C++, it represents the name of one field in the class.
-#[derive(Debug, Clone, PartialEq, Serialize)]
-#[serde(tag = "@name")]
-pub enum HkbVariableValue {
-    /// # Information on fields in the original C++ class
-    /// -   name:`"value"`
-    /// -   type: `hkInt32`
-    /// - offset: 0
-    /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "value")]
-    Value(Primitive<i32>),
-}
-
-impl Default for HkbVariableValue {
-    fn default() -> Self {
-        Self::Value(0.into())
-    }
-}
-
-impl From<i32> for HkbVariableValue {
-    fn from(value: i32) -> Self {
-        Self::Value(value.into())
-    }
-}
-
-impl_deserialize_for_internally_tagged_enum! {
-    HkbVariableValue, "@name",
-    ("value"=> Value(Primitive<i32>))
-}
-
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use crate::classes::{Class, ClassParams};
+    use crate::classes::generated::{class_params::ClassParams, HkbVariableValue};
+    use crate::classes::Class;
     use pretty_assertions::assert_eq;
 
     #[test]

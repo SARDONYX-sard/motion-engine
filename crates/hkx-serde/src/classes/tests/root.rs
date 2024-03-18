@@ -4,6 +4,8 @@ mod tests {
         class_params::ClassParams, HkbBehaviorGraphStringData, HkbVariableValue,
         HkbVariableValueSet,
     };
+    use crate::classes::root::{HkSection, Hkx};
+    use crate::classes::Class;
     use crate::havok_types::HkArrayClassParam;
     use pretty_assertions::assert_eq;
 

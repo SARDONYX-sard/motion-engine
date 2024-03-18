@@ -46,20 +46,126 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
 }
+bitflags::bitflags! {
+    /// # Bit flags that represented enum.
+    ///
+    /// # Note
+    /// The 0 flag is always enabled when the trailing bit is 0.
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+    pub struct Flags: u16 {
+        /// Special flags." 0" is used when the character "0" is received.
+        /// - only "0" is also entered during serialization.
+        /// - This flag is the default value that exists for all flags.
+        const NULL= !0;
+        const ACCESS_READ = 1;
+        const ACCESS_WRITE = 2;
+        const ACCESS_READ_WRITE = 3;
+        const ACCESS_WRITE_DISCARD = 4;
+        const ACCESS_ELEMENT_ARRAY = 8;
+    }
+}
 
-#[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub enum Flags {
-    #[serde(rename = "ACCESS_READ")]
-    AccessRead = 1,
-    #[serde(rename = "ACCESS_WRITE")]
-    AccessWrite = 2,
-    #[serde(rename = "ACCESS_READ_WRITE")]
-    AccessReadWrite = 3,
-    #[serde(rename = "ACCESS_WRITE_DISCARD")]
-    AccessWriteDiscard = 4,
-    #[serde(rename = "ACCESS_ELEMENT_ARRAY")]
-    AccessElementArray = 8,
+impl Default for Flags {
+    fn default() -> Self {
+        Self::NULL
+    }
+}
+
+impl TryFrom<usize> for Flags {
+    type Error = String;
+
+    fn try_from(value: usize) -> Result<Self, Self::Error> {
+        Self::from_bits(value as u16).ok_or_else(|| format!("Set invalid value: {value}"))
+    }
+}
+
+impl TryFrom<u16> for Flags {
+    type Error = String;
+
+    fn try_from(value: u16) -> Result<Self, Self::Error> {
+        Self::from_bits(value).ok_or_else(|| format!("Set invalid value: {value}"))
+    }
+}
+
+impl serde::Serialize for Flags {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        if self.contains(Self::NULL) {
+            serializer.serialize_str("0")
+        } else {
+            serializer.serialize_str(&self.human_readable())
+        }
+    }
+}
+
+impl<'de> serde::Deserialize<'de> for Flags {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        let value = Option::<std::borrow::Cow<'de, str>>::deserialize(deserializer)?;
+
+        match value {
+            Some(s) => {
+                if s.as_ref() == "0" {
+                    return Ok(Self::NULL);
+                };
+                let mut flags = Self::empty();
+                for token in s.split('|') {
+                    match token.trim() {
+                        "ACCESS_READ" => flags |= Self::ACCESS_READ,
+                        "ACCESS_WRITE" => flags |= Self::ACCESS_WRITE,
+                        "ACCESS_READ_WRITE" => flags |= Self::ACCESS_READ_WRITE,
+                        "ACCESS_WRITE_DISCARD" => flags |= Self::ACCESS_WRITE_DISCARD,
+                        "ACCESS_ELEMENT_ARRAY" => flags |= Self::ACCESS_ELEMENT_ARRAY,
+                        _ => return Err(serde::de::Error::custom("Invalid flag")),
+                    }
+                }
+                Ok(flags)
+            }
+            None => Ok(Self::NULL),
+        }
+    }
+}
+
+impl core::fmt::Display for Flags {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        write!(f, "{}", self.bits())
+    }
+}
+
+impl Flags {
+    /// Use a string format that is easy for humans to read.
+    ///
+    /// Like this.
+    /// `"FLAGS_NONE | SERIALIZE_IGNORED"`
+    pub fn human_readable(&self) -> std::borrow::Cow<'_, str> {
+        let mut flags = Vec::new();
+
+        if self.contains(Self::NULL) {
+            return "0".into();
+        };
+
+        if self.contains(Self::ACCESS_READ) {
+            flags.push("ACCESS_READ");
+        }
+        if self.contains(Self::ACCESS_WRITE) {
+            flags.push("ACCESS_WRITE");
+        }
+        if self.contains(Self::ACCESS_READ_WRITE) {
+            flags.push("ACCESS_READ_WRITE");
+        }
+        if self.contains(Self::ACCESS_WRITE_DISCARD) {
+            flags.push("ACCESS_WRITE_DISCARD");
+        }
+        if self.contains(Self::ACCESS_ELEMENT_ARRAY) {
+            flags.push("ACCESS_ELEMENT_ARRAY");
+        }
+
+        flags.join("|").into()
+    }
 }
 
 #[allow(clippy::enum_variant_names)]

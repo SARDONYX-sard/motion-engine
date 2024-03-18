@@ -106,40 +106,176 @@ impl_deserialize_for_internally_tagged_enum! {
     ("priority" => Priority(Primitive<i16>)),
     ("flags" => Flags(Primitive<TransitionFlags>)),
 }
+bitflags::bitflags! {
+    /// # Bit flags that represented enum.
+    ///
+    /// # Note
+    /// The 0 flag is always enabled when the trailing bit is 0.
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+    pub struct TransitionFlags: u16 {
+        /// Special flags." 0" is used when the character "0" is received.
+        /// - only "0" is also entered during serialization.
+        /// - This flag is the default value that exists for all flags.
+        const NULL= !0;
+        const FLAG_USE_TRIGGER_INTERVAL = 1;
+        const FLAG_USE_INITIATE_INTERVAL = 2;
+        const FLAG_UNINTERRUPTIBLE_WHILE_PLAYING = 4;
+        const FLAG_UNINTERRUPTIBLE_WHILE_DELAYED = 8;
+        const FLAG_DELAY_STATE_CHANGE = 16;
+        const FLAG_DISABLED = 32;
+        const FLAG_DISALLOW_RETURN_TO_PREVIOUS_STATE = 64;
+        const FLAG_DISALLOW_RANDOM_TRANSITION = 128;
+        const FLAG_DISABLE_CONDITION = 256;
+        const FLAG_ALLOW_SELF_TRANSITION_BY_TRANSITION_FROM_ANY_STATE = 512;
+        const FLAG_IS_GLOBAL_WILDCARD = 1024;
+        const FLAG_IS_LOCAL_WILDCARD = 2048;
+        const FLAG_FROM_NESTED_STATE_ID_IS_VALID = 4096;
+        const FLAG_TO_NESTED_STATE_ID_IS_VALID = 8192;
+        const FLAG_ABUT_AT_END_OF_FROM_GENERATOR = 16384;
+    }
+}
 
-#[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub enum TransitionFlags {
-    #[serde(rename = "FLAG_USE_TRIGGER_INTERVAL")]
-    FlagUseTriggerInterval = 1,
-    #[serde(rename = "FLAG_USE_INITIATE_INTERVAL")]
-    FlagUseInitiateInterval = 2,
-    #[serde(rename = "FLAG_UNINTERRUPTIBLE_WHILE_PLAYING")]
-    FlagUninterruptibleWhilePlaying = 4,
-    #[serde(rename = "FLAG_UNINTERRUPTIBLE_WHILE_DELAYED")]
-    FlagUninterruptibleWhileDelayed = 8,
-    #[serde(rename = "FLAG_DELAY_STATE_CHANGE")]
-    FlagDelayStateChange = 16,
-    #[serde(rename = "FLAG_DISABLED")]
-    FlagDisabled = 32,
-    #[serde(rename = "FLAG_DISALLOW_RETURN_TO_PREVIOUS_STATE")]
-    FlagDisallowReturnToPreviousState = 64,
-    #[serde(rename = "FLAG_DISALLOW_RANDOM_TRANSITION")]
-    FlagDisallowRandomTransition = 128,
-    #[serde(rename = "FLAG_DISABLE_CONDITION")]
-    FlagDisableCondition = 256,
-    #[serde(rename = "FLAG_ALLOW_SELF_TRANSITION_BY_TRANSITION_FROM_ANY_STATE")]
-    FlagAllowSelfTransitionByTransitionFromAnyState = 512,
-    #[serde(rename = "FLAG_IS_GLOBAL_WILDCARD")]
-    FlagIsGlobalWildcard = 1024,
-    #[serde(rename = "FLAG_IS_LOCAL_WILDCARD")]
-    FlagIsLocalWildcard = 2048,
-    #[serde(rename = "FLAG_FROM_NESTED_STATE_ID_IS_VALID")]
-    FlagFromNestedStateIdIsValid = 4096,
-    #[serde(rename = "FLAG_TO_NESTED_STATE_ID_IS_VALID")]
-    FlagToNestedStateIdIsValid = 8192,
-    #[serde(rename = "FLAG_ABUT_AT_END_OF_FROM_GENERATOR")]
-    FlagAbutAtEndOfFromGenerator = 16384,
+impl Default for TransitionFlags {
+    fn default() -> Self {
+        Self::NULL
+    }
+}
+
+impl TryFrom<usize> for TransitionFlags {
+    type Error = String;
+
+    fn try_from(value: usize) -> Result<Self, Self::Error> {
+        Self::from_bits(value as u16).ok_or_else(|| format!("Set invalid value: {value}"))
+    }
+}
+
+impl TryFrom<u16> for TransitionFlags {
+    type Error = String;
+
+    fn try_from(value: u16) -> Result<Self, Self::Error> {
+        Self::from_bits(value).ok_or_else(|| format!("Set invalid value: {value}"))
+    }
+}
+
+impl serde::Serialize for TransitionFlags {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        if self.contains(Self::NULL) {
+            serializer.serialize_str("0")
+        } else {
+            serializer.serialize_str(&self.human_readable())
+        }
+    }
+}
+
+impl<'de> serde::Deserialize<'de> for TransitionFlags {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        let value = Option::<std::borrow::Cow<'de, str>>::deserialize(deserializer)?;
+
+        match value {
+            Some(s) => {
+                if s.as_ref() == "0" {
+                    return Ok(Self::NULL);
+                };
+                let mut flags = Self::empty();
+                for token in s.split('|') {
+                    match token.trim() {
+                        "FLAG_USE_TRIGGER_INTERVAL" => flags |= Self::FLAG_USE_TRIGGER_INTERVAL,
+                        "FLAG_USE_INITIATE_INTERVAL" => flags |= Self::FLAG_USE_INITIATE_INTERVAL,
+                        "FLAG_UNINTERRUPTIBLE_WHILE_PLAYING" => flags |= Self::FLAG_UNINTERRUPTIBLE_WHILE_PLAYING,
+                        "FLAG_UNINTERRUPTIBLE_WHILE_DELAYED" => flags |= Self::FLAG_UNINTERRUPTIBLE_WHILE_DELAYED,
+                        "FLAG_DELAY_STATE_CHANGE" => flags |= Self::FLAG_DELAY_STATE_CHANGE,
+                        "FLAG_DISABLED" => flags |= Self::FLAG_DISABLED,
+                        "FLAG_DISALLOW_RETURN_TO_PREVIOUS_STATE" => flags |= Self::FLAG_DISALLOW_RETURN_TO_PREVIOUS_STATE,
+                        "FLAG_DISALLOW_RANDOM_TRANSITION" => flags |= Self::FLAG_DISALLOW_RANDOM_TRANSITION,
+                        "FLAG_DISABLE_CONDITION" => flags |= Self::FLAG_DISABLE_CONDITION,
+                        "FLAG_ALLOW_SELF_TRANSITION_BY_TRANSITION_FROM_ANY_STATE" => flags |= Self::FLAG_ALLOW_SELF_TRANSITION_BY_TRANSITION_FROM_ANY_STATE,
+                        "FLAG_IS_GLOBAL_WILDCARD" => flags |= Self::FLAG_IS_GLOBAL_WILDCARD,
+                        "FLAG_IS_LOCAL_WILDCARD" => flags |= Self::FLAG_IS_LOCAL_WILDCARD,
+                        "FLAG_FROM_NESTED_STATE_ID_IS_VALID" => flags |= Self::FLAG_FROM_NESTED_STATE_ID_IS_VALID,
+                        "FLAG_TO_NESTED_STATE_ID_IS_VALID" => flags |= Self::FLAG_TO_NESTED_STATE_ID_IS_VALID,
+                        "FLAG_ABUT_AT_END_OF_FROM_GENERATOR" => flags |= Self::FLAG_ABUT_AT_END_OF_FROM_GENERATOR,
+                        _ => return Err(serde::de::Error::custom("Invalid flag")),
+                    }
+                }
+                Ok(flags)
+            }
+            None => Ok(Self::NULL),
+        }
+    }
+}
+
+impl core::fmt::Display for TransitionFlags {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        write!(f, "{}", self.bits())
+    }
+}
+
+impl TransitionFlags {
+    /// Use a string format that is easy for humans to read.
+    ///
+    /// Like this.
+    /// `"FLAGS_NONE | SERIALIZE_IGNORED"`
+    pub fn human_readable(&self) -> std::borrow::Cow<'_, str> {
+        let mut flags = Vec::new();
+
+        if self.contains(Self::NULL) {
+            return "0".into();
+        };
+
+        if self.contains(Self::FLAG_USE_TRIGGER_INTERVAL) {
+            flags.push("FLAG_USE_TRIGGER_INTERVAL");
+        }
+        if self.contains(Self::FLAG_USE_INITIATE_INTERVAL) {
+            flags.push("FLAG_USE_INITIATE_INTERVAL");
+        }
+        if self.contains(Self::FLAG_UNINTERRUPTIBLE_WHILE_PLAYING) {
+            flags.push("FLAG_UNINTERRUPTIBLE_WHILE_PLAYING");
+        }
+        if self.contains(Self::FLAG_UNINTERRUPTIBLE_WHILE_DELAYED) {
+            flags.push("FLAG_UNINTERRUPTIBLE_WHILE_DELAYED");
+        }
+        if self.contains(Self::FLAG_DELAY_STATE_CHANGE) {
+            flags.push("FLAG_DELAY_STATE_CHANGE");
+        }
+        if self.contains(Self::FLAG_DISABLED) {
+            flags.push("FLAG_DISABLED");
+        }
+        if self.contains(Self::FLAG_DISALLOW_RETURN_TO_PREVIOUS_STATE) {
+            flags.push("FLAG_DISALLOW_RETURN_TO_PREVIOUS_STATE");
+        }
+        if self.contains(Self::FLAG_DISALLOW_RANDOM_TRANSITION) {
+            flags.push("FLAG_DISALLOW_RANDOM_TRANSITION");
+        }
+        if self.contains(Self::FLAG_DISABLE_CONDITION) {
+            flags.push("FLAG_DISABLE_CONDITION");
+        }
+        if self.contains(Self::FLAG_ALLOW_SELF_TRANSITION_BY_TRANSITION_FROM_ANY_STATE) {
+            flags.push("FLAG_ALLOW_SELF_TRANSITION_BY_TRANSITION_FROM_ANY_STATE");
+        }
+        if self.contains(Self::FLAG_IS_GLOBAL_WILDCARD) {
+            flags.push("FLAG_IS_GLOBAL_WILDCARD");
+        }
+        if self.contains(Self::FLAG_IS_LOCAL_WILDCARD) {
+            flags.push("FLAG_IS_LOCAL_WILDCARD");
+        }
+        if self.contains(Self::FLAG_FROM_NESTED_STATE_ID_IS_VALID) {
+            flags.push("FLAG_FROM_NESTED_STATE_ID_IS_VALID");
+        }
+        if self.contains(Self::FLAG_TO_NESTED_STATE_ID_IS_VALID) {
+            flags.push("FLAG_TO_NESTED_STATE_ID_IS_VALID");
+        }
+        if self.contains(Self::FLAG_ABUT_AT_END_OF_FROM_GENERATOR) {
+            flags.push("FLAG_ABUT_AT_END_OF_FROM_GENERATOR");
+        }
+
+        flags.join("|").into()
+    }
 }
 
 #[allow(clippy::enum_variant_names)]

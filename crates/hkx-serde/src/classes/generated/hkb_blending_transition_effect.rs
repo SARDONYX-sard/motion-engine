@@ -235,18 +235,121 @@ impl_deserialize_for_internally_tagged_enum! {
     ("applySelfTransition" => ApplySelfTransition(Primitive<bool>)),
     ("initializeCharacterPose" => InitializeCharacterPose(Primitive<bool>)),
 }
+bitflags::bitflags! {
+    /// # Bit flags that represented enum.
+    ///
+    /// # Note
+    /// The 0 flag is always enabled when the trailing bit is 0.
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+    pub struct FlagBits: u16 {
+        /// Special flags." 0" is used when the character "0" is received.
+        /// - only "0" is also entered during serialization.
+        /// - This flag is the default value that exists for all flags.
+        const NULL= !0;
+        const FLAG_NONE = 0;
+        const FLAG_IGNORE_FROM_WORLD_FROM_MODEL = 1;
+        const FLAG_SYNC = 2;
+        const FLAG_IGNORE_TO_WORLD_FROM_MODEL = 4;
+    }
+}
 
-#[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub enum FlagBits {
-    #[serde(rename = "FLAG_NONE")]
-    FlagNone = 0,
-    #[serde(rename = "FLAG_IGNORE_FROM_WORLD_FROM_MODEL")]
-    FlagIgnoreFromWorldFromModel = 1,
-    #[serde(rename = "FLAG_SYNC")]
-    FlagSync = 2,
-    #[serde(rename = "FLAG_IGNORE_TO_WORLD_FROM_MODEL")]
-    FlagIgnoreToWorldFromModel = 4,
+impl Default for FlagBits {
+    fn default() -> Self {
+        Self::NULL
+    }
+}
+
+impl TryFrom<usize> for FlagBits {
+    type Error = String;
+
+    fn try_from(value: usize) -> Result<Self, Self::Error> {
+        Self::from_bits(value as u16).ok_or_else(|| format!("Set invalid value: {value}"))
+    }
+}
+
+impl TryFrom<u16> for FlagBits {
+    type Error = String;
+
+    fn try_from(value: u16) -> Result<Self, Self::Error> {
+        Self::from_bits(value).ok_or_else(|| format!("Set invalid value: {value}"))
+    }
+}
+
+impl serde::Serialize for FlagBits {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        if self.contains(Self::NULL) {
+            serializer.serialize_str("0")
+        } else {
+            serializer.serialize_str(&self.human_readable())
+        }
+    }
+}
+
+impl<'de> serde::Deserialize<'de> for FlagBits {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        let value = Option::<std::borrow::Cow<'de, str>>::deserialize(deserializer)?;
+
+        match value {
+            Some(s) => {
+                if s.as_ref() == "0" {
+                    return Ok(Self::NULL);
+                };
+                let mut flags = Self::empty();
+                for token in s.split('|') {
+                    match token.trim() {
+                        "FLAG_NONE" => flags |= Self::FLAG_NONE,
+                        "FLAG_IGNORE_FROM_WORLD_FROM_MODEL" => flags |= Self::FLAG_IGNORE_FROM_WORLD_FROM_MODEL,
+                        "FLAG_SYNC" => flags |= Self::FLAG_SYNC,
+                        "FLAG_IGNORE_TO_WORLD_FROM_MODEL" => flags |= Self::FLAG_IGNORE_TO_WORLD_FROM_MODEL,
+                        _ => return Err(serde::de::Error::custom("Invalid flag")),
+                    }
+                }
+                Ok(flags)
+            }
+            None => Ok(Self::NULL),
+        }
+    }
+}
+
+impl core::fmt::Display for FlagBits {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        write!(f, "{}", self.bits())
+    }
+}
+
+impl FlagBits {
+    /// Use a string format that is easy for humans to read.
+    ///
+    /// Like this.
+    /// `"FLAGS_NONE | SERIALIZE_IGNORED"`
+    pub fn human_readable(&self) -> std::borrow::Cow<'_, str> {
+        let mut flags = Vec::new();
+
+        if self.contains(Self::NULL) {
+            return "0".into();
+        };
+
+        if self.contains(Self::FLAG_NONE) {
+            flags.push("FLAG_NONE");
+        }
+        if self.contains(Self::FLAG_IGNORE_FROM_WORLD_FROM_MODEL) {
+            flags.push("FLAG_IGNORE_FROM_WORLD_FROM_MODEL");
+        }
+        if self.contains(Self::FLAG_SYNC) {
+            flags.push("FLAG_SYNC");
+        }
+        if self.contains(Self::FLAG_IGNORE_TO_WORLD_FROM_MODEL) {
+            flags.push("FLAG_IGNORE_TO_WORLD_FROM_MODEL");
+        }
+
+        flags.join("|").into()
+    }
 }
 
 #[allow(clippy::enum_variant_names)]

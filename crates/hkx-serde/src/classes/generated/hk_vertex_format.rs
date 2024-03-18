@@ -104,18 +104,121 @@ pub enum ComponentUsage {
     #[serde(rename = "USAGE_LAST")]
     UsageLast = 12,
 }
+bitflags::bitflags! {
+    /// # Bit flags that represented enum.
+    ///
+    /// # Note
+    /// The 0 flag is always enabled when the trailing bit is 0.
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+    pub struct HintFlags: u16 {
+        /// Special flags." 0" is used when the character "0" is received.
+        /// - only "0" is also entered during serialization.
+        /// - This flag is the default value that exists for all flags.
+        const NULL= !0;
+        const FLAG_READ = 1;
+        const FLAG_WRITE = 2;
+        const FLAG_DYNAMIC = 4;
+        const FLAG_NOT_SHARED = 8;
+    }
+}
 
-#[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub enum HintFlags {
-    #[serde(rename = "FLAG_READ")]
-    FlagRead = 1,
-    #[serde(rename = "FLAG_WRITE")]
-    FlagWrite = 2,
-    #[serde(rename = "FLAG_DYNAMIC")]
-    FlagDynamic = 4,
-    #[serde(rename = "FLAG_NOT_SHARED")]
-    FlagNotShared = 8,
+impl Default for HintFlags {
+    fn default() -> Self {
+        Self::NULL
+    }
+}
+
+impl TryFrom<usize> for HintFlags {
+    type Error = String;
+
+    fn try_from(value: usize) -> Result<Self, Self::Error> {
+        Self::from_bits(value as u16).ok_or_else(|| format!("Set invalid value: {value}"))
+    }
+}
+
+impl TryFrom<u16> for HintFlags {
+    type Error = String;
+
+    fn try_from(value: u16) -> Result<Self, Self::Error> {
+        Self::from_bits(value).ok_or_else(|| format!("Set invalid value: {value}"))
+    }
+}
+
+impl serde::Serialize for HintFlags {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        if self.contains(Self::NULL) {
+            serializer.serialize_str("0")
+        } else {
+            serializer.serialize_str(&self.human_readable())
+        }
+    }
+}
+
+impl<'de> serde::Deserialize<'de> for HintFlags {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        let value = Option::<std::borrow::Cow<'de, str>>::deserialize(deserializer)?;
+
+        match value {
+            Some(s) => {
+                if s.as_ref() == "0" {
+                    return Ok(Self::NULL);
+                };
+                let mut flags = Self::empty();
+                for token in s.split('|') {
+                    match token.trim() {
+                        "FLAG_READ" => flags |= Self::FLAG_READ,
+                        "FLAG_WRITE" => flags |= Self::FLAG_WRITE,
+                        "FLAG_DYNAMIC" => flags |= Self::FLAG_DYNAMIC,
+                        "FLAG_NOT_SHARED" => flags |= Self::FLAG_NOT_SHARED,
+                        _ => return Err(serde::de::Error::custom("Invalid flag")),
+                    }
+                }
+                Ok(flags)
+            }
+            None => Ok(Self::NULL),
+        }
+    }
+}
+
+impl core::fmt::Display for HintFlags {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        write!(f, "{}", self.bits())
+    }
+}
+
+impl HintFlags {
+    /// Use a string format that is easy for humans to read.
+    ///
+    /// Like this.
+    /// `"FLAGS_NONE | SERIALIZE_IGNORED"`
+    pub fn human_readable(&self) -> std::borrow::Cow<'_, str> {
+        let mut flags = Vec::new();
+
+        if self.contains(Self::NULL) {
+            return "0".into();
+        };
+
+        if self.contains(Self::FLAG_READ) {
+            flags.push("FLAG_READ");
+        }
+        if self.contains(Self::FLAG_WRITE) {
+            flags.push("FLAG_WRITE");
+        }
+        if self.contains(Self::FLAG_DYNAMIC) {
+            flags.push("FLAG_DYNAMIC");
+        }
+        if self.contains(Self::FLAG_NOT_SHARED) {
+            flags.push("FLAG_NOT_SHARED");
+        }
+
+        flags.join("|").into()
+    }
 }
 
 #[allow(clippy::enum_variant_names)]

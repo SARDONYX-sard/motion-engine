@@ -65,9 +65,8 @@ impl<'de> serde::Deserialize<'de> for FlagValues {
     where
         D: serde::Deserializer<'de>,
     {
-        use std::borrow::Cow;
+        let value = Option::<std::borrow::Cow<'de, str>>::deserialize(deserializer)?;
 
-        let value = Option::<Cow<'de, str>>::deserialize(deserializer)?;
         match value {
             Some(s) => {
                 if s.as_ref() == "0" {

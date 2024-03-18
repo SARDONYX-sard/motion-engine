@@ -48,7 +48,7 @@ impl TryFrom<u16> for {enum_name} {{
     type Error = String;
 
     fn try_from(value: u16) -> Result<Self, Self::Error> {{
-        Self::from_bits(value).ok_or_else(|| format!("Set invalid value: {{}}", value))
+        Self::from_bits(value).ok_or_else(|| format!("Set invalid value: {{value}}"))
     }}
 }}
 
@@ -70,9 +70,8 @@ impl<'de> serde::Deserialize<'de> for {enum_name} {{
     where
         D: serde::Deserializer<'de>,
     {{
-        use std::borrow::Cow;
+        let value = Option::<std::borrow::Cow<'de, str>>::deserialize(deserializer)?;
 
-        let value = Option::<Cow<'de, str>>::deserialize(deserializer)?;
         match value {{
             Some(s) => {{
                 if s.as_ref() == "0" {{

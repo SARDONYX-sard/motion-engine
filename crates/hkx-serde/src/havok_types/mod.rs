@@ -1,3 +1,7 @@
+//! # Havok Types
+//!
+//! - Only used in the `classes` directory.
+//! - No other use for it.
 mod c_style_array;
 mod hk_array;
 mod matrix3;

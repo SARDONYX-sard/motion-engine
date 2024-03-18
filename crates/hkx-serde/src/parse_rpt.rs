@@ -54,6 +54,7 @@ type IResult<I, O, E = nom::error::VerboseError<I>> = Result<(I, O), nom::Err<E>
 
 /// Enum tag & value
 type EnumPair = (String, i32);
+/// Enum's identifier name & (Enum tag & value) vector
 pub type Enum = (String, Vec<EnumPair>);
 
 /// C++ class information from `hkxcmd Report`.

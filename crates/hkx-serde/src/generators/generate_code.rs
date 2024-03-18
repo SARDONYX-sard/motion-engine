@@ -1,4 +1,4 @@
-use super::cpp_type_parser::parse_cpp_type;
+use super::{cpp_type_parser::parse_cpp_type, generate_bitflags::generate_bitflags};
 use crate::{
     flag_values::FlagValues,
     parse_rpt::{ClassInfo, Enum, MemberInfo},
@@ -96,9 +96,19 @@ pub enum {rust_enum_name_with_life_time} {{
         rust_code.push_str(&deserializer);
     }
     if !class.enums.is_empty() {
-        rust_code.push_str(&generate_enums(&class.enums));
-    }
+        for enum_info in &class.enums {
+            let (enum_name, _enum_pair) = enum_info;
 
+            if matches!(
+                enum_name.as_str(),
+                "FlagBits" | "FlagValues" | "Flags" | "HintFlags" | "RoleFlags" | "TransitionFlags"
+            ) {
+                rust_code.push_str(&generate_bitflags(enum_info));
+            } else {
+                rust_code.push_str(&generate_enums(enum_info));
+            };
+        }
+    }
     rust_code
 }
 
@@ -228,9 +238,10 @@ fn generate_fields<'a>(
             };
 
         #[cfg(test)]
-        if type_name.starts_with("flags") {
-            tracing::debug!("{type_name} => {rust_type}");
+        if type_name.starts_with("flags") && type_name != "flags unknown" {
+            tracing::debug!("\"{type_name}\" | ");
         };
+        let type_name = type_name.replace("&lt;", "<").replace("&gt;", ">");
 
         // Enum tag name(If the first letter is a number, escape it with `_`.)
         let tag_name = member_name.to_case(Case::Pascal);
@@ -281,33 +292,32 @@ impl_deserialize_for_internally_tagged_enum! {{
 }
 
 /// Generate flags and C++ enum(If exists)
-fn generate_enums(enums: &[Enum]) -> String {
+fn generate_enums(enum_info: &Enum) -> String {
     let mut rust_code = String::new();
 
-    for (enum_name, enum_info) in enums {
-        let enum_name = enum_name.to_case(Case::Pascal);
-        // Generate one enum template prefix
-        rust_code.push_str(&format!(
-            r#"
+    let (enum_name, enum_pair) = enum_info;
+    let enum_name = enum_name.to_case(Case::Pascal);
+    // Generate one enum template prefix
+    rust_code.push_str(&format!(
+        r#"
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum {enum_name} {{
 "#
-        ));
+    ));
 
-        // Generate tag names of enum
-        for (tag_name, enum_value) in enum_info {
-            let rust_enum_field_name = &tag_name.to_case(Case::Pascal);
-            rust_code.push_str(&format!(
-                r#"    #[serde(rename = "{tag_name}")]
+    // Generate tag & value pairs
+    for (tag_name, enum_value) in enum_pair {
+        let rust_enum_field_name = &tag_name.to_case(Case::Pascal);
+        rust_code.push_str(&format!(
+            r#"    #[serde(rename = "{tag_name}")]
     {rust_enum_field_name} = {enum_value},
 "#
-            ));
-        }
-
-        // Generate one enum template postfix
-        rust_code.push_str("}\n");
+        ));
     }
+
+    // Generate one enum template postfix
+    rust_code.push_str("}\n");
 
     rust_code
 }

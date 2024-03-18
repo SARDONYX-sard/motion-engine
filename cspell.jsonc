@@ -2,6 +2,7 @@
   "words": [
     "adjarrsize",
     "arrsize",
+    "bitflags",
     "byteorder",
     "cgmath",
     "classversion",

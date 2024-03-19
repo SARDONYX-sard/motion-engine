@@ -85,7 +85,7 @@ pub enum BsDecomposeVectorModifier<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -110,14 +110,14 @@ pub enum BsDecomposeVectorModifier<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"vector"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vector")]
-    Vector(Vector4<f32>),
+    Vector(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"x"`
     /// -   type: `hkReal`
@@ -159,11 +159,11 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("vector" => Vector(Vector4<f32>)),
+    ("vector" => Vector(Primitive<Vector4<f32>>)),
     ("x" => X(Primitive<f32>)),
     ("y" => Y(Primitive<f32>)),
     ("z" => Z(Primitive<f32>)),

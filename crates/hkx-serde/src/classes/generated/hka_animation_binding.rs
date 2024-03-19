@@ -37,7 +37,7 @@ pub enum HkaAnimationBinding<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"originalSkeletonName"`
     /// -   type: `hkStringPtr`
@@ -58,14 +58,14 @@ pub enum HkaAnimationBinding<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transformTrackToBoneIndices")]
-    TransformTrackToBoneIndices(HkArrayRef<Primitive<i16>>),
+    TransformTrackToBoneIndices(HkArrayNum<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"floatTrackToFloatSlotIndices"`
     /// -   type: `hkArray<hkInt16>`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "floatTrackToFloatSlotIndices")]
-    FloatTrackToFloatSlotIndices(HkArrayRef<Primitive<i16>>),
+    FloatTrackToFloatSlotIndices(HkArrayNum<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"blendHint"`
     /// -   type: `enum BlendHint`
@@ -82,8 +82,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("originalSkeletonName" => OriginalSkeletonName(Primitive<Cow<'de, str>>)),
     ("animation" => Animation(Primitive<Cow<'de, str>>)),
-    ("transformTrackToBoneIndices" => TransformTrackToBoneIndices(HkArrayRef<Primitive<i16>>)),
-    ("floatTrackToFloatSlotIndices" => FloatTrackToFloatSlotIndices(HkArrayRef<Primitive<i16>>)),
+    ("transformTrackToBoneIndices" => TransformTrackToBoneIndices(HkArrayNum<i16>)),
+    ("floatTrackToFloatSlotIndices" => FloatTrackToFloatSlotIndices(HkArrayNum<i16>)),
     ("blendHint" => BlendHint(Primitive<BlendHint>)),
 }
 

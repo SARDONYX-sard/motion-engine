@@ -26,11 +26,11 @@ pub enum HkpMoppCodeCodeInfo {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "offset")]
-    Offset(Vector4<f32>),
+    Offset(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpMoppCodeCodeInfo, "@name",
-    ("offset" => Offset(Vector4<f32>)),
+    ("offset" => Offset(Primitive<Vector4<f32>>)),
 }

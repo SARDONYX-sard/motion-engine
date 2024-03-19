@@ -200,7 +200,22 @@ impl<'de> serde::Deserialize<'de> for TransitionFlags {
                         "FLAG_FROM_NESTED_STATE_ID_IS_VALID" => flags |= Self::FLAG_FROM_NESTED_STATE_ID_IS_VALID,
                         "FLAG_TO_NESTED_STATE_ID_IS_VALID" => flags |= Self::FLAG_TO_NESTED_STATE_ID_IS_VALID,
                         "FLAG_ABUT_AT_END_OF_FROM_GENERATOR" => flags |= Self::FLAG_ABUT_AT_END_OF_FROM_GENERATOR,
-                        _ => return Err(serde::de::Error::custom("Invalid flag")),
+                        unknown => match parse_int::parse(unknown) {
+                            Ok(int) => {
+                                if let Some(bits) = Self::from_bits(int) {
+                                    flags |= bits
+                                } else {
+                                    return Err(serde::de::Error::custom(format!(
+                                        "Expected FlagValues flags but got \"{unknown}\"",
+                                    )));
+                                };
+                            }
+                            Err(_err) => {
+                                return Err(serde::de::Error::custom(format!(
+                                    "Expected FlagValues flags or integer, but got \"{unknown}\""
+                                )))
+                            }
+                        },
                     }
                 }
                 Ok(flags)

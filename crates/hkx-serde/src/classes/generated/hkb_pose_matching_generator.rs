@@ -83,14 +83,14 @@ pub enum HkbPoseMatchingGenerator<'a> {
     /// - offset: 76
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "childrenInternalStates", skip_serializing)]
-    ChildrenInternalStates(HkArrayRef<Primitive<()>>),
+    ChildrenInternalStates(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"sortedChildren"`
     /// -   type: `hkArray<void>`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "sortedChildren", skip_serializing)]
-    SortedChildren(HkArrayRef<Primitive<()>>),
+    SortedChildren(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"endIntervalWeight"`
     /// -   type: `hkReal`
@@ -135,7 +135,7 @@ pub enum HkbPoseMatchingGenerator<'a> {
     DoSubtractiveBlend(Primitive<bool>),
 
     // C++ Parent class(`hkbGenerator` => parent: `hkbNode`) has no fields
-
+    //
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -185,7 +185,7 @@ pub enum HkbPoseMatchingGenerator<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -210,14 +210,14 @@ pub enum HkbPoseMatchingGenerator<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"worldFromModelRotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "worldFromModelRotation")]
-    WorldFromModelRotation(Quaternion<f32>),
+    WorldFromModelRotation(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"blendSpeed"`
     /// -   type: `hkReal`
@@ -350,8 +350,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("flags" => Flags(Primitive<i16>)),
     ("subtractLastChild" => SubtractLastChild(Primitive<bool>)),
     ("children" => Children(HkArrayRef<Cow<'de, str>>)),
-    ("childrenInternalStates" => ChildrenInternalStates(HkArrayRef<Primitive<()>>)),
-    ("sortedChildren" => SortedChildren(HkArrayRef<Primitive<()>>)),
+    ("childrenInternalStates" => ChildrenInternalStates(HkArrayRef<()>)),
+    ("sortedChildren" => SortedChildren(HkArrayRef<()>)),
     ("endIntervalWeight" => EndIntervalWeight(Primitive<f32>)),
     ("numActiveChildren" => NumActiveChildren(Primitive<i32>)),
     ("beginIntervalIndex" => BeginIntervalIndex(Primitive<i16>)),
@@ -364,11 +364,11 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("worldFromModelRotation" => WorldFromModelRotation(Quaternion<f32>)),
+    ("worldFromModelRotation" => WorldFromModelRotation(Primitive<Quaternion<f32>>)),
     ("blendSpeed" => BlendSpeed(Primitive<f32>)),
     ("minSpeedToSwitch" => MinSpeedToSwitch(Primitive<f32>)),
     ("minSwitchTimeNoError" => MinSwitchTimeNoError(Primitive<f32>)),

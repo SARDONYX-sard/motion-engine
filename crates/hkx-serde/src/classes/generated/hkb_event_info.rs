@@ -102,7 +102,22 @@ impl<'de> serde::Deserialize<'de> for Flags {
                     match token.trim() {
                         "FLAG_SILENT" => flags |= Self::FLAG_SILENT,
                         "FLAG_SYNC_POINT" => flags |= Self::FLAG_SYNC_POINT,
-                        _ => return Err(serde::de::Error::custom("Invalid flag")),
+                        unknown => match parse_int::parse(unknown) {
+                            Ok(int) => {
+                                if let Some(bits) = Self::from_bits(int) {
+                                    flags |= bits
+                                } else {
+                                    return Err(serde::de::Error::custom(format!(
+                                        "Expected FlagValues flags but got \"{unknown}\"",
+                                    )));
+                                };
+                            }
+                            Err(_err) => {
+                                return Err(serde::de::Error::custom(format!(
+                                    "Expected FlagValues flags or integer, but got \"{unknown}\""
+                                )))
+                            }
+                        },
                     }
                 }
                 Ok(flags)

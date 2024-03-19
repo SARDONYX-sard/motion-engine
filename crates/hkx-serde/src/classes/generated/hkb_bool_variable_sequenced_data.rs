@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkbBoolVariableSequencedData {
     // C++ Parent class(`hkbSequencedData` => parent: `hkReferencedObject`) has no fields
-
+    //
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -39,7 +39,7 @@ pub enum HkbBoolVariableSequencedData {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"samples"`
     /// -   type: `hkArray<struct hkbBoolVariableSequencedDataSample>`

@@ -26,27 +26,27 @@ pub enum HkpConvexVerticesShapeFourVectors {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "x")]
-    X(Vector4<f32>),
+    X(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"y"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "y")]
-    Y(Vector4<f32>),
+    Y(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"z"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "z")]
-    Z(Vector4<f32>),
+    Z(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpConvexVerticesShapeFourVectors, "@name",
-    ("x" => X(Vector4<f32>)),
-    ("y" => Y(Vector4<f32>)),
-    ("z" => Z(Vector4<f32>)),
+    ("x" => X(Primitive<Vector4<f32>>)),
+    ("y" => Y(Primitive<Vector4<f32>>)),
+    ("z" => Z(Primitive<Vector4<f32>>)),
 }

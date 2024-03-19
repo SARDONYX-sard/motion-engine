@@ -85,7 +85,7 @@ pub enum HkbDampingModifier<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -110,7 +110,7 @@ pub enum HkbDampingModifier<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"kP"`
     /// -   type: `hkReal`
@@ -166,28 +166,28 @@ pub enum HkbDampingModifier<'a> {
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rawVector")]
-    RawVector(Vector4<f32>),
+    RawVector(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"dampedVector"`
     /// -   type: `hkVector4`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "dampedVector")]
-    DampedVector(Vector4<f32>),
+    DampedVector(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"vecErrorSum"`
     /// -   type: `hkVector4`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vecErrorSum")]
-    VecErrorSum(Vector4<f32>),
+    VecErrorSum(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"vecPreviousError"`
     /// -   type: `hkVector4`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vecPreviousError")]
-    VecPreviousError(Vector4<f32>),
+    VecPreviousError(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"errorSum"`
     /// -   type: `hkReal`
@@ -215,7 +215,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
@@ -226,10 +226,10 @@ impl_deserialize_for_internally_tagged_enum! {
     ("enableVectorDamping" => EnableVectorDamping(Primitive<bool>)),
     ("rawValue" => RawValue(Primitive<f32>)),
     ("dampedValue" => DampedValue(Primitive<f32>)),
-    ("rawVector" => RawVector(Vector4<f32>)),
-    ("dampedVector" => DampedVector(Vector4<f32>)),
-    ("vecErrorSum" => VecErrorSum(Vector4<f32>)),
-    ("vecPreviousError" => VecPreviousError(Vector4<f32>)),
+    ("rawVector" => RawVector(Primitive<Vector4<f32>>)),
+    ("dampedVector" => DampedVector(Primitive<Vector4<f32>>)),
+    ("vecErrorSum" => VecErrorSum(Primitive<Vector4<f32>>)),
+    ("vecPreviousError" => VecPreviousError(Primitive<Vector4<f32>>)),
     ("errorSum" => ErrorSum(Primitive<f32>)),
     ("previousError" => PreviousError(Primitive<f32>)),
 }

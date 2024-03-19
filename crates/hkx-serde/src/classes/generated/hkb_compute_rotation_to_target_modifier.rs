@@ -85,7 +85,7 @@ pub enum HkbComputeRotationToTargetModifier<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -110,49 +110,49 @@ pub enum HkbComputeRotationToTargetModifier<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"rotationOut"`
     /// -   type: `hkQuaternion`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rotationOut")]
-    RotationOut(Quaternion<f32>),
+    RotationOut(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"targetPosition"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "targetPosition")]
-    TargetPosition(Vector4<f32>),
+    TargetPosition(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"currentPosition"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "currentPosition")]
-    CurrentPosition(Vector4<f32>),
+    CurrentPosition(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"currentRotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "currentRotation")]
-    CurrentRotation(Quaternion<f32>),
+    CurrentRotation(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"localAxisOfRotation"`
     /// -   type: `hkVector4`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "localAxisOfRotation")]
-    LocalAxisOfRotation(Vector4<f32>),
+    LocalAxisOfRotation(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"localFacingDirection"`
     /// -   type: `hkVector4`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "localFacingDirection")]
-    LocalFacingDirection(Vector4<f32>),
+    LocalFacingDirection(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"resultIsDelta"`
     /// -   type: `hkBool`
@@ -173,15 +173,15 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("rotationOut" => RotationOut(Quaternion<f32>)),
-    ("targetPosition" => TargetPosition(Vector4<f32>)),
-    ("currentPosition" => CurrentPosition(Vector4<f32>)),
-    ("currentRotation" => CurrentRotation(Quaternion<f32>)),
-    ("localAxisOfRotation" => LocalAxisOfRotation(Vector4<f32>)),
-    ("localFacingDirection" => LocalFacingDirection(Vector4<f32>)),
+    ("rotationOut" => RotationOut(Primitive<Quaternion<f32>>)),
+    ("targetPosition" => TargetPosition(Primitive<Vector4<f32>>)),
+    ("currentPosition" => CurrentPosition(Primitive<Vector4<f32>>)),
+    ("currentRotation" => CurrentRotation(Primitive<Quaternion<f32>>)),
+    ("localAxisOfRotation" => LocalAxisOfRotation(Primitive<Vector4<f32>>)),
+    ("localFacingDirection" => LocalFacingDirection(Primitive<Vector4<f32>>)),
     ("resultIsDelta" => ResultIsDelta(Primitive<bool>)),
 }

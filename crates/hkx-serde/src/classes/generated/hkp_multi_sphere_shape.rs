@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkpMultiSphereShape {
     // C++ Parent class(`hkpSphereRepShape` => parent: `hkpShape`) has no fields
-
+    //
     /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -54,7 +54,7 @@ pub enum HkpMultiSphereShape {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"numSpheres"`
     /// -   type: `hkInt32`

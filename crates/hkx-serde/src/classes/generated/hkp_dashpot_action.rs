@@ -81,7 +81,7 @@ pub enum HkpDashpotAction<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"point"`
     /// -   type: `hkVector4[2]`
@@ -109,7 +109,7 @@ pub enum HkpDashpotAction<'a> {
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "impulse")]
-    Impulse(Vector4<f32>),
+    Impulse(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -126,5 +126,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("point" => Point(CStyleArrayVector<Vector4<f32>, 2>)),
     ("strength" => Strength(Primitive<f32>)),
     ("damping" => Damping(Primitive<f32>)),
-    ("impulse" => Impulse(Vector4<f32>)),
+    ("impulse" => Impulse(Primitive<Vector4<f32>>)),
 }

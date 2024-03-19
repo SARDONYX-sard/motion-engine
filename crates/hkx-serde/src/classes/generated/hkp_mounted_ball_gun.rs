@@ -62,7 +62,7 @@ pub enum HkpMountedBallGun<'a> {
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "bulletOffsetFromCenter")]
-    BulletOffsetFromCenter(Vector4<f32>),
+    BulletOffsetFromCenter(Primitive<Vector4<f32>>),
     /// # C++ Parent class(`hkpBallGun` => parent: `hkpFirstPersonGun`) field Info
     /// -   name:`"addedBodies"`
     /// -   type: `void*`
@@ -116,14 +116,14 @@ pub enum HkpMountedBallGun<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"position"`
     /// -   type: `hkVector4`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "position")]
-    Position(Vector4<f32>),
+    Position(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -134,7 +134,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("bulletMass" => BulletMass(Primitive<f32>)),
     ("damageMultiplier" => DamageMultiplier(Primitive<f32>)),
     ("maxBulletsInWorld" => MaxBulletsInWorld(Primitive<i32>)),
-    ("bulletOffsetFromCenter" => BulletOffsetFromCenter(Vector4<f32>)),
+    ("bulletOffsetFromCenter" => BulletOffsetFromCenter(Primitive<Vector4<f32>>)),
     ("addedBodies" => AddedBodies(Primitive<Cow<'de, str>>)),
     ("type" => Type(Primitive<()>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
@@ -142,5 +142,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("listeners" => Listeners(HkArrayRef<Cow<'de, str>>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("position" => Position(Vector4<f32>)),
+    ("position" => Position(Primitive<Vector4<f32>>)),
 }

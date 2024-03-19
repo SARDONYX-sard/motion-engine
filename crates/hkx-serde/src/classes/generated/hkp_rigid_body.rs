@@ -90,7 +90,7 @@ pub enum HkpRigidBody<'a> {
     /// - offset: 192
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "constraintRuntime", skip_serializing)]
-    ConstraintRuntime(HkArrayRef<Primitive<u8>>),
+    ConstraintRuntime(HkArrayNum<u8>),
     /// # C++ Parent class(`hkpEntity` => parent: `hkpWorldObject`) field Info
     /// -   name:`"simulationIsland"`
     /// -   type: `void*`
@@ -242,7 +242,7 @@ pub enum HkpRigidBody<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -257,7 +257,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("contactPointCallbackDelay" => ContactPointCallbackDelay(Primitive<u16>)),
     ("constraintsMaster" => ConstraintsMaster(SingleClass<HkpEntitySmallArraySerializeOverrideType<'de>>)),
     ("constraintsSlave" => ConstraintsSlave(HkArrayRef<Cow<'de, str>>)),
-    ("constraintRuntime" => ConstraintRuntime(HkArrayRef<Primitive<u8>>)),
+    ("constraintRuntime" => ConstraintRuntime(HkArrayNum<u8>)),
     ("simulationIsland" => SimulationIsland(Primitive<Cow<'de, str>>)),
     ("autoRemoveLevel" => AutoRemoveLevel(Primitive<i8>)),
     ("numShapeKeysInContactPointProperties" => NumShapeKeysInContactPointProperties(Primitive<u8>)),

@@ -37,7 +37,7 @@ pub enum HkbVariableValueSet<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"wordVariableValues"`
     /// -   type: `hkArray<struct hkbVariableValue>`

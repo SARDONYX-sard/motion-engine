@@ -85,7 +85,7 @@ pub enum BsTweenerModifier<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -110,7 +110,7 @@ pub enum BsTweenerModifier<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"tweenPosition"`
     /// -   type: `hkBool`
@@ -145,14 +145,14 @@ pub enum BsTweenerModifier<'a> {
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "targetPosition")]
-    TargetPosition(Vector4<f32>),
+    TargetPosition(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"targetRotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "targetRotation")]
-    TargetRotation(Quaternion<f32>),
+    TargetRotation(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"duration"`
     /// -   type: `hkReal`
@@ -166,7 +166,7 @@ pub enum BsTweenerModifier<'a> {
     /// - offset: 112
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "startTransform", skip_serializing)]
-    StartTransform(QsTransform<f32>),
+    StartTransform(Primitive<QsTransform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"time"`
     /// -   type: `hkReal`
@@ -187,7 +187,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
@@ -195,9 +195,9 @@ impl_deserialize_for_internally_tagged_enum! {
     ("tweenRotation" => TweenRotation(Primitive<bool>)),
     ("useTweenDuration" => UseTweenDuration(Primitive<bool>)),
     ("tweenDuration" => TweenDuration(Primitive<f32>)),
-    ("targetPosition" => TargetPosition(Vector4<f32>)),
-    ("targetRotation" => TargetRotation(Quaternion<f32>)),
+    ("targetPosition" => TargetPosition(Primitive<Vector4<f32>>)),
+    ("targetRotation" => TargetRotation(Primitive<Quaternion<f32>>)),
     ("duration" => Duration(Primitive<f32>)),
-    ("startTransform" => StartTransform(QsTransform<f32>)),
+    ("startTransform" => StartTransform(Primitive<QsTransform<f32>>)),
     ("time" => Time(Primitive<f32>)),
 }

@@ -34,7 +34,7 @@ pub enum HkbRegisteredGenerator<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -59,7 +59,7 @@ pub enum HkbRegisteredGenerator<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"generator"`
     /// -   type: `struct hkbGenerator*`
@@ -73,25 +73,25 @@ pub enum HkbRegisteredGenerator<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "relativePosition")]
-    RelativePosition(Vector4<f32>),
+    RelativePosition(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"relativeDirection"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "relativeDirection")]
-    RelativeDirection(Vector4<f32>),
+    RelativeDirection(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbRegisteredGenerator<'de>, "@name",
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("generator" => Generator(Primitive<Cow<'de, str>>)),
-    ("relativePosition" => RelativePosition(Vector4<f32>)),
-    ("relativeDirection" => RelativeDirection(Vector4<f32>)),
+    ("relativePosition" => RelativePosition(Primitive<Vector4<f32>>)),
+    ("relativeDirection" => RelativeDirection(Primitive<Vector4<f32>>)),
 }

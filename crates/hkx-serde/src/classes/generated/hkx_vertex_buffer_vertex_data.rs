@@ -33,28 +33,28 @@ pub enum HkxVertexBufferVertexData {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "floatData")]
-    FloatData(HkArrayRef<Primitive<f32>>),
+    FloatData(HkArrayNum<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"uint32Data"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "uint32Data")]
-    Uint32Data(HkArrayRef<Primitive<u32>>),
+    Uint32Data(HkArrayNum<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"uint16Data"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "uint16Data")]
-    Uint16Data(HkArrayRef<Primitive<u16>>),
+    Uint16Data(HkArrayNum<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"uint8Data"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "uint8Data")]
-    Uint8Data(HkArrayRef<Primitive<u8>>),
+    Uint8Data(HkArrayNum<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"numVerts"`
     /// -   type: `hkUint32`
@@ -103,10 +103,10 @@ pub enum HkxVertexBufferVertexData {
 impl_deserialize_for_internally_tagged_enum! {
     HkxVertexBufferVertexData, "@name",
     ("vectorData" => VectorData(HkArrayVector<Vector4<f32>>)),
-    ("floatData" => FloatData(HkArrayRef<Primitive<f32>>)),
-    ("uint32Data" => Uint32Data(HkArrayRef<Primitive<u32>>)),
-    ("uint16Data" => Uint16Data(HkArrayRef<Primitive<u16>>)),
-    ("uint8Data" => Uint8Data(HkArrayRef<Primitive<u8>>)),
+    ("floatData" => FloatData(HkArrayNum<f32>)),
+    ("uint32Data" => Uint32Data(HkArrayNum<u32>)),
+    ("uint16Data" => Uint16Data(HkArrayNum<u16>)),
+    ("uint8Data" => Uint8Data(HkArrayNum<u8>)),
     ("numVerts" => NumVerts(Primitive<u32>)),
     ("vectorStride" => VectorStride(Primitive<u32>)),
     ("floatStride" => FloatStride(Primitive<u32>)),

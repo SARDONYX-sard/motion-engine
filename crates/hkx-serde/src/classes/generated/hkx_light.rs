@@ -37,7 +37,7 @@ pub enum HkxLight {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum LightType`
@@ -51,14 +51,14 @@ pub enum HkxLight {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "position")]
-    Position(Vector4<f32>),
+    Position(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"direction"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "direction")]
-    Direction(Vector4<f32>),
+    Direction(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"color"`
     /// -   type: `hkUint32`
@@ -81,8 +81,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("type" => Type(Primitive<LightType>)),
-    ("position" => Position(Vector4<f32>)),
-    ("direction" => Direction(Vector4<f32>)),
+    ("position" => Position(Primitive<Vector4<f32>>)),
+    ("direction" => Direction(Primitive<Vector4<f32>>)),
     ("color" => Color(Primitive<u32>)),
     ("angle" => Angle(Primitive<f32>)),
 }

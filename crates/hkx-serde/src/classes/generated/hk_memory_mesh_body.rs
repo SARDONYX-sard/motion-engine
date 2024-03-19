@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkMemoryMeshBody<'a> {
     // C++ Parent class(`hkMeshBody` => parent: `hkReferencedObject`) has no fields
-
+    //
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -39,14 +39,14 @@ pub enum HkMemoryMeshBody<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"transform"`
     /// -   type: `hkMatrix4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transform")]
-    Transform(Matrix4<f32>),
+    Transform(Primitive<Matrix4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"transformSet"`
     /// -   type: `struct hkIndexedTransformSet*`
@@ -82,7 +82,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkMemoryMeshBody<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("transform" => Transform(Matrix4<f32>)),
+    ("transform" => Transform(Primitive<Matrix4<f32>>)),
     ("transformSet" => TransformSet(Primitive<Cow<'de, str>>)),
     ("shape" => Shape(Primitive<Cow<'de, str>>)),
     ("vertexBuffers" => VertexBuffers(HkArrayRef<Cow<'de, str>>)),

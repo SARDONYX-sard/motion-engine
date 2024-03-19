@@ -37,28 +37,28 @@ pub enum HkbDampingModifierInternalState {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"dampedVector"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "dampedVector")]
-    DampedVector(Vector4<f32>),
+    DampedVector(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"vecErrorSum"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vecErrorSum")]
-    VecErrorSum(Vector4<f32>),
+    VecErrorSum(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"vecPreviousError"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vecPreviousError")]
-    VecPreviousError(Vector4<f32>),
+    VecPreviousError(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"dampedValue"`
     /// -   type: `hkReal`
@@ -87,9 +87,9 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbDampingModifierInternalState, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("dampedVector" => DampedVector(Vector4<f32>)),
-    ("vecErrorSum" => VecErrorSum(Vector4<f32>)),
-    ("vecPreviousError" => VecPreviousError(Vector4<f32>)),
+    ("dampedVector" => DampedVector(Primitive<Vector4<f32>>)),
+    ("vecErrorSum" => VecErrorSum(Primitive<Vector4<f32>>)),
+    ("vecPreviousError" => VecPreviousError(Primitive<Vector4<f32>>)),
     ("dampedValue" => DampedValue(Primitive<f32>)),
     ("errorSum" => ErrorSum(Primitive<f32>)),
     ("previousError" => PreviousError(Primitive<f32>)),

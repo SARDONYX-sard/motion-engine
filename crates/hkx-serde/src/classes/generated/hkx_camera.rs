@@ -37,28 +37,28 @@ pub enum HkxCamera {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"from"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "from")]
-    From(Vector4<f32>),
+    From(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"focus"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "focus")]
-    Focus(Vector4<f32>),
+    Focus(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"up"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "up")]
-    Up(Vector4<f32>),
+    Up(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"fov"`
     /// -   type: `hkReal`
@@ -94,9 +94,9 @@ impl_deserialize_for_internally_tagged_enum! {
     HkxCamera, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("from" => From(Vector4<f32>)),
-    ("focus" => Focus(Vector4<f32>)),
-    ("up" => Up(Vector4<f32>)),
+    ("from" => From(Primitive<Vector4<f32>>)),
+    ("focus" => Focus(Primitive<Vector4<f32>>)),
+    ("up" => Up(Primitive<Vector4<f32>>)),
     ("fov" => Fov(Primitive<f32>)),
     ("far" => Far(Primitive<f32>)),
     ("near" => Near(Primitive<f32>)),

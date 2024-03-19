@@ -60,7 +60,7 @@ pub enum HkMoppBvTreeShapeBase<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"code"`
     /// -   type: `struct hkpMoppCode*`
@@ -88,7 +88,7 @@ pub enum HkMoppBvTreeShapeBase<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "codeInfoCopy", skip_serializing)]
-    CodeInfoCopy(Vector4<f32>),
+    CodeInfoCopy(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -102,5 +102,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("code" => Code(Primitive<Cow<'de, str>>)),
     ("moppData" => MoppData(Primitive<Cow<'de, str>>)),
     ("moppDataSize" => MoppDataSize(Primitive<u32>)),
-    ("codeInfoCopy" => CodeInfoCopy(Vector4<f32>)),
+    ("codeInfoCopy" => CodeInfoCopy(Primitive<Vector4<f32>>)),
 }

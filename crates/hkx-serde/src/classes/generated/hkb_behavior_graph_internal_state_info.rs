@@ -37,7 +37,7 @@ pub enum HkbBehaviorGraphInternalStateInfo<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"characterId"`
     /// -   type: `hkUint64`
@@ -65,14 +65,14 @@ pub enum HkbBehaviorGraphInternalStateInfo<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "activeEventIds")]
-    ActiveEventIds(HkArrayRef<Primitive<i16>>),
+    ActiveEventIds(HkArrayNum<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"activeVariableIds"`
     /// -   type: `hkArray<hkInt16>`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "activeVariableIds")]
-    ActiveVariableIds(HkArrayRef<Primitive<i16>>),
+    ActiveVariableIds(HkArrayNum<i16>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -83,6 +83,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("characterId" => CharacterId(Primitive<u64>)),
     ("internalState" => InternalState(Primitive<Cow<'de, str>>)),
     ("auxiliaryNodeInfo" => AuxiliaryNodeInfo(HkArrayRef<Cow<'de, str>>)),
-    ("activeEventIds" => ActiveEventIds(HkArrayRef<Primitive<i16>>)),
-    ("activeVariableIds" => ActiveVariableIds(HkArrayRef<Primitive<i16>>)),
+    ("activeEventIds" => ActiveEventIds(HkArrayNum<i16>)),
+    ("activeVariableIds" => ActiveVariableIds(HkArrayNum<i16>)),
 }

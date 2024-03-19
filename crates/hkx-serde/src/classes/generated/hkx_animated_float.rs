@@ -37,14 +37,14 @@ pub enum HkxAnimatedFloat {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"floats"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "floats")]
-    Floats(HkArrayRef<Primitive<f32>>),
+    Floats(HkArrayNum<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"hint"`
     /// -   type: `enum Hint`
@@ -59,6 +59,6 @@ impl_deserialize_for_internally_tagged_enum! {
     HkxAnimatedFloat, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("floats" => Floats(HkArrayRef<Primitive<f32>>)),
+    ("floats" => Floats(HkArrayNum<f32>)),
     ("hint" => Hint(Primitive<Hint>)),
 }

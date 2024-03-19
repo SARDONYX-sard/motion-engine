@@ -26,7 +26,7 @@ pub enum HkMotionState {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transform")]
-    Transform(Transform<f32>),
+    Transform(Primitive<Transform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"sweptTransform"`
     /// -   type: `struct hkSweptTransform`
@@ -40,7 +40,7 @@ pub enum HkMotionState {
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "deltaAngle")]
-    DeltaAngle(Vector4<f32>),
+    DeltaAngle(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"objectRadius"`
     /// -   type: `hkReal`
@@ -95,9 +95,9 @@ pub enum HkMotionState {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkMotionState, "@name",
-    ("transform" => Transform(Transform<f32>)),
+    ("transform" => Transform(Primitive<Transform<f32>>)),
     ("sweptTransform" => SweptTransform(SingleClass<HkSweptTransform>)),
-    ("deltaAngle" => DeltaAngle(Vector4<f32>)),
+    ("deltaAngle" => DeltaAngle(Primitive<Vector4<f32>>)),
     ("objectRadius" => ObjectRadius(Primitive<f32>)),
     ("linearDamping" => LinearDamping(Primitive<f32>)),
     ("angularDamping" => AngularDamping(Primitive<f32>)),

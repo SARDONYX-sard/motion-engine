@@ -37,14 +37,14 @@ pub enum HkbComputeDirectionModifierInternalState {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"pointOut"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "pointOut")]
-    PointOut(Vector4<f32>),
+    PointOut(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"groundAngleOut"`
     /// -   type: `hkReal`
@@ -73,7 +73,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbComputeDirectionModifierInternalState, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("pointOut" => PointOut(Vector4<f32>)),
+    ("pointOut" => PointOut(Primitive<Vector4<f32>>)),
     ("groundAngleOut" => GroundAngleOut(Primitive<f32>)),
     ("upAngleOut" => UpAngleOut(Primitive<f32>)),
     ("computedOutput" => ComputedOutput(Primitive<bool>)),

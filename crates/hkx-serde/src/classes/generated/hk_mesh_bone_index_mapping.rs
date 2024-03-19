@@ -26,11 +26,11 @@ pub enum HkMeshBoneIndexMapping {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "mapping")]
-    Mapping(HkArrayRef<Primitive<i16>>),
+    Mapping(HkArrayNum<i16>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkMeshBoneIndexMapping, "@name",
-    ("mapping" => Mapping(HkArrayRef<Primitive<i16>>)),
+    ("mapping" => Mapping(HkArrayNum<i16>)),
 }

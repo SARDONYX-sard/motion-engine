@@ -37,7 +37,7 @@ pub enum HkxSparselyAnimatedString<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"strings"`
     /// -   type: `hkArray<hkStringPtr>`
@@ -51,7 +51,7 @@ pub enum HkxSparselyAnimatedString<'a> {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "times")]
-    Times(HkArrayRef<Primitive<f32>>),
+    Times(HkArrayNum<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -60,5 +60,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("strings" => Strings(HkArrayStringPtr<'de>)),
-    ("times" => Times(HkArrayRef<Primitive<f32>>)),
+    ("times" => Times(HkArrayNum<f32>)),
 }

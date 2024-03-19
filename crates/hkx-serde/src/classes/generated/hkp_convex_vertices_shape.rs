@@ -30,7 +30,7 @@ pub enum HkpConvexVerticesShape<'a> {
     Radius(Primitive<f32>),
 
     // C++ Parent class(`hkpSphereRepShape` => parent: `hkpShape`) has no fields
-
+    //
     /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -62,21 +62,21 @@ pub enum HkpConvexVerticesShape<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"aabbHalfExtents"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "aabbHalfExtents")]
-    AabbHalfExtents(Vector4<f32>),
+    AabbHalfExtents(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"aabbCenter"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "aabbCenter")]
-    AabbCenter(Vector4<f32>),
+    AabbCenter(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"rotatedVertices"`
     /// -   type: `hkArray<struct hkpConvexVerticesShapeFourVectors>`
@@ -129,8 +129,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("type" => Type(Primitive<()>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("aabbHalfExtents" => AabbHalfExtents(Vector4<f32>)),
-    ("aabbCenter" => AabbCenter(Vector4<f32>)),
+    ("aabbHalfExtents" => AabbHalfExtents(Primitive<Vector4<f32>>)),
+    ("aabbCenter" => AabbCenter(Primitive<Vector4<f32>>)),
     ("rotatedVertices" => RotatedVertices(HkArrayClass<HkpConvexVerticesShapeFourVectors>)),
     ("numVertices" => NumVertices(Primitive<i32>)),
     ("externalObject" => ExternalObject(Primitive<Cow<'de, str>>)),

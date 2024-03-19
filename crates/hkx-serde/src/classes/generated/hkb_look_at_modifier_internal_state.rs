@@ -37,14 +37,14 @@ pub enum HkbLookAtModifierInternalState {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"lookAtLastTargetWS"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "lookAtLastTargetWS")]
-    LookAtLastTargetWs(Vector4<f32>),
+    LookAtLastTargetWs(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"lookAtWeight"`
     /// -   type: `hkReal`
@@ -66,7 +66,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbLookAtModifierInternalState, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("lookAtLastTargetWS" => LookAtLastTargetWs(Vector4<f32>)),
+    ("lookAtLastTargetWS" => LookAtLastTargetWs(Primitive<Vector4<f32>>)),
     ("lookAtWeight" => LookAtWeight(Primitive<f32>)),
     ("isTargetInsideLimitCone" => IsTargetInsideLimitCone(Primitive<bool>)),
 }

@@ -37,7 +37,7 @@ pub enum HkxSkinBinding<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"mesh"`
     /// -   type: `struct hkxMesh*`
@@ -65,7 +65,7 @@ pub enum HkxSkinBinding<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "initSkinTransform")]
-    InitSkinTransform(Matrix4<f32>),
+    InitSkinTransform(Primitive<Matrix4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -76,5 +76,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("mesh" => Mesh(Primitive<Cow<'de, str>>)),
     ("nodeNames" => NodeNames(HkArrayStringPtr<'de>)),
     ("bindPose" => BindPose(HkArrayMatrix4<Matrix4<f32>>)),
-    ("initSkinTransform" => InitSkinTransform(Matrix4<f32>)),
+    ("initSkinTransform" => InitSkinTransform(Primitive<Matrix4<f32>>)),
 }

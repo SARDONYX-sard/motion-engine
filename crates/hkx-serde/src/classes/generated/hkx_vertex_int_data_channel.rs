@@ -37,14 +37,14 @@ pub enum HkxVertexIntDataChannel {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"perVertexInts"`
     /// -   type: `hkArray<hkInt32>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "perVertexInts")]
-    PerVertexInts(HkArrayRef<Primitive<i32>>),
+    PerVertexInts(HkArrayNum<i32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -52,5 +52,5 @@ impl_deserialize_for_internally_tagged_enum! {
     HkxVertexIntDataChannel, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("perVertexInts" => PerVertexInts(HkArrayRef<Primitive<i32>>)),
+    ("perVertexInts" => PerVertexInts(HkArrayNum<i32>)),
 }

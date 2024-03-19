@@ -37,7 +37,7 @@ pub enum HkxIndexBuffer {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"indexType"`
     /// -   type: `enum IndexType`
@@ -51,14 +51,14 @@ pub enum HkxIndexBuffer {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "indices16")]
-    Indices16(HkArrayRef<Primitive<u16>>),
+    Indices16(HkArrayNum<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"indices32"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "indices32")]
-    Indices32(HkArrayRef<Primitive<u32>>),
+    Indices32(HkArrayNum<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexBaseOffset"`
     /// -   type: `hkUint32`
@@ -81,8 +81,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("indexType" => IndexType(Primitive<IndexType>)),
-    ("indices16" => Indices16(HkArrayRef<Primitive<u16>>)),
-    ("indices32" => Indices32(HkArrayRef<Primitive<u32>>)),
+    ("indices16" => Indices16(HkArrayNum<u16>)),
+    ("indices32" => Indices32(HkArrayNum<u32>)),
     ("vertexBaseOffset" => VertexBaseOffset(Primitive<u32>)),
     ("length" => Length(Primitive<u32>)),
 }

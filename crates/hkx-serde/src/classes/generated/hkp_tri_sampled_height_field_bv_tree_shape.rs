@@ -60,7 +60,7 @@ pub enum HkpTriSampledHeightFieldBvTreeShape<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"childContainer"`
     /// -   type: `struct hkpSingleShapeContainer`

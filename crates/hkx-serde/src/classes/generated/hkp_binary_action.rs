@@ -66,7 +66,7 @@ pub enum HkpBinaryAction<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"entityA"`
     /// -   type: `struct hkpEntity*`

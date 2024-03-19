@@ -37,7 +37,7 @@ pub enum HkaSkeleton<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
@@ -51,7 +51,7 @@ pub enum HkaSkeleton<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "parentIndices")]
-    ParentIndices(HkArrayRef<Primitive<i16>>),
+    ParentIndices(HkArrayNum<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"bones"`
     /// -   type: `hkArray<struct hkaBone>`
@@ -72,7 +72,7 @@ pub enum HkaSkeleton<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "referenceFloats")]
-    ReferenceFloats(HkArrayRef<Primitive<f32>>),
+    ReferenceFloats(HkArrayNum<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"floatSlots"`
     /// -   type: `hkArray<hkStringPtr>`
@@ -95,10 +95,10 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
-    ("parentIndices" => ParentIndices(HkArrayRef<Primitive<i16>>)),
+    ("parentIndices" => ParentIndices(HkArrayNum<i16>)),
     ("bones" => Bones(HkArrayClass<HkaBone<'de>>)),
     ("referencePose" => ReferencePose(HkArrayMatrix3<QsTransform<f32>>)),
-    ("referenceFloats" => ReferenceFloats(HkArrayRef<Primitive<f32>>)),
+    ("referenceFloats" => ReferenceFloats(HkArrayNum<f32>)),
     ("floatSlots" => FloatSlots(HkArrayStringPtr<'de>)),
     ("localFrames" => LocalFrames(HkArrayClass<HkaSkeletonLocalFrameOnBone<'de>>)),
 }

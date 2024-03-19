@@ -37,7 +37,7 @@ pub enum HkIndexedTransformSet<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"matrices"`
     /// -   type: `hkArray<hkMatrix4>`
@@ -58,7 +58,7 @@ pub enum HkIndexedTransformSet<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "matricesOrder")]
-    MatricesOrder(HkArrayRef<Primitive<i16>>),
+    MatricesOrder(HkArrayNum<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"matricesNames"`
     /// -   type: `hkArray<hkStringPtr>`
@@ -89,7 +89,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("matrices" => Matrices(HkArrayMatrix4<Matrix4<f32>>)),
     ("inverseMatrices" => InverseMatrices(HkArrayMatrix4<Matrix4<f32>>)),
-    ("matricesOrder" => MatricesOrder(HkArrayRef<Primitive<i16>>)),
+    ("matricesOrder" => MatricesOrder(HkArrayNum<i16>)),
     ("matricesNames" => MatricesNames(HkArrayStringPtr<'de>)),
     ("indexMappings" => IndexMappings(HkArrayClass<HkMeshBoneIndexMapping>)),
     ("allMatricesAreAffine" => AllMatricesAreAffine(Primitive<bool>)),

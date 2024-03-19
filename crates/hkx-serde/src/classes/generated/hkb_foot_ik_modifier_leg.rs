@@ -26,28 +26,28 @@ pub enum HkbFootIkModifierLeg<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "originalAnkleTransformMS")]
-    OriginalAnkleTransformMs(QsTransform<f32>),
+    OriginalAnkleTransformMs(Primitive<QsTransform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"prevAnkleRotLS"`
     /// -   type: `hkQuaternion`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "prevAnkleRotLS", skip_serializing)]
-    PrevAnkleRotLs(Quaternion<f32>),
+    PrevAnkleRotLs(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"kneeAxisLS"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "kneeAxisLS")]
-    KneeAxisLs(Vector4<f32>),
+    KneeAxisLs(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"footEndLS"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "footEndLS")]
-    FootEndLs(Vector4<f32>),
+    FootEndLs(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"ungroundedEvent"`
     /// -   type: `struct hkbEventProperty`
@@ -158,10 +158,10 @@ pub enum HkbFootIkModifierLeg<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbFootIkModifierLeg<'de>, "@name",
-    ("originalAnkleTransformMS" => OriginalAnkleTransformMs(QsTransform<f32>)),
-    ("prevAnkleRotLS" => PrevAnkleRotLs(Quaternion<f32>)),
-    ("kneeAxisLS" => KneeAxisLs(Vector4<f32>)),
-    ("footEndLS" => FootEndLs(Vector4<f32>)),
+    ("originalAnkleTransformMS" => OriginalAnkleTransformMs(Primitive<QsTransform<f32>>)),
+    ("prevAnkleRotLS" => PrevAnkleRotLs(Primitive<Quaternion<f32>>)),
+    ("kneeAxisLS" => KneeAxisLs(Primitive<Vector4<f32>>)),
+    ("footEndLS" => FootEndLs(Primitive<Vector4<f32>>)),
     ("ungroundedEvent" => UngroundedEvent(SingleClass<HkbEventProperty<'de>>)),
     ("footPlantedAnkleHeightMS" => FootPlantedAnkleHeightMs(Primitive<f32>)),
     ("footRaisedAnkleHeightMS" => FootRaisedAnkleHeightMs(Primitive<f32>)),

@@ -37,14 +37,14 @@ pub enum HkbComputeRotationToTargetModifierInternalState {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"rotationOut"`
     /// -   type: `hkQuaternion`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rotationOut")]
-    RotationOut(Quaternion<f32>),
+    RotationOut(Primitive<Quaternion<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -52,5 +52,5 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbComputeRotationToTargetModifierInternalState, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("rotationOut" => RotationOut(Quaternion<f32>)),
+    ("rotationOut" => RotationOut(Primitive<Quaternion<f32>>)),
 }

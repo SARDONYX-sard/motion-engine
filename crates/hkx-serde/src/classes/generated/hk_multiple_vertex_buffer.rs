@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkMultipleVertexBuffer<'a> {
     // C++ Parent class(`hkMeshVertexBuffer` => parent: `hkReferencedObject`) has no fields
-
+    //
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -39,7 +39,7 @@ pub enum HkMultipleVertexBuffer<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"vertexFormat"`
     /// -   type: `struct hkVertexFormat`

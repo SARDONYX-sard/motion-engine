@@ -37,7 +37,7 @@ pub enum HkbPoseMatchingGeneratorInternalState {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"currentMatch"`
     /// -   type: `hkInt32`

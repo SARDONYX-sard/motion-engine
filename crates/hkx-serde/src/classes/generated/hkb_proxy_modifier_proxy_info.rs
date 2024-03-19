@@ -47,7 +47,7 @@ pub enum HkbProxyModifierProxyInfo {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "up")]
-    Up(Vector4<f32>),
+    Up(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"keepDistance"`
     /// -   type: `hkReal`
@@ -126,7 +126,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("dynamicFriction" => DynamicFriction(Primitive<f32>)),
     ("staticFriction" => StaticFriction(Primitive<f32>)),
     ("keepContactTolerance" => KeepContactTolerance(Primitive<f32>)),
-    ("up" => Up(Vector4<f32>)),
+    ("up" => Up(Primitive<Vector4<f32>>)),
     ("keepDistance" => KeepDistance(Primitive<f32>)),
     ("contactAngleSensitivity" => ContactAngleSensitivity(Primitive<f32>)),
     ("userPlanes" => UserPlanes(Primitive<u32>)),

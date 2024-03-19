@@ -85,7 +85,7 @@ pub enum HkbSenseHandleModifier<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -110,7 +110,7 @@ pub enum HkbSenseHandleModifier<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"handle"`
     /// -   type: `struct hkbHandle`
@@ -124,7 +124,7 @@ pub enum HkbSenseHandleModifier<'a> {
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "sensorLocalOffset")]
-    SensorLocalOffset(Vector4<f32>),
+    SensorLocalOffset(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"ranges"`
     /// -   type: `hkArray<struct hkbSenseHandleModifierRange>`
@@ -257,12 +257,12 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("handle" => Handle(SingleClass<HkbHandle<'de>>)),
-    ("sensorLocalOffset" => SensorLocalOffset(Vector4<f32>)),
+    ("sensorLocalOffset" => SensorLocalOffset(Primitive<Vector4<f32>>)),
     ("ranges" => Ranges(HkArrayClass<HkbSenseHandleModifierRange<'de>>)),
     ("handleOut" => HandleOut(Primitive<Cow<'de, str>>)),
     ("handleIn" => HandleIn(Primitive<Cow<'de, str>>)),

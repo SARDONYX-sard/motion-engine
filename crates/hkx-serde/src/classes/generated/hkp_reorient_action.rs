@@ -74,21 +74,21 @@ pub enum HkpReorientAction<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"rotationAxis"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rotationAxis")]
-    RotationAxis(Vector4<f32>),
+    RotationAxis(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"upAxis"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "upAxis")]
-    UpAxis(Vector4<f32>),
+    UpAxis(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"strength"`
     /// -   type: `hkReal`
@@ -115,8 +115,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("rotationAxis" => RotationAxis(Vector4<f32>)),
-    ("upAxis" => UpAxis(Vector4<f32>)),
+    ("rotationAxis" => RotationAxis(Primitive<Vector4<f32>>)),
+    ("upAxis" => UpAxis(Primitive<Vector4<f32>>)),
     ("strength" => Strength(Primitive<f32>)),
     ("damping" => Damping(Primitive<f32>)),
 }

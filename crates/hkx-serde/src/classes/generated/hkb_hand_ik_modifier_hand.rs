@@ -26,28 +26,28 @@ pub enum HkbHandIkModifierHand<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "elbowAxisLS")]
-    ElbowAxisLs(Vector4<f32>),
+    ElbowAxisLs(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"backHandNormalLS"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "backHandNormalLS")]
-    BackHandNormalLs(Vector4<f32>),
+    BackHandNormalLs(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"handOffsetLS"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "handOffsetLS")]
-    HandOffsetLs(Vector4<f32>),
+    HandOffsetLs(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"handOrienationOffsetLS"`
     /// -   type: `hkQuaternion`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "handOrienationOffsetLS")]
-    HandOrienationOffsetLs(Quaternion<f32>),
+    HandOrienationOffsetLs(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"maxElbowAngleDegrees"`
     /// -   type: `hkReal`
@@ -123,10 +123,10 @@ pub enum HkbHandIkModifierHand<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbHandIkModifierHand<'de>, "@name",
-    ("elbowAxisLS" => ElbowAxisLs(Vector4<f32>)),
-    ("backHandNormalLS" => BackHandNormalLs(Vector4<f32>)),
-    ("handOffsetLS" => HandOffsetLs(Vector4<f32>)),
-    ("handOrienationOffsetLS" => HandOrienationOffsetLs(Quaternion<f32>)),
+    ("elbowAxisLS" => ElbowAxisLs(Primitive<Vector4<f32>>)),
+    ("backHandNormalLS" => BackHandNormalLs(Primitive<Vector4<f32>>)),
+    ("handOffsetLS" => HandOffsetLs(Primitive<Vector4<f32>>)),
+    ("handOrienationOffsetLS" => HandOrienationOffsetLs(Primitive<Quaternion<f32>>)),
     ("maxElbowAngleDegrees" => MaxElbowAngleDegrees(Primitive<f32>)),
     ("minElbowAngleDegrees" => MinElbowAngleDegrees(Primitive<f32>)),
     ("shoulderIndex" => ShoulderIndex(Primitive<i16>)),

@@ -37,49 +37,49 @@ pub enum HkpStorageMeshShapeSubpartStorage {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"vertices"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertices")]
-    Vertices(HkArrayRef<Primitive<f32>>),
+    Vertices(HkArrayNum<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"indices16"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "indices16")]
-    Indices16(HkArrayRef<Primitive<u16>>),
+    Indices16(HkArrayNum<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"indices32"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "indices32")]
-    Indices32(HkArrayRef<Primitive<u32>>),
+    Indices32(HkArrayNum<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"materialIndices"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "materialIndices")]
-    MaterialIndices(HkArrayRef<Primitive<u8>>),
+    MaterialIndices(HkArrayNum<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"materials"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "materials")]
-    Materials(HkArrayRef<Primitive<u32>>),
+    Materials(HkArrayNum<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"materialIndices16"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "materialIndices16")]
-    MaterialIndices16(HkArrayRef<Primitive<u16>>),
+    MaterialIndices16(HkArrayNum<u16>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -87,10 +87,10 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpStorageMeshShapeSubpartStorage, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("vertices" => Vertices(HkArrayRef<Primitive<f32>>)),
-    ("indices16" => Indices16(HkArrayRef<Primitive<u16>>)),
-    ("indices32" => Indices32(HkArrayRef<Primitive<u32>>)),
-    ("materialIndices" => MaterialIndices(HkArrayRef<Primitive<u8>>)),
-    ("materials" => Materials(HkArrayRef<Primitive<u32>>)),
-    ("materialIndices16" => MaterialIndices16(HkArrayRef<Primitive<u16>>)),
+    ("vertices" => Vertices(HkArrayNum<f32>)),
+    ("indices16" => Indices16(HkArrayNum<u16>)),
+    ("indices32" => Indices32(HkArrayNum<u32>)),
+    ("materialIndices" => MaterialIndices(HkArrayNum<u8>)),
+    ("materials" => Materials(HkArrayNum<u32>)),
+    ("materialIndices16" => MaterialIndices16(HkArrayNum<u16>)),
 }

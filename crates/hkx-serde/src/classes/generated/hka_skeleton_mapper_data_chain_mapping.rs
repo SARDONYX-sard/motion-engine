@@ -54,14 +54,14 @@ pub enum HkaSkeletonMapperDataChainMapping {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "startAFromBTransform")]
-    StartAFromBTransform(QsTransform<f32>),
+    StartAFromBTransform(Primitive<QsTransform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"endAFromBTransform"`
     /// -   type: `hkQsTransform`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "endAFromBTransform")]
-    EndAFromBTransform(QsTransform<f32>),
+    EndAFromBTransform(Primitive<QsTransform<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -71,6 +71,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("endBoneA" => EndBoneA(Primitive<i16>)),
     ("startBoneB" => StartBoneB(Primitive<i16>)),
     ("endBoneB" => EndBoneB(Primitive<i16>)),
-    ("startAFromBTransform" => StartAFromBTransform(QsTransform<f32>)),
-    ("endAFromBTransform" => EndAFromBTransform(QsTransform<f32>)),
+    ("startAFromBTransform" => StartAFromBTransform(Primitive<QsTransform<f32>>)),
+    ("endAFromBTransform" => EndAFromBTransform(Primitive<QsTransform<f32>>)),
 }

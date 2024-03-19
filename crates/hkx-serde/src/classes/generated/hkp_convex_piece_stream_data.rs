@@ -37,28 +37,28 @@ pub enum HkpConvexPieceStreamData {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"convexPieceStream"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "convexPieceStream")]
-    ConvexPieceStream(HkArrayRef<Primitive<u32>>),
+    ConvexPieceStream(HkArrayNum<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"convexPieceOffsets"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "convexPieceOffsets")]
-    ConvexPieceOffsets(HkArrayRef<Primitive<u32>>),
+    ConvexPieceOffsets(HkArrayNum<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"convexPieceSingleTriangles"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "convexPieceSingleTriangles")]
-    ConvexPieceSingleTriangles(HkArrayRef<Primitive<u32>>),
+    ConvexPieceSingleTriangles(HkArrayNum<u32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -66,7 +66,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpConvexPieceStreamData, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("convexPieceStream" => ConvexPieceStream(HkArrayRef<Primitive<u32>>)),
-    ("convexPieceOffsets" => ConvexPieceOffsets(HkArrayRef<Primitive<u32>>)),
-    ("convexPieceSingleTriangles" => ConvexPieceSingleTriangles(HkArrayRef<Primitive<u32>>)),
+    ("convexPieceStream" => ConvexPieceStream(HkArrayNum<u32>)),
+    ("convexPieceOffsets" => ConvexPieceOffsets(HkArrayNum<u32>)),
+    ("convexPieceSingleTriangles" => ConvexPieceSingleTriangles(HkArrayNum<u32>)),
 }

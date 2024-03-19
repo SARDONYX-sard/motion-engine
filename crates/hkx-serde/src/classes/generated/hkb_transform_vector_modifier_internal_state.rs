@@ -37,14 +37,14 @@ pub enum HkbTransformVectorModifierInternalState {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"vectorOut"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vectorOut")]
-    VectorOut(Vector4<f32>),
+    VectorOut(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -52,5 +52,5 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbTransformVectorModifierInternalState, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("vectorOut" => VectorOut(Vector4<f32>)),
+    ("vectorOut" => VectorOut(Primitive<Vector4<f32>>)),
 }

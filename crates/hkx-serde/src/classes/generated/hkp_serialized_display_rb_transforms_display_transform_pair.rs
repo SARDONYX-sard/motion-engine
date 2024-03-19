@@ -33,12 +33,12 @@ pub enum HkpSerializedDisplayRbTransformsDisplayTransformPair<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "localToDisplay")]
-    LocalToDisplay(Transform<f32>),
+    LocalToDisplay(Primitive<Transform<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpSerializedDisplayRbTransformsDisplayTransformPair<'de>, "@name",
     ("rb" => Rb(Primitive<Cow<'de, str>>)),
-    ("localToDisplay" => LocalToDisplay(Transform<f32>)),
+    ("localToDisplay" => LocalToDisplay(Primitive<Transform<f32>>)),
 }

@@ -37,21 +37,21 @@ pub enum HkxSparselyAnimatedInt {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"ints"`
     /// -   type: `hkArray<hkInt32>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "ints")]
-    Ints(HkArrayRef<Primitive<i32>>),
+    Ints(HkArrayNum<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"times"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "times")]
-    Times(HkArrayRef<Primitive<f32>>),
+    Times(HkArrayNum<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -59,6 +59,6 @@ impl_deserialize_for_internally_tagged_enum! {
     HkxSparselyAnimatedInt, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("ints" => Ints(HkArrayRef<Primitive<i32>>)),
-    ("times" => Times(HkArrayRef<Primitive<f32>>)),
+    ("ints" => Ints(HkArrayNum<i32>)),
+    ("times" => Times(HkArrayNum<f32>)),
 }

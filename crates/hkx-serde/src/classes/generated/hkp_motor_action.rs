@@ -74,14 +74,14 @@ pub enum HkpMotorAction<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"axis"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "axis")]
-    Axis(Vector4<f32>),
+    Axis(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"spinRate"`
     /// -   type: `hkReal`
@@ -115,7 +115,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("axis" => Axis(Vector4<f32>)),
+    ("axis" => Axis(Primitive<Vector4<f32>>)),
     ("spinRate" => SpinRate(Primitive<f32>)),
     ("gain" => Gain(Primitive<f32>)),
     ("active" => Active(Primitive<bool>)),

@@ -26,14 +26,14 @@ pub enum HkpVehicleSuspensionSuspensionWheelParameters {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "hardpointChassisSpace")]
-    HardpointChassisSpace(Vector4<f32>),
+    HardpointChassisSpace(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"directionChassisSpace"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "directionChassisSpace")]
-    DirectionChassisSpace(Vector4<f32>),
+    DirectionChassisSpace(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"length"`
     /// -   type: `hkReal`
@@ -46,7 +46,7 @@ pub enum HkpVehicleSuspensionSuspensionWheelParameters {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpVehicleSuspensionSuspensionWheelParameters, "@name",
-    ("hardpointChassisSpace" => HardpointChassisSpace(Vector4<f32>)),
-    ("directionChassisSpace" => DirectionChassisSpace(Vector4<f32>)),
+    ("hardpointChassisSpace" => HardpointChassisSpace(Primitive<Vector4<f32>>)),
+    ("directionChassisSpace" => DirectionChassisSpace(Primitive<Vector4<f32>>)),
     ("length" => Length(Primitive<f32>)),
 }

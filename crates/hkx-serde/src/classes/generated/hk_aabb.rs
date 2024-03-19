@@ -26,19 +26,19 @@ pub enum HkAabb {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "min")]
-    Min(Vector4<f32>),
+    Min(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"max"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "max")]
-    Max(Vector4<f32>),
+    Max(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkAabb, "@name",
-    ("min" => Min(Vector4<f32>)),
-    ("max" => Max(Vector4<f32>)),
+    ("min" => Min(Primitive<Vector4<f32>>)),
+    ("max" => Max(Primitive<Vector4<f32>>)),
 }

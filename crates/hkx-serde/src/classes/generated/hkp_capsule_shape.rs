@@ -30,7 +30,7 @@ pub enum HkpCapsuleShape {
     Radius(Primitive<f32>),
 
     // C++ Parent class(`hkpSphereRepShape` => parent: `hkpShape`) has no fields
-
+    //
     /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -62,21 +62,21 @@ pub enum HkpCapsuleShape {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"vertexA"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertexA")]
-    VertexA(Vector4<f32>),
+    VertexA(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexB"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertexB")]
-    VertexB(Vector4<f32>),
+    VertexB(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -87,8 +87,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("type" => Type(Primitive<()>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("vertexA" => VertexA(Vector4<f32>)),
-    ("vertexB" => VertexB(Vector4<f32>)),
+    ("vertexA" => VertexA(Primitive<Vector4<f32>>)),
+    ("vertexB" => VertexB(Primitive<Vector4<f32>>)),
 }
 
 #[allow(clippy::enum_variant_names)]

@@ -37,21 +37,21 @@ pub enum HkxSparselyAnimatedBool {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"bools"`
     /// -   type: `hkArray<hkBool>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "bools")]
-    Bools(HkArrayRef<Primitive<bool>>),
+    Bools(HkArrayRef<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"times"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "times")]
-    Times(HkArrayRef<Primitive<f32>>),
+    Times(HkArrayNum<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -59,6 +59,6 @@ impl_deserialize_for_internally_tagged_enum! {
     HkxSparselyAnimatedBool, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("bools" => Bools(HkArrayRef<Primitive<bool>>)),
-    ("times" => Times(HkArrayRef<Primitive<f32>>)),
+    ("bools" => Bools(HkArrayRef<bool>)),
+    ("times" => Times(HkArrayNum<f32>)),
 }

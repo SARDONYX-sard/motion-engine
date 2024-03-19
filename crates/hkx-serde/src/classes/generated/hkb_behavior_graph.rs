@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkbBehaviorGraph<'a> {
     // C++ Parent class(`hkbGenerator` => parent: `hkbNode`) has no fields
-
+    //
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -72,7 +72,7 @@ pub enum HkbBehaviorGraph<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -97,7 +97,7 @@ pub enum HkbBehaviorGraph<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"variableMode"`
     /// -   type: `enum VariableMode`
@@ -111,7 +111,7 @@ pub enum HkbBehaviorGraph<'a> {
     /// - offset: 44
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "uniqueIdPool", skip_serializing)]
-    UniqueIdPool(HkArrayRef<Primitive<()>>),
+    UniqueIdPool(HkArrayRef<()>),
     /// # C++ Class Fields Info
     /// -   name:`"idToStateMachineTemplateMap"`
     /// -   type: `void*`
@@ -125,7 +125,7 @@ pub enum HkbBehaviorGraph<'a> {
     /// - offset: 60
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "mirroredExternalIdMap", skip_serializing)]
-    MirroredExternalIdMap(HkArrayRef<Primitive<()>>),
+    MirroredExternalIdMap(HkArrayRef<()>),
     /// # C++ Class Fields Info
     /// -   name:`"pseudoRandomGenerator"`
     /// -   type: `void*`
@@ -319,14 +319,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("variableMode" => VariableMode(Primitive<VariableMode>)),
-    ("uniqueIdPool" => UniqueIdPool(HkArrayRef<Primitive<()>>)),
+    ("uniqueIdPool" => UniqueIdPool(HkArrayRef<()>)),
     ("idToStateMachineTemplateMap" => IdToStateMachineTemplateMap(Primitive<Cow<'de, str>>)),
-    ("mirroredExternalIdMap" => MirroredExternalIdMap(HkArrayRef<Primitive<()>>)),
+    ("mirroredExternalIdMap" => MirroredExternalIdMap(HkArrayRef<()>)),
     ("pseudoRandomGenerator" => PseudoRandomGenerator(Primitive<Cow<'de, str>>)),
     ("rootGenerator" => RootGenerator(Primitive<Cow<'de, str>>)),
     ("data" => Data(Primitive<Cow<'de, str>>)),

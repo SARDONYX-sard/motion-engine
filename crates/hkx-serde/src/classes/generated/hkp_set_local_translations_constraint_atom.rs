@@ -35,20 +35,20 @@ pub enum HkpSetLocalTranslationsConstraintAtom {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "translationA")]
-    TranslationA(Vector4<f32>),
+    TranslationA(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"translationB"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "translationB")]
-    TranslationB(Vector4<f32>),
+    TranslationB(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpSetLocalTranslationsConstraintAtom, "@name",
     ("type" => Type(Primitive<AtomType>)),
-    ("translationA" => TranslationA(Vector4<f32>)),
-    ("translationB" => TranslationB(Vector4<f32>)),
+    ("translationA" => TranslationA(Primitive<Vector4<f32>>)),
+    ("translationB" => TranslationB(Primitive<Vector4<f32>>)),
 }

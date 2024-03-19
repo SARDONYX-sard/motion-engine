@@ -81,28 +81,28 @@ pub enum HkpSpringAction<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"lastForce"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "lastForce")]
-    LastForce(Vector4<f32>),
+    LastForce(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"positionAinA"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "positionAinA")]
-    PositionAinA(Vector4<f32>),
+    PositionAinA(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"positionBinB"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "positionBinB")]
-    PositionBinB(Vector4<f32>),
+    PositionBinB(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"restLength"`
     /// -   type: `hkReal`
@@ -151,9 +151,9 @@ impl_deserialize_for_internally_tagged_enum! {
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("lastForce" => LastForce(Vector4<f32>)),
-    ("positionAinA" => PositionAinA(Vector4<f32>)),
-    ("positionBinB" => PositionBinB(Vector4<f32>)),
+    ("lastForce" => LastForce(Primitive<Vector4<f32>>)),
+    ("positionAinA" => PositionAinA(Primitive<Vector4<f32>>)),
+    ("positionBinB" => PositionBinB(Primitive<Vector4<f32>>)),
     ("restLength" => RestLength(Primitive<f32>)),
     ("strength" => Strength(Primitive<f32>)),
     ("damping" => Damping(Primitive<f32>)),

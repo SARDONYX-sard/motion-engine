@@ -64,14 +64,14 @@ pub enum HkpCenterOfMassChangerModifierConstraintAtom<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "displacementA")]
-    DisplacementA(Vector4<f32>),
+    DisplacementA(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"displacementB"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "displacementB")]
-    DisplacementB(Vector4<f32>),
+    DisplacementB(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -82,6 +82,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("child" => Child(Primitive<Cow<'de, str>>)),
     ("pad" => Pad(CStyleArray<[u32; 2]>)),
     ("type" => Type(Primitive<AtomType>)),
-    ("displacementA" => DisplacementA(Vector4<f32>)),
-    ("displacementB" => DisplacementB(Vector4<f32>)),
+    ("displacementA" => DisplacementA(Primitive<Vector4<f32>>)),
+    ("displacementB" => DisplacementB(Primitive<Vector4<f32>>)),
 }

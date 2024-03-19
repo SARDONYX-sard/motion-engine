@@ -54,14 +54,14 @@ pub enum HkaSkeletonMapperData<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "unmappedBones")]
-    UnmappedBones(HkArrayRef<Primitive<i16>>),
+    UnmappedBones(HkArrayNum<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"extractedMotionMapping"`
     /// -   type: `hkQsTransform`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "extractedMotionMapping")]
-    ExtractedMotionMapping(QsTransform<f32>),
+    ExtractedMotionMapping(Primitive<QsTransform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"keepUnmappedLocal"`
     /// -   type: `hkBool`
@@ -85,8 +85,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("skeletonB" => SkeletonB(Primitive<Cow<'de, str>>)),
     ("simpleMappings" => SimpleMappings(HkArrayClass<HkaSkeletonMapperDataSimpleMapping>)),
     ("chainMappings" => ChainMappings(HkArrayClass<HkaSkeletonMapperDataChainMapping>)),
-    ("unmappedBones" => UnmappedBones(HkArrayRef<Primitive<i16>>)),
-    ("extractedMotionMapping" => ExtractedMotionMapping(QsTransform<f32>)),
+    ("unmappedBones" => UnmappedBones(HkArrayNum<i16>)),
+    ("extractedMotionMapping" => ExtractedMotionMapping(Primitive<QsTransform<f32>>)),
     ("keepUnmappedLocal" => KeepUnmappedLocal(Primitive<bool>)),
     ("mappingType" => MappingType(Primitive<MappingType>)),
 }

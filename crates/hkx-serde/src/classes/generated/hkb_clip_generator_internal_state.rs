@@ -37,14 +37,14 @@ pub enum HkbClipGeneratorInternalState {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"extractedMotion"`
     /// -   type: `hkQsTransform`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "extractedMotion")]
-    ExtractedMotion(QsTransform<f32>),
+    ExtractedMotion(Primitive<QsTransform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"echos"`
     /// -   type: `hkArray<struct hkbClipGeneratorEcho>`
@@ -115,7 +115,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbClipGeneratorInternalState, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("extractedMotion" => ExtractedMotion(QsTransform<f32>)),
+    ("extractedMotion" => ExtractedMotion(Primitive<QsTransform<f32>>)),
     ("echos" => Echos(HkArrayClass<HkbClipGeneratorEcho>)),
     ("localTime" => LocalTime(Primitive<f32>)),
     ("time" => Time(Primitive<f32>)),

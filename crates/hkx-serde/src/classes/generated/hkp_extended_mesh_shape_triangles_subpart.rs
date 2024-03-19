@@ -147,14 +147,14 @@ pub enum HkpExtendedMeshShapeTrianglesSubpart<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "extrusion")]
-    Extrusion(Vector4<f32>),
+    Extrusion(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"transform"`
     /// -   type: `hkQsTransform`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transform")]
-    Transform(QsTransform<f32>),
+    Transform(Primitive<QsTransform<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -177,6 +177,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("indexStriding" => IndexStriding(Primitive<u16>)),
     ("stridingType" => StridingType(Primitive<IndexStridingType>)),
     ("flipAlternateTriangles" => FlipAlternateTriangles(Primitive<i8>)),
-    ("extrusion" => Extrusion(Vector4<f32>)),
-    ("transform" => Transform(QsTransform<f32>)),
+    ("extrusion" => Extrusion(Primitive<Vector4<f32>>)),
+    ("transform" => Transform(Primitive<QsTransform<f32>>)),
 }

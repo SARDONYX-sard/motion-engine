@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkpVehicleDefaultAerodynamics {
     // C++ Parent class(`hkpVehicleAerodynamics` => parent: `hkReferencedObject`) has no fields
-
+    //
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -39,7 +39,7 @@ pub enum HkpVehicleDefaultAerodynamics {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"airDensity"`
     /// -   type: `hkReal`
@@ -74,7 +74,7 @@ pub enum HkpVehicleDefaultAerodynamics {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "extraGravityws")]
-    ExtraGravityws(Vector4<f32>),
+    ExtraGravityws(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -86,5 +86,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("frontalArea" => FrontalArea(Primitive<f32>)),
     ("dragCoefficient" => DragCoefficient(Primitive<f32>)),
     ("liftCoefficient" => LiftCoefficient(Primitive<f32>)),
-    ("extraGravityws" => ExtraGravityws(Vector4<f32>)),
+    ("extraGravityws" => ExtraGravityws(Primitive<Vector4<f32>>)),
 }

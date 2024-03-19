@@ -67,7 +67,7 @@ pub enum HkpCompressedMeshShape<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"bitsPerIndex"`
     /// -   type: `hkInt32`
@@ -123,21 +123,21 @@ pub enum HkpCompressedMeshShape<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "materials")]
-    Materials(HkArrayRef<Primitive<u32>>),
+    Materials(HkArrayNum<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"materials16"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "materials16")]
-    Materials16(HkArrayRef<Primitive<u16>>),
+    Materials16(HkArrayNum<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"materials8"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "materials8")]
-    Materials8(HkArrayRef<Primitive<u8>>),
+    Materials8(HkArrayNum<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"transforms"`
     /// -   type: `hkArray<hkQsTransform>`
@@ -240,9 +240,9 @@ impl_deserialize_for_internally_tagged_enum! {
     ("radius" => Radius(Primitive<f32>)),
     ("weldingType" => WeldingType(Primitive<WeldingType>)),
     ("materialType" => MaterialType(Primitive<MaterialType>)),
-    ("materials" => Materials(HkArrayRef<Primitive<u32>>)),
-    ("materials16" => Materials16(HkArrayRef<Primitive<u16>>)),
-    ("materials8" => Materials8(HkArrayRef<Primitive<u8>>)),
+    ("materials" => Materials(HkArrayNum<u32>)),
+    ("materials16" => Materials16(HkArrayNum<u16>)),
+    ("materials8" => Materials8(HkArrayNum<u8>)),
     ("transforms" => Transforms(HkArrayMatrix3<QsTransform<f32>>)),
     ("bigVertices" => BigVertices(HkArrayVector<Vector4<f32>>)),
     ("bigTriangles" => BigTriangles(HkArrayClass<HkpCompressedMeshShapeBigTriangle>)),

@@ -37,21 +37,21 @@ pub enum HkpConvexVerticesConnectivity {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"vertexIndices"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertexIndices")]
-    VertexIndices(HkArrayRef<Primitive<u16>>),
+    VertexIndices(HkArrayNum<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"numVerticesPerFace"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "numVerticesPerFace")]
-    NumVerticesPerFace(HkArrayRef<Primitive<u8>>),
+    NumVerticesPerFace(HkArrayNum<u8>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -59,6 +59,6 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpConvexVerticesConnectivity, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("vertexIndices" => VertexIndices(HkArrayRef<Primitive<u16>>)),
-    ("numVerticesPerFace" => NumVerticesPerFace(HkArrayRef<Primitive<u8>>)),
+    ("vertexIndices" => VertexIndices(HkArrayNum<u16>)),
+    ("numVerticesPerFace" => NumVerticesPerFace(HkArrayNum<u8>)),
 }

@@ -81,14 +81,14 @@ pub enum HkpAngularDashpotAction<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"rotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rotation")]
-    Rotation(Quaternion<f32>),
+    Rotation(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"strength"`
     /// -   type: `hkReal`
@@ -116,7 +116,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("rotation" => Rotation(Quaternion<f32>)),
+    ("rotation" => Rotation(Primitive<Quaternion<f32>>)),
     ("strength" => Strength(Primitive<f32>)),
     ("damping" => Damping(Primitive<f32>)),
 }

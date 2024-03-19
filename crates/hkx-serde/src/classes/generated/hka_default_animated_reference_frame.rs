@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkaDefaultAnimatedReferenceFrame {
     // C++ Parent class(`hkaAnimatedReferenceFrame` => parent: `hkReferencedObject`) has no fields
-
+    //
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -39,21 +39,21 @@ pub enum HkaDefaultAnimatedReferenceFrame {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"up"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "up")]
-    Up(Vector4<f32>),
+    Up(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"forward"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "forward")]
-    Forward(Vector4<f32>),
+    Forward(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"duration"`
     /// -   type: `hkReal`
@@ -75,8 +75,8 @@ impl_deserialize_for_internally_tagged_enum! {
     HkaDefaultAnimatedReferenceFrame, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("up" => Up(Vector4<f32>)),
-    ("forward" => Forward(Vector4<f32>)),
+    ("up" => Up(Primitive<Vector4<f32>>)),
+    ("forward" => Forward(Primitive<Vector4<f32>>)),
     ("duration" => Duration(Primitive<f32>)),
     ("referenceFrameSamples" => ReferenceFrameSamples(HkArrayVector<Vector4<f32>>)),
 }

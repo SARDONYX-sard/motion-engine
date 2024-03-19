@@ -30,7 +30,7 @@ pub enum HkpConvexListShape<'a> {
     Radius(Primitive<f32>),
 
     // C++ Parent class(`hkpSphereRepShape` => parent: `hkpShape`) has no fields
-
+    //
     /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -62,7 +62,7 @@ pub enum HkpConvexListShape<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"minDistanceToUseConvexHullForGetClosestPoints"`
     /// -   type: `hkReal`
@@ -76,14 +76,14 @@ pub enum HkpConvexListShape<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "aabbHalfExtents")]
-    AabbHalfExtents(Vector4<f32>),
+    AabbHalfExtents(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"aabbCenter"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "aabbCenter")]
-    AabbCenter(Vector4<f32>),
+    AabbCenter(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"useCachedAabb"`
     /// -   type: `hkBool`
@@ -109,8 +109,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("minDistanceToUseConvexHullForGetClosestPoints" => MinDistanceToUseConvexHullForGetClosestPoints(Primitive<f32>)),
-    ("aabbHalfExtents" => AabbHalfExtents(Vector4<f32>)),
-    ("aabbCenter" => AabbCenter(Vector4<f32>)),
+    ("aabbHalfExtents" => AabbHalfExtents(Primitive<Vector4<f32>>)),
+    ("aabbCenter" => AabbCenter(Primitive<Vector4<f32>>)),
     ("useCachedAabb" => UseCachedAabb(Primitive<bool>)),
     ("childShapes" => ChildShapes(HkArrayRef<Cow<'de, str>>)),
 }

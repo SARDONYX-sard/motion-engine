@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkpSingleShapeContainer<'a> {
     // C++ Parent class(`hkpShapeContainer` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"childShape"`
     /// -   type: `struct hkpShape*`

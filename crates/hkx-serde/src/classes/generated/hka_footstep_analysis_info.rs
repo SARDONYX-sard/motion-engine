@@ -37,84 +37,84 @@ pub enum HkaFootstepAnalysisInfo {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkArray<hkChar>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "name")]
-    Name(HkArrayRef<Primitive<char>>),
+    Name(HkArrayRef<char>),
     /// # C++ Class Fields Info
     /// -   name:`"nameStrike"`
     /// -   type: `hkArray<hkChar>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "nameStrike")]
-    NameStrike(HkArrayRef<Primitive<char>>),
+    NameStrike(HkArrayRef<char>),
     /// # C++ Class Fields Info
     /// -   name:`"nameLift"`
     /// -   type: `hkArray<hkChar>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "nameLift")]
-    NameLift(HkArrayRef<Primitive<char>>),
+    NameLift(HkArrayRef<char>),
     /// # C++ Class Fields Info
     /// -   name:`"nameLock"`
     /// -   type: `hkArray<hkChar>`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "nameLock")]
-    NameLock(HkArrayRef<Primitive<char>>),
+    NameLock(HkArrayRef<char>),
     /// # C++ Class Fields Info
     /// -   name:`"nameUnlock"`
     /// -   type: `hkArray<hkChar>`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "nameUnlock")]
-    NameUnlock(HkArrayRef<Primitive<char>>),
+    NameUnlock(HkArrayRef<char>),
     /// # C++ Class Fields Info
     /// -   name:`"minPos"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "minPos")]
-    MinPos(HkArrayRef<Primitive<f32>>),
+    MinPos(HkArrayNum<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxPos"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "maxPos")]
-    MaxPos(HkArrayRef<Primitive<f32>>),
+    MaxPos(HkArrayNum<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"minVel"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "minVel")]
-    MinVel(HkArrayRef<Primitive<f32>>),
+    MinVel(HkArrayNum<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"maxVel"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "maxVel")]
-    MaxVel(HkArrayRef<Primitive<f32>>),
+    MaxVel(HkArrayNum<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"allBonesDown"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "allBonesDown")]
-    AllBonesDown(HkArrayRef<Primitive<f32>>),
+    AllBonesDown(HkArrayNum<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"anyBonesDown"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "anyBonesDown")]
-    AnyBonesDown(HkArrayRef<Primitive<f32>>),
+    AnyBonesDown(HkArrayNum<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"posTol"`
     /// -   type: `hkReal`
@@ -143,17 +143,17 @@ impl_deserialize_for_internally_tagged_enum! {
     HkaFootstepAnalysisInfo, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("name" => Name(HkArrayRef<Primitive<char>>)),
-    ("nameStrike" => NameStrike(HkArrayRef<Primitive<char>>)),
-    ("nameLift" => NameLift(HkArrayRef<Primitive<char>>)),
-    ("nameLock" => NameLock(HkArrayRef<Primitive<char>>)),
-    ("nameUnlock" => NameUnlock(HkArrayRef<Primitive<char>>)),
-    ("minPos" => MinPos(HkArrayRef<Primitive<f32>>)),
-    ("maxPos" => MaxPos(HkArrayRef<Primitive<f32>>)),
-    ("minVel" => MinVel(HkArrayRef<Primitive<f32>>)),
-    ("maxVel" => MaxVel(HkArrayRef<Primitive<f32>>)),
-    ("allBonesDown" => AllBonesDown(HkArrayRef<Primitive<f32>>)),
-    ("anyBonesDown" => AnyBonesDown(HkArrayRef<Primitive<f32>>)),
+    ("name" => Name(HkArrayRef<char>)),
+    ("nameStrike" => NameStrike(HkArrayRef<char>)),
+    ("nameLift" => NameLift(HkArrayRef<char>)),
+    ("nameLock" => NameLock(HkArrayRef<char>)),
+    ("nameUnlock" => NameUnlock(HkArrayRef<char>)),
+    ("minPos" => MinPos(HkArrayNum<f32>)),
+    ("maxPos" => MaxPos(HkArrayNum<f32>)),
+    ("minVel" => MinVel(HkArrayNum<f32>)),
+    ("maxVel" => MaxVel(HkArrayNum<f32>)),
+    ("allBonesDown" => AllBonesDown(HkArrayNum<f32>)),
+    ("anyBonesDown" => AnyBonesDown(HkArrayNum<f32>)),
     ("posTol" => PosTol(Primitive<f32>)),
     ("velTol" => VelTol(Primitive<f32>)),
     ("duration" => Duration(Primitive<f32>)),

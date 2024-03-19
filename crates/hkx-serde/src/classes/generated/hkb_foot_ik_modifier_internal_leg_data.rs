@@ -26,7 +26,7 @@ pub enum HkbFootIkModifierInternalLegData<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "groundPosition")]
-    GroundPosition(Vector4<f32>),
+    GroundPosition(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"footIkSolver"`
     /// -   type: `void*`
@@ -39,6 +39,6 @@ pub enum HkbFootIkModifierInternalLegData<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbFootIkModifierInternalLegData<'de>, "@name",
-    ("groundPosition" => GroundPosition(Vector4<f32>)),
+    ("groundPosition" => GroundPosition(Primitive<Vector4<f32>>)),
     ("footIkSolver" => FootIkSolver(Primitive<Cow<'de, str>>)),
 }

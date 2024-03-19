@@ -37,7 +37,7 @@ pub enum HkbCharacterSteppedInfo {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"characterId"`
     /// -   type: `hkUint64`
@@ -58,7 +58,7 @@ pub enum HkbCharacterSteppedInfo {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "worldFromModel")]
-    WorldFromModel(QsTransform<f32>),
+    WorldFromModel(Primitive<QsTransform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"poseModelSpace"`
     /// -   type: `hkArray<hkQsTransform>`
@@ -82,7 +82,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("characterId" => CharacterId(Primitive<u64>)),
     ("deltaTime" => DeltaTime(Primitive<f32>)),
-    ("worldFromModel" => WorldFromModel(QsTransform<f32>)),
+    ("worldFromModel" => WorldFromModel(Primitive<QsTransform<f32>>)),
     ("poseModelSpace" => PoseModelSpace(HkArrayMatrix3<QsTransform<f32>>)),
     ("rigidAttachmentTransforms" => RigidAttachmentTransforms(HkArrayMatrix3<QsTransform<f32>>)),
 }

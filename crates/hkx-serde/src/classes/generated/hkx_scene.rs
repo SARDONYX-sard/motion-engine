@@ -37,7 +37,7 @@ pub enum HkxScene<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"modeller"`
     /// -   type: `hkStringPtr`
@@ -128,7 +128,7 @@ pub enum HkxScene<'a> {
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "appliedTransform")]
-    AppliedTransform(Matrix3<f32>),
+    AppliedTransform(Primitive<Matrix3<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -148,5 +148,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("inplaceTextures" => InplaceTextures(HkArrayRef<Cow<'de, str>>)),
     ("externalTextures" => ExternalTextures(HkArrayRef<Cow<'de, str>>)),
     ("skinBindings" => SkinBindings(HkArrayRef<Cow<'de, str>>)),
-    ("appliedTransform" => AppliedTransform(Matrix3<f32>)),
+    ("appliedTransform" => AppliedTransform(Primitive<Matrix3<f32>>)),
 }

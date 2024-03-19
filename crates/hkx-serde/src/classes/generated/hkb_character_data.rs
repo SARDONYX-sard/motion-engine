@@ -37,7 +37,7 @@ pub enum HkbCharacterData<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"characterControllerInfo"`
     /// -   type: `struct hkbCharacterDataCharacterControllerInfo`
@@ -51,21 +51,21 @@ pub enum HkbCharacterData<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "modelUpMS")]
-    ModelUpMs(Vector4<f32>),
+    ModelUpMs(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"modelForwardMS"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "modelForwardMS")]
-    ModelForwardMs(Vector4<f32>),
+    ModelForwardMs(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"modelRightMS"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "modelRightMS")]
-    ModelRightMs(Vector4<f32>),
+    ModelRightMs(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"characterPropertyInfos"`
     /// -   type: `hkArray<struct hkbVariableInfo>`
@@ -79,7 +79,7 @@ pub enum HkbCharacterData<'a> {
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "numBonesPerLod")]
-    NumBonesPerLod(HkArrayRef<Primitive<i32>>),
+    NumBonesPerLod(HkArrayNum<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"characterPropertyValues"`
     /// -   type: `struct hkbVariableValueSet*`
@@ -144,11 +144,11 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("characterControllerInfo" => CharacterControllerInfo(SingleClass<HkbCharacterDataCharacterControllerInfo<'de>>)),
-    ("modelUpMS" => ModelUpMs(Vector4<f32>)),
-    ("modelForwardMS" => ModelForwardMs(Vector4<f32>)),
-    ("modelRightMS" => ModelRightMs(Vector4<f32>)),
+    ("modelUpMS" => ModelUpMs(Primitive<Vector4<f32>>)),
+    ("modelForwardMS" => ModelForwardMs(Primitive<Vector4<f32>>)),
+    ("modelRightMS" => ModelRightMs(Primitive<Vector4<f32>>)),
     ("characterPropertyInfos" => CharacterPropertyInfos(HkArrayClass<HkbVariableInfo>)),
-    ("numBonesPerLod" => NumBonesPerLod(HkArrayRef<Primitive<i32>>)),
+    ("numBonesPerLod" => NumBonesPerLod(HkArrayNum<i32>)),
     ("characterPropertyValues" => CharacterPropertyValues(Primitive<Cow<'de, str>>)),
     ("footIkDriverInfo" => FootIkDriverInfo(Primitive<Cow<'de, str>>)),
     ("handIkDriverInfo" => HandIkDriverInfo(Primitive<Cow<'de, str>>)),

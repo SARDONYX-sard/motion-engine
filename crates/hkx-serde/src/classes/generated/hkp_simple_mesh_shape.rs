@@ -67,7 +67,7 @@ pub enum HkpSimpleMeshShape {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"vertices"`
     /// -   type: `hkArray<hkVector4>`
@@ -88,7 +88,7 @@ pub enum HkpSimpleMeshShape {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "materialIndices")]
-    MaterialIndices(HkArrayRef<Primitive<u8>>),
+    MaterialIndices(HkArrayNum<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"radius"`
     /// -   type: `hkReal`
@@ -116,7 +116,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("vertices" => Vertices(HkArrayVector<Vector4<f32>>)),
     ("triangles" => Triangles(HkArrayClass<HkpSimpleMeshShapeTriangle>)),
-    ("materialIndices" => MaterialIndices(HkArrayRef<Primitive<u8>>)),
+    ("materialIndices" => MaterialIndices(HkArrayNum<u8>)),
     ("radius" => Radius(Primitive<f32>)),
     ("weldingType" => WeldingType(Primitive<WeldingType>)),
 }

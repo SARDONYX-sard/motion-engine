@@ -37,14 +37,14 @@ pub enum HkpRemoveTerminalsMoppModifier<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"removeInfo"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "removeInfo")]
-    RemoveInfo(HkArrayRef<Primitive<u32>>),
+    RemoveInfo(HkArrayNum<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"tempShapesToRemove"`
     /// -   type: `void*`
@@ -59,6 +59,6 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpRemoveTerminalsMoppModifier<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("removeInfo" => RemoveInfo(HkArrayRef<Primitive<u32>>)),
+    ("removeInfo" => RemoveInfo(HkArrayNum<u32>)),
     ("tempShapesToRemove" => TempShapesToRemove(Primitive<Cow<'de, str>>)),
 }

@@ -26,7 +26,7 @@ pub enum HkbCharacterControllerControlData {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "desiredVelocity")]
-    DesiredVelocity(Vector4<f32>),
+    DesiredVelocity(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"verticalGain"`
     /// -   type: `hkReal`
@@ -60,7 +60,7 @@ pub enum HkbCharacterControllerControlData {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbCharacterControllerControlData, "@name",
-    ("desiredVelocity" => DesiredVelocity(Vector4<f32>)),
+    ("desiredVelocity" => DesiredVelocity(Primitive<Vector4<f32>>)),
     ("verticalGain" => VerticalGain(Primitive<f32>)),
     ("horizontalCatchUpGain" => HorizontalCatchUpGain(Primitive<f32>)),
     ("maxVerticalSeparation" => MaxVerticalSeparation(Primitive<f32>)),

@@ -85,7 +85,7 @@ pub enum HkbLookAtModifier<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -110,42 +110,42 @@ pub enum HkbLookAtModifier<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"targetWS"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "targetWS")]
-    TargetWs(Vector4<f32>),
+    TargetWs(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"headForwardLS"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "headForwardLS")]
-    HeadForwardLs(Vector4<f32>),
+    HeadForwardLs(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"neckForwardLS"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "neckForwardLS")]
-    NeckForwardLs(Vector4<f32>),
+    NeckForwardLs(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"neckRightLS"`
     /// -   type: `hkVector4`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "neckRightLS")]
-    NeckRightLs(Vector4<f32>),
+    NeckRightLs(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"eyePositionHS"`
     /// -   type: `hkVector4`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "eyePositionHS")]
-    EyePositionHs(Vector4<f32>),
+    EyePositionHs(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"newTargetGain"`
     /// -   type: `hkReal`
@@ -243,7 +243,7 @@ pub enum HkbLookAtModifier<'a> {
     /// - offset: 176
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "lookAtLastTargetWS", skip_serializing)]
-    LookAtLastTargetWs(Vector4<f32>),
+    LookAtLastTargetWs(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"lookAtWeight"`
     /// -   type: `hkReal`
@@ -264,15 +264,15 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("targetWS" => TargetWs(Vector4<f32>)),
-    ("headForwardLS" => HeadForwardLs(Vector4<f32>)),
-    ("neckForwardLS" => NeckForwardLs(Vector4<f32>)),
-    ("neckRightLS" => NeckRightLs(Vector4<f32>)),
-    ("eyePositionHS" => EyePositionHs(Vector4<f32>)),
+    ("targetWS" => TargetWs(Primitive<Vector4<f32>>)),
+    ("headForwardLS" => HeadForwardLs(Primitive<Vector4<f32>>)),
+    ("neckForwardLS" => NeckForwardLs(Primitive<Vector4<f32>>)),
+    ("neckRightLS" => NeckRightLs(Primitive<Vector4<f32>>)),
+    ("eyePositionHS" => EyePositionHs(Primitive<Vector4<f32>>)),
     ("newTargetGain" => NewTargetGain(Primitive<f32>)),
     ("onGain" => OnGain(Primitive<f32>)),
     ("offGain" => OffGain(Primitive<f32>)),
@@ -286,6 +286,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("isOn" => IsOn(Primitive<bool>)),
     ("individualLimitsOn" => IndividualLimitsOn(Primitive<bool>)),
     ("isTargetInsideLimitCone" => IsTargetInsideLimitCone(Primitive<bool>)),
-    ("lookAtLastTargetWS" => LookAtLastTargetWs(Vector4<f32>)),
+    ("lookAtLastTargetWS" => LookAtLastTargetWs(Primitive<Vector4<f32>>)),
     ("lookAtWeight" => LookAtWeight(Primitive<f32>)),
 }

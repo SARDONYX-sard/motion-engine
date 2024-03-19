@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum BsSynchronizedClipGenerator<'a> {
     // C++ Parent class(`hkbGenerator` => parent: `hkbNode`) has no fields
-
+    //
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -72,7 +72,7 @@ pub enum BsSynchronizedClipGenerator<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -97,7 +97,7 @@ pub enum BsSynchronizedClipGenerator<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"pClipGenerator"`
     /// -   type: `struct hkbGenerator*`
@@ -167,21 +167,21 @@ pub enum BsSynchronizedClipGenerator<'a> {
     /// - offset: 80
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "StartMarkWS", skip_serializing)]
-    StartMarkWs(QsTransform<f32>),
+    StartMarkWs(Primitive<QsTransform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"EndMarkWS"`
     /// -   type: `hkQsTransform`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "EndMarkWS", skip_serializing)]
-    EndMarkWs(QsTransform<f32>),
+    EndMarkWs(Primitive<QsTransform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"StartMarkMS"`
     /// -   type: `hkQsTransform`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "StartMarkMS", skip_serializing)]
-    StartMarkMs(QsTransform<f32>),
+    StartMarkMs(Primitive<QsTransform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"fCurrentLerp"`
     /// -   type: `hkReal`
@@ -242,7 +242,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
@@ -255,9 +255,9 @@ impl_deserialize_for_internally_tagged_enum! {
     ("bReorientSupportChar" => BReorientSupportChar(Primitive<bool>)),
     ("bApplyMotionFromRoot" => BApplyMotionFromRoot(Primitive<bool>)),
     ("pSyncScene" => PSyncScene(Primitive<Cow<'de, str>>)),
-    ("StartMarkWS" => StartMarkWs(QsTransform<f32>)),
-    ("EndMarkWS" => EndMarkWs(QsTransform<f32>)),
-    ("StartMarkMS" => StartMarkMs(QsTransform<f32>)),
+    ("StartMarkWS" => StartMarkWs(Primitive<QsTransform<f32>>)),
+    ("EndMarkWS" => EndMarkWs(Primitive<QsTransform<f32>>)),
+    ("StartMarkMS" => StartMarkMs(Primitive<QsTransform<f32>>)),
     ("fCurrentLerp" => FCurrentLerp(Primitive<f32>)),
     ("pLocalSyncBinding" => PLocalSyncBinding(Primitive<Cow<'de, str>>)),
     ("pEventMap" => PEventMap(Primitive<Cow<'de, str>>)),

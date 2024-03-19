@@ -66,7 +66,7 @@ pub enum HkpBallGun<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"bulletRadius"`
     /// -   type: `hkReal`
@@ -108,7 +108,7 @@ pub enum HkpBallGun<'a> {
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "bulletOffsetFromCenter")]
-    BulletOffsetFromCenter(Vector4<f32>),
+    BulletOffsetFromCenter(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"addedBodies"`
     /// -   type: `void*`
@@ -132,6 +132,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("bulletMass" => BulletMass(Primitive<f32>)),
     ("damageMultiplier" => DamageMultiplier(Primitive<f32>)),
     ("maxBulletsInWorld" => MaxBulletsInWorld(Primitive<i32>)),
-    ("bulletOffsetFromCenter" => BulletOffsetFromCenter(Vector4<f32>)),
+    ("bulletOffsetFromCenter" => BulletOffsetFromCenter(Primitive<Vector4<f32>>)),
     ("addedBodies" => AddedBodies(Primitive<Cow<'de, str>>)),
 }

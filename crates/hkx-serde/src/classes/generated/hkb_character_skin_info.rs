@@ -37,7 +37,7 @@ pub enum HkbCharacterSkinInfo {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"characterId"`
     /// -   type: `hkUint64`
@@ -51,14 +51,14 @@ pub enum HkbCharacterSkinInfo {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "deformableSkins")]
-    DeformableSkins(HkArrayRef<Primitive<u64>>),
+    DeformableSkins(HkArrayNum<u64>),
     /// # C++ Class Fields Info
     /// -   name:`"rigidSkins"`
     /// -   type: `hkArray<hkUint64>`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rigidSkins")]
-    RigidSkins(HkArrayRef<Primitive<u64>>),
+    RigidSkins(HkArrayNum<u64>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -67,6 +67,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("characterId" => CharacterId(Primitive<u64>)),
-    ("deformableSkins" => DeformableSkins(HkArrayRef<Primitive<u64>>)),
-    ("rigidSkins" => RigidSkins(HkArrayRef<Primitive<u64>>)),
+    ("deformableSkins" => DeformableSkins(HkArrayNum<u64>)),
+    ("rigidSkins" => RigidSkins(HkArrayNum<u64>)),
 }

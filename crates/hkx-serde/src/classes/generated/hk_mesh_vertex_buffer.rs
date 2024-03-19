@@ -37,7 +37,7 @@ pub enum HkMeshVertexBuffer {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -120,7 +120,22 @@ impl<'de> serde::Deserialize<'de> for Flags {
                         "ACCESS_READ_WRITE" => flags |= Self::ACCESS_READ_WRITE,
                         "ACCESS_WRITE_DISCARD" => flags |= Self::ACCESS_WRITE_DISCARD,
                         "ACCESS_ELEMENT_ARRAY" => flags |= Self::ACCESS_ELEMENT_ARRAY,
-                        _ => return Err(serde::de::Error::custom("Invalid flag")),
+                        unknown => match parse_int::parse(unknown) {
+                            Ok(int) => {
+                                if let Some(bits) = Self::from_bits(int) {
+                                    flags |= bits
+                                } else {
+                                    return Err(serde::de::Error::custom(format!(
+                                        "Expected FlagValues flags but got \"{unknown}\"",
+                                    )));
+                                };
+                            }
+                            Err(_err) => {
+                                return Err(serde::de::Error::custom(format!(
+                                    "Expected FlagValues flags or integer, but got \"{unknown}\""
+                                )))
+                            }
+                        },
                     }
                 }
                 Ok(flags)

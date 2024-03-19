@@ -35,20 +35,20 @@ pub enum HkpSetLocalRotationsConstraintAtom {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rotationA")]
-    RotationA(Rotation<f32>),
+    RotationA(Primitive<Rotation<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"rotationB"`
     /// -   type: `hkRotation`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rotationB")]
-    RotationB(Rotation<f32>),
+    RotationB(Primitive<Rotation<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpSetLocalRotationsConstraintAtom, "@name",
     ("type" => Type(Primitive<AtomType>)),
-    ("rotationA" => RotationA(Rotation<f32>)),
-    ("rotationB" => RotationB(Rotation<f32>)),
+    ("rotationA" => RotationA(Primitive<Rotation<f32>>)),
+    ("rotationB" => RotationB(Primitive<Rotation<f32>>)),
 }

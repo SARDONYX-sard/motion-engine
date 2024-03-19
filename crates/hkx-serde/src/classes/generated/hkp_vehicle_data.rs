@@ -37,14 +37,14 @@ pub enum HkpVehicleData {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"gravity"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "gravity")]
-    Gravity(Vector4<f32>),
+    Gravity(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"numWheels"`
     /// -   type: `hkInt8`
@@ -58,7 +58,7 @@ pub enum HkpVehicleData {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "chassisOrientation")]
-    ChassisOrientation(Rotation<f32>),
+    ChassisOrientation(Primitive<Rotation<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"torqueRollFactor"`
     /// -   type: `hkReal`
@@ -149,7 +149,7 @@ pub enum HkpVehicleData {
     /// - offset: 152
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "numWheelsPerAxle")]
-    NumWheelsPerAxle(HkArrayRef<Primitive<i8>>),
+    NumWheelsPerAxle(HkArrayNum<i8>),
     /// # C++ Class Fields Info
     /// -   name:`"frictionDescription"`
     /// -   type: `struct hkpVehicleFrictionDescription`
@@ -163,7 +163,7 @@ pub enum HkpVehicleData {
     /// - offset: 384
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "chassisFrictionInertiaInvDiag")]
-    ChassisFrictionInertiaInvDiag(Vector4<f32>),
+    ChassisFrictionInertiaInvDiag(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"alreadyInitialised"`
     /// -   type: `hkBool`
@@ -178,9 +178,9 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpVehicleData, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("gravity" => Gravity(Vector4<f32>)),
+    ("gravity" => Gravity(Primitive<Vector4<f32>>)),
     ("numWheels" => NumWheels(Primitive<i8>)),
-    ("chassisOrientation" => ChassisOrientation(Rotation<f32>)),
+    ("chassisOrientation" => ChassisOrientation(Primitive<Rotation<f32>>)),
     ("torqueRollFactor" => TorqueRollFactor(Primitive<f32>)),
     ("torquePitchFactor" => TorquePitchFactor(Primitive<f32>)),
     ("torqueYawFactor" => TorqueYawFactor(Primitive<f32>)),
@@ -193,8 +193,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("normalClippingAngleCos" => NormalClippingAngleCos(Primitive<f32>)),
     ("maxFrictionSolverMassRatio" => MaxFrictionSolverMassRatio(Primitive<f32>)),
     ("wheelParams" => WheelParams(HkArrayClass<HkpVehicleDataWheelComponentParams>)),
-    ("numWheelsPerAxle" => NumWheelsPerAxle(HkArrayRef<Primitive<i8>>)),
+    ("numWheelsPerAxle" => NumWheelsPerAxle(HkArrayNum<i8>)),
     ("frictionDescription" => FrictionDescription(SingleClass<HkpVehicleFrictionDescription>)),
-    ("chassisFrictionInertiaInvDiag" => ChassisFrictionInertiaInvDiag(Vector4<f32>)),
+    ("chassisFrictionInertiaInvDiag" => ChassisFrictionInertiaInvDiag(Primitive<Vector4<f32>>)),
     ("alreadyInitialised" => AlreadyInitialised(Primitive<bool>)),
 }

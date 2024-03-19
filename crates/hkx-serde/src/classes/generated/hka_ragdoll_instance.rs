@@ -37,7 +37,7 @@ pub enum HkaRagdollInstance<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"rigidBodies"`
     /// -   type: `hkArray<hkpRigidBody*>`
@@ -58,7 +58,7 @@ pub enum HkaRagdollInstance<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "boneToRigidBodyMap")]
-    BoneToRigidBodyMap(HkArrayRef<Primitive<i32>>),
+    BoneToRigidBodyMap(HkArrayNum<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"skeleton"`
     /// -   type: `struct hkaSkeleton*`
@@ -75,6 +75,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("rigidBodies" => RigidBodies(HkArrayRef<Cow<'de, str>>)),
     ("constraints" => Constraints(HkArrayRef<Cow<'de, str>>)),
-    ("boneToRigidBodyMap" => BoneToRigidBodyMap(HkArrayRef<Primitive<i32>>)),
+    ("boneToRigidBodyMap" => BoneToRigidBodyMap(HkArrayNum<i32>)),
     ("skeleton" => Skeleton(Primitive<Cow<'de, str>>)),
 }

@@ -44,7 +44,7 @@ pub enum HkbBlendingTransitionEffect<'a> {
     DefaultEventMode(Primitive<()>),
 
     // C++ Parent class(`hkbGenerator` => parent: `hkbNode`) has no fields
-
+    //
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -94,7 +94,7 @@ pub enum HkbBlendingTransitionEffect<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -119,7 +119,7 @@ pub enum HkbBlendingTransitionEffect<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"duration"`
     /// -   type: `hkReal`
@@ -175,7 +175,7 @@ pub enum HkbBlendingTransitionEffect<'a> {
     /// - offset: 64
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "characterPoseAtBeginningOfTransition", skip_serializing)]
-    CharacterPoseAtBeginningOfTransition(HkArrayRef<Primitive<()>>),
+    CharacterPoseAtBeginningOfTransition(HkArrayRef<()>),
     /// # C++ Class Fields Info
     /// -   name:`"timeRemaining"`
     /// -   type: `hkReal`
@@ -218,7 +218,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
@@ -229,7 +229,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("blendCurve" => BlendCurve(Primitive<BlendCurve>)),
     ("fromGenerator" => FromGenerator(Primitive<Cow<'de, str>>)),
     ("toGenerator" => ToGenerator(Primitive<Cow<'de, str>>)),
-    ("characterPoseAtBeginningOfTransition" => CharacterPoseAtBeginningOfTransition(HkArrayRef<Primitive<()>>)),
+    ("characterPoseAtBeginningOfTransition" => CharacterPoseAtBeginningOfTransition(HkArrayRef<()>)),
     ("timeRemaining" => TimeRemaining(Primitive<f32>)),
     ("timeInTransition" => TimeInTransition(Primitive<f32>)),
     ("applySelfTransition" => ApplySelfTransition(Primitive<bool>)),
@@ -307,7 +307,22 @@ impl<'de> serde::Deserialize<'de> for FlagBits {
                         "FLAG_IGNORE_FROM_WORLD_FROM_MODEL" => flags |= Self::FLAG_IGNORE_FROM_WORLD_FROM_MODEL,
                         "FLAG_SYNC" => flags |= Self::FLAG_SYNC,
                         "FLAG_IGNORE_TO_WORLD_FROM_MODEL" => flags |= Self::FLAG_IGNORE_TO_WORLD_FROM_MODEL,
-                        _ => return Err(serde::de::Error::custom("Invalid flag")),
+                        unknown => match parse_int::parse(unknown) {
+                            Ok(int) => {
+                                if let Some(bits) = Self::from_bits(int) {
+                                    flags |= bits
+                                } else {
+                                    return Err(serde::de::Error::custom(format!(
+                                        "Expected FlagValues flags but got \"{unknown}\"",
+                                    )));
+                                };
+                            }
+                            Err(_err) => {
+                                return Err(serde::de::Error::custom(format!(
+                                    "Expected FlagValues flags or integer, but got \"{unknown}\""
+                                )))
+                            }
+                        },
                     }
                 }
                 Ok(flags)

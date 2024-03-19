@@ -37,35 +37,35 @@ pub enum HkbSequenceInternalState {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"nextSampleEvents"`
     /// -   type: `hkArray<hkInt32>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "nextSampleEvents")]
-    NextSampleEvents(HkArrayRef<Primitive<i32>>),
+    NextSampleEvents(HkArrayNum<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"nextSampleReals"`
     /// -   type: `hkArray<hkInt32>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "nextSampleReals")]
-    NextSampleReals(HkArrayRef<Primitive<i32>>),
+    NextSampleReals(HkArrayNum<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"nextSampleBools"`
     /// -   type: `hkArray<hkInt32>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "nextSampleBools")]
-    NextSampleBools(HkArrayRef<Primitive<i32>>),
+    NextSampleBools(HkArrayNum<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"nextSampleInts"`
     /// -   type: `hkArray<hkInt32>`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "nextSampleInts")]
-    NextSampleInts(HkArrayRef<Primitive<i32>>),
+    NextSampleInts(HkArrayNum<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"time"`
     /// -   type: `hkReal`
@@ -87,10 +87,10 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbSequenceInternalState, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("nextSampleEvents" => NextSampleEvents(HkArrayRef<Primitive<i32>>)),
-    ("nextSampleReals" => NextSampleReals(HkArrayRef<Primitive<i32>>)),
-    ("nextSampleBools" => NextSampleBools(HkArrayRef<Primitive<i32>>)),
-    ("nextSampleInts" => NextSampleInts(HkArrayRef<Primitive<i32>>)),
+    ("nextSampleEvents" => NextSampleEvents(HkArrayNum<i32>)),
+    ("nextSampleReals" => NextSampleReals(HkArrayNum<i32>)),
+    ("nextSampleBools" => NextSampleBools(HkArrayNum<i32>)),
+    ("nextSampleInts" => NextSampleInts(HkArrayNum<i32>)),
     ("time" => Time(Primitive<f32>)),
     ("isEnabled" => IsEnabled(Primitive<bool>)),
 }

@@ -26,19 +26,19 @@ pub enum HkContactPoint {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "position")]
-    Position(Vector4<f32>),
+    Position(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"separatingNormal"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "separatingNormal")]
-    SeparatingNormal(Vector4<f32>),
+    SeparatingNormal(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkContactPoint, "@name",
-    ("position" => Position(Vector4<f32>)),
-    ("separatingNormal" => SeparatingNormal(Vector4<f32>)),
+    ("position" => Position(Primitive<Vector4<f32>>)),
+    ("separatingNormal" => SeparatingNormal(Primitive<Vector4<f32>>)),
 }

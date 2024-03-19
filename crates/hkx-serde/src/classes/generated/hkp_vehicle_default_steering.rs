@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkpVehicleDefaultSteering {
     // C++ Parent class(`hkpVehicleSteering` => parent: `hkReferencedObject`) has no fields
-
+    //
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -39,7 +39,7 @@ pub enum HkpVehicleDefaultSteering {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"maxSteeringAngle"`
     /// -   type: `hkReal`
@@ -60,7 +60,7 @@ pub enum HkpVehicleDefaultSteering {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "doesWheelSteer")]
-    DoesWheelSteer(HkArrayRef<Primitive<bool>>),
+    DoesWheelSteer(HkArrayRef<bool>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -70,5 +70,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("maxSteeringAngle" => MaxSteeringAngle(Primitive<f32>)),
     ("maxSpeedFullSteeringAngle" => MaxSpeedFullSteeringAngle(Primitive<f32>)),
-    ("doesWheelSteer" => DoesWheelSteer(HkArrayRef<Primitive<bool>>)),
+    ("doesWheelSteer" => DoesWheelSteer(HkArrayRef<bool>)),
 }

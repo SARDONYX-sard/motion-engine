@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkpSampledHeightFieldShape {
     // C++ Parent class(`hkpHeightFieldShape` => parent: `hkpShape`) has no fields
-
+    //
     /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -54,7 +54,7 @@ pub enum HkpSampledHeightFieldShape {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"xRes"`
     /// -   type: `hkInt32`
@@ -96,28 +96,28 @@ pub enum HkpSampledHeightFieldShape {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "intToFloatScale")]
-    IntToFloatScale(Vector4<f32>),
+    IntToFloatScale(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"floatToIntScale"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "floatToIntScale")]
-    FloatToIntScale(Vector4<f32>),
+    FloatToIntScale(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"floatToIntOffsetFloorCorrected"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "floatToIntOffsetFloorCorrected")]
-    FloatToIntOffsetFloorCorrected(Vector4<f32>),
+    FloatToIntOffsetFloorCorrected(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"extents"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "extents")]
-    Extents(Vector4<f32>),
+    Extents(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -132,10 +132,10 @@ impl_deserialize_for_internally_tagged_enum! {
     ("heightCenter" => HeightCenter(Primitive<f32>)),
     ("useProjectionBasedHeight" => UseProjectionBasedHeight(Primitive<bool>)),
     ("heightfieldType" => HeightfieldType(Primitive<HeightFieldType>)),
-    ("intToFloatScale" => IntToFloatScale(Vector4<f32>)),
-    ("floatToIntScale" => FloatToIntScale(Vector4<f32>)),
-    ("floatToIntOffsetFloorCorrected" => FloatToIntOffsetFloorCorrected(Vector4<f32>)),
-    ("extents" => Extents(Vector4<f32>)),
+    ("intToFloatScale" => IntToFloatScale(Primitive<Vector4<f32>>)),
+    ("floatToIntScale" => FloatToIntScale(Primitive<Vector4<f32>>)),
+    ("floatToIntOffsetFloorCorrected" => FloatToIntOffsetFloorCorrected(Primitive<Vector4<f32>>)),
+    ("extents" => Extents(Primitive<Vector4<f32>>)),
 }
 
 #[allow(clippy::enum_variant_names)]

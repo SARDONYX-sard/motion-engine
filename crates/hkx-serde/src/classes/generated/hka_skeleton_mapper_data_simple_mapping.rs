@@ -40,7 +40,7 @@ pub enum HkaSkeletonMapperDataSimpleMapping {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "aFromBTransform")]
-    AFromBTransform(QsTransform<f32>),
+    AFromBTransform(Primitive<QsTransform<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -48,5 +48,5 @@ impl_deserialize_for_internally_tagged_enum! {
     HkaSkeletonMapperDataSimpleMapping, "@name",
     ("boneA" => BoneA(Primitive<i16>)),
     ("boneB" => BoneB(Primitive<i16>)),
-    ("aFromBTransform" => AFromBTransform(QsTransform<f32>)),
+    ("aFromBTransform" => AFromBTransform(Primitive<QsTransform<f32>>)),
 }

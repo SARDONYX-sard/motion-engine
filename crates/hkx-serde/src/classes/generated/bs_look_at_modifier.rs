@@ -85,7 +85,7 @@ pub enum BsLookAtModifier<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -110,7 +110,7 @@ pub enum BsLookAtModifier<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"lookAtTarget"`
     /// -   type: `hkBool`
@@ -180,7 +180,7 @@ pub enum BsLookAtModifier<'a> {
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "targetLocation")]
-    TargetLocation(Vector4<f32>),
+    TargetLocation(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"targetOutsideLimits"`
     /// -   type: `hkBool`
@@ -257,7 +257,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
@@ -270,7 +270,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("onGain" => OnGain(Primitive<f32>)),
     ("offGain" => OffGain(Primitive<f32>)),
     ("useBoneGains" => UseBoneGains(Primitive<bool>)),
-    ("targetLocation" => TargetLocation(Vector4<f32>)),
+    ("targetLocation" => TargetLocation(Primitive<Vector4<f32>>)),
     ("targetOutsideLimits" => TargetOutsideLimits(Primitive<bool>)),
     ("targetOutOfLimitEvent" => TargetOutOfLimitEvent(SingleClass<HkbEventProperty<'de>>)),
     ("lookAtCamera" => LookAtCamera(Primitive<bool>)),

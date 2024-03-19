@@ -37,14 +37,14 @@ pub enum HkbSetWordVariableCommand {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"quadValue"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "quadValue")]
-    QuadValue(Vector4<f32>),
+    QuadValue(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"characterId"`
     /// -   type: `hkUint64`
@@ -87,7 +87,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbSetWordVariableCommand, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("quadValue" => QuadValue(Vector4<f32>)),
+    ("quadValue" => QuadValue(Primitive<Vector4<f32>>)),
     ("characterId" => CharacterId(Primitive<u64>)),
     ("variableId" => VariableId(Primitive<i32>)),
     ("value" => Value(SingleClass<HkbVariableValue>)),

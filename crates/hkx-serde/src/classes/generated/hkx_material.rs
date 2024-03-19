@@ -45,7 +45,7 @@ pub enum HkxMaterial<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
@@ -66,28 +66,28 @@ pub enum HkxMaterial<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "diffuseColor")]
-    DiffuseColor(Vector4<f32>),
+    DiffuseColor(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"ambientColor"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "ambientColor")]
-    AmbientColor(Vector4<f32>),
+    AmbientColor(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"specularColor"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "specularColor")]
-    SpecularColor(Vector4<f32>),
+    SpecularColor(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"emissiveColor"`
     /// -   type: `hkVector4`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "emissiveColor")]
-    EmissiveColor(Vector4<f32>),
+    EmissiveColor(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"subMaterials"`
     /// -   type: `hkArray<hkxMaterial*>`
@@ -119,10 +119,10 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("stages" => Stages(HkArrayClass<HkxMaterialTextureStage<'de>>)),
-    ("diffuseColor" => DiffuseColor(Vector4<f32>)),
-    ("ambientColor" => AmbientColor(Vector4<f32>)),
-    ("specularColor" => SpecularColor(Vector4<f32>)),
-    ("emissiveColor" => EmissiveColor(Vector4<f32>)),
+    ("diffuseColor" => DiffuseColor(Primitive<Vector4<f32>>)),
+    ("ambientColor" => AmbientColor(Primitive<Vector4<f32>>)),
+    ("specularColor" => SpecularColor(Primitive<Vector4<f32>>)),
+    ("emissiveColor" => EmissiveColor(Primitive<Vector4<f32>>)),
     ("subMaterials" => SubMaterials(HkArrayRef<Cow<'de, str>>)),
     ("extraData" => ExtraData(Primitive<Cow<'de, str>>)),
     ("properties" => Properties(HkArrayClass<HkxMaterialProperty>)),

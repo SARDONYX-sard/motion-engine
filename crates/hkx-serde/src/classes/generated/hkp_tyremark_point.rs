@@ -26,19 +26,19 @@ pub enum HkpTyremarkPoint {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "pointLeft")]
-    PointLeft(Vector4<f32>),
+    PointLeft(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"pointRight"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "pointRight")]
-    PointRight(Vector4<f32>),
+    PointRight(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpTyremarkPoint, "@name",
-    ("pointLeft" => PointLeft(Vector4<f32>)),
-    ("pointRight" => PointRight(Vector4<f32>)),
+    ("pointLeft" => PointLeft(Primitive<Vector4<f32>>)),
+    ("pointRight" => PointRight(Primitive<Vector4<f32>>)),
 }

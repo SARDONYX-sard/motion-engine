@@ -74,7 +74,7 @@ pub enum HkpVehicleInstance<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `struct hkpVehicleData*`
@@ -179,7 +179,7 @@ pub enum HkpVehicleInstance<'a> {
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "isFixed")]
-    IsFixed(HkArrayRef<Primitive<bool>>),
+    IsFixed(HkArrayRef<bool>),
     /// # C++ Class Fields Info
     /// -   name:`"wheelsTimeSinceMaxPedalInput"`
     /// -   type: `hkReal`
@@ -221,7 +221,7 @@ pub enum HkpVehicleInstance<'a> {
     /// - offset: 192
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "wheelsSteeringAngle")]
-    WheelsSteeringAngle(HkArrayRef<Primitive<f32>>),
+    WheelsSteeringAngle(HkArrayNum<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"isReversing"`
     /// -   type: `hkBool`
@@ -276,13 +276,13 @@ impl_deserialize_for_internally_tagged_enum! {
     ("wheelsInfo" => WheelsInfo(HkArrayClass<HkpVehicleInstanceWheelInfo<'de>>)),
     ("frictionStatus" => FrictionStatus(SingleClass<HkpVehicleFrictionStatus>)),
     ("deviceStatus" => DeviceStatus(Primitive<Cow<'de, str>>)),
-    ("isFixed" => IsFixed(HkArrayRef<Primitive<bool>>)),
+    ("isFixed" => IsFixed(HkArrayRef<bool>)),
     ("wheelsTimeSinceMaxPedalInput" => WheelsTimeSinceMaxPedalInput(Primitive<f32>)),
     ("tryingToReverse" => TryingToReverse(Primitive<bool>)),
     ("torque" => Torque(Primitive<f32>)),
     ("rpm" => Rpm(Primitive<f32>)),
     ("mainSteeringAngle" => MainSteeringAngle(Primitive<f32>)),
-    ("wheelsSteeringAngle" => WheelsSteeringAngle(HkArrayRef<Primitive<f32>>)),
+    ("wheelsSteeringAngle" => WheelsSteeringAngle(HkArrayNum<f32>)),
     ("isReversing" => IsReversing(Primitive<bool>)),
     ("currentGear" => CurrentGear(Primitive<i8>)),
     ("delayed" => Delayed(Primitive<bool>)),

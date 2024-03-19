@@ -52,7 +52,7 @@ pub enum HkpHeightFieldShape {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.

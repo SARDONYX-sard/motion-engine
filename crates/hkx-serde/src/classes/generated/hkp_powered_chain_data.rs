@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkpPoweredChainData<'a> {
     // C++ Parent class(`hkpConstraintChainData` => parent: `hkpConstraintData`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"atoms"`
     /// -   type: `struct hkpBridgeAtoms`

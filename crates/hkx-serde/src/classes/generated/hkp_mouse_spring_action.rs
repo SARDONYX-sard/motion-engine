@@ -74,21 +74,21 @@ pub enum HkpMouseSpringAction<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"positionInRbLocal"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "positionInRbLocal")]
-    PositionInRbLocal(Vector4<f32>),
+    PositionInRbLocal(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"mousePositionInWorld"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "mousePositionInWorld")]
-    MousePositionInWorld(Vector4<f32>),
+    MousePositionInWorld(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"springDamping"`
     /// -   type: `hkReal`
@@ -143,8 +143,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("positionInRbLocal" => PositionInRbLocal(Vector4<f32>)),
-    ("mousePositionInWorld" => MousePositionInWorld(Vector4<f32>)),
+    ("positionInRbLocal" => PositionInRbLocal(Primitive<Vector4<f32>>)),
+    ("mousePositionInWorld" => MousePositionInWorld(Primitive<Vector4<f32>>)),
     ("springDamping" => SpringDamping(Primitive<f32>)),
     ("springElasticity" => SpringElasticity(Primitive<f32>)),
     ("maxRelativeForce" => MaxRelativeForce(Primitive<f32>)),

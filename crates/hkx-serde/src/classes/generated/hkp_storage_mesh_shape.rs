@@ -27,7 +27,7 @@ pub enum HkpStorageMeshShape<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "scaling")]
-    Scaling(Vector4<f32>),
+    Scaling(Primitive<Vector4<f32>>),
     /// # C++ Parent class(`hkpMeshShape` => parent: `hkpShapeCollection`) field Info
     /// -   name:`"numBitsForSubpartIndex"`
     /// -   type: `hkInt32`
@@ -48,7 +48,7 @@ pub enum HkpStorageMeshShape<'a> {
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "weldingInfo")]
-    WeldingInfo(HkArrayRef<Primitive<u16>>),
+    WeldingInfo(HkArrayNum<u16>),
     /// # C++ Parent class(`hkpMeshShape` => parent: `hkpShapeCollection`) field Info
     /// -   name:`"weldingType"`
     /// -   type: `enum WeldingType`
@@ -117,7 +117,7 @@ pub enum HkpStorageMeshShape<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"storage"`
     /// -   type: `hkArray<hkpStorageMeshShapeSubpartStorage*>`
@@ -130,10 +130,10 @@ pub enum HkpStorageMeshShape<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpStorageMeshShape<'de>, "@name",
-    ("scaling" => Scaling(Vector4<f32>)),
+    ("scaling" => Scaling(Primitive<Vector4<f32>>)),
     ("numBitsForSubpartIndex" => NumBitsForSubpartIndex(Primitive<i32>)),
     ("subparts" => Subparts(HkArrayClass<HkpMeshShapeSubpart<'de>>)),
-    ("weldingInfo" => WeldingInfo(HkArrayRef<Primitive<u16>>)),
+    ("weldingInfo" => WeldingInfo(HkArrayNum<u16>)),
     ("weldingType" => WeldingType(Primitive<WeldingType>)),
     ("radius" => Radius(Primitive<f32>)),
     ("pad" => Pad(CStyleArray<[i32; 3]>)),

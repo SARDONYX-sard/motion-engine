@@ -85,7 +85,7 @@ pub enum HkbFootIkModifier<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -110,7 +110,7 @@ pub enum HkbFootIkModifier<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"gains"`
     /// -   type: `struct hkbFootIkGains`
@@ -159,14 +159,14 @@ pub enum HkbFootIkModifier<'a> {
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "errorOutTranslation")]
-    ErrorOutTranslation(Vector4<f32>),
+    ErrorOutTranslation(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"alignWithGroundRotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "alignWithGroundRotation")]
-    AlignWithGroundRotation(Quaternion<f32>),
+    AlignWithGroundRotation(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"verticalOffset"`
     /// -   type: `hkReal`
@@ -278,7 +278,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
@@ -288,8 +288,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("raycastDistanceDown" => RaycastDistanceDown(Primitive<f32>)),
     ("originalGroundHeightMS" => OriginalGroundHeightMs(Primitive<f32>)),
     ("errorOut" => ErrorOut(Primitive<f32>)),
-    ("errorOutTranslation" => ErrorOutTranslation(Vector4<f32>)),
-    ("alignWithGroundRotation" => AlignWithGroundRotation(Quaternion<f32>)),
+    ("errorOutTranslation" => ErrorOutTranslation(Primitive<Vector4<f32>>)),
+    ("alignWithGroundRotation" => AlignWithGroundRotation(Primitive<Quaternion<f32>>)),
     ("verticalOffset" => VerticalOffset(Primitive<f32>)),
     ("collisionFilterInfo" => CollisionFilterInfo(Primitive<u32>)),
     ("forwardAlignFraction" => ForwardAlignFraction(Primitive<f32>)),

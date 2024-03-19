@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkbBlenderGenerator<'a> {
     // C++ Parent class(`hkbGenerator` => parent: `hkbNode`) has no fields
-
+    //
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -72,7 +72,7 @@ pub enum HkbBlenderGenerator<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -97,7 +97,7 @@ pub enum HkbBlenderGenerator<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"referencePoseWeightThreshold"`
     /// -   type: `hkReal`
@@ -160,14 +160,14 @@ pub enum HkbBlenderGenerator<'a> {
     /// - offset: 76
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "childrenInternalStates", skip_serializing)]
-    ChildrenInternalStates(HkArrayRef<Primitive<()>>),
+    ChildrenInternalStates(HkArrayRef<()>),
     /// # C++ Class Fields Info
     /// -   name:`"sortedChildren"`
     /// -   type: `hkArray<void>`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "sortedChildren", skip_serializing)]
-    SortedChildren(HkArrayRef<Primitive<()>>),
+    SortedChildren(HkArrayRef<()>),
     /// # C++ Class Fields Info
     /// -   name:`"endIntervalWeight"`
     /// -   type: `hkReal`
@@ -221,7 +221,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
@@ -233,8 +233,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("flags" => Flags(Primitive<i16>)),
     ("subtractLastChild" => SubtractLastChild(Primitive<bool>)),
     ("children" => Children(HkArrayRef<Cow<'de, str>>)),
-    ("childrenInternalStates" => ChildrenInternalStates(HkArrayRef<Primitive<()>>)),
-    ("sortedChildren" => SortedChildren(HkArrayRef<Primitive<()>>)),
+    ("childrenInternalStates" => ChildrenInternalStates(HkArrayRef<()>)),
+    ("sortedChildren" => SortedChildren(HkArrayRef<()>)),
     ("endIntervalWeight" => EndIntervalWeight(Primitive<f32>)),
     ("numActiveChildren" => NumActiveChildren(Primitive<i32>)),
     ("beginIntervalIndex" => BeginIntervalIndex(Primitive<i16>)),

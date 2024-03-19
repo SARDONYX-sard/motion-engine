@@ -37,7 +37,7 @@ pub enum HkbBehaviorEventsInfo {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"characterId"`
     /// -   type: `hkUint64`
@@ -51,7 +51,7 @@ pub enum HkbBehaviorEventsInfo {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "externalEventIds")]
-    ExternalEventIds(HkArrayRef<Primitive<i16>>),
+    ExternalEventIds(HkArrayNum<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"padding"`
     /// -   type: `hkInt32`
@@ -67,6 +67,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("characterId" => CharacterId(Primitive<u64>)),
-    ("externalEventIds" => ExternalEventIds(HkArrayRef<Primitive<i16>>)),
+    ("externalEventIds" => ExternalEventIds(HkArrayNum<i16>)),
     ("padding" => Padding(Primitive<i32>)),
 }

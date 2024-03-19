@@ -80,7 +80,7 @@ pub enum HkaInterleavedUncompressedAnimation<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"transforms"`
     /// -   type: `hkArray<hkQsTransform>`
@@ -94,7 +94,7 @@ pub enum HkaInterleavedUncompressedAnimation<'a> {
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "floats")]
-    Floats(HkArrayRef<Primitive<f32>>),
+    Floats(HkArrayNum<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -109,5 +109,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("transforms" => Transforms(HkArrayMatrix3<QsTransform<f32>>)),
-    ("floats" => Floats(HkArrayRef<Primitive<f32>>)),
+    ("floats" => Floats(HkArrayNum<f32>)),
 }

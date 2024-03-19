@@ -40,14 +40,14 @@ pub enum HkpVehicleLinearCastWheelCollideWheelState<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transform")]
-    Transform(Transform<f32>),
+    Transform(Primitive<Transform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"to"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "to")]
-    To(Vector4<f32>),
+    To(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -55,6 +55,6 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpVehicleLinearCastWheelCollideWheelState<'de>, "@name",
     ("phantom" => Phantom(Primitive<Cow<'de, str>>)),
     ("shape" => Shape(Primitive<Cow<'de, str>>)),
-    ("transform" => Transform(Transform<f32>)),
-    ("to" => To(Vector4<f32>)),
+    ("transform" => Transform(Primitive<Transform<f32>>)),
+    ("to" => To(Primitive<Vector4<f32>>)),
 }

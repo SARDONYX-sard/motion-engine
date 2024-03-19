@@ -22,9 +22,9 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkMemoryResourceHandle<'a> {
     // C++ Parent class(`hkResourceHandle` => parent: `hkResourceBase`) has no fields
-
+    //
     // C++ Parent class(`hkResourceBase` => parent: `hkReferencedObject`) has no fields
-
+    //
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -41,7 +41,7 @@ pub enum HkMemoryResourceHandle<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"variant"`
     /// -   type: `struct hkReferencedObject*`

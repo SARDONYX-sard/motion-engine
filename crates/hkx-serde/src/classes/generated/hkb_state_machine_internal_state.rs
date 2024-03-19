@@ -37,7 +37,7 @@ pub enum HkbStateMachineInternalState<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"activeTransitions"`
     /// -   type: `hkArray<struct hkbStateMachineActiveTransitionInfo>`
@@ -51,14 +51,14 @@ pub enum HkbStateMachineInternalState<'a> {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transitionFlags")]
-    TransitionFlags(HkArrayRef<Primitive<u8>>),
+    TransitionFlags(HkArrayNum<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"wildcardTransitionFlags"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "wildcardTransitionFlags")]
-    WildcardTransitionFlags(HkArrayRef<Primitive<u8>>),
+    WildcardTransitionFlags(HkArrayNum<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"delayedTransitions"`
     /// -   type: `hkArray<struct hkbStateMachineDelayedTransitionInfo>`
@@ -123,8 +123,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("activeTransitions" => ActiveTransitions(HkArrayClass<HkbStateMachineActiveTransitionInfo<'de>>)),
-    ("transitionFlags" => TransitionFlags(HkArrayRef<Primitive<u8>>)),
-    ("wildcardTransitionFlags" => WildcardTransitionFlags(HkArrayRef<Primitive<u8>>)),
+    ("transitionFlags" => TransitionFlags(HkArrayNum<u8>)),
+    ("wildcardTransitionFlags" => WildcardTransitionFlags(HkArrayNum<u8>)),
     ("delayedTransitions" => DelayedTransitions(HkArrayClass<HkbStateMachineDelayedTransitionInfo>)),
     ("timeInState" => TimeInState(Primitive<f32>)),
     ("lastLocalTime" => LastLocalTime(Primitive<f32>)),

@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkpLinearParametricCurve {
     // C++ Parent class(`hkpParametricCurve` => parent: `hkReferencedObject`) has no fields
-
+    //
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -39,7 +39,7 @@ pub enum HkpLinearParametricCurve {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"smoothingFactor"`
     /// -   type: `hkReal`
@@ -60,7 +60,7 @@ pub enum HkpLinearParametricCurve {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "dirNotParallelToTangentAlongWholePath")]
-    DirNotParallelToTangentAlongWholePath(Vector4<f32>),
+    DirNotParallelToTangentAlongWholePath(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"points"`
     /// -   type: `hkArray<hkVector4>`
@@ -74,7 +74,7 @@ pub enum HkpLinearParametricCurve {
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "distance")]
-    Distance(HkArrayRef<Primitive<f32>>),
+    Distance(HkArrayNum<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -84,7 +84,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("smoothingFactor" => SmoothingFactor(Primitive<f32>)),
     ("closedLoop" => ClosedLoop(Primitive<bool>)),
-    ("dirNotParallelToTangentAlongWholePath" => DirNotParallelToTangentAlongWholePath(Vector4<f32>)),
+    ("dirNotParallelToTangentAlongWholePath" => DirNotParallelToTangentAlongWholePath(Primitive<Vector4<f32>>)),
     ("points" => Points(HkArrayVector<Vector4<f32>>)),
-    ("distance" => Distance(HkArrayRef<Primitive<f32>>)),
+    ("distance" => Distance(HkArrayNum<f32>)),
 }

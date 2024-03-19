@@ -35,20 +35,20 @@ pub enum HkpSetLocalTransformsConstraintAtom {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transformA")]
-    TransformA(Transform<f32>),
+    TransformA(Primitive<Transform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"transformB"`
     /// -   type: `hkTransform`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transformB")]
-    TransformB(Transform<f32>),
+    TransformB(Primitive<Transform<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpSetLocalTransformsConstraintAtom, "@name",
     ("type" => Type(Primitive<AtomType>)),
-    ("transformA" => TransformA(Transform<f32>)),
-    ("transformB" => TransformB(Transform<f32>)),
+    ("transformA" => TransformA(Primitive<Transform<f32>>)),
+    ("transformB" => TransformB(Primitive<Transform<f32>>)),
 }

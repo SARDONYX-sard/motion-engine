@@ -37,14 +37,14 @@ pub enum HkaAnimationPreviewColorContainer {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"previewColor"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "previewColor")]
-    PreviewColor(HkArrayRef<Primitive<u32>>),
+    PreviewColor(HkArrayNum<u32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -52,5 +52,5 @@ impl_deserialize_for_internally_tagged_enum! {
     HkaAnimationPreviewColorContainer, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("previewColor" => PreviewColor(HkArrayRef<Primitive<u32>>)),
+    ("previewColor" => PreviewColor(HkArrayNum<u32>)),
 }

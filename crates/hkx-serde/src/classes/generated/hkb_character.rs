@@ -37,7 +37,7 @@ pub enum HkbCharacter<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"nearbyCharacters"`
     /// -   type: `hkArray<hkbCharacter*>`
@@ -156,7 +156,7 @@ pub enum HkbCharacter<'a> {
     /// - offset: 76
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "poseLocal", skip_serializing)]
-    PoseLocal(HkArrayRef<Primitive<()>>),
+    PoseLocal(HkArrayRef<()>),
     /// # C++ Class Fields Info
     /// -   name:`"deleteWorldFromModel"`
     /// -   type: `hkBool`
@@ -194,7 +194,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("world" => World(Primitive<Cow<'de, str>>)),
     ("eventQueue" => EventQueue(Primitive<Cow<'de, str>>)),
     ("worldFromModel" => WorldFromModel(Primitive<Cow<'de, str>>)),
-    ("poseLocal" => PoseLocal(HkArrayRef<Primitive<()>>)),
+    ("poseLocal" => PoseLocal(HkArrayRef<()>)),
     ("deleteWorldFromModel" => DeleteWorldFromModel(Primitive<bool>)),
     ("deletePoseLocal" => DeletePoseLocal(Primitive<bool>)),
 }

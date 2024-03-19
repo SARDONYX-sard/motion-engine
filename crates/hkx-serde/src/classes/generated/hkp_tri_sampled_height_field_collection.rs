@@ -67,7 +67,7 @@ pub enum HkpTriSampledHeightFieldCollection<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"heightfield"`
     /// -   type: `struct hkpSampledHeightFieldShape*`
@@ -95,14 +95,14 @@ pub enum HkpTriSampledHeightFieldCollection<'a> {
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "weldingInfo")]
-    WeldingInfo(HkArrayRef<Primitive<u16>>),
+    WeldingInfo(HkArrayNum<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"triangleExtrusion"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "triangleExtrusion")]
-    TriangleExtrusion(Vector4<f32>),
+    TriangleExtrusion(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -117,6 +117,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("heightfield" => Heightfield(Primitive<Cow<'de, str>>)),
     ("childSize" => ChildSize(Primitive<i32>)),
     ("radius" => Radius(Primitive<f32>)),
-    ("weldingInfo" => WeldingInfo(HkArrayRef<Primitive<u16>>)),
-    ("triangleExtrusion" => TriangleExtrusion(Vector4<f32>)),
+    ("weldingInfo" => WeldingInfo(HkArrayNum<u16>)),
+    ("triangleExtrusion" => TriangleExtrusion(Primitive<Vector4<f32>>)),
 }

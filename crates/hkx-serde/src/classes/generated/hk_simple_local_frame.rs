@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkSimpleLocalFrame<'a> {
     // C++ Parent class(`hkLocalFrame` => parent: `hkReferencedObject`) has no fields
-
+    //
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -39,14 +39,14 @@ pub enum HkSimpleLocalFrame<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"transform"`
     /// -   type: `hkTransform`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transform")]
-    Transform(Transform<f32>),
+    Transform(Primitive<Transform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"children"`
     /// -   type: `hkArray<hkLocalFrame*>`
@@ -82,7 +82,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkSimpleLocalFrame<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("transform" => Transform(Transform<f32>)),
+    ("transform" => Transform(Primitive<Transform<f32>>)),
     ("children" => Children(HkArrayRef<Cow<'de, str>>)),
     ("parentFrame" => ParentFrame(Primitive<Cow<'de, str>>)),
     ("group" => Group(Primitive<Cow<'de, str>>)),

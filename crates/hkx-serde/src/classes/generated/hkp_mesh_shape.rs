@@ -67,14 +67,14 @@ pub enum HkpMeshShape<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"scaling"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "scaling")]
-    Scaling(Vector4<f32>),
+    Scaling(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"numBitsForSubpartIndex"`
     /// -   type: `hkInt32`
@@ -95,7 +95,7 @@ pub enum HkpMeshShape<'a> {
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "weldingInfo")]
-    WeldingInfo(HkArrayRef<Primitive<u16>>),
+    WeldingInfo(HkArrayNum<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"weldingType"`
     /// -   type: `enum WeldingType`
@@ -128,10 +128,10 @@ impl_deserialize_for_internally_tagged_enum! {
     ("type" => Type(Primitive<()>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("scaling" => Scaling(Vector4<f32>)),
+    ("scaling" => Scaling(Primitive<Vector4<f32>>)),
     ("numBitsForSubpartIndex" => NumBitsForSubpartIndex(Primitive<i32>)),
     ("subparts" => Subparts(HkArrayClass<HkpMeshShapeSubpart<'de>>)),
-    ("weldingInfo" => WeldingInfo(HkArrayRef<Primitive<u16>>)),
+    ("weldingInfo" => WeldingInfo(HkArrayNum<u16>)),
     ("weldingType" => WeldingType(Primitive<WeldingType>)),
     ("radius" => Radius(Primitive<f32>)),
     ("pad" => Pad(CStyleArray<[i32; 3]>)),

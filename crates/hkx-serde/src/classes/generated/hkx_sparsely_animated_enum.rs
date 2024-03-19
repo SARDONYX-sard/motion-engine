@@ -27,14 +27,14 @@ pub enum HkxSparselyAnimatedEnum<'a> {
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "ints")]
-    Ints(HkArrayRef<Primitive<i32>>),
+    Ints(HkArrayNum<i32>),
     /// # C++ Parent class(`hkxSparselyAnimatedInt` => parent: `hkReferencedObject`) field Info
     /// -   name:`"times"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "times")]
-    Times(HkArrayRef<Primitive<f32>>),
+    Times(HkArrayNum<f32>),
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
@@ -52,7 +52,7 @@ pub enum HkxSparselyAnimatedEnum<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"enum"`
     /// -   type: `struct hkxEnum*`
@@ -65,8 +65,8 @@ pub enum HkxSparselyAnimatedEnum<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkxSparselyAnimatedEnum<'de>, "@name",
-    ("ints" => Ints(HkArrayRef<Primitive<i32>>)),
-    ("times" => Times(HkArrayRef<Primitive<f32>>)),
+    ("ints" => Ints(HkArrayNum<i32>)),
+    ("times" => Times(HkArrayNum<f32>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("enum" => Enum(Primitive<Cow<'de, str>>)),

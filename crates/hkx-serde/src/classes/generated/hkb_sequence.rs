@@ -85,7 +85,7 @@ pub enum HkbSequence<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -110,7 +110,7 @@ pub enum HkbSequence<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"eventSequencedData"`
     /// -   type: `hkArray<hkbEventSequencedData*>`
@@ -180,28 +180,28 @@ pub enum HkbSequence<'a> {
     /// - offset: 112
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "nextSampleEvents", skip_serializing)]
-    NextSampleEvents(HkArrayRef<Primitive<()>>),
+    NextSampleEvents(HkArrayRef<()>),
     /// # C++ Class Fields Info
     /// -   name:`"nextSampleReals"`
     /// -   type: `hkArray<void>`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "nextSampleReals", skip_serializing)]
-    NextSampleReals(HkArrayRef<Primitive<()>>),
+    NextSampleReals(HkArrayRef<()>),
     /// # C++ Class Fields Info
     /// -   name:`"nextSampleBools"`
     /// -   type: `hkArray<void>`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "nextSampleBools", skip_serializing)]
-    NextSampleBools(HkArrayRef<Primitive<()>>),
+    NextSampleBools(HkArrayRef<()>),
     /// # C++ Class Fields Info
     /// -   name:`"nextSampleInts"`
     /// -   type: `hkArray<void>`
     /// - offset: 148
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "nextSampleInts", skip_serializing)]
-    NextSampleInts(HkArrayRef<Primitive<()>>),
+    NextSampleInts(HkArrayRef<()>),
     /// # C++ Class Fields Info
     /// -   name:`"time"`
     /// -   type: `hkReal`
@@ -229,7 +229,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
@@ -242,10 +242,10 @@ impl_deserialize_for_internally_tagged_enum! {
     ("stringData" => StringData(Primitive<Cow<'de, str>>)),
     ("variableIdMap" => VariableIdMap(Primitive<Cow<'de, str>>)),
     ("eventIdMap" => EventIdMap(Primitive<Cow<'de, str>>)),
-    ("nextSampleEvents" => NextSampleEvents(HkArrayRef<Primitive<()>>)),
-    ("nextSampleReals" => NextSampleReals(HkArrayRef<Primitive<()>>)),
-    ("nextSampleBools" => NextSampleBools(HkArrayRef<Primitive<()>>)),
-    ("nextSampleInts" => NextSampleInts(HkArrayRef<Primitive<()>>)),
+    ("nextSampleEvents" => NextSampleEvents(HkArrayRef<()>)),
+    ("nextSampleReals" => NextSampleReals(HkArrayRef<()>)),
+    ("nextSampleBools" => NextSampleBools(HkArrayRef<()>)),
+    ("nextSampleInts" => NextSampleInts(HkArrayRef<()>)),
     ("time" => Time(Primitive<f32>)),
     ("isEnabled" => IsEnabled(Primitive<bool>)),
 }

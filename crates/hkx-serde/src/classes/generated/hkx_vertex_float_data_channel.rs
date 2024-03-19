@@ -37,14 +37,14 @@ pub enum HkxVertexFloatDataChannel {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"perVertexFloats"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "perVertexFloats")]
-    PerVertexFloats(HkArrayRef<Primitive<f32>>),
+    PerVertexFloats(HkArrayNum<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"dimensions"`
     /// -   type: `enum VertexFloatDimensions`
@@ -59,7 +59,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkxVertexFloatDataChannel, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("perVertexFloats" => PerVertexFloats(HkArrayRef<Primitive<f32>>)),
+    ("perVertexFloats" => PerVertexFloats(HkArrayNum<f32>)),
     ("dimensions" => Dimensions(Primitive<VertexFloatDimensions>)),
 }
 

@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkMemoryMeshShape<'a> {
     // C++ Parent class(`hkMeshShape` => parent: `hkReferencedObject`) has no fields
-
+    //
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -39,7 +39,7 @@ pub enum HkMemoryMeshShape<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"sections"`
     /// -   type: `hkArray<struct hkMeshSectionCinfo>`
@@ -53,14 +53,14 @@ pub enum HkMemoryMeshShape<'a> {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "indices16")]
-    Indices16(HkArrayRef<Primitive<u16>>),
+    Indices16(HkArrayNum<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"indices32"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "indices32")]
-    Indices32(HkArrayRef<Primitive<u32>>),
+    Indices32(HkArrayNum<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
@@ -76,7 +76,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("sections" => Sections(HkArrayClass<HkMeshSectionCinfo<'de>>)),
-    ("indices16" => Indices16(HkArrayRef<Primitive<u16>>)),
-    ("indices32" => Indices32(HkArrayRef<Primitive<u32>>)),
+    ("indices16" => Indices16(HkArrayNum<u16>)),
+    ("indices32" => Indices32(HkArrayNum<u32>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
 }

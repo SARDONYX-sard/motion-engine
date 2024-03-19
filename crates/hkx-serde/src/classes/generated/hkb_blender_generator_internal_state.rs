@@ -37,7 +37,7 @@ pub enum HkbBlenderGeneratorInternalState {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"childrenInternalStates"`
     /// -   type: `hkArray<struct hkbBlenderGeneratorChildInternalState>`
@@ -51,7 +51,7 @@ pub enum HkbBlenderGeneratorInternalState {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "sortedChildren")]
-    SortedChildren(HkArrayRef<Primitive<i16>>),
+    SortedChildren(HkArrayNum<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"endIntervalWeight"`
     /// -   type: `hkReal`
@@ -102,7 +102,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("childrenInternalStates" => ChildrenInternalStates(HkArrayClass<HkbBlenderGeneratorChildInternalState>)),
-    ("sortedChildren" => SortedChildren(HkArrayRef<Primitive<i16>>)),
+    ("sortedChildren" => SortedChildren(HkArrayNum<i16>)),
     ("endIntervalWeight" => EndIntervalWeight(Primitive<f32>)),
     ("numActiveChildren" => NumActiveChildren(Primitive<i32>)),
     ("beginIntervalIndex" => BeginIntervalIndex(Primitive<i16>)),

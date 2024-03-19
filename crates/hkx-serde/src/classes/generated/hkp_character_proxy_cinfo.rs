@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkpCharacterProxyCinfo<'a> {
     // C++ Parent class(`hkpCharacterControllerCinfo` => parent: `hkReferencedObject`) has no fields
-
+    //
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -39,21 +39,21 @@ pub enum HkpCharacterProxyCinfo<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"position"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "position")]
-    Position(Vector4<f32>),
+    Position(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"velocity"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "velocity")]
-    Velocity(Vector4<f32>),
+    Velocity(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"dynamicFriction"`
     /// -   type: `hkReal`
@@ -81,7 +81,7 @@ pub enum HkpCharacterProxyCinfo<'a> {
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "up")]
-    Up(Vector4<f32>),
+    Up(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"extraUpStaticFriction"`
     /// -   type: `hkReal`
@@ -180,12 +180,12 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpCharacterProxyCinfo<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("position" => Position(Vector4<f32>)),
-    ("velocity" => Velocity(Vector4<f32>)),
+    ("position" => Position(Primitive<Vector4<f32>>)),
+    ("velocity" => Velocity(Primitive<Vector4<f32>>)),
     ("dynamicFriction" => DynamicFriction(Primitive<f32>)),
     ("staticFriction" => StaticFriction(Primitive<f32>)),
     ("keepContactTolerance" => KeepContactTolerance(Primitive<f32>)),
-    ("up" => Up(Vector4<f32>)),
+    ("up" => Up(Primitive<Vector4<f32>>)),
     ("extraUpStaticFriction" => ExtraUpStaticFriction(Primitive<f32>)),
     ("extraDownStaticFriction" => ExtraDownStaticFriction(Primitive<f32>)),
     ("shapePhantom" => ShapePhantom(Primitive<Cow<'de, str>>)),

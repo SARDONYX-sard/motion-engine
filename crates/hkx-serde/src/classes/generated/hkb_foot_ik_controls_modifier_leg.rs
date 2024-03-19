@@ -26,7 +26,7 @@ pub enum HkbFootIkControlsModifierLeg<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "groundPosition")]
-    GroundPosition(Vector4<f32>),
+    GroundPosition(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"ungroundedEvent"`
     /// -   type: `struct hkbEventProperty`
@@ -60,7 +60,7 @@ pub enum HkbFootIkControlsModifierLeg<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbFootIkControlsModifierLeg<'de>, "@name",
-    ("groundPosition" => GroundPosition(Vector4<f32>)),
+    ("groundPosition" => GroundPosition(Primitive<Vector4<f32>>)),
     ("ungroundedEvent" => UngroundedEvent(SingleClass<HkbEventProperty<'de>>)),
     ("verticalError" => VerticalError(Primitive<f32>)),
     ("hitSomething" => HitSomething(Primitive<bool>)),

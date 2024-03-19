@@ -37,14 +37,14 @@ pub enum HkpStorageExtendedMeshShapeShapeSubpartStorage {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"materialIndices"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "materialIndices")]
-    MaterialIndices(HkArrayRef<Primitive<u8>>),
+    MaterialIndices(HkArrayNum<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"materials"`
     /// -   type: `hkArray<struct hkpStorageExtendedMeshShapeMaterial>`
@@ -58,7 +58,7 @@ pub enum HkpStorageExtendedMeshShapeShapeSubpartStorage {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "materialIndices16")]
-    MaterialIndices16(HkArrayRef<Primitive<u16>>),
+    MaterialIndices16(HkArrayNum<u16>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -66,7 +66,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpStorageExtendedMeshShapeShapeSubpartStorage, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("materialIndices" => MaterialIndices(HkArrayRef<Primitive<u8>>)),
+    ("materialIndices" => MaterialIndices(HkArrayNum<u8>)),
     ("materials" => Materials(HkArrayClass<HkpStorageExtendedMeshShapeMaterial>)),
-    ("materialIndices16" => MaterialIndices16(HkArrayRef<Primitive<u16>>)),
+    ("materialIndices16" => MaterialIndices16(HkArrayNum<u16>)),
 }

@@ -30,7 +30,7 @@ pub enum HkpTriangleShape {
     Radius(Primitive<f32>),
 
     // C++ Parent class(`hkpSphereRepShape` => parent: `hkpShape`) has no fields
-
+    //
     /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -62,7 +62,7 @@ pub enum HkpTriangleShape {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"weldingInfo"`
     /// -   type: `hkUint16`
@@ -90,28 +90,28 @@ pub enum HkpTriangleShape {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertexA")]
-    VertexA(Vector4<f32>),
+    VertexA(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexB"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertexB")]
-    VertexB(Vector4<f32>),
+    VertexB(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexC"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertexC")]
-    VertexC(Vector4<f32>),
+    VertexC(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"extrusion"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "extrusion")]
-    Extrusion(Vector4<f32>),
+    Extrusion(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -125,8 +125,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("weldingInfo" => WeldingInfo(Primitive<u16>)),
     ("weldingType" => WeldingType(Primitive<WeldingType>)),
     ("isExtruded" => IsExtruded(Primitive<u8>)),
-    ("vertexA" => VertexA(Vector4<f32>)),
-    ("vertexB" => VertexB(Vector4<f32>)),
-    ("vertexC" => VertexC(Vector4<f32>)),
-    ("extrusion" => Extrusion(Vector4<f32>)),
+    ("vertexA" => VertexA(Primitive<Vector4<f32>>)),
+    ("vertexB" => VertexB(Primitive<Vector4<f32>>)),
+    ("vertexC" => VertexC(Primitive<Vector4<f32>>)),
+    ("extrusion" => Extrusion(Primitive<Vector4<f32>>)),
 }

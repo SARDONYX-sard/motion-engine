@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkpCharacterRigidBodyCinfo<'a> {
     // C++ Parent class(`hkpCharacterControllerCinfo` => parent: `hkReferencedObject`) has no fields
-
+    //
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -39,7 +39,7 @@ pub enum HkpCharacterRigidBodyCinfo<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilterInfo"`
     /// -   type: `hkUint32`
@@ -60,14 +60,14 @@ pub enum HkpCharacterRigidBodyCinfo<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "position")]
-    Position(Vector4<f32>),
+    Position(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"rotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rotation")]
-    Rotation(Quaternion<f32>),
+    Rotation(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"mass"`
     /// -   type: `hkReal`
@@ -102,7 +102,7 @@ pub enum HkpCharacterRigidBodyCinfo<'a> {
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "up")]
-    Up(Vector4<f32>),
+    Up(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"maxSlope"`
     /// -   type: `hkReal`
@@ -161,13 +161,13 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("collisionFilterInfo" => CollisionFilterInfo(Primitive<u32>)),
     ("shape" => Shape(Primitive<Cow<'de, str>>)),
-    ("position" => Position(Vector4<f32>)),
-    ("rotation" => Rotation(Quaternion<f32>)),
+    ("position" => Position(Primitive<Vector4<f32>>)),
+    ("rotation" => Rotation(Primitive<Quaternion<f32>>)),
     ("mass" => Mass(Primitive<f32>)),
     ("friction" => Friction(Primitive<f32>)),
     ("maxLinearVelocity" => MaxLinearVelocity(Primitive<f32>)),
     ("allowedPenetrationDepth" => AllowedPenetrationDepth(Primitive<f32>)),
-    ("up" => Up(Vector4<f32>)),
+    ("up" => Up(Primitive<Vector4<f32>>)),
     ("maxSlope" => MaxSlope(Primitive<f32>)),
     ("maxForce" => MaxForce(Primitive<f32>)),
     ("unweldingHeightOffsetFactor" => UnweldingHeightOffsetFactor(Primitive<f32>)),

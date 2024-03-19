@@ -26,28 +26,28 @@ pub enum HkpCompressedMeshShapeConvexPiece {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "offset")]
-    Offset(Vector4<f32>),
+    Offset(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"vertices"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertices")]
-    Vertices(HkArrayRef<Primitive<u16>>),
+    Vertices(HkArrayNum<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"faceVertices"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "faceVertices")]
-    FaceVertices(HkArrayRef<Primitive<u8>>),
+    FaceVertices(HkArrayNum<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"faceOffsets"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "faceOffsets")]
-    FaceOffsets(HkArrayRef<Primitive<u16>>),
+    FaceOffsets(HkArrayNum<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"reference"`
     /// -   type: `hkUint16`
@@ -67,10 +67,10 @@ pub enum HkpCompressedMeshShapeConvexPiece {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpCompressedMeshShapeConvexPiece, "@name",
-    ("offset" => Offset(Vector4<f32>)),
-    ("vertices" => Vertices(HkArrayRef<Primitive<u16>>)),
-    ("faceVertices" => FaceVertices(HkArrayRef<Primitive<u8>>)),
-    ("faceOffsets" => FaceOffsets(HkArrayRef<Primitive<u16>>)),
+    ("offset" => Offset(Primitive<Vector4<f32>>)),
+    ("vertices" => Vertices(HkArrayNum<u16>)),
+    ("faceVertices" => FaceVertices(HkArrayNum<u8>)),
+    ("faceOffsets" => FaceOffsets(HkArrayNum<u16>)),
     ("reference" => Reference(Primitive<u16>)),
     ("transformIndex" => TransformIndex(Primitive<u16>)),
 }

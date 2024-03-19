@@ -80,14 +80,14 @@ pub enum HkaQuantizedAnimation<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "data")]
-    Data(HkArrayRef<Primitive<u8>>),
+    Data(HkArrayNum<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"endian"`
     /// -   type: `hkUint32`
@@ -115,7 +115,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("annotationTracks" => AnnotationTracks(HkArrayClass<HkaAnnotationTrack<'de>>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("data" => Data(HkArrayRef<Primitive<u8>>)),
+    ("data" => Data(HkArrayNum<u8>)),
     ("endian" => Endian(Primitive<u32>)),
     ("skeleton" => Skeleton(Primitive<Cow<'de, str>>)),
 }

@@ -33,7 +33,7 @@ pub enum BsLookAtModifierBoneData {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "fwdAxisLS")]
-    FwdAxisLs(Vector4<f32>),
+    FwdAxisLs(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"limitAngleDegrees"`
     /// -   type: `hkReal`
@@ -68,17 +68,17 @@ pub enum BsLookAtModifierBoneData {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "currentFwdAxisLS", skip_serializing)]
-    CurrentFwdAxisLs(Vector4<f32>),
+    CurrentFwdAxisLs(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     BsLookAtModifierBoneData, "@name",
     ("index" => Index(Primitive<i16>)),
-    ("fwdAxisLS" => FwdAxisLs(Vector4<f32>)),
+    ("fwdAxisLS" => FwdAxisLs(Primitive<Vector4<f32>>)),
     ("limitAngleDegrees" => LimitAngleDegrees(Primitive<f32>)),
     ("onGain" => OnGain(Primitive<f32>)),
     ("offGain" => OffGain(Primitive<f32>)),
     ("enabled" => Enabled(Primitive<bool>)),
-    ("currentFwdAxisLS" => CurrentFwdAxisLs(Vector4<f32>)),
+    ("currentFwdAxisLS" => CurrentFwdAxisLs(Primitive<Vector4<f32>>)),
 }

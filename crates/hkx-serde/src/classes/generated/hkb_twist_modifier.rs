@@ -85,7 +85,7 @@ pub enum HkbTwistModifier<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -110,14 +110,14 @@ pub enum HkbTwistModifier<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"axisOfRotation"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "axisOfRotation")]
-    AxisOfRotation(Vector4<f32>),
+    AxisOfRotation(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"twistAngle"`
     /// -   type: `hkReal`
@@ -166,14 +166,14 @@ pub enum HkbTwistModifier<'a> {
     /// - offset: 76
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "boneChainIndices", skip_serializing)]
-    BoneChainIndices(HkArrayRef<Primitive<()>>),
+    BoneChainIndices(HkArrayRef<()>),
     /// # C++ Class Fields Info
     /// -   name:`"parentBoneIndices"`
     /// -   type: `hkArray<void>`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "parentBoneIndices", skip_serializing)]
-    ParentBoneIndices(HkArrayRef<Primitive<()>>),
+    ParentBoneIndices(HkArrayRef<()>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -187,19 +187,19 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("axisOfRotation" => AxisOfRotation(Vector4<f32>)),
+    ("axisOfRotation" => AxisOfRotation(Primitive<Vector4<f32>>)),
     ("twistAngle" => TwistAngle(Primitive<f32>)),
     ("startBoneIndex" => StartBoneIndex(Primitive<i16>)),
     ("endBoneIndex" => EndBoneIndex(Primitive<i16>)),
     ("setAngleMethod" => SetAngleMethod(Primitive<SetAngleMethod>)),
     ("rotationAxisCoordinates" => RotationAxisCoordinates(Primitive<RotationAxisCoordinates>)),
     ("isAdditive" => IsAdditive(Primitive<bool>)),
-    ("boneChainIndices" => BoneChainIndices(HkArrayRef<Primitive<()>>)),
-    ("parentBoneIndices" => ParentBoneIndices(HkArrayRef<Primitive<()>>)),
+    ("boneChainIndices" => BoneChainIndices(HkArrayRef<()>)),
+    ("parentBoneIndices" => ParentBoneIndices(HkArrayRef<()>)),
 }
 
 #[allow(clippy::enum_variant_names)]

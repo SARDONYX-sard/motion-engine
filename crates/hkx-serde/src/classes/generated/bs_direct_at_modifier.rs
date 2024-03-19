@@ -85,7 +85,7 @@ pub enum BsDirectAtModifier<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -110,7 +110,7 @@ pub enum BsDirectAtModifier<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"directAtTarget"`
     /// -   type: `hkBool`
@@ -187,7 +187,7 @@ pub enum BsDirectAtModifier<'a> {
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "targetLocation")]
-    TargetLocation(Vector4<f32>),
+    TargetLocation(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"userInfo"`
     /// -   type: `hkUint32`
@@ -271,14 +271,14 @@ pub enum BsDirectAtModifier<'a> {
     /// - offset: 144
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "directAtTargetLocation", skip_serializing)]
-    DirectAtTargetLocation(Vector4<f32>),
+    DirectAtTargetLocation(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"boneChainIndices"`
     /// -   type: `hkArray<void>`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "boneChainIndices", skip_serializing)]
-    BoneChainIndices(HkArrayRef<Primitive<()>>),
+    BoneChainIndices(HkArrayRef<()>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -292,7 +292,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
@@ -306,7 +306,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("offsetPitchDegrees" => OffsetPitchDegrees(Primitive<f32>)),
     ("onGain" => OnGain(Primitive<f32>)),
     ("offGain" => OffGain(Primitive<f32>)),
-    ("targetLocation" => TargetLocation(Vector4<f32>)),
+    ("targetLocation" => TargetLocation(Primitive<Vector4<f32>>)),
     ("userInfo" => UserInfo(Primitive<u32>)),
     ("directAtCamera" => DirectAtCamera(Primitive<bool>)),
     ("directAtCameraX" => DirectAtCameraX(Primitive<f32>)),
@@ -318,6 +318,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("timeStep" => TimeStep(Primitive<f32>)),
     ("pSkeletonMemory" => PSkeletonMemory(Primitive<Cow<'de, str>>)),
     ("hasTarget" => HasTarget(Primitive<bool>)),
-    ("directAtTargetLocation" => DirectAtTargetLocation(Vector4<f32>)),
-    ("boneChainIndices" => BoneChainIndices(HkArrayRef<Primitive<()>>)),
+    ("directAtTargetLocation" => DirectAtTargetLocation(Primitive<Vector4<f32>>)),
+    ("boneChainIndices" => BoneChainIndices(HkArrayRef<()>)),
 }

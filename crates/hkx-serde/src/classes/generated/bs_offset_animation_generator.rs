@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum BsOffsetAnimationGenerator<'a> {
     // C++ Parent class(`hkbGenerator` => parent: `hkbNode`) has no fields
-
+    //
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -72,7 +72,7 @@ pub enum BsOffsetAnimationGenerator<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -97,7 +97,7 @@ pub enum BsOffsetAnimationGenerator<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"pDefaultGenerator"`
     /// -   type: `struct hkbGenerator*`
@@ -139,14 +139,14 @@ pub enum BsOffsetAnimationGenerator<'a> {
     /// - offset: 80
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "BoneOffsetA", skip_serializing)]
-    BoneOffsetA(HkArrayRef<Primitive<()>>),
+    BoneOffsetA(HkArrayRef<()>),
     /// # C++ Class Fields Info
     /// -   name:`"BoneIndexA"`
     /// -   type: `hkArray<void>`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "BoneIndexA", skip_serializing)]
-    BoneIndexA(HkArrayRef<Primitive<()>>),
+    BoneIndexA(HkArrayRef<()>),
     /// # C++ Class Fields Info
     /// -   name:`"fCurrentPercentage"`
     /// -   type: `hkReal`
@@ -186,7 +186,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
@@ -195,8 +195,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("fOffsetVariable" => FOffsetVariable(Primitive<f32>)),
     ("fOffsetRangeStart" => FOffsetRangeStart(Primitive<f32>)),
     ("fOffsetRangeEnd" => FOffsetRangeEnd(Primitive<f32>)),
-    ("BoneOffsetA" => BoneOffsetA(HkArrayRef<Primitive<()>>)),
-    ("BoneIndexA" => BoneIndexA(HkArrayRef<Primitive<()>>)),
+    ("BoneOffsetA" => BoneOffsetA(HkArrayRef<()>)),
+    ("BoneIndexA" => BoneIndexA(HkArrayRef<()>)),
     ("fCurrentPercentage" => FCurrentPercentage(Primitive<f32>)),
     ("iCurrentFrame" => ICurrentFrame(Primitive<u32>)),
     ("bZeroOffset" => BZeroOffset(Primitive<bool>)),

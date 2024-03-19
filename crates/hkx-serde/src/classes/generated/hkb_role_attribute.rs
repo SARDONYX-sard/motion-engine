@@ -141,7 +141,22 @@ impl<'de> serde::Deserialize<'de> for RoleFlags {
                         "FLAG_HIDDEN" => flags |= Self::FLAG_HIDDEN,
                         "FLAG_OUTPUT" => flags |= Self::FLAG_OUTPUT,
                         "FLAG_NOT_CHARACTER_PROPERTY" => flags |= Self::FLAG_NOT_CHARACTER_PROPERTY,
-                        _ => return Err(serde::de::Error::custom("Invalid flag")),
+                        unknown => match parse_int::parse(unknown) {
+                            Ok(int) => {
+                                if let Some(bits) = Self::from_bits(int) {
+                                    flags |= bits
+                                } else {
+                                    return Err(serde::de::Error::custom(format!(
+                                        "Expected FlagValues flags but got \"{unknown}\"",
+                                    )));
+                                };
+                            }
+                            Err(_err) => {
+                                return Err(serde::de::Error::custom(format!(
+                                    "Expected FlagValues flags or integer, but got \"{unknown}\""
+                                )))
+                            }
+                        },
                     }
                 }
                 Ok(flags)

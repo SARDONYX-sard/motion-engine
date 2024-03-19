@@ -66,7 +66,7 @@ pub enum HkpGravityGun<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"grabbedBodies"`
     /// -   type: `hkArray<void*>`
@@ -115,14 +115,14 @@ pub enum HkpGravityGun<'a> {
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "capturedObjectPosition")]
-    CapturedObjectPosition(Vector4<f32>),
+    CapturedObjectPosition(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"capturedObjectsOffset"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "capturedObjectsOffset")]
-    CapturedObjectsOffset(Vector4<f32>),
+    CapturedObjectsOffset(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -140,6 +140,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("maxDistOfObjectPicked" => MaxDistOfObjectPicked(Primitive<f32>)),
     ("impulseAppliedWhenObjectNotPicked" => ImpulseAppliedWhenObjectNotPicked(Primitive<f32>)),
     ("throwVelocity" => ThrowVelocity(Primitive<f32>)),
-    ("capturedObjectPosition" => CapturedObjectPosition(Vector4<f32>)),
-    ("capturedObjectsOffset" => CapturedObjectsOffset(Vector4<f32>)),
+    ("capturedObjectPosition" => CapturedObjectPosition(Primitive<Vector4<f32>>)),
+    ("capturedObjectsOffset" => CapturedObjectsOffset(Primitive<Vector4<f32>>)),
 }

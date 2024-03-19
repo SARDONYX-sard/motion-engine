@@ -30,7 +30,7 @@ pub enum HkpBoxShape {
     Radius(Primitive<f32>),
 
     // C++ Parent class(`hkpSphereRepShape` => parent: `hkpShape`) has no fields
-
+    //
     /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -62,14 +62,14 @@ pub enum HkpBoxShape {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"halfExtents"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "halfExtents")]
-    HalfExtents(Vector4<f32>),
+    HalfExtents(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -80,5 +80,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("type" => Type(Primitive<()>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("halfExtents" => HalfExtents(Vector4<f32>)),
+    ("halfExtents" => HalfExtents(Primitive<Vector4<f32>>)),
 }

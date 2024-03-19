@@ -40,14 +40,14 @@ pub enum HkpMassProperties {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "centerOfMass")]
-    CenterOfMass(Vector4<f32>),
+    CenterOfMass(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"inertiaTensor"`
     /// -   type: `hkMatrix3`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "inertiaTensor")]
-    InertiaTensor(Matrix3<f32>),
+    InertiaTensor(Primitive<Matrix3<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -55,6 +55,6 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpMassProperties, "@name",
     ("volume" => Volume(Primitive<f32>)),
     ("mass" => Mass(Primitive<f32>)),
-    ("centerOfMass" => CenterOfMass(Vector4<f32>)),
-    ("inertiaTensor" => InertiaTensor(Matrix3<f32>)),
+    ("centerOfMass" => CenterOfMass(Primitive<Vector4<f32>>)),
+    ("inertiaTensor" => InertiaTensor(Primitive<Matrix3<f32>>)),
 }

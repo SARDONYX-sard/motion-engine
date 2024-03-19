@@ -80,7 +80,7 @@ pub enum HkaDeltaCompressedAnimation<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"numberOfPoses"`
     /// -   type: `hkInt32`
@@ -178,7 +178,7 @@ pub enum HkaDeltaCompressedAnimation<'a> {
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "dataBuffer")]
-    DataBuffer(HkArrayRef<Primitive<u8>>),
+    DataBuffer(HkArrayNum<u8>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -205,5 +205,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("numDynamicTransformDOFs" => NumDynamicTransformDoFs(Primitive<u32>)),
     ("totalBlockSize" => TotalBlockSize(Primitive<u32>)),
     ("lastBlockSize" => LastBlockSize(Primitive<u32>)),
-    ("dataBuffer" => DataBuffer(HkArrayRef<Primitive<u8>>)),
+    ("dataBuffer" => DataBuffer(HkArrayNum<u8>)),
 }

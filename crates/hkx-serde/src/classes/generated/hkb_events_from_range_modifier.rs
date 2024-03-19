@@ -85,7 +85,7 @@ pub enum HkbEventsFromRangeModifier<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -110,7 +110,7 @@ pub enum HkbEventsFromRangeModifier<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"inputValue"`
     /// -   type: `hkReal`
@@ -138,7 +138,7 @@ pub enum HkbEventsFromRangeModifier<'a> {
     /// - offset: 56
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "wasActiveInPreviousFrame", skip_serializing)]
-    WasActiveInPreviousFrame(HkArrayRef<Primitive<()>>),
+    WasActiveInPreviousFrame(HkArrayRef<()>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -152,12 +152,12 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("inputValue" => InputValue(Primitive<f32>)),
     ("lowerBound" => LowerBound(Primitive<f32>)),
     ("eventRanges" => EventRanges(Primitive<Cow<'de, str>>)),
-    ("wasActiveInPreviousFrame" => WasActiveInPreviousFrame(HkArrayRef<Primitive<()>>)),
+    ("wasActiveInPreviousFrame" => WasActiveInPreviousFrame(HkArrayRef<()>)),
 }

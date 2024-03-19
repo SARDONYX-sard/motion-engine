@@ -30,7 +30,7 @@ pub enum HkpConvexTransformShapeBase<'a> {
     Radius(Primitive<f32>),
 
     // C++ Parent class(`hkpSphereRepShape` => parent: `hkpShape`) has no fields
-
+    //
     /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -62,7 +62,7 @@ pub enum HkpConvexTransformShapeBase<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"childShape"`
     /// -   type: `struct hkpSingleShapeContainer`

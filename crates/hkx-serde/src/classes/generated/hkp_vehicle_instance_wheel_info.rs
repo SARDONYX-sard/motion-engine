@@ -54,14 +54,14 @@ pub enum HkpVehicleInstanceWheelInfo<'a> {
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "hardPointWs")]
-    HardPointWs(Vector4<f32>),
+    HardPointWs(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"rayEndPointWs"`
     /// -   type: `hkVector4`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rayEndPointWs")]
-    RayEndPointWs(Vector4<f32>),
+    RayEndPointWs(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"currentSuspensionLength"`
     /// -   type: `hkReal`
@@ -75,28 +75,28 @@ pub enum HkpVehicleInstanceWheelInfo<'a> {
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "suspensionDirectionWs")]
-    SuspensionDirectionWs(Vector4<f32>),
+    SuspensionDirectionWs(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"spinAxisChassisSpace"`
     /// -   type: `hkVector4`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "spinAxisChassisSpace")]
-    SpinAxisChassisSpace(Vector4<f32>),
+    SpinAxisChassisSpace(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"spinAxisWs"`
     /// -   type: `hkVector4`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "spinAxisWs")]
-    SpinAxisWs(Vector4<f32>),
+    SpinAxisWs(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"steeringOrientationChassisSpace"`
     /// -   type: `hkQuaternion`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "steeringOrientationChassisSpace")]
-    SteeringOrientationChassisSpace(Quaternion<f32>),
+    SteeringOrientationChassisSpace(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"spinVelocity"`
     /// -   type: `hkReal`
@@ -148,13 +148,13 @@ impl_deserialize_for_internally_tagged_enum! {
     ("contactFriction" => ContactFriction(Primitive<f32>)),
     ("contactBody" => ContactBody(Primitive<Cow<'de, str>>)),
     ("contactShapeKey" => ContactShapeKey(CStyleArray<[u32; 8]>)),
-    ("hardPointWs" => HardPointWs(Vector4<f32>)),
-    ("rayEndPointWs" => RayEndPointWs(Vector4<f32>)),
+    ("hardPointWs" => HardPointWs(Primitive<Vector4<f32>>)),
+    ("rayEndPointWs" => RayEndPointWs(Primitive<Vector4<f32>>)),
     ("currentSuspensionLength" => CurrentSuspensionLength(Primitive<f32>)),
-    ("suspensionDirectionWs" => SuspensionDirectionWs(Vector4<f32>)),
-    ("spinAxisChassisSpace" => SpinAxisChassisSpace(Vector4<f32>)),
-    ("spinAxisWs" => SpinAxisWs(Vector4<f32>)),
-    ("steeringOrientationChassisSpace" => SteeringOrientationChassisSpace(Quaternion<f32>)),
+    ("suspensionDirectionWs" => SuspensionDirectionWs(Primitive<Vector4<f32>>)),
+    ("spinAxisChassisSpace" => SpinAxisChassisSpace(Primitive<Vector4<f32>>)),
+    ("spinAxisWs" => SpinAxisWs(Primitive<Vector4<f32>>)),
+    ("steeringOrientationChassisSpace" => SteeringOrientationChassisSpace(Primitive<Quaternion<f32>>)),
     ("spinVelocity" => SpinVelocity(Primitive<f32>)),
     ("spinAngle" => SpinAngle(Primitive<f32>)),
     ("skidEnergyDensity" => SkidEnergyDensity(Primitive<f32>)),

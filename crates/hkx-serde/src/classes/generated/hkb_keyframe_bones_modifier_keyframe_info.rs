@@ -26,14 +26,14 @@ pub enum HkbKeyframeBonesModifierKeyframeInfo {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "keyframedPosition")]
-    KeyframedPosition(Vector4<f32>),
+    KeyframedPosition(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"keyframedRotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "keyframedRotation")]
-    KeyframedRotation(Quaternion<f32>),
+    KeyframedRotation(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"boneIndex"`
     /// -   type: `hkInt16`
@@ -53,8 +53,8 @@ pub enum HkbKeyframeBonesModifierKeyframeInfo {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbKeyframeBonesModifierKeyframeInfo, "@name",
-    ("keyframedPosition" => KeyframedPosition(Vector4<f32>)),
-    ("keyframedRotation" => KeyframedRotation(Quaternion<f32>)),
+    ("keyframedPosition" => KeyframedPosition(Primitive<Vector4<f32>>)),
+    ("keyframedRotation" => KeyframedRotation(Primitive<Quaternion<f32>>)),
     ("boneIndex" => BoneIndex(Primitive<i16>)),
     ("isValid" => IsValid(Primitive<bool>)),
 }

@@ -37,28 +37,28 @@ pub enum HkbClientCharacterState<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"deformableSkinIds"`
     /// -   type: `hkArray<hkUint64>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "deformableSkinIds")]
-    DeformableSkinIds(HkArrayRef<Primitive<u64>>),
+    DeformableSkinIds(HkArrayNum<u64>),
     /// # C++ Class Fields Info
     /// -   name:`"rigidSkinIds"`
     /// -   type: `hkArray<hkUint64>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rigidSkinIds")]
-    RigidSkinIds(HkArrayRef<Primitive<u64>>),
+    RigidSkinIds(HkArrayNum<u64>),
     /// # C++ Class Fields Info
     /// -   name:`"externalEventIds"`
     /// -   type: `hkArray<hkInt16>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "externalEventIds")]
-    ExternalEventIds(HkArrayRef<Primitive<i16>>),
+    ExternalEventIds(HkArrayNum<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"auxiliaryInfo"`
     /// -   type: `hkArray<hkbAuxiliaryNodeInfo*>`
@@ -72,14 +72,14 @@ pub enum HkbClientCharacterState<'a> {
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "activeEventIds")]
-    ActiveEventIds(HkArrayRef<Primitive<i16>>),
+    ActiveEventIds(HkArrayNum<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"activeVariableIds"`
     /// -   type: `hkArray<hkInt16>`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "activeVariableIds")]
-    ActiveVariableIds(HkArrayRef<Primitive<i16>>),
+    ActiveVariableIds(HkArrayNum<i16>),
     /// # C++ Class Fields Info
     /// -   name:`"characterId"`
     /// -   type: `hkUint64`
@@ -156,7 +156,7 @@ pub enum HkbClientCharacterState<'a> {
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "worldFromModel")]
-    WorldFromModel(QsTransform<f32>),
+    WorldFromModel(Primitive<QsTransform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"poseModelSpace"`
     /// -   type: `hkArray<hkQsTransform>`
@@ -178,12 +178,12 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbClientCharacterState<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("deformableSkinIds" => DeformableSkinIds(HkArrayRef<Primitive<u64>>)),
-    ("rigidSkinIds" => RigidSkinIds(HkArrayRef<Primitive<u64>>)),
-    ("externalEventIds" => ExternalEventIds(HkArrayRef<Primitive<i16>>)),
+    ("deformableSkinIds" => DeformableSkinIds(HkArrayNum<u64>)),
+    ("rigidSkinIds" => RigidSkinIds(HkArrayNum<u64>)),
+    ("externalEventIds" => ExternalEventIds(HkArrayNum<i16>)),
     ("auxiliaryInfo" => AuxiliaryInfo(HkArrayRef<Cow<'de, str>>)),
-    ("activeEventIds" => ActiveEventIds(HkArrayRef<Primitive<i16>>)),
-    ("activeVariableIds" => ActiveVariableIds(HkArrayRef<Primitive<i16>>)),
+    ("activeEventIds" => ActiveEventIds(HkArrayNum<i16>)),
+    ("activeVariableIds" => ActiveVariableIds(HkArrayNum<i16>)),
     ("characterId" => CharacterId(Primitive<u64>)),
     ("instanceName" => InstanceName(Primitive<Cow<'de, str>>)),
     ("templateName" => TemplateName(Primitive<Cow<'de, str>>)),
@@ -194,7 +194,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("visible" => Visible(Primitive<bool>)),
     ("elapsedSimulationTime" => ElapsedSimulationTime(Primitive<f32>)),
     ("skeleton" => Skeleton(Primitive<Cow<'de, str>>)),
-    ("worldFromModel" => WorldFromModel(QsTransform<f32>)),
+    ("worldFromModel" => WorldFromModel(Primitive<QsTransform<f32>>)),
     ("poseModelSpace" => PoseModelSpace(HkArrayMatrix3<QsTransform<f32>>)),
     ("rigidAttachmentTransforms" => RigidAttachmentTransforms(HkArrayMatrix3<QsTransform<f32>>)),
 }

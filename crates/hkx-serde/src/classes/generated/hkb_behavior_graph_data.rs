@@ -37,14 +37,14 @@ pub enum HkbBehaviorGraphData<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"attributeDefaults"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "attributeDefaults")]
-    AttributeDefaults(HkArrayRef<Primitive<f32>>),
+    AttributeDefaults(HkArrayNum<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"variableInfos"`
     /// -   type: `hkArray<struct hkbVariableInfo>`
@@ -101,7 +101,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbBehaviorGraphData<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("attributeDefaults" => AttributeDefaults(HkArrayRef<Primitive<f32>>)),
+    ("attributeDefaults" => AttributeDefaults(HkArrayNum<f32>)),
     ("variableInfos" => VariableInfos(HkArrayClass<HkbVariableInfo>)),
     ("characterPropertyInfos" => CharacterPropertyInfos(HkArrayClass<HkbVariableInfo>)),
     ("eventInfos" => EventInfos(HkArrayClass<HkbEventInfo>)),

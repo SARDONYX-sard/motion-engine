@@ -37,21 +37,21 @@ pub enum HkbMirroredSkeletonInfo {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"mirrorAxis"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "mirrorAxis")]
-    MirrorAxis(Vector4<f32>),
+    MirrorAxis(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"bonePairMap"`
     /// -   type: `hkArray<hkInt16>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "bonePairMap")]
-    BonePairMap(HkArrayRef<Primitive<i16>>),
+    BonePairMap(HkArrayNum<i16>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -59,6 +59,6 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbMirroredSkeletonInfo, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("mirrorAxis" => MirrorAxis(Vector4<f32>)),
-    ("bonePairMap" => BonePairMap(HkArrayRef<Primitive<i16>>)),
+    ("mirrorAxis" => MirrorAxis(Primitive<Vector4<f32>>)),
+    ("bonePairMap" => BonePairMap(HkArrayNum<i16>)),
 }

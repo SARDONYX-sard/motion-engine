@@ -26,19 +26,19 @@ pub enum HkQTransform {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rotation")]
-    Rotation(Quaternion<f32>),
+    Rotation(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"translation"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "translation")]
-    Translation(Vector4<f32>),
+    Translation(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkQTransform, "@name",
-    ("rotation" => Rotation(Quaternion<f32>)),
-    ("translation" => Translation(Vector4<f32>)),
+    ("rotation" => Rotation(Primitive<Quaternion<f32>>)),
+    ("translation" => Translation(Primitive<Vector4<f32>>)),
 }

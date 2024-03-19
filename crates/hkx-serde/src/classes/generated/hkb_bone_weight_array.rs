@@ -34,7 +34,7 @@ pub enum HkbBoneWeightArray<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -59,23 +59,23 @@ pub enum HkbBoneWeightArray<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"boneWeights"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "boneWeights")]
-    BoneWeights(HkArrayRef<Primitive<f32>>),
+    BoneWeights(HkArrayNum<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbBoneWeightArray<'de>, "@name",
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("boneWeights" => BoneWeights(HkArrayRef<Primitive<f32>>)),
+    ("boneWeights" => BoneWeights(HkArrayNum<f32>)),
 }

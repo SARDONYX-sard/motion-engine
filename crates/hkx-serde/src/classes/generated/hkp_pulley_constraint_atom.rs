@@ -35,14 +35,14 @@ pub enum HkpPulleyConstraintAtom {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "fixedPivotAinWorld")]
-    FixedPivotAinWorld(Vector4<f32>),
+    FixedPivotAinWorld(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"fixedPivotBinWorld"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "fixedPivotBinWorld")]
-    FixedPivotBinWorld(Vector4<f32>),
+    FixedPivotBinWorld(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"ropeLength"`
     /// -   type: `hkReal`
@@ -63,8 +63,8 @@ pub enum HkpPulleyConstraintAtom {
 impl_deserialize_for_internally_tagged_enum! {
     HkpPulleyConstraintAtom, "@name",
     ("type" => Type(Primitive<AtomType>)),
-    ("fixedPivotAinWorld" => FixedPivotAinWorld(Vector4<f32>)),
-    ("fixedPivotBinWorld" => FixedPivotBinWorld(Vector4<f32>)),
+    ("fixedPivotAinWorld" => FixedPivotAinWorld(Primitive<Vector4<f32>>)),
+    ("fixedPivotBinWorld" => FixedPivotBinWorld(Primitive<Vector4<f32>>)),
     ("ropeLength" => RopeLength(Primitive<f32>)),
     ("leverageOnBodyB" => LeverageOnBodyB(Primitive<f32>)),
 }

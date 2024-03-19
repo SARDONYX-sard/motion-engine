@@ -85,7 +85,7 @@ pub enum HkbCombineTransformsModifier<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -110,49 +110,49 @@ pub enum HkbCombineTransformsModifier<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"translationOut"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "translationOut")]
-    TranslationOut(Vector4<f32>),
+    TranslationOut(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"rotationOut"`
     /// -   type: `hkQuaternion`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rotationOut")]
-    RotationOut(Quaternion<f32>),
+    RotationOut(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"leftTranslation"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "leftTranslation")]
-    LeftTranslation(Vector4<f32>),
+    LeftTranslation(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"leftRotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "leftRotation")]
-    LeftRotation(Quaternion<f32>),
+    LeftRotation(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"rightTranslation"`
     /// -   type: `hkVector4`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rightTranslation")]
-    RightTranslation(Vector4<f32>),
+    RightTranslation(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"rightRotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rightRotation")]
-    RightRotation(Quaternion<f32>),
+    RightRotation(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"invertLeftTransform"`
     /// -   type: `hkBool`
@@ -187,16 +187,16 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("translationOut" => TranslationOut(Vector4<f32>)),
-    ("rotationOut" => RotationOut(Quaternion<f32>)),
-    ("leftTranslation" => LeftTranslation(Vector4<f32>)),
-    ("leftRotation" => LeftRotation(Quaternion<f32>)),
-    ("rightTranslation" => RightTranslation(Vector4<f32>)),
-    ("rightRotation" => RightRotation(Quaternion<f32>)),
+    ("translationOut" => TranslationOut(Primitive<Vector4<f32>>)),
+    ("rotationOut" => RotationOut(Primitive<Quaternion<f32>>)),
+    ("leftTranslation" => LeftTranslation(Primitive<Vector4<f32>>)),
+    ("leftRotation" => LeftRotation(Primitive<Quaternion<f32>>)),
+    ("rightTranslation" => RightTranslation(Primitive<Vector4<f32>>)),
+    ("rightRotation" => RightRotation(Primitive<Quaternion<f32>>)),
     ("invertLeftTransform" => InvertLeftTransform(Primitive<bool>)),
     ("invertRightTransform" => InvertRightTransform(Primitive<bool>)),
     ("invertResult" => InvertResult(Primitive<bool>)),

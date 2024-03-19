@@ -40,7 +40,7 @@ pub enum HkpGenericConstraintDataScheme<'a> {
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "commands")]
-    Commands(HkArrayRef<Primitive<i32>>),
+    Commands(HkArrayNum<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"modifiers"`
     /// -   type: `hkArray<void*>`
@@ -62,7 +62,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpGenericConstraintDataScheme<'de>, "@name",
     ("info" => Info(SingleClass<HkpGenericConstraintDataSchemeConstraintInfo>)),
     ("data" => Data(HkArrayVector<Vector4<f32>>)),
-    ("commands" => Commands(HkArrayRef<Primitive<i32>>)),
+    ("commands" => Commands(HkArrayNum<i32>)),
     ("modifiers" => Modifiers(HkArrayRef<Cow<'de, str>>)),
     ("motors" => Motors(HkArrayRef<Cow<'de, str>>)),
 }

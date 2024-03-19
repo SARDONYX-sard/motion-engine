@@ -37,7 +37,7 @@ pub enum HkTrackerSerializableScanSnapshot {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"allocations"`
     /// -   type: `hkArray<struct hkTrackerSerializableScanSnapshotAllocation>`
@@ -58,35 +58,35 @@ pub enum HkTrackerSerializableScanSnapshot {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "refs")]
-    Refs(HkArrayRef<Primitive<i32>>),
+    Refs(HkArrayNum<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"typeNames"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "typeNames")]
-    TypeNames(HkArrayRef<Primitive<u8>>),
+    TypeNames(HkArrayNum<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"traceText"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "traceText")]
-    TraceText(HkArrayRef<Primitive<u8>>),
+    TraceText(HkArrayNum<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"traceAddrs"`
     /// -   type: `hkArray<hkUint64>`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "traceAddrs")]
-    TraceAddrs(HkArrayRef<Primitive<u64>>),
+    TraceAddrs(HkArrayNum<u64>),
     /// # C++ Class Fields Info
     /// -   name:`"traceParents"`
     /// -   type: `hkArray<hkInt32>`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "traceParents")]
-    TraceParents(HkArrayRef<Primitive<i32>>),
+    TraceParents(HkArrayNum<i32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -96,9 +96,9 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("allocations" => Allocations(HkArrayClass<HkTrackerSerializableScanSnapshotAllocation>)),
     ("blocks" => Blocks(HkArrayClass<HkTrackerSerializableScanSnapshotBlock>)),
-    ("refs" => Refs(HkArrayRef<Primitive<i32>>)),
-    ("typeNames" => TypeNames(HkArrayRef<Primitive<u8>>)),
-    ("traceText" => TraceText(HkArrayRef<Primitive<u8>>)),
-    ("traceAddrs" => TraceAddrs(HkArrayRef<Primitive<u64>>)),
-    ("traceParents" => TraceParents(HkArrayRef<Primitive<i32>>)),
+    ("refs" => Refs(HkArrayNum<i32>)),
+    ("typeNames" => TypeNames(HkArrayNum<u8>)),
+    ("traceText" => TraceText(HkArrayNum<u8>)),
+    ("traceAddrs" => TraceAddrs(HkArrayNum<u64>)),
+    ("traceParents" => TraceParents(HkArrayNum<i32>)),
 }

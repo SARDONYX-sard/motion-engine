@@ -37,7 +37,7 @@ pub enum HkpDisplayBindingDataRigidBody<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"rigidBody"`
     /// -   type: `struct hkpRigidBody*`
@@ -58,7 +58,7 @@ pub enum HkpDisplayBindingDataRigidBody<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rigidBodyFromDisplayObjectTransform")]
-    RigidBodyFromDisplayObjectTransform(Matrix4<f32>),
+    RigidBodyFromDisplayObjectTransform(Primitive<Matrix4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -68,5 +68,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("rigidBody" => RigidBody(Primitive<Cow<'de, str>>)),
     ("displayObjectPtr" => DisplayObjectPtr(Primitive<Cow<'de, str>>)),
-    ("rigidBodyFromDisplayObjectTransform" => RigidBodyFromDisplayObjectTransform(Matrix4<f32>)),
+    ("rigidBodyFromDisplayObjectTransform" => RigidBodyFromDisplayObjectTransform(Primitive<Matrix4<f32>>)),
 }

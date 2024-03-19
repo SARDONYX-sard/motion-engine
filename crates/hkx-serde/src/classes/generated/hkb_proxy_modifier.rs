@@ -85,7 +85,7 @@ pub enum HkbProxyModifier<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -110,7 +110,7 @@ pub enum HkbProxyModifier<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"proxyInfo"`
     /// -   type: `struct hkbProxyModifierProxyInfo`
@@ -124,7 +124,7 @@ pub enum HkbProxyModifier<'a> {
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "linearVelocity")]
-    LinearVelocity(Vector4<f32>),
+    LinearVelocity(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"horizontalGain"`
     /// -   type: `hkReal`
@@ -292,7 +292,7 @@ pub enum HkbProxyModifier<'a> {
     /// - offset: 224
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "horizontalDisplacement", skip_serializing)]
-    HorizontalDisplacement(Vector4<f32>),
+    HorizontalDisplacement(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"verticalDisplacement"`
     /// -   type: `hkReal`
@@ -327,12 +327,12 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("proxyInfo" => ProxyInfo(SingleClass<HkbProxyModifierProxyInfo>)),
-    ("linearVelocity" => LinearVelocity(Vector4<f32>)),
+    ("linearVelocity" => LinearVelocity(Primitive<Vector4<f32>>)),
     ("horizontalGain" => HorizontalGain(Primitive<f32>)),
     ("verticalGain" => VerticalGain(Primitive<f32>)),
     ("maxHorizontalSeparation" => MaxHorizontalSeparation(Primitive<f32>)),
@@ -356,7 +356,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("characterProxy" => CharacterProxy(Primitive<Cow<'de, str>>)),
     ("phantom" => Phantom(Primitive<Cow<'de, str>>)),
     ("phantomShape" => PhantomShape(Primitive<Cow<'de, str>>)),
-    ("horizontalDisplacement" => HorizontalDisplacement(Vector4<f32>)),
+    ("horizontalDisplacement" => HorizontalDisplacement(Primitive<Vector4<f32>>)),
     ("verticalDisplacement" => VerticalDisplacement(Primitive<f32>)),
     ("timestep" => Timestep(Primitive<f32>)),
     ("previousFrameFollowWorldFromModel" => PreviousFrameFollowWorldFromModel(Primitive<bool>)),

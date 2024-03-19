@@ -26,28 +26,28 @@ pub enum HkpPoweredChainDataConstraintInfo<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "pivotInA")]
-    PivotInA(Vector4<f32>),
+    PivotInA(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"pivotInB"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "pivotInB")]
-    PivotInB(Vector4<f32>),
+    PivotInB(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"aTc"`
     /// -   type: `hkQuaternion`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "aTc")]
-    ATc(Quaternion<f32>),
+    ATc(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"bTc"`
     /// -   type: `hkQuaternion`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "bTc")]
-    BTc(Quaternion<f32>),
+    BTc(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"motors"`
     /// -   type: `struct hkpConstraintMotor*`
@@ -67,10 +67,10 @@ pub enum HkpPoweredChainDataConstraintInfo<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpPoweredChainDataConstraintInfo<'de>, "@name",
-    ("pivotInA" => PivotInA(Vector4<f32>)),
-    ("pivotInB" => PivotInB(Vector4<f32>)),
-    ("aTc" => ATc(Quaternion<f32>)),
-    ("bTc" => BTc(Quaternion<f32>)),
+    ("pivotInA" => PivotInA(Primitive<Vector4<f32>>)),
+    ("pivotInB" => PivotInB(Primitive<Vector4<f32>>)),
+    ("aTc" => ATc(Primitive<Quaternion<f32>>)),
+    ("bTc" => BTc(Primitive<Quaternion<f32>>)),
     ("motors" => Motors(Primitive<Cow<'de, str>>)),
     ("switchBodies" => SwitchBodies(Primitive<bool>)),
 }

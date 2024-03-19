@@ -37,14 +37,14 @@ pub enum HkxVertexSelectionChannel {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"selectedVertices"`
     /// -   type: `hkArray<hkInt32>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "selectedVertices")]
-    SelectedVertices(HkArrayRef<Primitive<i32>>),
+    SelectedVertices(HkArrayNum<i32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -52,5 +52,5 @@ impl_deserialize_for_internally_tagged_enum! {
     HkxVertexSelectionChannel, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("selectedVertices" => SelectedVertices(HkArrayRef<Primitive<i32>>)),
+    ("selectedVertices" => SelectedVertices(HkArrayNum<i32>)),
 }

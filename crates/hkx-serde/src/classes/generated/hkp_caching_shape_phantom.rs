@@ -110,14 +110,14 @@ pub enum HkpCachingShapePhantom<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"collisionDetails"`
     /// -   type: `hkArray<void>`
     /// - offset: 352
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "collisionDetails", skip_serializing)]
-    CollisionDetails(HkArrayRef<Primitive<()>>),
+    CollisionDetails(HkArrayRef<()>),
     /// # C++ Class Fields Info
     /// -   name:`"orderDirty"`
     /// -   type: `hkBool`
@@ -142,6 +142,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("treeData" => TreeData(Primitive<Cow<'de, str>>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("collisionDetails" => CollisionDetails(HkArrayRef<Primitive<()>>)),
+    ("collisionDetails" => CollisionDetails(HkArrayRef<()>)),
     ("orderDirty" => OrderDirty(Primitive<bool>)),
 }

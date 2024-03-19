@@ -85,7 +85,7 @@ pub enum BsPassByTargetTriggerModifier<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -110,14 +110,14 @@ pub enum BsPassByTargetTriggerModifier<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"targetPosition"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "targetPosition")]
-    TargetPosition(Vector4<f32>),
+    TargetPosition(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"radius"`
     /// -   type: `hkReal`
@@ -131,7 +131,7 @@ pub enum BsPassByTargetTriggerModifier<'a> {
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "movementDirection")]
-    MovementDirection(Vector4<f32>),
+    MovementDirection(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"triggerEvent"`
     /// -   type: `struct hkbEventProperty`
@@ -159,13 +159,13 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("targetPosition" => TargetPosition(Vector4<f32>)),
+    ("targetPosition" => TargetPosition(Primitive<Vector4<f32>>)),
     ("radius" => Radius(Primitive<f32>)),
-    ("movementDirection" => MovementDirection(Vector4<f32>)),
+    ("movementDirection" => MovementDirection(Primitive<Vector4<f32>>)),
     ("triggerEvent" => TriggerEvent(SingleClass<HkbEventProperty<'de>>)),
     ("targetPassed" => TargetPassed(Primitive<bool>)),
 }

@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkMemoryMeshTexture<'a> {
     // C++ Parent class(`hkMeshTexture` => parent: `hkReferencedObject`) has no fields
-
+    //
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -39,7 +39,7 @@ pub enum HkMemoryMeshTexture<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"filename"`
     /// -   type: `hkStringPtr`
@@ -53,7 +53,7 @@ pub enum HkMemoryMeshTexture<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "data")]
-    Data(HkArrayRef<Primitive<u8>>),
+    Data(HkArrayNum<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"format"`
     /// -   type: `enum Format`
@@ -97,7 +97,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("filename" => Filename(Primitive<Cow<'de, str>>)),
-    ("data" => Data(HkArrayRef<Primitive<u8>>)),
+    ("data" => Data(HkArrayNum<u8>)),
     ("format" => Format(Primitive<Format>)),
     ("hasMipMaps" => HasMipMaps(Primitive<bool>)),
     ("filterMode" => FilterMode(Primitive<FilterMode>)),

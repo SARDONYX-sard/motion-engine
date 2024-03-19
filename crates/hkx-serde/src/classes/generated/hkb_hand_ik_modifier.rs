@@ -85,7 +85,7 @@ pub enum HkbHandIkModifier<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -110,7 +110,7 @@ pub enum HkbHandIkModifier<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"hands"`
     /// -   type: `hkArray<struct hkbHandIkModifierHand>`
@@ -131,7 +131,7 @@ pub enum HkbHandIkModifier<'a> {
     /// - offset: 60
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "internalHandData", skip_serializing)]
-    InternalHandData(HkArrayRef<Primitive<()>>),
+    InternalHandData(HkArrayRef<()>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -145,11 +145,11 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("hands" => Hands(HkArrayClass<HkbHandIkModifierHand<'de>>)),
     ("fadeInOutCurve" => FadeInOutCurve(Primitive<BlendCurve>)),
-    ("internalHandData" => InternalHandData(HkArrayRef<Primitive<()>>)),
+    ("internalHandData" => InternalHandData(HkArrayRef<()>)),
 }

@@ -80,7 +80,7 @@ pub enum HkaSplineCompressedAnimation<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"numFrames"`
     /// -   type: `hkInt32`
@@ -136,35 +136,35 @@ pub enum HkaSplineCompressedAnimation<'a> {
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "blockOffsets")]
-    BlockOffsets(HkArrayRef<Primitive<u32>>),
+    BlockOffsets(HkArrayNum<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"floatBlockOffsets"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "floatBlockOffsets")]
-    FloatBlockOffsets(HkArrayRef<Primitive<u32>>),
+    FloatBlockOffsets(HkArrayNum<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"transformOffsets"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transformOffsets")]
-    TransformOffsets(HkArrayRef<Primitive<u32>>),
+    TransformOffsets(HkArrayNum<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"floatOffsets"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "floatOffsets")]
-    FloatOffsets(HkArrayRef<Primitive<u32>>),
+    FloatOffsets(HkArrayNum<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "data")]
-    Data(HkArrayRef<Primitive<u8>>),
+    Data(HkArrayNum<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"endian"`
     /// -   type: `hkInt32`
@@ -192,10 +192,10 @@ impl_deserialize_for_internally_tagged_enum! {
     ("blockDuration" => BlockDuration(Primitive<f32>)),
     ("blockInverseDuration" => BlockInverseDuration(Primitive<f32>)),
     ("frameDuration" => FrameDuration(Primitive<f32>)),
-    ("blockOffsets" => BlockOffsets(HkArrayRef<Primitive<u32>>)),
-    ("floatBlockOffsets" => FloatBlockOffsets(HkArrayRef<Primitive<u32>>)),
-    ("transformOffsets" => TransformOffsets(HkArrayRef<Primitive<u32>>)),
-    ("floatOffsets" => FloatOffsets(HkArrayRef<Primitive<u32>>)),
-    ("data" => Data(HkArrayRef<Primitive<u8>>)),
+    ("blockOffsets" => BlockOffsets(HkArrayNum<u32>)),
+    ("floatBlockOffsets" => FloatBlockOffsets(HkArrayNum<u32>)),
+    ("transformOffsets" => TransformOffsets(HkArrayNum<u32>)),
+    ("floatOffsets" => FloatOffsets(HkArrayNum<u32>)),
+    ("data" => Data(HkArrayNum<u8>)),
     ("endian" => Endian(Primitive<i32>)),
 }

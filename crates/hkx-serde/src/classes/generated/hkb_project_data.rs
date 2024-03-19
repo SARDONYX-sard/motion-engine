@@ -37,14 +37,14 @@ pub enum HkbProjectData<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"worldUpWS"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "worldUpWS")]
-    WorldUpWs(Vector4<f32>),
+    WorldUpWs(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"stringData"`
     /// -   type: `struct hkbProjectStringData*`
@@ -66,7 +66,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkbProjectData<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("worldUpWS" => WorldUpWs(Vector4<f32>)),
+    ("worldUpWS" => WorldUpWs(Primitive<Vector4<f32>>)),
     ("stringData" => StringData(Primitive<Cow<'de, str>>)),
     ("defaultEventMode" => DefaultEventMode(Primitive<EventMode>)),
 }

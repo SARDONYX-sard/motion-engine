@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkpThinBoxMotion<'a> {
     // C++ Parent class(`hkpBoxMotion` => parent: `hkpMotion`) has no fields
-
+    //
     /// # C++ Parent class(`hkpMotion` => parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum MotionType`
@@ -57,21 +57,21 @@ pub enum HkpThinBoxMotion<'a> {
     /// - offset: 192
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "inertiaAndMassInv")]
-    InertiaAndMassInv(Vector4<f32>),
+    InertiaAndMassInv(Primitive<Vector4<f32>>),
     /// # C++ Parent class(`hkpMotion` => parent: `hkReferencedObject`) field Info
     /// -   name:`"linearVelocity"`
     /// -   type: `hkVector4`
     /// - offset: 208
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "linearVelocity")]
-    LinearVelocity(Vector4<f32>),
+    LinearVelocity(Primitive<Vector4<f32>>),
     /// # C++ Parent class(`hkpMotion` => parent: `hkReferencedObject`) field Info
     /// -   name:`"angularVelocity"`
     /// -   type: `hkVector4`
     /// - offset: 224
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "angularVelocity")]
-    AngularVelocity(Vector4<f32>),
+    AngularVelocity(Primitive<Vector4<f32>>),
     /// # C++ Parent class(`hkpMotion` => parent: `hkReferencedObject`) field Info
     /// -   name:`"deactivationRefPosition"`
     /// -   type: `hkVector4[2]`
@@ -124,7 +124,7 @@ pub enum HkpThinBoxMotion<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -134,9 +134,9 @@ impl_deserialize_for_internally_tagged_enum! {
     ("deactivationIntegrateCounter" => DeactivationIntegrateCounter(Primitive<u8>)),
     ("deactivationNumInactiveFrames" => DeactivationNumInactiveFrames(CStyleArray<[u16; 2]>)),
     ("motionState" => MotionState(SingleClass<HkMotionState>)),
-    ("inertiaAndMassInv" => InertiaAndMassInv(Vector4<f32>)),
-    ("linearVelocity" => LinearVelocity(Vector4<f32>)),
-    ("angularVelocity" => AngularVelocity(Vector4<f32>)),
+    ("inertiaAndMassInv" => InertiaAndMassInv(Primitive<Vector4<f32>>)),
+    ("linearVelocity" => LinearVelocity(Primitive<Vector4<f32>>)),
+    ("angularVelocity" => AngularVelocity(Primitive<Vector4<f32>>)),
     ("deactivationRefPosition" => DeactivationRefPosition(CStyleArrayVector<Vector4<f32>, 2>)),
     ("deactivationRefOrientation" => DeactivationRefOrientation(CStyleArray<[u32; 2]>)),
     ("savedMotion" => SavedMotion(Primitive<Cow<'de, str>>)),

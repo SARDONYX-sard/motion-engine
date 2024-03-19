@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkbStateMachine<'a> {
     // C++ Parent class(`hkbGenerator` => parent: `hkbNode`) has no fields
-
+    //
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -72,7 +72,7 @@ pub enum HkbStateMachine<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -97,7 +97,7 @@ pub enum HkbStateMachine<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"eventToSendWhenStateOrTransitionChanges"`
     /// -   type: `struct hkbEvent`
@@ -223,28 +223,28 @@ pub enum HkbStateMachine<'a> {
     /// - offset: 112
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "activeTransitions", skip_serializing)]
-    ActiveTransitions(HkArrayRef<Primitive<()>>),
+    ActiveTransitions(HkArrayRef<()>),
     /// # C++ Class Fields Info
     /// -   name:`"transitionFlags"`
     /// -   type: `hkArray<void>`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "transitionFlags", skip_serializing)]
-    TransitionFlags(HkArrayRef<Primitive<()>>),
+    TransitionFlags(HkArrayRef<()>),
     /// # C++ Class Fields Info
     /// -   name:`"wildcardTransitionFlags"`
     /// -   type: `hkArray<void>`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "wildcardTransitionFlags", skip_serializing)]
-    WildcardTransitionFlags(HkArrayRef<Primitive<()>>),
+    WildcardTransitionFlags(HkArrayRef<()>),
     /// # C++ Class Fields Info
     /// -   name:`"delayedTransitions"`
     /// -   type: `hkArray<void>`
     /// - offset: 148
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "delayedTransitions", skip_serializing)]
-    DelayedTransitions(HkArrayRef<Primitive<()>>),
+    DelayedTransitions(HkArrayRef<()>),
     /// # C++ Class Fields Info
     /// -   name:`"timeInState"`
     /// -   type: `hkReal`
@@ -305,7 +305,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
@@ -326,10 +326,10 @@ impl_deserialize_for_internally_tagged_enum! {
     ("states" => States(HkArrayRef<Cow<'de, str>>)),
     ("wildcardTransitions" => WildcardTransitions(Primitive<Cow<'de, str>>)),
     ("stateIdToIndexMap" => StateIdToIndexMap(Primitive<Cow<'de, str>>)),
-    ("activeTransitions" => ActiveTransitions(HkArrayRef<Primitive<()>>)),
-    ("transitionFlags" => TransitionFlags(HkArrayRef<Primitive<()>>)),
-    ("wildcardTransitionFlags" => WildcardTransitionFlags(HkArrayRef<Primitive<()>>)),
-    ("delayedTransitions" => DelayedTransitions(HkArrayRef<Primitive<()>>)),
+    ("activeTransitions" => ActiveTransitions(HkArrayRef<()>)),
+    ("transitionFlags" => TransitionFlags(HkArrayRef<()>)),
+    ("wildcardTransitionFlags" => WildcardTransitionFlags(HkArrayRef<()>)),
+    ("delayedTransitions" => DelayedTransitions(HkArrayRef<()>)),
     ("timeInState" => TimeInState(Primitive<f32>)),
     ("lastLocalTime" => LastLocalTime(Primitive<f32>)),
     ("previousStateId" => PreviousStateId(Primitive<i32>)),

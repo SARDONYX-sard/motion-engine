@@ -26,11 +26,11 @@ pub enum HkSphere {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "pos")]
-    Pos(Vector4<f32>),
+    Pos(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkSphere, "@name",
-    ("pos" => Pos(Vector4<f32>)),
+    ("pos" => Pos(Primitive<Vector4<f32>>)),
 }

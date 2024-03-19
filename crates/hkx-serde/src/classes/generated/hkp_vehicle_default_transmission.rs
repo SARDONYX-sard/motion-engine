@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkpVehicleDefaultTransmission {
     // C++ Parent class(`hkpVehicleTransmission` => parent: `hkReferencedObject`) has no fields
-
+    //
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -39,7 +39,7 @@ pub enum HkpVehicleDefaultTransmission {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"downshiftRPM"`
     /// -   type: `hkReal`
@@ -81,14 +81,14 @@ pub enum HkpVehicleDefaultTransmission {
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "gearsRatio")]
-    GearsRatio(HkArrayRef<Primitive<f32>>),
+    GearsRatio(HkArrayNum<f32>),
     /// # C++ Class Fields Info
     /// -   name:`"wheelsTorqueRatio"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "wheelsTorqueRatio")]
-    WheelsTorqueRatio(HkArrayRef<Primitive<f32>>),
+    WheelsTorqueRatio(HkArrayNum<f32>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -101,6 +101,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("primaryTransmissionRatio" => PrimaryTransmissionRatio(Primitive<f32>)),
     ("clutchDelayTime" => ClutchDelayTime(Primitive<f32>)),
     ("reverseGearRatio" => ReverseGearRatio(Primitive<f32>)),
-    ("gearsRatio" => GearsRatio(HkArrayRef<Primitive<f32>>)),
-    ("wheelsTorqueRatio" => WheelsTorqueRatio(HkArrayRef<Primitive<f32>>)),
+    ("gearsRatio" => GearsRatio(HkArrayNum<f32>)),
+    ("wheelsTorqueRatio" => WheelsTorqueRatio(HkArrayNum<f32>)),
 }

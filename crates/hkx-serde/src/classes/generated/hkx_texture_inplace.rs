@@ -37,7 +37,7 @@ pub enum HkxTextureInplace<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"fileType"`
     /// -   type: `hkChar[4]`
@@ -51,7 +51,7 @@ pub enum HkxTextureInplace<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "data")]
-    Data(HkArrayRef<Primitive<u8>>),
+    Data(HkArrayNum<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
@@ -74,7 +74,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("fileType" => FileType(CStyleArray<[char; 4]>)),
-    ("data" => Data(HkArrayRef<Primitive<u8>>)),
+    ("data" => Data(HkArrayNum<u8>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("originalFilename" => OriginalFilename(Primitive<Cow<'de, str>>)),
 }

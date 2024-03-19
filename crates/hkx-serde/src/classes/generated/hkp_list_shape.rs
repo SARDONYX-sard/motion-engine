@@ -67,7 +67,7 @@ pub enum HkpListShape<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"childInfo"`
     /// -   type: `hkArray<struct hkpListShapeChildInfo>`
@@ -95,14 +95,14 @@ pub enum HkpListShape<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "aabbHalfExtents")]
-    AabbHalfExtents(Vector4<f32>),
+    AabbHalfExtents(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"aabbCenter"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "aabbCenter")]
-    AabbCenter(Vector4<f32>),
+    AabbCenter(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"enabledChildren"`
     /// -   type: `hkUint32[8]`
@@ -124,8 +124,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("childInfo" => ChildInfo(HkArrayClass<HkpListShapeChildInfo<'de>>)),
     ("flags" => Flags(Primitive<u16>)),
     ("numDisabledChildren" => NumDisabledChildren(Primitive<u16>)),
-    ("aabbHalfExtents" => AabbHalfExtents(Vector4<f32>)),
-    ("aabbCenter" => AabbCenter(Vector4<f32>)),
+    ("aabbHalfExtents" => AabbHalfExtents(Primitive<Vector4<f32>>)),
+    ("aabbCenter" => AabbCenter(Primitive<Vector4<f32>>)),
     ("enabledChildren" => EnabledChildren(CStyleArray<[u32; 8]>)),
 }
 

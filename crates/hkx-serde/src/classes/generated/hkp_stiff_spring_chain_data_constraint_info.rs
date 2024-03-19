@@ -26,14 +26,14 @@ pub enum HkpStiffSpringChainDataConstraintInfo {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "pivotInA")]
-    PivotInA(Vector4<f32>),
+    PivotInA(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"pivotInB"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "pivotInB")]
-    PivotInB(Vector4<f32>),
+    PivotInB(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"springLength"`
     /// -   type: `hkReal`
@@ -46,7 +46,7 @@ pub enum HkpStiffSpringChainDataConstraintInfo {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpStiffSpringChainDataConstraintInfo, "@name",
-    ("pivotInA" => PivotInA(Vector4<f32>)),
-    ("pivotInB" => PivotInB(Vector4<f32>)),
+    ("pivotInA" => PivotInA(Primitive<Vector4<f32>>)),
+    ("pivotInB" => PivotInB(Primitive<Vector4<f32>>)),
     ("springLength" => SpringLength(Primitive<f32>)),
 }

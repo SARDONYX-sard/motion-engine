@@ -85,7 +85,7 @@ pub enum HkbEvaluateHandleModifier<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -110,7 +110,7 @@ pub enum HkbEvaluateHandleModifier<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"handle"`
     /// -   type: `struct hkbHandle*`
@@ -124,14 +124,14 @@ pub enum HkbEvaluateHandleModifier<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "handlePositionOut")]
-    HandlePositionOut(Vector4<f32>),
+    HandlePositionOut(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"handleRotationOut"`
     /// -   type: `hkQuaternion`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "handleRotationOut")]
-    HandleRotationOut(Quaternion<f32>),
+    HandleRotationOut(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"isValidOut"`
     /// -   type: `hkBool`
@@ -173,14 +173,14 @@ pub enum HkbEvaluateHandleModifier<'a> {
     /// - offset: 128
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "oldHandlePosition", skip_serializing)]
-    OldHandlePosition(Vector4<f32>),
+    OldHandlePosition(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"oldHandleRotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "oldHandleRotation", skip_serializing)]
-    OldHandleRotation(Quaternion<f32>),
+    OldHandleRotation(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"timeSinceLastModify"`
     /// -   type: `hkReal`
@@ -208,20 +208,20 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("handle" => Handle(Primitive<Cow<'de, str>>)),
-    ("handlePositionOut" => HandlePositionOut(Vector4<f32>)),
-    ("handleRotationOut" => HandleRotationOut(Quaternion<f32>)),
+    ("handlePositionOut" => HandlePositionOut(Primitive<Vector4<f32>>)),
+    ("handleRotationOut" => HandleRotationOut(Primitive<Quaternion<f32>>)),
     ("isValidOut" => IsValidOut(Primitive<bool>)),
     ("extrapolationTimeStep" => ExtrapolationTimeStep(Primitive<f32>)),
     ("handleChangeSpeed" => HandleChangeSpeed(Primitive<f32>)),
     ("handleChangeMode" => HandleChangeMode(Primitive<HandleChangeMode>)),
     ("oldHandle" => OldHandle(SingleClass<HkbHandle<'de>>)),
-    ("oldHandlePosition" => OldHandlePosition(Vector4<f32>)),
-    ("oldHandleRotation" => OldHandleRotation(Quaternion<f32>)),
+    ("oldHandlePosition" => OldHandlePosition(Primitive<Vector4<f32>>)),
+    ("oldHandleRotation" => OldHandleRotation(Primitive<Quaternion<f32>>)),
     ("timeSinceLastModify" => TimeSinceLastModify(Primitive<f32>)),
     ("smoothlyChangingHandles" => SmoothlyChangingHandles(Primitive<bool>)),
 }

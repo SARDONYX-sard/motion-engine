@@ -37,14 +37,14 @@ pub enum HkpWorldCinfo<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"gravity"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "gravity")]
-    Gravity(Vector4<f32>),
+    Gravity(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseQuerySize"`
     /// -   type: `hkInt32`
@@ -444,7 +444,7 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpWorldCinfo<'de>, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("gravity" => Gravity(Vector4<f32>)),
+    ("gravity" => Gravity(Primitive<Vector4<f32>>)),
     ("broadPhaseQuerySize" => BroadPhaseQuerySize(Primitive<i32>)),
     ("contactRestingVelocity" => ContactRestingVelocity(Primitive<f32>)),
     ("broadPhaseBorderBehaviour" => BroadPhaseBorderBehaviour(Primitive<BroadPhaseBorderBehaviour>)),

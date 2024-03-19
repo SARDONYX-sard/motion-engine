@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkMemoryMeshVertexBuffer {
     // C++ Parent class(`hkMeshVertexBuffer` => parent: `hkReferencedObject`) has no fields
-
+    //
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -39,7 +39,7 @@ pub enum HkMemoryMeshVertexBuffer {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"format"`
     /// -   type: `struct hkVertexFormat`
@@ -60,7 +60,7 @@ pub enum HkMemoryMeshVertexBuffer {
     /// - offset: 396
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "memory")]
-    Memory(HkArrayRef<Primitive<u8>>),
+    Memory(HkArrayNum<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"vertexStride"`
     /// -   type: `hkInt32`
@@ -105,7 +105,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("format" => Format(SingleClass<HkVertexFormat>)),
     ("elementOffsets" => ElementOffsets(CStyleArray<[i32; 32]>)),
-    ("memory" => Memory(HkArrayRef<Primitive<u8>>)),
+    ("memory" => Memory(HkArrayNum<u8>)),
     ("vertexStride" => VertexStride(Primitive<i32>)),
     ("locked" => Locked(Primitive<bool>)),
     ("numVertices" => NumVertices(Primitive<i32>)),

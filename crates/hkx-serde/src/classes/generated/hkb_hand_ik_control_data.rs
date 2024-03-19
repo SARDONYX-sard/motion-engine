@@ -26,21 +26,21 @@ pub enum HkbHandIkControlData<'a> {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "targetPosition")]
-    TargetPosition(Vector4<f32>),
+    TargetPosition(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"targetRotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "targetRotation")]
-    TargetRotation(Quaternion<f32>),
+    TargetRotation(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"targetNormal"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "targetNormal")]
-    TargetNormal(Vector4<f32>),
+    TargetNormal(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"targetHandle"`
     /// -   type: `struct hkbHandle*`
@@ -109,9 +109,9 @@ pub enum HkbHandIkControlData<'a> {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkbHandIkControlData<'de>, "@name",
-    ("targetPosition" => TargetPosition(Vector4<f32>)),
-    ("targetRotation" => TargetRotation(Quaternion<f32>)),
-    ("targetNormal" => TargetNormal(Vector4<f32>)),
+    ("targetPosition" => TargetPosition(Primitive<Vector4<f32>>)),
+    ("targetRotation" => TargetRotation(Primitive<Quaternion<f32>>)),
+    ("targetNormal" => TargetNormal(Primitive<Vector4<f32>>)),
     ("targetHandle" => TargetHandle(Primitive<Cow<'de, str>>)),
     ("transformOnFraction" => TransformOnFraction(Primitive<f32>)),
     ("normalOnFraction" => NormalOnFraction(Primitive<f32>)),

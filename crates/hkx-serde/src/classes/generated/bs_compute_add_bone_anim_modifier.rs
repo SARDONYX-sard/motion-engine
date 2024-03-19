@@ -85,7 +85,7 @@ pub enum BsComputeAddBoneAnimModifier<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -110,7 +110,7 @@ pub enum BsComputeAddBoneAnimModifier<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"boneIndex"`
     /// -   type: `hkInt16`
@@ -124,21 +124,21 @@ pub enum BsComputeAddBoneAnimModifier<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "translationLSOut")]
-    TranslationLsOut(Vector4<f32>),
+    TranslationLsOut(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"rotationLSOut"`
     /// -   type: `hkQuaternion`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rotationLSOut")]
-    RotationLsOut(Quaternion<f32>),
+    RotationLsOut(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"scaleLSOut"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "scaleLSOut")]
-    ScaleLsOut(Vector4<f32>),
+    ScaleLsOut(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"pSkeletonMemory"`
     /// -   type: `void*`
@@ -159,13 +159,13 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("boneIndex" => BoneIndex(Primitive<i16>)),
-    ("translationLSOut" => TranslationLsOut(Vector4<f32>)),
-    ("rotationLSOut" => RotationLsOut(Quaternion<f32>)),
-    ("scaleLSOut" => ScaleLsOut(Vector4<f32>)),
+    ("translationLSOut" => TranslationLsOut(Primitive<Vector4<f32>>)),
+    ("rotationLSOut" => RotationLsOut(Primitive<Quaternion<f32>>)),
+    ("scaleLSOut" => ScaleLsOut(Primitive<Vector4<f32>>)),
     ("pSkeletonMemory" => PSkeletonMemory(Primitive<Cow<'de, str>>)),
 }

@@ -52,7 +52,7 @@ pub enum HkpTransformShape<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"childShape"`
     /// -   type: `struct hkpSingleShapeContainer`
@@ -73,14 +73,14 @@ pub enum HkpTransformShape<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rotation")]
-    Rotation(Quaternion<f32>),
+    Rotation(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"transform"`
     /// -   type: `hkTransform`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transform")]
-    Transform(Transform<f32>),
+    Transform(Primitive<Transform<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -92,6 +92,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("childShape" => ChildShape(SingleClass<HkpSingleShapeContainer<'de>>)),
     ("childShapeSize" => ChildShapeSize(Primitive<i32>)),
-    ("rotation" => Rotation(Quaternion<f32>)),
-    ("transform" => Transform(Transform<f32>)),
+    ("rotation" => Rotation(Primitive<Quaternion<f32>>)),
+    ("transform" => Transform(Primitive<Transform<f32>>)),
 }

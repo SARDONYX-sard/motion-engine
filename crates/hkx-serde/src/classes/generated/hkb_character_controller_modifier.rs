@@ -85,7 +85,7 @@ pub enum HkbCharacterControllerModifier<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -110,7 +110,7 @@ pub enum HkbCharacterControllerModifier<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"controlData"`
     /// -   type: `struct hkbCharacterControllerControlData`
@@ -124,7 +124,7 @@ pub enum HkbCharacterControllerModifier<'a> {
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "initialVelocity")]
-    InitialVelocity(Vector4<f32>),
+    InitialVelocity(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"initialVelocityCoordinates"`
     /// -   type: `enum InitialVelocityCoordinates`
@@ -173,7 +173,7 @@ pub enum HkbCharacterControllerModifier<'a> {
     /// - offset: 112
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "gravity", skip_serializing)]
-    Gravity(Vector4<f32>),
+    Gravity(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"timestep"`
     /// -   type: `hkReal`
@@ -201,19 +201,19 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("controlData" => ControlData(SingleClass<HkbCharacterControllerControlData>)),
-    ("initialVelocity" => InitialVelocity(Vector4<f32>)),
+    ("initialVelocity" => InitialVelocity(Primitive<Vector4<f32>>)),
     ("initialVelocityCoordinates" => InitialVelocityCoordinates(Primitive<InitialVelocityCoordinates>)),
     ("motionMode" => MotionMode(Primitive<MotionMode>)),
     ("forceDownwardMomentum" => ForceDownwardMomentum(Primitive<bool>)),
     ("applyGravity" => ApplyGravity(Primitive<bool>)),
     ("setInitialVelocity" => SetInitialVelocity(Primitive<bool>)),
     ("isTouchingGround" => IsTouchingGround(Primitive<bool>)),
-    ("gravity" => Gravity(Vector4<f32>)),
+    ("gravity" => Gravity(Primitive<Vector4<f32>>)),
     ("timestep" => Timestep(Primitive<f32>)),
     ("isInitialVelocityAdded" => IsInitialVelocityAdded(Primitive<bool>)),
 }

@@ -26,19 +26,19 @@ pub enum HkpMultiRayShapeRay {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "start")]
-    Start(Vector4<f32>),
+    Start(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"end"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "end")]
-    End(Vector4<f32>),
+    End(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpMultiRayShapeRay, "@name",
-    ("start" => Start(Vector4<f32>)),
-    ("end" => End(Vector4<f32>)),
+    ("start" => Start(Primitive<Vector4<f32>>)),
+    ("end" => End(Primitive<Vector4<f32>>)),
 }

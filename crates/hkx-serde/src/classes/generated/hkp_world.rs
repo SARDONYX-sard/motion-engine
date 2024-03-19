@@ -37,7 +37,7 @@ pub enum HkpWorld<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"simulation"`
     /// -   type: `struct hkpSimulation*`
@@ -51,7 +51,7 @@ pub enum HkpWorld<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "gravity")]
-    Gravity(Vector4<f32>),
+    Gravity(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"fixedIsland"`
     /// -   type: `void*`
@@ -655,7 +655,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("simulation" => Simulation(Primitive<Cow<'de, str>>)),
-    ("gravity" => Gravity(Vector4<f32>)),
+    ("gravity" => Gravity(Primitive<Vector4<f32>>)),
     ("fixedIsland" => FixedIsland(Primitive<Cow<'de, str>>)),
     ("fixedRigidBody" => FixedRigidBody(Primitive<Cow<'de, str>>)),
     ("activeSimulationIslands" => ActiveSimulationIslands(HkArrayRef<Cow<'de, str>>)),

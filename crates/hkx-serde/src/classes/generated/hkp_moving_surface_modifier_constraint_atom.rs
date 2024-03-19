@@ -64,7 +64,7 @@ pub enum HkpMovingSurfaceModifierConstraintAtom<'a> {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "velocity")]
-    Velocity(Vector4<f32>),
+    Velocity(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -75,5 +75,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("child" => Child(Primitive<Cow<'de, str>>)),
     ("pad" => Pad(CStyleArray<[u32; 2]>)),
     ("type" => Type(Primitive<AtomType>)),
-    ("velocity" => Velocity(Vector4<f32>)),
+    ("velocity" => Velocity(Primitive<Vector4<f32>>)),
 }

@@ -37,7 +37,7 @@ pub enum HkxMaterialEffect<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
@@ -58,7 +58,7 @@ pub enum HkxMaterialEffect<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "data")]
-    Data(HkArrayRef<Primitive<u8>>),
+    Data(HkArrayNum<u8>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -68,7 +68,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("type" => Type(Primitive<EffectType>)),
-    ("data" => Data(HkArrayRef<Primitive<u8>>)),
+    ("data" => Data(HkArrayNum<u8>)),
 }
 
 #[allow(clippy::enum_variant_names)]

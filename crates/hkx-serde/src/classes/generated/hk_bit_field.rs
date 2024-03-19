@@ -26,7 +26,7 @@ pub enum HkBitField {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "words")]
-    Words(HkArrayRef<Primitive<u32>>),
+    Words(HkArrayNum<u32>),
     /// # C++ Class Fields Info
     /// -   name:`"numBits"`
     /// -   type: `hkInt32`
@@ -39,6 +39,6 @@ pub enum HkBitField {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkBitField, "@name",
-    ("words" => Words(HkArrayRef<Primitive<u32>>)),
+    ("words" => Words(HkArrayNum<u32>)),
     ("numBits" => NumBits(Primitive<i32>)),
 }

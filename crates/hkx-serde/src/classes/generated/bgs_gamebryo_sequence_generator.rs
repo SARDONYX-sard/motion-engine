@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum BgsGamebryoSequenceGenerator<'a> {
     // C++ Parent class(`hkbGenerator` => parent: `hkbNode`) has no fields
-
+    //
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -72,7 +72,7 @@ pub enum BgsGamebryoSequenceGenerator<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -97,7 +97,7 @@ pub enum BgsGamebryoSequenceGenerator<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"pSequence"`
     /// -   type: `char*`
@@ -125,7 +125,7 @@ pub enum BgsGamebryoSequenceGenerator<'a> {
     /// - offset: 52
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "events", skip_serializing)]
-    Events(HkArrayRef<Primitive<()>>),
+    Events(HkArrayRef<()>),
     /// # C++ Class Fields Info
     /// -   name:`"fTime"`
     /// -   type: `hkReal`
@@ -158,14 +158,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("pSequence" => PSequence(Primitive<Cow<'de, str>>)),
     ("eBlendModeFunction" => EBlendModeFunction(Primitive<BlendModeFunction>)),
     ("fPercent" => FPercent(Primitive<f32>)),
-    ("events" => Events(HkArrayRef<Primitive<()>>)),
+    ("events" => Events(HkArrayRef<()>)),
     ("fTime" => FTime(Primitive<f32>)),
     ("bDelayedActivate" => BDelayedActivate(Primitive<bool>)),
     ("bLooping" => BLooping(Primitive<bool>)),

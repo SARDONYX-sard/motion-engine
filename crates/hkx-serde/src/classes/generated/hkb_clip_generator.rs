@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkbClipGenerator<'a> {
     // C++ Parent class(`hkbGenerator` => parent: `hkbNode`) has no fields
-
+    //
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -72,7 +72,7 @@ pub enum HkbClipGenerator<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -97,7 +97,7 @@ pub enum HkbClipGenerator<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"animationName"`
     /// -   type: `hkStringPtr`
@@ -181,7 +181,7 @@ pub enum HkbClipGenerator<'a> {
     /// - offset: 76
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "animDatas", skip_serializing)]
-    AnimDatas(HkArrayRef<Primitive<()>>),
+    AnimDatas(HkArrayRef<()>),
     /// # C++ Class Fields Info
     /// -   name:`"animationControl"`
     /// -   type: `void*`
@@ -223,14 +223,14 @@ pub enum HkbClipGenerator<'a> {
     /// - offset: 112
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "extractedMotion", skip_serializing)]
-    ExtractedMotion(QsTransform<f32>),
+    ExtractedMotion(Primitive<QsTransform<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"echos"`
     /// -   type: `hkArray<void>`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "echos", skip_serializing)]
-    Echos(HkArrayRef<Primitive<()>>),
+    Echos(HkArrayRef<()>),
     /// # C++ Class Fields Info
     /// -   name:`"localTime"`
     /// -   type: `hkReal`
@@ -298,7 +298,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
@@ -313,14 +313,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("animationBindingIndex" => AnimationBindingIndex(Primitive<i16>)),
     ("mode" => Mode(Primitive<PlaybackMode>)),
     ("flags" => Flags(Primitive<i8>)),
-    ("animDatas" => AnimDatas(HkArrayRef<Primitive<()>>)),
+    ("animDatas" => AnimDatas(HkArrayRef<()>)),
     ("animationControl" => AnimationControl(Primitive<Cow<'de, str>>)),
     ("originalTriggers" => OriginalTriggers(Primitive<Cow<'de, str>>)),
     ("mapperData" => MapperData(Primitive<Cow<'de, str>>)),
     ("binding" => Binding(Primitive<Cow<'de, str>>)),
     ("mirroredAnimation" => MirroredAnimation(Primitive<Cow<'de, str>>)),
-    ("extractedMotion" => ExtractedMotion(QsTransform<f32>)),
-    ("echos" => Echos(HkArrayRef<Primitive<()>>)),
+    ("extractedMotion" => ExtractedMotion(Primitive<QsTransform<f32>>)),
+    ("echos" => Echos(HkArrayRef<()>)),
     ("localTime" => LocalTime(Primitive<f32>)),
     ("time" => Time(Primitive<f32>)),
     ("previousUserControlledTimeFraction" => PreviousUserControlledTimeFraction(Primitive<f32>)),

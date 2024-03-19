@@ -26,35 +26,35 @@ pub enum HkpCompressedMeshShapeChunk {
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "offset")]
-    Offset(Vector4<f32>),
+    Offset(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"vertices"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "vertices")]
-    Vertices(HkArrayRef<Primitive<u16>>),
+    Vertices(HkArrayNum<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"indices"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "indices")]
-    Indices(HkArrayRef<Primitive<u16>>),
+    Indices(HkArrayNum<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"stripLengths"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "stripLengths")]
-    StripLengths(HkArrayRef<Primitive<u16>>),
+    StripLengths(HkArrayNum<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"weldingInfo"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "weldingInfo")]
-    WeldingInfo(HkArrayRef<Primitive<u16>>),
+    WeldingInfo(HkArrayNum<u16>),
     /// # C++ Class Fields Info
     /// -   name:`"materialInfo"`
     /// -   type: `hkUint32`
@@ -81,11 +81,11 @@ pub enum HkpCompressedMeshShapeChunk {
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
 impl_deserialize_for_internally_tagged_enum! {
     HkpCompressedMeshShapeChunk, "@name",
-    ("offset" => Offset(Vector4<f32>)),
-    ("vertices" => Vertices(HkArrayRef<Primitive<u16>>)),
-    ("indices" => Indices(HkArrayRef<Primitive<u16>>)),
-    ("stripLengths" => StripLengths(HkArrayRef<Primitive<u16>>)),
-    ("weldingInfo" => WeldingInfo(HkArrayRef<Primitive<u16>>)),
+    ("offset" => Offset(Primitive<Vector4<f32>>)),
+    ("vertices" => Vertices(HkArrayNum<u16>)),
+    ("indices" => Indices(HkArrayNum<u16>)),
+    ("stripLengths" => StripLengths(HkArrayNum<u16>)),
+    ("weldingInfo" => WeldingInfo(HkArrayNum<u16>)),
     ("materialInfo" => MaterialInfo(Primitive<u32>)),
     ("reference" => Reference(Primitive<u16>)),
     ("transformIndex" => TransformIndex(Primitive<u16>)),

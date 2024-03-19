@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkpPlaneShape {
     // C++ Parent class(`hkpHeightFieldShape` => parent: `hkpShape`) has no fields
-
+    //
     /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
@@ -54,28 +54,28 @@ pub enum HkpPlaneShape {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"plane"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "plane")]
-    Plane(Vector4<f32>),
+    Plane(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"aabbCenter"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "aabbCenter")]
-    AabbCenter(Vector4<f32>),
+    AabbCenter(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"aabbHalfExtents"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "aabbHalfExtents")]
-    AabbHalfExtents(Vector4<f32>),
+    AabbHalfExtents(Primitive<Vector4<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -85,7 +85,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("type" => Type(Primitive<()>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("plane" => Plane(Vector4<f32>)),
-    ("aabbCenter" => AabbCenter(Vector4<f32>)),
-    ("aabbHalfExtents" => AabbHalfExtents(Vector4<f32>)),
+    ("plane" => Plane(Primitive<Vector4<f32>>)),
+    ("aabbCenter" => AabbCenter(Primitive<Vector4<f32>>)),
+    ("aabbHalfExtents" => AabbHalfExtents(Primitive<Vector4<f32>>)),
 }

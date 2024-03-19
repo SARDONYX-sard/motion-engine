@@ -22,7 +22,7 @@ use crate::havok_types::*;
 #[serde(tag = "@name")]
 pub enum HkbParticleSystemEventPayload {
     // C++ Parent class(`hkbEventPayload` => parent: `hkReferencedObject`) has no fields
-
+    //
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
@@ -39,7 +39,7 @@ pub enum HkbParticleSystemEventPayload {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum SystemType`
@@ -60,14 +60,14 @@ pub enum HkbParticleSystemEventPayload {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "offset")]
-    Offset(Vector4<f32>),
+    Offset(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"direction"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "direction")]
-    Direction(Vector4<f32>),
+    Direction(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"numParticles"`
     /// -   type: `hkInt32`
@@ -91,8 +91,8 @@ impl_deserialize_for_internally_tagged_enum! {
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("type" => Type(Primitive<SystemType>)),
     ("emitBoneIndex" => EmitBoneIndex(Primitive<i16>)),
-    ("offset" => Offset(Vector4<f32>)),
-    ("direction" => Direction(Vector4<f32>)),
+    ("offset" => Offset(Primitive<Vector4<f32>>)),
+    ("direction" => Direction(Primitive<Vector4<f32>>)),
     ("numParticles" => NumParticles(Primitive<i32>)),
     ("speed" => Speed(Primitive<f32>)),
 }

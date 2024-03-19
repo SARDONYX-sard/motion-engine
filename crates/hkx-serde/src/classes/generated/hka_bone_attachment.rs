@@ -37,7 +37,7 @@ pub enum HkaBoneAttachment<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"originalSkeletonName"`
     /// -   type: `hkStringPtr`
@@ -51,7 +51,7 @@ pub enum HkaBoneAttachment<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "boneFromAttachment")]
-    BoneFromAttachment(Matrix4<f32>),
+    BoneFromAttachment(Primitive<Matrix4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"attachment"`
     /// -   type: `struct hkReferencedObject*`
@@ -81,7 +81,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("originalSkeletonName" => OriginalSkeletonName(Primitive<Cow<'de, str>>)),
-    ("boneFromAttachment" => BoneFromAttachment(Matrix4<f32>)),
+    ("boneFromAttachment" => BoneFromAttachment(Primitive<Matrix4<f32>>)),
     ("attachment" => Attachment(Primitive<Cow<'de, str>>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
     ("boneIndex" => BoneIndex(Primitive<i16>)),

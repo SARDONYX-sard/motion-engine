@@ -37,7 +37,7 @@ pub enum HkpMoppCode {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"info"`
     /// -   type: `struct hkpMoppCodeCodeInfo`
@@ -51,7 +51,7 @@ pub enum HkpMoppCode {
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "data")]
-    Data(HkArrayRef<Primitive<u8>>),
+    Data(HkArrayNum<u8>),
     /// # C++ Class Fields Info
     /// -   name:`"buildType"`
     /// -   type: `enum BuildType`
@@ -67,7 +67,7 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("info" => Info(SingleClass<HkpMoppCodeCodeInfo>)),
-    ("data" => Data(HkArrayRef<Primitive<u8>>)),
+    ("data" => Data(HkArrayNum<u8>)),
     ("buildType" => BuildType(Primitive<BuildType>)),
 }
 

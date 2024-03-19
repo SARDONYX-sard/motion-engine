@@ -37,7 +37,7 @@ pub enum HkpShapeInfo<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"shape"`
     /// -   type: `struct hkpShape*`
@@ -79,7 +79,7 @@ pub enum HkpShapeInfo<'a> {
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "transform")]
-    Transform(Transform<f32>),
+    Transform(Primitive<Transform<f32>>),
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -92,5 +92,5 @@ impl_deserialize_for_internally_tagged_enum! {
     ("hkdShapesCollected" => HkdShapesCollected(Primitive<bool>)),
     ("childShapeNames" => ChildShapeNames(HkArrayStringPtr<'de>)),
     ("childTransforms" => ChildTransforms(HkArrayMatrix4<Transform<f32>>)),
-    ("transform" => Transform(Transform<f32>)),
+    ("transform" => Transform(Primitive<Transform<f32>>)),
 }

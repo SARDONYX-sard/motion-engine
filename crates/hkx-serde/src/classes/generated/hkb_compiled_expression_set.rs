@@ -37,7 +37,7 @@ pub enum HkbCompiledExpressionSet {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"rpn"`
     /// -   type: `hkArray<struct hkbCompiledExpressionSetToken>`
@@ -51,7 +51,7 @@ pub enum HkbCompiledExpressionSet {
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "expressionToRpnIndex")]
-    ExpressionToRpnIndex(HkArrayRef<Primitive<i32>>),
+    ExpressionToRpnIndex(HkArrayNum<i32>),
     /// # C++ Class Fields Info
     /// -   name:`"numExpressions"`
     /// -   type: `hkInt8`
@@ -67,6 +67,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
     ("rpn" => Rpn(HkArrayClass<HkbCompiledExpressionSetToken>)),
-    ("expressionToRpnIndex" => ExpressionToRpnIndex(HkArrayRef<Primitive<i32>>)),
+    ("expressionToRpnIndex" => ExpressionToRpnIndex(HkArrayNum<i32>)),
     ("numExpressions" => NumExpressions(Primitive<i8>)),
 }

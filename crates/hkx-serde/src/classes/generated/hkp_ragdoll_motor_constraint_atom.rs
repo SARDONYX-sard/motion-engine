@@ -56,7 +56,7 @@ pub enum HkpRagdollMotorConstraintAtom<'a> {
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "target_bRca")]
-    TargetBRca(Matrix3<f32>),
+    TargetBRca(Primitive<Matrix3<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"motors"`
     /// -   type: `struct hkpConstraintMotor*`
@@ -73,6 +73,6 @@ impl_deserialize_for_internally_tagged_enum! {
     ("isEnabled" => IsEnabled(Primitive<bool>)),
     ("initializedOffset" => InitializedOffset(Primitive<i16>)),
     ("previousTargetAnglesOffset" => PreviousTargetAnglesOffset(Primitive<i16>)),
-    ("target_bRca" => TargetBRca(Matrix3<f32>)),
+    ("target_bRca" => TargetBRca(Primitive<Matrix3<f32>>)),
     ("motors" => Motors(Primitive<Cow<'de, str>>)),
 }

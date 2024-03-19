@@ -176,7 +176,22 @@ impl<'de> serde::Deserialize<'de> for HintFlags {
                         "FLAG_WRITE" => flags |= Self::FLAG_WRITE,
                         "FLAG_DYNAMIC" => flags |= Self::FLAG_DYNAMIC,
                         "FLAG_NOT_SHARED" => flags |= Self::FLAG_NOT_SHARED,
-                        _ => return Err(serde::de::Error::custom("Invalid flag")),
+                        unknown => match parse_int::parse(unknown) {
+                            Ok(int) => {
+                                if let Some(bits) = Self::from_bits(int) {
+                                    flags |= bits
+                                } else {
+                                    return Err(serde::de::Error::custom(format!(
+                                        "Expected FlagValues flags but got \"{unknown}\"",
+                                    )));
+                                };
+                            }
+                            Err(_err) => {
+                                return Err(serde::de::Error::custom(format!(
+                                    "Expected FlagValues flags or integer, but got \"{unknown}\""
+                                )))
+                            }
+                        },
                     }
                 }
                 Ok(flags)

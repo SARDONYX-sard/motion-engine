@@ -85,7 +85,7 @@ pub enum HkbSetWorldFromModelModifier<'a> {
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "cachedBindables", skip_serializing)]
-    CachedBindables(HkArrayRef<Primitive<()>>),
+    CachedBindables(HkArrayRef<()>),
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
@@ -110,21 +110,21 @@ pub enum HkbSetWorldFromModelModifier<'a> {
     ReferenceCount(Primitive<i16>),
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
-
+    //
     /// # C++ Class Fields Info
     /// -   name:`"translation"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "translation")]
-    Translation(Vector4<f32>),
+    Translation(Primitive<Vector4<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"rotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "rotation")]
-    Rotation(Quaternion<f32>),
+    Rotation(Primitive<Quaternion<f32>>),
     /// # C++ Class Fields Info
     /// -   name:`"setTranslation"`
     /// -   type: `hkBool`
@@ -152,12 +152,12 @@ impl_deserialize_for_internally_tagged_enum! {
     ("cloneState" => CloneState(Primitive<()>)),
     ("padNode" => PadNode(CStyleArray<[bool; 1]>)),
     ("variableBindingSet" => VariableBindingSet(Primitive<Cow<'de, str>>)),
-    ("cachedBindables" => CachedBindables(HkArrayRef<Primitive<()>>)),
+    ("cachedBindables" => CachedBindables(HkArrayRef<()>)),
     ("areBindablesCached" => AreBindablesCached(Primitive<bool>)),
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("translation" => Translation(Vector4<f32>)),
-    ("rotation" => Rotation(Quaternion<f32>)),
+    ("translation" => Translation(Primitive<Vector4<f32>>)),
+    ("rotation" => Rotation(Primitive<Quaternion<f32>>)),
     ("setTranslation" => SetTranslation(Primitive<bool>)),
     ("setRotation" => SetRotation(Primitive<bool>)),
 }

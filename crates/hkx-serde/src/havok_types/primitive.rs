@@ -20,6 +20,13 @@ pub struct Primitive<T> {
     value: T,
 }
 
+impl<T> Primitive<T> {
+    /// Create a new Primitive from value
+    pub const fn new(value: T) -> Self {
+        Self { value }
+    }
+}
+
 impl<T: core::fmt::Display> core::fmt::Display for Primitive<T> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}", self.value)

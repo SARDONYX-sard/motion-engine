@@ -1,8 +1,8 @@
 use serde::{Deserialize, Serialize};
 
-/// In C++, this is the case when the type of the in-class field is a class.
-///
-/// In XML, A type to hold another class of `hkparam` as an array within `hkparam`.
+/// # Vector of Class in Class field
+/// - In C++, this is the case when the type of the in-class field is a class.
+/// - In XML, A type to hold another class of `hkparam` as an array within `hkparam`.
 ///
 /// e.g. `wordVariableValues` field of `hkbVariableValueSet` class
 ///
@@ -34,15 +34,23 @@ pub struct HkArrayClass<T> {
     /// An array that receives `hkparam` of a certain class.
     ///
     /// The XML for this class does not require `name` and `signature`, but only encloses `hkobject` tags without attributes.
+    ///
+    /// # Note
+    /// [document](https://docs.rs/quick-xml/latest/quick_xml/de/index.html#sequences-xsall-and-xssequence-xml-schema-types) in quick_xml.
+    /// If we try to use `#[serde(default)` for a enum(Represent C++ class), we will get stuck with the Default implementation,
+    /// so you can get away with not serializing [`Option`].
+    ///
+    /// If there is no skip, an extra one is created like `<hkparam><hkobject /></hkparam>`.
     #[serde(rename = "hkobject")]
-    pub classes: Vec<HkArrayClassParam<T>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub classes: Option<Vec<HkArrayClassParam<T>>>,
 }
 
 impl<T> From<Vec<HkArrayClassParam<T>>> for HkArrayClass<T> {
     fn from(classes: Vec<HkArrayClassParam<T>>) -> Self {
         Self {
             numelements: classes.len(),
-            classes,
+            classes: Some(classes),
         }
     }
 }
@@ -51,28 +59,31 @@ impl<T> From<Vec<Vec<T>>> for HkArrayClass<T> {
     fn from(classes: Vec<Vec<T>>) -> Self {
         Self {
             numelements: classes.len(),
-            classes: classes.into_iter().map(HkArrayClassParam::from).collect(),
+            classes: Some(classes.into_iter().map(HkArrayClassParam::from).collect()),
         }
     }
 }
 
-/// One class of `HkArray`
+/// Fields of a class in `HkArray`
 ///
 /// ```xml
 /// <hkobject>
+///     <!--     This lines     -->
 ///     <hkparam>#0063</hkparam>
 ///     <hkparam>#0064</hkparam>
+///     <!--     This lines     -->
 /// </hkobject>
 /// ````
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct HkArrayClassParam<T> {
+    /// Fields of the class.
     #[serde(rename = "hkparam")]
-    pub hkparam: Vec<T>,
+    pub hkparams: Vec<T>,
 }
 
 impl<T> From<Vec<T>> for HkArrayClassParam<T> {
     fn from(value: Vec<T>) -> Self {
-        Self { hkparam: value }
+        Self { hkparams: value }
     }
 }
 
@@ -121,14 +132,14 @@ mod tests {
 
         let expected = HkArrayClass {
             numelements: 2,
-            classes: vec![
+            classes: Some(vec![
                 HkArrayClassParam {
-                    hkparam: vec!["#0063", "#0063"],
+                    hkparams: vec!["#0063", "#0063"],
                 },
                 HkArrayClassParam {
-                    hkparam: vec!["#0064"],
+                    hkparams: vec!["#0064"],
                 },
-            ],
+            ]),
         };
 
         assert_eq!(deserialized, expected);

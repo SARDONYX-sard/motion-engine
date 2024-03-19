@@ -6,10 +6,10 @@ macro_rules! impl_serde_for_hk_array {
   ($struct_name:ident, $sep:literal, $chunk_size:literal) => {
 
 impl<T> From<Vec<T>> for $struct_name<T> {
-    fn from(value: Vec<T>) -> Self {
+    fn from(values: Vec<T>) -> Self {
         Self {
-            numelements: value.len(),
-            value,
+            numelements: values.len(),
+            values,
         }
     }
 }
@@ -80,15 +80,15 @@ where
 
                 let mut numelements =
                     numelements.ok_or_else(|| Error::missing_field("@numelements"))?;
-                let value = value.unwrap_or_default();
+                let values = value.unwrap_or_default();
 
-                let vec_len = value.len();
+                let vec_len = values.len();
                 if numelements != vec_len {
                     tracing::warn!("XML value ({numelements}) & array length ({vec_len}) in XML do not match. Automatically correct to the length of the array.");
-                    numelements = value.len();
+                    numelements = values.len();
                 };
 
-                Ok($struct_name { numelements, value })
+                Ok($struct_name { numelements, values })
             }
         }
 
@@ -122,7 +122,7 @@ pub struct HkArrayVector<T> {
     pub numelements: usize,
     /// [`Vec`], which stores [`Vector4`], etc.
     #[serde(rename = "$value", default)]
-    pub value: Vec<T>,
+    pub values: Vec<T>,
 }
 
 /// Array type with [`serde::Serialize`]/[`serde::Deserialize`] implemented for Havok for `Matrix3`.
@@ -146,7 +146,7 @@ pub struct HkArrayMatrix3<T> {
     /// The reason we use `Vec<T>` instead of `Vec<Matrix3<T>>` is that we can include other structures besides `hkMatrix3`,
     /// such as `hkRotation`, which are equivalent in structure.
     #[serde(rename = "$value", default)]
-    pub value: Vec<T>,
+    pub values: Vec<T>,
 }
 
 /// Array type with [`serde::Serialize`]/[`serde::Deserialize`] implemented for Havok for `Matrix4`.
@@ -166,7 +166,7 @@ pub struct HkArrayMatrix4<T> {
     pub numelements: usize,
     /// [`Vec`], which stores `Matrix4`, etc.
     #[serde(rename = "$value", default)]
-    pub value: Vec<T>,
+    pub values: Vec<T>,
 }
 
 #[cfg(test)]
@@ -207,7 +207,7 @@ mod tests {
 
         let expected = HkArrayVector {
             numelements: 3, // Auto fix numelements
-            value: vec![
+            values: vec![
                 Vector4::from((0.0, 0.0, 0.0, 0.0)),
                 Vector4::from((0.0, 1.0, 0.0, 0.0)),
                 Vector4::from((0.0, 0.0, 1.0, 0.0)),

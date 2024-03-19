@@ -18,8 +18,13 @@ pub fn parse_cpp_type(input: &str) -> IResult<&str, Cow<'_, str>> {
         "char*" | "hkBool" | "hkChar" | "hkHalf" | "hkInt16" | "hkInt32" | "hkInt8" | "hkReal"
         | "hkUint16" | "hkUint32" | "hkUint64" | "hkUint8" | "hkUlong" | "hkStringPtr"
         | "hkVariant" | "void" => parse_primitive_type(input),
+
+        // ! In quick_xml, vector4 (`<tag>(0.0 0.0 0.0)</tag>`) enclosed in a single tag must be enclosed in a structure.
         "hkMatrix3" | "hkMatrix4" | "hkQsTransform" | "hkQuaternion" | "hkRotation"
-        | "hkTransform" | "hkVector4" => parse_vector(input),
+        | "hkTransform" | "hkVector4" => {
+            let (input, vec_type) = parse_vector(input)?;
+            Ok((input, format!("Primitive<{vec_type}>").into()))
+        }
 
         input if input.ends_with('*') => Ok(("", "Primitive<Cow<'a, str>>".into())),
 
@@ -167,10 +172,15 @@ fn parse_hk_array_type(input: &str) -> IResult<&str, Cow<'_, str>> {
     let (input, generics) = take_while(|c| c != '&')(input)?;
 
     let (_, array_type) = match generics {
-        "char*" | "hkBool" | "hkChar" | "hkHalf" | "hkInt16" | "hkInt32" | "hkInt8" | "hkReal"
-        | "hkUint16" | "hkUint32" | "hkUint64" | "hkUint8" | "hkUlong" | "hkVariant" | "void" => {
-            let (input, v) = parse_primitive_type(generics)?;
+        "char*" | "hkBool" | "hkChar" | "void" => {
+            let (input, v) = parse_primitive_type_non_wrapper(generics)?;
             Ok((input, format!("HkArrayRef<{v}>").into()))
+        }
+
+        "hkHalf" | "hkInt16" | "hkInt32" | "hkInt8" | "hkReal" | "hkUint16" | "hkUint32"
+        | "hkUint64" | "hkUint8" | "hkUlong" | "hkVariant" => {
+            let (input, v) = parse_primitive_type_non_wrapper(generics)?;
+            Ok((input, format!("HkArrayNum<{v}>").into()))
         }
 
         "hkStringPtr" => Ok((input, "HkArrayStringPtr<'a>".into())),

@@ -100,7 +100,7 @@ where
             type Value = Vector3<T>;
 
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
-                formatter.write_str("a string representing a Vector4")
+                formatter.write_str("a string representing a Vector3")
             }
 
             fn visit_str<E>(self, s: &str) -> Result<Self::Value, E>

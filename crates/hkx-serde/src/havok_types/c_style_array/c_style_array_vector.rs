@@ -20,24 +20,6 @@ macro_rules! impl_serde_for_c_style_array {
             pub value: [T; N],
         }
 
-        impl<T, const N: usize> Serialize for $struct_name<T, N>
-        where
-            T: Default + Copy + Serialize + core::fmt::Display,
-        {
-            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-            where
-                S: serde::Serializer,
-            {
-                serializer.serialize_str(&format!(
-                    "{}",
-                    self.value
-                        .iter()
-                        .map(|&x| x.to_string())
-                        .collect::<String>()
-                ))
-            }
-        }
-
         impl<T, const N: usize> Default for $struct_name<T, N>
         where
             T: Default + Copy + Serialize + core::fmt::Display,
@@ -55,6 +37,24 @@ macro_rules! impl_serde_for_c_style_array {
         {
             fn from(value: [T; N]) -> Self {
                 Self { value }
+            }
+        }
+
+        impl<T, const N: usize> Serialize for $struct_name<T, N>
+        where
+            T: Default + Copy + Serialize + core::fmt::Display,
+        {
+            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+            where
+                S: serde::Serializer,
+            {
+                serializer.serialize_str(&format!(
+                    "{}",
+                    self.value
+                        .iter()
+                        .map(|&x| x.to_string())
+                        .collect::<String>()
+                ))
             }
         }
 

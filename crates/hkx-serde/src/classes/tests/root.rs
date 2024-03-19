@@ -46,8 +46,7 @@ mod tests {
             .join("../..")
             .join("tests")
             // .join("test.xml");
-            .join("test2.xml");
-        // .join("1hm_behavior.xml");
+            .join("1hm_behavior.xml");
 
         let xml = std::fs::read_to_string(test_path)?;
         let result: Hkx = quick_xml::de::from_str(&xml)?;
@@ -134,52 +133,52 @@ mod tests {
                             HkbVariableValueSet::WordVariableValues(
                                 vec![
                                     HkArrayClassParam {
-                                        hkparam: vec![HkbVariableValue::Value(1045220557.into())],
+                                        hkparams: vec![HkbVariableValue::Value(1045220557.into())],
                                     },
                                     HkArrayClassParam {
-                                        hkparam: vec![HkbVariableValue::Value(0.into())],
+                                        hkparams: vec![HkbVariableValue::Value(0.into())],
                                     },
                                     HkArrayClassParam {
-                                        hkparam: vec![HkbVariableValue::Value(0.into())],
+                                        hkparams: vec![HkbVariableValue::Value(0.into())],
                                     },
                                     HkArrayClassParam {
-                                        hkparam: vec![HkbVariableValue::Value(0.into())],
+                                        hkparams: vec![HkbVariableValue::Value(0.into())],
                                     },
                                     HkArrayClassParam {
-                                        hkparam: vec![HkbVariableValue::Value(0.into())],
+                                        hkparams: vec![HkbVariableValue::Value(0.into())],
                                     },
                                     HkArrayClassParam {
-                                        hkparam: vec![HkbVariableValue::Value(0.into())],
+                                        hkparams: vec![HkbVariableValue::Value(0.into())],
                                     },
                                     HkArrayClassParam {
-                                        hkparam: vec![HkbVariableValue::Value(0.into())],
+                                        hkparams: vec![HkbVariableValue::Value(0.into())],
                                     },
                                     HkArrayClassParam {
-                                        hkparam: vec![HkbVariableValue::Value(0.into())],
+                                        hkparams: vec![HkbVariableValue::Value(0.into())],
                                     },
                                     HkArrayClassParam {
-                                        hkparam: vec![HkbVariableValue::Value(0.into())],
+                                        hkparams: vec![HkbVariableValue::Value(0.into())],
                                     },
                                     HkArrayClassParam {
-                                        hkparam: vec![HkbVariableValue::Value(0.into())],
+                                        hkparams: vec![HkbVariableValue::Value(0.into())],
                                     },
                                     HkArrayClassParam {
-                                        hkparam: vec![HkbVariableValue::Value(0.into())],
+                                        hkparams: vec![HkbVariableValue::Value(0.into())],
                                     },
                                     HkArrayClassParam {
-                                        hkparam: vec![HkbVariableValue::Value(0.into())],
+                                        hkparams: vec![HkbVariableValue::Value(0.into())],
                                     },
                                     HkArrayClassParam {
-                                        hkparam: vec![HkbVariableValue::Value(0.into())],
+                                        hkparams: vec![HkbVariableValue::Value(0.into())],
                                     },
                                     HkArrayClassParam {
-                                        hkparam: vec![HkbVariableValue::Value(0.into())],
+                                        hkparams: vec![HkbVariableValue::Value(0.into())],
                                     },
                                     HkArrayClassParam {
-                                        hkparam: vec![HkbVariableValue::Value(0.into())],
+                                        hkparams: vec![HkbVariableValue::Value(0.into())],
                                     },
                                     HkArrayClassParam {
-                                        hkparam: vec![HkbVariableValue::Value(0.into())],
+                                        hkparams: vec![HkbVariableValue::Value(0.into())],
                                     },
                                 ]
                                 .into(),

@@ -43,7 +43,7 @@ impl TryFrom<u16> for FlagValues {
     type Error = String;
 
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        Self::from_bits(value).ok_or_else(|| format!("Set invalid value: {}", value))
+        Self::from_bits(value).ok_or_else(|| format!("Set invalid value: {value}"))
     }
 }
 
@@ -80,7 +80,22 @@ impl<'de> serde::Deserialize<'de> for FlagValues {
                         "ALIGN16" => flags |= Self::ALIGN16,
                         "NOT_OWNED" => flags |= Self::NOT_OWNED,
                         "SERIALIZE_IGNORED" => flags |= Self::SERIALIZE_IGNORED,
-                        _ => return Err(serde::de::Error::custom("Invalid flag")),
+                        unknown => match parse_int::parse(unknown) {
+                            Ok(int) => {
+                                if let Some(bits) = Self::from_bits(int) {
+                                    flags |= bits
+                                } else {
+                                    return Err(serde::de::Error::custom(format!(
+                                        "Expected FlagValues flags but got \"{unknown}\"",
+                                    )));
+                                };
+                            }
+                            Err(_err) => {
+                                return Err(serde::de::Error::custom(format!(
+                                    "Expected FlagValues flags or integer, but got \"{unknown}\""
+                                )))
+                            }
+                        },
                     }
                 }
                 Ok(flags)

@@ -89,8 +89,27 @@ impl<'de> serde::Deserialize<'de> for {enum_name} {{
         ));
     }
 
+    rust_code.push_str(&format!(
+        r#"                        unknown => match parse_int::parse(unknown) {{
+                            Ok(int) => {{
+                                if let Some(bits) = Self::from_bits(int) {{
+                                    flags |= bits
+                                }} else {{
+                                    return Err(serde::de::Error::custom(format!(
+                                        "Expected {enum_name} flags but got \"{{unknown}}\"",
+                                    )));
+                                }};
+                            }}
+                            Err(_err) => {{
+                                return Err(serde::de::Error::custom(format!(
+                                    "Expected {enum_name} flags or integer, but got \"{{unknown}}\""
+                                )))
+                            }}
+"#
+    ));
+
     rust_code.push_str(
-        r#"                        _ => return Err(serde::de::Error::custom("Invalid flag")),
+        r#"                        },
                     }
                 }
                 Ok(flags)
@@ -169,9 +188,9 @@ mod tests {
         );
         let generated_code = generate_bitflags(&enum_info);
 
-        // let expected = include_str!("../flag_values.rs");
-        // let expected = &expected[..expected.find("#[cfg(test").unwrap()];
-        // assert_eq!(generated_code, expected);
+        let expected = include_str!("../flag_values.rs");
+        let expected = &expected[..expected.find("#[cfg(test").unwrap()];
+        assert_eq!(generated_code, expected);
         tracing::debug!("{generated_code}");
     }
 }

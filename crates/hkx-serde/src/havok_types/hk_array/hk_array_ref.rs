@@ -21,14 +21,14 @@ pub struct HkArrayRef<T> {
     ///
     /// In XML, it is just an array of space-delimited class name strings.
     #[serde(rename = "$text", default)]
-    pub value: Vec<T>,
+    pub values: Vec<T>,
 }
 
 impl<T> From<Vec<T>> for HkArrayRef<T> {
-    fn from(value: Vec<T>) -> Self {
+    fn from(values: Vec<T>) -> Self {
         Self {
-            numelements: value.len(),
-            value,
+            numelements: values.len(),
+            values,
         }
     }
 }
@@ -42,7 +42,7 @@ mod tests {
     fn should_serialize() {
         let data = HkArrayRef {
             numelements: 2,
-            value: vec!["#0063", "#0064"],
+            values: vec!["#0063", "#0064"],
         };
         let serialized = quick_xml::se::to_string(&data).unwrap();
 
@@ -66,7 +66,7 @@ mod tests {
 
         let expected = HkArrayRef {
             numelements: 2,
-            value: vec!["#0063", "#0064"],
+            values: vec!["#0063", "#0064"],
         };
 
         assert_eq!(deserialized, expected);

@@ -50,7 +50,6 @@ pub enum HkpSphereRepShape {
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
-
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
 }

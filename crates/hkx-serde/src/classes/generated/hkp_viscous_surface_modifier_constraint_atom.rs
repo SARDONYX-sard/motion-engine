@@ -57,7 +57,6 @@ pub enum HkpViscousSurfaceModifierConstraintAtom<'a> {
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
     Type(Primitive<AtomType>),
-
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.

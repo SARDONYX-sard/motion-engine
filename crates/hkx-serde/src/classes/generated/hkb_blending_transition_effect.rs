@@ -304,9 +304,13 @@ impl<'de> serde::Deserialize<'de> for FlagBits {
                 for token in s.split('|') {
                     match token.trim() {
                         "FLAG_NONE" => flags |= Self::FLAG_NONE,
-                        "FLAG_IGNORE_FROM_WORLD_FROM_MODEL" => flags |= Self::FLAG_IGNORE_FROM_WORLD_FROM_MODEL,
+                        "FLAG_IGNORE_FROM_WORLD_FROM_MODEL" => {
+                            flags |= Self::FLAG_IGNORE_FROM_WORLD_FROM_MODEL
+                        }
                         "FLAG_SYNC" => flags |= Self::FLAG_SYNC,
-                        "FLAG_IGNORE_TO_WORLD_FROM_MODEL" => flags |= Self::FLAG_IGNORE_TO_WORLD_FROM_MODEL,
+                        "FLAG_IGNORE_TO_WORLD_FROM_MODEL" => {
+                            flags |= Self::FLAG_IGNORE_TO_WORLD_FROM_MODEL
+                        }
                         unknown => match parse_int::parse(unknown) {
                             Ok(int) => {
                                 if let Some(bits) = Self::from_bits(int) {

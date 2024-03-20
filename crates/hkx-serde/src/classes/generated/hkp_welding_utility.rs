@@ -19,8 +19,7 @@ use crate::havok_types::*;
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(tag = "@name")]
-pub enum HkpWeldingUtility {
-}
+pub enum HkpWeldingUtility {}
 
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

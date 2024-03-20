@@ -1,6 +1,6 @@
+use super::generated::class_params::ClassParams;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
-use super::generated::class_params::ClassParams;
 
 /// Hkx file Root
 #[derive(Debug, Default, PartialEq, Serialize, Deserialize)]

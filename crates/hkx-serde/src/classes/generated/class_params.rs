@@ -1,4 +1,3 @@
-
 use super::*;
 use crate::classes::Class;
 use serde::de::{self, Deserializer, MapAccess, Visitor};
@@ -72,12 +71,18 @@ pub enum ClassParams<'a> {
     BsIsActiveModifier(Vec<BsIsActiveModifier<'a>>),
 
     #[serde(rename = "0x6b8a15fc")]
-    #[serde(bound(deserialize = "Vec<BsiStateManagerModifierBSiStateData<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Vec<BsiStateManagerModifierBSiStateData<'a>>: Deserialize<'de>"
+    ))]
     BsiStateManagerModifierBSiStateData(Vec<BsiStateManagerModifierBSiStateData<'a>>),
 
     #[serde(rename = "0x99463586")]
-    #[serde(bound(deserialize = "Vec<BsiStateManagerModifierBsiStateManagerStateListener<'a>>: Deserialize<'de>"))]
-    BsiStateManagerModifierBsiStateManagerStateListener(Vec<BsiStateManagerModifierBsiStateManagerStateListener<'a>>),
+    #[serde(bound(
+        deserialize = "Vec<BsiStateManagerModifierBsiStateManagerStateListener<'a>>: Deserialize<'de>"
+    ))]
+    BsiStateManagerModifierBsiStateManagerStateListener(
+        Vec<BsiStateManagerModifierBsiStateManagerStateListener<'a>>,
+    ),
 
     #[serde(rename = "0x6cb24f2e")]
     #[serde(bound(deserialize = "Vec<BsiStateManagerModifier<'a>>: Deserialize<'de>"))]
@@ -177,7 +182,9 @@ pub enum ClassParams<'a> {
     HkaDefaultAnimatedReferenceFrame(Vec<HkaDefaultAnimatedReferenceFrame>),
 
     #[serde(rename = "0x724a7561")]
-    HkaDeltaCompressedAnimationQuantizationFormat(Vec<HkaDeltaCompressedAnimationQuantizationFormat>),
+    HkaDeltaCompressedAnimationQuantizationFormat(
+        Vec<HkaDeltaCompressedAnimationQuantizationFormat>,
+    ),
 
     #[serde(rename = "0x90a68d40")]
     #[serde(bound(deserialize = "Vec<HkaDeltaCompressedAnimation<'a>>: Deserialize<'de>"))]
@@ -191,7 +198,9 @@ pub enum ClassParams<'a> {
     HkaFootstepAnalysisInfo(Vec<HkaFootstepAnalysisInfo>),
 
     #[serde(rename = "0x930af031")]
-    #[serde(bound(deserialize = "Vec<HkaInterleavedUncompressedAnimation<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Vec<HkaInterleavedUncompressedAnimation<'a>>: Deserialize<'de>"
+    ))]
     HkaInterleavedUncompressedAnimation(Vec<HkaInterleavedUncompressedAnimation<'a>>),
 
     #[serde(rename = "0xa3d0ac71")]
@@ -248,20 +257,28 @@ pub enum ClassParams<'a> {
     HkaSkeleton(Vec<HkaSkeleton<'a>>),
 
     #[serde(rename = "0xde830789")]
-    HkaSplineCompressedAnimationAnimationCompressionParams(Vec<HkaSplineCompressedAnimationAnimationCompressionParams>),
+    HkaSplineCompressedAnimationAnimationCompressionParams(
+        Vec<HkaSplineCompressedAnimationAnimationCompressionParams>,
+    ),
 
     #[serde(rename = "0x42e878d3")]
-    HkaSplineCompressedAnimationTrackCompressionParams(Vec<HkaSplineCompressedAnimationTrackCompressionParams>),
+    HkaSplineCompressedAnimationTrackCompressionParams(
+        Vec<HkaSplineCompressedAnimationTrackCompressionParams>,
+    ),
 
     #[serde(rename = "0x792ee0bb")]
     #[serde(bound(deserialize = "Vec<HkaSplineCompressedAnimation<'a>>: Deserialize<'de>"))]
     HkaSplineCompressedAnimation(Vec<HkaSplineCompressedAnimation<'a>>),
 
     #[serde(rename = "0x27c6cafa")]
-    HkaWaveletCompressedAnimationCompressionParams(Vec<HkaWaveletCompressedAnimationCompressionParams>),
+    HkaWaveletCompressedAnimationCompressionParams(
+        Vec<HkaWaveletCompressedAnimationCompressionParams>,
+    ),
 
     #[serde(rename = "0x724a7561")]
-    HkaWaveletCompressedAnimationQuantizationFormat(Vec<HkaWaveletCompressedAnimationQuantizationFormat>),
+    HkaWaveletCompressedAnimationQuantizationFormat(
+        Vec<HkaWaveletCompressedAnimationQuantizationFormat>,
+    ),
 
     #[serde(rename = "0x77cf0962")]
     #[serde(bound(deserialize = "Vec<HkaWaveletCompressedAnimation<'a>>: Deserialize<'de>"))]
@@ -386,7 +403,9 @@ pub enum ClassParams<'a> {
     HkbCharacterControllerModifier(Vec<HkbCharacterControllerModifier<'a>>),
 
     #[serde(rename = "0xa0f415bf")]
-    #[serde(bound(deserialize = "Vec<HkbCharacterDataCharacterControllerInfo<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Vec<HkbCharacterDataCharacterControllerInfo<'a>>: Deserialize<'de>"
+    ))]
     HkbCharacterDataCharacterControllerInfo(Vec<HkbCharacterDataCharacterControllerInfo<'a>>),
 
     #[serde(rename = "0x300d6808")]
@@ -457,14 +476,20 @@ pub enum ClassParams<'a> {
     HkbComputeDirectionModifier(Vec<HkbComputeDirectionModifier<'a>>),
 
     #[serde(rename = "0x71cd1eb0")]
-    HkbComputeRotationFromAxisAngleModifierInternalState(Vec<HkbComputeRotationFromAxisAngleModifierInternalState>),
+    HkbComputeRotationFromAxisAngleModifierInternalState(
+        Vec<HkbComputeRotationFromAxisAngleModifierInternalState>,
+    ),
 
     #[serde(rename = "0x9b3f6936")]
-    #[serde(bound(deserialize = "Vec<HkbComputeRotationFromAxisAngleModifier<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Vec<HkbComputeRotationFromAxisAngleModifier<'a>>: Deserialize<'de>"
+    ))]
     HkbComputeRotationFromAxisAngleModifier(Vec<HkbComputeRotationFromAxisAngleModifier<'a>>),
 
     #[serde(rename = "0x71cd1eb0")]
-    HkbComputeRotationToTargetModifierInternalState(Vec<HkbComputeRotationToTargetModifierInternalState>),
+    HkbComputeRotationToTargetModifierInternalState(
+        Vec<HkbComputeRotationToTargetModifierInternalState>,
+    ),
 
     #[serde(rename = "0x47665f1c")]
     #[serde(bound(deserialize = "Vec<HkbComputeRotationToTargetModifier<'a>>: Deserialize<'de>"))]
@@ -502,7 +527,9 @@ pub enum ClassParams<'a> {
     HkbDetectCloseToGroundModifier(Vec<HkbDetectCloseToGroundModifier<'a>>),
 
     #[serde(rename = "0xb8686f6b")]
-    HkbEvaluateExpressionModifierInternalExpressionData(Vec<HkbEvaluateExpressionModifierInternalExpressionData>),
+    HkbEvaluateExpressionModifierInternalExpressionData(
+        Vec<HkbEvaluateExpressionModifierInternalExpressionData>,
+    ),
 
     #[serde(rename = "0xb414d58e")]
     HkbEvaluateExpressionModifierInternalState(Vec<HkbEvaluateExpressionModifierInternalState>),
@@ -553,7 +580,9 @@ pub enum ClassParams<'a> {
     HkbEventRangeData(Vec<HkbEventRangeData<'a>>),
 
     #[serde(rename = "0x9139b821")]
-    #[serde(bound(deserialize = "Vec<HkbEventSequencedDataSequencedEvent<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Vec<HkbEventSequencedDataSequencedEvent<'a>>: Deserialize<'de>"
+    ))]
     HkbEventSequencedDataSequencedEvent(Vec<HkbEventSequencedDataSequencedEvent<'a>>),
 
     #[serde(rename = "0x76798eb8")]
@@ -840,7 +869,9 @@ pub enum ClassParams<'a> {
     HkbRigidBodyRagdollControlData(Vec<HkbRigidBodyRagdollControlData>),
 
     #[serde(rename = "0xaa87d1eb")]
-    #[serde(bound(deserialize = "Vec<HkbRigidBodyRagdollControlsModifier<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Vec<HkbRigidBodyRagdollControlsModifier<'a>>: Deserialize<'de>"
+    ))]
     HkbRigidBodyRagdollControlsModifier(Vec<HkbRigidBodyRagdollControlsModifier<'a>>),
 
     #[serde(rename = "0x3eb2e082")]
@@ -906,7 +937,9 @@ pub enum ClassParams<'a> {
     HkbStateListener(Vec<HkbStateListener>),
 
     #[serde(rename = "0xbb90d54f")]
-    #[serde(bound(deserialize = "Vec<HkbStateMachineActiveTransitionInfo<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Vec<HkbStateMachineActiveTransitionInfo<'a>>: Deserialize<'de>"
+    ))]
     HkbStateMachineActiveTransitionInfo(Vec<HkbStateMachineActiveTransitionInfo<'a>>),
 
     #[serde(rename = "0x26d5499")]
@@ -921,7 +954,9 @@ pub enum ClassParams<'a> {
     HkbStateMachineInternalState(Vec<HkbStateMachineInternalState<'a>>),
 
     #[serde(rename = "0x7358f5da")]
-    #[serde(bound(deserialize = "Vec<HkbStateMachineNestedStateMachineData<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Vec<HkbStateMachineNestedStateMachineData<'a>>: Deserialize<'de>"
+    ))]
     HkbStateMachineNestedStateMachineData(Vec<HkbStateMachineNestedStateMachineData<'a>>),
 
     #[serde(rename = "0x3ab09a2e")]
@@ -1157,7 +1192,9 @@ pub enum ClassParams<'a> {
     HkMultipleVertexBufferLockedElement(Vec<HkMultipleVertexBufferLockedElement>),
 
     #[serde(rename = "0xdafbe0e6")]
-    #[serde(bound(deserialize = "Vec<HkMultipleVertexBufferVertexBufferInfo<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Vec<HkMultipleVertexBufferVertexBufferInfo<'a>>: Deserialize<'de>"
+    ))]
     HkMultipleVertexBufferVertexBufferInfo(Vec<HkMultipleVertexBufferVertexBufferInfo<'a>>),
 
     #[serde(rename = "0xde3ab602")]
@@ -1280,8 +1317,12 @@ pub enum ClassParams<'a> {
     HkpCdBody(Vec<HkpCdBody<'a>>),
 
     #[serde(rename = "0x1d7dbdd2")]
-    #[serde(bound(deserialize = "Vec<HkpCenterOfMassChangerModifierConstraintAtom<'a>>: Deserialize<'de>"))]
-    HkpCenterOfMassChangerModifierConstraintAtom(Vec<HkpCenterOfMassChangerModifierConstraintAtom<'a>>),
+    #[serde(bound(
+        deserialize = "Vec<HkpCenterOfMassChangerModifierConstraintAtom<'a>>: Deserialize<'de>"
+    ))]
+    HkpCenterOfMassChangerModifierConstraintAtom(
+        Vec<HkpCenterOfMassChangerModifierConstraintAtom<'a>>,
+    ),
 
     #[serde(rename = "0xda8c7d7d")]
     HkpCharacterControllerCinfo(Vec<HkpCharacterControllerCinfo>),
@@ -1367,8 +1408,12 @@ pub enum ClassParams<'a> {
     HkpConstraintCollisionFilter(Vec<HkpConstraintCollisionFilter<'a>>),
 
     #[serde(rename = "0xee3c2aec")]
-    #[serde(bound(deserialize = "Vec<HkpConstraintInstanceSmallArraySerializeOverrideType<'a>>: Deserialize<'de>"))]
-    HkpConstraintInstanceSmallArraySerializeOverrideType(Vec<HkpConstraintInstanceSmallArraySerializeOverrideType<'a>>),
+    #[serde(bound(
+        deserialize = "Vec<HkpConstraintInstanceSmallArraySerializeOverrideType<'a>>: Deserialize<'de>"
+    ))]
+    HkpConstraintInstanceSmallArraySerializeOverrideType(
+        Vec<HkpConstraintInstanceSmallArraySerializeOverrideType<'a>>,
+    ),
 
     #[serde(rename = "0x34eba5f")]
     #[serde(bound(deserialize = "Vec<HkpConstraintInstance<'a>>: Deserialize<'de>"))]
@@ -1450,7 +1495,9 @@ pub enum ClassParams<'a> {
     HkpEntityExtendedListeners(Vec<HkpEntityExtendedListeners<'a>>),
 
     #[serde(rename = "0xee3c2aec")]
-    #[serde(bound(deserialize = "Vec<HkpEntitySmallArraySerializeOverrideType<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Vec<HkpEntitySmallArraySerializeOverrideType<'a>>: Deserialize<'de>"
+    ))]
     HkpEntitySmallArraySerializeOverrideType(Vec<HkpEntitySmallArraySerializeOverrideType<'a>>),
 
     #[serde(rename = "0x81147f05")]
@@ -1470,7 +1517,9 @@ pub enum ClassParams<'a> {
     HkpExtendedMeshShapeSubpart(Vec<HkpExtendedMeshShapeSubpart<'a>>),
 
     #[serde(rename = "0x44c32df6")]
-    #[serde(bound(deserialize = "Vec<HkpExtendedMeshShapeTrianglesSubpart<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Vec<HkpExtendedMeshShapeTrianglesSubpart<'a>>: Deserialize<'de>"
+    ))]
     HkpExtendedMeshShapeTrianglesSubpart(Vec<HkpExtendedMeshShapeTrianglesSubpart<'a>>),
 
     #[serde(rename = "0x177114a2")]
@@ -1580,7 +1629,9 @@ pub enum ClassParams<'a> {
     HkpMalleableConstraintData(Vec<HkpMalleableConstraintData<'a>>),
 
     #[serde(rename = "0xb6b28240")]
-    #[serde(bound(deserialize = "Vec<HkpMassChangerModifierConstraintAtom<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Vec<HkpMassChangerModifierConstraintAtom<'a>>: Deserialize<'de>"
+    ))]
     HkpMassChangerModifierConstraintAtom(Vec<HkpMassChangerModifierConstraintAtom<'a>>),
 
     #[serde(rename = "0x68a56834")]
@@ -1638,7 +1689,9 @@ pub enum ClassParams<'a> {
     HkpMouseSpringAction(Vec<HkpMouseSpringAction<'a>>),
 
     #[serde(rename = "0x79ab517d")]
-    #[serde(bound(deserialize = "Vec<HkpMovingSurfaceModifierConstraintAtom<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Vec<HkpMovingSurfaceModifierConstraintAtom<'a>>: Deserialize<'de>"
+    ))]
     HkpMovingSurfaceModifierConstraintAtom(Vec<HkpMovingSurfaceModifierConstraintAtom<'a>>),
 
     #[serde(rename = "0xffdc0b65")]
@@ -1669,8 +1722,12 @@ pub enum ClassParams<'a> {
     HkpOverwritePivotConstraintAtom(Vec<HkpOverwritePivotConstraintAtom>),
 
     #[serde(rename = "0x36195969")]
-    #[serde(bound(deserialize = "Vec<HkpPairCollisionFilterMapPairFilterKeyOverrideType<'a>>: Deserialize<'de>"))]
-    HkpPairCollisionFilterMapPairFilterKeyOverrideType(Vec<HkpPairCollisionFilterMapPairFilterKeyOverrideType<'a>>),
+    #[serde(bound(
+        deserialize = "Vec<HkpPairCollisionFilterMapPairFilterKeyOverrideType<'a>>: Deserialize<'de>"
+    ))]
+    HkpPairCollisionFilterMapPairFilterKeyOverrideType(
+        Vec<HkpPairCollisionFilterMapPairFilterKeyOverrideType<'a>>,
+    ),
 
     #[serde(rename = "0x4abc140e")]
     #[serde(bound(deserialize = "Vec<HkpPairCollisionFilter<'a>>: Deserialize<'de>"))]
@@ -1827,8 +1884,12 @@ pub enum ClassParams<'a> {
     HkpSerializedDisplayMarker(Vec<HkpSerializedDisplayMarker>),
 
     #[serde(rename = "0x94ac5bec")]
-    #[serde(bound(deserialize = "Vec<HkpSerializedDisplayRbTransformsDisplayTransformPair<'a>>: Deserialize<'de>"))]
-    HkpSerializedDisplayRbTransformsDisplayTransformPair(Vec<HkpSerializedDisplayRbTransformsDisplayTransformPair<'a>>),
+    #[serde(bound(
+        deserialize = "Vec<HkpSerializedDisplayRbTransformsDisplayTransformPair<'a>>: Deserialize<'de>"
+    ))]
+    HkpSerializedDisplayRbTransformsDisplayTransformPair(
+        Vec<HkpSerializedDisplayRbTransformsDisplayTransformPair<'a>>,
+    ),
 
     #[serde(rename = "0xc18650ac")]
     #[serde(bound(deserialize = "Vec<HkpSerializedDisplayRbTransforms<'a>>: Deserialize<'de>"))]
@@ -1890,7 +1951,9 @@ pub enum ClassParams<'a> {
     HkpSimpleMeshShape(Vec<HkpSimpleMeshShape>),
 
     #[serde(rename = "0x98bfa6ce")]
-    #[serde(bound(deserialize = "Vec<HkpSimpleShapePhantomCollisionDetail<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Vec<HkpSimpleShapePhantomCollisionDetail<'a>>: Deserialize<'de>"
+    ))]
     HkpSimpleShapePhantomCollisionDetail(Vec<HkpSimpleShapePhantomCollisionDetail<'a>>),
 
     #[serde(rename = "0x32a2a8a8")]
@@ -1906,7 +1969,9 @@ pub enum ClassParams<'a> {
     HkpSingleShapeContainer(Vec<HkpSingleShapeContainer<'a>>),
 
     #[serde(rename = "0xecb34e27")]
-    #[serde(bound(deserialize = "Vec<HkpSoftContactModifierConstraintAtom<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Vec<HkpSoftContactModifierConstraintAtom<'a>>: Deserialize<'de>"
+    ))]
     HkpSoftContactModifierConstraintAtom(Vec<HkpSoftContactModifierConstraintAtom<'a>>),
 
     #[serde(rename = "0xbafa2bb7")]
@@ -1946,11 +2011,17 @@ pub enum ClassParams<'a> {
     HkpStorageExtendedMeshShapeMaterial(Vec<HkpStorageExtendedMeshShapeMaterial>),
 
     #[serde(rename = "0x5aad4de6")]
-    #[serde(bound(deserialize = "Vec<HkpStorageExtendedMeshShapeMeshSubpartStorage<'a>>: Deserialize<'de>"))]
-    HkpStorageExtendedMeshShapeMeshSubpartStorage(Vec<HkpStorageExtendedMeshShapeMeshSubpartStorage<'a>>),
+    #[serde(bound(
+        deserialize = "Vec<HkpStorageExtendedMeshShapeMeshSubpartStorage<'a>>: Deserialize<'de>"
+    ))]
+    HkpStorageExtendedMeshShapeMeshSubpartStorage(
+        Vec<HkpStorageExtendedMeshShapeMeshSubpartStorage<'a>>,
+    ),
 
     #[serde(rename = "0x3f7d804c")]
-    HkpStorageExtendedMeshShapeShapeSubpartStorage(Vec<HkpStorageExtendedMeshShapeShapeSubpartStorage>),
+    HkpStorageExtendedMeshShapeShapeSubpartStorage(
+        Vec<HkpStorageExtendedMeshShapeShapeSubpartStorage>,
+    ),
 
     #[serde(rename = "0xb469efbc")]
     #[serde(bound(deserialize = "Vec<HkpStorageExtendedMeshShape<'a>>: Deserialize<'de>"))]
@@ -1986,7 +2057,9 @@ pub enum ClassParams<'a> {
     HkpTriggerVolume(Vec<HkpTriggerVolume<'a>>),
 
     #[serde(rename = "0x58e1e585")]
-    #[serde(bound(deserialize = "Vec<HkpTriSampledHeightFieldBvTreeShape<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Vec<HkpTriSampledHeightFieldBvTreeShape<'a>>: Deserialize<'de>"
+    ))]
     HkpTriSampledHeightFieldBvTreeShape(Vec<HkpTriSampledHeightFieldBvTreeShape<'a>>),
 
     #[serde(rename = "0xc291ddde")]
@@ -2048,7 +2121,9 @@ pub enum ClassParams<'a> {
     HkpVehicleDefaultSteering(Vec<HkpVehicleDefaultSteering>),
 
     #[serde(rename = "0x7be5bed1")]
-    HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters(Vec<HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters>),
+    HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters(
+        Vec<HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters>,
+    ),
 
     #[serde(rename = "0x21735a24")]
     HkpVehicleDefaultSuspension(Vec<HkpVehicleDefaultSuspension>),
@@ -2092,11 +2167,15 @@ pub enum ClassParams<'a> {
     HkpVehicleInstance(Vec<HkpVehicleInstance<'a>>),
 
     #[serde(rename = "0xed529f13")]
-    #[serde(bound(deserialize = "Vec<HkpVehicleLinearCastBatchingManager<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Vec<HkpVehicleLinearCastBatchingManager<'a>>: Deserialize<'de>"
+    ))]
     HkpVehicleLinearCastBatchingManager(Vec<HkpVehicleLinearCastBatchingManager<'a>>),
 
     #[serde(rename = "0x2a9acf98")]
-    #[serde(bound(deserialize = "Vec<HkpVehicleLinearCastWheelCollideWheelState<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Vec<HkpVehicleLinearCastWheelCollideWheelState<'a>>: Deserialize<'de>"
+    ))]
     HkpVehicleLinearCastWheelCollideWheelState(Vec<HkpVehicleLinearCastWheelCollideWheelState<'a>>),
 
     #[serde(rename = "0xc59399d0")]
@@ -2119,7 +2198,9 @@ pub enum ClassParams<'a> {
     HkpVehicleSteering(Vec<HkpVehicleSteering>),
 
     #[serde(rename = "0x358bfe9c")]
-    HkpVehicleSuspensionSuspensionWheelParameters(Vec<HkpVehicleSuspensionSuspensionWheelParameters>),
+    HkpVehicleSuspensionSuspensionWheelParameters(
+        Vec<HkpVehicleSuspensionSuspensionWheelParameters>,
+    ),
 
     #[serde(rename = "0xaf5056fa")]
     HkpVehicleSuspension(Vec<HkpVehicleSuspension>),
@@ -2137,7 +2218,9 @@ pub enum ClassParams<'a> {
     HkpVelocityConstraintMotor(Vec<HkpVelocityConstraintMotor>),
 
     #[serde(rename = "0x5c6aa14d")]
-    #[serde(bound(deserialize = "Vec<HkpViscousSurfaceModifierConstraintAtom<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Vec<HkpViscousSurfaceModifierConstraintAtom<'a>>: Deserialize<'de>"
+    ))]
     HkpViscousSurfaceModifierConstraintAtom(Vec<HkpViscousSurfaceModifierConstraintAtom<'a>>),
 
     #[serde(rename = "0xb2b41feb")]
@@ -2381,7 +2464,6 @@ pub enum ClassParams<'a> {
 
     #[serde(rename = "0x2ea63179")]
     HkxVertexVectorDataChannel(Vec<HkxVertexVectorDataChannel>),
-
 }
 
 impl<'a> Serialize for Class<'a> {
@@ -2398,7 +2480,6 @@ impl<'a> Serialize for Class<'a> {
 
         // Serialize hkparam based on class(C++ class name)
         match self.class.as_ref() {
-
             "BGSGamebryoSequenceGenerator" => {
                 if let ClassParams::BgsGamebryoSequenceGenerator(ref params) = self.hkparams {
                     state.serialize_field("hkparam", params)?;
@@ -2484,13 +2565,17 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "BSIStateManagerModifierBSiStateData" => {
-                if let ClassParams::BsiStateManagerModifierBSiStateData(ref params) = self.hkparams {
+                if let ClassParams::BsiStateManagerModifierBSiStateData(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "BSIStateManagerModifierBSIStateManagerStateListener" => {
-                if let ClassParams::BsiStateManagerModifierBsiStateManagerStateListener(ref params) = self.hkparams {
+                if let ClassParams::BsiStateManagerModifierBsiStateManagerStateListener(
+                    ref params,
+                ) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -2652,7 +2737,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkaDeltaCompressedAnimationQuantizationFormat" => {
-                if let ClassParams::HkaDeltaCompressedAnimationQuantizationFormat(ref params) = self.hkparams {
+                if let ClassParams::HkaDeltaCompressedAnimationQuantizationFormat(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -2676,13 +2763,16 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkaInterleavedUncompressedAnimation" => {
-                if let ClassParams::HkaInterleavedUncompressedAnimation(ref params) = self.hkparams {
+                if let ClassParams::HkaInterleavedUncompressedAnimation(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkaKeyFrameHierarchyUtilityControlData" => {
-                if let ClassParams::HkaKeyFrameHierarchyUtilityControlData(ref params) = self.hkparams {
+                if let ClassParams::HkaKeyFrameHierarchyUtilityControlData(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -2712,7 +2802,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkaQuantizedAnimationTrackCompressionParams" => {
-                if let ClassParams::HkaQuantizedAnimationTrackCompressionParams(ref params) = self.hkparams {
+                if let ClassParams::HkaQuantizedAnimationTrackCompressionParams(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -2772,13 +2864,18 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkaSplineCompressedAnimationAnimationCompressionParams" => {
-                if let ClassParams::HkaSplineCompressedAnimationAnimationCompressionParams(ref params) = self.hkparams {
+                if let ClassParams::HkaSplineCompressedAnimationAnimationCompressionParams(
+                    ref params,
+                ) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkaSplineCompressedAnimationTrackCompressionParams" => {
-                if let ClassParams::HkaSplineCompressedAnimationTrackCompressionParams(ref params) = self.hkparams {
+                if let ClassParams::HkaSplineCompressedAnimationTrackCompressionParams(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -2790,13 +2887,17 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkaWaveletCompressedAnimationCompressionParams" => {
-                if let ClassParams::HkaWaveletCompressedAnimationCompressionParams(ref params) = self.hkparams {
+                if let ClassParams::HkaWaveletCompressedAnimationCompressionParams(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkaWaveletCompressedAnimationQuantizationFormat" => {
-                if let ClassParams::HkaWaveletCompressedAnimationQuantizationFormat(ref params) = self.hkparams {
+                if let ClassParams::HkaWaveletCompressedAnimationQuantizationFormat(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -2910,7 +3011,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbBlenderGeneratorChildInternalState" => {
-                if let ClassParams::HkbBlenderGeneratorChildInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbBlenderGeneratorChildInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -2934,7 +3037,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbBlendingTransitionEffectInternalState" => {
-                if let ClassParams::HkbBlendingTransitionEffectInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbBlendingTransitionEffectInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -2994,7 +3099,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbCharacterControllerModifierInternalState" => {
-                if let ClassParams::HkbCharacterControllerModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbCharacterControllerModifierInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3006,7 +3113,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbCharacterDataCharacterControllerInfo" => {
-                if let ClassParams::HkbCharacterDataCharacterControllerInfo(ref params) = self.hkparams {
+                if let ClassParams::HkbCharacterDataCharacterControllerInfo(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3090,7 +3199,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbCombineTransformsModifierInternalState" => {
-                if let ClassParams::HkbCombineTransformsModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbCombineTransformsModifierInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3114,7 +3225,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbComputeDirectionModifierInternalState" => {
-                if let ClassParams::HkbComputeDirectionModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbComputeDirectionModifierInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3126,19 +3239,26 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbComputeRotationFromAxisAngleModifierInternalState" => {
-                if let ClassParams::HkbComputeRotationFromAxisAngleModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbComputeRotationFromAxisAngleModifierInternalState(
+                    ref params,
+                ) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkbComputeRotationFromAxisAngleModifier" => {
-                if let ClassParams::HkbComputeRotationFromAxisAngleModifier(ref params) = self.hkparams {
+                if let ClassParams::HkbComputeRotationFromAxisAngleModifier(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkbComputeRotationToTargetModifierInternalState" => {
-                if let ClassParams::HkbComputeRotationToTargetModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbComputeRotationToTargetModifierInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3192,7 +3312,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbDetectCloseToGroundModifierInternalState" => {
-                if let ClassParams::HkbDetectCloseToGroundModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbDetectCloseToGroundModifierInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3204,13 +3326,18 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbEvaluateExpressionModifierInternalExpressionData" => {
-                if let ClassParams::HkbEvaluateExpressionModifierInternalExpressionData(ref params) = self.hkparams {
+                if let ClassParams::HkbEvaluateExpressionModifierInternalExpressionData(
+                    ref params,
+                ) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkbEvaluateExpressionModifierInternalState" => {
-                if let ClassParams::HkbEvaluateExpressionModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbEvaluateExpressionModifierInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3234,7 +3361,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbEventDrivenModifierInternalState" => {
-                if let ClassParams::HkbEventDrivenModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbEventDrivenModifierInternalState(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3288,7 +3416,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbEventSequencedDataSequencedEvent" => {
-                if let ClassParams::HkbEventSequencedDataSequencedEvent(ref params) = self.hkparams {
+                if let ClassParams::HkbEventSequencedDataSequencedEvent(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3300,7 +3429,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbEventsFromRangeModifierInternalState" => {
-                if let ClassParams::HkbEventsFromRangeModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbEventsFromRangeModifierInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3414,7 +3545,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbGeneratorTransitionEffectInternalState" => {
-                if let ClassParams::HkbGeneratorTransitionEffectInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbGeneratorTransitionEffectInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3450,7 +3583,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbGetWorldFromModelModifierInternalState" => {
-                if let ClassParams::HkbGetWorldFromModelModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbGetWorldFromModelModifierInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3534,7 +3669,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbKeyframeBonesModifierKeyframeInfo" => {
-                if let ClassParams::HkbKeyframeBonesModifierKeyframeInfo(ref params) = self.hkparams {
+                if let ClassParams::HkbKeyframeBonesModifierKeyframeInfo(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3564,7 +3700,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbManualSelectorGeneratorInternalState" => {
-                if let ClassParams::HkbManualSelectorGeneratorInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbManualSelectorGeneratorInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3618,7 +3756,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbMoveCharacterModifierInternalState" => {
-                if let ClassParams::HkbMoveCharacterModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbMoveCharacterModifierInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3672,7 +3812,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbPoseMatchingGeneratorInternalState" => {
-                if let ClassParams::HkbPoseMatchingGeneratorInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbPoseMatchingGeneratorInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3762,7 +3904,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbRigidBodyRagdollControlsModifier" => {
-                if let ClassParams::HkbRigidBodyRagdollControlsModifier(ref params) = self.hkparams {
+                if let ClassParams::HkbRigidBodyRagdollControlsModifier(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3774,7 +3917,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbRotateCharacterModifierInternalState" => {
-                if let ClassParams::HkbRotateCharacterModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbRotateCharacterModifierInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3828,7 +3973,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbSetLocalTimeOfClipGeneratorCommand" => {
-                if let ClassParams::HkbSetLocalTimeOfClipGeneratorCommand(ref params) = self.hkparams {
+                if let ClassParams::HkbSetLocalTimeOfClipGeneratorCommand(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3876,13 +4023,15 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbStateMachineActiveTransitionInfo" => {
-                if let ClassParams::HkbStateMachineActiveTransitionInfo(ref params) = self.hkparams {
+                if let ClassParams::HkbStateMachineActiveTransitionInfo(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkbStateMachineDelayedTransitionInfo" => {
-                if let ClassParams::HkbStateMachineDelayedTransitionInfo(ref params) = self.hkparams {
+                if let ClassParams::HkbStateMachineDelayedTransitionInfo(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3900,13 +4049,17 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbStateMachineNestedStateMachineData" => {
-                if let ClassParams::HkbStateMachineNestedStateMachineData(ref params) = self.hkparams {
+                if let ClassParams::HkbStateMachineNestedStateMachineData(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkbStateMachineProspectiveTransitionInfo" => {
-                if let ClassParams::HkbStateMachineProspectiveTransitionInfo(ref params) = self.hkparams {
+                if let ClassParams::HkbStateMachineProspectiveTransitionInfo(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3930,7 +4083,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbStateMachineTransitionInfoReference" => {
-                if let ClassParams::HkbStateMachineTransitionInfoReference(ref params) = self.hkparams {
+                if let ClassParams::HkbStateMachineTransitionInfoReference(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3978,7 +4133,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbTransformVectorModifierInternalState" => {
-                if let ClassParams::HkbTransformVectorModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbTransformVectorModifierInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -4290,13 +4447,16 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkMultipleVertexBufferLockedElement" => {
-                if let ClassParams::HkMultipleVertexBufferLockedElement(ref params) = self.hkparams {
+                if let ClassParams::HkMultipleVertexBufferLockedElement(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkMultipleVertexBufferVertexBufferInfo" => {
-                if let ClassParams::HkMultipleVertexBufferVertexBufferInfo(ref params) = self.hkparams {
+                if let ClassParams::HkMultipleVertexBufferVertexBufferInfo(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -4386,7 +4546,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpBallAndSocketConstraintDataAtoms" => {
-                if let ClassParams::HkpBallAndSocketConstraintDataAtoms(ref params) = self.hkparams {
+                if let ClassParams::HkpBallAndSocketConstraintDataAtoms(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -4404,7 +4565,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpBallSocketChainDataConstraintInfo" => {
-                if let ClassParams::HkpBallSocketChainDataConstraintInfo(ref params) = self.hkparams {
+                if let ClassParams::HkpBallSocketChainDataConstraintInfo(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -4506,7 +4668,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpCenterOfMassChangerModifierConstraintAtom" => {
-                if let ClassParams::HkpCenterOfMassChangerModifierConstraintAtom(ref params) = self.hkparams {
+                if let ClassParams::HkpCenterOfMassChangerModifierConstraintAtom(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -4608,7 +4772,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpCompressedSampledHeightFieldShape" => {
-                if let ClassParams::HkpCompressedSampledHeightFieldShape(ref params) = self.hkparams {
+                if let ClassParams::HkpCompressedSampledHeightFieldShape(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -4656,7 +4821,10 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpConstraintInstanceSmallArraySerializeOverrideType" => {
-                if let ClassParams::HkpConstraintInstanceSmallArraySerializeOverrideType(ref params) = self.hkparams {
+                if let ClassParams::HkpConstraintInstanceSmallArraySerializeOverrideType(
+                    ref params,
+                ) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -4794,7 +4962,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpEntitySmallArraySerializeOverrideType" => {
-                if let ClassParams::HkpEntitySmallArraySerializeOverrideType(ref params) = self.hkparams {
+                if let ClassParams::HkpEntitySmallArraySerializeOverrideType(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -4824,7 +4994,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpExtendedMeshShapeTrianglesSubpart" => {
-                if let ClassParams::HkpExtendedMeshShapeTrianglesSubpart(ref params) = self.hkparams {
+                if let ClassParams::HkpExtendedMeshShapeTrianglesSubpart(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -4854,7 +5025,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpGenericConstraintDataSchemeConstraintInfo" => {
-                if let ClassParams::HkpGenericConstraintDataSchemeConstraintInfo(ref params) = self.hkparams {
+                if let ClassParams::HkpGenericConstraintDataSchemeConstraintInfo(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5010,7 +5183,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpMassChangerModifierConstraintAtom" => {
-                if let ClassParams::HkpMassChangerModifierConstraintAtom(ref params) = self.hkparams {
+                if let ClassParams::HkpMassChangerModifierConstraintAtom(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5106,7 +5280,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpMovingSurfaceModifierConstraintAtom" => {
-                if let ClassParams::HkpMovingSurfaceModifierConstraintAtom(ref params) = self.hkparams {
+                if let ClassParams::HkpMovingSurfaceModifierConstraintAtom(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5160,7 +5336,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpPairCollisionFilterMapPairFilterKeyOverrideType" => {
-                if let ClassParams::HkpPairCollisionFilterMapPairFilterKeyOverrideType(ref params) = self.hkparams {
+                if let ClassParams::HkpPairCollisionFilterMapPairFilterKeyOverrideType(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5322,7 +5500,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpRackAndPinionConstraintDataAtoms" => {
-                if let ClassParams::HkpRackAndPinionConstraintDataAtoms(ref params) = self.hkparams {
+                if let ClassParams::HkpRackAndPinionConstraintDataAtoms(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5430,7 +5609,10 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpSerializedDisplayRbTransformsDisplayTransformPair" => {
-                if let ClassParams::HkpSerializedDisplayRbTransformsDisplayTransformPair(ref params) = self.hkparams {
+                if let ClassParams::HkpSerializedDisplayRbTransformsDisplayTransformPair(
+                    ref params,
+                ) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5460,13 +5642,16 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpSetLocalTransformsConstraintAtom" => {
-                if let ClassParams::HkpSetLocalTransformsConstraintAtom(ref params) = self.hkparams {
+                if let ClassParams::HkpSetLocalTransformsConstraintAtom(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkpSetLocalTranslationsConstraintAtom" => {
-                if let ClassParams::HkpSetLocalTranslationsConstraintAtom(ref params) = self.hkparams {
+                if let ClassParams::HkpSetLocalTranslationsConstraintAtom(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5544,7 +5729,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpSimpleShapePhantomCollisionDetail" => {
-                if let ClassParams::HkpSimpleShapePhantomCollisionDetail(ref params) = self.hkparams {
+                if let ClassParams::HkpSimpleShapePhantomCollisionDetail(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5568,7 +5754,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpSoftContactModifierConstraintAtom" => {
-                if let ClassParams::HkpSoftContactModifierConstraintAtom(ref params) = self.hkparams {
+                if let ClassParams::HkpSoftContactModifierConstraintAtom(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5604,7 +5791,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpStiffSpringChainDataConstraintInfo" => {
-                if let ClassParams::HkpStiffSpringChainDataConstraintInfo(ref params) = self.hkparams {
+                if let ClassParams::HkpStiffSpringChainDataConstraintInfo(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5634,19 +5823,24 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpStorageExtendedMeshShapeMaterial" => {
-                if let ClassParams::HkpStorageExtendedMeshShapeMaterial(ref params) = self.hkparams {
+                if let ClassParams::HkpStorageExtendedMeshShapeMaterial(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkpStorageExtendedMeshShapeMeshSubpartStorage" => {
-                if let ClassParams::HkpStorageExtendedMeshShapeMeshSubpartStorage(ref params) = self.hkparams {
+                if let ClassParams::HkpStorageExtendedMeshShapeMeshSubpartStorage(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkpStorageExtendedMeshShapeShapeSubpartStorage" => {
-                if let ClassParams::HkpStorageExtendedMeshShapeShapeSubpartStorage(ref params) = self.hkparams {
+                if let ClassParams::HkpStorageExtendedMeshShapeShapeSubpartStorage(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5706,7 +5900,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpTriSampledHeightFieldBvTreeShape" => {
-                if let ClassParams::HkpTriSampledHeightFieldBvTreeShape(ref params) = self.hkparams {
+                if let ClassParams::HkpTriSampledHeightFieldBvTreeShape(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5796,7 +5991,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpVehicleDefaultBrakeWheelBrakingProperties" => {
-                if let ClassParams::HkpVehicleDefaultBrakeWheelBrakingProperties(ref params) = self.hkparams {
+                if let ClassParams::HkpVehicleDefaultBrakeWheelBrakingProperties(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5820,7 +6017,10 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpVehicleDefaultSuspensionWheelSpringSuspensionParameters" => {
-                if let ClassParams::HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters(ref params) = self.hkparams {
+                if let ClassParams::HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters(
+                    ref params,
+                ) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5868,7 +6068,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpVehicleFrictionDescriptionAxisDescription" => {
-                if let ClassParams::HkpVehicleFrictionDescriptionAxisDescription(ref params) = self.hkparams {
+                if let ClassParams::HkpVehicleFrictionDescriptionAxisDescription(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5904,13 +6106,16 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpVehicleLinearCastBatchingManager" => {
-                if let ClassParams::HkpVehicleLinearCastBatchingManager(ref params) = self.hkparams {
+                if let ClassParams::HkpVehicleLinearCastBatchingManager(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkpVehicleLinearCastWheelCollideWheelState" => {
-                if let ClassParams::HkpVehicleLinearCastWheelCollideWheelState(ref params) = self.hkparams {
+                if let ClassParams::HkpVehicleLinearCastWheelCollideWheelState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5946,7 +6151,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpVehicleSuspensionSuspensionWheelParameters" => {
-                if let ClassParams::HkpVehicleSuspensionSuspensionWheelParameters(ref params) = self.hkparams {
+                if let ClassParams::HkpVehicleSuspensionSuspensionWheelParameters(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5982,7 +6189,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpViscousSurfaceModifierConstraintAtom" => {
-                if let ClassParams::HkpViscousSurfaceModifierConstraintAtom(ref params) = self.hkparams {
+                if let ClassParams::HkpViscousSurfaceModifierConstraintAtom(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -6102,13 +6311,17 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkTrackerSerializableScanSnapshotAllocation" => {
-                if let ClassParams::HkTrackerSerializableScanSnapshotAllocation(ref params) = self.hkparams {
+                if let ClassParams::HkTrackerSerializableScanSnapshotAllocation(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkTrackerSerializableScanSnapshotBlock" => {
-                if let ClassParams::HkTrackerSerializableScanSnapshotBlock(ref params) = self.hkparams {
+                if let ClassParams::HkTrackerSerializableScanSnapshotBlock(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }

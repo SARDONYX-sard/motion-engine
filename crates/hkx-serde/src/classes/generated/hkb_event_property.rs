@@ -35,7 +35,6 @@ pub enum HkbEventProperty<'a> {
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "payload")]
     Payload(Primitive<Cow<'a, str>>),
-
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.

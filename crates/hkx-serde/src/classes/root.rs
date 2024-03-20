@@ -1,3 +1,4 @@
+//! Hkx XML file Root Element
 use super::generated::class_params::ClassParams;
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;

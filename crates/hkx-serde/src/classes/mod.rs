@@ -3,4 +3,5 @@ mod root;
 #[cfg(test)]
 mod tests;
 
-pub use root::Class;
+pub use generated::*; // generated class all
+pub use root::{Class, HkSection, Hkx};

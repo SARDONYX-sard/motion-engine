@@ -96,13 +96,13 @@ impl<'de> serde::Deserialize<'de> for {enum_name} {{
                                     flags |= bits
                                 }} else {{
                                     return Err(serde::de::Error::custom(format!(
-                                        "Expected {enum_name} flags but got \"{{unknown}}\"",
+                                        "Expected {enum_name} flags but got '{{unknown}}'",
                                     )));
                                 }};
                             }}
                             Err(_err) => {{
                                 return Err(serde::de::Error::custom(format!(
-                                    "Expected {enum_name} flags or integer, but got \"{{unknown}}\""
+                                    "Expected {enum_name} flags or integer, but got '{{unknown}}'"
                                 )))
                             }}
 "#

@@ -317,13 +317,13 @@ impl<'de> serde::Deserialize<'de> for FlagBits {
                                     flags |= bits
                                 } else {
                                     return Err(serde::de::Error::custom(format!(
-                                        "Expected FlagBits flags but got \"{unknown}\"",
+                                        "Expected FlagBits flags but got '{unknown}'",
                                     )));
                                 };
                             }
                             Err(_err) => {
                                 return Err(serde::de::Error::custom(format!(
-                                    "Expected FlagBits flags or integer, but got \"{unknown}\""
+                                    "Expected FlagBits flags or integer, but got '{unknown}'"
                                 )))
                             }
                         },

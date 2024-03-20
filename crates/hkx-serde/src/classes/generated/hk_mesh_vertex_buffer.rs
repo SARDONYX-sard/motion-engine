@@ -125,13 +125,13 @@ impl<'de> serde::Deserialize<'de> for Flags {
                                     flags |= bits
                                 } else {
                                     return Err(serde::de::Error::custom(format!(
-                                        "Expected Flags flags but got \"{unknown}\"",
+                                        "Expected Flags flags but got '{unknown}'",
                                     )));
                                 };
                             }
                             Err(_err) => {
                                 return Err(serde::de::Error::custom(format!(
-                                    "Expected Flags flags or integer, but got \"{unknown}\""
+                                    "Expected Flags flags or integer, but got '{unknown}'"
                                 )))
                             }
                         },

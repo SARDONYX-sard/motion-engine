@@ -222,13 +222,15 @@ impl<'de> serde::Deserialize<'de> for TransitionFlags {
                                     flags |= bits
                                 } else {
                                     return Err(serde::de::Error::custom(format!(
-                                        "Expected TransitionFlags flags but got \"{unknown}\"",
+                                        "Expected TransitionFlags flags but got '{unknown}'",
                                     )));
                                 };
                             }
-                            Err(_err) => return Err(serde::de::Error::custom(format!(
-                                "Expected TransitionFlags flags or integer, but got \"{unknown}\""
-                            ))),
+                            Err(_err) => {
+                                return Err(serde::de::Error::custom(format!(
+                                    "Expected TransitionFlags flags or integer, but got '{unknown}'"
+                                )))
+                            }
                         },
                     }
                 }

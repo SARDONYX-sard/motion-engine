@@ -1,4 +1,4 @@
-use super::{cpp_type_parser::parse_cpp_type, bitflags::generate_bitflags};
+use super::{bitflags::generate_bitflags, cpp_type_parser::parse_cpp_type};
 use crate::hkxcmd_parser::{ClassInfo, Enum, FlagValues, MemberInfo};
 use convert_case::{Case, Casing};
 use indexmap::IndexMap;

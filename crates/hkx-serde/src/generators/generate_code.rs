@@ -25,8 +25,8 @@ pub type FieldMap<'a> = IndexMap<&'a String, (String, Cow<'a, str>)>;
 /// Generate Rust XML Serialize/Deserialize structs code from C++ class info>
 pub fn generate_code(
     cpp_class_name: &str,
-    classes_map: ClassMap,
-    life_time_map: LifeTimeMap,
+    classes_map: &ClassMap,
+    life_time_map: &LifeTimeMap,
 ) -> String {
     let mut rust_code = String::new();
 
@@ -47,11 +47,11 @@ pub fn generate_code(
         .unwrap_or_default();
 
     // ! The lifetime annotation of a structure cannot be made without first calculating whether or not the fields has a lifetime.
-    let (rust_fields_code, fields) = generate_all_fields(class, &classes_map, Some(&life_time_map));
+    let (rust_fields_code, fields) = generate_all_fields(class, classes_map, Some(life_time_map));
 
     // e.g. `HkColor<'a>`
     let rust_enum_name = class_name.to_case(Case::Pascal);
-    let life_time = get_lifetime_from_map(&fields);
+    let life_time = get_lifetime_from_fields(&fields);
     let rust_enum_name_with_life_time = format!("{rust_enum_name}{life_time}");
 
     // Because the manual deserializer cannot be implemented if there is nothing in the tag of the enum representing all fields in the C++ Class.
@@ -115,7 +115,7 @@ pub enum {rust_enum_name_with_life_time} {{
 /// Return `"<'a>"` if there is at least one lifetime annotation in the information that has been changed from a C++ field type to a Rust type.
 ///
 /// This exists to get the information of the lifetime annotation, because if the field has a lifetime, the lifetime annotation must be declared in advance in struct.
-pub fn get_lifetime_from_map(index_map: &FieldMap) -> &'static str {
+pub fn get_lifetime_from_fields(index_map: &FieldMap) -> &'static str {
     for (_field_name, (_, r_type)) in index_map {
         if r_type.find("'a").is_some() {
             return "<'a>";

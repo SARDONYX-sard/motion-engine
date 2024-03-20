@@ -1,7 +1,7 @@
 use super::{
     generate_all_fields,
     generate_code::{ClassMap, LifeTimeMap},
-    get_lifetime_from_map,
+    get_lifetime_from_fields,
 };
 use convert_case::{Case, Casing as _};
 
@@ -12,7 +12,7 @@ use convert_case::{Case, Casing as _};
 /// The reason we don't take a signature is that this is not a unique value.
 ///
 /// (**It may inherit the signature of the parent class**. e.g. `hkpShapeContainer`, `baseObject`, etc.)
-pub fn generate_class_params(class_map: ClassMap, life_time_map: LifeTimeMap) -> String {
+pub fn generate_class_params(class_map: &ClassMap, life_time_map: &LifeTimeMap) -> String {
     let mut class_params = String::new();
 
     class_params.push_str(
@@ -36,13 +36,13 @@ pub enum ClassParams<'a> {
 "#,
     );
 
-    for (_cpp_class_name, class) in class_map.clone().into_iter() {
+    for (_cpp_class_name, class) in class_map {
         let sig = class.signature;
         let struct_name = class.name.to_case(Case::Pascal);
 
         let (_rust_fields_code, fields) =
-            generate_all_fields(&class, &class_map, Some(&life_time_map));
-        let life_time = get_lifetime_from_map(&fields);
+            generate_all_fields(class, class_map, Some(life_time_map));
+        let life_time = get_lifetime_from_fields(&fields);
         let rust_class_name_with_life_time = format!("{struct_name}{life_time}");
 
         let life_time_bound = if rust_class_name_with_life_time.ends_with("<'a>") {
@@ -80,7 +80,7 @@ impl<'a> Serialize for Class<'a> {{
         class_map.len()
     ));
 
-    for (cpp_class_name, class) in class_map.clone().into_iter() {
+    for (cpp_class_name, class) in class_map {
         let struct_name = class.name.to_case(Case::Pascal);
 
         class_params.push_str(&format!(
@@ -158,7 +158,7 @@ impl<'de> Deserialize<'de> for Class<'de> {
 "#,
     );
 
-    for (cpp_class_name, class) in class_map.clone().into_iter() {
+    for (cpp_class_name, class) in class_map {
         let struct_name = class.name.to_case(Case::Pascal);
 
         class_params.push_str(&format!(

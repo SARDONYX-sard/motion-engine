@@ -9,4 +9,6 @@ mod generate_code;
 mod generated_types;
 
 pub use gen_class_params::generate_class_params;
-pub use generate_code::{generate_all_fields, generate_code, get_lifetime_from_map, FieldMap};
+pub use generate_code::{
+    generate_all_fields, generate_code, get_lifetime_from_fields, ClassMap, FieldMap, LifeTimeMap,
+};

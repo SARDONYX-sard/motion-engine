@@ -435,23 +435,23 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkArray&lt;hkBool&gt;",
-        "HkArrayRef<Primitive<bool>>",
+        "HkArrayRef<bool>",
     ),
     (
         "hkArray&lt;hkChar&gt;",
-        "HkArrayRef<Primitive<char>>",
+        "HkArrayRef<char>",
     ),
     (
         "hkArray&lt;hkInt16&gt;",
-        "HkArrayRef<Primitive<i16>>",
+        "HkArrayNum<i16>",
     ),
     (
         "hkArray&lt;hkInt32&gt;",
-        "HkArrayRef<Primitive<i32>>",
+        "HkArrayNum<i32>",
     ),
     (
         "hkArray&lt;hkInt8&gt;",
-        "HkArrayRef<Primitive<i8>>",
+        "HkArrayNum<i8>",
     ),
     (
         "hkArray&lt;hkLocalFrame*&gt;",
@@ -487,7 +487,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkArray&lt;hkReal&gt;",
-        "HkArrayRef<Primitive<f32>>",
+        "HkArrayNum<f32>",
     ),
     (
         "hkArray&lt;hkReferencedObject*&gt;",
@@ -503,19 +503,19 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkArray&lt;hkUint16&gt;",
-        "HkArrayRef<Primitive<u16>>",
+        "HkArrayNum<u16>",
     ),
     (
         "hkArray&lt;hkUint32&gt;",
-        "HkArrayRef<Primitive<u32>>",
+        "HkArrayNum<u32>",
     ),
     (
         "hkArray&lt;hkUint64&gt;",
-        "HkArrayRef<Primitive<u64>>",
+        "HkArrayNum<u64>",
     ),
     (
         "hkArray&lt;hkUint8&gt;",
-        "HkArrayRef<Primitive<u8>>",
+        "HkArrayNum<u8>",
     ),
     (
         "hkArray&lt;hkVector4&gt;",
@@ -1095,7 +1095,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkArray&lt;void&gt;",
-        "HkArrayRef<Primitive<()>>",
+        "HkArrayRef<()>",
     ),
     (
         "hkArray&lt;void*&gt;",
@@ -1175,19 +1175,19 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkMatrix3",
-        "Matrix3<f32>",
+        "Primitive<Matrix3<f32>>",
     ),
     (
         "hkMatrix4",
-        "Matrix4<f32>",
+        "Primitive<Matrix4<f32>>",
     ),
     (
         "hkQsTransform",
-        "QsTransform<f32>",
+        "Primitive<QsTransform<f32>>",
     ),
     (
         "hkQuaternion",
-        "Quaternion<f32>",
+        "Primitive<Quaternion<f32>>",
     ),
     (
         "hkReal",
@@ -1199,7 +1199,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkRotation",
-        "Rotation<f32>",
+        "Primitive<Rotation<f32>>",
     ),
     (
         "hkSimpleArray&lt;struct hkClassEnum&gt;",
@@ -1219,7 +1219,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkSimpleArray&lt;void&gt;",
-        "HkArrayRef<Primitive<()>>",
+        "HkArrayRef<()>",
     ),
     (
         "hkStringPtr",
@@ -1227,7 +1227,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkTransform",
-        "Transform<f32>",
+        "Primitive<Transform<f32>>",
     ),
     (
         "hkTransform[2]",
@@ -1311,7 +1311,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "hkVector4",
-        "Vector4<f32>",
+        "Primitive<Vector4<f32>>",
     ),
     (
         "hkVector4[2]",
@@ -1327,11 +1327,11 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct BSIStateManagerModifierBSIStateManagerStateListener",
-        "BsiStateManagerModifierBsiStateManagerStateListener",
+        "SingleClass<BsiStateManagerModifierBsiStateManagerStateListener>",
     ),
     (
         "struct hkAabb",
-        "HkAabb",
+        "SingleClass<HkAabb>",
     ),
     (
         "struct hkClass*",
@@ -1343,7 +1343,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkContactPoint",
-        "HkContactPoint",
+        "SingleClass<HkContactPoint>",
     ),
     (
         "struct hkCustomAttributes*",
@@ -1383,11 +1383,11 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkMotionState",
-        "HkMotionState",
+        "SingleClass<HkMotionState>",
     ),
     (
         "struct hkMultiThreadCheck",
-        "HkMultiThreadCheck",
+        "SingleClass<HkMultiThreadCheck>",
     ),
     (
         "struct hkReferencedObject*",
@@ -1395,11 +1395,11 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkSweptTransform",
-        "HkSweptTransform",
+        "SingleClass<HkSweptTransform>",
     ),
     (
         "struct hkVertexFormat",
-        "HkVertexFormat",
+        "SingleClass<HkVertexFormat>",
     ),
     (
         "struct hkVertexFormatElement[32]",
@@ -1419,11 +1419,11 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkaDeltaCompressedAnimationQuantizationFormat",
-        "HkaDeltaCompressedAnimationQuantizationFormat",
+        "SingleClass<HkaDeltaCompressedAnimationQuantizationFormat>",
     ),
     (
         "struct hkaKeyFrameHierarchyUtilityControlData",
-        "HkaKeyFrameHierarchyUtilityControlData",
+        "SingleClass<HkaKeyFrameHierarchyUtilityControlData>",
     ),
     (
         "struct hkaSkeleton*",
@@ -1435,11 +1435,11 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkaSkeletonMapperData",
-        "HkaSkeletonMapperData",
+        "SingleClass<HkaSkeletonMapperData>",
     ),
     (
         "struct hkaWaveletCompressedAnimationQuantizationFormat",
-        "HkaWaveletCompressedAnimationQuantizationFormat",
+        "SingleClass<HkaWaveletCompressedAnimationQuantizationFormat>",
     ),
     (
         "struct hkbAttachmentSetup*",
@@ -1475,7 +1475,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkbCharacterControllerControlData",
-        "HkbCharacterControllerControlData",
+        "SingleClass<HkbCharacterControllerControlData>",
     ),
     (
         "struct hkbCharacterData*",
@@ -1483,7 +1483,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkbCharacterDataCharacterControllerInfo",
-        "HkbCharacterDataCharacterControllerInfo",
+        "SingleClass<HkbCharacterDataCharacterControllerInfo>",
     ),
     (
         "struct hkbCharacterSetup*",
@@ -1503,7 +1503,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkbEvent",
-        "HkbEvent",
+        "SingleClass<HkbEvent>",
     ),
     (
         "struct hkbEventPayload*",
@@ -1511,7 +1511,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkbEventProperty",
-        "HkbEventProperty",
+        "SingleClass<HkbEventProperty>",
     ),
     (
         "struct hkbEventRangeDataArray*",
@@ -1523,7 +1523,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkbFootIkControlData",
-        "HkbFootIkControlData",
+        "SingleClass<HkbFootIkControlData>",
     ),
     (
         "struct hkbFootIkDriverInfo*",
@@ -1531,7 +1531,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkbFootIkGains",
-        "HkbFootIkGains",
+        "SingleClass<HkbFootIkGains>",
     ),
     (
         "struct hkbGenerator*",
@@ -1543,7 +1543,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkbGeneratorSyncInfo",
-        "HkbGeneratorSyncInfo",
+        "SingleClass<HkbGeneratorSyncInfo>",
     ),
     (
         "struct hkbGeneratorSyncInfoSyncPoint[8]",
@@ -1551,7 +1551,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkbHandIkControlData",
-        "HkbHandIkControlData",
+        "SingleClass<HkbHandIkControlData>",
     ),
     (
         "struct hkbHandIkDriverInfo*",
@@ -1559,7 +1559,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkbHandle",
-        "HkbHandle",
+        "SingleClass<HkbHandle>",
     ),
     (
         "struct hkbHandle*",
@@ -1579,7 +1579,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkbPoweredRagdollControlData",
-        "HkbPoweredRagdollControlData",
+        "SingleClass<HkbPoweredRagdollControlData>",
     ),
     (
         "struct hkbProjectData*",
@@ -1591,15 +1591,15 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkbProxyModifierProxyInfo",
-        "HkbProxyModifierProxyInfo",
+        "SingleClass<HkbProxyModifierProxyInfo>",
     ),
     (
         "struct hkbRigidBodyRagdollControlData",
-        "HkbRigidBodyRagdollControlData",
+        "SingleClass<HkbRigidBodyRagdollControlData>",
     ),
     (
         "struct hkbRoleAttribute",
-        "HkbRoleAttribute",
+        "SingleClass<HkbRoleAttribute>",
     ),
     (
         "struct hkbSequenceStringData*",
@@ -1615,11 +1615,11 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkbStateMachineProspectiveTransitionInfo",
-        "HkbStateMachineProspectiveTransitionInfo",
+        "SingleClass<HkbStateMachineProspectiveTransitionInfo>",
     ),
     (
         "struct hkbStateMachineTimeInterval",
-        "HkbStateMachineTimeInterval",
+        "SingleClass<HkbStateMachineTimeInterval>",
     ),
     (
         "struct hkbStateMachineTransitionInfoArray*",
@@ -1627,7 +1627,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkbStateMachineTransitionInfoReference",
-        "HkbStateMachineTransitionInfoReference",
+        "SingleClass<HkbStateMachineTransitionInfoReference>",
     ),
     (
         "struct hkbTransitionEffect*",
@@ -1639,7 +1639,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkbVariableValue",
-        "HkbVariableValue",
+        "SingleClass<HkbVariableValue>",
     ),
     (
         "struct hkbVariableValueSet*",
@@ -1647,11 +1647,11 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkbWorldFromModelModeData",
-        "HkbWorldFromModelModeData",
+        "SingleClass<HkbWorldFromModelModeData>",
     ),
     (
         "struct hkp2dAngConstraintAtom",
-        "Hkp2DAngConstraintAtom",
+        "SingleClass<Hkp2DAngConstraintAtom>",
     ),
     (
         "struct hkpAabbPhantom*",
@@ -1659,35 +1659,35 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkpAngConstraintAtom",
-        "HkpAngConstraintAtom",
+        "SingleClass<HkpAngConstraintAtom>",
     ),
     (
         "struct hkpAngFrictionConstraintAtom",
-        "HkpAngFrictionConstraintAtom",
+        "SingleClass<HkpAngFrictionConstraintAtom>",
     ),
     (
         "struct hkpAngLimitConstraintAtom",
-        "HkpAngLimitConstraintAtom",
+        "SingleClass<HkpAngLimitConstraintAtom>",
     ),
     (
         "struct hkpAngMotorConstraintAtom",
-        "HkpAngMotorConstraintAtom",
+        "SingleClass<HkpAngMotorConstraintAtom>",
     ),
     (
         "struct hkpBallAndSocketConstraintDataAtoms",
-        "HkpBallAndSocketConstraintDataAtoms",
+        "SingleClass<HkpBallAndSocketConstraintDataAtoms>",
     ),
     (
         "struct hkpBallSocketConstraintAtom",
-        "HkpBallSocketConstraintAtom",
+        "SingleClass<HkpBallSocketConstraintAtom>",
     ),
     (
         "struct hkpBridgeAtoms",
-        "HkpBridgeAtoms",
+        "SingleClass<HkpBridgeAtoms>",
     ),
     (
         "struct hkpBridgeConstraintAtom",
-        "HkpBridgeConstraintAtom",
+        "SingleClass<HkpBridgeConstraintAtom>",
     ),
     (
         "struct hkpCdBody*",
@@ -1699,11 +1699,11 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkpCogWheelConstraintAtom",
-        "HkpCogWheelConstraintAtom",
+        "SingleClass<HkpCogWheelConstraintAtom>",
     ),
     (
         "struct hkpCogWheelConstraintDataAtoms",
-        "HkpCogWheelConstraintDataAtoms",
+        "SingleClass<HkpCogWheelConstraintDataAtoms>",
     ),
     (
         "struct hkpCollidable*",
@@ -1711,7 +1711,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkpCollidableBoundingVolumeData",
-        "HkpCollidableBoundingVolumeData",
+        "SingleClass<HkpCollidableBoundingVolumeData>",
     ),
     (
         "struct hkpCollisionFilter*",
@@ -1719,7 +1719,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkpConeLimitConstraintAtom",
-        "HkpConeLimitConstraintAtom",
+        "SingleClass<HkpConeLimitConstraintAtom>",
     ),
     (
         "struct hkpConstraintAtom*",
@@ -1743,7 +1743,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkpConstraintInstanceSmallArraySerializeOverrideType",
-        "HkpConstraintInstanceSmallArraySerializeOverrideType",
+        "SingleClass<HkpConstraintInstanceSmallArraySerializeOverrideType>",
     ),
     (
         "struct hkpConstraintMotor*",
@@ -1771,67 +1771,67 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkpEntitySmallArraySerializeOverrideType",
-        "HkpEntitySmallArraySerializeOverrideType",
+        "SingleClass<HkpEntitySmallArraySerializeOverrideType>",
     ),
     (
         "struct hkpEntitySpuCollisionCallback",
-        "HkpEntitySpuCollisionCallback",
+        "SingleClass<HkpEntitySpuCollisionCallback>",
     ),
     (
         "struct hkpExtendedMeshShapeTrianglesSubpart",
-        "HkpExtendedMeshShapeTrianglesSubpart",
+        "SingleClass<HkpExtendedMeshShapeTrianglesSubpart>",
     ),
     (
         "struct hkpGenericConstraintDataScheme",
-        "HkpGenericConstraintDataScheme",
+        "SingleClass<HkpGenericConstraintDataScheme>",
     ),
     (
         "struct hkpGenericConstraintDataSchemeConstraintInfo",
-        "HkpGenericConstraintDataSchemeConstraintInfo",
+        "SingleClass<HkpGenericConstraintDataSchemeConstraintInfo>",
     ),
     (
         "struct hkpHingeConstraintDataAtoms",
-        "HkpHingeConstraintDataAtoms",
+        "SingleClass<HkpHingeConstraintDataAtoms>",
     ),
     (
         "struct hkpHingeLimitsDataAtoms",
-        "HkpHingeLimitsDataAtoms",
+        "SingleClass<HkpHingeLimitsDataAtoms>",
     ),
     (
         "struct hkpLimitedHingeConstraintDataAtoms",
-        "HkpLimitedHingeConstraintDataAtoms",
+        "SingleClass<HkpLimitedHingeConstraintDataAtoms>",
     ),
     (
         "struct hkpLinConstraintAtom",
-        "HkpLinConstraintAtom",
+        "SingleClass<HkpLinConstraintAtom>",
     ),
     (
         "struct hkpLinFrictionConstraintAtom",
-        "HkpLinFrictionConstraintAtom",
+        "SingleClass<HkpLinFrictionConstraintAtom>",
     ),
     (
         "struct hkpLinLimitConstraintAtom",
-        "HkpLinLimitConstraintAtom",
+        "SingleClass<HkpLinLimitConstraintAtom>",
     ),
     (
         "struct hkpLinMotorConstraintAtom",
-        "HkpLinMotorConstraintAtom",
+        "SingleClass<HkpLinMotorConstraintAtom>",
     ),
     (
         "struct hkpLinSoftConstraintAtom",
-        "HkpLinSoftConstraintAtom",
+        "SingleClass<HkpLinSoftConstraintAtom>",
     ),
     (
         "struct hkpLinkedCollidable",
-        "HkpLinkedCollidable",
+        "SingleClass<HkpLinkedCollidable>",
     ),
     (
         "struct hkpMaterial",
-        "HkpMaterial",
+        "SingleClass<HkpMaterial>",
     ),
     (
         "struct hkpMaxSizeMotion",
-        "HkpMaxSizeMotion",
+        "SingleClass<HkpMaxSizeMotion>",
     ),
     (
         "struct hkpMaxSizeMotion*",
@@ -1847,11 +1847,11 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkpMoppCodeCodeInfo",
-        "HkpMoppCodeCodeInfo",
+        "SingleClass<HkpMoppCodeCodeInfo>",
     ),
     (
         "struct hkpPairCollisionFilterMapPairFilterKeyOverrideType",
-        "HkpPairCollisionFilterMapPairFilterKeyOverrideType",
+        "SingleClass<HkpPairCollisionFilterMapPairFilterKeyOverrideType>",
     ),
     (
         "struct hkpParametricCurve*",
@@ -1863,7 +1863,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkpPointToPlaneConstraintDataAtoms",
-        "HkpPointToPlaneConstraintDataAtoms",
+        "SingleClass<HkpPointToPlaneConstraintDataAtoms>",
     ),
     (
         "struct hkpPoweredChainData*",
@@ -1871,43 +1871,43 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkpPrismaticConstraintDataAtoms",
-        "HkpPrismaticConstraintDataAtoms",
+        "SingleClass<HkpPrismaticConstraintDataAtoms>",
     ),
     (
         "struct hkpPropertyValue",
-        "HkpPropertyValue",
+        "SingleClass<HkpPropertyValue>",
     ),
     (
         "struct hkpPulleyConstraintAtom",
-        "HkpPulleyConstraintAtom",
+        "SingleClass<HkpPulleyConstraintAtom>",
     ),
     (
         "struct hkpPulleyConstraintDataAtoms",
-        "HkpPulleyConstraintDataAtoms",
+        "SingleClass<HkpPulleyConstraintDataAtoms>",
     ),
     (
         "struct hkpRackAndPinionConstraintAtom",
-        "HkpRackAndPinionConstraintAtom",
+        "SingleClass<HkpRackAndPinionConstraintAtom>",
     ),
     (
         "struct hkpRackAndPinionConstraintDataAtoms",
-        "HkpRackAndPinionConstraintDataAtoms",
+        "SingleClass<HkpRackAndPinionConstraintDataAtoms>",
     ),
     (
         "struct hkpRagdollConstraintDataAtoms",
-        "HkpRagdollConstraintDataAtoms",
+        "SingleClass<HkpRagdollConstraintDataAtoms>",
     ),
     (
         "struct hkpRagdollLimitsDataAtoms",
-        "HkpRagdollLimitsDataAtoms",
+        "SingleClass<HkpRagdollLimitsDataAtoms>",
     ),
     (
         "struct hkpRagdollMotorConstraintAtom",
-        "HkpRagdollMotorConstraintAtom",
+        "SingleClass<HkpRagdollMotorConstraintAtom>",
     ),
     (
         "struct hkpRejectChassisListener",
-        "HkpRejectChassisListener",
+        "SingleClass<HkpRejectChassisListener>",
     ),
     (
         "struct hkpRigidBody*",
@@ -1915,7 +1915,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkpRotationalConstraintDataAtoms",
-        "HkpRotationalConstraintDataAtoms",
+        "SingleClass<HkpRotationalConstraintDataAtoms>",
     ),
     (
         "struct hkpSampledHeightFieldShape*",
@@ -1923,23 +1923,23 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkpSerializedTrack1nInfo",
-        "HkpSerializedTrack1NInfo",
+        "SingleClass<HkpSerializedTrack1NInfo>",
     ),
     (
         "struct hkpSetLocalRotationsConstraintAtom",
-        "HkpSetLocalRotationsConstraintAtom",
+        "SingleClass<HkpSetLocalRotationsConstraintAtom>",
     ),
     (
         "struct hkpSetLocalTransformsConstraintAtom",
-        "HkpSetLocalTransformsConstraintAtom",
+        "SingleClass<HkpSetLocalTransformsConstraintAtom>",
     ),
     (
         "struct hkpSetLocalTranslationsConstraintAtom",
-        "HkpSetLocalTranslationsConstraintAtom",
+        "SingleClass<HkpSetLocalTranslationsConstraintAtom>",
     ),
     (
         "struct hkpSetupStabilizationAtom",
-        "HkpSetupStabilizationAtom",
+        "SingleClass<HkpSetupStabilizationAtom>",
     ),
     (
         "struct hkpShape*",
@@ -1955,11 +1955,11 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkpSimpleContactConstraintAtom",
-        "HkpSimpleContactConstraintAtom",
+        "SingleClass<HkpSimpleContactConstraintAtom>",
     ),
     (
         "struct hkpSimpleContactConstraintDataInfo",
-        "HkpSimpleContactConstraintDataInfo",
+        "SingleClass<HkpSimpleContactConstraintDataInfo>",
     ),
     (
         "struct hkpSimulation*",
@@ -1967,23 +1967,23 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkpSingleShapeContainer",
-        "HkpSingleShapeContainer",
+        "SingleClass<HkpSingleShapeContainer>",
     ),
     (
         "struct hkpStiffSpringConstraintAtom",
-        "HkpStiffSpringConstraintAtom",
+        "SingleClass<HkpStiffSpringConstraintAtom>",
     ),
     (
         "struct hkpStiffSpringConstraintDataAtoms",
-        "HkpStiffSpringConstraintDataAtoms",
+        "SingleClass<HkpStiffSpringConstraintDataAtoms>",
     ),
     (
         "struct hkpTwistLimitConstraintAtom",
-        "HkpTwistLimitConstraintAtom",
+        "SingleClass<HkpTwistLimitConstraintAtom>",
     ),
     (
         "struct hkpTypedBroadPhaseHandle",
-        "HkpTypedBroadPhaseHandle",
+        "SingleClass<HkpTypedBroadPhaseHandle>",
     ),
     (
         "struct hkpTyremarksInfo*",
@@ -2015,7 +2015,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkpVehicleFrictionDescription",
-        "HkpVehicleFrictionDescription",
+        "SingleClass<HkpVehicleFrictionDescription>",
     ),
     (
         "struct hkpVehicleFrictionDescriptionAxisDescription[2]",
@@ -2023,7 +2023,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkpVehicleFrictionStatus",
-        "HkpVehicleFrictionStatus",
+        "SingleClass<HkpVehicleFrictionStatus>",
     ),
     (
         "struct hkpVehicleFrictionStatusAxisStatus[2]",
@@ -2051,7 +2051,7 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkpWheelConstraintDataAtoms",
-        "HkpWheelConstraintDataAtoms",
+        "SingleClass<HkpWheelConstraintDataAtoms>",
     ),
     (
         "struct hkpWorld*",
@@ -2083,11 +2083,11 @@ pub const HK_TYPES: [(&str, &str); 522] = [
     ),
     (
         "struct hkxVertexBufferVertexData",
-        "HkxVertexBufferVertexData",
+        "SingleClass<HkxVertexBufferVertexData>",
     ),
     (
         "struct hkxVertexDescription",
-        "HkxVertexDescription",
+        "SingleClass<HkxVertexDescription>",
     ),
     (
         "void*",

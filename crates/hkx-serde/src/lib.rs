@@ -9,13 +9,14 @@ mod hk_types;
 mod parse_rpt;
 
 use crate::generators::{
-    generate_all_fields, generate_class_params, generate_code, get_lifetime_from_map,
+    generate_all_fields, generate_class_params, generate_code, get_lifetime_from_fields,
 };
 use crate::parse_rpt::parse_class;
 use convert_case::{Case, Casing};
 use indexmap::IndexMap;
 use std::collections::HashMap;
 
+/// Generate all C++ Havok classes(To Rust enum types)
 pub fn generate_classes() {
     let output_dir = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
         .join("src")
@@ -83,36 +84,36 @@ pub fn generate_classes() {
     //? Create life time map (cpp class name, rust struct name with life time)
     let mut life_time_name_map = HashMap::new();
     for (_sig, class) in class_map.clone().into_iter() {
+        // fields = IndexMap<"C++ field name", ("rust enum tag name", "rust type name")>
         let (_rust_fields_code, fields) = generate_all_fields(&class, &class_map, None);
-        // IndexMap<"C++ field name", ("rust enum tag name", "rust type name")>
-        let life_time = get_lifetime_from_map(&fields);
+
+        let life_time = get_lifetime_from_fields(&fields);
         let rust_struct_name = class.name.to_case(Case::Pascal);
-        life_time_name_map.insert(
-            rust_struct_name.clone(),
-            format!("{rust_struct_name}{life_time}"),
-        );
+        let rust_struct_name_with_life_time = format!("{rust_struct_name}{life_time}");
+
+        life_time_name_map.insert(rust_struct_name, rust_struct_name_with_life_time);
     }
 
     // I was able to detect the lifetime of `Cow<'a, str>` etc. in the first one, but not the lifetime of the newly attached structure in the case of structures with structure as a field.
     // Therefore, we will use the HashMap created in the first step to detect further nested lifetimes.
-    for (_sig, class) in class_map.clone().into_iter() {
+    for (_sig, class) in &class_map {
         let (_rust_fields_code, fields) =
-            generate_all_fields(&class, &class_map, Some(&life_time_name_map));
-        let life_time = get_lifetime_from_map(&fields);
+            generate_all_fields(class, &class_map, Some(&life_time_name_map));
+
+        let life_time = get_lifetime_from_fields(&fields);
         let rust_struct_name = class.name.to_case(Case::Pascal);
-        life_time_name_map.insert(
-            rust_struct_name.clone(),
-            format!("{rust_struct_name}{life_time}"),
-        );
+        let rust_struct_name_with_life_time = format!("{rust_struct_name}{life_time}");
+
+        life_time_name_map.insert(rust_struct_name, rust_struct_name_with_life_time);
     }
 
-    for (_sig, class) in class_map.clone().into_iter() {
+    for (_sig, class) in &class_map {
         let rust_file = output_dir.join(format!("{}.rs", class.name.to_case(Case::Snake)));
-        let rust_code = generate_code(&class.name, class_map.clone(), life_time_name_map.clone());
+        let rust_code = generate_code(&class.name, &class_map, &life_time_name_map);
         std::fs::write(rust_file, rust_code).unwrap();
     }
 
-    let class_params = generate_class_params(class_map, life_time_name_map.clone());
+    let class_params = generate_class_params(&class_map, &life_time_name_map);
     std::fs::write(output_dir.join("class_params.rs"), class_params).unwrap();
 }
 
@@ -123,7 +124,7 @@ mod tests {
     #[test]
     pub fn should_generate_classes() {
         let _guard =
-            helpers::tracing::init_tracing(Some("should_generate_classes"), tracing::Level::DEBUG);
+            helpers::tracing::init_tracing(Some("should_generate_classes"), tracing::Level::ERROR);
         generate_classes()
     }
 }

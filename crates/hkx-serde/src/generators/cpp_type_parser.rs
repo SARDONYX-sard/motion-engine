@@ -314,14 +314,16 @@ mod tests {
     fn should_parse_array() {
         let input = "hkArray&lt;BSBoneSwitchGeneratorBoneData*&gt;";
         let (_, rust_array) = parse_hk_array_type(input).unwrap();
-        assert_eq!(rust_array, "HkArrayClass<BsBoneSwitchGeneratorBoneData>");
+        assert_eq!(rust_array, "HkArrayRef<Cow<'a, str>>");
     }
 
     #[test]
     fn should_parse_c_style_array() {
         let input = "struct hkpVehicleFrictionStatusAxisStatus[2]";
         let (_, rust_array) = parse_array_type(input).unwrap();
-        assert_eq!(rust_array, "[HkpVehicleFrictionStatusAxisStatus; 2]");
+
+        let expected = "CStyleArrayClass<HkpVehicleFrictionStatusAxisStatus, 2>";
+        assert_eq!(rust_array, expected);
     }
 
     #[test]
@@ -360,7 +362,6 @@ mod tests {
         let output_file = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
             .join("src")
             .join("generators")
-            .join("rust")
             .join("generated_types.rs");
         std::fs::write(output_file, generate_all_mapping_types(rpt_dir)).unwrap();
     }

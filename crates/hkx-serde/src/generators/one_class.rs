@@ -1,8 +1,5 @@
-use super::{cpp_type_parser::parse_cpp_type, generate_bitflags::generate_bitflags};
-use crate::{
-    flag_values::FlagValues,
-    parse_rpt::{ClassInfo, Enum, MemberInfo},
-};
+use super::{cpp_type_parser::parse_cpp_type, bitflags::generate_bitflags};
+use crate::hkxcmd_parser::{ClassInfo, Enum, FlagValues, MemberInfo};
 use convert_case::{Case, Casing};
 use indexmap::IndexMap;
 use std::{borrow::Cow, collections::HashMap};

@@ -37,6 +37,7 @@
 //!
 //! NEWLINE ::= '\n'
 //! ```
+use super::{flag_values::FlagValues, hk_types::Type};
 use nom::{
     branch::alt,
     bytes::complete::{tag, take_while1},
@@ -48,13 +49,12 @@ use nom::{
 use num_traits::Num;
 use std::borrow::Cow;
 
-use crate::{flag_values::FlagValues, hk_types::Type};
-
+/// Verbose Error Message
 type IResult<I, O, E = nom::error::VerboseError<I>> = Result<(I, O), nom::Err<E>>;
 
-/// Enum tag & value
+/// C++ Enum tag & value
 type EnumPair = (String, i32);
-/// Enum's identifier name & (Enum tag & value) vector
+/// C++ Enum's identifier name & (C++ Enum tag & C++ value) vector
 pub type Enum = (String, Vec<EnumPair>);
 
 /// C++ class information from `hkxcmd Report`.

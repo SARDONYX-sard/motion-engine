@@ -1,6 +1,6 @@
 //! Flags for field alignment needs, skipping serialization, etc.(The original C++ code is u16 bit flags)
 //! - ref: havok_2010_2_0/Source/Common/Base/Refection/hkClassMember.h#L112
-use crate::parse_rpt::Enum;
+use crate::hkxcmd_parser::Enum;
 
 /// Generate u16 bit flags Rust code
 pub fn generate_bitflags(enum_info: &Enum) -> String {
@@ -188,7 +188,7 @@ mod tests {
         );
         let generated_code = generate_bitflags(&enum_info);
 
-        let expected = include_str!("../flag_values.rs");
+        let expected = include_str!("../../src/hkxcmd_parser/flag_values.rs");
         let expected = &expected[..expected.find("#[cfg(test").unwrap()];
         assert_eq!(generated_code, expected);
         tracing::debug!("{generated_code}");

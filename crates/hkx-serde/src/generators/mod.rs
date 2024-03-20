@@ -2,13 +2,14 @@
 //!
 //! - It may be called in `lib` or `test`, but not elsewhere.
 //! - Not used except to generate Rust code.
-pub mod cpp_type_parser;
-mod gen_class_params;
-mod generate_bitflags;
-mod generate_code;
+// subs
+mod bitflags;
+mod class_params;
+mod cpp_type_parser;
 mod generated_types;
 
-pub use gen_class_params::generate_class_params;
-pub use generate_code::{
-    generate_all_fields, generate_code, get_lifetime_from_fields, ClassMap, FieldMap, LifeTimeMap,
-};
+mod one_class; // one class generator
+
+mod all_class; // main all generators
+
+pub use all_class::generate_classes;

@@ -1,8 +1,4 @@
-use super::{
-    generate_all_fields,
-    generate_code::{ClassMap, LifeTimeMap},
-    get_lifetime_from_fields,
-};
+use super::one_class::{generate_all_fields, get_lifetime_from_fields, ClassMap, LifeTimeMap};
 use convert_case::{Case, Casing as _};
 
 /// Generate all havok C++ class enums.

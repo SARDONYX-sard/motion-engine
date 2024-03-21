@@ -5,6 +5,7 @@
     "bitflags",
     "byteorder",
     "cgmath",
+    "classnames",
     "classversion",
     "contentsversion",
     "CSTRING",

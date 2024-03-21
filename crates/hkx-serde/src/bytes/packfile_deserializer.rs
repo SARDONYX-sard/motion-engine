@@ -43,6 +43,7 @@ impl PackFileDeserializer {
         ret
     }
 
+    /// Read hkx header, each section header and class names bytes
     fn deserialize_partially<B: ByteOrder>(
         &mut self,
         mut br: impl Read + Seek,

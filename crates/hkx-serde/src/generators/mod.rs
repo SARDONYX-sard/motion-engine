@@ -1,4 +1,4 @@
-//! # Havok Classes => Rust Code generator
+//! # Havok Classes => Rust Code
 //!
 //! - It may be called in `lib` or `test`, but not elsewhere.
 //! - Not used except to generate Rust code.

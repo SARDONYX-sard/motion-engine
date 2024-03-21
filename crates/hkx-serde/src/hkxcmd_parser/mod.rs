@@ -1,3 +1,4 @@
+//! hkxcmd rpt parser => C++ Classes info
 mod flag_values;
 mod hk_types;
 mod parse_rpt;

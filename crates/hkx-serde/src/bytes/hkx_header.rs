@@ -26,7 +26,9 @@
 //! | MaxPredicate                   | Maximum predicate value                                        | 2            | 60             |
 //! | SectionOffset                  | Section offset within the file                                 | 2            | 62             |
 //!
-//! ## Unknowns
+//! ## Paddings
+//! If SectionOffset number is 16, read 64bytes header plus an extra 16bytes as padding.
+//!
 //! | Field Name                     | Description                                                    | Size (bytes) | Offset (bytes) |
 //! | ------------------------------ | -------------------------------------------------------------- | ------------ | -------------- |
 //! | Unk40                          | Unknown field (Hex offset: 40)                                 | 2            | 64             |
@@ -34,7 +36,6 @@
 //! | Unk44                          | Unknown field (Hex offset: 44)                                 | 4            | 68             |
 //! | Unk48                          | Unknown field (Hex offset: 48)                                 | 4            | 72             |
 //! | Unk4C                          | Unknown field (Hex offset: 4C)                                 | 4            | 76             |
-
 use super::fix_str_io::{read_fix_str, write_fix_str};
 use byteorder::{BigEndian, ByteOrder, LittleEndian, ReadBytesExt as _, WriteBytesExt as _};
 use std::io::{Cursor, Read, Seek as _, Write};
@@ -88,7 +89,7 @@ pub struct HkxHeader {
     pub flags: i32,
     /// Maximum predicate.
     pub max_predicate: i16,
-    /// Section offset.
+    /// Section offset. If this number is 16, read 64bytes header plus an extra 16bytes as padding.
     pub section_offset: i16,
     /// Unknown field 1.(binary header offset: 0x40 bytes)
     pub unk40: i16,
@@ -148,6 +149,7 @@ impl HkxHeader {
         let max_predicate = br.read_i16::<B>()?;
         let section_offset = br.read_i16::<B>()?;
 
+        // Padding for 16-byte alignment constraints
         let (unk40, unk42, unk44, unk48, unk4c) = if section_offset == 16 {
             let unk40 = br.read_i16::<B>()?;
             let unk42 = br.read_i16::<B>()?;
@@ -237,15 +239,15 @@ impl HkxHeader {
         }
     }
 
-    /// Serialize HKX header as a byte vector.
+    /// Serialize HKX header to 64bytes.
     ///
     /// # Errors
     /// Failed to write to a byte vector.
-    pub fn to_vec(&self) -> std::io::Result<Vec<u8>> {
-        let mut hkx_file = Vec::new();
+    pub fn to_bytes(&self) -> std::io::Result<[u8; 64]> {
+        let mut hkx_file = [0; 64];
         match self.endian == 1 {
-            true => self.write::<LittleEndian>(Cursor::new(&mut hkx_file))?,
-            false => self.write::<BigEndian>(Cursor::new(&mut hkx_file))?,
+            true => self.write::<LittleEndian>(Cursor::new(hkx_file.as_mut_slice()))?,
+            false => self.write::<BigEndian>(Cursor::new(hkx_file.as_mut_slice()))?,
         }
         Ok(hkx_file)
     }
@@ -285,7 +287,7 @@ mod tests {
 
     #[test]
     fn should_write_hkx_file() {
-        let actual = HkxHeader::skyrim_se().to_vec().unwrap();
-        assert_eq!(actual, &SKYRIM_SE_ROW_HEADER);
+        let actual = HkxHeader::skyrim_se().to_bytes().unwrap();
+        assert_eq!(actual, SKYRIM_SE_ROW_HEADER);
     }
 }

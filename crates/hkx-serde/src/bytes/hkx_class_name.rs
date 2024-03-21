@@ -7,7 +7,9 @@ const SIGNATURE_SEPARATOR: u8 = 0x09;
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct HkxClassName {
+    /// e.g. `hkRootLevelContainer`
     pub class_name: String,
+    /// e.g. 661,831,966(0x2772c11e)
     pub signature: u32,
 }
 
@@ -64,7 +66,7 @@ pub struct HKXClassNames {
     /// Same values of [`Self::offset_class_names_map`]
     pub class_names: Vec<HkxClassName>,
     /// - key: Start position of bytes where value was stored.
-    /// - value: class name
+    /// - value: (signature, class name)
     pub offset_class_names_map: HashMap<u32, HkxClassName>,
 }
 
@@ -80,16 +82,20 @@ impl HKXClassNames {
         let mut offset_class_names_map = HashMap::new();
 
         loop {
-            let mut signature_buf = [0; 4];
             // The 0x09 serves as a separator,
             // and binaries such as `<class_of_signature>0x09` are assumed.
-            if br.read_exact(&mut signature_buf).is_err() || br.read_u8()? != SIGNATURE_SEPARATOR {
+            //
+            // # Example(hkRootLevelContainer)
+            // If LittleEndian: 1E C1 72 27 09  => 0x2772c11e + Separator
+            if br.read_u32::<B>().is_err() || br.read_u8()? != SIGNATURE_SEPARATOR {
                 break;
             }
 
+            // Next to separator is the class name.
+            let string_start = br.stream_position()? as u32;
+
             // 4 bytes signature + 1 byte separator = 5 bytes Seek worked.
             // [`HkxClassName::read`] method read signature and Name, so we back to the byte position of the signature information.
-            let string_start = br.stream_position()? as u32 - 5;
             br.seek(SeekFrom::Current(-5))?;
 
             let class_name = HkxClassName::read::<B>(&mut br)?;

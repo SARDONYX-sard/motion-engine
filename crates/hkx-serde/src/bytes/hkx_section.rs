@@ -103,7 +103,8 @@ pub struct HkxSection {
     pub local_fixups: Vec<LocalFixup>,
     pub virtual_fixups: Vec<VirtualFixup>,
     pub section_data: Vec<u8>,
-    pub section_id: i32,
+    /// Start byte position of each offsets information.
+    pub section_id: u32,
     /// `[u8;19]`(19bytes) section tag
     /// # Bytes Examples
     /// ```
@@ -180,7 +181,9 @@ impl HkxSection {
         let _end_offset = br.read_u32::<B>()?;
 
         br.seek(SeekFrom::Start(absolute_data_start.into()))?;
-        let mut section_data = vec![0; (local_fixups_offset) as usize];
+
+        // Use `with_capacity` to avoid the cost of filling with 0
+        let mut section_data = Vec::with_capacity((local_fixups_offset) as usize);
         br.read_exact(&mut section_data)?;
 
         let mut local_fixups = Vec::new();
@@ -240,7 +243,7 @@ impl HkxSection {
             local_fixups,
             virtual_fixups,
             section_data,
-            section_id: 0, // Set a default value
+            section_id: absolute_data_start,
             section_tag,
             contents_version_string: contents_version_string.to_owned(),
         })
@@ -290,7 +293,7 @@ impl HkxSection {
             bw.write_u8(0xFF)?;
         } // 16-byte alignment
 
-        let local_offset = bw.stream_position()? as u32;
+        let local_offset = bw.stream_position()? as u32 - absolute_offset;
         for local_fixup in &self.local_fixups {
             local_fixup.write::<B>(&mut bw)?;
         }
@@ -299,7 +302,7 @@ impl HkxSection {
             bw.write_u8(0xFF)?;
         } // 16-byte alignment
 
-        let global_offset = bw.stream_position()? as u32;
+        let global_offset = bw.stream_position()? as u32 - absolute_offset;
         for global_fixup in &self.global_fixups {
             global_fixup.write::<B>(&mut bw)?;
         }
@@ -308,7 +311,7 @@ impl HkxSection {
             bw.write_u8(0xFF)?;
         } // 16-byte alignment
 
-        let virtual_offset = bw.stream_position()? as u32;
+        let virtual_offset = bw.stream_position()? as u32 - absolute_offset;
         for virtual_fixup in &self.virtual_fixups {
             virtual_fixup.write::<B>(&mut bw)?;
         }
@@ -319,9 +322,9 @@ impl HkxSection {
 
         let exports_offset = bw.stream_position()? as u32;
         let imports_offset = exports_offset;
-        let end_offset = bw.stream_position()? as u32;
+        let end_offset = exports_offset;
 
-        bw.seek(std::io::SeekFrom::Start(4))?;
+        bw.seek(SeekFrom::Start(self.section_id as u64))?;
         bw.write_u32::<B>(absolute_offset)?;
         bw.write_u32::<B>(local_offset)?;
         bw.write_u32::<B>(global_offset)?;

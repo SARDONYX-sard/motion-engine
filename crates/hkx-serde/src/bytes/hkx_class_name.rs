@@ -71,12 +71,13 @@ pub struct HKXClassNames {
 }
 
 impl HKXClassNames {
-    /// Read classes information from bytes reader.
+    /// Read classes information(signature & className pair) from bytes reader.
     ///
     /// # Assumption
-    /// The position of `Read` must be `absolute data offset`.
+    /// The position of `Read` must be `absolute data start`.
     ///
-    /// That is, this method would normally be called after getting `absolute_data_offset` with `HkxSection::read` and Seek it.
+    /// That is, this method would normally be called after getting `absolute_data_start` with `HkxSection::read` and Seek it.
+    /// - `absolute_data_start`: signature & className pair bytes array
     pub fn read<B: ByteOrder>(mut br: impl Read + Seek) -> std::io::Result<Self> {
         let mut class_names = Vec::new();
         let mut offset_class_names_map = HashMap::new();

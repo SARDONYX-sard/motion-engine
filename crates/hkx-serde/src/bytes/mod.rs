@@ -1,5 +1,4 @@
-mod fix_str_io;
-mod hkx_class_name;
-mod hkx_header;
-mod hkx_section;
-// mod packfile_deserializer;
+//! HKX format bytes reader/writer
+pub mod hkx_header;
+pub mod sections;
+pub mod packfile_deserializer;

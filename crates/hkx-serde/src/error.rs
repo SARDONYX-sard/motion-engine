@@ -1,22 +1,23 @@
+use crate::bytes::{
+    hkx_header::HkxHeaderError, sections::class_name_section::ClassNamesSectionHeaderError,
+};
+
 pub type Result<T, E = HkxError> = core::result::Result<T, E>;
 
 #[derive(Debug, thiserror::Error)]
 pub enum HkxError {
-    #[error("Error: {0}")]
-    String(String),
+    #[error("Failed to parse {actual} as {expected}.")]
+    ParseError { expected: String, actual: String },
 
-    #[error("Failed to parse {0} as {1}.")]
-    ParseError(String, String),
-}
+    #[error(transparent)]
+    ClassNamesSectionHeaderError(#[from] ClassNamesSectionHeaderError),
 
-impl From<String> for HkxError {
-    fn from(value: String) -> Self {
-        Self::String(value)
-    }
-}
+    #[error(transparent)]
+    HkxHeaderError(#[from] HkxHeaderError),
 
-impl From<&str> for HkxError {
-    fn from(value: &str) -> Self {
-        Self::String(value.to_owned())
-    }
+    #[error("Unknown havok class {0}")]
+    UnknownHavokClass(String),
+
+    #[error(transparent)]
+    IoError(#[from] std::io::Error),
 }

@@ -47,6 +47,7 @@
     "toplevelobject",
     "vsubtype",
     "vtable",
-    "vtype"
+    "vtype",
+    "zerocopy"
   ]
 }

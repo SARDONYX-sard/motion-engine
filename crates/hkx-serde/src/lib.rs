@@ -1,5 +1,5 @@
-mod bytes;
-// pub mod classes;
+pub mod bytes;
+pub mod classes;
 mod error;
 pub mod generators;
 pub mod havok_types;

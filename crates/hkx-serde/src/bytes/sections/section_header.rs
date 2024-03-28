@@ -1,15 +1,6 @@
 //! The 48bytes each HKX section header contains metadata information about the HKX file.
 //!
-//! For SkyrimSE, the bytes are arranged in the following order.
-//! - `__classnames__` 48bytes
-//! - `__types__` 48bytes
-//! - `__data__` 48bytes
-//!
-//! # Note
 //! This information is placed immediately after the Hkx header. (In some cases, padding is inserted in between.)
-//!
-//! Depending on the havok version, there may be padding after the section header group.
-//! (at least not in SkyrimSE).
 use zerocopy::{AsBytes, ByteOrder, FromBytes, FromZeroes, LittleEndian, U32};
 
 /// The 48bytes each HKX section header contains metadata information about the HKX file.
@@ -64,5 +55,34 @@ pub struct SectionHeader<O: ByteOrder> {
     pub end_offset: U32<O>,
 }
 
+impl<O: ByteOrder> SectionHeader<O> {
+    /// Interprets the given `bytes` as a `&Self` without copying.
+    ///
+    /// If `bytes.len() != size_of::<Self>()` or `bytes` is not aligned to
+    /// `align_of::<Self>()`, this returns `Result::Err`.
+    #[inline]
+    pub fn ref_from_bytes(bytes: &[u8]) -> Result<&Self> {
+        if bytes.len() < core::mem::size_of::<Self>() {
+            return Err(SectionHeaderError::InsufficientLength);
+        }
+        Self::ref_from(bytes).ok_or(SectionHeaderError::UnAlignment)
+    }
+}
+
 // Must be 48bytes.
 static_assertions::assert_eq_size!(SectionHeader<LittleEndian>, [u8; 48]);
+
+/// Result for [`SectionHeader`]
+type Result<T, E = SectionHeaderError> = core::result::Result<T, E>;
+
+/// HKX Section header Error
+#[derive(Debug, Clone, PartialEq, Eq, thiserror::Error)]
+pub enum SectionHeaderError {
+    /// Binary data is interpreted as a section header, but it was less than 48bytes.
+    #[error("Binary data is interpreted as a section header, but it was less than 48bytes.")]
+    InsufficientLength,
+
+    /// Binary data is interpreted as a section header, but has an alignment violation.
+    #[error("Binary data is interpreted as a section header, but has an alignment violation.")]
+    UnAlignment,
+}

@@ -3,7 +3,7 @@ use indexmap::IndexMap;
 use std::ffi::{CStr, FromBytesUntilNulError};
 use zerocopy::ByteOrder;
 
-#[derive(Debug, Clone, Default, PartialEq, Eq)]
+#[derive(Debug, Clone, Default, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ClassPair<'a> {
     /// e.g. `0x2772c11e`
     pub signature: u32,
@@ -22,7 +22,7 @@ impl<'a> ClassPair<'a> {
     ///
     /// # Returns
     /// (Class name & signature, read bytes offset)
-    pub fn from_slice<B: ByteOrder>(bytes: &'a [u8]) -> Result<(Self, usize)> {
+    pub fn from_bytes<B: ByteOrder>(bytes: &'a [u8]) -> Result<(Self, usize)> {
         let mut offset = 0;
 
         // LE Example: F6 5E 58 75
@@ -56,7 +56,7 @@ impl<'a> ClassPair<'a> {
     ///
     /// # Return
     /// Written end offset.
-    pub fn write<B: ByteOrder>(&self, bytes: &mut [u8]) -> Result<usize> {
+    pub fn write_bytes<B: ByteOrder>(&self, bytes: &mut [u8]) -> Result<usize> {
         // Calculate need buffer size
         let class_name_bytes = self.class_name.to_bytes_with_nul();
         let class_name_len = class_name_bytes.len();
@@ -75,11 +75,12 @@ impl<'a> ClassPair<'a> {
     }
 }
 
+/// IndexMap for each class name start position & (signature, class name)
 #[derive(Debug, Clone, Default, PartialEq, Eq)]
-pub struct HKXClassNames<'a> {
-    /// - key: Start position of bytes where value was stored.
+pub struct HKXClassNames<'bytes> {
+    /// - key: class name start position
     /// - value: (signature, class name)
-    pub offset_class_names_map: IndexMap<usize, ClassPair<'a>>,
+    pub offset_class_names_map: IndexMap<usize, ClassPair<'bytes>>,
 }
 
 impl<'a> HKXClassNames<'a> {
@@ -91,16 +92,15 @@ impl<'a> HKXClassNames<'a> {
     /// # Assumption
     /// The position of `Read` must be `absolute data start`.
     ///
-    /// That is, this method would normally be called after getting `absolute_data_start` with `HkxSection::read` and Seek it.
-    /// - `absolute_data_start`: signature & className pair bytes array
-    pub fn from_slice<B: ByteOrder>(bytes: &'a [u8]) -> Result<Self> {
+    /// - `absolute_data_start`: The offset is signature & className pair bytes array in `__class_names__` section contents
+    pub fn from_bytes<B: ByteOrder>(bytes: &'a [u8]) -> Result<Self> {
         let mut offset_class_names_map = IndexMap::new();
         let mut offset = 0;
 
         while bytes[offset + 4] != Self::CLASSNAMES_END_PADDING {
-            let (class_pair, read_offset) = ClassPair::from_slice::<B>(&bytes[offset..])?;
-            let str_start = offset + 4; // after 4bytes signature
-            offset_class_names_map.insert(str_start, class_pair);
+            let (class_pair, read_offset) = ClassPair::from_bytes::<B>(&bytes[offset..])?;
+            let class_name_start = offset + 5; // after 4bytes signature + separator 1 byte
+            offset_class_names_map.insert(class_name_start, class_pair);
             offset += read_offset;
 
             if offset > bytes.len() {
@@ -113,11 +113,11 @@ impl<'a> HKXClassNames<'a> {
         })
     }
 
-    pub fn write<B: ByteOrder>(&self, bytes: &mut [u8]) -> Result<()> {
+    pub fn write_bytes<B: ByteOrder>(&self, bytes: &mut [u8]) -> Result<()> {
         let mut offset = 0;
 
         for (_, class) in &self.offset_class_names_map {
-            let next = class.write::<B>(&mut bytes[offset..])?;
+            let next = class.write_bytes::<B>(&mut bytes[offset..])?;
             offset += next;
         }
 

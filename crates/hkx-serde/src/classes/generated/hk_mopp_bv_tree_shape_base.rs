@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkMoppBvTreeShapeBase`
@@ -103,4 +106,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("moppData" => MoppData(Primitive<Cow<'de, str>>)),
     ("moppDataSize" => MoppDataSize(Primitive<u32>)),
     ("codeInfoCopy" => CodeInfoCopy(Primitive<Vector4<f32>>)),
+}
+
+impl ByteDeSerialize for HkMoppBvTreeShapeBase<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

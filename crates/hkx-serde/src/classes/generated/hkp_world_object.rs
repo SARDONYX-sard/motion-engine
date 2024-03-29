@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpWorldObject`
@@ -103,8 +106,18 @@ impl_deserialize_for_internally_tagged_enum! {
     ("treeData" => TreeData(Primitive<Cow<'de, str>>)),
 }
 
+impl ByteDeSerialize for HkpWorldObject<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
+}
+
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum MtChecks {
     #[serde(rename = "MULTI_THREADING_CHECKS_ENABLE")]
     MultiThreadingChecksEnable = 0,
@@ -113,7 +126,7 @@ pub enum MtChecks {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum BroadPhaseType {
     #[serde(rename = "BROAD_PHASE_INVALID")]
     BroadPhaseInvalid = 0,

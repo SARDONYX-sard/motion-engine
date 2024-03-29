@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkbWorldEnums`
@@ -19,10 +22,21 @@ use crate::havok_types::*;
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(tag = "@name")]
-pub enum HkbWorldEnums {}
+pub enum HkbWorldEnums {
+}
+
+impl ByteDeSerialize for HkbWorldEnums {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
+}
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum SimulationState {
     #[serde(rename = "SIMULATION_STATE_PLAY")]
     SimulationStatePlay = 0,
@@ -35,7 +49,7 @@ pub enum SimulationState {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum AccumulateMotionState {
     #[serde(rename = "ACCUMULATE_MOTION")]
     AccumulateMotion = 0,

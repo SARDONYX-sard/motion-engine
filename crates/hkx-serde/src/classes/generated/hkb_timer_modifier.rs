@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkbTimerModifier`
@@ -152,4 +155,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("alarmTimeSeconds" => AlarmTimeSeconds(Primitive<f32>)),
     ("alarmEvent" => AlarmEvent(SingleClass<HkbEventProperty<'de>>)),
     ("secondsElapsed" => SecondsElapsed(Primitive<f32>)),
+}
+
+impl ByteDeSerialize for HkbTimerModifier<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

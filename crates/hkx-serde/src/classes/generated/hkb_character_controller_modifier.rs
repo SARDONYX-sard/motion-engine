@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkbCharacterControllerModifier`
@@ -218,8 +221,18 @@ impl_deserialize_for_internally_tagged_enum! {
     ("isInitialVelocityAdded" => IsInitialVelocityAdded(Primitive<bool>)),
 }
 
+impl ByteDeSerialize for HkbCharacterControllerModifier<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
+}
+
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum InitialVelocityCoordinates {
     #[serde(rename = "INITIAL_VELOCITY_IN_WORLD_COORDINATES")]
     InitialVelocityInWorldCoordinates = 0,
@@ -228,7 +241,7 @@ pub enum InitialVelocityCoordinates {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum MotionMode {
     #[serde(rename = "MOTION_MODE_FOLLOW_ANIMATION")]
     MotionModeFollowAnimation = 0,

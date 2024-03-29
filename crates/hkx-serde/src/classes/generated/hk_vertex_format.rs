@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkVertexFormat`
@@ -43,8 +46,18 @@ impl_deserialize_for_internally_tagged_enum! {
     ("numElements" => NumElements(Primitive<i32>)),
 }
 
+impl ByteDeSerialize for HkVertexFormat {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
+}
+
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum ComponentType {
     #[serde(rename = "TYPE_NONE")]
     TypeNone = 0,
@@ -75,7 +88,7 @@ pub enum ComponentType {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum ComponentUsage {
     #[serde(rename = "USAGE_NONE")]
     UsageNone = 0,
@@ -237,7 +250,7 @@ impl HintFlags {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum SharingType {
     #[serde(rename = "SHARING_ALL_SHARED")]
     SharingAllShared = 0,

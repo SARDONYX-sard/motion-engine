@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpSimulation`
@@ -119,8 +122,18 @@ impl_deserialize_for_internally_tagged_enum! {
     ("previousStepResult" => PreviousStepResult(Primitive<u32>)),
 }
 
+impl ByteDeSerialize for HkpSimulation<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
+}
+
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum FindContacts {
     #[serde(rename = "FIND_CONTACTS_DEFAULT")]
     FindContactsDefault = 0,
@@ -129,7 +142,7 @@ pub enum FindContacts {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum ResetCollisionInformation {
     #[serde(rename = "RESET_TOI")]
     ResetToi = 1,
@@ -142,7 +155,7 @@ pub enum ResetCollisionInformation {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum LastProcessingStep {
     #[serde(rename = "INTEGRATE")]
     Integrate = 0,

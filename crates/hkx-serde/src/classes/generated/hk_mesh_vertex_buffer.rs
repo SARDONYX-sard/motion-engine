@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkMeshVertexBuffer`
@@ -35,6 +38,7 @@ pub enum HkMeshVertexBuffer {
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
+
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
 }
@@ -44,6 +48,16 @@ impl_deserialize_for_internally_tagged_enum! {
     HkMeshVertexBuffer, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
+}
+
+impl ByteDeSerialize for HkMeshVertexBuffer {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }
 bitflags::bitflags! {
     /// # Bit flags that represented enum.
@@ -183,7 +197,7 @@ impl Flags {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum LockResult {
     #[serde(rename = "RESULT_FAILURE")]
     ResultFailure = 0,

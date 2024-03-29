@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpBallGun`
@@ -134,4 +137,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("maxBulletsInWorld" => MaxBulletsInWorld(Primitive<i32>)),
     ("bulletOffsetFromCenter" => BulletOffsetFromCenter(Primitive<Vector4<f32>>)),
     ("addedBodies" => AddedBodies(Primitive<Cow<'de, str>>)),
+}
+
+impl ByteDeSerialize for HkpBallGun<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

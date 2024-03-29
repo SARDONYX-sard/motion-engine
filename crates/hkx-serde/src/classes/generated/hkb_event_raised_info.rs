@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkbEventRaisedInfo`
@@ -85,4 +88,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("raisedBySdk" => RaisedBySdk(Primitive<bool>)),
     ("senderId" => SenderId(Primitive<i32>)),
     ("padding" => Padding(Primitive<i32>)),
+}
+
+impl ByteDeSerialize for HkbEventRaisedInfo<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

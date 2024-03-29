@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkxMaterial`
@@ -128,8 +131,18 @@ impl_deserialize_for_internally_tagged_enum! {
     ("properties" => Properties(HkArrayClass<HkxMaterialProperty>)),
 }
 
+impl ByteDeSerialize for HkxMaterial<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
+}
+
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum TextureType {
     #[serde(rename = "TEX_UNKNOWN")]
     TexUnknown = 0,
@@ -160,7 +173,7 @@ pub enum TextureType {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum PropertyKey {
     #[serde(rename = "PROPERTY_MTL_TYPE_BLEND")]
     PropertyMtlTypeBlend = 1,

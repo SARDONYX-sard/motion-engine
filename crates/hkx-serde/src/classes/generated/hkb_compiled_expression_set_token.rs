@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkbCompiledExpressionSetToken`
@@ -51,8 +54,18 @@ impl_deserialize_for_internally_tagged_enum! {
     ("operator" => Operator(Primitive<Operator>)),
 }
 
+impl ByteDeSerialize for HkbCompiledExpressionSetToken {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
+}
+
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum TokenType {
     #[serde(rename = "TOKEN_TYPE_NONE")]
     TokenTypeNone = 0,
@@ -73,7 +86,7 @@ pub enum TokenType {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum Operator {
     #[serde(rename = "OP_NOP")]
     OpNop = 0,

@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpConvexVerticesShapeFourVectors`
@@ -49,4 +52,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("x" => X(Primitive<Vector4<f32>>)),
     ("y" => Y(Primitive<Vector4<f32>>)),
     ("z" => Z(Primitive<Vector4<f32>>)),
+}
+
+impl ByteDeSerialize for HkpConvexVerticesShapeFourVectors {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

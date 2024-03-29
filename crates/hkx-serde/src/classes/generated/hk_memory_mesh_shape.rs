@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkMemoryMeshShape`
@@ -79,4 +82,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("indices16" => Indices16(HkArrayNum<u16>)),
     ("indices32" => Indices32(HkArrayNum<u32>)),
     ("name" => Name(Primitive<Cow<'de, str>>)),
+}
+
+impl ByteDeSerialize for HkMemoryMeshShape<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

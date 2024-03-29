@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkMeshBoneIndexMapping`
@@ -33,4 +36,14 @@ pub enum HkMeshBoneIndexMapping {
 impl_deserialize_for_internally_tagged_enum! {
     HkMeshBoneIndexMapping, "@name",
     ("mapping" => Mapping(HkArrayNum<i16>)),
+}
+
+impl ByteDeSerialize for HkMeshBoneIndexMapping {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

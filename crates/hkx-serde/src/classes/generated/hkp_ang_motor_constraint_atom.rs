@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpAngMotorConstraintAtom`
@@ -91,4 +94,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("correspondingAngLimitSolverResultOffset" => CorrespondingAngLimitSolverResultOffset(Primitive<i16>)),
     ("targetAngle" => TargetAngle(Primitive<f32>)),
     ("motor" => Motor(Primitive<Cow<'de, str>>)),
+}
+
+impl ByteDeSerialize for HkpAngMotorConstraintAtom<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpTyremarksWheel`
@@ -69,4 +72,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("currentPosition" => CurrentPosition(Primitive<i32>)),
     ("numPoints" => NumPoints(Primitive<i32>)),
     ("tyremarkPoints" => TyremarkPoints(HkArrayClass<HkpTyremarkPoint>)),
+}
+
+impl ByteDeSerialize for HkpTyremarksWheel {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

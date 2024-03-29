@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpIgnoreModifierConstraintAtom`
@@ -57,6 +60,7 @@ pub enum HkpIgnoreModifierConstraintAtom<'a> {
     /// -  flags: `FLAGS_NONE`
     #[serde(rename = "type")]
     Type(Primitive<AtomType>),
+
 }
 
 // Manual implementation to branch the process using the value of the `name` attribute as the key.
@@ -67,4 +71,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("child" => Child(Primitive<Cow<'de, str>>)),
     ("pad" => Pad(CStyleArray<[u32; 2]>)),
     ("type" => Type(Primitive<AtomType>)),
+}
+
+impl ByteDeSerialize for HkpIgnoreModifierConstraintAtom<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

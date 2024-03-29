@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkxVertexBufferVertexData`
@@ -113,4 +116,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("uint32Stride" => Uint32Stride(Primitive<u32>)),
     ("uint16Stride" => Uint16Stride(Primitive<u32>)),
     ("uint8Stride" => Uint8Stride(Primitive<u32>)),
+}
+
+impl ByteDeSerialize for HkxVertexBufferVertexData {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

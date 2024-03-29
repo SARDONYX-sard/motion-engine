@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkaMeshBinding`
@@ -85,4 +88,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("skeleton" => Skeleton(Primitive<Cow<'de, str>>)),
     ("mappings" => Mappings(HkArrayClass<HkaMeshBindingMapping>)),
     ("boneFromSkinMeshTransforms" => BoneFromSkinMeshTransforms(HkArrayMatrix4<Transform<f32>>)),
+}
+
+impl ByteDeSerialize for HkaMeshBinding<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

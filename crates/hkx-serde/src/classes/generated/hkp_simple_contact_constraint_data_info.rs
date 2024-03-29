@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpSimpleContactConstraintDataInfo`
@@ -73,4 +76,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("rollingFrictionMultiplier" => RollingFrictionMultiplier(Primitive<f32>)),
     ("internalData1" => InternalData1(Primitive<f32>)),
     ("data" => Data(CStyleArray<[u32; 5]>)),
+}
+
+impl ByteDeSerialize for HkpSimpleContactConstraintDataInfo {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

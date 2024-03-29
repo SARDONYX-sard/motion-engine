@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkbStateMachineTransitionInfo`
@@ -106,6 +109,16 @@ impl_deserialize_for_internally_tagged_enum! {
     ("priority" => Priority(Primitive<i16>)),
     ("flags" => Flags(Primitive<TransitionFlags>)),
 }
+
+impl ByteDeSerialize for HkbStateMachineTransitionInfo<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
+}
 bitflags::bitflags! {
     /// # Bit flags that represented enum.
     ///
@@ -187,35 +200,19 @@ impl<'de> serde::Deserialize<'de> for TransitionFlags {
                     match token.trim() {
                         "FLAG_USE_TRIGGER_INTERVAL" => flags |= Self::FLAG_USE_TRIGGER_INTERVAL,
                         "FLAG_USE_INITIATE_INTERVAL" => flags |= Self::FLAG_USE_INITIATE_INTERVAL,
-                        "FLAG_UNINTERRUPTIBLE_WHILE_PLAYING" => {
-                            flags |= Self::FLAG_UNINTERRUPTIBLE_WHILE_PLAYING
-                        }
-                        "FLAG_UNINTERRUPTIBLE_WHILE_DELAYED" => {
-                            flags |= Self::FLAG_UNINTERRUPTIBLE_WHILE_DELAYED
-                        }
+                        "FLAG_UNINTERRUPTIBLE_WHILE_PLAYING" => flags |= Self::FLAG_UNINTERRUPTIBLE_WHILE_PLAYING,
+                        "FLAG_UNINTERRUPTIBLE_WHILE_DELAYED" => flags |= Self::FLAG_UNINTERRUPTIBLE_WHILE_DELAYED,
                         "FLAG_DELAY_STATE_CHANGE" => flags |= Self::FLAG_DELAY_STATE_CHANGE,
                         "FLAG_DISABLED" => flags |= Self::FLAG_DISABLED,
-                        "FLAG_DISALLOW_RETURN_TO_PREVIOUS_STATE" => {
-                            flags |= Self::FLAG_DISALLOW_RETURN_TO_PREVIOUS_STATE
-                        }
-                        "FLAG_DISALLOW_RANDOM_TRANSITION" => {
-                            flags |= Self::FLAG_DISALLOW_RANDOM_TRANSITION
-                        }
+                        "FLAG_DISALLOW_RETURN_TO_PREVIOUS_STATE" => flags |= Self::FLAG_DISALLOW_RETURN_TO_PREVIOUS_STATE,
+                        "FLAG_DISALLOW_RANDOM_TRANSITION" => flags |= Self::FLAG_DISALLOW_RANDOM_TRANSITION,
                         "FLAG_DISABLE_CONDITION" => flags |= Self::FLAG_DISABLE_CONDITION,
-                        "FLAG_ALLOW_SELF_TRANSITION_BY_TRANSITION_FROM_ANY_STATE" => {
-                            flags |= Self::FLAG_ALLOW_SELF_TRANSITION_BY_TRANSITION_FROM_ANY_STATE
-                        }
+                        "FLAG_ALLOW_SELF_TRANSITION_BY_TRANSITION_FROM_ANY_STATE" => flags |= Self::FLAG_ALLOW_SELF_TRANSITION_BY_TRANSITION_FROM_ANY_STATE,
                         "FLAG_IS_GLOBAL_WILDCARD" => flags |= Self::FLAG_IS_GLOBAL_WILDCARD,
                         "FLAG_IS_LOCAL_WILDCARD" => flags |= Self::FLAG_IS_LOCAL_WILDCARD,
-                        "FLAG_FROM_NESTED_STATE_ID_IS_VALID" => {
-                            flags |= Self::FLAG_FROM_NESTED_STATE_ID_IS_VALID
-                        }
-                        "FLAG_TO_NESTED_STATE_ID_IS_VALID" => {
-                            flags |= Self::FLAG_TO_NESTED_STATE_ID_IS_VALID
-                        }
-                        "FLAG_ABUT_AT_END_OF_FROM_GENERATOR" => {
-                            flags |= Self::FLAG_ABUT_AT_END_OF_FROM_GENERATOR
-                        }
+                        "FLAG_FROM_NESTED_STATE_ID_IS_VALID" => flags |= Self::FLAG_FROM_NESTED_STATE_ID_IS_VALID,
+                        "FLAG_TO_NESTED_STATE_ID_IS_VALID" => flags |= Self::FLAG_TO_NESTED_STATE_ID_IS_VALID,
+                        "FLAG_ABUT_AT_END_OF_FROM_GENERATOR" => flags |= Self::FLAG_ABUT_AT_END_OF_FROM_GENERATOR,
                         unknown => match parse_int::parse(unknown) {
                             Ok(int) => {
                                 if let Some(bits) = Self::from_bits(int) {
@@ -310,7 +307,7 @@ impl TransitionFlags {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum InternalFlagBits {
     #[serde(rename = "FLAG_INTERNAL_IN_TRIGGER_INTERVAL")]
     FlagInternalInTriggerInterval = 1,

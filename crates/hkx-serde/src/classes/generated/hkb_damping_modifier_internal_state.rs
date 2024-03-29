@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkbDampingModifierInternalState`
@@ -93,4 +96,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("dampedValue" => DampedValue(Primitive<f32>)),
     ("errorSum" => ErrorSum(Primitive<f32>)),
     ("previousError" => PreviousError(Primitive<f32>)),
+}
+
+impl ByteDeSerialize for HkbDampingModifierInternalState {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

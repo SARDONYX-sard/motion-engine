@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpConstraintAtom`
@@ -35,8 +38,18 @@ impl_deserialize_for_internally_tagged_enum! {
     ("type" => Type(Primitive<AtomType>)),
 }
 
+impl ByteDeSerialize for HkpConstraintAtom {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
+}
+
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum AtomType {
     #[serde(rename = "TYPE_INVALID")]
     TypeInvalid = 0,
@@ -107,7 +120,7 @@ pub enum AtomType {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum CallbackRequest {
     #[serde(rename = "CALLBACK_REQUEST_NONE")]
     CallbackRequestNone = 0,
@@ -122,7 +135,7 @@ pub enum CallbackRequest {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum SolvingMethod {
     #[serde(rename = "METHOD_STABILIZED")]
     MethodStabilized = 0,

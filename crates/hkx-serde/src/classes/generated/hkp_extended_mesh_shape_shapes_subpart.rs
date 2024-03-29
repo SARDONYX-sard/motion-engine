@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpExtendedMeshShapeShapesSubpart`
@@ -115,4 +118,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("childShapes" => ChildShapes(HkArrayRef<Cow<'de, str>>)),
     ("rotation" => Rotation(Primitive<Quaternion<f32>>)),
     ("translation" => Translation(Primitive<Vector4<f32>>)),
+}
+
+impl ByteDeSerialize for HkpExtendedMeshShapeShapesSubpart<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

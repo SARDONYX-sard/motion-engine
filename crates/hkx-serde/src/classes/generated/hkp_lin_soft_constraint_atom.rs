@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpLinSoftConstraintAtom`
@@ -59,4 +62,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("axisIndex" => AxisIndex(Primitive<u8>)),
     ("tau" => Tau(Primitive<f32>)),
     ("damping" => Damping(Primitive<f32>)),
+}
+
+impl ByteDeSerialize for HkpLinSoftConstraintAtom {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

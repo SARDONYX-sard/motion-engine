@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkbCharacterData`
@@ -157,4 +160,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("scale" => Scale(Primitive<f32>)),
     ("numHands" => NumHands(Primitive<i16>)),
     ("numFloatSlots" => NumFloatSlots(Primitive<i16>)),
+}
+
+impl ByteDeSerialize for HkbCharacterData<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

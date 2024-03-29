@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkMeshSection`
@@ -107,8 +110,18 @@ impl_deserialize_for_internally_tagged_enum! {
     ("sectionIndex" => SectionIndex(Primitive<i32>)),
 }
 
+impl ByteDeSerialize for HkMeshSection<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
+}
+
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum MeshSectionIndexType {
     #[serde(rename = "INDEX_TYPE_NONE")]
     IndexTypeNone = 0,
@@ -119,7 +132,7 @@ pub enum MeshSectionIndexType {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum PrimitiveType {
     #[serde(rename = "PRIMITIVE_TYPE_UNKNOWN")]
     PrimitiveTypeUnknown = 0,

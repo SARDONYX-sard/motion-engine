@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkbTransformVectorModifier`
@@ -192,4 +195,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("inverse" => Inverse(Primitive<bool>)),
     ("computeOnActivate" => ComputeOnActivate(Primitive<bool>)),
     ("computeOnModify" => ComputeOnModify(Primitive<bool>)),
+}
+
+impl ByteDeSerialize for HkbTransformVectorModifier<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

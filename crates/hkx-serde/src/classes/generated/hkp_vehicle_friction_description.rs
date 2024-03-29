@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpVehicleFrictionDescription`
@@ -49,4 +52,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("wheelDistance" => WheelDistance(Primitive<f32>)),
     ("chassisMassInv" => ChassisMassInv(Primitive<f32>)),
     ("axleDescr" => AxleDescr(CStyleArrayClass<HkpVehicleFrictionDescriptionAxisDescription, 2>)),
+}
+
+impl ByteDeSerialize for HkpVehicleFrictionDescription {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

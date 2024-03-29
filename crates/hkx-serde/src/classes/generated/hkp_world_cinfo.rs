@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpWorldCinfo`
@@ -503,8 +506,18 @@ impl_deserialize_for_internally_tagged_enum! {
     ("fireCollisionCallbacks" => FireCollisionCallbacks(Primitive<bool>)),
 }
 
+impl ByteDeSerialize for HkpWorldCinfo<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
+}
+
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum SolverType {
     #[serde(rename = "SOLVER_TYPE_INVALID")]
     SolverTypeInvalid = 0,
@@ -531,7 +544,7 @@ pub enum SolverType {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum SimulationType {
     #[serde(rename = "SIMULATION_TYPE_INVALID")]
     SimulationTypeInvalid = 0,
@@ -544,7 +557,7 @@ pub enum SimulationType {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum ContactPointGeneration {
     #[serde(rename = "CONTACT_POINT_ACCEPT_ALWAYS")]
     ContactPointAcceptAlways = 0,
@@ -555,7 +568,7 @@ pub enum ContactPointGeneration {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum BroadPhaseBorderBehaviour {
     #[serde(rename = "BROADPHASE_BORDER_ASSERT")]
     BroadphaseBorderAssert = 0,
@@ -568,7 +581,7 @@ pub enum BroadPhaseBorderBehaviour {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum TreeUpdateType {
     #[serde(rename = "REBUILD_ACTIVE")]
     RebuildActive = 0,

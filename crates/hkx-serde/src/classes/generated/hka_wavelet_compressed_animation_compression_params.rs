@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkaWaveletCompressedAnimationCompressionParams`
@@ -105,4 +108,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("rotationTolerance" => RotationTolerance(Primitive<f32>)),
     ("scaleTolerance" => ScaleTolerance(Primitive<f32>)),
     ("absoluteFloatTolerance" => AbsoluteFloatTolerance(Primitive<f32>)),
+}
+
+impl ByteDeSerialize for HkaWaveletCompressedAnimationCompressionParams {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

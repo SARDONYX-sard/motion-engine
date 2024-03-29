@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpWorld`
@@ -743,8 +746,18 @@ impl_deserialize_for_internally_tagged_enum! {
     ("contactPointGeneration" => ContactPointGeneration(Primitive<()>)),
 }
 
+impl ByteDeSerialize for HkpWorld<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
+}
+
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum ReintegrationRecollideMode {
     #[serde(rename = "RR_MODE_REINTEGRATE")]
     RrModeReintegrate = 1,
@@ -757,7 +770,7 @@ pub enum ReintegrationRecollideMode {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum MtAccessChecking {
     #[serde(rename = "MT_ACCESS_CHECKING_ENABLED")]
     MtAccessCheckingEnabled = 0,
@@ -766,7 +779,7 @@ pub enum MtAccessChecking {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum CachedAabbUpdate {
     #[serde(rename = "SHIFT_BROADPHASE_UPDATE_ENTITY_AABBS")]
     ShiftBroadphaseUpdateEntityAabbs = 0,

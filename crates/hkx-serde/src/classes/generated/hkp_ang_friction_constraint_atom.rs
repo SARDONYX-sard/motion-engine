@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpAngFrictionConstraintAtom`
@@ -67,4 +70,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("firstFrictionAxis" => FirstFrictionAxis(Primitive<u8>)),
     ("numFrictionAxes" => NumFrictionAxes(Primitive<u8>)),
     ("maxFrictionTorque" => MaxFrictionTorque(Primitive<f32>)),
+}
+
+impl ByteDeSerialize for HkpAngFrictionConstraintAtom {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

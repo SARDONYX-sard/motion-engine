@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpHingeLimitsDataAtoms`
@@ -51,8 +54,18 @@ impl_deserialize_for_internally_tagged_enum! {
     ("2dAng" => _2DAng(SingleClass<Hkp2DAngConstraintAtom>)),
 }
 
+impl ByteDeSerialize for HkpHingeLimitsDataAtoms {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
+}
+
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum Axis {
     #[serde(rename = "AXIS_AXLE")]
     AxisAxle = 0,

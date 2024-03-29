@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkbManualSelectorGenerator`
@@ -137,4 +140,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("generators" => Generators(HkArrayRef<Cow<'de, str>>)),
     ("selectedGeneratorIndex" => SelectedGeneratorIndex(Primitive<i8>)),
     ("currentGeneratorIndex" => CurrentGeneratorIndex(Primitive<i8>)),
+}
+
+impl ByteDeSerialize for HkbManualSelectorGenerator<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

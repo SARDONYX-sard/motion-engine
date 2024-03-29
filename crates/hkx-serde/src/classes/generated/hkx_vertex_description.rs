@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkxVertexDescription`
@@ -35,8 +38,18 @@ impl_deserialize_for_internally_tagged_enum! {
     ("decls" => Decls(HkArrayClass<HkxVertexDescriptionElementDecl>)),
 }
 
+impl ByteDeSerialize for HkxVertexDescription {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
+}
+
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum DataType {
     #[serde(rename = "HKX_DT_NONE")]
     HkxDtNone = 0,
@@ -51,7 +64,7 @@ pub enum DataType {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum DataUsage {
     #[serde(rename = "HKX_DU_NONE")]
     HkxDuNone = 0,

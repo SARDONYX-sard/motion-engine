@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkbLookAtModifier`
@@ -288,4 +291,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("isTargetInsideLimitCone" => IsTargetInsideLimitCone(Primitive<bool>)),
     ("lookAtLastTargetWS" => LookAtLastTargetWs(Primitive<Vector4<f32>>)),
     ("lookAtWeight" => LookAtWeight(Primitive<f32>)),
+}
+
+impl ByteDeSerialize for HkbLookAtModifier<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

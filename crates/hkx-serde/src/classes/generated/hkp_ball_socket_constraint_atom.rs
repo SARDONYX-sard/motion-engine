@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpBallSocketConstraintAtom`
@@ -75,4 +78,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("velocityStabilizationFactor" => VelocityStabilizationFactor(Primitive<u8>)),
     ("maxImpulse" => MaxImpulse(Primitive<f32>)),
     ("inertiaStabilizationFactor" => InertiaStabilizationFactor(Primitive<f32>)),
+}
+
+impl ByteDeSerialize for HkpBallSocketConstraintAtom {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkAlignSceneToNodeOptions`
@@ -117,4 +120,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("transformSkew" => TransformSkew(Primitive<bool>)),
     ("keyframe" => Keyframe(Primitive<i32>)),
     ("nodeName" => NodeName(Primitive<Cow<'de, str>>)),
+}
+
+impl ByteDeSerialize for HkAlignSceneToNodeOptions<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkbBlenderGenerator`
@@ -243,8 +246,18 @@ impl_deserialize_for_internally_tagged_enum! {
     ("doSubtractiveBlend" => DoSubtractiveBlend(Primitive<bool>)),
 }
 
+impl ByteDeSerialize for HkbBlenderGenerator<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
+}
+
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum BlenderFlags {
     #[serde(rename = "FLAG_SYNC")]
     FlagSync = 1,

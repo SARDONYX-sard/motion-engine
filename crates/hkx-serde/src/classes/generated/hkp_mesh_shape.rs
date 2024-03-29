@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpMeshShape`
@@ -137,8 +140,18 @@ impl_deserialize_for_internally_tagged_enum! {
     ("pad" => Pad(CStyleArray<[i32; 3]>)),
 }
 
+impl ByteDeSerialize for HkpMeshShape<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
+}
+
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum MeshShapeIndexStridingType {
     #[serde(rename = "INDICES_INVALID")]
     IndicesInvalid = 0,
@@ -151,7 +164,7 @@ pub enum MeshShapeIndexStridingType {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum MeshShapeMaterialIndexStridingType {
     #[serde(rename = "MATERIAL_INDICES_INVALID")]
     MaterialIndicesInvalid = 0,

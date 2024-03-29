@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkbStateMachineActiveTransitionInfo`
@@ -81,4 +84,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("fromStateId" => FromStateId(Primitive<i32>)),
     ("toStateId" => ToStateId(Primitive<i32>)),
     ("isReturnToPreviousState" => IsReturnToPreviousState(Primitive<bool>)),
+}
+
+impl ByteDeSerialize for HkbStateMachineActiveTransitionInfo<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

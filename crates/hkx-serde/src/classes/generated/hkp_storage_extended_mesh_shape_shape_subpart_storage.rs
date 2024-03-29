@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpStorageExtendedMeshShapeShapeSubpartStorage`
@@ -69,4 +72,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("materialIndices" => MaterialIndices(HkArrayNum<u8>)),
     ("materials" => Materials(HkArrayClass<HkpStorageExtendedMeshShapeMaterial>)),
     ("materialIndices16" => MaterialIndices16(HkArrayNum<u16>)),
+}
+
+impl ByteDeSerialize for HkpStorageExtendedMeshShapeShapeSubpartStorage {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

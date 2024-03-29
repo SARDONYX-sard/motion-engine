@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpVehicleDriverInputAnalogStatus`
@@ -79,4 +82,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("positionY" => PositionY(Primitive<f32>)),
     ("handbrakeButtonPressed" => HandbrakeButtonPressed(Primitive<bool>)),
     ("reverseButtonPressed" => ReverseButtonPressed(Primitive<bool>)),
+}
+
+impl ByteDeSerialize for HkpVehicleDriverInputAnalogStatus {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

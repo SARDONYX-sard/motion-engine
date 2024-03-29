@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `BSRagdollContactListenerModifier`
@@ -160,4 +163,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("bones" => Bones(Primitive<Cow<'de, str>>)),
     ("throwEvent" => ThrowEvent(Primitive<bool>)),
     ("ragdollRigidBodies" => RagdollRigidBodies(HkArrayRef<Cow<'de, str>>)),
+}
+
+impl ByteDeSerialize for BsRagdollContactListenerModifier<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

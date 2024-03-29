@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpVehicleDefaultSuspensionWheelSpringSuspensionParameters`
@@ -49,4 +52,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("strength" => Strength(Primitive<f32>)),
     ("dampingCompression" => DampingCompression(Primitive<f32>)),
     ("dampingRelaxation" => DampingRelaxation(Primitive<f32>)),
+}
+
+impl ByteDeSerialize for HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpPointToPathConstraintData`
@@ -68,8 +71,18 @@ impl_deserialize_for_internally_tagged_enum! {
     ("transform_OS_KS" => TransformOsKs(CStyleArrayVector<Transform<f32>, 2>)),
 }
 
+impl ByteDeSerialize for HkpPointToPathConstraintData<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
+}
+
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum OrientationConstraintType {
     #[serde(rename = "CONSTRAIN_ORIENTATION_INVALID")]
     ConstrainOrientationInvalid = 0,

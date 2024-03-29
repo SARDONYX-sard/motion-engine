@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpVehicleSteering`
@@ -35,6 +38,7 @@ pub enum HkpVehicleSteering {
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
     #[serde(rename = "referenceCount", skip_serializing)]
     ReferenceCount(Primitive<i16>),
+
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
 }
@@ -44,4 +48,14 @@ impl_deserialize_for_internally_tagged_enum! {
     HkpVehicleSteering, "@name",
     ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
     ("referenceCount" => ReferenceCount(Primitive<i16>)),
+}
+
+impl ByteDeSerialize for HkpVehicleSteering {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

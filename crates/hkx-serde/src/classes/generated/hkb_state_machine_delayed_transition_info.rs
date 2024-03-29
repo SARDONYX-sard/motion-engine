@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkbStateMachineDelayedTransitionInfo`
@@ -57,4 +60,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("timeDelayed" => TimeDelayed(Primitive<f32>)),
     ("isDelayedTransitionReturnToPreviousState" => IsDelayedTransitionReturnToPreviousState(Primitive<bool>)),
     ("wasInAbutRangeLastFrame" => WasInAbutRangeLastFrame(Primitive<bool>)),
+}
+
+impl ByteDeSerialize for HkbStateMachineDelayedTransitionInfo {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

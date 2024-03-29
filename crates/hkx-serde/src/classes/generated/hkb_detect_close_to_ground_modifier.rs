@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkbDetectCloseToGroundModifier`
@@ -184,4 +187,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("boneIndex" => BoneIndex(Primitive<i16>)),
     ("animBoneIndex" => AnimBoneIndex(Primitive<i16>)),
     ("isCloseToGround" => IsCloseToGround(Primitive<bool>)),
+}
+
+impl ByteDeSerialize for HkbDetectCloseToGroundModifier<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

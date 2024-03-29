@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `BSIsActiveModifier`
@@ -208,4 +211,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("bInvertActive3" => BInvertActive3(Primitive<bool>)),
     ("bIsActive4" => BIsActive4(Primitive<bool>)),
     ("bInvertActive4" => BInvertActive4(Primitive<bool>)),
+}
+
+impl ByteDeSerialize for BsIsActiveModifier<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

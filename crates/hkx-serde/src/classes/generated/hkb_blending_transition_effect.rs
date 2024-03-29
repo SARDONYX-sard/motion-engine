@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkbBlendingTransitionEffect`
@@ -235,6 +238,16 @@ impl_deserialize_for_internally_tagged_enum! {
     ("applySelfTransition" => ApplySelfTransition(Primitive<bool>)),
     ("initializeCharacterPose" => InitializeCharacterPose(Primitive<bool>)),
 }
+
+impl ByteDeSerialize for HkbBlendingTransitionEffect<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
+}
 bitflags::bitflags! {
     /// # Bit flags that represented enum.
     ///
@@ -304,13 +317,9 @@ impl<'de> serde::Deserialize<'de> for FlagBits {
                 for token in s.split('|') {
                     match token.trim() {
                         "FLAG_NONE" => flags |= Self::FLAG_NONE,
-                        "FLAG_IGNORE_FROM_WORLD_FROM_MODEL" => {
-                            flags |= Self::FLAG_IGNORE_FROM_WORLD_FROM_MODEL
-                        }
+                        "FLAG_IGNORE_FROM_WORLD_FROM_MODEL" => flags |= Self::FLAG_IGNORE_FROM_WORLD_FROM_MODEL,
                         "FLAG_SYNC" => flags |= Self::FLAG_SYNC,
-                        "FLAG_IGNORE_TO_WORLD_FROM_MODEL" => {
-                            flags |= Self::FLAG_IGNORE_TO_WORLD_FROM_MODEL
-                        }
+                        "FLAG_IGNORE_TO_WORLD_FROM_MODEL" => flags |= Self::FLAG_IGNORE_TO_WORLD_FROM_MODEL,
                         unknown => match parse_int::parse(unknown) {
                             Ok(int) => {
                                 if let Some(bits) = Self::from_bits(int) {
@@ -372,7 +381,7 @@ impl FlagBits {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum EndMode {
     #[serde(rename = "END_MODE_NONE")]
     EndModeNone = 0,

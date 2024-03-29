@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkpVehicleRayCastWheelCollide`
@@ -86,4 +89,14 @@ impl_deserialize_for_internally_tagged_enum! {
     ("wheelCollisionFilterInfo" => WheelCollisionFilterInfo(Primitive<u32>)),
     ("phantom" => Phantom(Primitive<Cow<'de, str>>)),
     ("rejectRayChassisListener" => RejectRayChassisListener(SingleClass<HkpRejectChassisListener<'de>>)),
+}
+
+impl ByteDeSerialize for HkpVehicleRayCastWheelCollide<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
 }

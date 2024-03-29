@@ -4,6 +4,9 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{HkxError, Result};
 use crate::havok_types::*;
 
 /// `hkbProxyModifier`
@@ -362,8 +365,18 @@ impl_deserialize_for_internally_tagged_enum! {
     ("previousFrameFollowWorldFromModel" => PreviousFrameFollowWorldFromModel(Primitive<bool>)),
 }
 
+impl ByteDeSerialize for HkbProxyModifier<'_> {
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {
+        todo!()
+    }
+}
+
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum PhantomType {
     #[serde(rename = "PHANTOM_TYPE_SIMPLE")]
     PhantomTypeSimple = 0,
@@ -372,7 +385,7 @@ pub enum PhantomType {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum LinearVelocityMode {
     #[serde(rename = "LINEAR_VELOCITY_MODE_WORLD")]
     LinearVelocityModeWorld = 0,

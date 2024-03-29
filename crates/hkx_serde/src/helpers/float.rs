@@ -1,3 +1,4 @@
+//! C++ float display to Rust and vice versa
 use core::fmt;
 use ordered_float::FloatCore;
 use std::borrow::Cow;

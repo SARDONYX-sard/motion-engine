@@ -17,8 +17,5 @@ build
 # Rust build cache
 **/target
 
-crates/hkx-serde/assets/*
-!crates/hkx-serde/assets/readme.md
-
 /tests/
 !/tests/test*.xml

@@ -140,7 +140,7 @@ dependencies = [
  "parse_int",
  "pretty_assertions",
  "quick-xml 0.31.0",
- "rust-ini 0.20.0",
+ "rust-ini",
  "serde",
  "serde_json",
  "temp-dir",
@@ -1449,33 +1449,53 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7f24254aa9a54b5c858eaee2f5bccdb46aaf0e486a595ed5fd8f86ba55232a70"
 
 [[package]]
-name = "hkx_serde"
+name = "hkx_class_generator"
 version = "0.1.0"
 dependencies = [
- "anyhow",
  "bitflags 2.4.2",
- "byteorder",
  "convert_case 0.6.0",
+ "hkx_serde_tracing",
  "indexmap 2.2.3",
  "jwalk",
  "nom",
+ "num-derive",
+ "num-traits",
+ "parse_int",
+ "pretty_assertions",
+ "quick-xml 0.31.0",
+ "serde",
+ "tracing",
+]
+
+[[package]]
+name = "hkx_serde"
+version = "0.1.0"
+dependencies = [
+ "bitflags 2.4.2",
+ "byteorder",
+ "hkx_serde_tracing",
+ "indexmap 2.2.3",
  "num-derive",
  "num-traits",
  "ordered-float",
  "parse_int",
  "pretty_assertions",
  "quick-xml 0.31.0",
- "rust-ini 0.21.0",
  "serde",
  "static_assertions",
- "temp-dir",
  "thiserror",
- "tokio",
+ "tracing",
+ "zerocopy",
+]
+
+[[package]]
+name = "hkx_serde_tracing"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
  "tracing",
  "tracing-appender",
  "tracing-subscriber",
- "xml-doc",
- "zerocopy",
 ]
 
 [[package]]
@@ -2428,15 +2448,6 @@ dependencies = [
 
 [[package]]
 name = "quick-xml"
-version = "0.22.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8533f14c8382aaad0d592c812ac3b826162128b65662331e1127b45c3d18536b"
-dependencies = [
- "memchr",
-]
-
-[[package]]
-name = "quick-xml"
 version = "0.29.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "81b9228215d82c7b61490fec1de287136b5de6f5700f6e58ea9ad61a7964ca51"
@@ -2677,17 +2688,6 @@ checksum = "3e0698206bcb8882bf2a9ecb4c1e7785db57ff052297085a6efd4fe42302068a"
 dependencies = [
  "cfg-if",
  "ordered-multimap",
-]
-
-[[package]]
-name = "rust-ini"
-version = "0.21.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0d625ed57d8f49af6cfa514c42e1a71fadcff60eb0b1c517ff82fe41aa025b41"
-dependencies = [
- "cfg-if",
- "ordered-multimap",
- "trim-in-place",
 ]
 
 [[package]]
@@ -3627,12 +3627,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "trim-in-place"
-version = "0.1.7"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "343e926fc669bc8cde4fa3129ab681c63671bae288b1f1081ceee6d9d37904fc"
-
-[[package]]
 name = "typenum"
 version = "1.17.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4292,16 +4286,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f4686009f71ff3e5c4dbcf1a282d0a44db3f021ba69350cd42086b3e5f1c6985"
 dependencies = [
  "libc",
-]
-
-[[package]]
-name = "xml-doc"
-version = "0.2.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1ca5fbba359bb42d157736e2a24a5f454a0fdff2edf837e4d79b00a84ba7265c"
-dependencies = [
- "encoding_rs",
- "quick-xml 0.22.0",
 ]
 
 [[package]]

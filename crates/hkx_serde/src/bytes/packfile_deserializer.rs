@@ -196,7 +196,7 @@ impl<'bytes> PackFileDeserializer<'bytes> {
 
 #[cfg(test)]
 mod tests {
-    use crate::helpers::tracing::init_tracing;
+    use hkx_serde_tracing::init_tracing;
 
     use super::*;
     #[allow(unused)]

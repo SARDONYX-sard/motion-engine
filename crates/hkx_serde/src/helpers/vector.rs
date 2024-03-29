@@ -1,3 +1,5 @@
+//! Vector normalization
+
 use super::float::cpp_to_rust_float_str;
 use std::borrow::Cow;
 

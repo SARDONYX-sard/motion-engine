@@ -1,3 +1,5 @@
+//! Enhanced Split chunk for [`&str`], [`String`]
+
 /// A trait for extending string functionality related to parsing Havok Engine XML.
 pub trait SplitExt {
     /// Split a string at the nth occurrence of the specified character.

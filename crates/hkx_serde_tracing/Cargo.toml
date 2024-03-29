@@ -1,0 +1,16 @@
+[package]
+name = "hkx_serde_tracing"
+edition = "2021"
+authors.workspace = true
+version.workspace = true
+license.workspace = true
+description.workspace = true
+repository.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = { version = "1.0", features = ["backtrace"] }
+tracing-appender = "0.2"
+tracing-subscriber = "0.3"
+tracing = "0.1"                                        # Logger

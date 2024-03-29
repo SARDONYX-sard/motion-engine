@@ -61,6 +61,7 @@ pub fn generate_classes(output_dir: impl AsRef<Path>, rpt_dir: impl AsRef<Path>)
         // The binary deserializer implementation process requires only four classes, but only parses them for parent class information.
         class_map.insert(class.name.clone(), class.clone());
 
+        #[cfg(debug_assertions)]
         // To extract only defaultmale.kkx classes for debugging purposes during the binary deserializer implementation process
         if !matches!(
             rpt_file_name,
@@ -119,30 +120,4 @@ pub fn generate_classes(output_dir: impl AsRef<Path>, rpt_dir: impl AsRef<Path>)
     // 5. Generate a set type of all havok class.
     let class_params = generate_class_params(&class_map, &life_time_name_map);
     std::fs::write(output_dir.join("class_params.rs"), class_params).unwrap();
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    pub fn should_generate_classes() {
-        let _guard = crate::helpers::tracing::init_tracing(
-            Some("should_generate_classes"),
-            true,
-            tracing::Level::ERROR,
-        );
-
-        let output_dir = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-            .join("src")
-            .join("classes")
-            .join("generated");
-        std::fs::create_dir_all(&output_dir).unwrap();
-
-        let rpt_dir = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-            .join("assets")
-            .join("hkxcmd_help")
-            .join("rpt");
-        generate_classes(output_dir, rpt_dir)
-    }
 }

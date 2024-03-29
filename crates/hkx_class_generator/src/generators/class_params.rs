@@ -18,7 +18,7 @@ pub fn generate_class_params(class_map: &ClassMap, life_time_map: &LifeTimeMap) 
 
     // The number of loops is reduced to one by generating the code inside first.
     for (cpp_class_name, class) in class_map {
-        #[cfg(test)]
+        #[cfg(debug_assertions)]
         if !matches!(
             class.name.as_str(),
             "hkRootLevelContainer"

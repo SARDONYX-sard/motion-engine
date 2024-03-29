@@ -309,7 +309,7 @@ pub const HK_TYPES: [(&str, &str); {types_len}] = {types:#?};\n"
 mod tests {
     use super::*;
     use crate::generators::generated_types::HK_TYPES;
-    use crate::helpers::tracing::init_tracing;
+    use hkx_serde_tracing::init_tracing;
     use pretty_assertions::assert_eq;
 
     #[test]

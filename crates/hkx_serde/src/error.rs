@@ -1,6 +1,7 @@
 use crate::bytes::hkx_header::HkxHeaderError;
 use crate::bytes::sections::class_name_section::ClassNamesSectionHeaderError;
 use crate::bytes::sections::section_header::SectionHeaderError;
+use std::ffi::FromBytesUntilNulError;
 
 /// All Error [`Result`] of hkx_serde crate
 pub type Result<T, E = HkxError> = core::result::Result<T, E>;
@@ -24,6 +25,10 @@ pub enum HkxError {
 
     #[error(transparent)]
     ClassNamesSectionHeaderError(#[from] ClassNamesSectionHeaderError),
+
+    /// Cstr must be non terminated string.
+    #[error(transparent)]
+    FromBytesUntilNulError(#[from] FromBytesUntilNulError),
 
     #[error(transparent)]
     Utf8Error(#[from] core::str::Utf8Error),

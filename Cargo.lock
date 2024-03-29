@@ -1471,6 +1471,7 @@ dependencies = [
 name = "hkx_serde"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "bitflags 2.4.2",
  "byteorder",
  "hkx_serde_tracing",

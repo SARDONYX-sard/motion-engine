@@ -7,6 +7,8 @@ use crate::classes::class_params::ClassParams;
 use crate::error::{HkxError, Result};
 use core::mem::size_of;
 use std::collections::{hash_map, HashMap};
+use std::ffi::CStr;
+use std::str::from_utf8;
 use zerocopy::{BigEndian, ByteOrder, FromBytes, LittleEndian};
 
 /// Serialize trait for HKX binaries for C++ Havok class.
@@ -39,12 +41,12 @@ pub struct PackFileDeserializer<'bytes> {
 }
 
 /// C++ Havok class field == a hkparam
-type Field<T> = Vec<T>;
+type Fields<T> = Vec<T>;
 /// C++ Havok class == has hkparams
-type Class<T> = Vec<Field<T>>;
+type HkClassArray<T> = Vec<Fields<T>>;
 
 impl<'bytes> PackFileDeserializer<'bytes> {
-    fn read_class_array<B, T>(&self, bytes: &[u8]) -> Result<Class<T>>
+    fn read_class_array<B, T>(&self, bytes: &[u8]) -> Result<HkClassArray<T>>
     where
         B: ByteOrder,
         T: ByteDeSerialize,
@@ -78,21 +80,29 @@ impl<'bytes> PackFileDeserializer<'bytes> {
         Ok(res)
     }
 
-    // fn read_class_ptr<B>(&mut self, br: &mut (impl Read + Seek)) -> Result<ClassParams>
-    // where
-    //     B: ByteOrder,
-    // {
-    //     br.read_u64::<B>()?;
-    //     if !self
-    //         .data_section
-    //         .global_map
-    //         .contains_key(&(br.stream_position()? as usize))
-    //     {};
+    // fn read_class_ptr<T: ByteDeSerialize>(&self, bytes: &[u8], prev_position: u32) -> Result<T> {
+    //     let mut current_position = prev_position;
+    //     if !self.data_section.global_map.contains_key(&prev_position) {
+    //         current_position += 8;
+    //         return Ok((T::from_bytes(bytes), current_position));
+    //     }
 
-    //     let dst = self.data_section.global_map[&(br.stream_position()? as usize)].dst;
-    //     let t = &self.construct_virtual_class::<B>(br, dst).unwrap();
-    //     Ok(t.clone())
+    //     let global_dst = self.data_section.global_map[&current_position].dst;
+    //     self.deserialize_virtual_class(&bytes, global_dst, deserialized_objects)
     // }
+
+    fn read_string_ptr<'a>(&self, bytes: &'a [u8], prev_position: u32) -> Result<(&'a str, u32)> {
+        let mut current_position = prev_position;
+        if !self.data_section.local_map.contains_key(&prev_position) {
+            current_position += 8;
+            return Ok(("", current_position));
+        }
+
+        let local_dst = self.data_section.local_map[&current_position].dst as usize;
+        let c_str = CStr::from_bytes_until_nul(&bytes[local_dst..])?;
+
+        Ok((from_utf8(c_str.to_bytes())?, current_position))
+    }
 
     /// Create a new instance from hkx class fields.
     fn deserialize_virtual_class<B>(

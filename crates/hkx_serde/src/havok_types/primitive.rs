@@ -16,8 +16,8 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone, Default, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
 pub struct Primitive<T> {
     /// Value inner tag
-    #[serde(rename = "$text")]
-    value: T,
+    #[serde(rename = "$text", default)]
+    pub value: T,
 }
 
 impl<T> Primitive<T> {

@@ -153,8 +153,9 @@ impl ByteDeSerialize for HkbTransitionEffect<'_> {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum SelfTransitionMode {
+    #[default]
     #[serde(rename = "SELF_TRANSITION_MODE_CONTINUE_IF_CYCLIC_BLEND_IF_ACYCLIC")]
     SelfTransitionModeContinueIfCyclicBlendIfAcyclic = 0,
     #[serde(rename = "SELF_TRANSITION_MODE_CONTINUE")]
@@ -166,8 +167,9 @@ pub enum SelfTransitionMode {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum EventMode {
+    #[default]
     #[serde(rename = "EVENT_MODE_DEFAULT")]
     EventModeDefault = 0,
     #[serde(rename = "EVENT_MODE_PROCESS_ALL")]

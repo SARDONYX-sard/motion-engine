@@ -1,3 +1,4 @@
+//! Generated Classes(Rust enums)
 #[rustfmt::skip]
 mod generated;
 mod root;

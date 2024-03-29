@@ -9,12 +9,97 @@ use convert_case::{Case, Casing as _};
 ///
 /// (**It may inherit the signature of the parent class**. e.g. `hkpShapeContainer`, `baseObject`, etc.)
 pub fn generate_class_params(class_map: &ClassMap, life_time_map: &LifeTimeMap) -> String {
-    let mut class_params = String::new();
+    let mut class_params_code = String::new();
 
-    class_params.push_str(
-        r#"
+    let mut enum_variants_code = String::new();
+    let mut serialize_match_inner_code = String::new();
+    let mut deserialize_match_inner_code = String::new();
+    let mut bytes_deserialize_match_inner_code = String::new();
+
+    // The number of loops is reduced to one by generating the code inside first.
+    for (cpp_class_name, class) in class_map {
+        #[cfg(test)]
+        if !matches!(
+            class.name.as_str(),
+            "hkRootLevelContainer"
+                | "hkRootLevelContainerNamedVariant" // depended by `hkRootLevelContainer`
+                | "hkbProjectStringData"
+                | "hkbProjectData"
+                | "hkbTransitionEffect" // For enum EventMode(depended by `hkbProjectData`)
+        ) {
+            continue;
+        }
+
+        let signature = class.signature;
+        let rust_enum_name = class.name.to_case(Case::Pascal);
+
+        let (_rust_fields_code, fields) =
+            generate_all_fields(class, class_map, Some(life_time_map));
+        let life_time = get_lifetime_from_fields(&fields);
+        let rust_class_name_with_life_time = format!("{rust_enum_name}{life_time}");
+        let life_time_bound = if rust_class_name_with_life_time.ends_with("<'a>") {
+            format!("\n    #[serde(bound(deserialize = \"Vec<{rust_class_name_with_life_time}>: Deserialize<'de>\"))]")
+        } else {
+            "".into()
+        };
+
+        enum_variants_code.push_str(&format!(
+            r#"    #[serde(rename = "0x{signature:x}")]{life_time_bound}
+    {rust_enum_name}(Vec<{rust_class_name_with_life_time}>),
+
+"#
+        ));
+
+        serialize_match_inner_code.push_str(&format!(
+            r#"
+            "{cpp_class_name}" => {{
+                if let ClassParams::{rust_enum_name}(ref params) = self.hkparams {{
+                    state.serialize_field("hkparam", params)?;
+                }}
+            }}
+"#
+        ));
+
+        deserialize_match_inner_code.push_str(&format!(
+            r#"                                    "{cpp_class_name}" => {{
+                                                        ClassParams::{rust_enum_name}(map.next_value()?)
+                                    }},
+"#
+        ));
+
+        bytes_deserialize_match_inner_code.push_str(&format!(
+            r#"            "{cpp_class_name}" => ClassParams::{rust_enum_name}(
+                {rust_enum_name}::from_bytes::<B>(bytes)?,
+            ),
+"#
+        ));
+    }
+
+    class_params_code.push_str(&generate_class_params_enum(&enum_variants_code));
+    class_params_code.push_str(&generate_impl_serialize(
+        &serialize_match_inner_code,
+        class_map.len(),
+    ));
+    class_params_code.push_str(&generate_impl_deserialize(&deserialize_match_inner_code));
+    class_params_code.push_str(&generate_bytes_deserialize(
+        &bytes_deserialize_match_inner_code,
+    ));
+
+    class_params_code
+}
+
+/// Generates `ClassParams` enum.
+///
+/// This is the set of types of `hkparam` (fields of C++ havok class).
+fn generate_class_params_enum(variants_code: &str) -> String {
+    let mut class_params_code = String::new();
+
+    class_params_code.push_str(
+        r#"//! The type of enumeration of all C++ havok class fields.
 use super::*;
 use crate::classes::Class;
+use crate::bytes::*;
+use crate::error::{HkxError, Result};
 use serde::de::{self, Deserializer, MapAccess, Visitor};
 use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
@@ -32,32 +117,18 @@ pub enum ClassParams<'a> {
 "#,
     );
 
-    for (_cpp_class_name, class) in class_map {
-        let sig = class.signature;
-        let struct_name = class.name.to_case(Case::Pascal);
+    class_params_code.push_str(variants_code);
+    class_params_code.push('}');
 
-        let (_rust_fields_code, fields) =
-            generate_all_fields(class, class_map, Some(life_time_map));
-        let life_time = get_lifetime_from_fields(&fields);
-        let rust_class_name_with_life_time = format!("{struct_name}{life_time}");
+    class_params_code
+}
 
-        let life_time_bound = if rust_class_name_with_life_time.ends_with("<'a>") {
-            format!("\n    #[serde(bound(deserialize = \"Vec<{rust_class_name_with_life_time}>: Deserialize<'de>\"))]")
-        } else {
-            "".into()
-        };
-
-        class_params.push_str(&format!(
-            r#"    #[serde(rename = "0x{sig:x}")]{life_time_bound}
-    {struct_name}(Vec<{rust_class_name_with_life_time}>),
-
-"#
-        ));
-    }
+/// Generate `impl Serialize` code
+fn generate_impl_serialize(serialize_match_inner_code: &str, class_map_len: usize) -> String {
+    let mut class_params = String::new();
 
     class_params.push_str(&format!(
-        r#"}}
-
+        r#"
 impl<'a> Serialize for Class<'a> {{
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -65,30 +136,17 @@ impl<'a> Serialize for Class<'a> {{
     {{
         use serde::ser::SerializeStruct;
 
-        let mut state = serializer.serialize_struct("Class", {})?;
+        let mut state = serializer.serialize_struct("Class", {class_map_len})?;
         state.serialize_field("@name", &self.name)?;
         state.serialize_field("@class", &self.class)?;
         state.serialize_field("@signature", &self.signature)?;
 
         // Serialize hkparam based on class(C++ class name)
         match self.class.as_ref() {{
-"#,
-        class_map.len()
+"#
     ));
 
-    for (cpp_class_name, class) in class_map {
-        let struct_name = class.name.to_case(Case::Pascal);
-
-        class_params.push_str(&format!(
-            r#"
-            "{cpp_class_name}" => {{
-                if let ClassParams::{struct_name}(ref params) = self.hkparams {{
-                    state.serialize_field("hkparam", params)?;
-                }}
-            }}
-"#
-        ));
-    }
+    class_params.push_str(serialize_match_inner_code);
 
     class_params.push_str(
         r#"
@@ -99,6 +157,13 @@ impl<'a> Serialize for Class<'a> {{
 }
 "#,
     );
+
+    class_params
+}
+
+/// Generate `impl Deserialize` code
+fn generate_impl_deserialize(deserialize_match_inner_code: &str) -> String {
+    let mut class_params = String::new();
 
     class_params.push_str(
         r#"
@@ -154,16 +219,7 @@ impl<'de> Deserialize<'de> for Class<'de> {
 "#,
     );
 
-    for (cpp_class_name, class) in class_map {
-        let struct_name = class.name.to_case(Case::Pascal);
-
-        class_params.push_str(&format!(
-            r#"                                    "{cpp_class_name}" => {{
-                                                        ClassParams::{struct_name}(map.next_value()?)
-                                    }},
-"#
-        ));
-    }
+    class_params.push_str(deserialize_match_inner_code);
 
     class_params.push_str(
         r#"
@@ -186,18 +242,53 @@ impl<'de> Deserialize<'de> for Class<'de> {
                 let name = name.ok_or_else(|| de::Error::missing_field("@name"))?;
                 let class = class.ok_or_else(|| de::Error::missing_field("@class"))?;
                 let signature = signature.ok_or_else(|| de::Error::missing_field("@signature"))?;
-                let hkparam = hkparam.ok_or_else(|| de::Error::missing_field("hkparam"))?;
+                let hkparams = hkparam.ok_or_else(|| de::Error::missing_field("hkparam"))?;
 
                 Ok(Class {
                     name,
                     class,
                     signature,
-                    hkparams: hkparam,
+                    hkparams,
                 })
             }
         }
 
         deserializer.deserialize_map(ClassVisitor)
+    }
+}
+"#,
+    );
+
+    class_params
+}
+
+/// Generate `impl decimalize bytes` code
+fn generate_bytes_deserialize(bytes_deserialize_match_inner_code: &str) -> String {
+    let mut class_params = String::new();
+
+    class_params.push_str(
+        r#"
+impl<'a> ClassParams<'a> {
+    /// Read the contents of hkparam by C++ havok Class name and create a data structure for rust.
+    ///
+    /// # Assumptions
+    /// - The starting point of `bytes` must be the binary data position of the fields
+    ///   of the class(`class_name`) to be deserialized.
+    pub fn from_class_name_and_bytes<B>(class_name: &str, bytes: &[u8]) -> Result<Self>
+    where
+        B: ByteOrder,
+    {
+        Ok(match class_name {
+"#,
+    );
+
+    class_params.push_str(bytes_deserialize_match_inner_code);
+
+    // Epilogue
+    class_params.push_str(
+        r#"
+            unknown => return Err(HkxError::UnknownHavokClass(unknown.into())),
+        })
     }
 }
 "#,

@@ -5,6 +5,7 @@ use crate::bytes::sections::section_header::SectionHeaderError;
 /// All Error [`Result`] of hkx_serde crate
 pub type Result<T, E = HkxError> = core::result::Result<T, E>;
 
+/// All Error of hkx_serde crate
 #[derive(Debug, thiserror::Error)]
 pub enum HkxError {
     /// Failed to parse {actual} as {expected}.

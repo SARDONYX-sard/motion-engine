@@ -14,6 +14,8 @@ pub fn generate_classes(output_dir: impl AsRef<Path>, rpt_dir: impl AsRef<Path>)
 
     let mut class_map = IndexMap::new();
     let mut mod_indexes = Vec::new();
+
+    // 1. Create C++ class information and index codes from hkxcmd rpt files.
     for entry in jwalk::WalkDir::new(rpt_dir).into_iter() {
         let path = entry.unwrap().path();
         let path = path.as_path();
@@ -26,10 +28,10 @@ pub fn generate_classes(output_dir: impl AsRef<Path>, rpt_dir: impl AsRef<Path>)
 
         // Remove tailing version(e.g. _1)
         let file = file_name.rsplit('_').collect::<Vec<_>>();
-        let file_name = *file.last().unwrap();
+        let rpt_file_name = *file.last().unwrap();
 
         if matches!(
-            file_name,
+            rpt_file_name,
             "hkaiTraversalAnalysis"
             | "hkaiTraversalAnalysisOutput"
             | "hkaiTraversalAnalysisOutputSection"
@@ -56,15 +58,31 @@ pub fn generate_classes(output_dir: impl AsRef<Path>, rpt_dir: impl AsRef<Path>)
         let (remain, class) = parse_class(&content).unwrap();
         tracing::debug!("remain = {remain:?}\nclass = {class:?}");
 
-        let file_stem = file_name.to_case(Case::Snake);
-        mod_indexes.push(format!("mod {file_stem};\npub use {file_stem}::*;\n"));
-
+        // The binary deserializer implementation process requires only four classes, but only parses them for parent class information.
         class_map.insert(class.name.clone(), class.clone());
+
+        // To extract only defaultmale.kkx classes for debugging purposes during the binary deserializer implementation process
+        if !matches!(
+            rpt_file_name,
+            "hkRootLevelContainer"
+                | "hkRootLevelContainerNamedVariant" // depended by `hkRootLevelContainer`
+                | "hkbProjectStringData"
+                | "hkbProjectData"
+                | "hkbTransitionEffect" // For enum EventMode(depended by `hkbProjectData`)
+        ) {
+            continue;
+        }
+
+        let rust_file_name = rpt_file_name.to_case(Case::Snake);
+        let import_code = format!("mod {rust_file_name};\npub use {rust_file_name}::*;\n");
+        mod_indexes.push(import_code);
     }
     mod_indexes.push("pub mod class_params;\n".into());
     std::fs::write(output_dir.join("mod.rs"), mod_indexes.join("\n")).unwrap();
 
-    //? Create life time map (cpp class name, rust struct name with life time)
+    // 2. Calculation of the first lifetime annotation (for standard library types already known to require annotation)
+    // Example
+    // field_name: Cow<'a, str>, => ClassName<'a>
     let mut life_time_name_map = HashMap::new();
     for (_sig, class) in class_map.clone().into_iter() {
         // fields = IndexMap<"C++ field name", ("rust enum tag name", "rust type name")>
@@ -77,8 +95,9 @@ pub fn generate_classes(output_dir: impl AsRef<Path>, rpt_dir: impl AsRef<Path>)
         life_time_name_map.insert(rust_struct_name, rust_struct_name_with_life_time);
     }
 
-    // I was able to detect the lifetime of `Cow<'a, str>` etc. in the first one, but not the lifetime of the newly attached structure in the case of structures with structure as a field.
-    // Therefore, we will use the HashMap created in the first step to detect further nested lifetimes.
+    // 3. Compute the second lifetime annotation (annotate the propagated lifetime annotation, i.e., for the class of classes)
+    // Example
+    // field_name: ClassName<'a>, => ClassOfClass<'a>
     for (_sig, class) in &class_map {
         let (_rust_fields_code, fields) =
             generate_all_fields(class, &class_map, Some(&life_time_name_map));
@@ -90,12 +109,14 @@ pub fn generate_classes(output_dir: impl AsRef<Path>, rpt_dir: impl AsRef<Path>)
         life_time_name_map.insert(rust_struct_name, rust_struct_name_with_life_time);
     }
 
+    // 4. Generate havok class code.
     for (_sig, class) in &class_map {
         let rust_file = output_dir.join(format!("{}.rs", class.name.to_case(Case::Snake)));
         let rust_code = generate_code(&class.name, &class_map, &life_time_name_map);
         std::fs::write(rust_file, rust_code).unwrap();
     }
 
+    // 5. Generate a set type of all havok class.
     let class_params = generate_class_params(&class_map, &life_time_name_map);
     std::fs::write(output_dir.join("class_params.rs"), class_params).unwrap();
 }
@@ -108,6 +129,7 @@ mod tests {
     pub fn should_generate_classes() {
         let _guard = crate::helpers::tracing::init_tracing(
             Some("should_generate_classes"),
+            true,
             tracing::Level::ERROR,
         );
 

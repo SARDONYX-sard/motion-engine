@@ -1,6 +1,8 @@
 use super::hkx_header::HkxHeader;
-use super::sections::section_header::SectionHeader;
-use super::sections::{class_name_section::HKXClassNames, section_fixup::SectionContents};
+use super::sections::{
+    class_name_section::ClassNames, section_contents::SectionContents,
+    section_header::SectionHeader,
+};
 use crate::classes::class_params::ClassParams;
 use crate::error::{HkxError, Result};
 use core::mem::size_of;
@@ -8,13 +10,13 @@ use std::collections::{hash_map, HashMap};
 use zerocopy::{BigEndian, ByteOrder, FromBytes, LittleEndian};
 
 /// Serialize trait for HKX binaries for C++ Havok class.
-pub trait HkxSerialize {
+pub trait ByteSerialize {
     /// As bytes slice(HKX binary) from a instance.
     fn as_bytes(&self) -> Result<&[u8]>;
 }
 
 /// Deserialize trait for HKX binaries for C++ Havok class.
-pub trait HkxDeSerialize {
+pub trait ByteDeSerialize {
     /// Create a new instance from bytes slice(HKX binary).
     fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
     where
@@ -33,14 +35,19 @@ pub struct PackFileDeserializer<'bytes> {
     /// `__type__` section content bytes.
     pub type_section: SectionContents<'bytes>,
     /// Signature & ClassName pairs from `__class_names__` section content bytes.
-    pub class_names: HKXClassNames<'bytes>,
+    pub class_names: ClassNames<'bytes>,
 }
 
+/// C++ Havok class field == a hkparam
+type Field<T> = Vec<T>;
+/// C++ Havok class == has hkparams
+type Class<T> = Vec<Field<T>>;
+
 impl<'bytes> PackFileDeserializer<'bytes> {
-    fn read_class_array<B, T>(&self, bytes: &[u8]) -> Result<Vec<Vec<T>>>
+    fn read_class_array<B, T>(&self, bytes: &[u8]) -> Result<Class<T>>
     where
         B: ByteOrder,
-        T: HkxDeSerialize,
+        T: ByteDeSerialize,
     {
         // Byte position
         let mut offset = 0;
@@ -98,12 +105,11 @@ impl<'bytes> PackFileDeserializer<'bytes> {
         B: ByteOrder,
     {
         if let hash_map::Entry::Vacant(entry) = deserialized_objects.entry(offset) {
-            tracing::debug!("{:#?}", &self.data_section.virtual_map);
-
             let fixup = &self.data_section.virtual_map[&offset];
             let hk_class_name =
                 &self.class_names.offset_class_names_map[&fixup.name_offset].class_name;
-            let hk_class = ClassParams::from_class_name::<B>(hk_class_name.to_str()?, bytes)?;
+            let hk_class =
+                ClassParams::from_class_name_and_bytes::<B>(hk_class_name.to_str()?, bytes)?;
 
             entry.insert(hk_class);
         };
@@ -120,61 +126,44 @@ impl<'bytes> PackFileDeserializer<'bytes> {
         B: ByteOrder,
     {
         // current position
-        let mut offset = 0;
+        let mut start = 0;
 
         // 1. Read 64bytes hkx file header.
-        let header = HkxHeader::<B>::ref_from(&bytes[offset..size_of::<HkxHeader<B>>()]).unwrap();
-        offset += size_of::<HkxHeader<B>>();
+        let header = HkxHeader::<B>::ref_from(&bytes[start..size_of::<HkxHeader<B>>()]).unwrap();
+        start += size_of::<HkxHeader<B>>();
         // 2. Skip padding
         let padding = header.section_offset.get();
         if padding > 0 {
-            offset += padding as usize;
+            start += padding as usize;
         }
 
         // 3. Read 48bytes * 3 section headers
-        let section_next_pos = offset + size_of::<SectionHeader<B>>();
-        let classes_header = SectionHeader::<B>::ref_from_bytes(&bytes[offset..section_next_pos])?;
-        offset = section_next_pos;
+        let section_next_pos = start + size_of::<SectionHeader<B>>();
+        let class_header = SectionHeader::<B>::ref_from_bytes(&bytes[start..section_next_pos])?;
+        start = section_next_pos;
 
-        let section_next_pos = offset + size_of::<SectionHeader<B>>();
-        let type_header = SectionHeader::<B>::ref_from_bytes(&bytes[offset..section_next_pos])?;
-        offset = section_next_pos;
+        let section_next_pos = start + size_of::<SectionHeader<B>>();
+        let type_header = SectionHeader::<B>::ref_from_bytes(&bytes[start..section_next_pos])?;
+        start = section_next_pos;
 
-        let section_next_pos = offset + size_of::<SectionHeader<B>>();
-        let data_header = SectionHeader::<B>::ref_from_bytes(&bytes[offset..section_next_pos])?;
+        let section_next_pos = start + size_of::<SectionHeader<B>>();
+        let data_header = SectionHeader::<B>::ref_from_bytes(&bytes[start..section_next_pos])?;
 
         // 4. Section fixup map by each section header information
-        let class_section = SectionContents::from_bytes(bytes, classes_header, 1)?;
-        let data_section = SectionContents::from_bytes(bytes, data_header, 2)?;
-        let type_section = SectionContents::from_bytes(bytes, type_header, 3)?;
+        let class_section = SectionContents::from_bytes(bytes, class_header, 1)?;
+        let type_section = SectionContents::from_bytes(bytes, type_header, 2)?;
+        let data_section = SectionContents::from_bytes(bytes, data_header, 3)?;
 
-        let class_section_start = classes_header.absolute_data_start.get() as usize;
-        let class_names = HKXClassNames::from_bytes::<B>(&bytes[class_section_start..])?;
+        // 5. Read class section content
+        let class_names = ClassNames::from_bytes::<B>(class_section.section_data)?;
 
-        let SectionHeader {
-            absolute_data_start,
-            local_fixups_offset,
-            global_fixups_offset,
-            virtual_fixups_offset,
-            exports_offset,
-            imports_offset,
-            end_offset,
-            ..
-        } = *data_header;
-
-        let l_offset = absolute_data_start + local_fixups_offset;
-        let g_offset = absolute_data_start + global_fixups_offset;
-        let v_offset = absolute_data_start + virtual_fixups_offset;
-        let e_offset = absolute_data_start + exports_offset;
-        let i_offset = absolute_data_start + imports_offset;
-        let end_off = absolute_data_start + end_offset;
-        tracing::debug!("  abs + local: {:#02X}", l_offset);
-        tracing::debug!(" abs + global: {:#02X}", g_offset);
-        tracing::debug!("abs + virtual: {:#02X}", v_offset);
-        tracing::debug!("abs + exports: {:#02X}", e_offset);
-        tracing::debug!("abs + imports: {:#02X}", i_offset);
-        tracing::debug!("    abs + end: {:#02X}", end_off);
-        tracing::debug!("{:#?}", &class_names);
+        tracing::debug!("class_header: {:#?}", &class_header);
+        tracing::debug!(" type_header: {:#?}", &type_header);
+        tracing::debug!(" data_header: {:#?}", &data_header);
+        tracing::debug!("data_section.local_map: {:#?}", &data_section.local_map);
+        tracing::debug!("data_section.global_map: {:#?}", &data_section.global_map);
+        tracing::debug!("data_section.virtual_map: {:#?}", &data_section.virtual_map);
+        tracing::debug!(" class_names: {:#?}", &class_names);
 
         Ok(Self {
             class_section,
@@ -186,22 +175,18 @@ impl<'bytes> PackFileDeserializer<'bytes> {
 
     pub fn deserialize(
         bytes: &'bytes [u8],
-        deserialized_objects: &mut HashMap<usize, ClassParams<'bytes>>,
+        deserialized_map: &mut HashMap<usize, ClassParams<'bytes>>,
     ) -> Result<()> {
         match HkxHeader::is_big_endian(bytes) {
             true => {
                 let de = Self::deserialize_headers_and_map::<BigEndian>(bytes)?;
-                let section_data = de.data_section.section_data;
-                de.deserialize_virtual_class::<BigEndian>(section_data, 0, deserialized_objects)?;
+                let data_section = de.data_section.section_data;
+                de.deserialize_virtual_class::<BigEndian>(data_section, 0, deserialized_map)?;
             }
             false => {
                 let de = Self::deserialize_headers_and_map::<LittleEndian>(bytes)?;
-                let section_data = de.data_section.section_data;
-                de.deserialize_virtual_class::<LittleEndian>(
-                    section_data,
-                    0,
-                    deserialized_objects,
-                )?;
+                let data_section = de.data_section.section_data;
+                de.deserialize_virtual_class::<LittleEndian>(data_section, 0, deserialized_map)?;
             }
         };
 
@@ -220,8 +205,9 @@ mod tests {
 
     #[test]
     fn should_deserialize() {
-        let _guard = init_tracing(Some("deserialize_hkx_bytes"), Level::DEBUG);
-        let bytes = include_bytes!("../../../../tests/1hm_behavior_x86_64.hkx");
+        let _guard = init_tracing(Some("deserialize_hkx_bytes"), false, Level::DEBUG);
+        // let bytes = include_bytes!("../../../../tests/1hm_behavior_x86_64.hkx");
+        let bytes = include_bytes!("../../../../tests/defaultmale.hkx");
 
         let mut de_obj = HashMap::new();
         if let Err(e) = PackFileDeserializer::deserialize(bytes.as_slice(), &mut de_obj) {

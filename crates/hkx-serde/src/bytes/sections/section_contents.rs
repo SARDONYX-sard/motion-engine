@@ -1,3 +1,4 @@
+//! Each section fixup map reader/writer
 use core::mem::size_of;
 use indexmap::IndexMap;
 use zerocopy::{ByteOrder, U32};
@@ -24,11 +25,8 @@ pub struct LocalFixup {
 
 impl ReadFixup for LocalFixup {
     fn from_bytes<B: ByteOrder>(bytes: &[u8]) -> std::io::Result<Self> {
-        let mut offset = 0;
-
-        let src = B::read_u32(&bytes[offset..]) as usize;
-        offset += 4;
-        let dst = B::read_u32(&bytes[offset..]) as usize;
+        let src = B::read_u32(bytes) as usize;
+        let dst = B::read_u32(&bytes[4..]) as usize;
 
         Ok(LocalFixup { src, dst })
     }
@@ -36,11 +34,8 @@ impl ReadFixup for LocalFixup {
 
 impl WriteFixup for LocalFixup {
     fn write_bytes<B: ByteOrder>(&self, bytes: &mut [u8]) -> std::io::Result<()> {
-        let mut offset = 0;
-
-        B::write_u32(&mut bytes[offset..], self.src as u32);
-        offset += 4;
-        B::write_u32(&mut bytes[offset..], self.dst as u32);
+        B::write_u32(bytes, self.src as u32);
+        B::write_u32(&mut bytes[4..], self.dst as u32);
 
         Ok(())
     }
@@ -125,6 +120,7 @@ pub struct SectionContents<'bytes> {
     pub global_map: IndexMap<usize, GlobalFixup>,
     pub local_map: IndexMap<usize, LocalFixup>,
     pub virtual_map: IndexMap<usize, VirtualFixup>,
+    /// Each section bytes data
     pub section_data: &'bytes [u8],
     ///  Index Section ID
     ///
@@ -138,7 +134,7 @@ pub struct SectionContents<'bytes> {
 impl<'a> SectionContents<'a> {
     const OFFSET_MAP_IS_NONE: u32 = 0xFFFFFFFF;
 
-    /// Read fixup maps.
+    /// Read the fixup map from bytes by relying on the section header.
     ///
     /// # Assumption
     /// - Bytes position is 0 start(== HKX Header start). **Not section header start**.

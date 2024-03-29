@@ -27,6 +27,12 @@ mod tests {
                 }],
             },
         };
+
+        /// pretty format pattern
+        // let mut result = String::new();
+        // let mut ser = quick_xml::se::Serializer::new(&mut result);
+        // ser.indent(' ', 2);
+        // class.serialize(ser).unwrap();
         let result = quick_xml::se::to_string(&class).unwrap();
 
         let expected_xml = "\

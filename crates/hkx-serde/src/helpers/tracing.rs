@@ -12,6 +12,7 @@ use tracing_appender::non_blocking::WorkerGuard;
 /// - If this variable is dropped, the logger stops.
 pub(crate) fn init_tracing(
     test_name: Option<&str>,
+    with_stdio: bool,
     filter: impl Into<LevelFilter>,
 ) -> Result<(Option<WorkerGuard>, DefaultGuard)> {
     use tracing_subscriber::{fmt, layer::SubscriberExt};
@@ -22,25 +23,39 @@ pub(crate) fn init_tracing(
             let (file_writer, guard) = tracing_appender::non_blocking(std::fs::File::create(
                 format!("../../logs/{test_name}.log"),
             )?);
-            let thread_guard = tracing::subscriber::set_default(
-                fmt::Subscriber::builder()
-                    .compact()
-                    .pretty()
-                    .with_file(true)
-                    .with_line_number(true)
-                    .with_max_level(filter)
-                    .with_target(false)
-                    .finish()
-                    .with(
-                        fmt::Layer::default()
-                            .compact()
-                            .with_ansi(false)
-                            .with_file(true)
-                            .with_line_number(true)
-                            .with_target(false)
-                            .with_writer(file_writer),
-                    ),
-            );
+
+            let thread_guard = match with_stdio {
+                true => tracing::subscriber::set_default(
+                    fmt::Subscriber::builder()
+                        .compact()
+                        .pretty()
+                        .with_file(true)
+                        .with_line_number(true)
+                        .with_max_level(filter)
+                        .with_target(false)
+                        .finish()
+                        .with(
+                            fmt::Layer::default()
+                                .compact()
+                                .with_ansi(false)
+                                .with_file(true)
+                                .with_line_number(true)
+                                .with_target(false)
+                                .with_writer(file_writer),
+                        ),
+                ),
+                false => tracing::subscriber::set_default(
+                    fmt::Subscriber::builder()
+                        .compact()
+                        .with_ansi(false)
+                        .with_file(true)
+                        .with_line_number(true)
+                        .with_target(false)
+                        .with_writer(file_writer)
+                        .with_max_level(filter)
+                        .finish(),
+                ),
+            };
 
             (Some(guard), thread_guard)
         }

@@ -330,7 +330,8 @@ mod tests {
 
     #[test]
     fn should_parse_all_type() {
-        let _guard = init_tracing(Some("should_parse_all_type"), tracing::Level::DEBUG).unwrap();
+        let _guard =
+            init_tracing(Some("should_parse_all_type"), false, tracing::Level::DEBUG).unwrap();
 
         for (cpp_type, expected_rust_type) in HK_TYPES {
             match parse_cpp_type(cpp_type) {
@@ -354,7 +355,7 @@ mod tests {
 
     #[test]
     fn should_generate_all_mapping_types() {
-        let _guard = init_tracing(None, tracing::Level::DEBUG);
+        let _guard = init_tracing(None, false, tracing::Level::DEBUG);
 
         let rpt_dir = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
             .join("assets")

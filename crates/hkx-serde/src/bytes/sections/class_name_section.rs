@@ -77,13 +77,13 @@ impl<'a> ClassPair<'a> {
 
 /// IndexMap for each class name start position & (signature, class name)
 #[derive(Debug, Clone, Default, PartialEq, Eq)]
-pub struct HKXClassNames<'bytes> {
+pub struct ClassNames<'bytes> {
     /// - key: class name start position
     /// - value: (signature, class name)
     pub offset_class_names_map: IndexMap<usize, ClassPair<'bytes>>,
 }
 
-impl<'a> HKXClassNames<'a> {
+impl<'a> ClassNames<'a> {
     /// For 16 bytes alignment
     const CLASSNAMES_END_PADDING: u8 = 0xFF;
 
@@ -108,7 +108,7 @@ impl<'a> HKXClassNames<'a> {
             }
         }
 
-        Ok(HKXClassNames {
+        Ok(ClassNames {
             offset_class_names_map,
         })
     }

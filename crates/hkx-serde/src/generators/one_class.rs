@@ -67,6 +67,9 @@ pub fn generate_code(
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+use crate::bytes::*; // For hkx binary read/write
+#[allow(unused)]
+use crate::error::{{HkxError, Result}};
 use crate::havok_types::*;
 
 /// `{class_name}`
@@ -92,6 +95,11 @@ pub enum {rust_enum_name_with_life_time} {{
         let deserializer = generate_manual_tagged_de(&rust_enum_name_with_life_time, &fields);
         rust_code.push_str(&deserializer);
     }
+
+    rust_code.push_str(&generate_impl_bytes_deserialize(
+        &rust_enum_name_with_life_time,
+    ));
+
     if !class.enums.is_empty() {
         for enum_info in &class.enums {
             let (enum_name, _enum_pair) = enum_info;
@@ -113,8 +121,8 @@ pub enum {rust_enum_name_with_life_time} {{
 ///
 /// This exists to get the information of the lifetime annotation, because if the field has a lifetime, the lifetime annotation must be declared in advance in struct.
 pub fn get_lifetime_from_fields(index_map: &FieldMap) -> &'static str {
-    for (_field_name, (_, r_type)) in index_map {
-        if r_type.find("'a").is_some() {
+    for (_field_name, (_, rust_type)) in index_map {
+        if rust_type.find("'a").is_some() {
             return "<'a>";
         }
     }
@@ -288,6 +296,27 @@ impl_deserialize_for_internally_tagged_enum! {{
     rust_code
 }
 
+fn generate_impl_bytes_deserialize(rust_class_name_with_life_time: &str) -> String {
+    let mut rust_code = String::new();
+    let rust_class_name_with_life_time = rust_class_name_with_life_time.replace("<'a>", "<'_>");
+
+    rust_code.push_str(&format!(
+        r#"
+impl ByteDeSerialize for {rust_class_name_with_life_time} {{
+    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    where
+        B: ByteOrder,
+        Self: Sized,
+    {{
+        todo!()
+    }}
+}}
+"#
+    ));
+
+    rust_code
+}
+
 /// Generate flags and C++ enum(If exists)
 fn generate_enums(enum_info: &Enum) -> String {
     let mut rust_code = String::new();
@@ -298,7 +327,7 @@ fn generate_enums(enum_info: &Enum) -> String {
     rust_code.push_str(&format!(
         r#"
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum {enum_name} {{
 "#
     ));

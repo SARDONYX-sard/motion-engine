@@ -21,7 +21,7 @@ impl<'a> ClassPair<'a> {
     /// signature(4bytes) + separator(0x09) + ClassName(Null terminated ASCII string)
     ///
     /// # Returns
-    /// (Class name & signature, read bytes offset)
+    /// (Class name & signature, read bytes size)
     pub fn from_bytes<B: ByteOrder>(bytes: &'a [u8]) -> Result<(Self, usize)> {
         let mut offset = 0;
 
@@ -97,11 +97,11 @@ impl<'a> ClassNames<'a> {
         let mut offset_class_names_map = IndexMap::new();
         let mut offset = 0;
 
-        while bytes[offset + 4] != Self::CLASSNAMES_END_PADDING {
-            let (class_pair, read_offset) = ClassPair::from_bytes::<B>(&bytes[offset..])?;
+        while bytes[offset] != Self::CLASSNAMES_END_PADDING {
+            let (class_pair, read_size) = ClassPair::from_bytes::<B>(&bytes[offset..])?;
             let class_name_start = offset + 5; // after 4bytes signature + separator 1 byte
             offset_class_names_map.insert(class_name_start, class_pair);
-            offset += read_offset;
+            offset += read_size;
 
             if offset > bytes.len() {
                 break;

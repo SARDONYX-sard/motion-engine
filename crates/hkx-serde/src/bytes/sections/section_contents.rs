@@ -19,14 +19,14 @@ trait WriteFixup {
 
 #[derive(Debug, Clone, Default, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct LocalFixup {
-    pub src: usize,
-    pub dst: usize,
+    pub src: u32,
+    pub dst: u32,
 }
 
 impl ReadFixup for LocalFixup {
     fn from_bytes<B: ByteOrder>(bytes: &[u8]) -> std::io::Result<Self> {
-        let src = B::read_u32(bytes) as usize;
-        let dst = B::read_u32(&bytes[4..]) as usize;
+        let src = B::read_u32(bytes);
+        let dst = B::read_u32(&bytes[4..]);
 
         Ok(LocalFixup { src, dst })
     }
@@ -34,8 +34,8 @@ impl ReadFixup for LocalFixup {
 
 impl WriteFixup for LocalFixup {
     fn write_bytes<B: ByteOrder>(&self, bytes: &mut [u8]) -> std::io::Result<()> {
-        B::write_u32(bytes, self.src as u32);
-        B::write_u32(&mut bytes[4..], self.dst as u32);
+        B::write_u32(bytes, self.src);
+        B::write_u32(&mut bytes[4..], self.dst);
 
         Ok(())
     }
@@ -43,16 +43,16 @@ impl WriteFixup for LocalFixup {
 
 #[derive(Debug, Clone, Default, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct GlobalFixup {
-    pub src: usize,
-    pub dst_section_index: usize,
-    pub dst: usize,
+    pub src: u32,
+    pub dst_section_index: u32,
+    pub dst: u32,
 }
 
 impl ReadFixup for GlobalFixup {
     fn from_bytes<B: ByteOrder>(bytes: &[u8]) -> std::io::Result<Self> {
-        let src = B::read_u32(bytes) as usize;
-        let dst_section_index = B::read_u32(&bytes[4..]) as usize;
-        let dst = B::read_u32(&bytes[8..]) as usize;
+        let src = B::read_u32(bytes);
+        let dst_section_index = B::read_u32(&bytes[4..]);
+        let dst = B::read_u32(&bytes[8..]);
 
         Ok(GlobalFixup {
             src,
@@ -64,9 +64,9 @@ impl ReadFixup for GlobalFixup {
 
 impl WriteFixup for GlobalFixup {
     fn write_bytes<B: ByteOrder>(&self, bytes: &mut [u8]) -> std::io::Result<()> {
-        B::write_u32(bytes, self.src as u32);
-        B::write_u32(&mut bytes[4..], self.dst_section_index as u32);
-        B::write_u32(&mut bytes[8..], self.dst as u32);
+        B::write_u32(bytes, self.src);
+        B::write_u32(&mut bytes[4..], self.dst_section_index);
+        B::write_u32(&mut bytes[8..], self.dst);
 
         Ok(())
     }
@@ -74,8 +74,8 @@ impl WriteFixup for GlobalFixup {
 
 #[derive(Debug, Clone, Default, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VirtualFixup {
-    pub src: usize,
-    pub section_index: usize,
+    pub src: u32,
+    pub section_index: u32,
     /// Havok Class name offset.
     ///
     /// # How do we use this?
@@ -84,14 +84,14 @@ pub struct VirtualFixup {
     ///
     /// This means that we can use this offset in `virtual_fixup_map`
     /// to find out which class name constructor is needed.
-    pub name_offset: usize,
+    pub name_offset: u32,
 }
 
 impl ReadFixup for VirtualFixup {
     fn from_bytes<B: ByteOrder>(bytes: &[u8]) -> std::io::Result<Self> {
-        let src = B::read_u32(bytes) as usize;
-        let dst_section_index = B::read_u32(&bytes[4..]) as usize;
-        let dst = B::read_u32(&bytes[8..]) as usize;
+        let src = B::read_u32(bytes);
+        let dst_section_index = B::read_u32(&bytes[4..]);
+        let dst = B::read_u32(&bytes[8..]);
 
         Ok(VirtualFixup {
             src,
@@ -103,9 +103,9 @@ impl ReadFixup for VirtualFixup {
 
 impl WriteFixup for VirtualFixup {
     fn write_bytes<B: ByteOrder>(&self, bytes: &mut [u8]) -> std::io::Result<()> {
-        B::write_u32(bytes, self.src as u32);
-        B::write_u32(&mut bytes[4..], self.section_index as u32);
-        B::write_u32(&mut bytes[8..], self.name_offset as u32);
+        B::write_u32(bytes, self.src);
+        B::write_u32(&mut bytes[4..], self.section_index);
+        B::write_u32(&mut bytes[8..], self.name_offset);
 
         Ok(())
     }
@@ -117,9 +117,9 @@ impl WriteFixup for VirtualFixup {
 /// of the string `hkRootLevelContainer` in the `__classnames__` section.
 #[derive(Debug, Clone, Default, PartialEq, Eq)]
 pub struct SectionContents<'bytes> {
-    pub global_map: IndexMap<usize, GlobalFixup>,
-    pub local_map: IndexMap<usize, LocalFixup>,
-    pub virtual_map: IndexMap<usize, VirtualFixup>,
+    pub global_map: IndexMap<u32, GlobalFixup>,
+    pub local_map: IndexMap<u32, LocalFixup>,
+    pub virtual_map: IndexMap<u32, VirtualFixup>,
     /// Each section bytes data
     pub section_data: &'bytes [u8],
     ///  Index Section ID
@@ -155,7 +155,9 @@ impl<'a> SectionContents<'a> {
         let mut offset = absolute_data_start + local_fixups_offset;
         let mut local_map = IndexMap::new();
 
-        for _ in 0..(global_fixups_offset - local_fixups_offset) / 8 {
+        let max_readable_count =
+            (global_fixups_offset - local_fixups_offset) / size_of::<LocalFixup>();
+        for _ in 0..max_readable_count {
             if B::read_u32(&bytes[offset..]) != Self::OFFSET_MAP_IS_NONE {
                 let local_fixup = LocalFixup::from_bytes::<B>(&bytes[offset..])?;
                 offset += size_of::<LocalFixup>();
@@ -167,7 +169,7 @@ impl<'a> SectionContents<'a> {
         let mut offset = absolute_data_start + global_fixups_offset;
         let mut global_map = IndexMap::new();
 
-        for _ in 0..(virtual_fixups_offset - global_fixups_offset) / 12 {
+        for _ in 0..(virtual_fixups_offset - global_fixups_offset) / size_of::<GlobalFixup>() {
             if B::read_u32(&bytes[offset..]) != Self::OFFSET_MAP_IS_NONE {
                 let global_fixup = GlobalFixup::from_bytes::<B>(&bytes[offset..])?;
                 offset += size_of::<GlobalFixup>();
@@ -178,7 +180,10 @@ impl<'a> SectionContents<'a> {
         // Read virtual fixups
         let mut offset = absolute_data_start + virtual_fixups_offset;
         let mut virtual_map = IndexMap::new();
-        for _ in 0..(exports_offset - virtual_fixups_offset) / 12 {
+        let max_readable_count =
+            (exports_offset - virtual_fixups_offset) / size_of::<VirtualFixup>();
+
+        for _ in 0..max_readable_count {
             if B::read_u32(&bytes[offset..]) != Self::OFFSET_MAP_IS_NONE {
                 let virtual_fixup = VirtualFixup::from_bytes::<B>(&bytes[offset..])?;
                 offset += size_of::<VirtualFixup>();

@@ -68,7 +68,7 @@ impl<'bytes> PackFileDeserializer<'bytes> {
 
         let mut res = Vec::new();
         if size > 0 {
-            let local_dst = self.data_section.local_map[&offset - 16].dst;
+            let local_dst = self.data_section.local_map[&offset - 16].dst as usize;
 
             for _ in 0..size {
                 res.push(T::from_bytes::<B>(&bytes[local_dst..])?);
@@ -98,16 +98,15 @@ impl<'bytes> PackFileDeserializer<'bytes> {
     fn deserialize_virtual_class<B>(
         &self,
         bytes: &[u8],
-        offset: usize,
-        deserialized_objects: &mut HashMap<usize, ClassParams<'bytes>>,
+        offset: u32,
+        deserialized_objects: &mut HashMap<u32, ClassParams<'bytes>>,
     ) -> Result<()>
     where
         B: ByteOrder,
     {
         if let hash_map::Entry::Vacant(entry) = deserialized_objects.entry(offset) {
-            let fixup = &self.data_section.virtual_map[&offset];
-            let hk_class_name =
-                &self.class_names.offset_class_names_map[&fixup.name_offset].class_name;
+            let fixup = self.data_section.virtual_map[&offset].name_offset as usize;
+            let hk_class_name = &self.class_names.offset_class_names_map[&fixup].class_name;
             let hk_class =
                 ClassParams::from_class_name_and_bytes::<B>(hk_class_name.to_str()?, bytes)?;
 
@@ -149,6 +148,10 @@ impl<'bytes> PackFileDeserializer<'bytes> {
         let section_next_pos = start + size_of::<SectionHeader<B>>();
         let data_header = SectionHeader::<B>::ref_from_bytes(&bytes[start..section_next_pos])?;
 
+        tracing::debug!("class_header: {:#?}", &class_header);
+        tracing::debug!(" type_header: {:#?}", &type_header);
+        tracing::debug!(" data_header: {:#?}", &data_header);
+
         // 4. Section fixup map by each section header information
         let class_section = SectionContents::from_bytes(bytes, class_header, 1)?;
         let type_section = SectionContents::from_bytes(bytes, type_header, 2)?;
@@ -157,9 +160,6 @@ impl<'bytes> PackFileDeserializer<'bytes> {
         // 5. Read class section content
         let class_names = ClassNames::from_bytes::<B>(class_section.section_data)?;
 
-        tracing::debug!("class_header: {:#?}", &class_header);
-        tracing::debug!(" type_header: {:#?}", &type_header);
-        tracing::debug!(" data_header: {:#?}", &data_header);
         tracing::debug!("data_section.local_map: {:#?}", &data_section.local_map);
         tracing::debug!("data_section.global_map: {:#?}", &data_section.global_map);
         tracing::debug!("data_section.virtual_map: {:#?}", &data_section.virtual_map);
@@ -175,7 +175,7 @@ impl<'bytes> PackFileDeserializer<'bytes> {
 
     pub fn deserialize(
         bytes: &'bytes [u8],
-        deserialized_map: &mut HashMap<usize, ClassParams<'bytes>>,
+        deserialized_map: &mut HashMap<u32, ClassParams<'bytes>>,
     ) -> Result<()> {
         match HkxHeader::is_big_endian(bytes) {
             true => {

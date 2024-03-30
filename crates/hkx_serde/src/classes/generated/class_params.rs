@@ -1,7 +1,9 @@
 //! The type of enumeration of all C++ havok class fields.
+use self::packfile_deserializer::PackFileDeserializer;
+
 use super::*;
-use crate::classes::Class;
 use crate::bytes::*;
+use crate::classes::Class;
 use crate::error::{HkxError, Result};
 use serde::de::{self, Deserializer, MapAccess, Visitor};
 use serde::{Deserialize, Serialize};
@@ -18,8 +20,8 @@ pub enum ClassParams<'a> {
     Unknown,
 
     #[serde(rename = "0x13a39ba7")]
-    #[serde(bound(deserialize = "Vec<HkbProjectData<'a>>: Deserialize<'de>"))]
-    HkbProjectData(Vec<HkbProjectData<'a>>),
+    #[serde(bound(deserialize = "HkbProjectData<'a>: Deserialize<'de>"))]
+    HkbProjectData(HkbProjectData<'a>),
 
     #[serde(rename = "0x76ad60a")]
     #[serde(bound(deserialize = "Vec<HkbProjectStringData<'a>>: Deserialize<'de>"))]
@@ -36,7 +38,6 @@ pub enum ClassParams<'a> {
     #[serde(rename = "0x2772c11e")]
     #[serde(bound(deserialize = "Vec<HkRootLevelContainer<'a>>: Deserialize<'de>"))]
     HkRootLevelContainer(Vec<HkRootLevelContainer<'a>>),
-
 }
 impl<'a> Serialize for Class<'a> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -52,7 +53,6 @@ impl<'a> Serialize for Class<'a> {
 
         // Serialize hkparam based on class(C++ class name)
         match self.class.as_ref() {
-
             "hkbProjectData" => {
                 if let ClassParams::HkbProjectData(ref params) = self.hkparams {
                     state.serialize_field("hkparam", params)?;
@@ -139,20 +139,22 @@ impl<'de> Deserialize<'de> for Class<'de> {
                             if let Some(ref class_name) = class {
                                 hkparam = Some(Ok(match class_name.as_ref() {
                                     "hkbProjectData" => {
-                                                        ClassParams::HkbProjectData(map.next_value()?)
-                                    },
+                                        ClassParams::HkbProjectData(map.next_value()?)
+                                    }
                                     "hkbProjectStringData" => {
-                                                        ClassParams::HkbProjectStringData(map.next_value()?)
-                                    },
+                                        ClassParams::HkbProjectStringData(map.next_value()?)
+                                    }
                                     "hkbTransitionEffect" => {
-                                                        ClassParams::HkbTransitionEffect(map.next_value()?)
-                                    },
+                                        ClassParams::HkbTransitionEffect(map.next_value()?)
+                                    }
                                     "hkRootLevelContainerNamedVariant" => {
-                                                        ClassParams::HkRootLevelContainerNamedVariant(map.next_value()?)
-                                    },
+                                        ClassParams::HkRootLevelContainerNamedVariant(
+                                            map.next_value()?,
+                                        )
+                                    }
                                     "hkRootLevelContainer" => {
-                                                        ClassParams::HkRootLevelContainer(map.next_value()?)
-                                    },
+                                        ClassParams::HkRootLevelContainer(map.next_value()?)
+                                    }
 
                                     unknown => {
                                         return Err(de::Error::custom(format!(
@@ -194,26 +196,30 @@ impl<'a> ClassParams<'a> {
     /// # Assumptions
     /// - The starting point of `bytes` must be the binary data position of the fields
     ///   of the class(`class_name`) to be deserialized.
-    pub fn from_class_name_and_bytes<B>(class_name: &str, bytes: &[u8]) -> Result<Self>
+    pub fn from_class_name_and_bytes<B>(
+        class_name: &str,
+        bytes: &[u8],
+        de: &mut PackFileDeserializer,
+    ) -> Result<Self>
     where
         B: ByteOrder,
     {
         Ok(match class_name {
-            "hkbProjectData" => ClassParams::HkbProjectData(
-                HkbProjectData::from_bytes::<B>(bytes)?,
-            ),
-            "hkbProjectStringData" => ClassParams::HkbProjectStringData(
-                HkbProjectStringData::from_bytes::<B>(bytes)?,
-            ),
-            "hkbTransitionEffect" => ClassParams::HkbTransitionEffect(
-                HkbTransitionEffect::from_bytes::<B>(bytes)?,
-            ),
+            "hkbProjectData" => {
+                ClassParams::HkbProjectData(HkbProjectData::from_bytes::<B>(bytes, de)?)
+            }
+            "hkbProjectStringData" => {
+                ClassParams::HkbProjectStringData(HkbProjectStringData::from_bytes::<B>(bytes, de)?)
+            }
+            "hkbTransitionEffect" => {
+                ClassParams::HkbTransitionEffect(HkbTransitionEffect::from_bytes::<B>(bytes, de)?)
+            }
             "hkRootLevelContainerNamedVariant" => ClassParams::HkRootLevelContainerNamedVariant(
-                HkRootLevelContainerNamedVariant::from_bytes::<B>(bytes)?,
+                HkRootLevelContainerNamedVariant::from_bytes::<B>(bytes, de)?,
             ),
-            "hkRootLevelContainer" => ClassParams::HkRootLevelContainer(
-                HkRootLevelContainer::from_bytes::<B>(bytes)?,
-            ),
+            "hkRootLevelContainer" => {
+                ClassParams::HkRootLevelContainer(HkRootLevelContainer::from_bytes::<B>(bytes, de)?)
+            }
 
             unknown => return Err(HkxError::UnknownHavokClass(unknown.into())),
         })

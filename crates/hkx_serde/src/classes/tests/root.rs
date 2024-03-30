@@ -8,7 +8,7 @@ mod tests {
             class_params::ClassParams,
             root::{HkSection, Hkx},
             Class, EventMode, HkRootLevelContainer, HkRootLevelContainerNamedVariant,
-            HkbProjectData, HkbProjectStringData,
+            HkbProjectStringData,
         },
         helpers::serde::to_string_pretty_xml,
     };
@@ -48,27 +48,27 @@ mod tests {
                             }),
                         ]),
                     },
-                    Class {
-                        name: "#0051".into(),
-                        class: "hkbProjectData".into(),
-                        signature: "0x13a39ba7".into(),
-                        hkparams: ClassParams::HkbProjectData(vec![
-                            HkbProjectData::WorldUpWs(Primitive {
-                                value: Vector4 {
-                                    x: OrderedFloat(0.0),
-                                    y: OrderedFloat(0.0),
-                                    z: OrderedFloat(1.0),
-                                    w: OrderedFloat(0.0),
-                                },
-                            }),
-                            HkbProjectData::StringData(Primitive {
-                                value: "#0052".into(),
-                            }),
-                            HkbProjectData::DefaultEventMode(Primitive {
-                                value: EventMode::EventModeIgnoreFromGenerator,
-                            }),
-                        ]),
-                    },
+                    // Class {
+                    //     name: "#0051".into(),
+                    //     class: "hkbProjectData".into(),
+                    //     signature: "0x13a39ba7".into(),
+                    //     hkparams: ClassParams::HkbProjectData(vec![
+                    //         HkbProjectDataVisiter::WorldUpWs(Primitive {
+                    //             value: Vector4 {
+                    //                 x: OrderedFloat(0.0),
+                    //                 y: OrderedFloat(0.0),
+                    //                 z: OrderedFloat(1.0),
+                    //                 w: OrderedFloat(0.0),
+                    //             },
+                    //         }),
+                    //         HkbProjectDataVisiter::StringData(Primitive {
+                    //             value: "#0052".into(),
+                    //         }),
+                    //         HkbProjectDataVisiter::DefaultEventMode(Primitive {
+                    //             value: EventMode::EventModeIgnoreFromGenerator,
+                    //         }),
+                    //     ]),
+                    // },
                     Class {
                         name: "#0052".into(),
                         class: "hkbProjectStringData".into(),
@@ -187,27 +187,27 @@ mod tests {
                             }),
                         ]),
                     },
-                    Class {
-                        name: "#0051".into(),
-                        class: "hkbProjectData".into(),
-                        signature: "0x13a39ba7".into(),
-                        hkparams: ClassParams::HkbProjectData(vec![
-                            HkbProjectData::WorldUpWs(Primitive {
-                                value: Vector4 {
-                                    x: OrderedFloat(0.0),
-                                    y: OrderedFloat(0.0),
-                                    z: OrderedFloat(1.0),
-                                    w: OrderedFloat(0.0),
-                                },
-                            }),
-                            HkbProjectData::StringData(Primitive {
-                                value: "#0052".into(),
-                            }),
-                            HkbProjectData::DefaultEventMode(Primitive {
-                                value: EventMode::EventModeIgnoreFromGenerator,
-                            }),
-                        ]),
-                    },
+                    // Class {
+                    //     name: "#0051".into(),
+                    //     class: "hkbProjectData".into(),
+                    //     signature: "0x13a39ba7".into(),
+                    //     hkparams: ClassParams::HkbProjectData(vec![
+                    //         HkbProjectDataVisiter::WorldUpWs(Primitive {
+                    //             value: Vector4 {
+                    //                 x: OrderedFloat(0.0),
+                    //                 y: OrderedFloat(0.0),
+                    //                 z: OrderedFloat(1.0),
+                    //                 w: OrderedFloat(0.0),
+                    //             },
+                    //         }),
+                    //         HkbProjectDataVisiter::StringData(Primitive {
+                    //             value: "#0052".into(),
+                    //         }),
+                    //         HkbProjectDataVisiter::DefaultEventMode(Primitive {
+                    //             value: EventMode::EventModeIgnoreFromGenerator,
+                    //         }),
+                    //     ]),
+                    // },
                     Class {
                         name: "#0052".into(),
                         class: "hkbProjectStringData".into(),

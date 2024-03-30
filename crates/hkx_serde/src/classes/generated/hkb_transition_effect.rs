@@ -2,6 +2,8 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+use self::packfile_deserializer::PackFileDeserializer;
+
 #[allow(unused)]
 use super::*;
 use crate::bytes::*; // For hkx binary read/write
@@ -143,7 +145,7 @@ impl_deserialize_for_internally_tagged_enum! {
 }
 
 impl ByteDeSerialize for HkbTransitionEffect<'_> {
-    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    fn from_bytes<B>(bytes: &[u8], de: &mut PackFileDeserializer) -> Result<Vec<Self>>
     where
         B: ByteOrder,
         Self: Sized,

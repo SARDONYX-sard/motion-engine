@@ -20,7 +20,7 @@ pub trait ByteSerialize {
 /// Deserialize trait for HKX binaries for C++ Havok class.
 pub trait ByteDeSerialize {
     /// Create a new instance from bytes slice(HKX binary).
-    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    fn from_bytes<B>(bytes: &[u8], de: &mut PackFileDeserializer) -> Result<Vec<Self>>
     where
         B: ByteOrder,
         Self: Sized;
@@ -28,16 +28,20 @@ pub trait ByteDeSerialize {
 
 #[derive(Debug, Clone, Default, PartialEq)]
 pub struct PackFileDeserializer<'bytes> {
-    /// `__class_names__` section content bytes.
+    /// `__classnames__` section content bytes.
     pub class_section: SectionContents<'bytes>,
-    /// `__data__` section content bytes.
-    ///
-    /// `hkparam`s data of each class
+    /// `__data__` section content bytes. (`hkparam`s data of each class)
     pub data_section: SectionContents<'bytes>,
     /// `__type__` section content bytes.
     pub type_section: SectionContents<'bytes>,
+
     /// Signature & ClassName pairs from `__class_names__` section content bytes.
     pub class_names: ClassNames<'bytes>,
+
+    /// current bytes data section position.
+    ///
+    /// This is used to indicate up to which class field binary data was read during deserialization of each C++ Havok Class.
+    pub current_position: usize,
 }
 
 /// C++ Havok class field == a hkparam
@@ -46,7 +50,7 @@ type Fields<T> = Vec<T>;
 type HkClassArray<T> = Vec<Fields<T>>;
 
 impl<'bytes> PackFileDeserializer<'bytes> {
-    fn read_class_array<B, T>(&self, bytes: &[u8]) -> Result<HkClassArray<T>>
+    fn read_class_array<B, T>(&mut self, bytes: &[u8]) -> Result<HkClassArray<T>>
     where
         B: ByteOrder,
         T: ByteDeSerialize,
@@ -73,7 +77,7 @@ impl<'bytes> PackFileDeserializer<'bytes> {
             let local_dst = self.data_section.local_map[&offset - 16].dst as usize;
 
             for _ in 0..size {
-                res.push(T::from_bytes::<B>(&bytes[local_dst..])?);
+                res.push(T::from_bytes::<B>(&bytes[local_dst..], self)?);
             }
         }
 
@@ -106,7 +110,7 @@ impl<'bytes> PackFileDeserializer<'bytes> {
 
     /// Create a new instance from hkx class fields.
     fn deserialize_virtual_class<B>(
-        &self,
+        &mut self,
         bytes: &[u8],
         offset: u32,
         deserialized_objects: &mut HashMap<u32, ClassParams<'bytes>>,
@@ -118,7 +122,7 @@ impl<'bytes> PackFileDeserializer<'bytes> {
             let fixup = self.data_section.virtual_map[&offset].name_offset as usize;
             let hk_class_name = &self.class_names.offset_class_names_map[&fixup].class_name;
             let hk_class =
-                ClassParams::from_class_name_and_bytes::<B>(hk_class_name.to_str()?, bytes)?;
+                ClassParams::from_class_name_and_bytes::<B>(hk_class_name.to_str()?, bytes, self)?;
 
             entry.insert(hk_class);
         };
@@ -180,6 +184,7 @@ impl<'bytes> PackFileDeserializer<'bytes> {
             data_section,
             type_section,
             class_names,
+            current_position: 0,
         })
     }
 
@@ -189,12 +194,12 @@ impl<'bytes> PackFileDeserializer<'bytes> {
     ) -> Result<()> {
         match HkxHeader::is_big_endian(bytes) {
             true => {
-                let de = Self::deserialize_headers_and_map::<BigEndian>(bytes)?;
+                let mut de = Self::deserialize_headers_and_map::<BigEndian>(bytes)?;
                 let data_section = de.data_section.section_data;
                 de.deserialize_virtual_class::<BigEndian>(data_section, 0, deserialized_map)?;
             }
             false => {
-                let de = Self::deserialize_headers_and_map::<LittleEndian>(bytes)?;
+                let mut de = Self::deserialize_headers_and_map::<LittleEndian>(bytes)?;
                 let data_section = de.data_section.section_data;
                 de.deserialize_virtual_class::<LittleEndian>(data_section, 0, deserialized_map)?;
             }

@@ -25,6 +25,11 @@ impl<T> Primitive<T> {
     pub const fn new(value: T) -> Self {
         Self { value }
     }
+
+    /// Extracts the inner value from the `Primitive`.
+    pub fn into_inner(self) -> T {
+        self.value
+    }
 }
 
 impl<T: core::fmt::Display> core::fmt::Display for Primitive<T> {

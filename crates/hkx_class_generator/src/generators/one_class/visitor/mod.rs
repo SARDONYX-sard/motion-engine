@@ -54,7 +54,7 @@ pub fn generate_visitor(
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize{derive_de})]
 #[serde(tag = "@name")]
-pub enum {rust_enum_name_with_life_time} {{
+enum {rust_enum_name_with_life_time} {{
 {rust_fields_code}}}
 "#
     ));

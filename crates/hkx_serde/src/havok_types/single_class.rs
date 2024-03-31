@@ -40,8 +40,8 @@ impl<T> From<SingleClassParam<T>> for SingleClass<T> {
     }
 }
 
-impl<T> From<Vec<T>> for SingleClass<T> {
-    fn from(values: Vec<T>) -> Self {
+impl<T> From<T> for SingleClass<T> {
+    fn from(values: T) -> Self {
         Self {
             class: SingleClassParam { hkparam: values },
         }
@@ -59,11 +59,11 @@ impl<T> From<Vec<T>> for SingleClass<T> {
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct SingleClassParam<T> {
     #[serde(rename = "hkparam")]
-    pub hkparam: Vec<T>,
+    pub hkparam: T,
 }
 
-impl<T> From<Vec<T>> for SingleClassParam<T> {
-    fn from(value: Vec<T>) -> Self {
+impl<T> From<T> for SingleClassParam<T> {
+    fn from(value: T) -> Self {
         Self { hkparam: value }
     }
 }
@@ -75,17 +75,15 @@ mod tests {
 
     #[test]
     fn should_serialize() {
-        let data: SingleClass<i32> = vec![1045220557, 0].into();
+        let data: SingleClass<Vec<i32>> = vec![1045220557, 0].into();
         let serialized = quick_xml::se::to_string(&data).unwrap();
 
         let expected_xml = "\
-            <hkparam name=\"variableInfos\" numelements=\"2\">\
+            <hkparam>\
                 <hkobject>\
                     <hkparam>\
                         1045220557\
                     </hkparam>\
-                </hkobject>\
-                <hkobject>\
                     <hkparam>\
                         0\
                     </hkparam>\
@@ -104,12 +102,9 @@ mod tests {
                     <hkparam>#0063</hkparam>
                     <hkparam>#0063</hkparam>
                 </hkobject>
-                <hkobject>
-                    <hkparam>#0064</hkparam>
-                </hkobject>
             </hkparam>
         "###;
-        let deserialized: SingleClass<&str> = quick_xml::de::from_str(xml).unwrap();
+        let deserialized: SingleClass<Vec<&str>> = quick_xml::de::from_str(xml).unwrap();
 
         let expected = SingleClass {
             class: SingleClassParam {

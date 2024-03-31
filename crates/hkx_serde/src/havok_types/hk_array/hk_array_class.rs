@@ -42,15 +42,15 @@ pub struct HkArrayClass<T> {
     ///
     /// If there is no skip, an extra one is created like `<hkparam><hkobject /></hkparam>`.
     #[serde(rename = "hkobject")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub classes: Option<Vec<HkArrayClassParam<T>>>,
+    #[serde(default)]
+    pub classes: Vec<HkArrayClassParam<T>>,
 }
 
 impl<T> Default for HkArrayClass<T> {
     fn default() -> Self {
         Self {
             numelements: 0,
-            classes: None,
+            classes: Vec::new(),
         }
     }
 }
@@ -59,16 +59,16 @@ impl<T> From<Vec<HkArrayClassParam<T>>> for HkArrayClass<T> {
     fn from(classes: Vec<HkArrayClassParam<T>>) -> Self {
         Self {
             numelements: classes.len(),
-            classes: Some(classes),
+            classes,
         }
     }
 }
 
-impl<T> From<Vec<Vec<T>>> for HkArrayClass<T> {
-    fn from(classes: Vec<Vec<T>>) -> Self {
+impl<T> From<Vec<T>> for HkArrayClass<T> {
+    fn from(classes: Vec<T>) -> Self {
         Self {
             numelements: classes.len(),
-            classes: Some(classes.into_iter().map(HkArrayClassParam::from).collect()),
+            classes: classes.into_iter().map(HkArrayClassParam::from).collect(),
         }
     }
 }
@@ -87,11 +87,11 @@ impl<T> From<Vec<Vec<T>>> for HkArrayClass<T> {
 pub struct HkArrayClassParam<T> {
     /// Fields of the class.
     #[serde(rename = "hkparam")]
-    pub hkparams: Vec<T>,
+    pub hkparams: T,
 }
 
-impl<T> From<Vec<T>> for HkArrayClassParam<T> {
-    fn from(value: Vec<T>) -> Self {
+impl<T> From<T> for HkArrayClassParam<T> {
+    fn from(value: T) -> Self {
         Self { hkparams: value }
     }
 }
@@ -103,7 +103,7 @@ mod tests {
 
     #[test]
     fn should_serialize() {
-        let data: HkArrayClass<i32> = vec![vec![1045220557, 0]].into();
+        let data: HkArrayClass<Vec<i32>> = vec![vec![1045220557], vec![0]].into();
         let serialized = quick_xml::se::to_string(&data).unwrap();
 
         let expected_xml = "\
@@ -137,18 +137,18 @@ mod tests {
                 </hkobject>
             </hkparam>
         "###;
-        let deserialized: HkArrayClass<&str> = quick_xml::de::from_str(xml).unwrap();
+        let deserialized: HkArrayClass<Vec<&str>> = quick_xml::de::from_str(xml).unwrap();
 
         let expected = HkArrayClass {
             numelements: 2,
-            classes: Some(vec![
+            classes: vec![
                 HkArrayClassParam {
                     hkparams: vec!["#0063", "#0063"],
                 },
                 HkArrayClassParam {
                     hkparams: vec!["#0064"],
                 },
-            ]),
+            ],
         };
 
         assert_eq!(deserialized, expected);

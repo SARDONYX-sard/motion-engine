@@ -71,7 +71,7 @@ pub fn generate_struct_fields<'a>(
     /// -   type: `{type_name}`
     /// - offset: {offset}
     /// -  flags: `{flags}`
-    {tag_name}: {rust_type_},
+    pub {tag_name}: {rust_type_},
 "#
         ));
         fields.insert(member_name, (tag_name, rust_type.into()));

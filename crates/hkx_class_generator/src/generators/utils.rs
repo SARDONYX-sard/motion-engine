@@ -16,7 +16,10 @@ pub fn is_copyable(input: &str) -> bool {
             | "f32"
             | "f64"
             | "()"
+            | "Vector3<f32>"
             | "Vector4<f32>"
+            | "Matrix3<f32>"
+            | "Matrix4<f32>"
     )
 }
 

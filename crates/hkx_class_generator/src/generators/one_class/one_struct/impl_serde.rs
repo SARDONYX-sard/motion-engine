@@ -11,20 +11,13 @@ pub fn generate_impl_serde(rust_struct_name: &str, life_time: &str, fields_len: 
     let visitor_de_with_life_time = format!("{rust_struct_name}Visitor{de_life_time}");
 
     // serde only supports up to `[T; 32]`, so use `Vec` if it is larger than that.
-    let visitor_array_ser_type = if fields_len > 0 {
-        format!("Vec<{visitor_ser_with_life_time}>")
-    } else {
-        format!("[{rust_struct_name}Visitor; {fields_len}]")
-    };
-    let visitor_array_de_type = if fields_len > 0 {
-        format!("Vec<{visitor_de_with_life_time}>")
-    } else {
-        format!("[{rust_struct_name}Visitor; {fields_len}]")
-    };
-    let serde_note = if fields_len > 0 {
-        "\n        // Use `Vec` instead, because the fields of this class are more than 32 and serde only supports up to `[T; 32]`."
-    } else {
-        ""
+    let mut serde_note = "";
+    let mut visitor_array_ser_type = format!("[{rust_struct_name}Visitor; {fields_len}]");
+    let mut visitor_array_de_type = format!("[{rust_struct_name}Visitor; {fields_len}]");
+    if fields_len > 0 {
+        serde_note =  "\n        // Use `Vec` instead, because the fields of this class are more than 32 and serde only supports up to `[T; 32]`." ;
+        visitor_array_ser_type = format!("Vec<{visitor_ser_with_life_time}>");
+        visitor_array_de_type = format!("Vec<{visitor_de_with_life_time}>");
     };
 
     rust_code.push_str(&format!(

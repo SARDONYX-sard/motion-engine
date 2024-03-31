@@ -73,6 +73,7 @@ pub fn generate_class_params(class_map: &ClassMap, life_time_map: &LifeTimeMap) 
         deserialize_match_inner_code.push_str(&format!(
             r#"                                    "{cpp_class_name}" => {{
                                                         ClassParams::{rust_enum_name}(map.next_value()?)
+
                                     }},
 "#
         ));

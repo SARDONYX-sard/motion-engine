@@ -25,7 +25,7 @@ use serde::{Deserialize, Serialize};
 /// And to do that, we need the parent enum that wraps this structure.
 ///
 /// In summary, the parent enum determines and retrieves the `name` attribute, so it is not included in this structure.
-#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename = "hkparam")]
 pub struct HkArrayClass<T> {
     /// Length of the class
@@ -44,6 +44,15 @@ pub struct HkArrayClass<T> {
     #[serde(rename = "hkobject")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub classes: Option<Vec<HkArrayClassParam<T>>>,
+}
+
+impl<T> Default for HkArrayClass<T> {
+    fn default() -> Self {
+        Self {
+            numelements: 0,
+            classes: None,
+        }
+    }
 }
 
 impl<T> From<Vec<HkArrayClassParam<T>>> for HkArrayClass<T> {

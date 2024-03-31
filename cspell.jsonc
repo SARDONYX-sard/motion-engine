@@ -36,6 +36,7 @@
     "QSTRANSFORM",
     "RELARRAY",
     "repr",
+    "rfind",
     "roxmltree",
     "rsplit",
     "rustfmt",

@@ -188,7 +188,7 @@ mod tests {
         );
         let generated_code = generate_bitflags(&enum_info);
 
-        let expected = include_str!("../../src/hkxcmd_parser/flag_values.rs");
+        let expected = include_str!("../../../src/hkxcmd_parser/flag_values.rs");
         let expected = &expected[..expected.find("#[cfg(test").unwrap()];
         assert_eq!(generated_code, expected);
         tracing::debug!("{generated_code}");

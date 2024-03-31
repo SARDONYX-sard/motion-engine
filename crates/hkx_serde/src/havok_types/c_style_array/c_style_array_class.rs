@@ -75,7 +75,7 @@ where
 ///     <hkparam>#0063</hkparam> <!-- This line -->
 /// </hkobject>
 /// ````
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct CStyleArrayClassParam<T> {
     #[serde(rename = "hkparam")]
     pub hkparam: T,

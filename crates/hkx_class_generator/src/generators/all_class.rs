@@ -1,6 +1,9 @@
 use super::{
     class_params::generate_class_params,
-    one_class::{generate_all_fields, generate_code, get_lifetime_from_fields},
+    lifetime_manager::get_lifetime_from_fields,
+    one_class::{
+        generate_all_fields, generate_one_class, visitor::visitor_fields::generate_visitor_fields,
+    },
 };
 use crate::hkxcmd_parser::parse_class;
 use convert_case::{Case, Casing};
@@ -38,13 +41,16 @@ pub fn generate_classes(output_dir: impl AsRef<Path>, rpt_dir: impl AsRef<Path>)
             | "hkaiTraversalAnnotationLibrary"
             | "hkaiTraversalAnnotationLibraryAnnotation"
             | "hkbnpPhysicsInterface"
+            //
             // Classes that currently error out
             | "hkClassMember" // duplicate enum error DeprecatedFlagValues
             | "hkColor" // ExtendedColors is duplicate enum error
-            | "hkpAgent1nSector" // Unsupported stack size [u8;460]
             | "hkpConstraintData"// duplicate enum error ConstraintType
-            | "hkpSerializedAgentNnEntry"  // Unsupported stack size [u8;160] nnEntryData
             | "hkpWheelConstraintDataAtoms" // duplicate enum error Axis
+            //
+            | "hkpAgent1nSector" // Unsupported stack size [u8;460]
+            | "hkpSerializedAgentNnEntry"  // Unsupported stack size [u8;160] nnEntryData
+            //
             // dependencies above
             | "hkClass" //HkClassMember
             | "hkMonitorStreamColorTable" // hkMonitorStreamColorTableColorPair
@@ -61,18 +67,18 @@ pub fn generate_classes(output_dir: impl AsRef<Path>, rpt_dir: impl AsRef<Path>)
         // The binary deserializer implementation process requires only four classes, but only parses them for parent class information.
         class_map.insert(class.name.clone(), class.clone());
 
-        #[cfg(debug_assertions)]
-        // To extract only defaultmale.kkx classes for debugging purposes during the binary deserializer implementation process
-        if !matches!(
-            rpt_file_name,
-            "hkRootLevelContainer"
-                | "hkRootLevelContainerNamedVariant" // depended by `hkRootLevelContainer`
-                | "hkbProjectStringData"
-                | "hkbProjectData"
-                | "hkbTransitionEffect" // For enum EventMode(depended by `hkbProjectData`)
-        ) {
-            continue;
-        }
+        // #[cfg(debug_assertions)]
+        // // To extract only defaultmale.kkx classes for debugging purposes during the binary deserializer implementation process
+        // if !matches!(
+        //     rpt_file_name,
+        //     "hkRootLevelContainer"
+        //         | "hkRootLevelContainerNamedVariant" // depended by `hkRootLevelContainer`
+        //         | "hkbProjectStringData"
+        //         | "hkbProjectData"
+        //         | "hkbTransitionEffect" // For enum EventMode(depended by `hkbProjectData`)
+        // ) {
+        //     continue;
+        // }
 
         let rust_file_name = rpt_file_name.to_case(Case::Snake);
         let import_code = format!("mod {rust_file_name};\npub use {rust_file_name}::*;\n");
@@ -87,7 +93,8 @@ pub fn generate_classes(output_dir: impl AsRef<Path>, rpt_dir: impl AsRef<Path>)
     let mut life_time_name_map = HashMap::new();
     for (_sig, class) in class_map.clone().into_iter() {
         // fields = IndexMap<"C++ field name", ("rust enum tag name", "rust type name")>
-        let (_rust_fields_code, fields) = generate_all_fields(&class, &class_map, None);
+        let (_rust_fields_code, fields) =
+            generate_all_fields(&class, &class_map, None, generate_visitor_fields);
 
         let life_time = get_lifetime_from_fields(&fields);
         let rust_struct_name = class.name.to_case(Case::Pascal);
@@ -100,8 +107,12 @@ pub fn generate_classes(output_dir: impl AsRef<Path>, rpt_dir: impl AsRef<Path>)
     // Example
     // field_name: ClassName<'a>, => ClassOfClass<'a>
     for (_sig, class) in &class_map {
-        let (_rust_fields_code, fields) =
-            generate_all_fields(class, &class_map, Some(&life_time_name_map));
+        let (_rust_fields_code, fields) = generate_all_fields(
+            class,
+            &class_map,
+            Some(&life_time_name_map),
+            generate_visitor_fields,
+        );
 
         let life_time = get_lifetime_from_fields(&fields);
         let rust_struct_name = class.name.to_case(Case::Pascal);
@@ -113,7 +124,7 @@ pub fn generate_classes(output_dir: impl AsRef<Path>, rpt_dir: impl AsRef<Path>)
     // 4. Generate havok class code.
     for (_sig, class) in &class_map {
         let rust_file = output_dir.join(format!("{}.rs", class.name.to_case(Case::Snake)));
-        let rust_code = generate_code(&class.name, &class_map, &life_time_name_map);
+        let rust_code = generate_one_class(&class.name, &class_map, &life_time_name_map);
         std::fs::write(rust_file, rust_code).unwrap();
     }
 

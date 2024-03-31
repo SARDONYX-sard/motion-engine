@@ -20,7 +20,7 @@ pub trait ByteSerialize {
 /// Deserialize trait for HKX binaries for C++ Havok class.
 pub trait ByteDeSerialize {
     /// Create a new instance from bytes slice(HKX binary).
-    fn from_bytes<B>(bytes: &[u8], de: &mut PackFileDeserializer) -> Result<Vec<Self>>
+    fn from_bytes<B>(bytes: &[u8], de: &mut PackFileDeserializer) -> Result<Self>
     where
         B: ByteOrder,
         Self: Sized;
@@ -44,10 +44,8 @@ pub struct PackFileDeserializer<'bytes> {
     pub current_position: usize,
 }
 
-/// C++ Havok class field == a hkparam
-type Fields<T> = Vec<T>;
 /// C++ Havok class == has hkparams
-type HkClassArray<T> = Vec<Fields<T>>;
+type HkClassArray<T> = Vec<T>;
 
 impl<'bytes> PackFileDeserializer<'bytes> {
     fn read_class_array<B, T>(&mut self, bytes: &[u8]) -> Result<HkClassArray<T>>

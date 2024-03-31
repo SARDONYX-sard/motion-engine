@@ -1,4 +1,8 @@
-use super::one_class::{generate_all_fields, get_lifetime_from_fields, ClassMap, LifeTimeMap};
+use super::{
+    aliases::{ClassMap, LifeTimeMap},
+    lifetime_manager::get_lifetime_from_fields,
+    one_class::{generate_all_fields, visitor::visitor_fields::generate_visitor_fields},
+};
 use convert_case::{Case, Casing as _};
 
 /// Generate all havok C++ class enums.
@@ -18,34 +22,40 @@ pub fn generate_class_params(class_map: &ClassMap, life_time_map: &LifeTimeMap) 
 
     // The number of loops is reduced to one by generating the code inside first.
     for (cpp_class_name, class) in class_map {
-        #[cfg(debug_assertions)]
-        if !matches!(
-            class.name.as_str(),
-            "hkRootLevelContainer"
-                | "hkRootLevelContainerNamedVariant" // depended by `hkRootLevelContainer`
-                | "hkbProjectStringData"
-                | "hkbProjectData"
-                | "hkbTransitionEffect" // For enum EventMode(depended by `hkbProjectData`)
-        ) {
-            continue;
-        }
+        // #[cfg(debug_assertions)]
+        // if !matches!(
+        //     class.name.as_str(),
+        //     "hkRootLevelContainer"
+        //         | "hkRootLevelContainerNamedVariant" // depended by `hkRootLevelContainer`
+        //         | "hkbProjectStringData"
+        //         | "hkbProjectData"
+        //         | "hkbTransitionEffect" // For enum EventMode(depended by `hkbProjectData`)
+        // ) {
+        //     continue;
+        // }
 
         let signature = class.signature;
         let rust_enum_name = class.name.to_case(Case::Pascal);
 
-        let (_rust_fields_code, fields) =
-            generate_all_fields(class, class_map, Some(life_time_map));
+        let (_rust_fields_code, fields) = generate_all_fields(
+            class,
+            class_map,
+            Some(life_time_map),
+            generate_visitor_fields,
+        );
         let life_time = get_lifetime_from_fields(&fields);
         let rust_class_name_with_life_time = format!("{rust_enum_name}{life_time}");
+        // Why use Box?
+        // Because some structures are large in size, use Box to avoid wasteful use of memory, although heap cost may cause delays.
         let life_time_bound = if rust_class_name_with_life_time.ends_with("<'a>") {
-            format!("\n    #[serde(bound(deserialize = \"Vec<{rust_class_name_with_life_time}>: Deserialize<'de>\"))]")
+            format!("\n    #[serde(bound(deserialize = \"Box<{rust_class_name_with_life_time}>: Deserialize<'de>\"))]")
         } else {
             "".into()
         };
 
         enum_variants_code.push_str(&format!(
             r#"    #[serde(rename = "0x{signature:x}")]{life_time_bound}
-    {rust_enum_name}(Vec<{rust_class_name_with_life_time}>),
+    {rust_enum_name}(Box<{rust_class_name_with_life_time}>),
 
 "#
         ));
@@ -68,9 +78,9 @@ pub fn generate_class_params(class_map: &ClassMap, life_time_map: &LifeTimeMap) 
         ));
 
         bytes_deserialize_match_inner_code.push_str(&format!(
-            r#"            "{cpp_class_name}" => ClassParams::{rust_enum_name}(
-                {rust_enum_name}::from_bytes::<B>(bytes)?,
-            ),
+            r#"            "{cpp_class_name}" => ClassParams::{rust_enum_name}(Box::new(
+                {rust_enum_name}::from_bytes::<B>(bytes, de)?,
+            )),
 "#
         ));
     }
@@ -274,7 +284,11 @@ impl<'a> ClassParams<'a> {
     /// # Assumptions
     /// - The starting point of `bytes` must be the binary data position of the fields
     ///   of the class(`class_name`) to be deserialized.
-    pub fn from_class_name_and_bytes<B>(class_name: &str, bytes: &[u8]) -> Result<Self>
+    pub fn from_class_name_and_bytes<B>(
+        class_name: &str,
+        bytes: &[u8],
+        de: &mut PackFileDeserializer,
+    ) -> Result<Self>
     where
         B: ByteOrder,
     {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkpMoppCode {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,19 +49,19 @@ pub struct HkpMoppCode {
     /// -   type: `struct hkpMoppCodeCodeInfo`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    info: SingleClass<HkpMoppCodeCodeInfo>,
+    pub info: SingleClass<HkpMoppCodeCodeInfo>,
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    data: HkArrayNum<u8>,
+    pub data: HkArrayNum<u8>,
     /// # C++ Class Fields Info
     /// -   name:`"buildType"`
     /// -   type: `enum BuildType`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    build_type: BuildType,
+    pub build_type: BuildType,
 }
 
 impl Serialize for HkpMoppCode {

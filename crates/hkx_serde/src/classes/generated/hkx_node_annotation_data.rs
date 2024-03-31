@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkxNodeAnnotationData<'a> {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    time: f32,
+    pub time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"description"`
     /// -   type: `hkStringPtr`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    description: Cow<'a, str>,
+    pub description: Cow<'a, str>,
 }
 
 impl Serialize for HkxNodeAnnotationData<'_> {

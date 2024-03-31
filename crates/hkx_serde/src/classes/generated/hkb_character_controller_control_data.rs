@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,31 +33,31 @@ pub struct HkbCharacterControllerControlData {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    desired_velocity: Vector4<f32>,
+    pub desired_velocity: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"verticalGain"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    vertical_gain: f32,
+    pub vertical_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"horizontalCatchUpGain"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    horizontal_catch_up_gain: f32,
+    pub horizontal_catch_up_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxVerticalSeparation"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    max_vertical_separation: f32,
+    pub max_vertical_separation: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxHorizontalSeparation"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    max_horizontal_separation: f32,
+    pub max_horizontal_separation: f32,
 }
 
 impl Serialize for HkbCharacterControllerControlData {

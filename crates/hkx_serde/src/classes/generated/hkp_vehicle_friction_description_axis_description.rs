@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,61 +33,61 @@ pub struct HkpVehicleFrictionDescriptionAxisDescription {
     /// -   type: `hkReal[16]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    friction_circle_ytab: CStyleArray<[f32; 16]>,
+    pub friction_circle_ytab: CStyleArray<[f32; 16]>,
     /// # C++ Class Fields Info
     /// -   name:`"xStep"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    x_step: f32,
+    pub x_step: f32,
     /// # C++ Class Fields Info
     /// -   name:`"xStart"`
     /// -   type: `hkReal`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    x_start: f32,
+    pub x_start: f32,
     /// # C++ Class Fields Info
     /// -   name:`"wheelSurfaceInertia"`
     /// -   type: `hkReal`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    wheel_surface_inertia: f32,
+    pub wheel_surface_inertia: f32,
     /// # C++ Class Fields Info
     /// -   name:`"wheelSurfaceInertiaInv"`
     /// -   type: `hkReal`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    wheel_surface_inertia_inv: f32,
+    pub wheel_surface_inertia_inv: f32,
     /// # C++ Class Fields Info
     /// -   name:`"wheelChassisMassRatio"`
     /// -   type: `hkReal`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    wheel_chassis_mass_ratio: f32,
+    pub wheel_chassis_mass_ratio: f32,
     /// # C++ Class Fields Info
     /// -   name:`"wheelRadius"`
     /// -   type: `hkReal`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    wheel_radius: f32,
+    pub wheel_radius: f32,
     /// # C++ Class Fields Info
     /// -   name:`"wheelRadiusInv"`
     /// -   type: `hkReal`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    wheel_radius_inv: f32,
+    pub wheel_radius_inv: f32,
     /// # C++ Class Fields Info
     /// -   name:`"wheelDownForceFactor"`
     /// -   type: `hkReal`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    wheel_down_force_factor: f32,
+    pub wheel_down_force_factor: f32,
     /// # C++ Class Fields Info
     /// -   name:`"wheelDownForceSumFactor"`
     /// -   type: `hkReal`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    wheel_down_force_sum_factor: f32,
+    pub wheel_down_force_sum_factor: f32,
 }
 
 impl Serialize for HkpVehicleFrictionDescriptionAxisDescription {

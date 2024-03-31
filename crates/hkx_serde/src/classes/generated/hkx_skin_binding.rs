@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkxSkinBinding<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,25 +49,25 @@ pub struct HkxSkinBinding<'a> {
     /// -   type: `struct hkxMesh*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    mesh: Cow<'a, str>,
+    pub mesh: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"nodeNames"`
     /// -   type: `hkArray<hkStringPtr>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    node_names: HkArrayStringPtr<'a>,
+    pub node_names: HkArrayStringPtr<'a>,
     /// # C++ Class Fields Info
     /// -   name:`"bindPose"`
     /// -   type: `hkArray<hkMatrix4>`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    bind_pose: HkArrayMatrix4<Matrix4<f32>>,
+    pub bind_pose: HkArrayMatrix4<Matrix4<f32>>,
     /// # C++ Class Fields Info
     /// -   name:`"initSkinTransform"`
     /// -   type: `hkMatrix4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    init_skin_transform: Matrix4<f32>,
+    pub init_skin_transform: Matrix4<f32>,
 }
 
 impl Serialize for HkxSkinBinding<'_> {
@@ -132,7 +137,7 @@ impl<'a> From<&HkxSkinBinding<'a>> for Vec<HkxSkinBindingVisitor<'a>> {
             HkxSkinBindingVisitor::Mesh(data.mesh.clone().into()),
             HkxSkinBindingVisitor::NodeNames(data.node_names.clone()),
             HkxSkinBindingVisitor::BindPose(data.bind_pose.clone()),
-            HkxSkinBindingVisitor::InitSkinTransform(data.init_skin_transform.clone().into()),
+            HkxSkinBindingVisitor::InitSkinTransform(data.init_skin_transform.into()),
 
         ]
     }

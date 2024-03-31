@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,31 +33,31 @@ pub struct HkbFootIkControlsModifierLeg<'a> {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    ground_position: Vector4<f32>,
+    pub ground_position: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"ungroundedEvent"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    ungrounded_event: SingleClass<HkbEventProperty<'a>>,
+    pub ungrounded_event: SingleClass<HkbEventProperty<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"verticalError"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    vertical_error: f32,
+    pub vertical_error: f32,
     /// # C++ Class Fields Info
     /// -   name:`"hitSomething"`
     /// -   type: `hkBool`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    hit_something: bool,
+    pub hit_something: bool,
     /// # C++ Class Fields Info
     /// -   name:`"isPlantedMS"`
     /// -   type: `hkBool`
     /// - offset: 29
     /// -  flags: `FLAGS_NONE`
-    is_planted_ms: bool,
+    pub is_planted_ms: bool,
 }
 
 impl Serialize for HkbFootIkControlsModifierLeg<'_> {

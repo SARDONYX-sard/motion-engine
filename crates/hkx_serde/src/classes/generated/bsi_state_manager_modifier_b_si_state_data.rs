@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,19 +33,19 @@ pub struct BsiStateManagerModifierBSiStateData<'a> {
     /// -   type: `struct hkbGenerator*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    p_state_machine: Cow<'a, str>,
+    pub p_state_machine: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"StateID"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    state_id: i32,
+    pub state_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"iStateToSetAs"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    i_state_to_set_as: i32,
+    pub i_state_to_set_as: i32,
 }
 
 impl Serialize for BsiStateManagerModifierBSiStateData<'_> {

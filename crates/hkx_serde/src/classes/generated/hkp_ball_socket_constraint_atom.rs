@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,38 +34,38 @@ pub struct HkpBallSocketConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    _type: AtomType,
+    pub _type: AtomType,
 
     /// # C++ Class Fields Info
     /// -   name:`"solvingMethod"`
     /// -   type: `enum SolvingMethod`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    solving_method: SolvingMethod,
+    pub solving_method: SolvingMethod,
     /// # C++ Class Fields Info
     /// -   name:`"bodiesToNotify"`
     /// -   type: `hkUint8`
     /// - offset: 3
     /// -  flags: `FLAGS_NONE`
-    bodies_to_notify: u8,
+    pub bodies_to_notify: u8,
     /// # C++ Class Fields Info
     /// -   name:`"velocityStabilizationFactor"`
     /// -   type: `hkUint8`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    velocity_stabilization_factor: u8,
+    pub velocity_stabilization_factor: u8,
     /// # C++ Class Fields Info
     /// -   name:`"maxImpulse"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    max_impulse: f32,
+    pub max_impulse: f32,
     /// # C++ Class Fields Info
     /// -   name:`"inertiaStabilizationFactor"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    inertia_stabilization_factor: f32,
+    pub inertia_stabilization_factor: f32,
 }
 
 impl Serialize for HkpBallSocketConstraintAtom {

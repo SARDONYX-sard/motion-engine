@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkpGenericConstraintData<'a> {
     /// -   type: `struct hkpBridgeAtoms`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    atoms: SingleClass<HkpBridgeAtoms<'a>>,
+    pub atoms: SingleClass<HkpBridgeAtoms<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"scheme"`
     /// -   type: `struct hkpGenericConstraintDataScheme`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    scheme: SingleClass<HkpGenericConstraintDataScheme<'a>>,
+    pub scheme: SingleClass<HkpGenericConstraintDataScheme<'a>>,
 }
 
 impl Serialize for HkpGenericConstraintData<'_> {

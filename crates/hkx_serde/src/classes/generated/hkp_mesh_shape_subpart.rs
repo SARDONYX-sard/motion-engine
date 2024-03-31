@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,91 +33,91 @@ pub struct HkpMeshShapeSubpart<'a> {
     /// -   type: `void*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    vertex_base: Cow<'a, str>,
+    pub vertex_base: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"vertexStriding"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    vertex_striding: i32,
+    pub vertex_striding: i32,
     /// # C++ Class Fields Info
     /// -   name:`"numVertices"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    num_vertices: i32,
+    pub num_vertices: i32,
     /// # C++ Class Fields Info
     /// -   name:`"indexBase"`
     /// -   type: `void*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    index_base: Cow<'a, str>,
+    pub index_base: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"stridingType"`
     /// -   type: `enum MeshShapeIndexStridingType`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    striding_type: MeshShapeIndexStridingType,
+    pub striding_type: MeshShapeIndexStridingType,
     /// # C++ Class Fields Info
     /// -   name:`"materialIndexStridingType"`
     /// -   type: `enum MeshShapeMaterialIndexStridingType`
     /// - offset: 17
     /// -  flags: `FLAGS_NONE`
-    material_index_striding_type: MeshShapeMaterialIndexStridingType,
+    pub material_index_striding_type: MeshShapeMaterialIndexStridingType,
     /// # C++ Class Fields Info
     /// -   name:`"indexStriding"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    index_striding: i32,
+    pub index_striding: i32,
     /// # C++ Class Fields Info
     /// -   name:`"flipAlternateTriangles"`
     /// -   type: `hkInt32`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    flip_alternate_triangles: i32,
+    pub flip_alternate_triangles: i32,
     /// # C++ Class Fields Info
     /// -   name:`"numTriangles"`
     /// -   type: `hkInt32`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    num_triangles: i32,
+    pub num_triangles: i32,
     /// # C++ Class Fields Info
     /// -   name:`"materialIndexBase"`
     /// -   type: `void*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    material_index_base: Cow<'a, str>,
+    pub material_index_base: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"materialIndexStriding"`
     /// -   type: `hkInt32`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    material_index_striding: i32,
+    pub material_index_striding: i32,
     /// # C++ Class Fields Info
     /// -   name:`"materialBase"`
     /// -   type: `void*`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    material_base: Cow<'a, str>,
+    pub material_base: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"materialStriding"`
     /// -   type: `hkInt32`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    material_striding: i32,
+    pub material_striding: i32,
     /// # C++ Class Fields Info
     /// -   name:`"numMaterials"`
     /// -   type: `hkInt32`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    num_materials: i32,
+    pub num_materials: i32,
     /// # C++ Class Fields Info
     /// -   name:`"triangleOffset"`
     /// -   type: `hkInt32`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    triangle_offset: i32,
+    pub triangle_offset: i32,
 }
 
 impl Serialize for HkpMeshShapeSubpart<'_> {

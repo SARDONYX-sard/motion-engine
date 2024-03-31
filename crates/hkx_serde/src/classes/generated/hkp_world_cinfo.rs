@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkpWorldCinfo<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,343 +49,343 @@ pub struct HkpWorldCinfo<'a> {
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    gravity: Vector4<f32>,
+    pub gravity: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseQuerySize"`
     /// -   type: `hkInt32`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    broad_phase_query_size: i32,
+    pub broad_phase_query_size: i32,
     /// # C++ Class Fields Info
     /// -   name:`"contactRestingVelocity"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    contact_resting_velocity: f32,
+    pub contact_resting_velocity: f32,
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseBorderBehaviour"`
     /// -   type: `enum BroadPhaseBorderBehaviour`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    broad_phase_border_behaviour: BroadPhaseBorderBehaviour,
+    pub broad_phase_border_behaviour: BroadPhaseBorderBehaviour,
     /// # C++ Class Fields Info
     /// -   name:`"mtPostponeAndSortBroadPhaseBorderCallbacks"`
     /// -   type: `hkBool`
     /// - offset: 41
     /// -  flags: `FLAGS_NONE`
-    mt_postpone_and_sort_broad_phase_border_callbacks: bool,
+    pub mt_postpone_and_sort_broad_phase_border_callbacks: bool,
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseWorldAabb"`
     /// -   type: `struct hkAabb`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    broad_phase_world_aabb: SingleClass<HkAabb>,
+    pub broad_phase_world_aabb: SingleClass<HkAabb>,
     /// # C++ Class Fields Info
     /// -   name:`"useKdTree"`
     /// -   type: `hkBool`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    use_kd_tree: bool,
+    pub use_kd_tree: bool,
     /// # C++ Class Fields Info
     /// -   name:`"useMultipleTree"`
     /// -   type: `hkBool`
     /// - offset: 81
     /// -  flags: `FLAGS_NONE`
-    use_multiple_tree: bool,
+    pub use_multiple_tree: bool,
     /// # C++ Class Fields Info
     /// -   name:`"treeUpdateType"`
     /// -   type: `enum TreeUpdateType`
     /// - offset: 82
     /// -  flags: `FLAGS_NONE`
-    tree_update_type: TreeUpdateType,
+    pub tree_update_type: TreeUpdateType,
     /// # C++ Class Fields Info
     /// -   name:`"autoUpdateKdTree"`
     /// -   type: `hkBool`
     /// - offset: 83
     /// -  flags: `FLAGS_NONE`
-    auto_update_kd_tree: bool,
+    pub auto_update_kd_tree: bool,
     /// # C++ Class Fields Info
     /// -   name:`"collisionTolerance"`
     /// -   type: `hkReal`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    collision_tolerance: f32,
+    pub collision_tolerance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilter"`
     /// -   type: `struct hkpCollisionFilter*`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    collision_filter: Cow<'a, str>,
+    pub collision_filter: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"convexListFilter"`
     /// -   type: `struct hkpConvexListFilter*`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    convex_list_filter: Cow<'a, str>,
+    pub convex_list_filter: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"expectedMaxLinearVelocity"`
     /// -   type: `hkReal`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    expected_max_linear_velocity: f32,
+    pub expected_max_linear_velocity: f32,
     /// # C++ Class Fields Info
     /// -   name:`"sizeOfToiEventQueue"`
     /// -   type: `hkInt32`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
-    size_of_toi_event_queue: i32,
+    pub size_of_toi_event_queue: i32,
     /// # C++ Class Fields Info
     /// -   name:`"expectedMinPsiDeltaTime"`
     /// -   type: `hkReal`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    expected_min_psi_delta_time: f32,
+    pub expected_min_psi_delta_time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"memoryWatchDog"`
     /// -   type: `struct hkWorldMemoryAvailableWatchDog*`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
-    memory_watch_dog: Cow<'a, str>,
+    pub memory_watch_dog: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseNumMarkers"`
     /// -   type: `hkInt32`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    broad_phase_num_markers: i32,
+    pub broad_phase_num_markers: i32,
     /// # C++ Class Fields Info
     /// -   name:`"contactPointGeneration"`
     /// -   type: `enum ContactPointGeneration`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    contact_point_generation: ContactPointGeneration,
+    pub contact_point_generation: ContactPointGeneration,
     /// # C++ Class Fields Info
     /// -   name:`"allowToSkipConfirmedCallbacks"`
     /// -   type: `hkBool`
     /// - offset: 117
     /// -  flags: `FLAGS_NONE`
-    allow_to_skip_confirmed_callbacks: bool,
+    pub allow_to_skip_confirmed_callbacks: bool,
     /// # C++ Class Fields Info
     /// -   name:`"useHybridBroadphase"`
     /// -   type: `hkBool`
     /// - offset: 118
     /// -  flags: `FLAGS_NONE`
-    use_hybrid_broadphase: bool,
+    pub use_hybrid_broadphase: bool,
     /// # C++ Class Fields Info
     /// -   name:`"solverTau"`
     /// -   type: `hkReal`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
-    solver_tau: f32,
+    pub solver_tau: f32,
     /// # C++ Class Fields Info
     /// -   name:`"solverDamp"`
     /// -   type: `hkReal`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
-    solver_damp: f32,
+    pub solver_damp: f32,
     /// # C++ Class Fields Info
     /// -   name:`"solverIterations"`
     /// -   type: `hkInt32`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    solver_iterations: i32,
+    pub solver_iterations: i32,
     /// # C++ Class Fields Info
     /// -   name:`"solverMicrosteps"`
     /// -   type: `hkInt32`
     /// - offset: 132
     /// -  flags: `FLAGS_NONE`
-    solver_microsteps: i32,
+    pub solver_microsteps: i32,
     /// # C++ Class Fields Info
     /// -   name:`"maxConstraintViolation"`
     /// -   type: `hkReal`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE`
-    max_constraint_violation: f32,
+    pub max_constraint_violation: f32,
     /// # C++ Class Fields Info
     /// -   name:`"forceCoherentConstraintOrderingInSolver"`
     /// -   type: `hkBool`
     /// - offset: 140
     /// -  flags: `FLAGS_NONE`
-    force_coherent_constraint_ordering_in_solver: bool,
+    pub force_coherent_constraint_ordering_in_solver: bool,
     /// # C++ Class Fields Info
     /// -   name:`"snapCollisionToConvexEdgeThreshold"`
     /// -   type: `hkReal`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    snap_collision_to_convex_edge_threshold: f32,
+    pub snap_collision_to_convex_edge_threshold: f32,
     /// # C++ Class Fields Info
     /// -   name:`"snapCollisionToConcaveEdgeThreshold"`
     /// -   type: `hkReal`
     /// - offset: 148
     /// -  flags: `FLAGS_NONE`
-    snap_collision_to_concave_edge_threshold: f32,
+    pub snap_collision_to_concave_edge_threshold: f32,
     /// # C++ Class Fields Info
     /// -   name:`"enableToiWeldRejection"`
     /// -   type: `hkBool`
     /// - offset: 152
     /// -  flags: `FLAGS_NONE`
-    enable_toi_weld_rejection: bool,
+    pub enable_toi_weld_rejection: bool,
     /// # C++ Class Fields Info
     /// -   name:`"enableDeprecatedWelding"`
     /// -   type: `hkBool`
     /// - offset: 153
     /// -  flags: `FLAGS_NONE`
-    enable_deprecated_welding: bool,
+    pub enable_deprecated_welding: bool,
     /// # C++ Class Fields Info
     /// -   name:`"iterativeLinearCastEarlyOutDistance"`
     /// -   type: `hkReal`
     /// - offset: 156
     /// -  flags: `FLAGS_NONE`
-    iterative_linear_cast_early_out_distance: f32,
+    pub iterative_linear_cast_early_out_distance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"iterativeLinearCastMaxIterations"`
     /// -   type: `hkInt32`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    iterative_linear_cast_max_iterations: i32,
+    pub iterative_linear_cast_max_iterations: i32,
     /// # C++ Class Fields Info
     /// -   name:`"deactivationNumInactiveFramesSelectFlag0"`
     /// -   type: `hkUint8`
     /// - offset: 164
     /// -  flags: `FLAGS_NONE`
-    deactivation_num_inactive_frames_select_flag_0: u8,
+    pub deactivation_num_inactive_frames_select_flag_0: u8,
     /// # C++ Class Fields Info
     /// -   name:`"deactivationNumInactiveFramesSelectFlag1"`
     /// -   type: `hkUint8`
     /// - offset: 165
     /// -  flags: `FLAGS_NONE`
-    deactivation_num_inactive_frames_select_flag_1: u8,
+    pub deactivation_num_inactive_frames_select_flag_1: u8,
     /// # C++ Class Fields Info
     /// -   name:`"deactivationIntegrateCounter"`
     /// -   type: `hkUint8`
     /// - offset: 166
     /// -  flags: `FLAGS_NONE`
-    deactivation_integrate_counter: u8,
+    pub deactivation_integrate_counter: u8,
     /// # C++ Class Fields Info
     /// -   name:`"shouldActivateOnRigidBodyTransformChange"`
     /// -   type: `hkBool`
     /// - offset: 167
     /// -  flags: `FLAGS_NONE`
-    should_activate_on_rigid_body_transform_change: bool,
+    pub should_activate_on_rigid_body_transform_change: bool,
     /// # C++ Class Fields Info
     /// -   name:`"deactivationReferenceDistance"`
     /// -   type: `hkReal`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE`
-    deactivation_reference_distance: f32,
+    pub deactivation_reference_distance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"toiCollisionResponseRotateNormal"`
     /// -   type: `hkReal`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE`
-    toi_collision_response_rotate_normal: f32,
+    pub toi_collision_response_rotate_normal: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxSectorsPerMidphaseCollideTask"`
     /// -   type: `hkInt32`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
-    max_sectors_per_midphase_collide_task: i32,
+    pub max_sectors_per_midphase_collide_task: i32,
     /// # C++ Class Fields Info
     /// -   name:`"maxSectorsPerNarrowphaseCollideTask"`
     /// -   type: `hkInt32`
     /// - offset: 180
     /// -  flags: `FLAGS_NONE`
-    max_sectors_per_narrowphase_collide_task: i32,
+    pub max_sectors_per_narrowphase_collide_task: i32,
     /// # C++ Class Fields Info
     /// -   name:`"processToisMultithreaded"`
     /// -   type: `hkBool`
     /// - offset: 184
     /// -  flags: `FLAGS_NONE`
-    process_tois_multithreaded: bool,
+    pub process_tois_multithreaded: bool,
     /// # C++ Class Fields Info
     /// -   name:`"maxEntriesPerToiMidphaseCollideTask"`
     /// -   type: `hkInt32`
     /// - offset: 188
     /// -  flags: `FLAGS_NONE`
-    max_entries_per_toi_midphase_collide_task: i32,
+    pub max_entries_per_toi_midphase_collide_task: i32,
     /// # C++ Class Fields Info
     /// -   name:`"maxEntriesPerToiNarrowphaseCollideTask"`
     /// -   type: `hkInt32`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE`
-    max_entries_per_toi_narrowphase_collide_task: i32,
+    pub max_entries_per_toi_narrowphase_collide_task: i32,
     /// # C++ Class Fields Info
     /// -   name:`"maxNumToiCollisionPairsSinglethreaded"`
     /// -   type: `hkInt32`
     /// - offset: 196
     /// -  flags: `FLAGS_NONE`
-    max_num_toi_collision_pairs_singlethreaded: i32,
+    pub max_num_toi_collision_pairs_singlethreaded: i32,
     /// # C++ Class Fields Info
     /// -   name:`"numToisTillAllowedPenetrationSimplifiedToi"`
     /// -   type: `hkReal`
     /// - offset: 200
     /// -  flags: `FLAGS_NONE`
-    num_tois_till_allowed_penetration_simplified_toi: f32,
+    pub num_tois_till_allowed_penetration_simplified_toi: f32,
     /// # C++ Class Fields Info
     /// -   name:`"numToisTillAllowedPenetrationToi"`
     /// -   type: `hkReal`
     /// - offset: 204
     /// -  flags: `FLAGS_NONE`
-    num_tois_till_allowed_penetration_toi: f32,
+    pub num_tois_till_allowed_penetration_toi: f32,
     /// # C++ Class Fields Info
     /// -   name:`"numToisTillAllowedPenetrationToiHigher"`
     /// -   type: `hkReal`
     /// - offset: 208
     /// -  flags: `FLAGS_NONE`
-    num_tois_till_allowed_penetration_toi_higher: f32,
+    pub num_tois_till_allowed_penetration_toi_higher: f32,
     /// # C++ Class Fields Info
     /// -   name:`"numToisTillAllowedPenetrationToiForced"`
     /// -   type: `hkReal`
     /// - offset: 212
     /// -  flags: `FLAGS_NONE`
-    num_tois_till_allowed_penetration_toi_forced: f32,
+    pub num_tois_till_allowed_penetration_toi_forced: f32,
     /// # C++ Class Fields Info
     /// -   name:`"enableDeactivation"`
     /// -   type: `hkBool`
     /// - offset: 216
     /// -  flags: `FLAGS_NONE`
-    enable_deactivation: bool,
+    pub enable_deactivation: bool,
     /// # C++ Class Fields Info
     /// -   name:`"simulationType"`
     /// -   type: `enum SimulationType`
     /// - offset: 217
     /// -  flags: `FLAGS_NONE`
-    simulation_type: SimulationType,
+    pub simulation_type: SimulationType,
     /// # C++ Class Fields Info
     /// -   name:`"enableSimulationIslands"`
     /// -   type: `hkBool`
     /// - offset: 218
     /// -  flags: `FLAGS_NONE`
-    enable_simulation_islands: bool,
+    pub enable_simulation_islands: bool,
     /// # C++ Class Fields Info
     /// -   name:`"minDesiredIslandSize"`
     /// -   type: `hkUint32`
     /// - offset: 220
     /// -  flags: `FLAGS_NONE`
-    min_desired_island_size: u32,
+    pub min_desired_island_size: u32,
     /// # C++ Class Fields Info
     /// -   name:`"processActionsInSingleThread"`
     /// -   type: `hkBool`
     /// - offset: 224
     /// -  flags: `FLAGS_NONE`
-    process_actions_in_single_thread: bool,
+    pub process_actions_in_single_thread: bool,
     /// # C++ Class Fields Info
     /// -   name:`"allowIntegrationOfIslandsWithoutConstraintsInASeparateJob"`
     /// -   type: `hkBool`
     /// - offset: 225
     /// -  flags: `FLAGS_NONE`
-    allow_integration_of_islands_without_constraints_in_a_separate_job: bool,
+    pub allow_integration_of_islands_without_constraints_in_a_separate_job: bool,
     /// # C++ Class Fields Info
     /// -   name:`"frameMarkerPsiSnap"`
     /// -   type: `hkReal`
     /// - offset: 228
     /// -  flags: `FLAGS_NONE`
-    frame_marker_psi_snap: f32,
+    pub frame_marker_psi_snap: f32,
     /// # C++ Class Fields Info
     /// -   name:`"fireCollisionCallbacks"`
     /// -   type: `hkBool`
     /// - offset: 232
     /// -  flags: `FLAGS_NONE`
-    fire_collision_callbacks: bool,
+    pub fire_collision_callbacks: bool,
 }
 
 impl Serialize for HkpWorldCinfo<'_> {

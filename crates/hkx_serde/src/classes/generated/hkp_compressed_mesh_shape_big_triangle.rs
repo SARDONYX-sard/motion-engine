@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,37 +33,37 @@ pub struct HkpCompressedMeshShapeBigTriangle {
     /// -   type: `hkUint16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    a: u16,
+    pub a: u16,
     /// # C++ Class Fields Info
     /// -   name:`"b"`
     /// -   type: `hkUint16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    b: u16,
+    pub b: u16,
     /// # C++ Class Fields Info
     /// -   name:`"c"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    c: u16,
+    pub c: u16,
     /// # C++ Class Fields Info
     /// -   name:`"material"`
     /// -   type: `hkUint32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    material: u32,
+    pub material: u32,
     /// # C++ Class Fields Info
     /// -   name:`"weldingInfo"`
     /// -   type: `hkUint16`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    welding_info: u16,
+    pub welding_info: u16,
     /// # C++ Class Fields Info
     /// -   name:`"transformIndex"`
     /// -   type: `hkUint16`
     /// - offset: 14
     /// -  flags: `FLAGS_NONE`
-    transform_index: u16,
+    pub transform_index: u16,
 }
 
 impl Serialize for HkpCompressedMeshShapeBigTriangle {

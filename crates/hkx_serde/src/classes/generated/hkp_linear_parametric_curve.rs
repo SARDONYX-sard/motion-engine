@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -31,13 +36,13 @@ pub struct HkpLinearParametricCurve {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -46,31 +51,31 @@ pub struct HkpLinearParametricCurve {
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    smoothing_factor: f32,
+    pub smoothing_factor: f32,
     /// # C++ Class Fields Info
     /// -   name:`"closedLoop"`
     /// -   type: `hkBool`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    closed_loop: bool,
+    pub closed_loop: bool,
     /// # C++ Class Fields Info
     /// -   name:`"dirNotParallelToTangentAlongWholePath"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    dir_not_parallel_to_tangent_along_whole_path: Vector4<f32>,
+    pub dir_not_parallel_to_tangent_along_whole_path: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"points"`
     /// -   type: `hkArray<hkVector4>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    points: HkArrayVector<Vector4<f32>>,
+    pub points: HkArrayVector<Vector4<f32>>,
     /// # C++ Class Fields Info
     /// -   name:`"distance"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    distance: HkArrayNum<f32>,
+    pub distance: HkArrayNum<f32>,
 }
 
 impl Serialize for HkpLinearParametricCurve {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,31 +33,31 @@ pub struct HkContactPointMaterial {
     /// -   type: `hkUlong`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Class Fields Info
     /// -   name:`"friction"`
     /// -   type: `hkUint8`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    friction: u8,
+    pub friction: u8,
     /// # C++ Class Fields Info
     /// -   name:`"restitution"`
     /// -   type: `hkUint8`
     /// - offset: 5
     /// -  flags: `FLAGS_NONE`
-    restitution: u8,
+    pub restitution: u8,
     /// # C++ Class Fields Info
     /// -   name:`"maxImpulse"`
     /// -   type: `hkUint8`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    max_impulse: u8,
+    pub max_impulse: u8,
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `hkUint8`
     /// - offset: 7
     /// -  flags: `FLAGS_NONE`
-    flags: u8,
+    pub flags: u8,
 }
 
 impl Serialize for HkContactPointMaterial {

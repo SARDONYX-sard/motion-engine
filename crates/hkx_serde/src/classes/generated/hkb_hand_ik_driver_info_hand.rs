@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,85 +33,85 @@ pub struct HkbHandIkDriverInfoHand<'a> {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    elbow_axis_ls: Vector4<f32>,
+    pub elbow_axis_ls: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"backHandNormalLS"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    back_hand_normal_ls: Vector4<f32>,
+    pub back_hand_normal_ls: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"handOffsetLS"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    hand_offset_ls: Vector4<f32>,
+    pub hand_offset_ls: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"handOrienationOffsetLS"`
     /// -   type: `hkQuaternion`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    hand_orienation_offset_ls: Quaternion<f32>,
+    pub hand_orienation_offset_ls: Quaternion<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"maxElbowAngleDegrees"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    max_elbow_angle_degrees: f32,
+    pub max_elbow_angle_degrees: f32,
     /// # C++ Class Fields Info
     /// -   name:`"minElbowAngleDegrees"`
     /// -   type: `hkReal`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    min_elbow_angle_degrees: f32,
+    pub min_elbow_angle_degrees: f32,
     /// # C++ Class Fields Info
     /// -   name:`"shoulderIndex"`
     /// -   type: `hkInt16`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    shoulder_index: i16,
+    pub shoulder_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"shoulderSiblingIndex"`
     /// -   type: `hkInt16`
     /// - offset: 74
     /// -  flags: `FLAGS_NONE`
-    shoulder_sibling_index: i16,
+    pub shoulder_sibling_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"elbowIndex"`
     /// -   type: `hkInt16`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    elbow_index: i16,
+    pub elbow_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"elbowSiblingIndex"`
     /// -   type: `hkInt16`
     /// - offset: 78
     /// -  flags: `FLAGS_NONE`
-    elbow_sibling_index: i16,
+    pub elbow_sibling_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"wristIndex"`
     /// -   type: `hkInt16`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    wrist_index: i16,
+    pub wrist_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"enforceEndPosition"`
     /// -   type: `hkBool`
     /// - offset: 82
     /// -  flags: `FLAGS_NONE`
-    enforce_end_position: bool,
+    pub enforce_end_position: bool,
     /// # C++ Class Fields Info
     /// -   name:`"enforceEndRotation"`
     /// -   type: `hkBool`
     /// - offset: 83
     /// -  flags: `FLAGS_NONE`
-    enforce_end_rotation: bool,
+    pub enforce_end_rotation: bool,
     /// # C++ Class Fields Info
     /// -   name:`"localFrameName"`
     /// -   type: `hkStringPtr`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    local_frame_name: Cow<'a, str>,
+    pub local_frame_name: Cow<'a, str>,
 }
 
 impl Serialize for HkbHandIkDriverInfoHand<'_> {

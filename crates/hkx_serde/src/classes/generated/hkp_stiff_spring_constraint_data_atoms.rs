@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkpStiffSpringConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTranslationsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    pivots: SingleClass<HkpSetLocalTranslationsConstraintAtom>,
+    pub pivots: SingleClass<HkpSetLocalTranslationsConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"spring"`
     /// -   type: `struct hkpStiffSpringConstraintAtom`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    spring: SingleClass<HkpStiffSpringConstraintAtom>,
+    pub spring: SingleClass<HkpStiffSpringConstraintAtom>,
 }
 
 impl Serialize for HkpStiffSpringConstraintDataAtoms {

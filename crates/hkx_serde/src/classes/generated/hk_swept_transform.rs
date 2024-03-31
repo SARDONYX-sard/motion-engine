@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,31 +33,31 @@ pub struct HkSweptTransform {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    center_of_mass_0: Vector4<f32>,
+    pub center_of_mass_0: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"centerOfMass1"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    center_of_mass_1: Vector4<f32>,
+    pub center_of_mass_1: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"rotation0"`
     /// -   type: `hkQuaternion`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    rotation_0: Quaternion<f32>,
+    pub rotation_0: Quaternion<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"rotation1"`
     /// -   type: `hkQuaternion`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    rotation_1: Quaternion<f32>,
+    pub rotation_1: Quaternion<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"centerOfMassLocal"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    center_of_mass_local: Vector4<f32>,
+    pub center_of_mass_local: Vector4<f32>,
 }
 
 impl Serialize for HkSweptTransform {

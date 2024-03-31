@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkpConvexPieceStreamData {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,19 +49,19 @@ pub struct HkpConvexPieceStreamData {
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    convex_piece_stream: HkArrayNum<u32>,
+    pub convex_piece_stream: HkArrayNum<u32>,
     /// # C++ Class Fields Info
     /// -   name:`"convexPieceOffsets"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    convex_piece_offsets: HkArrayNum<u32>,
+    pub convex_piece_offsets: HkArrayNum<u32>,
     /// # C++ Class Fields Info
     /// -   name:`"convexPieceSingleTriangles"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    convex_piece_single_triangles: HkArrayNum<u32>,
+    pub convex_piece_single_triangles: HkArrayNum<u32>,
 }
 
 impl Serialize for HkpConvexPieceStreamData {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,37 +33,37 @@ pub struct HkVertexFormatElement {
     /// -   type: `enum ComponentType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    data_type: ComponentType,
+    pub data_type: ComponentType,
     /// # C++ Class Fields Info
     /// -   name:`"numValues"`
     /// -   type: `hkUint8`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
-    num_values: u8,
+    pub num_values: u8,
     /// # C++ Class Fields Info
     /// -   name:`"usage"`
     /// -   type: `enum ComponentUsage`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    usage: ComponentUsage,
+    pub usage: ComponentUsage,
     /// # C++ Class Fields Info
     /// -   name:`"subUsage"`
     /// -   type: `hkUint8`
     /// - offset: 3
     /// -  flags: `FLAGS_NONE`
-    sub_usage: u8,
+    pub sub_usage: u8,
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `flags HintFlags`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    flags: HintFlags,
+    pub flags: HintFlags,
     /// # C++ Class Fields Info
     /// -   name:`"pad"`
     /// -   type: `hkUint8[3]`
     /// - offset: 5
     /// -  flags: `FLAGS_NONE`
-    pad: CStyleArray<[u8; 3]>,
+    pub pad: CStyleArray<[u8; 3]>,
 }
 
 impl Serialize for HkVertexFormatElement {

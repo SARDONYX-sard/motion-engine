@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,61 +33,61 @@ pub struct HkbContext<'a> {
     /// -   type: `void*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    character: Cow<'a, str>,
+    pub character: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"behavior"`
     /// -   type: `void*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    behavior: Cow<'a, str>,
+    pub behavior: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"nodeToIndexMap"`
     /// -   type: `void*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    node_to_index_map: Cow<'a, str>,
+    pub node_to_index_map: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"eventQueue"`
     /// -   type: `void*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    event_queue: Cow<'a, str>,
+    pub event_queue: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"sharedEventQueue"`
     /// -   type: `void*`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    shared_event_queue: Cow<'a, str>,
+    pub shared_event_queue: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"generatorOutputListener"`
     /// -   type: `struct hkbGeneratorOutputListener*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    generator_output_listener: Cow<'a, str>,
+    pub generator_output_listener: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"eventTriggeredTransition"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    event_triggered_transition: bool,
+    pub event_triggered_transition: bool,
     /// # C++ Class Fields Info
     /// -   name:`"world"`
     /// -   type: `void*`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    world: Cow<'a, str>,
+    pub world: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"attachmentManager"`
     /// -   type: `void*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    attachment_manager: Cow<'a, str>,
+    pub attachment_manager: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"animationCache"`
     /// -   type: `void*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    animation_cache: Cow<'a, str>,
+    pub animation_cache: Cow<'a, str>,
 }
 
 impl Serialize for HkbContext<'_> {

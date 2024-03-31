@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,19 +33,19 @@ pub struct HkpHingeLimitsDataAtoms {
     /// -   type: `struct hkpSetLocalRotationsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    rotations: SingleClass<HkpSetLocalRotationsConstraintAtom>,
+    pub rotations: SingleClass<HkpSetLocalRotationsConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"angLimit"`
     /// -   type: `struct hkpAngLimitConstraintAtom`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    ang_limit: SingleClass<HkpAngLimitConstraintAtom>,
+    pub ang_limit: SingleClass<HkpAngLimitConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"2dAng"`
     /// -   type: `struct hkp2dAngConstraintAtom`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    _2_d_ang: SingleClass<Hkp2DAngConstraintAtom>,
+    pub _2_d_ang: SingleClass<Hkp2DAngConstraintAtom>,
 }
 
 impl Serialize for HkpHingeLimitsDataAtoms {

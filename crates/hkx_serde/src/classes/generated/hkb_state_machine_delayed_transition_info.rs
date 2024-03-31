@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,25 +33,25 @@ pub struct HkbStateMachineDelayedTransitionInfo {
     /// -   type: `struct hkbStateMachineProspectiveTransitionInfo`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    delayed_transition: SingleClass<HkbStateMachineProspectiveTransitionInfo>,
+    pub delayed_transition: SingleClass<HkbStateMachineProspectiveTransitionInfo>,
     /// # C++ Class Fields Info
     /// -   name:`"timeDelayed"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    time_delayed: f32,
+    pub time_delayed: f32,
     /// # C++ Class Fields Info
     /// -   name:`"isDelayedTransitionReturnToPreviousState"`
     /// -   type: `hkBool`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    is_delayed_transition_return_to_previous_state: bool,
+    pub is_delayed_transition_return_to_previous_state: bool,
     /// # C++ Class Fields Info
     /// -   name:`"wasInAbutRangeLastFrame"`
     /// -   type: `hkBool`
     /// - offset: 21
     /// -  flags: `FLAGS_NONE`
-    was_in_abut_range_last_frame: bool,
+    pub was_in_abut_range_last_frame: bool,
 }
 
 impl Serialize for HkbStateMachineDelayedTransitionInfo {

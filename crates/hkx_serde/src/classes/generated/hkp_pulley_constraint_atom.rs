@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,32 +34,32 @@ pub struct HkpPulleyConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    _type: AtomType,
+    pub _type: AtomType,
 
     /// # C++ Class Fields Info
     /// -   name:`"fixedPivotAinWorld"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    fixed_pivot_ain_world: Vector4<f32>,
+    pub fixed_pivot_ain_world: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"fixedPivotBinWorld"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    fixed_pivot_bin_world: Vector4<f32>,
+    pub fixed_pivot_bin_world: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"ropeLength"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    rope_length: f32,
+    pub rope_length: f32,
     /// # C++ Class Fields Info
     /// -   name:`"leverageOnBodyB"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    leverage_on_body_b: f32,
+    pub leverage_on_body_b: f32,
 }
 
 impl Serialize for HkpPulleyConstraintAtom {

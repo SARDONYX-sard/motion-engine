@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,55 +33,55 @@ pub struct HkMonitorStreamFrameInfo<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    heading: Cow<'a, str>,
+    pub heading: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"indexOfTimer0"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    index_of_timer_0: i32,
+    pub index_of_timer_0: i32,
     /// # C++ Class Fields Info
     /// -   name:`"indexOfTimer1"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    index_of_timer_1: i32,
+    pub index_of_timer_1: i32,
     /// # C++ Class Fields Info
     /// -   name:`"absoluteTimeCounter"`
     /// -   type: `enum AbsoluteTimeCounter`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    absolute_time_counter: AbsoluteTimeCounter,
+    pub absolute_time_counter: AbsoluteTimeCounter,
     /// # C++ Class Fields Info
     /// -   name:`"timerFactor0"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    timer_factor_0: f32,
+    pub timer_factor_0: f32,
     /// # C++ Class Fields Info
     /// -   name:`"timerFactor1"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    timer_factor_1: f32,
+    pub timer_factor_1: f32,
     /// # C++ Class Fields Info
     /// -   name:`"threadId"`
     /// -   type: `hkInt32`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    thread_id: i32,
+    pub thread_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"frameStreamStart"`
     /// -   type: `hkInt32`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    frame_stream_start: i32,
+    pub frame_stream_start: i32,
     /// # C++ Class Fields Info
     /// -   name:`"frameStreamEnd"`
     /// -   type: `hkInt32`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    frame_stream_end: i32,
+    pub frame_stream_end: i32,
 }
 
 impl Serialize for HkMonitorStreamFrameInfo<'_> {

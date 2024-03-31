@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,56 +34,56 @@ pub struct HkpEntity<'a> {
     /// -   type: `void*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    world: Cow<'a, str>,
+    pub world: Cow<'a, str>,
     /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"collidable"`
     /// -   type: `struct hkpLinkedCollidable`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    collidable: SingleClass<HkpLinkedCollidable<'a>>,
+    pub collidable: SingleClass<HkpLinkedCollidable<'a>>,
     /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"multiThreadCheck"`
     /// -   type: `struct hkMultiThreadCheck`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
-    multi_thread_check: SingleClass<HkMultiThreadCheck>,
+    pub multi_thread_check: SingleClass<HkMultiThreadCheck>,
     /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"properties"`
     /// -   type: `hkArray<struct hkpProperty>`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
-    properties: HkArrayClass<HkpProperty>,
+    pub properties: HkArrayClass<HkpProperty>,
     /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"treeData"`
     /// -   type: `void*`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    tree_data: Cow<'a, str>,
+    pub tree_data: Cow<'a, str>,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -87,133 +92,133 @@ pub struct HkpEntity<'a> {
     /// -   type: `struct hkpMaterial`
     /// - offset: 140
     /// -  flags: `FLAGS_NONE`
-    material: SingleClass<HkpMaterial>,
+    pub material: SingleClass<HkpMaterial>,
     /// # C++ Class Fields Info
     /// -   name:`"limitContactImpulseUtilAndFlag"`
     /// -   type: `void*`
     /// - offset: 152
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    limit_contact_impulse_util_and_flag: Cow<'a, str>,
+    pub limit_contact_impulse_util_and_flag: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"damageMultiplier"`
     /// -   type: `hkReal`
     /// - offset: 156
     /// -  flags: `FLAGS_NONE`
-    damage_multiplier: f32,
+    pub damage_multiplier: f32,
     /// # C++ Class Fields Info
     /// -   name:`"breakableBody"`
     /// -   type: `void*`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    breakable_body: Cow<'a, str>,
+    pub breakable_body: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"solverData"`
     /// -   type: `hkUint32`
     /// - offset: 164
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    solver_data: u32,
+    pub solver_data: u32,
     /// # C++ Class Fields Info
     /// -   name:`"storageIndex"`
     /// -   type: `hkUint16`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE`
-    storage_index: u16,
+    pub storage_index: u16,
     /// # C++ Class Fields Info
     /// -   name:`"contactPointCallbackDelay"`
     /// -   type: `hkUint16`
     /// - offset: 170
     /// -  flags: `FLAGS_NONE`
-    contact_point_callback_delay: u16,
+    pub contact_point_callback_delay: u16,
     /// # C++ Class Fields Info
     /// -   name:`"constraintsMaster"`
     /// -   type: `struct hkpEntitySmallArraySerializeOverrideType`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    constraints_master: SingleClass<HkpEntitySmallArraySerializeOverrideType<'a>>,
+    pub constraints_master: SingleClass<HkpEntitySmallArraySerializeOverrideType<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"constraintsSlave"`
     /// -   type: `hkArray<hkpConstraintInstance*>`
     /// - offset: 180
     /// -  flags: `FLAGS_NONE|NOT_OWNED|SERIALIZE_IGNORED`
-    constraints_slave: HkArrayRef<Cow<'a, str>>,
+    pub constraints_slave: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"constraintRuntime"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    constraint_runtime: HkArrayNum<u8>,
+    pub constraint_runtime: HkArrayNum<u8>,
     /// # C++ Class Fields Info
     /// -   name:`"simulationIsland"`
     /// -   type: `void*`
     /// - offset: 204
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    simulation_island: Cow<'a, str>,
+    pub simulation_island: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"autoRemoveLevel"`
     /// -   type: `hkInt8`
     /// - offset: 208
     /// -  flags: `FLAGS_NONE`
-    auto_remove_level: i8,
+    pub auto_remove_level: i8,
     /// # C++ Class Fields Info
     /// -   name:`"numShapeKeysInContactPointProperties"`
     /// -   type: `hkUint8`
     /// - offset: 209
     /// -  flags: `FLAGS_NONE`
-    num_shape_keys_in_contact_point_properties: u8,
+    pub num_shape_keys_in_contact_point_properties: u8,
     /// # C++ Class Fields Info
     /// -   name:`"responseModifierFlags"`
     /// -   type: `hkUint8`
     /// - offset: 210
     /// -  flags: `FLAGS_NONE`
-    response_modifier_flags: u8,
+    pub response_modifier_flags: u8,
     /// # C++ Class Fields Info
     /// -   name:`"uid"`
     /// -   type: `hkUint32`
     /// - offset: 212
     /// -  flags: `FLAGS_NONE`
-    uid: u32,
+    pub uid: u32,
     /// # C++ Class Fields Info
     /// -   name:`"spuCollisionCallback"`
     /// -   type: `struct hkpEntitySpuCollisionCallback`
     /// - offset: 216
     /// -  flags: `FLAGS_NONE`
-    spu_collision_callback: SingleClass<HkpEntitySpuCollisionCallback<'a>>,
+    pub spu_collision_callback: SingleClass<HkpEntitySpuCollisionCallback<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"motion"`
     /// -   type: `struct hkpMaxSizeMotion`
     /// - offset: 224
     /// -  flags: `FLAGS_NONE`
-    motion: SingleClass<HkpMaxSizeMotion<'a>>,
+    pub motion: SingleClass<HkpMaxSizeMotion<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"contactListeners"`
     /// -   type: `struct hkpEntitySmallArraySerializeOverrideType`
     /// - offset: 512
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    contact_listeners: SingleClass<HkpEntitySmallArraySerializeOverrideType<'a>>,
+    pub contact_listeners: SingleClass<HkpEntitySmallArraySerializeOverrideType<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"actions"`
     /// -   type: `struct hkpEntitySmallArraySerializeOverrideType`
     /// - offset: 520
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    actions: SingleClass<HkpEntitySmallArraySerializeOverrideType<'a>>,
+    pub actions: SingleClass<HkpEntitySmallArraySerializeOverrideType<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"localFrame"`
     /// -   type: `struct hkLocalFrame*`
     /// - offset: 528
     /// -  flags: `FLAGS_NONE`
-    local_frame: Cow<'a, str>,
+    pub local_frame: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"extendedListeners"`
     /// -   type: `struct hkpEntityExtendedListeners*`
     /// - offset: 532
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    extended_listeners: Cow<'a, str>,
+    pub extended_listeners: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"npData"`
     /// -   type: `hkUint32`
     /// - offset: 536
     /// -  flags: `FLAGS_NONE`
-    np_data: u32,
+    pub np_data: u32,
 }
 
 impl Serialize for HkpEntity<'_> {

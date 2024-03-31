@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkpTyremarkPoint {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    point_left: Vector4<f32>,
+    pub point_left: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"pointRight"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    point_right: Vector4<f32>,
+    pub point_right: Vector4<f32>,
 }
 
 impl Serialize for HkpTyremarkPoint {

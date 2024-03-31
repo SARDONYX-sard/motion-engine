@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,33 +34,33 @@ pub struct HkpPositionConstraintMotor {
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    min_force: f32,
+    pub min_force: f32,
     /// # C++ Parent class(`hkpLimitedForceConstraintMotor` => parent: `hkpConstraintMotor`) field Info
     /// -   name:`"maxForce"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    max_force: f32,
+    pub max_force: f32,
 
     /// # C++ Parent class(`hkpConstraintMotor` => parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum MotorType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    _type: MotorType,
+    pub _type: MotorType,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -64,25 +69,25 @@ pub struct HkpPositionConstraintMotor {
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    tau: f32,
+    pub tau: f32,
     /// # C++ Class Fields Info
     /// -   name:`"damping"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    damping: f32,
+    pub damping: f32,
     /// # C++ Class Fields Info
     /// -   name:`"proportionalRecoveryVelocity"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    proportional_recovery_velocity: f32,
+    pub proportional_recovery_velocity: f32,
     /// # C++ Class Fields Info
     /// -   name:`"constantRecoveryVelocity"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    constant_recovery_velocity: f32,
+    pub constant_recovery_velocity: f32,
 }
 
 impl Serialize for HkpPositionConstraintMotor {

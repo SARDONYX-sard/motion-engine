@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkxMaterialEffect<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,19 +49,19 @@ pub struct HkxMaterialEffect<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum EffectType`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    _type: EffectType,
+    pub _type: EffectType,
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    data: HkArrayNum<u8>,
+    pub data: HkArrayNum<u8>,
 }
 
 impl Serialize for HkxMaterialEffect<'_> {

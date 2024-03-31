@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,61 +33,61 @@ pub struct HkbStateMachineTransitionInfo<'a> {
     /// -   type: `struct hkbStateMachineTimeInterval`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    trigger_interval: SingleClass<HkbStateMachineTimeInterval>,
+    pub trigger_interval: SingleClass<HkbStateMachineTimeInterval>,
     /// # C++ Class Fields Info
     /// -   name:`"initiateInterval"`
     /// -   type: `struct hkbStateMachineTimeInterval`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    initiate_interval: SingleClass<HkbStateMachineTimeInterval>,
+    pub initiate_interval: SingleClass<HkbStateMachineTimeInterval>,
     /// # C++ Class Fields Info
     /// -   name:`"transition"`
     /// -   type: `struct hkbTransitionEffect*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    transition: Cow<'a, str>,
+    pub transition: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"condition"`
     /// -   type: `struct hkbCondition*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    condition: Cow<'a, str>,
+    pub condition: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"eventId"`
     /// -   type: `hkInt32`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    event_id: i32,
+    pub event_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"toStateId"`
     /// -   type: `hkInt32`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    to_state_id: i32,
+    pub to_state_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"fromNestedStateId"`
     /// -   type: `hkInt32`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    from_nested_state_id: i32,
+    pub from_nested_state_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"toNestedStateId"`
     /// -   type: `hkInt32`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    to_nested_state_id: i32,
+    pub to_nested_state_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"priority"`
     /// -   type: `hkInt16`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    priority: i16,
+    pub priority: i16,
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `flags TransitionFlags`
     /// - offset: 58
     /// -  flags: `FLAGS_NONE`
-    flags: TransitionFlags,
+    pub flags: TransitionFlags,
 }
 
 impl Serialize for HkbStateMachineTransitionInfo<'_> {

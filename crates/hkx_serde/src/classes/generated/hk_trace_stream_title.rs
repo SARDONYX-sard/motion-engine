@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,7 +33,7 @@ pub struct HkTraceStreamTitle {
     /// -   type: `hkChar[32]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    value: CStyleArray<[char; 32]>,
+    pub value: CStyleArray<[char; 32]>,
 }
 
 impl Serialize for HkTraceStreamTitle {

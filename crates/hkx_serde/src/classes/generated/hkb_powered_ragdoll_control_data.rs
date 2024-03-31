@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,31 +33,31 @@ pub struct HkbPoweredRagdollControlData {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE|ALIGN16`
-    max_force: f32,
+    pub max_force: f32,
     /// # C++ Class Fields Info
     /// -   name:`"tau"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    tau: f32,
+    pub tau: f32,
     /// # C++ Class Fields Info
     /// -   name:`"damping"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    damping: f32,
+    pub damping: f32,
     /// # C++ Class Fields Info
     /// -   name:`"proportionalRecoveryVelocity"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    proportional_recovery_velocity: f32,
+    pub proportional_recovery_velocity: f32,
     /// # C++ Class Fields Info
     /// -   name:`"constantRecoveryVelocity"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    constant_recovery_velocity: f32,
+    pub constant_recovery_velocity: f32,
 }
 
 impl Serialize for HkbPoweredRagdollControlData {

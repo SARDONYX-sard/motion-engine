@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkbBlendingTransitionEffectInternalState {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,31 +49,31 @@ pub struct HkbBlendingTransitionEffectInternalState {
     /// -   type: `hkArray<hkQsTransform>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    character_pose_at_beginning_of_transition: HkArrayMatrix3<QsTransform<f32>>,
+    pub character_pose_at_beginning_of_transition: HkArrayMatrix3<QsTransform<f32>>,
     /// # C++ Class Fields Info
     /// -   name:`"timeRemaining"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    time_remaining: f32,
+    pub time_remaining: f32,
     /// # C++ Class Fields Info
     /// -   name:`"timeInTransition"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    time_in_transition: f32,
+    pub time_in_transition: f32,
     /// # C++ Class Fields Info
     /// -   name:`"applySelfTransition"`
     /// -   type: `hkBool`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    apply_self_transition: bool,
+    pub apply_self_transition: bool,
     /// # C++ Class Fields Info
     /// -   name:`"initializeCharacterPose"`
     /// -   type: `hkBool`
     /// - offset: 29
     /// -  flags: `FLAGS_NONE`
-    initialize_character_pose: bool,
+    pub initialize_character_pose: bool,
 }
 
 impl Serialize for HkbBlendingTransitionEffectInternalState {

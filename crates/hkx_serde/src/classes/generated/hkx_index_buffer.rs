@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkxIndexBuffer {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,31 +49,31 @@ pub struct HkxIndexBuffer {
     /// -   type: `enum IndexType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    index_type: IndexType,
+    pub index_type: IndexType,
     /// # C++ Class Fields Info
     /// -   name:`"indices16"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    indices_16: HkArrayNum<u16>,
+    pub indices_16: HkArrayNum<u16>,
     /// # C++ Class Fields Info
     /// -   name:`"indices32"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    indices_32: HkArrayNum<u32>,
+    pub indices_32: HkArrayNum<u32>,
     /// # C++ Class Fields Info
     /// -   name:`"vertexBaseOffset"`
     /// -   type: `hkUint32`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    vertex_base_offset: u32,
+    pub vertex_base_offset: u32,
     /// # C++ Class Fields Info
     /// -   name:`"length"`
     /// -   type: `hkUint32`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    length: u32,
+    pub length: u32,
 }
 
 impl Serialize for HkxIndexBuffer {

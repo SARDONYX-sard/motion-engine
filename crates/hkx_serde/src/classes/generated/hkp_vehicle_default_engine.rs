@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -31,13 +36,13 @@ pub struct HkpVehicleDefaultEngine {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -46,61 +51,61 @@ pub struct HkpVehicleDefaultEngine {
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    min_rpm: f32,
+    pub min_rpm: f32,
     /// # C++ Class Fields Info
     /// -   name:`"optRPM"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    opt_rpm: f32,
+    pub opt_rpm: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxRPM"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    max_rpm: f32,
+    pub max_rpm: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxTorque"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    max_torque: f32,
+    pub max_torque: f32,
     /// # C++ Class Fields Info
     /// -   name:`"torqueFactorAtMinRPM"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    torque_factor_at_min_rpm: f32,
+    pub torque_factor_at_min_rpm: f32,
     /// # C++ Class Fields Info
     /// -   name:`"torqueFactorAtMaxRPM"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    torque_factor_at_max_rpm: f32,
+    pub torque_factor_at_max_rpm: f32,
     /// # C++ Class Fields Info
     /// -   name:`"resistanceFactorAtMinRPM"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    resistance_factor_at_min_rpm: f32,
+    pub resistance_factor_at_min_rpm: f32,
     /// # C++ Class Fields Info
     /// -   name:`"resistanceFactorAtOptRPM"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    resistance_factor_at_opt_rpm: f32,
+    pub resistance_factor_at_opt_rpm: f32,
     /// # C++ Class Fields Info
     /// -   name:`"resistanceFactorAtMaxRPM"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    resistance_factor_at_max_rpm: f32,
+    pub resistance_factor_at_max_rpm: f32,
     /// # C++ Class Fields Info
     /// -   name:`"clutchSlipRPM"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    clutch_slip_rpm: f32,
+    pub clutch_slip_rpm: f32,
 }
 
 impl Serialize for HkpVehicleDefaultEngine {

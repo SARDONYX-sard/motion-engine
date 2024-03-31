@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,25 +33,25 @@ pub struct HkbBehaviorInfoIdToNamePair<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    behavior_name: Cow<'a, str>,
+    pub behavior_name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"nodeName"`
     /// -   type: `hkStringPtr`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    node_name: Cow<'a, str>,
+    pub node_name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"toolType"`
     /// -   type: `enum ToolNodeType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    tool_type: ToolNodeType,
+    pub tool_type: ToolNodeType,
     /// # C++ Class Fields Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
-    id: i16,
+    pub id: i16,
 }
 
 impl Serialize for HkbBehaviorInfoIdToNamePair<'_> {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,39 +34,39 @@ pub struct HkpSimpleMeshShape {
     /// -   type: `hkBool`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    disable_welding: bool,
+    pub disable_welding: bool,
     /// # C++ Parent class(`hkpShapeCollection` => parent: `hkpShape`) field Info
     /// -   name:`"collectionType"`
     /// -   type: `enum CollectionType`
     /// - offset: 21
     /// -  flags: `FLAGS_NONE`
-    collection_type: CollectionType,
+    pub collection_type: CollectionType,
 
     /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    _type: (),
+    pub _type: (),
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -70,31 +75,31 @@ pub struct HkpSimpleMeshShape {
     /// -   type: `hkArray<hkVector4>`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    vertices: HkArrayVector<Vector4<f32>>,
+    pub vertices: HkArrayVector<Vector4<f32>>,
     /// # C++ Class Fields Info
     /// -   name:`"triangles"`
     /// -   type: `hkArray<struct hkpSimpleMeshShapeTriangle>`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    triangles: HkArrayClass<HkpSimpleMeshShapeTriangle>,
+    pub triangles: HkArrayClass<HkpSimpleMeshShapeTriangle>,
     /// # C++ Class Fields Info
     /// -   name:`"materialIndices"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    material_indices: HkArrayNum<u8>,
+    pub material_indices: HkArrayNum<u8>,
     /// # C++ Class Fields Info
     /// -   name:`"radius"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    radius: f32,
+    pub radius: f32,
     /// # C++ Class Fields Info
     /// -   name:`"weldingType"`
     /// -   type: `enum WeldingType`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    welding_type: WeldingType,
+    pub welding_type: WeldingType,
 }
 
 impl Serialize for HkpSimpleMeshShape {

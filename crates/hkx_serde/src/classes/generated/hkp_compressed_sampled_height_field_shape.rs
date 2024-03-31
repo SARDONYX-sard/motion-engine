@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,55 +34,55 @@ pub struct HkpCompressedSampledHeightFieldShape {
     /// -   type: `hkInt32`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    x_res: i32,
+    pub x_res: i32,
     /// # C++ Parent class(`hkpSampledHeightFieldShape` => parent: `hkpHeightFieldShape`) field Info
     /// -   name:`"zRes"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    z_res: i32,
+    pub z_res: i32,
     /// # C++ Parent class(`hkpSampledHeightFieldShape` => parent: `hkpHeightFieldShape`) field Info
     /// -   name:`"heightCenter"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    height_center: f32,
+    pub height_center: f32,
     /// # C++ Parent class(`hkpSampledHeightFieldShape` => parent: `hkpHeightFieldShape`) field Info
     /// -   name:`"useProjectionBasedHeight"`
     /// -   type: `hkBool`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    use_projection_based_height: bool,
+    pub use_projection_based_height: bool,
     /// # C++ Parent class(`hkpSampledHeightFieldShape` => parent: `hkpHeightFieldShape`) field Info
     /// -   name:`"heightfieldType"`
     /// -   type: `enum HeightFieldType`
     /// - offset: 29
     /// -  flags: `FLAGS_NONE`
-    heightfield_type: HeightFieldType,
+    pub heightfield_type: HeightFieldType,
     /// # C++ Parent class(`hkpSampledHeightFieldShape` => parent: `hkpHeightFieldShape`) field Info
     /// -   name:`"intToFloatScale"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    int_to_float_scale: Vector4<f32>,
+    pub int_to_float_scale: Vector4<f32>,
     /// # C++ Parent class(`hkpSampledHeightFieldShape` => parent: `hkpHeightFieldShape`) field Info
     /// -   name:`"floatToIntScale"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    float_to_int_scale: Vector4<f32>,
+    pub float_to_int_scale: Vector4<f32>,
     /// # C++ Parent class(`hkpSampledHeightFieldShape` => parent: `hkpHeightFieldShape`) field Info
     /// -   name:`"floatToIntOffsetFloorCorrected"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    float_to_int_offset_floor_corrected: Vector4<f32>,
+    pub float_to_int_offset_floor_corrected: Vector4<f32>,
     /// # C++ Parent class(`hkpSampledHeightFieldShape` => parent: `hkpHeightFieldShape`) field Info
     /// -   name:`"extents"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    extents: Vector4<f32>,
+    pub extents: Vector4<f32>,
 
     // C++ Parent class(`hkpHeightFieldShape` => parent: `hkpShape`) has no fields
     //
@@ -86,26 +91,26 @@ pub struct HkpCompressedSampledHeightFieldShape {
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    _type: (),
+    pub _type: (),
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -114,25 +119,25 @@ pub struct HkpCompressedSampledHeightFieldShape {
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    storage: HkArrayNum<u16>,
+    pub storage: HkArrayNum<u16>,
     /// # C++ Class Fields Info
     /// -   name:`"triangleFlip"`
     /// -   type: `hkBool`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
-    triangle_flip: bool,
+    pub triangle_flip: bool,
     /// # C++ Class Fields Info
     /// -   name:`"offset"`
     /// -   type: `hkReal`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    offset: f32,
+    pub offset: f32,
     /// # C++ Class Fields Info
     /// -   name:`"scale"`
     /// -   type: `hkReal`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    scale: f32,
+    pub scale: f32,
 }
 
 impl Serialize for HkpCompressedSampledHeightFieldShape {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkbStateMachineInternalState<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,67 +49,67 @@ pub struct HkbStateMachineInternalState<'a> {
     /// -   type: `hkArray<struct hkbStateMachineActiveTransitionInfo>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    active_transitions: HkArrayClass<HkbStateMachineActiveTransitionInfo<'a>>,
+    pub active_transitions: HkArrayClass<HkbStateMachineActiveTransitionInfo<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"transitionFlags"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    transition_flags: HkArrayNum<u8>,
+    pub transition_flags: HkArrayNum<u8>,
     /// # C++ Class Fields Info
     /// -   name:`"wildcardTransitionFlags"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    wildcard_transition_flags: HkArrayNum<u8>,
+    pub wildcard_transition_flags: HkArrayNum<u8>,
     /// # C++ Class Fields Info
     /// -   name:`"delayedTransitions"`
     /// -   type: `hkArray<struct hkbStateMachineDelayedTransitionInfo>`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    delayed_transitions: HkArrayClass<HkbStateMachineDelayedTransitionInfo>,
+    pub delayed_transitions: HkArrayClass<HkbStateMachineDelayedTransitionInfo>,
     /// # C++ Class Fields Info
     /// -   name:`"timeInState"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    time_in_state: f32,
+    pub time_in_state: f32,
     /// # C++ Class Fields Info
     /// -   name:`"lastLocalTime"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    last_local_time: f32,
+    pub last_local_time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"currentStateId"`
     /// -   type: `hkInt32`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    current_state_id: i32,
+    pub current_state_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"previousStateId"`
     /// -   type: `hkInt32`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    previous_state_id: i32,
+    pub previous_state_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"nextStartStateIndexOverride"`
     /// -   type: `hkInt32`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    next_start_state_index_override: i32,
+    pub next_start_state_index_override: i32,
     /// # C++ Class Fields Info
     /// -   name:`"stateOrTransitionChanged"`
     /// -   type: `hkBool`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    state_or_transition_changed: bool,
+    pub state_or_transition_changed: bool,
     /// # C++ Class Fields Info
     /// -   name:`"echoNextUpdate"`
     /// -   type: `hkBool`
     /// - offset: 77
     /// -  flags: `FLAGS_NONE`
-    echo_next_update: bool,
+    pub echo_next_update: bool,
 }
 
 impl Serialize for HkbStateMachineInternalState<'_> {

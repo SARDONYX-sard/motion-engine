@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkbStateMachineNestedStateMachineData<'a> {
     /// -   type: `void*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    nested_state_machine: Cow<'a, str>,
+    pub nested_state_machine: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"eventIdMap"`
     /// -   type: `void*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    event_id_map: Cow<'a, str>,
+    pub event_id_map: Cow<'a, str>,
 }
 
 impl Serialize for HkbStateMachineNestedStateMachineData<'_> {

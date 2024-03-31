@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,37 +33,37 @@ pub struct HkpSimpleContactConstraintDataInfo {
     /// -   type: `hkUint16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE|ALIGN16`
-    flags: u16,
+    pub flags: u16,
     /// # C++ Class Fields Info
     /// -   name:`"index"`
     /// -   type: `hkUint16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    index: u16,
+    pub index: u16,
     /// # C++ Class Fields Info
     /// -   name:`"internalData0"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    internal_data_0: f32,
+    pub internal_data_0: f32,
     /// # C++ Class Fields Info
     /// -   name:`"rollingFrictionMultiplier"`
     /// -   type: `hkHalf`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    rolling_friction_multiplier: f32,
+    pub rolling_friction_multiplier: f32,
     /// # C++ Class Fields Info
     /// -   name:`"internalData1"`
     /// -   type: `hkHalf`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
-    internal_data_1: f32,
+    pub internal_data_1: f32,
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `hkUint32[5]`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    data: CStyleArray<[u32; 5]>,
+    pub data: CStyleArray<[u32; 5]>,
 }
 
 impl Serialize for HkpSimpleContactConstraintDataInfo {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,20 +34,20 @@ pub struct HkpBridgeConstraintAtom<'a> {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    _type: AtomType,
+    pub _type: AtomType,
 
     /// # C++ Class Fields Info
     /// -   name:`"buildJacobianFunc"`
     /// -   type: `void*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    build_jacobian_func: Cow<'a, str>,
+    pub build_jacobian_func: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"constraintData"`
     /// -   type: `struct hkpConstraintData*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE|NOT_OWNED`
-    constraint_data: Cow<'a, str>,
+    pub constraint_data: Cow<'a, str>,
 }
 
 impl Serialize for HkpBridgeConstraintAtom<'_> {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkbBlenderGeneratorChildInternalState {
     /// -   type: `hkBool`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    is_active: bool,
+    pub is_active: bool,
     /// # C++ Class Fields Info
     /// -   name:`"syncNextFrame"`
     /// -   type: `hkBool`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
-    sync_next_frame: bool,
+    pub sync_next_frame: bool,
 }
 
 impl Serialize for HkbBlenderGeneratorChildInternalState {

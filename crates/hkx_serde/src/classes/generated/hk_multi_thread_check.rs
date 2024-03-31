@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,25 +33,25 @@ pub struct HkMultiThreadCheck {
     /// -   type: `hkUint32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    thread_id: u32,
+    pub thread_id: u32,
     /// # C++ Class Fields Info
     /// -   name:`"stackTraceId"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    stack_trace_id: i32,
+    pub stack_trace_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"markCount"`
     /// -   type: `hkUint16`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mark_count: u16,
+    pub mark_count: u16,
     /// # C++ Class Fields Info
     /// -   name:`"markBitStack"`
     /// -   type: `hkUint16`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mark_bit_stack: u16,
+    pub mark_bit_stack: u16,
 }
 
 impl Serialize for HkMultiThreadCheck {

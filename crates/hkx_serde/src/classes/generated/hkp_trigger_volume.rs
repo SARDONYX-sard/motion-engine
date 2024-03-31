@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkpTriggerVolume<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,25 +49,25 @@ pub struct HkpTriggerVolume<'a> {
     /// -   type: `hkArray<hkpRigidBody*>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    overlapping_bodies: HkArrayRef<Cow<'a, str>>,
+    pub overlapping_bodies: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"eventQueue"`
     /// -   type: `hkArray<struct hkpTriggerVolumeEventInfo>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    event_queue: HkArrayClass<HkpTriggerVolumeEventInfo<'a>>,
+    pub event_queue: HkArrayClass<HkpTriggerVolumeEventInfo<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"triggerBody"`
     /// -   type: `struct hkpRigidBody*`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    trigger_body: Cow<'a, str>,
+    pub trigger_body: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"sequenceNumber"`
     /// -   type: `hkUint32`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    sequence_number: u32,
+    pub sequence_number: u32,
 }
 
 impl Serialize for HkpTriggerVolume<'_> {

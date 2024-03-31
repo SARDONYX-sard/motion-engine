@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,25 +33,25 @@ pub struct HkbWorldFromModelModeData {
     /// -   type: `hkInt16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    pose_matching_bone_0: i16,
+    pub pose_matching_bone_0: i16,
     /// # C++ Class Fields Info
     /// -   name:`"poseMatchingBone1"`
     /// -   type: `hkInt16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    pose_matching_bone_1: i16,
+    pub pose_matching_bone_1: i16,
     /// # C++ Class Fields Info
     /// -   name:`"poseMatchingBone2"`
     /// -   type: `hkInt16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    pose_matching_bone_2: i16,
+    pub pose_matching_bone_2: i16,
     /// # C++ Class Fields Info
     /// -   name:`"mode"`
     /// -   type: `enum WorldFromModelMode`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    mode: WorldFromModelMode,
+    pub mode: WorldFromModelMode,
 }
 
 impl Serialize for HkbWorldFromModelModeData {

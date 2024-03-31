@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkpSimulation<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,55 +49,55 @@ pub struct HkpSimulation<'a> {
     /// -   type: `hkUint32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    determinism_check_frame_counter: u32,
+    pub determinism_check_frame_counter: u32,
     /// # C++ Class Fields Info
     /// -   name:`"world"`
     /// -   type: `struct hkpWorld*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    world: Cow<'a, str>,
+    pub world: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"lastProcessingStep"`
     /// -   type: `enum LastProcessingStep`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    last_processing_step: LastProcessingStep,
+    pub last_processing_step: LastProcessingStep,
     /// # C++ Class Fields Info
     /// -   name:`"currentTime"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    current_time: f32,
+    pub current_time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"currentPsiTime"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    current_psi_time: f32,
+    pub current_psi_time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"physicsDeltaTime"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    physics_delta_time: f32,
+    pub physics_delta_time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"simulateUntilTime"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    simulate_until_time: f32,
+    pub simulate_until_time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"frameMarkerPsiSnap"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    frame_marker_psi_snap: f32,
+    pub frame_marker_psi_snap: f32,
     /// # C++ Class Fields Info
     /// -   name:`"previousStepResult"`
     /// -   type: `hkUint32`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    previous_step_result: u32,
+    pub previous_step_result: u32,
 }
 
 impl Serialize for HkpSimulation<'_> {

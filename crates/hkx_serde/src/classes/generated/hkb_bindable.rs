@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkbBindable<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,19 +49,19 @@ pub struct HkbBindable<'a> {
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    variable_binding_set: Cow<'a, str>,
+    pub variable_binding_set: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray<void>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    cached_bindables: HkArrayRef<()>,
+    pub cached_bindables: HkArrayRef<()>,
     /// # C++ Class Fields Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    are_bindables_cached: bool,
+    pub are_bindables_cached: bool,
 }
 
 impl Serialize for HkbBindable<'_> {

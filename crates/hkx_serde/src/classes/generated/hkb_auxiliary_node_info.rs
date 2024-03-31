@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkbAuxiliaryNodeInfo<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,25 +49,25 @@ pub struct HkbAuxiliaryNodeInfo<'a> {
     /// -   type: `enum NodeType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    _type: NodeType,
+    pub _type: NodeType,
     /// # C++ Class Fields Info
     /// -   name:`"depth"`
     /// -   type: `hkUint8`
     /// - offset: 9
     /// -  flags: `FLAGS_NONE`
-    depth: u8,
+    pub depth: u8,
     /// # C++ Class Fields Info
     /// -   name:`"referenceBehaviorName"`
     /// -   type: `hkStringPtr`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    reference_behavior_name: Cow<'a, str>,
+    pub reference_behavior_name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"selfTransitionNames"`
     /// -   type: `hkArray<hkStringPtr>`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    self_transition_names: HkArrayStringPtr<'a>,
+    pub self_transition_names: HkArrayStringPtr<'a>,
 }
 
 impl Serialize for HkbAuxiliaryNodeInfo<'_> {

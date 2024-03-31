@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,55 +33,55 @@ pub struct HkPackfileSectionHeader {
     /// -   type: `hkChar[19]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    section_tag: CStyleArray<[char; 19]>,
+    pub section_tag: CStyleArray<[char; 19]>,
     /// # C++ Class Fields Info
     /// -   name:`"nullByte"`
     /// -   type: `hkChar`
     /// - offset: 19
     /// -  flags: `FLAGS_NONE`
-    null_byte: char,
+    pub null_byte: char,
     /// # C++ Class Fields Info
     /// -   name:`"absoluteDataStart"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    absolute_data_start: i32,
+    pub absolute_data_start: i32,
     /// # C++ Class Fields Info
     /// -   name:`"localFixupsOffset"`
     /// -   type: `hkInt32`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    local_fixups_offset: i32,
+    pub local_fixups_offset: i32,
     /// # C++ Class Fields Info
     /// -   name:`"globalFixupsOffset"`
     /// -   type: `hkInt32`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    global_fixups_offset: i32,
+    pub global_fixups_offset: i32,
     /// # C++ Class Fields Info
     /// -   name:`"virtualFixupsOffset"`
     /// -   type: `hkInt32`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    virtual_fixups_offset: i32,
+    pub virtual_fixups_offset: i32,
     /// # C++ Class Fields Info
     /// -   name:`"exportsOffset"`
     /// -   type: `hkInt32`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    exports_offset: i32,
+    pub exports_offset: i32,
     /// # C++ Class Fields Info
     /// -   name:`"importsOffset"`
     /// -   type: `hkInt32`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    imports_offset: i32,
+    pub imports_offset: i32,
     /// # C++ Class Fields Info
     /// -   name:`"endOffset"`
     /// -   type: `hkInt32`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    end_offset: i32,
+    pub end_offset: i32,
 }
 
 impl Serialize for HkPackfileSectionHeader {

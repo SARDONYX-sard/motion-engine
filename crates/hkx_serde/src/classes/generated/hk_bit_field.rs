@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkBitField {
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    words: HkArrayNum<u32>,
+    pub words: HkArrayNum<u32>,
     /// # C++ Class Fields Info
     /// -   name:`"numBits"`
     /// -   type: `hkInt32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    num_bits: i32,
+    pub num_bits: i32,
 }
 
 impl Serialize for HkBitField {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -31,13 +36,13 @@ pub struct HkpVehicleDefaultBrake {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -46,13 +51,13 @@ pub struct HkpVehicleDefaultBrake {
     /// -   type: `hkArray<struct hkpVehicleDefaultBrakeWheelBrakingProperties>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    wheel_braking_properties: HkArrayClass<HkpVehicleDefaultBrakeWheelBrakingProperties>,
+    pub wheel_braking_properties: HkArrayClass<HkpVehicleDefaultBrakeWheelBrakingProperties>,
     /// # C++ Class Fields Info
     /// -   name:`"wheelsMinTimeToBlock"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    wheels_min_time_to_block: f32,
+    pub wheels_min_time_to_block: f32,
 }
 
 impl Serialize for HkpVehicleDefaultBrake {

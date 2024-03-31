@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,31 +33,31 @@ pub struct HkpGenericConstraintDataScheme<'a> {
     /// -   type: `struct hkpGenericConstraintDataSchemeConstraintInfo`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    info: SingleClass<HkpGenericConstraintDataSchemeConstraintInfo>,
+    pub info: SingleClass<HkpGenericConstraintDataSchemeConstraintInfo>,
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `hkArray<hkVector4>`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    data: HkArrayVector<Vector4<f32>>,
+    pub data: HkArrayVector<Vector4<f32>>,
     /// # C++ Class Fields Info
     /// -   name:`"commands"`
     /// -   type: `hkArray<hkInt32>`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    commands: HkArrayNum<i32>,
+    pub commands: HkArrayNum<i32>,
     /// # C++ Class Fields Info
     /// -   name:`"modifiers"`
     /// -   type: `hkArray<void*>`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    modifiers: HkArrayRef<Cow<'a, str>>,
+    pub modifiers: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"motors"`
     /// -   type: `hkArray<hkpConstraintMotor*>`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    motors: HkArrayRef<Cow<'a, str>>,
+    pub motors: HkArrayRef<Cow<'a, str>>,
 }
 
 impl Serialize for HkpGenericConstraintDataScheme<'_> {

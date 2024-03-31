@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkbVariableBindingSet<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,19 +49,19 @@ pub struct HkbVariableBindingSet<'a> {
     /// -   type: `hkArray<struct hkbVariableBindingSetBinding>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    bindings: HkArrayClass<HkbVariableBindingSetBinding<'a>>,
+    pub bindings: HkArrayClass<HkbVariableBindingSetBinding<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"indexOfBindingToEnable"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    index_of_binding_to_enable: i32,
+    pub index_of_binding_to_enable: i32,
     /// # C++ Class Fields Info
     /// -   name:`"hasOutputBinding"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    has_output_binding: bool,
+    pub has_output_binding: bool,
 }
 
 impl Serialize for HkbVariableBindingSet<'_> {

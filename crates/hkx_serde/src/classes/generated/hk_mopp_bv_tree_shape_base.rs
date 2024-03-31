@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,33 +34,33 @@ pub struct HkMoppBvTreeShapeBase<'a> {
     /// -   type: `enum BvTreeType`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    bv_tree_type: BvTreeType,
+    pub bv_tree_type: BvTreeType,
 
     /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    _type: (),
+    pub _type: (),
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -64,25 +69,25 @@ pub struct HkMoppBvTreeShapeBase<'a> {
     /// -   type: `struct hkpMoppCode*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    code: Cow<'a, str>,
+    pub code: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"moppData"`
     /// -   type: `void*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mopp_data: Cow<'a, str>,
+    pub mopp_data: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"moppDataSize"`
     /// -   type: `hkUint32`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mopp_data_size: u32,
+    pub mopp_data_size: u32,
     /// # C++ Class Fields Info
     /// -   name:`"codeInfoCopy"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    code_info_copy: Vector4<f32>,
+    pub code_info_copy: Vector4<f32>,
 }
 
 impl Serialize for HkMoppBvTreeShapeBase<'_> {

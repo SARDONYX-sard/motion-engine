@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkaRagdollInstance<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,25 +49,25 @@ pub struct HkaRagdollInstance<'a> {
     /// -   type: `hkArray<hkpRigidBody*>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    rigid_bodies: HkArrayRef<Cow<'a, str>>,
+    pub rigid_bodies: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"constraints"`
     /// -   type: `hkArray<hkpConstraintInstance*>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    constraints: HkArrayRef<Cow<'a, str>>,
+    pub constraints: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"boneToRigidBodyMap"`
     /// -   type: `hkArray<hkInt32>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    bone_to_rigid_body_map: HkArrayNum<i32>,
+    pub bone_to_rigid_body_map: HkArrayNum<i32>,
     /// # C++ Class Fields Info
     /// -   name:`"skeleton"`
     /// -   type: `struct hkaSkeleton*`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    skeleton: Cow<'a, str>,
+    pub skeleton: Cow<'a, str>,
 }
 
 impl Serialize for HkaRagdollInstance<'_> {

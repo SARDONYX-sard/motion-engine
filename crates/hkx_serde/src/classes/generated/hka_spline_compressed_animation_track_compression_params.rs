@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,73 +33,73 @@ pub struct HkaSplineCompressedAnimationTrackCompressionParams {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    rotation_tolerance: f32,
+    pub rotation_tolerance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"translationTolerance"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    translation_tolerance: f32,
+    pub translation_tolerance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"scaleTolerance"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    scale_tolerance: f32,
+    pub scale_tolerance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"floatingTolerance"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    floating_tolerance: f32,
+    pub floating_tolerance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"rotationDegree"`
     /// -   type: `hkUint16`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    rotation_degree: u16,
+    pub rotation_degree: u16,
     /// # C++ Class Fields Info
     /// -   name:`"translationDegree"`
     /// -   type: `hkUint16`
     /// - offset: 18
     /// -  flags: `FLAGS_NONE`
-    translation_degree: u16,
+    pub translation_degree: u16,
     /// # C++ Class Fields Info
     /// -   name:`"scaleDegree"`
     /// -   type: `hkUint16`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    scale_degree: u16,
+    pub scale_degree: u16,
     /// # C++ Class Fields Info
     /// -   name:`"floatingDegree"`
     /// -   type: `hkUint16`
     /// - offset: 22
     /// -  flags: `FLAGS_NONE`
-    floating_degree: u16,
+    pub floating_degree: u16,
     /// # C++ Class Fields Info
     /// -   name:`"rotationQuantizationType"`
     /// -   type: `enum RotationQuantization`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    rotation_quantization_type: RotationQuantization,
+    pub rotation_quantization_type: RotationQuantization,
     /// # C++ Class Fields Info
     /// -   name:`"translationQuantizationType"`
     /// -   type: `enum ScalarQuantization`
     /// - offset: 25
     /// -  flags: `FLAGS_NONE`
-    translation_quantization_type: ScalarQuantization,
+    pub translation_quantization_type: ScalarQuantization,
     /// # C++ Class Fields Info
     /// -   name:`"scaleQuantizationType"`
     /// -   type: `enum ScalarQuantization`
     /// - offset: 26
     /// -  flags: `FLAGS_NONE`
-    scale_quantization_type: ScalarQuantization,
+    pub scale_quantization_type: ScalarQuantization,
     /// # C++ Class Fields Info
     /// -   name:`"floatQuantizationType"`
     /// -   type: `enum ScalarQuantization`
     /// - offset: 27
     /// -  flags: `FLAGS_NONE`
-    float_quantization_type: ScalarQuantization,
+    pub float_quantization_type: ScalarQuantization,
 }
 
 impl Serialize for HkaSplineCompressedAnimationTrackCompressionParams {

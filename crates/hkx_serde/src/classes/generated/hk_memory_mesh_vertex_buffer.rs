@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -31,13 +36,13 @@ pub struct HkMemoryMeshVertexBuffer {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -46,49 +51,49 @@ pub struct HkMemoryMeshVertexBuffer {
     /// -   type: `struct hkVertexFormat`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    format: SingleClass<HkVertexFormat>,
+    pub format: SingleClass<HkVertexFormat>,
     /// # C++ Class Fields Info
     /// -   name:`"elementOffsets"`
     /// -   type: `hkInt32[32]`
     /// - offset: 268
     /// -  flags: `FLAGS_NONE`
-    element_offsets: CStyleArray<[i32; 32]>,
+    pub element_offsets: CStyleArray<[i32; 32]>,
     /// # C++ Class Fields Info
     /// -   name:`"memory"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 396
     /// -  flags: `FLAGS_NONE`
-    memory: HkArrayNum<u8>,
+    pub memory: HkArrayNum<u8>,
     /// # C++ Class Fields Info
     /// -   name:`"vertexStride"`
     /// -   type: `hkInt32`
     /// - offset: 408
     /// -  flags: `FLAGS_NONE`
-    vertex_stride: i32,
+    pub vertex_stride: i32,
     /// # C++ Class Fields Info
     /// -   name:`"locked"`
     /// -   type: `hkBool`
     /// - offset: 412
     /// -  flags: `FLAGS_NONE`
-    locked: bool,
+    pub locked: bool,
     /// # C++ Class Fields Info
     /// -   name:`"numVertices"`
     /// -   type: `hkInt32`
     /// - offset: 416
     /// -  flags: `FLAGS_NONE`
-    num_vertices: i32,
+    pub num_vertices: i32,
     /// # C++ Class Fields Info
     /// -   name:`"isBigEndian"`
     /// -   type: `hkBool`
     /// - offset: 420
     /// -  flags: `FLAGS_NONE`
-    is_big_endian: bool,
+    pub is_big_endian: bool,
     /// # C++ Class Fields Info
     /// -   name:`"isSharable"`
     /// -   type: `hkBool`
     /// - offset: 421
     /// -  flags: `FLAGS_NONE`
-    is_sharable: bool,
+    pub is_sharable: bool,
 }
 
 impl Serialize for HkMemoryMeshVertexBuffer {

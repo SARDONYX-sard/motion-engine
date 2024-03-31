@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,25 +33,25 @@ pub struct HkbCharacterDataCharacterControllerInfo<'a> {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    capsule_height: f32,
+    pub capsule_height: f32,
     /// # C++ Class Fields Info
     /// -   name:`"capsuleRadius"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    capsule_radius: f32,
+    pub capsule_radius: f32,
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilterInfo"`
     /// -   type: `hkUint32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    collision_filter_info: u32,
+    pub collision_filter_info: u32,
     /// # C++ Class Fields Info
     /// -   name:`"characterControllerCinfo"`
     /// -   type: `struct hkpCharacterControllerCinfo*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    character_controller_cinfo: Cow<'a, str>,
+    pub character_controller_cinfo: Cow<'a, str>,
 }
 
 impl Serialize for HkbCharacterDataCharacterControllerInfo<'_> {

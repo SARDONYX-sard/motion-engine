@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -31,13 +36,13 @@ pub struct HkMultipleVertexBuffer<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -46,67 +51,67 @@ pub struct HkMultipleVertexBuffer<'a> {
     /// -   type: `struct hkVertexFormat`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    vertex_format: SingleClass<HkVertexFormat>,
+    pub vertex_format: SingleClass<HkVertexFormat>,
     /// # C++ Class Fields Info
     /// -   name:`"lockedElements"`
     /// -   type: `hkArray<struct hkMultipleVertexBufferLockedElement>`
     /// - offset: 268
     /// -  flags: `FLAGS_NONE`
-    locked_elements: HkArrayClass<HkMultipleVertexBufferLockedElement>,
+    pub locked_elements: HkArrayClass<HkMultipleVertexBufferLockedElement>,
     /// # C++ Class Fields Info
     /// -   name:`"lockedBuffer"`
     /// -   type: `struct hkMemoryMeshVertexBuffer*`
     /// - offset: 280
     /// -  flags: `FLAGS_NONE`
-    locked_buffer: Cow<'a, str>,
+    pub locked_buffer: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"elementInfos"`
     /// -   type: `hkArray<struct hkMultipleVertexBufferElementInfo>`
     /// - offset: 284
     /// -  flags: `FLAGS_NONE`
-    element_infos: HkArrayClass<HkMultipleVertexBufferElementInfo>,
+    pub element_infos: HkArrayClass<HkMultipleVertexBufferElementInfo>,
     /// # C++ Class Fields Info
     /// -   name:`"vertexBufferInfos"`
     /// -   type: `hkArray<struct hkMultipleVertexBufferVertexBufferInfo>`
     /// - offset: 296
     /// -  flags: `FLAGS_NONE`
-    vertex_buffer_infos: HkArrayClass<HkMultipleVertexBufferVertexBufferInfo<'a>>,
+    pub vertex_buffer_infos: HkArrayClass<HkMultipleVertexBufferVertexBufferInfo<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"numVertices"`
     /// -   type: `hkInt32`
     /// - offset: 308
     /// -  flags: `FLAGS_NONE`
-    num_vertices: i32,
+    pub num_vertices: i32,
     /// # C++ Class Fields Info
     /// -   name:`"isLocked"`
     /// -   type: `hkBool`
     /// - offset: 312
     /// -  flags: `FLAGS_NONE`
-    is_locked: bool,
+    pub is_locked: bool,
     /// # C++ Class Fields Info
     /// -   name:`"updateCount"`
     /// -   type: `hkUint32`
     /// - offset: 316
     /// -  flags: `FLAGS_NONE`
-    update_count: u32,
+    pub update_count: u32,
     /// # C++ Class Fields Info
     /// -   name:`"writeLock"`
     /// -   type: `hkBool`
     /// - offset: 320
     /// -  flags: `FLAGS_NONE`
-    write_lock: bool,
+    pub write_lock: bool,
     /// # C++ Class Fields Info
     /// -   name:`"isSharable"`
     /// -   type: `hkBool`
     /// - offset: 321
     /// -  flags: `FLAGS_NONE`
-    is_sharable: bool,
+    pub is_sharable: bool,
     /// # C++ Class Fields Info
     /// -   name:`"constructionComplete"`
     /// -   type: `hkBool`
     /// - offset: 322
     /// -  flags: `FLAGS_NONE`
-    construction_complete: bool,
+    pub construction_complete: bool,
 }
 
 impl Serialize for HkMultipleVertexBuffer<'_> {

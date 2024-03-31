@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,39 +34,39 @@ pub struct HkpExtendedMeshShape<'a> {
     /// -   type: `hkBool`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    disable_welding: bool,
+    pub disable_welding: bool,
     /// # C++ Parent class(`hkpShapeCollection` => parent: `hkpShape`) field Info
     /// -   name:`"collectionType"`
     /// -   type: `enum CollectionType`
     /// - offset: 21
     /// -  flags: `FLAGS_NONE`
-    collection_type: CollectionType,
+    pub collection_type: CollectionType,
 
     /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    _type: (),
+    pub _type: (),
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -70,79 +75,79 @@ pub struct HkpExtendedMeshShape<'a> {
     /// -   type: `struct hkpExtendedMeshShapeTrianglesSubpart`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    embedded_triangles_subpart: SingleClass<HkpExtendedMeshShapeTrianglesSubpart<'a>>,
+    pub embedded_triangles_subpart: SingleClass<HkpExtendedMeshShapeTrianglesSubpart<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"aabbHalfExtents"`
     /// -   type: `hkVector4`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    aabb_half_extents: Vector4<f32>,
+    pub aabb_half_extents: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"aabbCenter"`
     /// -   type: `hkVector4`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    aabb_center: Vector4<f32>,
+    pub aabb_center: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"materialClass"`
     /// -   type: `void*`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    material_class: Cow<'a, str>,
+    pub material_class: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"numBitsForSubpartIndex"`
     /// -   type: `hkInt32`
     /// - offset: 180
     /// -  flags: `FLAGS_NONE`
-    num_bits_for_subpart_index: i32,
+    pub num_bits_for_subpart_index: i32,
     /// # C++ Class Fields Info
     /// -   name:`"trianglesSubparts"`
     /// -   type: `hkArray<struct hkpExtendedMeshShapeTrianglesSubpart>`
     /// - offset: 184
     /// -  flags: `FLAGS_NONE`
-    triangles_subparts: HkArrayClass<HkpExtendedMeshShapeTrianglesSubpart<'a>>,
+    pub triangles_subparts: HkArrayClass<HkpExtendedMeshShapeTrianglesSubpart<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"shapesSubparts"`
     /// -   type: `hkArray<struct hkpExtendedMeshShapeShapesSubpart>`
     /// - offset: 196
     /// -  flags: `FLAGS_NONE`
-    shapes_subparts: HkArrayClass<HkpExtendedMeshShapeShapesSubpart<'a>>,
+    pub shapes_subparts: HkArrayClass<HkpExtendedMeshShapeShapesSubpart<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"weldingInfo"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 208
     /// -  flags: `FLAGS_NONE`
-    welding_info: HkArrayNum<u16>,
+    pub welding_info: HkArrayNum<u16>,
     /// # C++ Class Fields Info
     /// -   name:`"weldingType"`
     /// -   type: `enum WeldingType`
     /// - offset: 220
     /// -  flags: `FLAGS_NONE`
-    welding_type: WeldingType,
+    pub welding_type: WeldingType,
     /// # C++ Class Fields Info
     /// -   name:`"defaultCollisionFilterInfo"`
     /// -   type: `hkUint32`
     /// - offset: 224
     /// -  flags: `FLAGS_NONE`
-    default_collision_filter_info: u32,
+    pub default_collision_filter_info: u32,
     /// # C++ Class Fields Info
     /// -   name:`"cachedNumChildShapes"`
     /// -   type: `hkInt32`
     /// - offset: 228
     /// -  flags: `FLAGS_NONE`
-    cached_num_child_shapes: i32,
+    pub cached_num_child_shapes: i32,
     /// # C++ Class Fields Info
     /// -   name:`"triangleRadius"`
     /// -   type: `hkReal`
     /// - offset: 232
     /// -  flags: `FLAGS_NONE`
-    triangle_radius: f32,
+    pub triangle_radius: f32,
     /// # C++ Class Fields Info
     /// -   name:`"padding"`
     /// -   type: `hkInt32`
     /// - offset: 236
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    padding: i32,
+    pub padding: i32,
 }
 
 impl Serialize for HkpExtendedMeshShape<'_> {

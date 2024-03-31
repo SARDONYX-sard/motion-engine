@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkaBoneAttachment<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,31 +49,31 @@ pub struct HkaBoneAttachment<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    original_skeleton_name: Cow<'a, str>,
+    pub original_skeleton_name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"boneFromAttachment"`
     /// -   type: `hkMatrix4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    bone_from_attachment: Matrix4<f32>,
+    pub bone_from_attachment: Matrix4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"attachment"`
     /// -   type: `struct hkReferencedObject*`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    attachment: Cow<'a, str>,
+    pub attachment: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"boneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    bone_index: i16,
+    pub bone_index: i16,
 }
 
 impl Serialize for HkaBoneAttachment<'_> {
@@ -139,7 +144,7 @@ impl<'a> From<&HkaBoneAttachment<'a>> for Vec<HkaBoneAttachmentVisitor<'a>> {
             HkaBoneAttachmentVisitor::MemSizeAndFlags(data.mem_size_and_flags.into()),
             HkaBoneAttachmentVisitor::ReferenceCount(data.reference_count.into()),
             HkaBoneAttachmentVisitor::OriginalSkeletonName(data.original_skeleton_name.clone().into()),
-            HkaBoneAttachmentVisitor::BoneFromAttachment(data.bone_from_attachment.clone().into()),
+            HkaBoneAttachmentVisitor::BoneFromAttachment(data.bone_from_attachment.into()),
             HkaBoneAttachmentVisitor::Attachment(data.attachment.clone().into()),
             HkaBoneAttachmentVisitor::Name(data.name.clone().into()),
             HkaBoneAttachmentVisitor::BoneIndex(data.bone_index.into()),

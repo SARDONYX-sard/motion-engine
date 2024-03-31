@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkbCharacterSetup<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,49 +49,49 @@ pub struct HkbCharacterSetup<'a> {
     /// -   type: `hkArray<hkaSkeletonMapper*>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    retargeting_skeleton_mappers: HkArrayRef<Cow<'a, str>>,
+    pub retargeting_skeleton_mappers: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"animationSkeleton"`
     /// -   type: `struct hkaSkeleton*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    animation_skeleton: Cow<'a, str>,
+    pub animation_skeleton: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"ragdollToAnimationSkeletonMapper"`
     /// -   type: `struct hkaSkeletonMapper*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    ragdoll_to_animation_skeleton_mapper: Cow<'a, str>,
+    pub ragdoll_to_animation_skeleton_mapper: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"animationToRagdollSkeletonMapper"`
     /// -   type: `struct hkaSkeletonMapper*`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    animation_to_ragdoll_skeleton_mapper: Cow<'a, str>,
+    pub animation_to_ragdoll_skeleton_mapper: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"animationBindingSet"`
     /// -   type: `void*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    animation_binding_set: Cow<'a, str>,
+    pub animation_binding_set: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `struct hkbCharacterData*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    data: Cow<'a, str>,
+    pub data: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"mirroredSkeleton"`
     /// -   type: `void*`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mirrored_skeleton: Cow<'a, str>,
+    pub mirrored_skeleton: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"characterPropertyIdMap"`
     /// -   type: `void*`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    character_property_id_map: Cow<'a, str>,
+    pub character_property_id_map: Cow<'a, str>,
 }
 
 impl Serialize for HkbCharacterSetup<'_> {

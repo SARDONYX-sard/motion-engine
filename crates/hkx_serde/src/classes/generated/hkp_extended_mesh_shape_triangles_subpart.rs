@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,116 +34,116 @@ pub struct HkpExtendedMeshShapeTrianglesSubpart<'a> {
     /// -   type: `enum SubpartType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    _type: SubpartType,
+    pub _type: SubpartType,
     /// # C++ Parent class(`hkpExtendedMeshShapeSubpart` => parent: `None`) field Info
     /// -   name:`"materialIndexStridingType"`
     /// -   type: `enum MaterialIndexStridingType`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
-    material_index_striding_type: MaterialIndexStridingType,
+    pub material_index_striding_type: MaterialIndexStridingType,
     /// # C++ Parent class(`hkpExtendedMeshShapeSubpart` => parent: `None`) field Info
     /// -   name:`"materialStriding"`
     /// -   type: `hkInt16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    material_striding: i16,
+    pub material_striding: i16,
     /// # C++ Parent class(`hkpExtendedMeshShapeSubpart` => parent: `None`) field Info
     /// -   name:`"materialIndexBase"`
     /// -   type: `void*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    material_index_base: Cow<'a, str>,
+    pub material_index_base: Cow<'a, str>,
     /// # C++ Parent class(`hkpExtendedMeshShapeSubpart` => parent: `None`) field Info
     /// -   name:`"materialIndexStriding"`
     /// -   type: `hkUint16`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    material_index_striding: u16,
+    pub material_index_striding: u16,
     /// # C++ Parent class(`hkpExtendedMeshShapeSubpart` => parent: `None`) field Info
     /// -   name:`"numMaterials"`
     /// -   type: `hkUint16`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
-    num_materials: u16,
+    pub num_materials: u16,
     /// # C++ Parent class(`hkpExtendedMeshShapeSubpart` => parent: `None`) field Info
     /// -   name:`"materialBase"`
     /// -   type: `void*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    material_base: Cow<'a, str>,
+    pub material_base: Cow<'a, str>,
     /// # C++ Parent class(`hkpExtendedMeshShapeSubpart` => parent: `None`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
 
     /// # C++ Class Fields Info
     /// -   name:`"numTriangleShapes"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    num_triangle_shapes: i32,
+    pub num_triangle_shapes: i32,
     /// # C++ Class Fields Info
     /// -   name:`"vertexBase"`
     /// -   type: `void*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    vertex_base: Cow<'a, str>,
+    pub vertex_base: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"numVertices"`
     /// -   type: `hkInt32`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    num_vertices: i32,
+    pub num_vertices: i32,
     /// # C++ Class Fields Info
     /// -   name:`"indexBase"`
     /// -   type: `void*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    index_base: Cow<'a, str>,
+    pub index_base: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"vertexStriding"`
     /// -   type: `hkUint16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    vertex_striding: u16,
+    pub vertex_striding: u16,
     /// # C++ Class Fields Info
     /// -   name:`"triangleOffset"`
     /// -   type: `hkInt32`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    triangle_offset: i32,
+    pub triangle_offset: i32,
     /// # C++ Class Fields Info
     /// -   name:`"indexStriding"`
     /// -   type: `hkUint16`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    index_striding: u16,
+    pub index_striding: u16,
     /// # C++ Class Fields Info
     /// -   name:`"stridingType"`
     /// -   type: `enum IndexStridingType`
     /// - offset: 46
     /// -  flags: `FLAGS_NONE`
-    striding_type: IndexStridingType,
+    pub striding_type: IndexStridingType,
     /// # C++ Class Fields Info
     /// -   name:`"flipAlternateTriangles"`
     /// -   type: `hkInt8`
     /// - offset: 47
     /// -  flags: `FLAGS_NONE`
-    flip_alternate_triangles: i8,
+    pub flip_alternate_triangles: i8,
     /// # C++ Class Fields Info
     /// -   name:`"extrusion"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    extrusion: Vector4<f32>,
+    pub extrusion: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"transform"`
     /// -   type: `hkQsTransform`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    transform: QsTransform<f32>,
+    pub transform: QsTransform<f32>,
 }
 
 impl Serialize for HkpExtendedMeshShapeTrianglesSubpart<'_> {

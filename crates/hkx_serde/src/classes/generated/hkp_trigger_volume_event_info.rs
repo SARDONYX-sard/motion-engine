@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,19 +33,19 @@ pub struct HkpTriggerVolumeEventInfo<'a> {
     /// -   type: `hkUint64`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    sort_value: u64,
+    pub sort_value: u64,
     /// # C++ Class Fields Info
     /// -   name:`"body"`
     /// -   type: `struct hkpRigidBody*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    body: Cow<'a, str>,
+    pub body: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"operation"`
     /// -   type: `enum Operation`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    operation: Operation,
+    pub operation: Operation,
 }
 
 impl Serialize for HkpTriggerVolumeEventInfo<'_> {

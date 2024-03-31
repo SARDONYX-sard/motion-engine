@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,44 +34,44 @@ pub struct HkpTwistLimitConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    _type: AtomType,
+    pub _type: AtomType,
 
     /// # C++ Class Fields Info
     /// -   name:`"isEnabled"`
     /// -   type: `hkUint8`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    is_enabled: u8,
+    pub is_enabled: u8,
     /// # C++ Class Fields Info
     /// -   name:`"twistAxis"`
     /// -   type: `hkUint8`
     /// - offset: 3
     /// -  flags: `FLAGS_NONE`
-    twist_axis: u8,
+    pub twist_axis: u8,
     /// # C++ Class Fields Info
     /// -   name:`"refAxis"`
     /// -   type: `hkUint8`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    ref_axis: u8,
+    pub ref_axis: u8,
     /// # C++ Class Fields Info
     /// -   name:`"minAngle"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    min_angle: f32,
+    pub min_angle: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxAngle"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    max_angle: f32,
+    pub max_angle: f32,
     /// # C++ Class Fields Info
     /// -   name:`"angularLimitsTauFactor"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    angular_limits_tau_factor: f32,
+    pub angular_limits_tau_factor: f32,
 }
 
 impl Serialize for HkpTwistLimitConstraintAtom {

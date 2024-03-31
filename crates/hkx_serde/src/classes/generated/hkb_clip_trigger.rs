@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,31 +33,31 @@ pub struct HkbClipTrigger<'a> {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    local_time: f32,
+    pub local_time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"event"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    event: SingleClass<HkbEventProperty<'a>>,
+    pub event: SingleClass<HkbEventProperty<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"relativeToEndOfClip"`
     /// -   type: `hkBool`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    relative_to_end_of_clip: bool,
+    pub relative_to_end_of_clip: bool,
     /// # C++ Class Fields Info
     /// -   name:`"acyclic"`
     /// -   type: `hkBool`
     /// - offset: 13
     /// -  flags: `FLAGS_NONE`
-    acyclic: bool,
+    pub acyclic: bool,
     /// # C++ Class Fields Info
     /// -   name:`"isAnnotation"`
     /// -   type: `hkBool`
     /// - offset: 14
     /// -  flags: `FLAGS_NONE`
-    is_annotation: bool,
+    pub is_annotation: bool,
 }
 
 impl Serialize for HkbClipTrigger<'_> {

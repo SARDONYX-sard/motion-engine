@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,50 +34,50 @@ pub struct HkaSplineCompressedAnimation<'a> {
     /// -   type: `enum AnimationType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    _type: AnimationType,
+    pub _type: AnimationType,
     /// # C++ Parent class(`hkaAnimation` => parent: `hkReferencedObject`) field Info
     /// -   name:`"duration"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    duration: f32,
+    pub duration: f32,
     /// # C++ Parent class(`hkaAnimation` => parent: `hkReferencedObject`) field Info
     /// -   name:`"numberOfTransformTracks"`
     /// -   type: `hkInt32`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    number_of_transform_tracks: i32,
+    pub number_of_transform_tracks: i32,
     /// # C++ Parent class(`hkaAnimation` => parent: `hkReferencedObject`) field Info
     /// -   name:`"numberOfFloatTracks"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    number_of_float_tracks: i32,
+    pub number_of_float_tracks: i32,
     /// # C++ Parent class(`hkaAnimation` => parent: `hkReferencedObject`) field Info
     /// -   name:`"extractedMotion"`
     /// -   type: `struct hkaAnimatedReferenceFrame*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    extracted_motion: Cow<'a, str>,
+    pub extracted_motion: Cow<'a, str>,
     /// # C++ Parent class(`hkaAnimation` => parent: `hkReferencedObject`) field Info
     /// -   name:`"annotationTracks"`
     /// -   type: `hkArray<struct hkaAnnotationTrack>`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    annotation_tracks: HkArrayClass<HkaAnnotationTrack<'a>>,
+    pub annotation_tracks: HkArrayClass<HkaAnnotationTrack<'a>>,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -81,79 +86,79 @@ pub struct HkaSplineCompressedAnimation<'a> {
     /// -   type: `hkInt32`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    num_frames: i32,
+    pub num_frames: i32,
     /// # C++ Class Fields Info
     /// -   name:`"numBlocks"`
     /// -   type: `hkInt32`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    num_blocks: i32,
+    pub num_blocks: i32,
     /// # C++ Class Fields Info
     /// -   name:`"maxFramesPerBlock"`
     /// -   type: `hkInt32`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    max_frames_per_block: i32,
+    pub max_frames_per_block: i32,
     /// # C++ Class Fields Info
     /// -   name:`"maskAndQuantizationSize"`
     /// -   type: `hkInt32`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    mask_and_quantization_size: i32,
+    pub mask_and_quantization_size: i32,
     /// # C++ Class Fields Info
     /// -   name:`"blockDuration"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    block_duration: f32,
+    pub block_duration: f32,
     /// # C++ Class Fields Info
     /// -   name:`"blockInverseDuration"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    block_inverse_duration: f32,
+    pub block_inverse_duration: f32,
     /// # C++ Class Fields Info
     /// -   name:`"frameDuration"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    frame_duration: f32,
+    pub frame_duration: f32,
     /// # C++ Class Fields Info
     /// -   name:`"blockOffsets"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    block_offsets: HkArrayNum<u32>,
+    pub block_offsets: HkArrayNum<u32>,
     /// # C++ Class Fields Info
     /// -   name:`"floatBlockOffsets"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    float_block_offsets: HkArrayNum<u32>,
+    pub float_block_offsets: HkArrayNum<u32>,
     /// # C++ Class Fields Info
     /// -   name:`"transformOffsets"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    transform_offsets: HkArrayNum<u32>,
+    pub transform_offsets: HkArrayNum<u32>,
     /// # C++ Class Fields Info
     /// -   name:`"floatOffsets"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    float_offsets: HkArrayNum<u32>,
+    pub float_offsets: HkArrayNum<u32>,
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    data: HkArrayNum<u8>,
+    pub data: HkArrayNum<u8>,
     /// # C++ Class Fields Info
     /// -   name:`"endian"`
     /// -   type: `hkInt32`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    endian: i32,
+    pub endian: i32,
 }
 
 impl Serialize for HkaSplineCompressedAnimation<'_> {

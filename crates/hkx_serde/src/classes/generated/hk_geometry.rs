@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkGeometry {
     /// -   type: `hkArray<hkVector4>`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    vertices: HkArrayVector<Vector4<f32>>,
+    pub vertices: HkArrayVector<Vector4<f32>>,
     /// # C++ Class Fields Info
     /// -   name:`"triangles"`
     /// -   type: `hkArray<struct hkGeometryTriangle>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    triangles: HkArrayClass<HkGeometryTriangle>,
+    pub triangles: HkArrayClass<HkGeometryTriangle>,
 }
 
 impl Serialize for HkGeometry {

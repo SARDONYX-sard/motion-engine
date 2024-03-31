@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,25 +33,25 @@ pub struct HkaQuantizedAnimationTrackCompressionParams {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    rotation_tolerance: f32,
+    pub rotation_tolerance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"translationTolerance"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    translation_tolerance: f32,
+    pub translation_tolerance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"scaleTolerance"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    scale_tolerance: f32,
+    pub scale_tolerance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"floatingTolerance"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    floating_tolerance: f32,
+    pub floating_tolerance: f32,
 }
 
 impl Serialize for HkaQuantizedAnimationTrackCompressionParams {

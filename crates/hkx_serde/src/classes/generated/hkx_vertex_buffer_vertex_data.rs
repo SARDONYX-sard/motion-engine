@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,67 +33,67 @@ pub struct HkxVertexBufferVertexData {
     /// -   type: `hkArray<hkVector4>`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    vector_data: HkArrayVector<Vector4<f32>>,
+    pub vector_data: HkArrayVector<Vector4<f32>>,
     /// # C++ Class Fields Info
     /// -   name:`"floatData"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    float_data: HkArrayNum<f32>,
+    pub float_data: HkArrayNum<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"uint32Data"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    uint_32_data: HkArrayNum<u32>,
+    pub uint_32_data: HkArrayNum<u32>,
     /// # C++ Class Fields Info
     /// -   name:`"uint16Data"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    uint_16_data: HkArrayNum<u16>,
+    pub uint_16_data: HkArrayNum<u16>,
     /// # C++ Class Fields Info
     /// -   name:`"uint8Data"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    uint_8_data: HkArrayNum<u8>,
+    pub uint_8_data: HkArrayNum<u8>,
     /// # C++ Class Fields Info
     /// -   name:`"numVerts"`
     /// -   type: `hkUint32`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    num_verts: u32,
+    pub num_verts: u32,
     /// # C++ Class Fields Info
     /// -   name:`"vectorStride"`
     /// -   type: `hkUint32`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    vector_stride: u32,
+    pub vector_stride: u32,
     /// # C++ Class Fields Info
     /// -   name:`"floatStride"`
     /// -   type: `hkUint32`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    float_stride: u32,
+    pub float_stride: u32,
     /// # C++ Class Fields Info
     /// -   name:`"uint32Stride"`
     /// -   type: `hkUint32`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    uint_32_stride: u32,
+    pub uint_32_stride: u32,
     /// # C++ Class Fields Info
     /// -   name:`"uint16Stride"`
     /// -   type: `hkUint32`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    uint_16_stride: u32,
+    pub uint_16_stride: u32,
     /// # C++ Class Fields Info
     /// -   name:`"uint8Stride"`
     /// -   type: `hkUint32`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    uint_8_stride: u32,
+    pub uint_8_stride: u32,
 }
 
 impl Serialize for HkxVertexBufferVertexData {

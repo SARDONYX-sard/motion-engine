@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -31,13 +36,13 @@ pub struct HkaDefaultAnimatedReferenceFrame {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -46,25 +51,25 @@ pub struct HkaDefaultAnimatedReferenceFrame {
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    up: Vector4<f32>,
+    pub up: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"forward"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    forward: Vector4<f32>,
+    pub forward: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"duration"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    duration: f32,
+    pub duration: f32,
     /// # C++ Class Fields Info
     /// -   name:`"referenceFrameSamples"`
     /// -   type: `hkArray<hkVector4>`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    reference_frame_samples: HkArrayVector<Vector4<f32>>,
+    pub reference_frame_samples: HkArrayVector<Vector4<f32>>,
 }
 
 impl Serialize for HkaDefaultAnimatedReferenceFrame {

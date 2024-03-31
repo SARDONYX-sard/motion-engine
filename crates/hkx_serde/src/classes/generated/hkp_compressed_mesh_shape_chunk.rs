@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,49 +33,49 @@ pub struct HkpCompressedMeshShapeChunk {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    offset: Vector4<f32>,
+    pub offset: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"vertices"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    vertices: HkArrayNum<u16>,
+    pub vertices: HkArrayNum<u16>,
     /// # C++ Class Fields Info
     /// -   name:`"indices"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    indices: HkArrayNum<u16>,
+    pub indices: HkArrayNum<u16>,
     /// # C++ Class Fields Info
     /// -   name:`"stripLengths"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    strip_lengths: HkArrayNum<u16>,
+    pub strip_lengths: HkArrayNum<u16>,
     /// # C++ Class Fields Info
     /// -   name:`"weldingInfo"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    welding_info: HkArrayNum<u16>,
+    pub welding_info: HkArrayNum<u16>,
     /// # C++ Class Fields Info
     /// -   name:`"materialInfo"`
     /// -   type: `hkUint32`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    material_info: u32,
+    pub material_info: u32,
     /// # C++ Class Fields Info
     /// -   name:`"reference"`
     /// -   type: `hkUint16`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    reference: u16,
+    pub reference: u16,
     /// # C++ Class Fields Info
     /// -   name:`"transformIndex"`
     /// -   type: `hkUint16`
     /// - offset: 70
     /// -  flags: `FLAGS_NONE`
-    transform_index: u16,
+    pub transform_index: u16,
 }
 
 impl Serialize for HkpCompressedMeshShapeChunk {

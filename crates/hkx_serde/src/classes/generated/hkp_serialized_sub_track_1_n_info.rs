@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,26 +34,26 @@ pub struct HkpSerializedSubTrack1NInfo<'a> {
     /// -   type: `hkArray<hkpAgent1nSector*>`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    sectors: HkArrayRef<Cow<'a, str>>,
+    pub sectors: HkArrayRef<Cow<'a, str>>,
     /// # C++ Parent class(`hkpSerializedTrack1nInfo` => parent: `None`) field Info
     /// -   name:`"subTracks"`
     /// -   type: `hkArray<hkpSerializedSubTrack1nInfo*>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    sub_tracks: HkArrayRef<Cow<'a, str>>,
+    pub sub_tracks: HkArrayRef<Cow<'a, str>>,
 
     /// # C++ Class Fields Info
     /// -   name:`"sectorIndex"`
     /// -   type: `hkInt32`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    sector_index: i32,
+    pub sector_index: i32,
     /// # C++ Class Fields Info
     /// -   name:`"offsetInSector"`
     /// -   type: `hkInt32`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    offset_in_sector: i32,
+    pub offset_in_sector: i32,
 }
 
 impl Serialize for HkpSerializedSubTrack1NInfo<'_> {

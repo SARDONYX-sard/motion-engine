@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,73 +33,73 @@ pub struct HkbFootIkGains {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    on_off_gain: f32,
+    pub on_off_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"groundAscendingGain"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    ground_ascending_gain: f32,
+    pub ground_ascending_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"groundDescendingGain"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    ground_descending_gain: f32,
+    pub ground_descending_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"footPlantedGain"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    foot_planted_gain: f32,
+    pub foot_planted_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"footRaisedGain"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    foot_raised_gain: f32,
+    pub foot_raised_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"footUnlockGain"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    foot_unlock_gain: f32,
+    pub foot_unlock_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"worldFromModelFeedbackGain"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    world_from_model_feedback_gain: f32,
+    pub world_from_model_feedback_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"errorUpDownBias"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    error_up_down_bias: f32,
+    pub error_up_down_bias: f32,
     /// # C++ Class Fields Info
     /// -   name:`"alignWorldFromModelGain"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    align_world_from_model_gain: f32,
+    pub align_world_from_model_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"hipOrientationGain"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    hip_orientation_gain: f32,
+    pub hip_orientation_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxKneeAngleDifference"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    max_knee_angle_difference: f32,
+    pub max_knee_angle_difference: f32,
     /// # C++ Class Fields Info
     /// -   name:`"ankleOrientationGain"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    ankle_orientation_gain: f32,
+    pub ankle_orientation_gain: f32,
 }
 
 impl Serialize for HkbFootIkGains {

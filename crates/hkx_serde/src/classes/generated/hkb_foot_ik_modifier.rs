@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,76 +34,76 @@ pub struct HkbFootIkModifier<'a> {
     /// -   type: `hkBool`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    enable: bool,
+    pub enable: bool,
     /// # C++ Parent class(`hkbModifier` => parent: `hkbNode`) field Info
     /// -   name:`"padModifier"`
     /// -   type: `hkBool[3]`
     /// - offset: 41
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pad_modifier: CStyleArray<[bool; 3]>,
+    pub pad_modifier: CStyleArray<[bool; 3]>,
 
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    id: i16,
+    pub id: i16,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    clone_state: (),
+    pub clone_state: (),
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pad_node: CStyleArray<[bool; 1]>,
+    pub pad_node: CStyleArray<[bool; 1]>,
 
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"variableBindingSet"`
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    variable_binding_set: Cow<'a, str>,
+    pub variable_binding_set: Cow<'a, str>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray<void>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    cached_bindables: HkArrayRef<()>,
+    pub cached_bindables: HkArrayRef<()>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    are_bindables_cached: bool,
+    pub are_bindables_cached: bool,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -107,133 +112,133 @@ pub struct HkbFootIkModifier<'a> {
     /// -   type: `struct hkbFootIkGains`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    gains: SingleClass<HkbFootIkGains>,
+    pub gains: SingleClass<HkbFootIkGains>,
     /// # C++ Class Fields Info
     /// -   name:`"legs"`
     /// -   type: `hkArray<struct hkbFootIkModifierLeg>`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    legs: HkArrayClass<HkbFootIkModifierLeg<'a>>,
+    pub legs: HkArrayClass<HkbFootIkModifierLeg<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"raycastDistanceUp"`
     /// -   type: `hkReal`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    raycast_distance_up: f32,
+    pub raycast_distance_up: f32,
     /// # C++ Class Fields Info
     /// -   name:`"raycastDistanceDown"`
     /// -   type: `hkReal`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
-    raycast_distance_down: f32,
+    pub raycast_distance_down: f32,
     /// # C++ Class Fields Info
     /// -   name:`"originalGroundHeightMS"`
     /// -   type: `hkReal`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    original_ground_height_ms: f32,
+    pub original_ground_height_ms: f32,
     /// # C++ Class Fields Info
     /// -   name:`"errorOut"`
     /// -   type: `hkReal`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    error_out: f32,
+    pub error_out: f32,
     /// # C++ Class Fields Info
     /// -   name:`"errorOutTranslation"`
     /// -   type: `hkVector4`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    error_out_translation: Vector4<f32>,
+    pub error_out_translation: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"alignWithGroundRotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    align_with_ground_rotation: Quaternion<f32>,
+    pub align_with_ground_rotation: Quaternion<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"verticalOffset"`
     /// -   type: `hkReal`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    vertical_offset: f32,
+    pub vertical_offset: f32,
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilterInfo"`
     /// -   type: `hkUint32`
     /// - offset: 164
     /// -  flags: `FLAGS_NONE`
-    collision_filter_info: u32,
+    pub collision_filter_info: u32,
     /// # C++ Class Fields Info
     /// -   name:`"forwardAlignFraction"`
     /// -   type: `hkReal`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE`
-    forward_align_fraction: f32,
+    pub forward_align_fraction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"sidewaysAlignFraction"`
     /// -   type: `hkReal`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE`
-    sideways_align_fraction: f32,
+    pub sideways_align_fraction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"sidewaysSampleWidth"`
     /// -   type: `hkReal`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
-    sideways_sample_width: f32,
+    pub sideways_sample_width: f32,
     /// # C++ Class Fields Info
     /// -   name:`"useTrackData"`
     /// -   type: `hkBool`
     /// - offset: 180
     /// -  flags: `FLAGS_NONE`
-    use_track_data: bool,
+    pub use_track_data: bool,
     /// # C++ Class Fields Info
     /// -   name:`"lockFeetWhenPlanted"`
     /// -   type: `hkBool`
     /// - offset: 181
     /// -  flags: `FLAGS_NONE`
-    lock_feet_when_planted: bool,
+    pub lock_feet_when_planted: bool,
     /// # C++ Class Fields Info
     /// -   name:`"useCharacterUpVector"`
     /// -   type: `hkBool`
     /// - offset: 182
     /// -  flags: `FLAGS_NONE`
-    use_character_up_vector: bool,
+    pub use_character_up_vector: bool,
     /// # C++ Class Fields Info
     /// -   name:`"alignMode"`
     /// -   type: `enum AlignMode`
     /// - offset: 183
     /// -  flags: `FLAGS_NONE`
-    align_mode: AlignMode,
+    pub align_mode: AlignMode,
     /// # C++ Class Fields Info
     /// -   name:`"internalLegData"`
     /// -   type: `hkArray<struct hkbFootIkModifierInternalLegData>`
     /// - offset: 184
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    internal_leg_data: HkArrayClass<HkbFootIkModifierInternalLegData<'a>>,
+    pub internal_leg_data: HkArrayClass<HkbFootIkModifierInternalLegData<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"prevIsFootIkEnabled"`
     /// -   type: `hkReal`
     /// - offset: 196
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    prev_is_foot_ik_enabled: f32,
+    pub prev_is_foot_ik_enabled: f32,
     /// # C++ Class Fields Info
     /// -   name:`"isSetUp"`
     /// -   type: `hkBool`
     /// - offset: 200
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    is_set_up: bool,
+    pub is_set_up: bool,
     /// # C++ Class Fields Info
     /// -   name:`"isGroundPositionValid"`
     /// -   type: `hkBool`
     /// - offset: 201
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    is_ground_position_valid: bool,
+    pub is_ground_position_valid: bool,
     /// # C++ Class Fields Info
     /// -   name:`"timeStep"`
     /// -   type: `hkReal`
     /// - offset: 204
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    time_step: f32,
+    pub time_step: f32,
 }
 
 impl Serialize for HkbFootIkModifier<'_> {

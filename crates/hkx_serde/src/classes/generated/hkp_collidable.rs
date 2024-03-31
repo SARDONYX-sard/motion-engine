@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,62 +34,62 @@ pub struct HkpCollidable<'a> {
     /// -   type: `struct hkpShape*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    shape: Cow<'a, str>,
+    pub shape: Cow<'a, str>,
     /// # C++ Parent class(`hkpCdBody` => parent: `None`) field Info
     /// -   name:`"shapeKey"`
     /// -   type: `hkUint32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    shape_key: u32,
+    pub shape_key: u32,
     /// # C++ Parent class(`hkpCdBody` => parent: `None`) field Info
     /// -   name:`"motion"`
     /// -   type: `void*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    motion: Cow<'a, str>,
+    pub motion: Cow<'a, str>,
     /// # C++ Parent class(`hkpCdBody` => parent: `None`) field Info
     /// -   name:`"parent"`
     /// -   type: `struct hkpCdBody*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    parent: Cow<'a, str>,
+    pub parent: Cow<'a, str>,
 
     /// # C++ Class Fields Info
     /// -   name:`"ownerOffset"`
     /// -   type: `hkInt8`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    owner_offset: i8,
+    pub owner_offset: i8,
     /// # C++ Class Fields Info
     /// -   name:`"forceCollideOntoPpu"`
     /// -   type: `hkUint8`
     /// - offset: 17
     /// -  flags: `FLAGS_NONE`
-    force_collide_onto_ppu: u8,
+    pub force_collide_onto_ppu: u8,
     /// # C++ Class Fields Info
     /// -   name:`"shapeSizeOnSpu"`
     /// -   type: `hkUint16`
     /// - offset: 18
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    shape_size_on_spu: u16,
+    pub shape_size_on_spu: u16,
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseHandle"`
     /// -   type: `struct hkpTypedBroadPhaseHandle`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    broad_phase_handle: SingleClass<HkpTypedBroadPhaseHandle>,
+    pub broad_phase_handle: SingleClass<HkpTypedBroadPhaseHandle>,
     /// # C++ Class Fields Info
     /// -   name:`"boundingVolumeData"`
     /// -   type: `struct hkpCollidableBoundingVolumeData`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    bounding_volume_data: SingleClass<HkpCollidableBoundingVolumeData<'a>>,
+    pub bounding_volume_data: SingleClass<HkpCollidableBoundingVolumeData<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"allowedPenetrationDepth"`
     /// -   type: `hkReal`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    allowed_penetration_depth: f32,
+    pub allowed_penetration_depth: f32,
 }
 
 impl Serialize for HkpCollidable<'_> {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,19 +33,19 @@ pub struct HkbClipGeneratorEcho {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE|ALIGN16`
-    offset_local_time: f32,
+    pub offset_local_time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"weight"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    weight: f32,
+    pub weight: f32,
     /// # C++ Class Fields Info
     /// -   name:`"dwdt"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    dwdt: f32,
+    pub dwdt: f32,
 }
 
 impl Serialize for HkbClipGeneratorEcho {

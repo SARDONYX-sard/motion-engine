@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,39 +34,39 @@ pub struct HkpConvexPieceMeshShape<'a> {
     /// -   type: `hkBool`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    disable_welding: bool,
+    pub disable_welding: bool,
     /// # C++ Parent class(`hkpShapeCollection` => parent: `hkpShape`) field Info
     /// -   name:`"collectionType"`
     /// -   type: `enum CollectionType`
     /// - offset: 21
     /// -  flags: `FLAGS_NONE`
-    collection_type: CollectionType,
+    pub collection_type: CollectionType,
 
     /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    _type: (),
+    pub _type: (),
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -70,19 +75,19 @@ pub struct HkpConvexPieceMeshShape<'a> {
     /// -   type: `struct hkpConvexPieceStreamData*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    convex_piece_stream: Cow<'a, str>,
+    pub convex_piece_stream: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"displayMesh"`
     /// -   type: `struct hkpShapeCollection*`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    display_mesh: Cow<'a, str>,
+    pub display_mesh: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"radius"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    radius: f32,
+    pub radius: f32,
 }
 
 impl Serialize for HkpConvexPieceMeshShape<'_> {

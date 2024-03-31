@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,19 +33,19 @@ pub struct HkaSkeletonMapperDataSimpleMapping {
     /// -   type: `hkInt16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    bone_a: i16,
+    pub bone_a: i16,
     /// # C++ Class Fields Info
     /// -   name:`"boneB"`
     /// -   type: `hkInt16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    bone_b: i16,
+    pub bone_b: i16,
     /// # C++ Class Fields Info
     /// -   name:`"aFromBTransform"`
     /// -   type: `hkQsTransform`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    a_from_b_transform: QsTransform<f32>,
+    pub a_from_b_transform: QsTransform<f32>,
 }
 
 impl Serialize for HkaSkeletonMapperDataSimpleMapping {

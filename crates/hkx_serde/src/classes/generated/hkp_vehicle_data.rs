@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkpVehicleData {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,115 +49,115 @@ pub struct HkpVehicleData {
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    gravity: Vector4<f32>,
+    pub gravity: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"numWheels"`
     /// -   type: `hkInt8`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    num_wheels: i8,
+    pub num_wheels: i8,
     /// # C++ Class Fields Info
     /// -   name:`"chassisOrientation"`
     /// -   type: `hkRotation`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    chassis_orientation: Rotation<f32>,
+    pub chassis_orientation: Rotation<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"torqueRollFactor"`
     /// -   type: `hkReal`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    torque_roll_factor: f32,
+    pub torque_roll_factor: f32,
     /// # C++ Class Fields Info
     /// -   name:`"torquePitchFactor"`
     /// -   type: `hkReal`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
-    torque_pitch_factor: f32,
+    pub torque_pitch_factor: f32,
     /// # C++ Class Fields Info
     /// -   name:`"torqueYawFactor"`
     /// -   type: `hkReal`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    torque_yaw_factor: f32,
+    pub torque_yaw_factor: f32,
     /// # C++ Class Fields Info
     /// -   name:`"extraTorqueFactor"`
     /// -   type: `hkReal`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
-    extra_torque_factor: f32,
+    pub extra_torque_factor: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxVelocityForPositionalFriction"`
     /// -   type: `hkReal`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    max_velocity_for_positional_friction: f32,
+    pub max_velocity_for_positional_friction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"chassisUnitInertiaYaw"`
     /// -   type: `hkReal`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    chassis_unit_inertia_yaw: f32,
+    pub chassis_unit_inertia_yaw: f32,
     /// # C++ Class Fields Info
     /// -   name:`"chassisUnitInertiaRoll"`
     /// -   type: `hkReal`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
-    chassis_unit_inertia_roll: f32,
+    pub chassis_unit_inertia_roll: f32,
     /// # C++ Class Fields Info
     /// -   name:`"chassisUnitInertiaPitch"`
     /// -   type: `hkReal`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
-    chassis_unit_inertia_pitch: f32,
+    pub chassis_unit_inertia_pitch: f32,
     /// # C++ Class Fields Info
     /// -   name:`"frictionEqualizer"`
     /// -   type: `hkReal`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    friction_equalizer: f32,
+    pub friction_equalizer: f32,
     /// # C++ Class Fields Info
     /// -   name:`"normalClippingAngleCos"`
     /// -   type: `hkReal`
     /// - offset: 132
     /// -  flags: `FLAGS_NONE`
-    normal_clipping_angle_cos: f32,
+    pub normal_clipping_angle_cos: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxFrictionSolverMassRatio"`
     /// -   type: `hkReal`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE`
-    max_friction_solver_mass_ratio: f32,
+    pub max_friction_solver_mass_ratio: f32,
     /// # C++ Class Fields Info
     /// -   name:`"wheelParams"`
     /// -   type: `hkArray<struct hkpVehicleDataWheelComponentParams>`
     /// - offset: 140
     /// -  flags: `FLAGS_NONE`
-    wheel_params: HkArrayClass<HkpVehicleDataWheelComponentParams>,
+    pub wheel_params: HkArrayClass<HkpVehicleDataWheelComponentParams>,
     /// # C++ Class Fields Info
     /// -   name:`"numWheelsPerAxle"`
     /// -   type: `hkArray<hkInt8>`
     /// - offset: 152
     /// -  flags: `FLAGS_NONE`
-    num_wheels_per_axle: HkArrayNum<i8>,
+    pub num_wheels_per_axle: HkArrayNum<i8>,
     /// # C++ Class Fields Info
     /// -   name:`"frictionDescription"`
     /// -   type: `struct hkpVehicleFrictionDescription`
     /// - offset: 164
     /// -  flags: `FLAGS_NONE`
-    friction_description: SingleClass<HkpVehicleFrictionDescription>,
+    pub friction_description: SingleClass<HkpVehicleFrictionDescription>,
     /// # C++ Class Fields Info
     /// -   name:`"chassisFrictionInertiaInvDiag"`
     /// -   type: `hkVector4`
     /// - offset: 384
     /// -  flags: `FLAGS_NONE`
-    chassis_friction_inertia_inv_diag: Vector4<f32>,
+    pub chassis_friction_inertia_inv_diag: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"alreadyInitialised"`
     /// -   type: `hkBool`
     /// - offset: 400
     /// -  flags: `FLAGS_NONE`
-    already_initialised: bool,
+    pub already_initialised: bool,
 }
 
 impl Serialize for HkpVehicleData {

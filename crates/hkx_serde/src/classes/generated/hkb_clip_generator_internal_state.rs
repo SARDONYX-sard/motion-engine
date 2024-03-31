@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkbClipGeneratorInternalState {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,61 +49,61 @@ pub struct HkbClipGeneratorInternalState {
     /// -   type: `hkQsTransform`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    extracted_motion: QsTransform<f32>,
+    pub extracted_motion: QsTransform<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"echos"`
     /// -   type: `hkArray<struct hkbClipGeneratorEcho>`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    echos: HkArrayClass<HkbClipGeneratorEcho>,
+    pub echos: HkArrayClass<HkbClipGeneratorEcho>,
     /// # C++ Class Fields Info
     /// -   name:`"localTime"`
     /// -   type: `hkReal`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    local_time: f32,
+    pub local_time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"time"`
     /// -   type: `hkReal`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    time: f32,
+    pub time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"previousUserControlledTimeFraction"`
     /// -   type: `hkReal`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    previous_user_controlled_time_fraction: f32,
+    pub previous_user_controlled_time_fraction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"bufferSize"`
     /// -   type: `hkInt32`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    buffer_size: i32,
+    pub buffer_size: i32,
     /// # C++ Class Fields Info
     /// -   name:`"echoBufferSize"`
     /// -   type: `hkInt32`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    echo_buffer_size: i32,
+    pub echo_buffer_size: i32,
     /// # C++ Class Fields Info
     /// -   name:`"atEnd"`
     /// -   type: `hkBool`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    at_end: bool,
+    pub at_end: bool,
     /// # C++ Class Fields Info
     /// -   name:`"ignoreStartTime"`
     /// -   type: `hkBool`
     /// - offset: 97
     /// -  flags: `FLAGS_NONE`
-    ignore_start_time: bool,
+    pub ignore_start_time: bool,
     /// # C++ Class Fields Info
     /// -   name:`"pingPongBackward"`
     /// -   type: `hkBool`
     /// - offset: 98
     /// -  flags: `FLAGS_NONE`
-    ping_pong_backward: bool,
+    pub ping_pong_backward: bool,
 }
 
 impl Serialize for HkbClipGeneratorInternalState {

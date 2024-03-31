@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,37 +33,37 @@ pub struct HkaSkeletonMapperDataChainMapping {
     /// -   type: `hkInt16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    start_bone_a: i16,
+    pub start_bone_a: i16,
     /// # C++ Class Fields Info
     /// -   name:`"endBoneA"`
     /// -   type: `hkInt16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    end_bone_a: i16,
+    pub end_bone_a: i16,
     /// # C++ Class Fields Info
     /// -   name:`"startBoneB"`
     /// -   type: `hkInt16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    start_bone_b: i16,
+    pub start_bone_b: i16,
     /// # C++ Class Fields Info
     /// -   name:`"endBoneB"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    end_bone_b: i16,
+    pub end_bone_b: i16,
     /// # C++ Class Fields Info
     /// -   name:`"startAFromBTransform"`
     /// -   type: `hkQsTransform`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    start_a_from_b_transform: QsTransform<f32>,
+    pub start_a_from_b_transform: QsTransform<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"endAFromBTransform"`
     /// -   type: `hkQsTransform`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    end_a_from_b_transform: QsTransform<f32>,
+    pub end_a_from_b_transform: QsTransform<f32>,
 }
 
 impl Serialize for HkaSkeletonMapperDataChainMapping {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkaSkeleton<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,43 +49,43 @@ pub struct HkaSkeleton<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"parentIndices"`
     /// -   type: `hkArray<hkInt16>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    parent_indices: HkArrayNum<i16>,
+    pub parent_indices: HkArrayNum<i16>,
     /// # C++ Class Fields Info
     /// -   name:`"bones"`
     /// -   type: `hkArray<struct hkaBone>`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    bones: HkArrayClass<HkaBone<'a>>,
+    pub bones: HkArrayClass<HkaBone<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"referencePose"`
     /// -   type: `hkArray<hkQsTransform>`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    reference_pose: HkArrayMatrix3<QsTransform<f32>>,
+    pub reference_pose: HkArrayMatrix3<QsTransform<f32>>,
     /// # C++ Class Fields Info
     /// -   name:`"referenceFloats"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    reference_floats: HkArrayNum<f32>,
+    pub reference_floats: HkArrayNum<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"floatSlots"`
     /// -   type: `hkArray<hkStringPtr>`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    float_slots: HkArrayStringPtr<'a>,
+    pub float_slots: HkArrayStringPtr<'a>,
     /// # C++ Class Fields Info
     /// -   name:`"localFrames"`
     /// -   type: `hkArray<struct hkaSkeletonLocalFrameOnBone>`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    local_frames: HkArrayClass<HkaSkeletonLocalFrameOnBone<'a>>,
+    pub local_frames: HkArrayClass<HkaSkeletonLocalFrameOnBone<'a>>,
 }
 
 impl Serialize for HkaSkeleton<'_> {

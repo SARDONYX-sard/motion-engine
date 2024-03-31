@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -31,63 +36,63 @@ pub struct HkbBlenderGenerator<'a> {
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    id: i16,
+    pub id: i16,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    clone_state: (),
+    pub clone_state: (),
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pad_node: CStyleArray<[bool; 1]>,
+    pub pad_node: CStyleArray<[bool; 1]>,
 
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"variableBindingSet"`
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    variable_binding_set: Cow<'a, str>,
+    pub variable_binding_set: Cow<'a, str>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray<void>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    cached_bindables: HkArrayRef<()>,
+    pub cached_bindables: HkArrayRef<()>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    are_bindables_cached: bool,
+    pub are_bindables_cached: bool,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -96,97 +101,97 @@ pub struct HkbBlenderGenerator<'a> {
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    reference_pose_weight_threshold: f32,
+    pub reference_pose_weight_threshold: f32,
     /// # C++ Class Fields Info
     /// -   name:`"blendParameter"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    blend_parameter: f32,
+    pub blend_parameter: f32,
     /// # C++ Class Fields Info
     /// -   name:`"minCyclicBlendParameter"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    min_cyclic_blend_parameter: f32,
+    pub min_cyclic_blend_parameter: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxCyclicBlendParameter"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    max_cyclic_blend_parameter: f32,
+    pub max_cyclic_blend_parameter: f32,
     /// # C++ Class Fields Info
     /// -   name:`"indexOfSyncMasterChild"`
     /// -   type: `hkInt16`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    index_of_sync_master_child: i16,
+    pub index_of_sync_master_child: i16,
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `hkInt16`
     /// - offset: 58
     /// -  flags: `FLAGS_NONE`
-    flags: i16,
+    pub flags: i16,
     /// # C++ Class Fields Info
     /// -   name:`"subtractLastChild"`
     /// -   type: `hkBool`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    subtract_last_child: bool,
+    pub subtract_last_child: bool,
     /// # C++ Class Fields Info
     /// -   name:`"children"`
     /// -   type: `hkArray<hkbBlenderGeneratorChild*>`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    children: HkArrayRef<Cow<'a, str>>,
+    pub children: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"childrenInternalStates"`
     /// -   type: `hkArray<void>`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    children_internal_states: HkArrayRef<()>,
+    pub children_internal_states: HkArrayRef<()>,
     /// # C++ Class Fields Info
     /// -   name:`"sortedChildren"`
     /// -   type: `hkArray<void>`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    sorted_children: HkArrayRef<()>,
+    pub sorted_children: HkArrayRef<()>,
     /// # C++ Class Fields Info
     /// -   name:`"endIntervalWeight"`
     /// -   type: `hkReal`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    end_interval_weight: f32,
+    pub end_interval_weight: f32,
     /// # C++ Class Fields Info
     /// -   name:`"numActiveChildren"`
     /// -   type: `hkInt32`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    num_active_children: i32,
+    pub num_active_children: i32,
     /// # C++ Class Fields Info
     /// -   name:`"beginIntervalIndex"`
     /// -   type: `hkInt16`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    begin_interval_index: i16,
+    pub begin_interval_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"endIntervalIndex"`
     /// -   type: `hkInt16`
     /// - offset: 110
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    end_interval_index: i16,
+    pub end_interval_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"initSync"`
     /// -   type: `hkBool`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    init_sync: bool,
+    pub init_sync: bool,
     /// # C++ Class Fields Info
     /// -   name:`"doSubtractiveBlend"`
     /// -   type: `hkBool`
     /// - offset: 113
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    do_subtractive_blend: bool,
+    pub do_subtractive_blend: bool,
 }
 
 impl Serialize for HkbBlenderGenerator<'_> {

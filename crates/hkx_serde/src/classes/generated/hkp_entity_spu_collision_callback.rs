@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,25 +33,25 @@ pub struct HkpEntitySpuCollisionCallback<'a> {
     /// -   type: `void*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    util: Cow<'a, str>,
+    pub util: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"capacity"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    capacity: u16,
+    pub capacity: u16,
     /// # C++ Class Fields Info
     /// -   name:`"eventFilter"`
     /// -   type: `hkUint8`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    event_filter: u8,
+    pub event_filter: u8,
     /// # C++ Class Fields Info
     /// -   name:`"userFilter"`
     /// -   type: `hkUint8`
     /// - offset: 7
     /// -  flags: `FLAGS_NONE`
-    user_filter: u8,
+    pub user_filter: u8,
 }
 
 impl Serialize for HkpEntitySpuCollisionCallback<'_> {

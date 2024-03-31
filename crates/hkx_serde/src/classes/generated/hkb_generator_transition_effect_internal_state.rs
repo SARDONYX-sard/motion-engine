@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkbGeneratorTransitionEffectInternalState {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,61 +49,61 @@ pub struct HkbGeneratorTransitionEffectInternalState {
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    time_in_transition: f32,
+    pub time_in_transition: f32,
     /// # C++ Class Fields Info
     /// -   name:`"duration"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    duration: f32,
+    pub duration: f32,
     /// # C++ Class Fields Info
     /// -   name:`"effectiveBlendInDuration"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    effective_blend_in_duration: f32,
+    pub effective_blend_in_duration: f32,
     /// # C++ Class Fields Info
     /// -   name:`"effectiveBlendOutDuration"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    effective_blend_out_duration: f32,
+    pub effective_blend_out_duration: f32,
     /// # C++ Class Fields Info
     /// -   name:`"toGeneratorState"`
     /// -   type: `enum ToGeneratorState`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    to_generator_state: ToGeneratorState,
+    pub to_generator_state: ToGeneratorState,
     /// # C++ Class Fields Info
     /// -   name:`"echoTransitionGenerator"`
     /// -   type: `hkBool`
     /// - offset: 25
     /// -  flags: `FLAGS_NONE`
-    echo_transition_generator: bool,
+    pub echo_transition_generator: bool,
     /// # C++ Class Fields Info
     /// -   name:`"echoToGenerator"`
     /// -   type: `hkBool`
     /// - offset: 26
     /// -  flags: `FLAGS_NONE`
-    echo_to_generator: bool,
+    pub echo_to_generator: bool,
     /// # C++ Class Fields Info
     /// -   name:`"justActivated"`
     /// -   type: `hkBool`
     /// - offset: 27
     /// -  flags: `FLAGS_NONE`
-    just_activated: bool,
+    pub just_activated: bool,
     /// # C++ Class Fields Info
     /// -   name:`"updateActiveNodes"`
     /// -   type: `hkBool`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    update_active_nodes: bool,
+    pub update_active_nodes: bool,
     /// # C++ Class Fields Info
     /// -   name:`"stage"`
     /// -   type: `enum Stage`
     /// - offset: 29
     /// -  flags: `FLAGS_NONE`
-    stage: Stage,
+    pub stage: Stage,
 }
 
 impl Serialize for HkbGeneratorTransitionEffectInternalState {

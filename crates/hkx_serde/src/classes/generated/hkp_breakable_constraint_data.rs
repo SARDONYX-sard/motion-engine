@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,43 +34,43 @@ pub struct HkpBreakableConstraintData<'a> {
     /// -   type: `struct hkpBridgeAtoms`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    atoms: SingleClass<HkpBridgeAtoms<'a>>,
+    pub atoms: SingleClass<HkpBridgeAtoms<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"constraintData"`
     /// -   type: `struct hkpConstraintData*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    constraint_data: Cow<'a, str>,
+    pub constraint_data: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"childRuntimeSize"`
     /// -   type: `hkUint16`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    child_runtime_size: u16,
+    pub child_runtime_size: u16,
     /// # C++ Class Fields Info
     /// -   name:`"childNumSolverResults"`
     /// -   type: `hkUint16`
     /// - offset: 30
     /// -  flags: `FLAGS_NONE`
-    child_num_solver_results: u16,
+    pub child_num_solver_results: u16,
     /// # C++ Class Fields Info
     /// -   name:`"solverResultLimit"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    solver_result_limit: f32,
+    pub solver_result_limit: f32,
     /// # C++ Class Fields Info
     /// -   name:`"removeWhenBroken"`
     /// -   type: `hkBool`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    remove_when_broken: bool,
+    pub remove_when_broken: bool,
     /// # C++ Class Fields Info
     /// -   name:`"revertBackVelocityOnBreak"`
     /// -   type: `hkBool`
     /// - offset: 37
     /// -  flags: `FLAGS_NONE`
-    revert_back_velocity_on_break: bool,
+    pub revert_back_velocity_on_break: bool,
 }
 
 impl Serialize for HkpBreakableConstraintData<'_> {

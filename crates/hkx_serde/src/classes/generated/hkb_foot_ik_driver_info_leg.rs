@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,79 +33,79 @@ pub struct HkbFootIkDriverInfoLeg {
     /// -   type: `hkQuaternion`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    prev_ankle_rot_ls: Quaternion<f32>,
+    pub prev_ankle_rot_ls: Quaternion<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"kneeAxisLS"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    knee_axis_ls: Vector4<f32>,
+    pub knee_axis_ls: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"footEndLS"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    foot_end_ls: Vector4<f32>,
+    pub foot_end_ls: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"footPlantedAnkleHeightMS"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    foot_planted_ankle_height_ms: f32,
+    pub foot_planted_ankle_height_ms: f32,
     /// # C++ Class Fields Info
     /// -   name:`"footRaisedAnkleHeightMS"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    foot_raised_ankle_height_ms: f32,
+    pub foot_raised_ankle_height_ms: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxAnkleHeightMS"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    max_ankle_height_ms: f32,
+    pub max_ankle_height_ms: f32,
     /// # C++ Class Fields Info
     /// -   name:`"minAnkleHeightMS"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    min_ankle_height_ms: f32,
+    pub min_ankle_height_ms: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxKneeAngleDegrees"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    max_knee_angle_degrees: f32,
+    pub max_knee_angle_degrees: f32,
     /// # C++ Class Fields Info
     /// -   name:`"minKneeAngleDegrees"`
     /// -   type: `hkReal`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    min_knee_angle_degrees: f32,
+    pub min_knee_angle_degrees: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxAnkleAngleDegrees"`
     /// -   type: `hkReal`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    max_ankle_angle_degrees: f32,
+    pub max_ankle_angle_degrees: f32,
     /// # C++ Class Fields Info
     /// -   name:`"hipIndex"`
     /// -   type: `hkInt16`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    hip_index: i16,
+    pub hip_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"kneeIndex"`
     /// -   type: `hkInt16`
     /// - offset: 78
     /// -  flags: `FLAGS_NONE`
-    knee_index: i16,
+    pub knee_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"ankleIndex"`
     /// -   type: `hkInt16`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    ankle_index: i16,
+    pub ankle_index: i16,
 }
 
 impl Serialize for HkbFootIkDriverInfoLeg {

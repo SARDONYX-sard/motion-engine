@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkbFootIkDriverInfo {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,73 +49,73 @@ pub struct HkbFootIkDriverInfo {
     /// -   type: `hkArray<struct hkbFootIkDriverInfoLeg>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    legs: HkArrayClass<HkbFootIkDriverInfoLeg>,
+    pub legs: HkArrayClass<HkbFootIkDriverInfoLeg>,
     /// # C++ Class Fields Info
     /// -   name:`"raycastDistanceUp"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    raycast_distance_up: f32,
+    pub raycast_distance_up: f32,
     /// # C++ Class Fields Info
     /// -   name:`"raycastDistanceDown"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    raycast_distance_down: f32,
+    pub raycast_distance_down: f32,
     /// # C++ Class Fields Info
     /// -   name:`"originalGroundHeightMS"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    original_ground_height_ms: f32,
+    pub original_ground_height_ms: f32,
     /// # C++ Class Fields Info
     /// -   name:`"verticalOffset"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    vertical_offset: f32,
+    pub vertical_offset: f32,
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilterInfo"`
     /// -   type: `hkUint32`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    collision_filter_info: u32,
+    pub collision_filter_info: u32,
     /// # C++ Class Fields Info
     /// -   name:`"forwardAlignFraction"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    forward_align_fraction: f32,
+    pub forward_align_fraction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"sidewaysAlignFraction"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    sideways_align_fraction: f32,
+    pub sideways_align_fraction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"sidewaysSampleWidth"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    sideways_sample_width: f32,
+    pub sideways_sample_width: f32,
     /// # C++ Class Fields Info
     /// -   name:`"lockFeetWhenPlanted"`
     /// -   type: `hkBool`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    lock_feet_when_planted: bool,
+    pub lock_feet_when_planted: bool,
     /// # C++ Class Fields Info
     /// -   name:`"useCharacterUpVector"`
     /// -   type: `hkBool`
     /// - offset: 53
     /// -  flags: `FLAGS_NONE`
-    use_character_up_vector: bool,
+    pub use_character_up_vector: bool,
     /// # C++ Class Fields Info
     /// -   name:`"isQuadrupedNarrow"`
     /// -   type: `hkBool`
     /// - offset: 54
     /// -  flags: `FLAGS_NONE`
-    is_quadruped_narrow: bool,
+    pub is_quadruped_narrow: bool,
 }
 
 impl Serialize for HkbFootIkDriverInfo {

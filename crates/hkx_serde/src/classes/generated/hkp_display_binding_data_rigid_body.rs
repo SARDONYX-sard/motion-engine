@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkpDisplayBindingDataRigidBody<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,19 +49,19 @@ pub struct HkpDisplayBindingDataRigidBody<'a> {
     /// -   type: `struct hkpRigidBody*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    rigid_body: Cow<'a, str>,
+    pub rigid_body: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"displayObjectPtr"`
     /// -   type: `struct hkReferencedObject*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    display_object_ptr: Cow<'a, str>,
+    pub display_object_ptr: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"rigidBodyFromDisplayObjectTransform"`
     /// -   type: `hkMatrix4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    rigid_body_from_display_object_transform: Matrix4<f32>,
+    pub rigid_body_from_display_object_transform: Matrix4<f32>,
 }
 
 impl Serialize for HkpDisplayBindingDataRigidBody<'_> {
@@ -122,7 +127,7 @@ impl<'a> From<&HkpDisplayBindingDataRigidBody<'a>> for Vec<HkpDisplayBindingData
             HkpDisplayBindingDataRigidBodyVisitor::ReferenceCount(data.reference_count.into()),
             HkpDisplayBindingDataRigidBodyVisitor::RigidBody(data.rigid_body.clone().into()),
             HkpDisplayBindingDataRigidBodyVisitor::DisplayObjectPtr(data.display_object_ptr.clone().into()),
-            HkpDisplayBindingDataRigidBodyVisitor::RigidBodyFromDisplayObjectTransform(data.rigid_body_from_display_object_transform.clone().into()),
+            HkpDisplayBindingDataRigidBodyVisitor::RigidBodyFromDisplayObjectTransform(data.rigid_body_from_display_object_transform.into()),
 
         ]
     }

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,61 +33,61 @@ pub struct HkpVehicleDataWheelComponentParams {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    radius: f32,
+    pub radius: f32,
     /// # C++ Class Fields Info
     /// -   name:`"mass"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    mass: f32,
+    pub mass: f32,
     /// # C++ Class Fields Info
     /// -   name:`"width"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    width: f32,
+    pub width: f32,
     /// # C++ Class Fields Info
     /// -   name:`"friction"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    friction: f32,
+    pub friction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"viscosityFriction"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    viscosity_friction: f32,
+    pub viscosity_friction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxFriction"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    max_friction: f32,
+    pub max_friction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"slipAngle"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    slip_angle: f32,
+    pub slip_angle: f32,
     /// # C++ Class Fields Info
     /// -   name:`"forceFeedbackMultiplier"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    force_feedback_multiplier: f32,
+    pub force_feedback_multiplier: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxContactBodyAcceleration"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    max_contact_body_acceleration: f32,
+    pub max_contact_body_acceleration: f32,
     /// # C++ Class Fields Info
     /// -   name:`"axle"`
     /// -   type: `hkInt8`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    axle: i8,
+    pub axle: i8,
 }
 
 impl Serialize for HkpVehicleDataWheelComponentParams {

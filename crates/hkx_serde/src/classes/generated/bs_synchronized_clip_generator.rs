@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -31,63 +36,63 @@ pub struct BsSynchronizedClipGenerator<'a> {
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    id: i16,
+    pub id: i16,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    clone_state: (),
+    pub clone_state: (),
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pad_node: CStyleArray<[bool; 1]>,
+    pub pad_node: CStyleArray<[bool; 1]>,
 
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"variableBindingSet"`
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    variable_binding_set: Cow<'a, str>,
+    pub variable_binding_set: Cow<'a, str>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray<void>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    cached_bindables: HkArrayRef<()>,
+    pub cached_bindables: HkArrayRef<()>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    are_bindables_cached: bool,
+    pub are_bindables_cached: bool,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -96,115 +101,115 @@ pub struct BsSynchronizedClipGenerator<'a> {
     /// -   type: `struct hkbGenerator*`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE|ALIGN16`
-    p_clip_generator: Cow<'a, str>,
+    pub p_clip_generator: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"SyncAnimPrefix"`
     /// -   type: `char*`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    sync_anim_prefix: Cow<'a, str>,
+    pub sync_anim_prefix: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"bSyncClipIgnoreMarkPlacement"`
     /// -   type: `hkBool`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    b_sync_clip_ignore_mark_placement: bool,
+    pub b_sync_clip_ignore_mark_placement: bool,
     /// # C++ Class Fields Info
     /// -   name:`"fGetToMarkTime"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    f_get_to_mark_time: f32,
+    pub f_get_to_mark_time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"fMarkErrorThreshold"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    f_mark_error_threshold: f32,
+    pub f_mark_error_threshold: f32,
     /// # C++ Class Fields Info
     /// -   name:`"bLeadCharacter"`
     /// -   type: `hkBool`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    b_lead_character: bool,
+    pub b_lead_character: bool,
     /// # C++ Class Fields Info
     /// -   name:`"bReorientSupportChar"`
     /// -   type: `hkBool`
     /// - offset: 69
     /// -  flags: `FLAGS_NONE`
-    b_reorient_support_char: bool,
+    pub b_reorient_support_char: bool,
     /// # C++ Class Fields Info
     /// -   name:`"bApplyMotionFromRoot"`
     /// -   type: `hkBool`
     /// - offset: 70
     /// -  flags: `FLAGS_NONE`
-    b_apply_motion_from_root: bool,
+    pub b_apply_motion_from_root: bool,
     /// # C++ Class Fields Info
     /// -   name:`"pSyncScene"`
     /// -   type: `void*`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    p_sync_scene: Cow<'a, str>,
+    pub p_sync_scene: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"StartMarkWS"`
     /// -   type: `hkQsTransform`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    start_mark_ws: QsTransform<f32>,
+    pub start_mark_ws: QsTransform<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"EndMarkWS"`
     /// -   type: `hkQsTransform`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    end_mark_ws: QsTransform<f32>,
+    pub end_mark_ws: QsTransform<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"StartMarkMS"`
     /// -   type: `hkQsTransform`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    start_mark_ms: QsTransform<f32>,
+    pub start_mark_ms: QsTransform<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"fCurrentLerp"`
     /// -   type: `hkReal`
     /// - offset: 224
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    f_current_lerp: f32,
+    pub f_current_lerp: f32,
     /// # C++ Class Fields Info
     /// -   name:`"pLocalSyncBinding"`
     /// -   type: `void*`
     /// - offset: 228
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    p_local_sync_binding: Cow<'a, str>,
+    pub p_local_sync_binding: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"pEventMap"`
     /// -   type: `void*`
     /// - offset: 232
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    p_event_map: Cow<'a, str>,
+    pub p_event_map: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"sAnimationBindingIndex"`
     /// -   type: `hkInt16`
     /// - offset: 236
     /// -  flags: `FLAGS_NONE`
-    s_animation_binding_index: i16,
+    pub s_animation_binding_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"bAtMark"`
     /// -   type: `hkBool`
     /// - offset: 238
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    b_at_mark: bool,
+    pub b_at_mark: bool,
     /// # C++ Class Fields Info
     /// -   name:`"bAllCharactersInScene"`
     /// -   type: `hkBool`
     /// - offset: 239
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    b_all_characters_in_scene: bool,
+    pub b_all_characters_in_scene: bool,
     /// # C++ Class Fields Info
     /// -   name:`"bAllCharactersAtMarks"`
     /// -   type: `hkBool`
     /// - offset: 240
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    b_all_characters_at_marks: bool,
+    pub b_all_characters_at_marks: bool,
 }
 
 impl Serialize for BsSynchronizedClipGenerator<'_> {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,37 +33,37 @@ pub struct HkAabbUint32 {
     /// -   type: `hkUint32[3]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE|ALIGN16`
-    min: CStyleArray<[u32; 3]>,
+    pub min: CStyleArray<[u32; 3]>,
     /// # C++ Class Fields Info
     /// -   name:`"expansionMin"`
     /// -   type: `hkUint8[3]`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    expansion_min: CStyleArray<[u8; 3]>,
+    pub expansion_min: CStyleArray<[u8; 3]>,
     /// # C++ Class Fields Info
     /// -   name:`"expansionShift"`
     /// -   type: `hkUint8`
     /// - offset: 15
     /// -  flags: `FLAGS_NONE`
-    expansion_shift: u8,
+    pub expansion_shift: u8,
     /// # C++ Class Fields Info
     /// -   name:`"max"`
     /// -   type: `hkUint32[3]`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    max: CStyleArray<[u32; 3]>,
+    pub max: CStyleArray<[u32; 3]>,
     /// # C++ Class Fields Info
     /// -   name:`"expansionMax"`
     /// -   type: `hkUint8[3]`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    expansion_max: CStyleArray<[u8; 3]>,
+    pub expansion_max: CStyleArray<[u8; 3]>,
     /// # C++ Class Fields Info
     /// -   name:`"shapeKeyByte"`
     /// -   type: `hkUint8`
     /// - offset: 31
     /// -  flags: `FLAGS_NONE`
-    shape_key_byte: u8,
+    pub shape_key_byte: u8,
 }
 
 impl Serialize for HkAabbUint32 {

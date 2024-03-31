@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkpRackAndPinionConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTransformsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    transforms: SingleClass<HkpSetLocalTransformsConstraintAtom>,
+    pub transforms: SingleClass<HkpSetLocalTransformsConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"rackAndPinion"`
     /// -   type: `struct hkpRackAndPinionConstraintAtom`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    rack_and_pinion: SingleClass<HkpRackAndPinionConstraintAtom>,
+    pub rack_and_pinion: SingleClass<HkpRackAndPinionConstraintAtom>,
 }
 
 impl Serialize for HkpRackAndPinionConstraintDataAtoms {

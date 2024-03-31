@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,7 +33,7 @@ pub struct HkpMoppCodeCodeInfo {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    offset: Vector4<f32>,
+    pub offset: Vector4<f32>,
 }
 
 impl Serialize for HkpMoppCodeCodeInfo {

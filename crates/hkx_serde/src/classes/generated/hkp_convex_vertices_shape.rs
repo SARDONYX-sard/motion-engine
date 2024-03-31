@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,7 +34,7 @@ pub struct HkpConvexVerticesShape<'a> {
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    radius: f32,
+    pub radius: f32,
 
     // C++ Parent class(`hkpSphereRepShape` => parent: `hkpShape`) has no fields
     //
@@ -38,26 +43,26 @@ pub struct HkpConvexVerticesShape<'a> {
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    _type: (),
+    pub _type: (),
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -66,49 +71,49 @@ pub struct HkpConvexVerticesShape<'a> {
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    aabb_half_extents: Vector4<f32>,
+    pub aabb_half_extents: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"aabbCenter"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    aabb_center: Vector4<f32>,
+    pub aabb_center: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"rotatedVertices"`
     /// -   type: `hkArray<struct hkpConvexVerticesShapeFourVectors>`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    rotated_vertices: HkArrayClass<HkpConvexVerticesShapeFourVectors>,
+    pub rotated_vertices: HkArrayClass<HkpConvexVerticesShapeFourVectors>,
     /// # C++ Class Fields Info
     /// -   name:`"numVertices"`
     /// -   type: `hkInt32`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    num_vertices: i32,
+    pub num_vertices: i32,
     /// # C++ Class Fields Info
     /// -   name:`"externalObject"`
     /// -   type: `void*`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    external_object: Cow<'a, str>,
+    pub external_object: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"getFaceNormals"`
     /// -   type: `void*`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    get_face_normals: Cow<'a, str>,
+    pub get_face_normals: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"planeEquations"`
     /// -   type: `hkArray<hkVector4>`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    plane_equations: HkArrayVector<Vector4<f32>>,
+    pub plane_equations: HkArrayVector<Vector4<f32>>,
     /// # C++ Class Fields Info
     /// -   name:`"connectivity"`
     /// -   type: `struct hkpConvexVerticesConnectivity*`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
-    connectivity: Cow<'a, str>,
+    pub connectivity: Cow<'a, str>,
 }
 
 impl Serialize for HkpConvexVerticesShape<'_> {

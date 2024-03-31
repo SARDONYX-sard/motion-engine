@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,76 +34,76 @@ pub struct HkbEvaluateHandleModifier<'a> {
     /// -   type: `hkBool`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    enable: bool,
+    pub enable: bool,
     /// # C++ Parent class(`hkbModifier` => parent: `hkbNode`) field Info
     /// -   name:`"padModifier"`
     /// -   type: `hkBool[3]`
     /// - offset: 41
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pad_modifier: CStyleArray<[bool; 3]>,
+    pub pad_modifier: CStyleArray<[bool; 3]>,
 
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    id: i16,
+    pub id: i16,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    clone_state: (),
+    pub clone_state: (),
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pad_node: CStyleArray<[bool; 1]>,
+    pub pad_node: CStyleArray<[bool; 1]>,
 
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"variableBindingSet"`
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    variable_binding_set: Cow<'a, str>,
+    pub variable_binding_set: Cow<'a, str>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray<void>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    cached_bindables: HkArrayRef<()>,
+    pub cached_bindables: HkArrayRef<()>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    are_bindables_cached: bool,
+    pub are_bindables_cached: bool,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -107,73 +112,73 @@ pub struct HkbEvaluateHandleModifier<'a> {
     /// -   type: `struct hkbHandle*`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    handle: Cow<'a, str>,
+    pub handle: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"handlePositionOut"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    handle_position_out: Vector4<f32>,
+    pub handle_position_out: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"handleRotationOut"`
     /// -   type: `hkQuaternion`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    handle_rotation_out: Quaternion<f32>,
+    pub handle_rotation_out: Quaternion<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"isValidOut"`
     /// -   type: `hkBool`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    is_valid_out: bool,
+    pub is_valid_out: bool,
     /// # C++ Class Fields Info
     /// -   name:`"extrapolationTimeStep"`
     /// -   type: `hkReal`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    extrapolation_time_step: f32,
+    pub extrapolation_time_step: f32,
     /// # C++ Class Fields Info
     /// -   name:`"handleChangeSpeed"`
     /// -   type: `hkReal`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    handle_change_speed: f32,
+    pub handle_change_speed: f32,
     /// # C++ Class Fields Info
     /// -   name:`"handleChangeMode"`
     /// -   type: `enum HandleChangeMode`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    handle_change_mode: HandleChangeMode,
+    pub handle_change_mode: HandleChangeMode,
     /// # C++ Class Fields Info
     /// -   name:`"oldHandle"`
     /// -   type: `struct hkbHandle`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    old_handle: SingleClass<HkbHandle<'a>>,
+    pub old_handle: SingleClass<HkbHandle<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"oldHandlePosition"`
     /// -   type: `hkVector4`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    old_handle_position: Vector4<f32>,
+    pub old_handle_position: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"oldHandleRotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    old_handle_rotation: Quaternion<f32>,
+    pub old_handle_rotation: Quaternion<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"timeSinceLastModify"`
     /// -   type: `hkReal`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    time_since_last_modify: f32,
+    pub time_since_last_modify: f32,
     /// # C++ Class Fields Info
     /// -   name:`"smoothlyChangingHandles"`
     /// -   type: `hkBool`
     /// - offset: 164
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    smoothly_changing_handles: bool,
+    pub smoothly_changing_handles: bool,
 }
 
 impl Serialize for HkbEvaluateHandleModifier<'_> {

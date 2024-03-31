@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,44 +34,44 @@ pub struct HkpLinMotorConstraintAtom<'a> {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    _type: AtomType,
+    pub _type: AtomType,
 
     /// # C++ Class Fields Info
     /// -   name:`"isEnabled"`
     /// -   type: `hkBool`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    is_enabled: bool,
+    pub is_enabled: bool,
     /// # C++ Class Fields Info
     /// -   name:`"motorAxis"`
     /// -   type: `hkUint8`
     /// - offset: 3
     /// -  flags: `FLAGS_NONE`
-    motor_axis: u8,
+    pub motor_axis: u8,
     /// # C++ Class Fields Info
     /// -   name:`"initializedOffset"`
     /// -   type: `hkInt16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    initialized_offset: i16,
+    pub initialized_offset: i16,
     /// # C++ Class Fields Info
     /// -   name:`"previousTargetPositionOffset"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    previous_target_position_offset: i16,
+    pub previous_target_position_offset: i16,
     /// # C++ Class Fields Info
     /// -   name:`"targetPosition"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    target_position: f32,
+    pub target_position: f32,
     /// # C++ Class Fields Info
     /// -   name:`"motor"`
     /// -   type: `struct hkpConstraintMotor*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    motor: Cow<'a, str>,
+    pub motor: Cow<'a, str>,
 }
 
 impl Serialize for HkpLinMotorConstraintAtom<'_> {

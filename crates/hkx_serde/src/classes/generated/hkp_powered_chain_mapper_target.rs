@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkpPoweredChainMapperTarget<'a> {
     /// -   type: `struct hkpPoweredChainData*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    chain: Cow<'a, str>,
+    pub chain: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"infoIndex"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    info_index: i32,
+    pub info_index: i32,
 }
 
 impl Serialize for HkpPoweredChainMapperTarget<'_> {

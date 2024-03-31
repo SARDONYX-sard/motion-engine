@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,50 +34,50 @@ pub struct HkaWaveletCompressedAnimation<'a> {
     /// -   type: `enum AnimationType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    _type: AnimationType,
+    pub _type: AnimationType,
     /// # C++ Parent class(`hkaAnimation` => parent: `hkReferencedObject`) field Info
     /// -   name:`"duration"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    duration: f32,
+    pub duration: f32,
     /// # C++ Parent class(`hkaAnimation` => parent: `hkReferencedObject`) field Info
     /// -   name:`"numberOfTransformTracks"`
     /// -   type: `hkInt32`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    number_of_transform_tracks: i32,
+    pub number_of_transform_tracks: i32,
     /// # C++ Parent class(`hkaAnimation` => parent: `hkReferencedObject`) field Info
     /// -   name:`"numberOfFloatTracks"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    number_of_float_tracks: i32,
+    pub number_of_float_tracks: i32,
     /// # C++ Parent class(`hkaAnimation` => parent: `hkReferencedObject`) field Info
     /// -   name:`"extractedMotion"`
     /// -   type: `struct hkaAnimatedReferenceFrame*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    extracted_motion: Cow<'a, str>,
+    pub extracted_motion: Cow<'a, str>,
     /// # C++ Parent class(`hkaAnimation` => parent: `hkReferencedObject`) field Info
     /// -   name:`"annotationTracks"`
     /// -   type: `hkArray<struct hkaAnnotationTrack>`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    annotation_tracks: HkArrayClass<HkaAnnotationTrack<'a>>,
+    pub annotation_tracks: HkArrayClass<HkaAnnotationTrack<'a>>,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -81,73 +86,73 @@ pub struct HkaWaveletCompressedAnimation<'a> {
     /// -   type: `hkInt32`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    number_of_poses: i32,
+    pub number_of_poses: i32,
     /// # C++ Class Fields Info
     /// -   name:`"blockSize"`
     /// -   type: `hkInt32`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    block_size: i32,
+    pub block_size: i32,
     /// # C++ Class Fields Info
     /// -   name:`"qFormat"`
     /// -   type: `struct hkaWaveletCompressedAnimationQuantizationFormat`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    q_format: SingleClass<HkaWaveletCompressedAnimationQuantizationFormat>,
+    pub q_format: SingleClass<HkaWaveletCompressedAnimationQuantizationFormat>,
     /// # C++ Class Fields Info
     /// -   name:`"staticMaskIdx"`
     /// -   type: `hkUint32`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    static_mask_idx: u32,
+    pub static_mask_idx: u32,
     /// # C++ Class Fields Info
     /// -   name:`"staticDOFsIdx"`
     /// -   type: `hkUint32`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    static_do_fs_idx: u32,
+    pub static_do_fs_idx: u32,
     /// # C++ Class Fields Info
     /// -   name:`"numStaticTransformDOFs"`
     /// -   type: `hkUint32`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    num_static_transform_do_fs: u32,
+    pub num_static_transform_do_fs: u32,
     /// # C++ Class Fields Info
     /// -   name:`"numDynamicTransformDOFs"`
     /// -   type: `hkUint32`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    num_dynamic_transform_do_fs: u32,
+    pub num_dynamic_transform_do_fs: u32,
     /// # C++ Class Fields Info
     /// -   name:`"blockIndexIdx"`
     /// -   type: `hkUint32`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    block_index_idx: u32,
+    pub block_index_idx: u32,
     /// # C++ Class Fields Info
     /// -   name:`"blockIndexSize"`
     /// -   type: `hkUint32`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    block_index_size: u32,
+    pub block_index_size: u32,
     /// # C++ Class Fields Info
     /// -   name:`"quantizedDataIdx"`
     /// -   type: `hkUint32`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    quantized_data_idx: u32,
+    pub quantized_data_idx: u32,
     /// # C++ Class Fields Info
     /// -   name:`"quantizedDataSize"`
     /// -   type: `hkUint32`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    quantized_data_size: u32,
+    pub quantized_data_size: u32,
     /// # C++ Class Fields Info
     /// -   name:`"dataBuffer"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
-    data_buffer: HkArrayNum<u8>,
+    pub data_buffer: HkArrayNum<u8>,
 }
 
 impl Serialize for HkaWaveletCompressedAnimation<'_> {

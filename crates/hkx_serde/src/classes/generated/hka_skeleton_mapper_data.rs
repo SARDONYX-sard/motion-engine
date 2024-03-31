@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,49 +33,49 @@ pub struct HkaSkeletonMapperData<'a> {
     /// -   type: `struct hkaSkeleton*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    skeleton_a: Cow<'a, str>,
+    pub skeleton_a: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"skeletonB"`
     /// -   type: `struct hkaSkeleton*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    skeleton_b: Cow<'a, str>,
+    pub skeleton_b: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"simpleMappings"`
     /// -   type: `hkArray<struct hkaSkeletonMapperDataSimpleMapping>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    simple_mappings: HkArrayClass<HkaSkeletonMapperDataSimpleMapping>,
+    pub simple_mappings: HkArrayClass<HkaSkeletonMapperDataSimpleMapping>,
     /// # C++ Class Fields Info
     /// -   name:`"chainMappings"`
     /// -   type: `hkArray<struct hkaSkeletonMapperDataChainMapping>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    chain_mappings: HkArrayClass<HkaSkeletonMapperDataChainMapping>,
+    pub chain_mappings: HkArrayClass<HkaSkeletonMapperDataChainMapping>,
     /// # C++ Class Fields Info
     /// -   name:`"unmappedBones"`
     /// -   type: `hkArray<hkInt16>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    unmapped_bones: HkArrayNum<i16>,
+    pub unmapped_bones: HkArrayNum<i16>,
     /// # C++ Class Fields Info
     /// -   name:`"extractedMotionMapping"`
     /// -   type: `hkQsTransform`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    extracted_motion_mapping: QsTransform<f32>,
+    pub extracted_motion_mapping: QsTransform<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"keepUnmappedLocal"`
     /// -   type: `hkBool`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    keep_unmapped_local: bool,
+    pub keep_unmapped_local: bool,
     /// # C++ Class Fields Info
     /// -   name:`"mappingType"`
     /// -   type: `enum MappingType`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
-    mapping_type: MappingType,
+    pub mapping_type: MappingType,
 }
 
 impl Serialize for HkaSkeletonMapperData<'_> {

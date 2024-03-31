@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,20 +34,20 @@ pub struct HkxMeshUserChannelInfo<'a> {
     /// -   type: `hkArray<struct hkxAttributeGroup>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    attribute_groups: HkArrayClass<HkxAttributeGroup<'a>>,
+    pub attribute_groups: HkArrayClass<HkxAttributeGroup<'a>>,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -51,13 +56,13 @@ pub struct HkxMeshUserChannelInfo<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"className"`
     /// -   type: `hkStringPtr`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    class_name: Cow<'a, str>,
+    pub class_name: Cow<'a, str>,
 }
 
 impl Serialize for HkxMeshUserChannelInfo<'_> {

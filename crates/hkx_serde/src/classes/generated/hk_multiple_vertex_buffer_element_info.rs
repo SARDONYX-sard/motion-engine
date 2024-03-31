@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkMultipleVertexBufferElementInfo {
     /// -   type: `hkUint8`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    vertex_buffer_index: u8,
+    pub vertex_buffer_index: u8,
     /// # C++ Class Fields Info
     /// -   name:`"elementIndex"`
     /// -   type: `hkUint8`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
-    element_index: u8,
+    pub element_index: u8,
 }
 
 impl Serialize for HkMultipleVertexBufferElementInfo {

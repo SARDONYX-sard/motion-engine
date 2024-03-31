@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkbEvaluateExpressionModifierInternalExpressionData {
     /// -   type: `hkBool`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    raised_event: bool,
+    pub raised_event: bool,
     /// # C++ Class Fields Info
     /// -   name:`"wasTrueInPreviousFrame"`
     /// -   type: `hkBool`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
-    was_true_in_previous_frame: bool,
+    pub was_true_in_previous_frame: bool,
 }
 
 impl Serialize for HkbEvaluateExpressionModifierInternalExpressionData {

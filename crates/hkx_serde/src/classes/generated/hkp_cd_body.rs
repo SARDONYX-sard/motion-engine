@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,25 +33,25 @@ pub struct HkpCdBody<'a> {
     /// -   type: `struct hkpShape*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    shape: Cow<'a, str>,
+    pub shape: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"shapeKey"`
     /// -   type: `hkUint32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    shape_key: u32,
+    pub shape_key: u32,
     /// # C++ Class Fields Info
     /// -   name:`"motion"`
     /// -   type: `void*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    motion: Cow<'a, str>,
+    pub motion: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"parent"`
     /// -   type: `struct hkpCdBody*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    parent: Cow<'a, str>,
+    pub parent: Cow<'a, str>,
 }
 
 impl Serialize for HkpCdBody<'_> {

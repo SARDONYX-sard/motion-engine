@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,85 +33,85 @@ pub struct HkbProxyModifierProxyInfo {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    dynamic_friction: f32,
+    pub dynamic_friction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"staticFriction"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    static_friction: f32,
+    pub static_friction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"keepContactTolerance"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    keep_contact_tolerance: f32,
+    pub keep_contact_tolerance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"up"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    up: Vector4<f32>,
+    pub up: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"keepDistance"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    keep_distance: f32,
+    pub keep_distance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"contactAngleSensitivity"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    contact_angle_sensitivity: f32,
+    pub contact_angle_sensitivity: f32,
     /// # C++ Class Fields Info
     /// -   name:`"userPlanes"`
     /// -   type: `hkUint32`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    user_planes: u32,
+    pub user_planes: u32,
     /// # C++ Class Fields Info
     /// -   name:`"maxCharacterSpeedForSolver"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    max_character_speed_for_solver: f32,
+    pub max_character_speed_for_solver: f32,
     /// # C++ Class Fields Info
     /// -   name:`"characterStrength"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    character_strength: f32,
+    pub character_strength: f32,
     /// # C++ Class Fields Info
     /// -   name:`"characterMass"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    character_mass: f32,
+    pub character_mass: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxSlope"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    max_slope: f32,
+    pub max_slope: f32,
     /// # C++ Class Fields Info
     /// -   name:`"penetrationRecoverySpeed"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    penetration_recovery_speed: f32,
+    pub penetration_recovery_speed: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxCastIterations"`
     /// -   type: `hkInt32`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    max_cast_iterations: i32,
+    pub max_cast_iterations: i32,
     /// # C++ Class Fields Info
     /// -   name:`"refreshManifoldInCheckSupport"`
     /// -   type: `hkBool`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    refresh_manifold_in_check_support: bool,
+    pub refresh_manifold_in_check_support: bool,
 }
 
 impl Serialize for HkbProxyModifierProxyInfo {

@@ -6465,2007 +6465,2675 @@ impl<'de> Deserialize<'de> for Class<'de> {
                                 hkparam = Some(Ok(match class_name.as_ref() {
                                     "BGSGamebryoSequenceGenerator" => {
                                                         ClassParams::BgsGamebryoSequenceGenerator(map.next_value()?)
+
                                     },
                                     "BSBoneSwitchGeneratorBoneData" => {
                                                         ClassParams::BsBoneSwitchGeneratorBoneData(map.next_value()?)
+
                                     },
                                     "BSBoneSwitchGenerator" => {
                                                         ClassParams::BsBoneSwitchGenerator(map.next_value()?)
+
                                     },
                                     "BSComputeAddBoneAnimModifier" => {
                                                         ClassParams::BsComputeAddBoneAnimModifier(map.next_value()?)
+
                                     },
                                     "BSCyclicBlendTransitionGenerator" => {
                                                         ClassParams::BsCyclicBlendTransitionGenerator(map.next_value()?)
+
                                     },
                                     "BSDecomposeVectorModifier" => {
                                                         ClassParams::BsDecomposeVectorModifier(map.next_value()?)
+
                                     },
                                     "BSDirectAtModifier" => {
                                                         ClassParams::BsDirectAtModifier(map.next_value()?)
+
                                     },
                                     "BSDistTriggerModifier" => {
                                                         ClassParams::BsDistTriggerModifier(map.next_value()?)
+
                                     },
                                     "BSEventEveryNEventsModifier" => {
                                                         ClassParams::BsEventEveryNEventsModifier(map.next_value()?)
+
                                     },
                                     "BSEventOnDeactivateModifier" => {
                                                         ClassParams::BsEventOnDeactivateModifier(map.next_value()?)
+
                                     },
                                     "BSEventOnFalseToTrueModifier" => {
                                                         ClassParams::BsEventOnFalseToTrueModifier(map.next_value()?)
+
                                     },
                                     "BSGetTimeStepModifier" => {
                                                         ClassParams::BsGetTimeStepModifier(map.next_value()?)
+
                                     },
                                     "BSInterpValueModifier" => {
                                                         ClassParams::BsInterpValueModifier(map.next_value()?)
+
                                     },
                                     "BSIsActiveModifier" => {
                                                         ClassParams::BsIsActiveModifier(map.next_value()?)
+
                                     },
                                     "BSIStateManagerModifierBSiStateData" => {
                                                         ClassParams::BsiStateManagerModifierBSiStateData(map.next_value()?)
+
                                     },
                                     "BSIStateManagerModifierBSIStateManagerStateListener" => {
                                                         ClassParams::BsiStateManagerModifierBsiStateManagerStateListener(map.next_value()?)
+
                                     },
                                     "BSIStateManagerModifier" => {
                                                         ClassParams::BsiStateManagerModifier(map.next_value()?)
+
                                     },
                                     "BSiStateTaggingGenerator" => {
                                                         ClassParams::BSiStateTaggingGenerator(map.next_value()?)
+
                                     },
                                     "BSLimbIKModifier" => {
                                                         ClassParams::BsLimbIkModifier(map.next_value()?)
+
                                     },
                                     "BSLookAtModifierBoneData" => {
                                                         ClassParams::BsLookAtModifierBoneData(map.next_value()?)
+
                                     },
                                     "BSLookAtModifier" => {
                                                         ClassParams::BsLookAtModifier(map.next_value()?)
+
                                     },
                                     "BSModifyOnceModifier" => {
                                                         ClassParams::BsModifyOnceModifier(map.next_value()?)
+
                                     },
                                     "BSOffsetAnimationGenerator" => {
                                                         ClassParams::BsOffsetAnimationGenerator(map.next_value()?)
+
                                     },
                                     "BSPassByTargetTriggerModifier" => {
                                                         ClassParams::BsPassByTargetTriggerModifier(map.next_value()?)
+
                                     },
                                     "BSRagdollContactListenerModifier" => {
                                                         ClassParams::BsRagdollContactListenerModifier(map.next_value()?)
+
                                     },
                                     "BSSpeedSamplerModifier" => {
                                                         ClassParams::BsSpeedSamplerModifier(map.next_value()?)
+
                                     },
                                     "BSSynchronizedClipGenerator" => {
                                                         ClassParams::BsSynchronizedClipGenerator(map.next_value()?)
+
                                     },
                                     "BSTimerModifier" => {
                                                         ClassParams::BsTimerModifier(map.next_value()?)
+
                                     },
                                     "BSTweenerModifier" => {
                                                         ClassParams::BsTweenerModifier(map.next_value()?)
+
                                     },
                                     "hkAabbHalf" => {
                                                         ClassParams::HkAabbHalf(map.next_value()?)
+
                                     },
                                     "hkAabbUint32" => {
                                                         ClassParams::HkAabbUint32(map.next_value()?)
+
                                     },
                                     "hkAabb" => {
                                                         ClassParams::HkAabb(map.next_value()?)
+
                                     },
                                     "hkaAnimatedReferenceFrame" => {
                                                         ClassParams::HkaAnimatedReferenceFrame(map.next_value()?)
+
                                     },
                                     "hkaAnimationBinding" => {
                                                         ClassParams::HkaAnimationBinding(map.next_value()?)
+
                                     },
                                     "hkaAnimationContainer" => {
                                                         ClassParams::HkaAnimationContainer(map.next_value()?)
+
                                     },
                                     "hkaAnimationPreviewColorContainer" => {
                                                         ClassParams::HkaAnimationPreviewColorContainer(map.next_value()?)
+
                                     },
                                     "hkaAnimation" => {
                                                         ClassParams::HkaAnimation(map.next_value()?)
+
                                     },
                                     "hkaAnnotationTrackAnnotation" => {
                                                         ClassParams::HkaAnnotationTrackAnnotation(map.next_value()?)
+
                                     },
                                     "hkaAnnotationTrack" => {
                                                         ClassParams::HkaAnnotationTrack(map.next_value()?)
+
                                     },
                                     "hkaBoneAttachment" => {
                                                         ClassParams::HkaBoneAttachment(map.next_value()?)
+
                                     },
                                     "hkaBone" => {
                                                         ClassParams::HkaBone(map.next_value()?)
+
                                     },
                                     "hkaDefaultAnimatedReferenceFrame" => {
                                                         ClassParams::HkaDefaultAnimatedReferenceFrame(map.next_value()?)
+
                                     },
                                     "hkaDeltaCompressedAnimationQuantizationFormat" => {
                                                         ClassParams::HkaDeltaCompressedAnimationQuantizationFormat(map.next_value()?)
+
                                     },
                                     "hkaDeltaCompressedAnimation" => {
                                                         ClassParams::HkaDeltaCompressedAnimation(map.next_value()?)
+
                                     },
                                     "hkaFootstepAnalysisInfoContainer" => {
                                                         ClassParams::HkaFootstepAnalysisInfoContainer(map.next_value()?)
+
                                     },
                                     "hkaFootstepAnalysisInfo" => {
                                                         ClassParams::HkaFootstepAnalysisInfo(map.next_value()?)
+
                                     },
                                     "hkaInterleavedUncompressedAnimation" => {
                                                         ClassParams::HkaInterleavedUncompressedAnimation(map.next_value()?)
+
                                     },
                                     "hkaKeyFrameHierarchyUtilityControlData" => {
                                                         ClassParams::HkaKeyFrameHierarchyUtilityControlData(map.next_value()?)
+
                                     },
                                     "hkaKeyFrameHierarchyUtility" => {
                                                         ClassParams::HkaKeyFrameHierarchyUtility(map.next_value()?)
+
                                     },
                                     "hkAlignSceneToNodeOptions" => {
                                                         ClassParams::HkAlignSceneToNodeOptions(map.next_value()?)
+
                                     },
                                     "hkaMeshBindingMapping" => {
                                                         ClassParams::HkaMeshBindingMapping(map.next_value()?)
+
                                     },
                                     "hkaMeshBinding" => {
                                                         ClassParams::HkaMeshBinding(map.next_value()?)
+
                                     },
                                     "hkaQuantizedAnimationTrackCompressionParams" => {
                                                         ClassParams::HkaQuantizedAnimationTrackCompressionParams(map.next_value()?)
+
                                     },
                                     "hkaQuantizedAnimation" => {
                                                         ClassParams::HkaQuantizedAnimation(map.next_value()?)
+
                                     },
                                     "hkaRagdollInstance" => {
                                                         ClassParams::HkaRagdollInstance(map.next_value()?)
+
                                     },
                                     "hkArrayTypeAttribute" => {
                                                         ClassParams::HkArrayTypeAttribute(map.next_value()?)
+
                                     },
                                     "hkaSkeletonLocalFrameOnBone" => {
                                                         ClassParams::HkaSkeletonLocalFrameOnBone(map.next_value()?)
+
                                     },
                                     "hkaSkeletonMapperDataChainMapping" => {
                                                         ClassParams::HkaSkeletonMapperDataChainMapping(map.next_value()?)
+
                                     },
                                     "hkaSkeletonMapperDataSimpleMapping" => {
                                                         ClassParams::HkaSkeletonMapperDataSimpleMapping(map.next_value()?)
+
                                     },
                                     "hkaSkeletonMapperData" => {
                                                         ClassParams::HkaSkeletonMapperData(map.next_value()?)
+
                                     },
                                     "hkaSkeletonMapper" => {
                                                         ClassParams::HkaSkeletonMapper(map.next_value()?)
+
                                     },
                                     "hkaSkeleton" => {
                                                         ClassParams::HkaSkeleton(map.next_value()?)
+
                                     },
                                     "hkaSplineCompressedAnimationAnimationCompressionParams" => {
                                                         ClassParams::HkaSplineCompressedAnimationAnimationCompressionParams(map.next_value()?)
+
                                     },
                                     "hkaSplineCompressedAnimationTrackCompressionParams" => {
                                                         ClassParams::HkaSplineCompressedAnimationTrackCompressionParams(map.next_value()?)
+
                                     },
                                     "hkaSplineCompressedAnimation" => {
                                                         ClassParams::HkaSplineCompressedAnimation(map.next_value()?)
+
                                     },
                                     "hkaWaveletCompressedAnimationCompressionParams" => {
                                                         ClassParams::HkaWaveletCompressedAnimationCompressionParams(map.next_value()?)
+
                                     },
                                     "hkaWaveletCompressedAnimationQuantizationFormat" => {
                                                         ClassParams::HkaWaveletCompressedAnimationQuantizationFormat(map.next_value()?)
+
                                     },
                                     "hkaWaveletCompressedAnimation" => {
                                                         ClassParams::HkaWaveletCompressedAnimation(map.next_value()?)
+
                                     },
                                     "hkBaseObject" => {
                                                         ClassParams::HkBaseObject(map.next_value()?)
+
                                     },
                                     "hkbAttachmentModifier" => {
                                                         ClassParams::HkbAttachmentModifier(map.next_value()?)
+
                                     },
                                     "hkbAttachmentSetup" => {
                                                         ClassParams::HkbAttachmentSetup(map.next_value()?)
+
                                     },
                                     "hkbAttributeModifierAssignment" => {
                                                         ClassParams::HkbAttributeModifierAssignment(map.next_value()?)
+
                                     },
                                     "hkbAttributeModifier" => {
                                                         ClassParams::HkbAttributeModifier(map.next_value()?)
+
                                     },
                                     "hkbAuxiliaryNodeInfo" => {
                                                         ClassParams::HkbAuxiliaryNodeInfo(map.next_value()?)
+
                                     },
                                     "hkbBehaviorEventsInfo" => {
                                                         ClassParams::HkbBehaviorEventsInfo(map.next_value()?)
+
                                     },
                                     "hkbBehaviorGraphData" => {
                                                         ClassParams::HkbBehaviorGraphData(map.next_value()?)
+
                                     },
                                     "hkbBehaviorGraphInternalStateInfo" => {
                                                         ClassParams::HkbBehaviorGraphInternalStateInfo(map.next_value()?)
+
                                     },
                                     "hkbBehaviorGraphInternalState" => {
                                                         ClassParams::HkbBehaviorGraphInternalState(map.next_value()?)
+
                                     },
                                     "hkbBehaviorGraphStringData" => {
                                                         ClassParams::HkbBehaviorGraphStringData(map.next_value()?)
+
                                     },
                                     "hkbBehaviorGraph" => {
                                                         ClassParams::HkbBehaviorGraph(map.next_value()?)
+
                                     },
                                     "hkbBehaviorInfoIdToNamePair" => {
                                                         ClassParams::HkbBehaviorInfoIdToNamePair(map.next_value()?)
+
                                     },
                                     "hkbBehaviorInfo" => {
                                                         ClassParams::HkbBehaviorInfo(map.next_value()?)
+
                                     },
                                     "hkbBehaviorReferenceGenerator" => {
                                                         ClassParams::HkbBehaviorReferenceGenerator(map.next_value()?)
+
                                     },
                                     "hkbBindable" => {
                                                         ClassParams::HkbBindable(map.next_value()?)
+
                                     },
                                     "hkbBlendCurveUtils" => {
                                                         ClassParams::HkbBlendCurveUtils(map.next_value()?)
+
                                     },
                                     "hkbBlenderGeneratorChildInternalState" => {
                                                         ClassParams::HkbBlenderGeneratorChildInternalState(map.next_value()?)
+
                                     },
                                     "hkbBlenderGeneratorChild" => {
                                                         ClassParams::HkbBlenderGeneratorChild(map.next_value()?)
+
                                     },
                                     "hkbBlenderGeneratorInternalState" => {
                                                         ClassParams::HkbBlenderGeneratorInternalState(map.next_value()?)
+
                                     },
                                     "hkbBlenderGenerator" => {
                                                         ClassParams::HkbBlenderGenerator(map.next_value()?)
+
                                     },
                                     "hkbBlendingTransitionEffectInternalState" => {
                                                         ClassParams::HkbBlendingTransitionEffectInternalState(map.next_value()?)
+
                                     },
                                     "hkbBlendingTransitionEffect" => {
                                                         ClassParams::HkbBlendingTransitionEffect(map.next_value()?)
+
                                     },
                                     "hkbBoneIndexArray" => {
                                                         ClassParams::HkbBoneIndexArray(map.next_value()?)
+
                                     },
                                     "hkbBoneWeightArray" => {
                                                         ClassParams::HkbBoneWeightArray(map.next_value()?)
+
                                     },
                                     "hkbBoolVariableSequencedDataSample" => {
                                                         ClassParams::HkbBoolVariableSequencedDataSample(map.next_value()?)
+
                                     },
                                     "hkbBoolVariableSequencedData" => {
                                                         ClassParams::HkbBoolVariableSequencedData(map.next_value()?)
+
                                     },
                                     "hkbCameraShakeEventPayload" => {
                                                         ClassParams::HkbCameraShakeEventPayload(map.next_value()?)
+
                                     },
                                     "hkbCharacterAddedInfo" => {
                                                         ClassParams::HkbCharacterAddedInfo(map.next_value()?)
+
                                     },
                                     "hkbCharacterControlCommand" => {
                                                         ClassParams::HkbCharacterControlCommand(map.next_value()?)
+
                                     },
                                     "hkbCharacterControllerControlData" => {
                                                         ClassParams::HkbCharacterControllerControlData(map.next_value()?)
+
                                     },
                                     "hkbCharacterControllerModifierInternalState" => {
                                                         ClassParams::HkbCharacterControllerModifierInternalState(map.next_value()?)
+
                                     },
                                     "hkbCharacterControllerModifier" => {
                                                         ClassParams::HkbCharacterControllerModifier(map.next_value()?)
+
                                     },
                                     "hkbCharacterDataCharacterControllerInfo" => {
                                                         ClassParams::HkbCharacterDataCharacterControllerInfo(map.next_value()?)
+
                                     },
                                     "hkbCharacterData" => {
                                                         ClassParams::HkbCharacterData(map.next_value()?)
+
                                     },
                                     "hkbCharacterInfo" => {
                                                         ClassParams::HkbCharacterInfo(map.next_value()?)
+
                                     },
                                     "hkbCharacterSetup" => {
                                                         ClassParams::HkbCharacterSetup(map.next_value()?)
+
                                     },
                                     "hkbCharacterSkinInfo" => {
                                                         ClassParams::HkbCharacterSkinInfo(map.next_value()?)
+
                                     },
                                     "hkbCharacterSteppedInfo" => {
                                                         ClassParams::HkbCharacterSteppedInfo(map.next_value()?)
+
                                     },
                                     "hkbCharacterStringData" => {
                                                         ClassParams::HkbCharacterStringData(map.next_value()?)
+
                                     },
                                     "hkbCharacter" => {
                                                         ClassParams::HkbCharacter(map.next_value()?)
+
                                     },
                                     "hkbClientCharacterState" => {
                                                         ClassParams::HkbClientCharacterState(map.next_value()?)
+
                                     },
                                     "hkbClipGeneratorEcho" => {
                                                         ClassParams::HkbClipGeneratorEcho(map.next_value()?)
+
                                     },
                                     "hkbClipGeneratorInternalState" => {
                                                         ClassParams::HkbClipGeneratorInternalState(map.next_value()?)
+
                                     },
                                     "hkbClipGenerator" => {
                                                         ClassParams::HkbClipGenerator(map.next_value()?)
+
                                     },
                                     "hkbClipTriggerArray" => {
                                                         ClassParams::HkbClipTriggerArray(map.next_value()?)
+
                                     },
                                     "hkbClipTrigger" => {
                                                         ClassParams::HkbClipTrigger(map.next_value()?)
+
                                     },
                                     "hkbCombineTransformsModifierInternalState" => {
                                                         ClassParams::HkbCombineTransformsModifierInternalState(map.next_value()?)
+
                                     },
                                     "hkbCombineTransformsModifier" => {
                                                         ClassParams::HkbCombineTransformsModifier(map.next_value()?)
+
                                     },
                                     "hkbCompiledExpressionSetToken" => {
                                                         ClassParams::HkbCompiledExpressionSetToken(map.next_value()?)
+
                                     },
                                     "hkbCompiledExpressionSet" => {
                                                         ClassParams::HkbCompiledExpressionSet(map.next_value()?)
+
                                     },
                                     "hkbComputeDirectionModifierInternalState" => {
                                                         ClassParams::HkbComputeDirectionModifierInternalState(map.next_value()?)
+
                                     },
                                     "hkbComputeDirectionModifier" => {
                                                         ClassParams::HkbComputeDirectionModifier(map.next_value()?)
+
                                     },
                                     "hkbComputeRotationFromAxisAngleModifierInternalState" => {
                                                         ClassParams::HkbComputeRotationFromAxisAngleModifierInternalState(map.next_value()?)
+
                                     },
                                     "hkbComputeRotationFromAxisAngleModifier" => {
                                                         ClassParams::HkbComputeRotationFromAxisAngleModifier(map.next_value()?)
+
                                     },
                                     "hkbComputeRotationToTargetModifierInternalState" => {
                                                         ClassParams::HkbComputeRotationToTargetModifierInternalState(map.next_value()?)
+
                                     },
                                     "hkbComputeRotationToTargetModifier" => {
                                                         ClassParams::HkbComputeRotationToTargetModifier(map.next_value()?)
+
                                     },
                                     "hkbCondition" => {
                                                         ClassParams::HkbCondition(map.next_value()?)
+
                                     },
                                     "hkbContext" => {
                                                         ClassParams::HkbContext(map.next_value()?)
+
                                     },
                                     "hkbDampingModifierInternalState" => {
                                                         ClassParams::HkbDampingModifierInternalState(map.next_value()?)
+
                                     },
                                     "hkbDampingModifier" => {
                                                         ClassParams::HkbDampingModifier(map.next_value()?)
+
                                     },
                                     "hkbDefaultMessageLog" => {
                                                         ClassParams::HkbDefaultMessageLog(map.next_value()?)
+
                                     },
                                     "hkbDelayedModifierInternalState" => {
                                                         ClassParams::HkbDelayedModifierInternalState(map.next_value()?)
+
                                     },
                                     "hkbDelayedModifier" => {
                                                         ClassParams::HkbDelayedModifier(map.next_value()?)
+
                                     },
                                     "hkbDetectCloseToGroundModifierInternalState" => {
                                                         ClassParams::HkbDetectCloseToGroundModifierInternalState(map.next_value()?)
+
                                     },
                                     "hkbDetectCloseToGroundModifier" => {
                                                         ClassParams::HkbDetectCloseToGroundModifier(map.next_value()?)
+
                                     },
                                     "hkbEvaluateExpressionModifierInternalExpressionData" => {
                                                         ClassParams::HkbEvaluateExpressionModifierInternalExpressionData(map.next_value()?)
+
                                     },
                                     "hkbEvaluateExpressionModifierInternalState" => {
                                                         ClassParams::HkbEvaluateExpressionModifierInternalState(map.next_value()?)
+
                                     },
                                     "hkbEvaluateExpressionModifier" => {
                                                         ClassParams::HkbEvaluateExpressionModifier(map.next_value()?)
+
                                     },
                                     "hkbEvaluateHandleModifier" => {
                                                         ClassParams::HkbEvaluateHandleModifier(map.next_value()?)
+
                                     },
                                     "hkbEventBase" => {
                                                         ClassParams::HkbEventBase(map.next_value()?)
+
                                     },
                                     "hkbEventDrivenModifierInternalState" => {
                                                         ClassParams::HkbEventDrivenModifierInternalState(map.next_value()?)
+
                                     },
                                     "hkbEventDrivenModifier" => {
                                                         ClassParams::HkbEventDrivenModifier(map.next_value()?)
+
                                     },
                                     "hkbEventInfo" => {
                                                         ClassParams::HkbEventInfo(map.next_value()?)
+
                                     },
                                     "hkbEventPayloadList" => {
                                                         ClassParams::HkbEventPayloadList(map.next_value()?)
+
                                     },
                                     "hkbEventPayload" => {
                                                         ClassParams::HkbEventPayload(map.next_value()?)
+
                                     },
                                     "hkbEventProperty" => {
                                                         ClassParams::HkbEventProperty(map.next_value()?)
+
                                     },
                                     "hkbEventRaisedInfo" => {
                                                         ClassParams::HkbEventRaisedInfo(map.next_value()?)
+
                                     },
                                     "hkbEventRangeDataArray" => {
                                                         ClassParams::HkbEventRangeDataArray(map.next_value()?)
+
                                     },
                                     "hkbEventRangeData" => {
                                                         ClassParams::HkbEventRangeData(map.next_value()?)
+
                                     },
                                     "hkbEventSequencedDataSequencedEvent" => {
                                                         ClassParams::HkbEventSequencedDataSequencedEvent(map.next_value()?)
+
                                     },
                                     "hkbEventSequencedData" => {
                                                         ClassParams::HkbEventSequencedData(map.next_value()?)
+
                                     },
                                     "hkbEventsFromRangeModifierInternalState" => {
                                                         ClassParams::HkbEventsFromRangeModifierInternalState(map.next_value()?)
+
                                     },
                                     "hkbEventsFromRangeModifier" => {
                                                         ClassParams::HkbEventsFromRangeModifier(map.next_value()?)
+
                                     },
                                     "hkbEvent" => {
                                                         ClassParams::HkbEvent(map.next_value()?)
+
                                     },
                                     "hkbExpressionCondition" => {
                                                         ClassParams::HkbExpressionCondition(map.next_value()?)
+
                                     },
                                     "hkbExpressionDataArray" => {
                                                         ClassParams::HkbExpressionDataArray(map.next_value()?)
+
                                     },
                                     "hkbExpressionData" => {
                                                         ClassParams::HkbExpressionData(map.next_value()?)
+
                                     },
                                     "hkbExtractRagdollPoseModifier" => {
                                                         ClassParams::HkbExtractRagdollPoseModifier(map.next_value()?)
+
                                     },
                                     "hkbFootIkControlData" => {
                                                         ClassParams::HkbFootIkControlData(map.next_value()?)
+
                                     },
                                     "hkbFootIkControlsModifierLeg" => {
                                                         ClassParams::HkbFootIkControlsModifierLeg(map.next_value()?)
+
                                     },
                                     "hkbFootIkControlsModifier" => {
                                                         ClassParams::HkbFootIkControlsModifier(map.next_value()?)
+
                                     },
                                     "hkbFootIkDriverInfoLeg" => {
                                                         ClassParams::HkbFootIkDriverInfoLeg(map.next_value()?)
+
                                     },
                                     "hkbFootIkDriverInfo" => {
                                                         ClassParams::HkbFootIkDriverInfo(map.next_value()?)
+
                                     },
                                     "hkbFootIkGains" => {
                                                         ClassParams::HkbFootIkGains(map.next_value()?)
+
                                     },
                                     "hkbFootIkModifierInternalLegData" => {
                                                         ClassParams::HkbFootIkModifierInternalLegData(map.next_value()?)
+
                                     },
                                     "hkbFootIkModifierLeg" => {
                                                         ClassParams::HkbFootIkModifierLeg(map.next_value()?)
+
                                     },
                                     "hkbFootIkModifier" => {
                                                         ClassParams::HkbFootIkModifier(map.next_value()?)
+
                                     },
                                     "hkbGeneratorOutputListener" => {
                                                         ClassParams::HkbGeneratorOutputListener(map.next_value()?)
+
                                     },
                                     "hkbGeneratorSyncInfoSyncPoint" => {
                                                         ClassParams::HkbGeneratorSyncInfoSyncPoint(map.next_value()?)
+
                                     },
                                     "hkbGeneratorSyncInfo" => {
                                                         ClassParams::HkbGeneratorSyncInfo(map.next_value()?)
+
                                     },
                                     "hkbGeneratorTransitionEffectInternalState" => {
                                                         ClassParams::HkbGeneratorTransitionEffectInternalState(map.next_value()?)
+
                                     },
                                     "hkbGeneratorTransitionEffect" => {
                                                         ClassParams::HkbGeneratorTransitionEffect(map.next_value()?)
+
                                     },
                                     "hkbGenerator" => {
                                                         ClassParams::HkbGenerator(map.next_value()?)
+
                                     },
                                     "hkbGetHandleOnBoneModifier" => {
                                                         ClassParams::HkbGetHandleOnBoneModifier(map.next_value()?)
+
                                     },
                                     "hkbGetUpModifierInternalState" => {
                                                         ClassParams::HkbGetUpModifierInternalState(map.next_value()?)
+
                                     },
                                     "hkbGetUpModifier" => {
                                                         ClassParams::HkbGetUpModifier(map.next_value()?)
+
                                     },
                                     "hkbGetWorldFromModelModifierInternalState" => {
                                                         ClassParams::HkbGetWorldFromModelModifierInternalState(map.next_value()?)
+
                                     },
                                     "hkbGetWorldFromModelModifier" => {
                                                         ClassParams::HkbGetWorldFromModelModifier(map.next_value()?)
+
                                     },
                                     "hkbHandIkControlData" => {
                                                         ClassParams::HkbHandIkControlData(map.next_value()?)
+
                                     },
                                     "hkbHandIkControlsModifierHand" => {
                                                         ClassParams::HkbHandIkControlsModifierHand(map.next_value()?)
+
                                     },
                                     "hkbHandIkControlsModifier" => {
                                                         ClassParams::HkbHandIkControlsModifier(map.next_value()?)
+
                                     },
                                     "hkbHandIkDriverInfoHand" => {
                                                         ClassParams::HkbHandIkDriverInfoHand(map.next_value()?)
+
                                     },
                                     "hkbHandIkDriverInfo" => {
                                                         ClassParams::HkbHandIkDriverInfo(map.next_value()?)
+
                                     },
                                     "hkbHandIkModifierHand" => {
                                                         ClassParams::HkbHandIkModifierHand(map.next_value()?)
+
                                     },
                                     "hkbHandIkModifier" => {
                                                         ClassParams::HkbHandIkModifier(map.next_value()?)
+
                                     },
                                     "hkbHandle" => {
                                                         ClassParams::HkbHandle(map.next_value()?)
+
                                     },
                                     "hkbIntEventPayload" => {
                                                         ClassParams::HkbIntEventPayload(map.next_value()?)
+
                                     },
                                     "hkbIntVariableSequencedDataSample" => {
                                                         ClassParams::HkbIntVariableSequencedDataSample(map.next_value()?)
+
                                     },
                                     "hkbIntVariableSequencedData" => {
                                                         ClassParams::HkbIntVariableSequencedData(map.next_value()?)
+
                                     },
                                     "hkBitField" => {
                                                         ClassParams::HkBitField(map.next_value()?)
+
                                     },
                                     "hkbKeyframeBonesModifierKeyframeInfo" => {
                                                         ClassParams::HkbKeyframeBonesModifierKeyframeInfo(map.next_value()?)
+
                                     },
                                     "hkbKeyframeBonesModifier" => {
                                                         ClassParams::HkbKeyframeBonesModifier(map.next_value()?)
+
                                     },
                                     "hkbLinkedSymbolInfo" => {
                                                         ClassParams::HkbLinkedSymbolInfo(map.next_value()?)
+
                                     },
                                     "hkbLookAtModifierInternalState" => {
                                                         ClassParams::HkbLookAtModifierInternalState(map.next_value()?)
+
                                     },
                                     "hkbLookAtModifier" => {
                                                         ClassParams::HkbLookAtModifier(map.next_value()?)
+
                                     },
                                     "hkbManualSelectorGeneratorInternalState" => {
                                                         ClassParams::HkbManualSelectorGeneratorInternalState(map.next_value()?)
+
                                     },
                                     "hkbManualSelectorGenerator" => {
                                                         ClassParams::HkbManualSelectorGenerator(map.next_value()?)
+
                                     },
                                     "hkbMessageLog" => {
                                                         ClassParams::HkbMessageLog(map.next_value()?)
+
                                     },
                                     "hkbMirroredSkeletonInfo" => {
                                                         ClassParams::HkbMirroredSkeletonInfo(map.next_value()?)
+
                                     },
                                     "hkbMirrorModifier" => {
                                                         ClassParams::HkbMirrorModifier(map.next_value()?)
+
                                     },
                                     "hkbModifierGenerator" => {
                                                         ClassParams::HkbModifierGenerator(map.next_value()?)
+
                                     },
                                     "hkbModifierList" => {
                                                         ClassParams::HkbModifierList(map.next_value()?)
+
                                     },
                                     "hkbModifierWrapper" => {
                                                         ClassParams::HkbModifierWrapper(map.next_value()?)
+
                                     },
                                     "hkbModifier" => {
                                                         ClassParams::HkbModifier(map.next_value()?)
+
                                     },
                                     "hkbMoveCharacterModifierInternalState" => {
                                                         ClassParams::HkbMoveCharacterModifierInternalState(map.next_value()?)
+
                                     },
                                     "hkbMoveCharacterModifier" => {
                                                         ClassParams::HkbMoveCharacterModifier(map.next_value()?)
+
                                     },
                                     "hkbNamedEventPayload" => {
                                                         ClassParams::HkbNamedEventPayload(map.next_value()?)
+
                                     },
                                     "hkbNamedIntEventPayload" => {
                                                         ClassParams::HkbNamedIntEventPayload(map.next_value()?)
+
                                     },
                                     "hkbNamedRealEventPayload" => {
                                                         ClassParams::HkbNamedRealEventPayload(map.next_value()?)
+
                                     },
                                     "hkbNamedStringEventPayload" => {
                                                         ClassParams::HkbNamedStringEventPayload(map.next_value()?)
+
                                     },
                                     "hkbNodeInternalStateInfo" => {
                                                         ClassParams::HkbNodeInternalStateInfo(map.next_value()?)
+
                                     },
                                     "hkbNode" => {
                                                         ClassParams::HkbNode(map.next_value()?)
+
                                     },
                                     "hkbParticleSystemEventPayload" => {
                                                         ClassParams::HkbParticleSystemEventPayload(map.next_value()?)
+
                                     },
                                     "hkbPoseMatchingGeneratorInternalState" => {
                                                         ClassParams::HkbPoseMatchingGeneratorInternalState(map.next_value()?)
+
                                     },
                                     "hkbPoseMatchingGenerator" => {
                                                         ClassParams::HkbPoseMatchingGenerator(map.next_value()?)
+
                                     },
                                     "hkbPoweredRagdollControlData" => {
                                                         ClassParams::HkbPoweredRagdollControlData(map.next_value()?)
+
                                     },
                                     "hkbPoweredRagdollControlsModifier" => {
                                                         ClassParams::HkbPoweredRagdollControlsModifier(map.next_value()?)
+
                                     },
                                     "hkbProjectData" => {
                                                         ClassParams::HkbProjectData(map.next_value()?)
+
                                     },
                                     "hkbProjectStringData" => {
                                                         ClassParams::HkbProjectStringData(map.next_value()?)
+
                                     },
                                     "hkbProxyModifierProxyInfo" => {
                                                         ClassParams::HkbProxyModifierProxyInfo(map.next_value()?)
+
                                     },
                                     "hkbProxyModifier" => {
                                                         ClassParams::HkbProxyModifier(map.next_value()?)
+
                                     },
                                     "hkbRaiseEventCommand" => {
                                                         ClassParams::HkbRaiseEventCommand(map.next_value()?)
+
                                     },
                                     "hkbRealEventPayload" => {
                                                         ClassParams::HkbRealEventPayload(map.next_value()?)
+
                                     },
                                     "hkbRealVariableSequencedDataSample" => {
                                                         ClassParams::HkbRealVariableSequencedDataSample(map.next_value()?)
+
                                     },
                                     "hkbRealVariableSequencedData" => {
                                                         ClassParams::HkbRealVariableSequencedData(map.next_value()?)
+
                                     },
                                     "hkbReferencePoseGenerator" => {
                                                         ClassParams::HkbReferencePoseGenerator(map.next_value()?)
+
                                     },
                                     "hkbRegisteredGenerator" => {
                                                         ClassParams::HkbRegisteredGenerator(map.next_value()?)
+
                                     },
                                     "hkbRigidBodyRagdollControlData" => {
                                                         ClassParams::HkbRigidBodyRagdollControlData(map.next_value()?)
+
                                     },
                                     "hkbRigidBodyRagdollControlsModifier" => {
                                                         ClassParams::HkbRigidBodyRagdollControlsModifier(map.next_value()?)
+
                                     },
                                     "hkbRoleAttribute" => {
                                                         ClassParams::HkbRoleAttribute(map.next_value()?)
+
                                     },
                                     "hkbRotateCharacterModifierInternalState" => {
                                                         ClassParams::HkbRotateCharacterModifierInternalState(map.next_value()?)
+
                                     },
                                     "hkbRotateCharacterModifier" => {
                                                         ClassParams::HkbRotateCharacterModifier(map.next_value()?)
+
                                     },
                                     "hkbSenseHandleModifierRange" => {
                                                         ClassParams::HkbSenseHandleModifierRange(map.next_value()?)
+
                                     },
                                     "hkbSenseHandleModifier" => {
                                                         ClassParams::HkbSenseHandleModifier(map.next_value()?)
+
                                     },
                                     "hkbSequencedData" => {
                                                         ClassParams::HkbSequencedData(map.next_value()?)
+
                                     },
                                     "hkbSequenceInternalState" => {
                                                         ClassParams::HkbSequenceInternalState(map.next_value()?)
+
                                     },
                                     "hkbSequenceStringData" => {
                                                         ClassParams::HkbSequenceStringData(map.next_value()?)
+
                                     },
                                     "hkbSequence" => {
                                                         ClassParams::HkbSequence(map.next_value()?)
+
                                     },
                                     "hkbSetBehaviorCommand" => {
                                                         ClassParams::HkbSetBehaviorCommand(map.next_value()?)
+
                                     },
                                     "hkbSetLocalTimeOfClipGeneratorCommand" => {
                                                         ClassParams::HkbSetLocalTimeOfClipGeneratorCommand(map.next_value()?)
+
                                     },
                                     "hkbSetNodePropertyCommand" => {
                                                         ClassParams::HkbSetNodePropertyCommand(map.next_value()?)
+
                                     },
                                     "hkbSetWordVariableCommand" => {
                                                         ClassParams::HkbSetWordVariableCommand(map.next_value()?)
+
                                     },
                                     "hkbSetWorldFromModelModifier" => {
                                                         ClassParams::HkbSetWorldFromModelModifier(map.next_value()?)
+
                                     },
                                     "hkbSimulationControlCommand" => {
                                                         ClassParams::HkbSimulationControlCommand(map.next_value()?)
+
                                     },
                                     "hkbSimulationStateInfo" => {
                                                         ClassParams::HkbSimulationStateInfo(map.next_value()?)
+
                                     },
                                     "hkbStateChooser" => {
                                                         ClassParams::HkbStateChooser(map.next_value()?)
+
                                     },
                                     "hkbStateListener" => {
                                                         ClassParams::HkbStateListener(map.next_value()?)
+
                                     },
                                     "hkbStateMachineActiveTransitionInfo" => {
                                                         ClassParams::HkbStateMachineActiveTransitionInfo(map.next_value()?)
+
                                     },
                                     "hkbStateMachineDelayedTransitionInfo" => {
                                                         ClassParams::HkbStateMachineDelayedTransitionInfo(map.next_value()?)
+
                                     },
                                     "hkbStateMachineEventPropertyArray" => {
                                                         ClassParams::HkbStateMachineEventPropertyArray(map.next_value()?)
+
                                     },
                                     "hkbStateMachineInternalState" => {
                                                         ClassParams::HkbStateMachineInternalState(map.next_value()?)
+
                                     },
                                     "hkbStateMachineNestedStateMachineData" => {
                                                         ClassParams::HkbStateMachineNestedStateMachineData(map.next_value()?)
+
                                     },
                                     "hkbStateMachineProspectiveTransitionInfo" => {
                                                         ClassParams::HkbStateMachineProspectiveTransitionInfo(map.next_value()?)
+
                                     },
                                     "hkbStateMachineStateInfo" => {
                                                         ClassParams::HkbStateMachineStateInfo(map.next_value()?)
+
                                     },
                                     "hkbStateMachineTimeInterval" => {
                                                         ClassParams::HkbStateMachineTimeInterval(map.next_value()?)
+
                                     },
                                     "hkbStateMachineTransitionInfoArray" => {
                                                         ClassParams::HkbStateMachineTransitionInfoArray(map.next_value()?)
+
                                     },
                                     "hkbStateMachineTransitionInfoReference" => {
                                                         ClassParams::HkbStateMachineTransitionInfoReference(map.next_value()?)
+
                                     },
                                     "hkbStateMachineTransitionInfo" => {
                                                         ClassParams::HkbStateMachineTransitionInfo(map.next_value()?)
+
                                     },
                                     "hkbStateMachine" => {
                                                         ClassParams::HkbStateMachine(map.next_value()?)
+
                                     },
                                     "hkbStringCondition" => {
                                                         ClassParams::HkbStringCondition(map.next_value()?)
+
                                     },
                                     "hkbStringEventPayload" => {
                                                         ClassParams::HkbStringEventPayload(map.next_value()?)
+
                                     },
                                     "hkbTestStateChooser" => {
                                                         ClassParams::HkbTestStateChooser(map.next_value()?)
+
                                     },
                                     "hkbTimerModifierInternalState" => {
                                                         ClassParams::HkbTimerModifierInternalState(map.next_value()?)
+
                                     },
                                     "hkbTimerModifier" => {
                                                         ClassParams::HkbTimerModifier(map.next_value()?)
+
                                     },
                                     "hkbTransformVectorModifierInternalState" => {
                                                         ClassParams::HkbTransformVectorModifierInternalState(map.next_value()?)
+
                                     },
                                     "hkbTransformVectorModifier" => {
                                                         ClassParams::HkbTransformVectorModifier(map.next_value()?)
+
                                     },
                                     "hkbTransitionEffect" => {
                                                         ClassParams::HkbTransitionEffect(map.next_value()?)
+
                                     },
                                     "hkbTwistModifier" => {
                                                         ClassParams::HkbTwistModifier(map.next_value()?)
+
                                     },
                                     "hkbVariableBindingSetBinding" => {
                                                         ClassParams::HkbVariableBindingSetBinding(map.next_value()?)
+
                                     },
                                     "hkbVariableBindingSet" => {
                                                         ClassParams::HkbVariableBindingSet(map.next_value()?)
+
                                     },
                                     "hkbVariableInfo" => {
                                                         ClassParams::HkbVariableInfo(map.next_value()?)
+
                                     },
                                     "hkbVariableValueSet" => {
                                                         ClassParams::HkbVariableValueSet(map.next_value()?)
+
                                     },
                                     "hkbVariableValue" => {
                                                         ClassParams::HkbVariableValue(map.next_value()?)
+
                                     },
                                     "hkbWorldEnums" => {
                                                         ClassParams::HkbWorldEnums(map.next_value()?)
+
                                     },
                                     "hkbWorldFromModelModeData" => {
                                                         ClassParams::HkbWorldFromModelModeData(map.next_value()?)
+
                                     },
                                     "hkClassEnumItem" => {
                                                         ClassParams::HkClassEnumItem(map.next_value()?)
+
                                     },
                                     "hkClassEnum" => {
                                                         ClassParams::HkClassEnum(map.next_value()?)
+
                                     },
                                     "hkContactPointMaterial" => {
                                                         ClassParams::HkContactPointMaterial(map.next_value()?)
+
                                     },
                                     "hkContactPoint" => {
                                                         ClassParams::HkContactPoint(map.next_value()?)
+
                                     },
                                     "hkCustomAttributesAttribute" => {
                                                         ClassParams::HkCustomAttributesAttribute(map.next_value()?)
+
                                     },
                                     "hkCustomAttributes" => {
                                                         ClassParams::HkCustomAttributes(map.next_value()?)
+
                                     },
                                     "hkDataObjectTypeAttribute" => {
                                                         ClassParams::HkDataObjectTypeAttribute(map.next_value()?)
+
                                     },
                                     "hkDescriptionAttribute" => {
                                                         ClassParams::HkDescriptionAttribute(map.next_value()?)
+
                                     },
                                     "hkDocumentationAttribute" => {
                                                         ClassParams::HkDocumentationAttribute(map.next_value()?)
+
                                     },
                                     "hkGeometryTriangle" => {
                                                         ClassParams::HkGeometryTriangle(map.next_value()?)
+
                                     },
                                     "hkGeometry" => {
                                                         ClassParams::HkGeometry(map.next_value()?)
+
                                     },
                                     "hkGizmoAttribute" => {
                                                         ClassParams::HkGizmoAttribute(map.next_value()?)
+
                                     },
                                     "hkHalf8" => {
                                                         ClassParams::HkHalf8(map.next_value()?)
+
                                     },
                                     "hkIndexedTransformSet" => {
                                                         ClassParams::HkIndexedTransformSet(map.next_value()?)
+
                                     },
                                     "hkLinkAttribute" => {
                                                         ClassParams::HkLinkAttribute(map.next_value()?)
+
                                     },
                                     "hkLocalFrameGroup" => {
                                                         ClassParams::HkLocalFrameGroup(map.next_value()?)
+
                                     },
                                     "hkLocalFrame" => {
                                                         ClassParams::HkLocalFrame(map.next_value()?)
+
                                     },
                                     "hkMemoryMeshBody" => {
                                                         ClassParams::HkMemoryMeshBody(map.next_value()?)
+
                                     },
                                     "hkMemoryMeshMaterial" => {
                                                         ClassParams::HkMemoryMeshMaterial(map.next_value()?)
+
                                     },
                                     "hkMemoryMeshShape" => {
                                                         ClassParams::HkMemoryMeshShape(map.next_value()?)
+
                                     },
                                     "hkMemoryMeshTexture" => {
                                                         ClassParams::HkMemoryMeshTexture(map.next_value()?)
+
                                     },
                                     "hkMemoryMeshVertexBuffer" => {
                                                         ClassParams::HkMemoryMeshVertexBuffer(map.next_value()?)
+
                                     },
                                     "hkMemoryResourceContainer" => {
                                                         ClassParams::HkMemoryResourceContainer(map.next_value()?)
+
                                     },
                                     "hkMemoryResourceHandleExternalLink" => {
                                                         ClassParams::HkMemoryResourceHandleExternalLink(map.next_value()?)
+
                                     },
                                     "hkMemoryResourceHandle" => {
                                                         ClassParams::HkMemoryResourceHandle(map.next_value()?)
+
                                     },
                                     "hkMemoryTrackerAttribute" => {
                                                         ClassParams::HkMemoryTrackerAttribute(map.next_value()?)
+
                                     },
                                     "hkMeshBody" => {
                                                         ClassParams::HkMeshBody(map.next_value()?)
+
                                     },
                                     "hkMeshBoneIndexMapping" => {
                                                         ClassParams::HkMeshBoneIndexMapping(map.next_value()?)
+
                                     },
                                     "hkMeshMaterial" => {
                                                         ClassParams::HkMeshMaterial(map.next_value()?)
+
                                     },
                                     "hkMeshSectionCinfo" => {
                                                         ClassParams::HkMeshSectionCinfo(map.next_value()?)
+
                                     },
                                     "hkMeshSection" => {
                                                         ClassParams::HkMeshSection(map.next_value()?)
+
                                     },
                                     "hkMeshShape" => {
                                                         ClassParams::HkMeshShape(map.next_value()?)
+
                                     },
                                     "hkMeshTexture" => {
                                                         ClassParams::HkMeshTexture(map.next_value()?)
+
                                     },
                                     "hkMeshVertexBuffer" => {
                                                         ClassParams::HkMeshVertexBuffer(map.next_value()?)
+
                                     },
                                     "hkModelerNodeTypeAttribute" => {
                                                         ClassParams::HkModelerNodeTypeAttribute(map.next_value()?)
+
                                     },
                                     "hkMonitorStreamFrameInfo" => {
                                                         ClassParams::HkMonitorStreamFrameInfo(map.next_value()?)
+
                                     },
                                     "hkMonitorStreamStringMapStringMap" => {
                                                         ClassParams::HkMonitorStreamStringMapStringMap(map.next_value()?)
+
                                     },
                                     "hkMonitorStreamStringMap" => {
                                                         ClassParams::HkMonitorStreamStringMap(map.next_value()?)
+
                                     },
                                     "hkMoppBvTreeShapeBase" => {
                                                         ClassParams::HkMoppBvTreeShapeBase(map.next_value()?)
+
                                     },
                                     "hkMotionState" => {
                                                         ClassParams::HkMotionState(map.next_value()?)
+
                                     },
                                     "hkMultipleVertexBufferElementInfo" => {
                                                         ClassParams::HkMultipleVertexBufferElementInfo(map.next_value()?)
+
                                     },
                                     "hkMultipleVertexBufferLockedElement" => {
                                                         ClassParams::HkMultipleVertexBufferLockedElement(map.next_value()?)
+
                                     },
                                     "hkMultipleVertexBufferVertexBufferInfo" => {
                                                         ClassParams::HkMultipleVertexBufferVertexBufferInfo(map.next_value()?)
+
                                     },
                                     "hkMultipleVertexBuffer" => {
                                                         ClassParams::HkMultipleVertexBuffer(map.next_value()?)
+
                                     },
                                     "hkMultiThreadCheck" => {
                                                         ClassParams::HkMultiThreadCheck(map.next_value()?)
+
                                     },
                                     "hkp2dAngConstraintAtom" => {
                                                         ClassParams::Hkp2DAngConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpAabbPhantom" => {
                                                         ClassParams::HkpAabbPhantom(map.next_value()?)
+
                                     },
                                     "hkPackedVector3" => {
                                                         ClassParams::HkPackedVector3(map.next_value()?)
+
                                     },
                                     "hkPackfileHeader" => {
                                                         ClassParams::HkPackfileHeader(map.next_value()?)
+
                                     },
                                     "hkPackfileSectionHeader" => {
                                                         ClassParams::HkPackfileSectionHeader(map.next_value()?)
+
                                     },
                                     "hkpAction" => {
                                                         ClassParams::HkpAction(map.next_value()?)
+
                                     },
                                     "hkpAngConstraintAtom" => {
                                                         ClassParams::HkpAngConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpAngFrictionConstraintAtom" => {
                                                         ClassParams::HkpAngFrictionConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpAngLimitConstraintAtom" => {
                                                         ClassParams::HkpAngLimitConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpAngMotorConstraintAtom" => {
                                                         ClassParams::HkpAngMotorConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpAngularDashpotAction" => {
                                                         ClassParams::HkpAngularDashpotAction(map.next_value()?)
+
                                     },
                                     "hkpArrayAction" => {
                                                         ClassParams::HkpArrayAction(map.next_value()?)
+
                                     },
                                     "hkpBallAndSocketConstraintDataAtoms" => {
                                                         ClassParams::HkpBallAndSocketConstraintDataAtoms(map.next_value()?)
+
                                     },
                                     "hkpBallAndSocketConstraintData" => {
                                                         ClassParams::HkpBallAndSocketConstraintData(map.next_value()?)
+
                                     },
                                     "hkpBallGun" => {
                                                         ClassParams::HkpBallGun(map.next_value()?)
+
                                     },
                                     "hkpBallSocketChainDataConstraintInfo" => {
                                                         ClassParams::HkpBallSocketChainDataConstraintInfo(map.next_value()?)
+
                                     },
                                     "hkpBallSocketChainData" => {
                                                         ClassParams::HkpBallSocketChainData(map.next_value()?)
+
                                     },
                                     "hkpBallSocketConstraintAtom" => {
                                                         ClassParams::HkpBallSocketConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpBinaryAction" => {
                                                         ClassParams::HkpBinaryAction(map.next_value()?)
+
                                     },
                                     "hkpBoxMotion" => {
                                                         ClassParams::HkpBoxMotion(map.next_value()?)
+
                                     },
                                     "hkpBoxShape" => {
                                                         ClassParams::HkpBoxShape(map.next_value()?)
+
                                     },
                                     "hkpBreakableBody" => {
                                                         ClassParams::HkpBreakableBody(map.next_value()?)
+
                                     },
                                     "hkpBreakableConstraintData" => {
                                                         ClassParams::HkpBreakableConstraintData(map.next_value()?)
+
                                     },
                                     "hkpBridgeAtoms" => {
                                                         ClassParams::HkpBridgeAtoms(map.next_value()?)
+
                                     },
                                     "hkpBridgeConstraintAtom" => {
                                                         ClassParams::HkpBridgeConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpBroadPhaseHandle" => {
                                                         ClassParams::HkpBroadPhaseHandle(map.next_value()?)
+
                                     },
                                     "hkpBvShape" => {
                                                         ClassParams::HkpBvShape(map.next_value()?)
+
                                     },
                                     "hkpBvTreeShape" => {
                                                         ClassParams::HkpBvTreeShape(map.next_value()?)
+
                                     },
                                     "hkpCachingShapePhantom" => {
                                                         ClassParams::HkpCachingShapePhantom(map.next_value()?)
+
                                     },
                                     "hkpCallbackConstraintMotor" => {
                                                         ClassParams::HkpCallbackConstraintMotor(map.next_value()?)
+
                                     },
                                     "hkpCapsuleShape" => {
                                                         ClassParams::HkpCapsuleShape(map.next_value()?)
+
                                     },
                                     "hkpCdBody" => {
                                                         ClassParams::HkpCdBody(map.next_value()?)
+
                                     },
                                     "hkpCenterOfMassChangerModifierConstraintAtom" => {
                                                         ClassParams::HkpCenterOfMassChangerModifierConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpCharacterControllerCinfo" => {
                                                         ClassParams::HkpCharacterControllerCinfo(map.next_value()?)
+
                                     },
                                     "hkpCharacterMotion" => {
                                                         ClassParams::HkpCharacterMotion(map.next_value()?)
+
                                     },
                                     "hkpCharacterProxyCinfo" => {
                                                         ClassParams::HkpCharacterProxyCinfo(map.next_value()?)
+
                                     },
                                     "hkpCharacterRigidBodyCinfo" => {
                                                         ClassParams::HkpCharacterRigidBodyCinfo(map.next_value()?)
+
                                     },
                                     "hkpCogWheelConstraintAtom" => {
                                                         ClassParams::HkpCogWheelConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpCogWheelConstraintDataAtoms" => {
                                                         ClassParams::HkpCogWheelConstraintDataAtoms(map.next_value()?)
+
                                     },
                                     "hkpCogWheelConstraintData" => {
                                                         ClassParams::HkpCogWheelConstraintData(map.next_value()?)
+
                                     },
                                     "hkpCollidableBoundingVolumeData" => {
                                                         ClassParams::HkpCollidableBoundingVolumeData(map.next_value()?)
+
                                     },
                                     "hkpCollidableCollidableFilter" => {
                                                         ClassParams::HkpCollidableCollidableFilter(map.next_value()?)
+
                                     },
                                     "hkpCollidable" => {
                                                         ClassParams::HkpCollidable(map.next_value()?)
+
                                     },
                                     "hkpCollisionFilterList" => {
                                                         ClassParams::HkpCollisionFilterList(map.next_value()?)
+
                                     },
                                     "hkpCollisionFilter" => {
                                                         ClassParams::HkpCollisionFilter(map.next_value()?)
+
                                     },
                                     "hkpCompressedMeshShapeBigTriangle" => {
                                                         ClassParams::HkpCompressedMeshShapeBigTriangle(map.next_value()?)
+
                                     },
                                     "hkpCompressedMeshShapeChunk" => {
                                                         ClassParams::HkpCompressedMeshShapeChunk(map.next_value()?)
+
                                     },
                                     "hkpCompressedMeshShapeConvexPiece" => {
                                                         ClassParams::HkpCompressedMeshShapeConvexPiece(map.next_value()?)
+
                                     },
                                     "hkpCompressedMeshShape" => {
                                                         ClassParams::HkpCompressedMeshShape(map.next_value()?)
+
                                     },
                                     "hkpCompressedSampledHeightFieldShape" => {
                                                         ClassParams::HkpCompressedSampledHeightFieldShape(map.next_value()?)
+
                                     },
                                     "hkpConeLimitConstraintAtom" => {
                                                         ClassParams::HkpConeLimitConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpConstrainedSystemFilter" => {
                                                         ClassParams::HkpConstrainedSystemFilter(map.next_value()?)
+
                                     },
                                     "hkpConstraintAtom" => {
                                                         ClassParams::HkpConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpConstraintChainData" => {
                                                         ClassParams::HkpConstraintChainData(map.next_value()?)
+
                                     },
                                     "hkpConstraintChainInstanceAction" => {
                                                         ClassParams::HkpConstraintChainInstanceAction(map.next_value()?)
+
                                     },
                                     "hkpConstraintChainInstance" => {
                                                         ClassParams::HkpConstraintChainInstance(map.next_value()?)
+
                                     },
                                     "hkpConstraintCollisionFilter" => {
                                                         ClassParams::HkpConstraintCollisionFilter(map.next_value()?)
+
                                     },
                                     "hkpConstraintInstanceSmallArraySerializeOverrideType" => {
                                                         ClassParams::HkpConstraintInstanceSmallArraySerializeOverrideType(map.next_value()?)
+
                                     },
                                     "hkpConstraintInstance" => {
                                                         ClassParams::HkpConstraintInstance(map.next_value()?)
+
                                     },
                                     "hkpConstraintMotor" => {
                                                         ClassParams::HkpConstraintMotor(map.next_value()?)
+
                                     },
                                     "hkpConvexListFilter" => {
                                                         ClassParams::HkpConvexListFilter(map.next_value()?)
+
                                     },
                                     "hkpConvexListShape" => {
                                                         ClassParams::HkpConvexListShape(map.next_value()?)
+
                                     },
                                     "hkpConvexPieceMeshShape" => {
                                                         ClassParams::HkpConvexPieceMeshShape(map.next_value()?)
+
                                     },
                                     "hkpConvexPieceStreamData" => {
                                                         ClassParams::HkpConvexPieceStreamData(map.next_value()?)
+
                                     },
                                     "hkpConvexShape" => {
                                                         ClassParams::HkpConvexShape(map.next_value()?)
+
                                     },
                                     "hkpConvexTransformShapeBase" => {
                                                         ClassParams::HkpConvexTransformShapeBase(map.next_value()?)
+
                                     },
                                     "hkpConvexTransformShape" => {
                                                         ClassParams::HkpConvexTransformShape(map.next_value()?)
+
                                     },
                                     "hkpConvexTranslateShape" => {
                                                         ClassParams::HkpConvexTranslateShape(map.next_value()?)
+
                                     },
                                     "hkpConvexVerticesConnectivity" => {
                                                         ClassParams::HkpConvexVerticesConnectivity(map.next_value()?)
+
                                     },
                                     "hkpConvexVerticesShapeFourVectors" => {
                                                         ClassParams::HkpConvexVerticesShapeFourVectors(map.next_value()?)
+
                                     },
                                     "hkpConvexVerticesShape" => {
                                                         ClassParams::HkpConvexVerticesShape(map.next_value()?)
+
                                     },
                                     "hkpCylinderShape" => {
                                                         ClassParams::HkpCylinderShape(map.next_value()?)
+
                                     },
                                     "hkpDashpotAction" => {
                                                         ClassParams::HkpDashpotAction(map.next_value()?)
+
                                     },
                                     "hkpDefaultConvexListFilter" => {
                                                         ClassParams::HkpDefaultConvexListFilter(map.next_value()?)
+
                                     },
                                     "hkpDefaultWorldMemoryWatchDog" => {
                                                         ClassParams::HkpDefaultWorldMemoryWatchDog(map.next_value()?)
+
                                     },
                                     "hkpDisableEntityCollisionFilter" => {
                                                         ClassParams::HkpDisableEntityCollisionFilter(map.next_value()?)
+
                                     },
                                     "hkpDisplayBindingDataPhysicsSystem" => {
                                                         ClassParams::HkpDisplayBindingDataPhysicsSystem(map.next_value()?)
+
                                     },
                                     "hkpDisplayBindingDataRigidBody" => {
                                                         ClassParams::HkpDisplayBindingDataRigidBody(map.next_value()?)
+
                                     },
                                     "hkpDisplayBindingData" => {
                                                         ClassParams::HkpDisplayBindingData(map.next_value()?)
+
                                     },
                                     "hkpEntityExtendedListeners" => {
                                                         ClassParams::HkpEntityExtendedListeners(map.next_value()?)
+
                                     },
                                     "hkpEntitySmallArraySerializeOverrideType" => {
                                                         ClassParams::HkpEntitySmallArraySerializeOverrideType(map.next_value()?)
+
                                     },
                                     "hkpEntitySpuCollisionCallback" => {
                                                         ClassParams::HkpEntitySpuCollisionCallback(map.next_value()?)
+
                                     },
                                     "hkpEntity" => {
                                                         ClassParams::HkpEntity(map.next_value()?)
+
                                     },
                                     "hkpExtendedMeshShapeShapesSubpart" => {
                                                         ClassParams::HkpExtendedMeshShapeShapesSubpart(map.next_value()?)
+
                                     },
                                     "hkpExtendedMeshShapeSubpart" => {
                                                         ClassParams::HkpExtendedMeshShapeSubpart(map.next_value()?)
+
                                     },
                                     "hkpExtendedMeshShapeTrianglesSubpart" => {
                                                         ClassParams::HkpExtendedMeshShapeTrianglesSubpart(map.next_value()?)
+
                                     },
                                     "hkpExtendedMeshShape" => {
                                                         ClassParams::HkpExtendedMeshShape(map.next_value()?)
+
                                     },
                                     "hkpFastMeshShape" => {
                                                         ClassParams::HkpFastMeshShape(map.next_value()?)
+
                                     },
                                     "hkpFirstPersonGun" => {
                                                         ClassParams::HkpFirstPersonGun(map.next_value()?)
+
                                     },
                                     "hkpFixedRigidMotion" => {
                                                         ClassParams::HkpFixedRigidMotion(map.next_value()?)
+
                                     },
                                     "hkpGenericConstraintDataSchemeConstraintInfo" => {
                                                         ClassParams::HkpGenericConstraintDataSchemeConstraintInfo(map.next_value()?)
+
                                     },
                                     "hkpGenericConstraintDataScheme" => {
                                                         ClassParams::HkpGenericConstraintDataScheme(map.next_value()?)
+
                                     },
                                     "hkpGenericConstraintData" => {
                                                         ClassParams::HkpGenericConstraintData(map.next_value()?)
+
                                     },
                                     "hkpGravityGun" => {
                                                         ClassParams::HkpGravityGun(map.next_value()?)
+
                                     },
                                     "hkpGroupCollisionFilter" => {
                                                         ClassParams::HkpGroupCollisionFilter(map.next_value()?)
+
                                     },
                                     "hkpGroupFilter" => {
                                                         ClassParams::HkpGroupFilter(map.next_value()?)
+
                                     },
                                     "hkpHeightFieldShape" => {
                                                         ClassParams::HkpHeightFieldShape(map.next_value()?)
+
                                     },
                                     "hkpHingeConstraintDataAtoms" => {
                                                         ClassParams::HkpHingeConstraintDataAtoms(map.next_value()?)
+
                                     },
                                     "hkpHingeConstraintData" => {
                                                         ClassParams::HkpHingeConstraintData(map.next_value()?)
+
                                     },
                                     "hkpHingeLimitsDataAtoms" => {
                                                         ClassParams::HkpHingeLimitsDataAtoms(map.next_value()?)
+
                                     },
                                     "hkpHingeLimitsData" => {
                                                         ClassParams::HkpHingeLimitsData(map.next_value()?)
+
                                     },
                                     "hkpIgnoreModifierConstraintAtom" => {
                                                         ClassParams::HkpIgnoreModifierConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpKeyframedRigidMotion" => {
                                                         ClassParams::HkpKeyframedRigidMotion(map.next_value()?)
+
                                     },
                                     "hkpLimitedForceConstraintMotor" => {
                                                         ClassParams::HkpLimitedForceConstraintMotor(map.next_value()?)
+
                                     },
                                     "hkpLimitedHingeConstraintDataAtoms" => {
                                                         ClassParams::HkpLimitedHingeConstraintDataAtoms(map.next_value()?)
+
                                     },
                                     "hkpLimitedHingeConstraintData" => {
                                                         ClassParams::HkpLimitedHingeConstraintData(map.next_value()?)
+
                                     },
                                     "hkpLinConstraintAtom" => {
                                                         ClassParams::HkpLinConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpLinearParametricCurve" => {
                                                         ClassParams::HkpLinearParametricCurve(map.next_value()?)
+
                                     },
                                     "hkpLinFrictionConstraintAtom" => {
                                                         ClassParams::HkpLinFrictionConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpLinkedCollidable" => {
                                                         ClassParams::HkpLinkedCollidable(map.next_value()?)
+
                                     },
                                     "hkpLinLimitConstraintAtom" => {
                                                         ClassParams::HkpLinLimitConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpLinMotorConstraintAtom" => {
                                                         ClassParams::HkpLinMotorConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpLinSoftConstraintAtom" => {
                                                         ClassParams::HkpLinSoftConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpListShapeChildInfo" => {
                                                         ClassParams::HkpListShapeChildInfo(map.next_value()?)
+
                                     },
                                     "hkpListShape" => {
                                                         ClassParams::HkpListShape(map.next_value()?)
+
                                     },
                                     "hkpMalleableConstraintData" => {
                                                         ClassParams::HkpMalleableConstraintData(map.next_value()?)
+
                                     },
                                     "hkpMassChangerModifierConstraintAtom" => {
                                                         ClassParams::HkpMassChangerModifierConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpMassProperties" => {
                                                         ClassParams::HkpMassProperties(map.next_value()?)
+
                                     },
                                     "hkpMaterial" => {
                                                         ClassParams::HkpMaterial(map.next_value()?)
+
                                     },
                                     "hkpMaxSizeMotion" => {
                                                         ClassParams::HkpMaxSizeMotion(map.next_value()?)
+
                                     },
                                     "hkpMeshMaterial" => {
                                                         ClassParams::HkpMeshMaterial(map.next_value()?)
+
                                     },
                                     "hkpMeshShapeSubpart" => {
                                                         ClassParams::HkpMeshShapeSubpart(map.next_value()?)
+
                                     },
                                     "hkpMeshShape" => {
                                                         ClassParams::HkpMeshShape(map.next_value()?)
+
                                     },
                                     "hkpModifierConstraintAtom" => {
                                                         ClassParams::HkpModifierConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpMoppBvTreeShape" => {
                                                         ClassParams::HkpMoppBvTreeShape(map.next_value()?)
+
                                     },
                                     "hkpMoppCodeCodeInfo" => {
                                                         ClassParams::HkpMoppCodeCodeInfo(map.next_value()?)
+
                                     },
                                     "hkpMoppCodeReindexedTerminal" => {
                                                         ClassParams::HkpMoppCodeReindexedTerminal(map.next_value()?)
+
                                     },
                                     "hkpMoppCode" => {
                                                         ClassParams::HkpMoppCode(map.next_value()?)
+
                                     },
                                     "hkpMotion" => {
                                                         ClassParams::HkpMotion(map.next_value()?)
+
                                     },
                                     "hkpMotorAction" => {
                                                         ClassParams::HkpMotorAction(map.next_value()?)
+
                                     },
                                     "hkpMountedBallGun" => {
                                                         ClassParams::HkpMountedBallGun(map.next_value()?)
+
                                     },
                                     "hkpMouseSpringAction" => {
                                                         ClassParams::HkpMouseSpringAction(map.next_value()?)
+
                                     },
                                     "hkpMovingSurfaceModifierConstraintAtom" => {
                                                         ClassParams::HkpMovingSurfaceModifierConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpMultiRayShapeRay" => {
                                                         ClassParams::HkpMultiRayShapeRay(map.next_value()?)
+
                                     },
                                     "hkpMultiRayShape" => {
                                                         ClassParams::HkpMultiRayShape(map.next_value()?)
+
                                     },
                                     "hkpMultiSphereShape" => {
                                                         ClassParams::HkpMultiSphereShape(map.next_value()?)
+
                                     },
                                     "hkpMultithreadedVehicleManager" => {
                                                         ClassParams::HkpMultithreadedVehicleManager(map.next_value()?)
+
                                     },
                                     "hkpNamedMeshMaterial" => {
                                                         ClassParams::HkpNamedMeshMaterial(map.next_value()?)
+
                                     },
                                     "hkpNullCollisionFilter" => {
                                                         ClassParams::HkpNullCollisionFilter(map.next_value()?)
+
                                     },
                                     "hkPostFinishAttribute" => {
                                                         ClassParams::HkPostFinishAttribute(map.next_value()?)
+
                                     },
                                     "hkpOverwritePivotConstraintAtom" => {
                                                         ClassParams::HkpOverwritePivotConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpPairCollisionFilterMapPairFilterKeyOverrideType" => {
                                                         ClassParams::HkpPairCollisionFilterMapPairFilterKeyOverrideType(map.next_value()?)
+
                                     },
                                     "hkpPairCollisionFilter" => {
                                                         ClassParams::HkpPairCollisionFilter(map.next_value()?)
+
                                     },
                                     "hkpParametricCurve" => {
                                                         ClassParams::HkpParametricCurve(map.next_value()?)
+
                                     },
                                     "hkpPhantomCallbackShape" => {
                                                         ClassParams::HkpPhantomCallbackShape(map.next_value()?)
+
                                     },
                                     "hkpPhantom" => {
                                                         ClassParams::HkpPhantom(map.next_value()?)
+
                                     },
                                     "hkpPhysicsData" => {
                                                         ClassParams::HkpPhysicsData(map.next_value()?)
+
                                     },
                                     "hkpPhysicsSystemWithContacts" => {
                                                         ClassParams::HkpPhysicsSystemWithContacts(map.next_value()?)
+
                                     },
                                     "hkpPhysicsSystem" => {
                                                         ClassParams::HkpPhysicsSystem(map.next_value()?)
+
                                     },
                                     "hkpPlaneShape" => {
                                                         ClassParams::HkpPlaneShape(map.next_value()?)
+
                                     },
                                     "hkpPointToPathConstraintData" => {
                                                         ClassParams::HkpPointToPathConstraintData(map.next_value()?)
+
                                     },
                                     "hkpPointToPlaneConstraintDataAtoms" => {
                                                         ClassParams::HkpPointToPlaneConstraintDataAtoms(map.next_value()?)
+
                                     },
                                     "hkpPointToPlaneConstraintData" => {
                                                         ClassParams::HkpPointToPlaneConstraintData(map.next_value()?)
+
                                     },
                                     "hkpPositionConstraintMotor" => {
                                                         ClassParams::HkpPositionConstraintMotor(map.next_value()?)
+
                                     },
                                     "hkpPoweredChainDataConstraintInfo" => {
                                                         ClassParams::HkpPoweredChainDataConstraintInfo(map.next_value()?)
+
                                     },
                                     "hkpPoweredChainData" => {
                                                         ClassParams::HkpPoweredChainData(map.next_value()?)
+
                                     },
                                     "hkpPoweredChainMapperLinkInfo" => {
                                                         ClassParams::HkpPoweredChainMapperLinkInfo(map.next_value()?)
+
                                     },
                                     "hkpPoweredChainMapperTarget" => {
                                                         ClassParams::HkpPoweredChainMapperTarget(map.next_value()?)
+
                                     },
                                     "hkpPoweredChainMapper" => {
                                                         ClassParams::HkpPoweredChainMapper(map.next_value()?)
+
                                     },
                                     "hkpPrismaticConstraintDataAtoms" => {
                                                         ClassParams::HkpPrismaticConstraintDataAtoms(map.next_value()?)
+
                                     },
                                     "hkpPrismaticConstraintData" => {
                                                         ClassParams::HkpPrismaticConstraintData(map.next_value()?)
+
                                     },
                                     "hkpProjectileGun" => {
                                                         ClassParams::HkpProjectileGun(map.next_value()?)
+
                                     },
                                     "hkpPropertyValue" => {
                                                         ClassParams::HkpPropertyValue(map.next_value()?)
+
                                     },
                                     "hkpProperty" => {
                                                         ClassParams::HkpProperty(map.next_value()?)
+
                                     },
                                     "hkpPulleyConstraintAtom" => {
                                                         ClassParams::HkpPulleyConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpPulleyConstraintDataAtoms" => {
                                                         ClassParams::HkpPulleyConstraintDataAtoms(map.next_value()?)
+
                                     },
                                     "hkpPulleyConstraintData" => {
                                                         ClassParams::HkpPulleyConstraintData(map.next_value()?)
+
                                     },
                                     "hkpRackAndPinionConstraintAtom" => {
                                                         ClassParams::HkpRackAndPinionConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpRackAndPinionConstraintDataAtoms" => {
                                                         ClassParams::HkpRackAndPinionConstraintDataAtoms(map.next_value()?)
+
                                     },
                                     "hkpRackAndPinionConstraintData" => {
                                                         ClassParams::HkpRackAndPinionConstraintData(map.next_value()?)
+
                                     },
                                     "hkpRagdollConstraintDataAtoms" => {
                                                         ClassParams::HkpRagdollConstraintDataAtoms(map.next_value()?)
+
                                     },
                                     "hkpRagdollConstraintData" => {
                                                         ClassParams::HkpRagdollConstraintData(map.next_value()?)
+
                                     },
                                     "hkpRagdollLimitsDataAtoms" => {
                                                         ClassParams::HkpRagdollLimitsDataAtoms(map.next_value()?)
+
                                     },
                                     "hkpRagdollLimitsData" => {
                                                         ClassParams::HkpRagdollLimitsData(map.next_value()?)
+
                                     },
                                     "hkpRagdollMotorConstraintAtom" => {
                                                         ClassParams::HkpRagdollMotorConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpRayCollidableFilter" => {
                                                         ClassParams::HkpRayCollidableFilter(map.next_value()?)
+
                                     },
                                     "hkpRayShapeCollectionFilter" => {
                                                         ClassParams::HkpRayShapeCollectionFilter(map.next_value()?)
+
                                     },
                                     "hkpRejectChassisListener" => {
                                                         ClassParams::HkpRejectChassisListener(map.next_value()?)
+
                                     },
                                     "hkpRemoveTerminalsMoppModifier" => {
                                                         ClassParams::HkpRemoveTerminalsMoppModifier(map.next_value()?)
+
                                     },
                                     "hkpReorientAction" => {
                                                         ClassParams::HkpReorientAction(map.next_value()?)
+
                                     },
                                     "hkpRigidBody" => {
                                                         ClassParams::HkpRigidBody(map.next_value()?)
+
                                     },
                                     "hkpRotationalConstraintDataAtoms" => {
                                                         ClassParams::HkpRotationalConstraintDataAtoms(map.next_value()?)
+
                                     },
                                     "hkpRotationalConstraintData" => {
                                                         ClassParams::HkpRotationalConstraintData(map.next_value()?)
+
                                     },
                                     "hkpSampledHeightFieldShape" => {
                                                         ClassParams::HkpSampledHeightFieldShape(map.next_value()?)
+
                                     },
                                     "hkpSerializedDisplayMarkerList" => {
                                                         ClassParams::HkpSerializedDisplayMarkerList(map.next_value()?)
+
                                     },
                                     "hkpSerializedDisplayMarker" => {
                                                         ClassParams::HkpSerializedDisplayMarker(map.next_value()?)
+
                                     },
                                     "hkpSerializedDisplayRbTransformsDisplayTransformPair" => {
                                                         ClassParams::HkpSerializedDisplayRbTransformsDisplayTransformPair(map.next_value()?)
+
                                     },
                                     "hkpSerializedDisplayRbTransforms" => {
                                                         ClassParams::HkpSerializedDisplayRbTransforms(map.next_value()?)
+
                                     },
                                     "hkpSerializedSubTrack1nInfo" => {
                                                         ClassParams::HkpSerializedSubTrack1NInfo(map.next_value()?)
+
                                     },
                                     "hkpSerializedTrack1nInfo" => {
                                                         ClassParams::HkpSerializedTrack1NInfo(map.next_value()?)
+
                                     },
                                     "hkpSetLocalRotationsConstraintAtom" => {
                                                         ClassParams::HkpSetLocalRotationsConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpSetLocalTransformsConstraintAtom" => {
                                                         ClassParams::HkpSetLocalTransformsConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpSetLocalTranslationsConstraintAtom" => {
                                                         ClassParams::HkpSetLocalTranslationsConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpSetupStabilizationAtom" => {
                                                         ClassParams::HkpSetupStabilizationAtom(map.next_value()?)
+
                                     },
                                     "hkpShapeCollectionFilter" => {
                                                         ClassParams::HkpShapeCollectionFilter(map.next_value()?)
+
                                     },
                                     "hkpShapeCollection" => {
                                                         ClassParams::HkpShapeCollection(map.next_value()?)
+
                                     },
                                     "hkpShapeContainer" => {
                                                         ClassParams::HkpShapeContainer(map.next_value()?)
+
                                     },
                                     "hkpShapeInfo" => {
                                                         ClassParams::HkpShapeInfo(map.next_value()?)
+
                                     },
                                     "hkpShapeModifier" => {
                                                         ClassParams::HkpShapeModifier(map.next_value()?)
+
                                     },
                                     "hkpShapePhantom" => {
                                                         ClassParams::HkpShapePhantom(map.next_value()?)
+
                                     },
                                     "hkpShape" => {
                                                         ClassParams::HkpShape(map.next_value()?)
+
                                     },
                                     "hkpSimpleContactConstraintAtom" => {
                                                         ClassParams::HkpSimpleContactConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpSimpleContactConstraintDataInfo" => {
                                                         ClassParams::HkpSimpleContactConstraintDataInfo(map.next_value()?)
+
                                     },
                                     "hkpSimpleMeshShapeTriangle" => {
                                                         ClassParams::HkpSimpleMeshShapeTriangle(map.next_value()?)
+
                                     },
                                     "hkpSimpleMeshShape" => {
                                                         ClassParams::HkpSimpleMeshShape(map.next_value()?)
+
                                     },
                                     "hkpSimpleShapePhantomCollisionDetail" => {
                                                         ClassParams::HkpSimpleShapePhantomCollisionDetail(map.next_value()?)
+
                                     },
                                     "hkpSimpleShapePhantom" => {
                                                         ClassParams::HkpSimpleShapePhantom(map.next_value()?)
+
                                     },
                                     "hkpSimulation" => {
                                                         ClassParams::HkpSimulation(map.next_value()?)
+
                                     },
                                     "hkpSingleShapeContainer" => {
                                                         ClassParams::HkpSingleShapeContainer(map.next_value()?)
+
                                     },
                                     "hkpSoftContactModifierConstraintAtom" => {
                                                         ClassParams::HkpSoftContactModifierConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpSphereMotion" => {
                                                         ClassParams::HkpSphereMotion(map.next_value()?)
+
                                     },
                                     "hkpSphereRepShape" => {
                                                         ClassParams::HkpSphereRepShape(map.next_value()?)
+
                                     },
                                     "hkpSphereShape" => {
                                                         ClassParams::HkpSphereShape(map.next_value()?)
+
                                     },
                                     "hkpSpringAction" => {
                                                         ClassParams::HkpSpringAction(map.next_value()?)
+
                                     },
                                     "hkpSpringDamperConstraintMotor" => {
                                                         ClassParams::HkpSpringDamperConstraintMotor(map.next_value()?)
+
                                     },
                                     "hkpStiffSpringChainDataConstraintInfo" => {
                                                         ClassParams::HkpStiffSpringChainDataConstraintInfo(map.next_value()?)
+
                                     },
                                     "hkpStiffSpringChainData" => {
                                                         ClassParams::HkpStiffSpringChainData(map.next_value()?)
+
                                     },
                                     "hkpStiffSpringConstraintAtom" => {
                                                         ClassParams::HkpStiffSpringConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpStiffSpringConstraintDataAtoms" => {
                                                         ClassParams::HkpStiffSpringConstraintDataAtoms(map.next_value()?)
+
                                     },
                                     "hkpStiffSpringConstraintData" => {
                                                         ClassParams::HkpStiffSpringConstraintData(map.next_value()?)
+
                                     },
                                     "hkpStorageExtendedMeshShapeMaterial" => {
                                                         ClassParams::HkpStorageExtendedMeshShapeMaterial(map.next_value()?)
+
                                     },
                                     "hkpStorageExtendedMeshShapeMeshSubpartStorage" => {
                                                         ClassParams::HkpStorageExtendedMeshShapeMeshSubpartStorage(map.next_value()?)
+
                                     },
                                     "hkpStorageExtendedMeshShapeShapeSubpartStorage" => {
                                                         ClassParams::HkpStorageExtendedMeshShapeShapeSubpartStorage(map.next_value()?)
+
                                     },
                                     "hkpStorageExtendedMeshShape" => {
                                                         ClassParams::HkpStorageExtendedMeshShape(map.next_value()?)
+
                                     },
                                     "hkpStorageMeshShapeSubpartStorage" => {
                                                         ClassParams::HkpStorageMeshShapeSubpartStorage(map.next_value()?)
+
                                     },
                                     "hkpStorageMeshShape" => {
                                                         ClassParams::HkpStorageMeshShape(map.next_value()?)
+
                                     },
                                     "hkpStorageSampledHeightFieldShape" => {
                                                         ClassParams::HkpStorageSampledHeightFieldShape(map.next_value()?)
+
                                     },
                                     "hkpThinBoxMotion" => {
                                                         ClassParams::HkpThinBoxMotion(map.next_value()?)
+
                                     },
                                     "hkpTransformShape" => {
                                                         ClassParams::HkpTransformShape(map.next_value()?)
+
                                     },
                                     "hkpTriangleShape" => {
                                                         ClassParams::HkpTriangleShape(map.next_value()?)
+
                                     },
                                     "hkpTriggerVolumeEventInfo" => {
                                                         ClassParams::HkpTriggerVolumeEventInfo(map.next_value()?)
+
                                     },
                                     "hkpTriggerVolume" => {
                                                         ClassParams::HkpTriggerVolume(map.next_value()?)
+
                                     },
                                     "hkpTriSampledHeightFieldBvTreeShape" => {
                                                         ClassParams::HkpTriSampledHeightFieldBvTreeShape(map.next_value()?)
+
                                     },
                                     "hkpTriSampledHeightFieldCollection" => {
                                                         ClassParams::HkpTriSampledHeightFieldCollection(map.next_value()?)
+
                                     },
                                     "hkpTwistLimitConstraintAtom" => {
                                                         ClassParams::HkpTwistLimitConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpTypedBroadPhaseHandle" => {
                                                         ClassParams::HkpTypedBroadPhaseHandle(map.next_value()?)
+
                                     },
                                     "hkpTyremarkPoint" => {
                                                         ClassParams::HkpTyremarkPoint(map.next_value()?)
+
                                     },
                                     "hkpTyremarksInfo" => {
                                                         ClassParams::HkpTyremarksInfo(map.next_value()?)
+
                                     },
                                     "hkpTyremarksWheel" => {
                                                         ClassParams::HkpTyremarksWheel(map.next_value()?)
+
                                     },
                                     "hkpUnaryAction" => {
                                                         ClassParams::HkpUnaryAction(map.next_value()?)
+
                                     },
                                     "hkpVehicleAerodynamics" => {
                                                         ClassParams::HkpVehicleAerodynamics(map.next_value()?)
+
                                     },
                                     "hkpVehicleBrake" => {
                                                         ClassParams::HkpVehicleBrake(map.next_value()?)
+
                                     },
                                     "hkpVehicleCastBatchingManager" => {
                                                         ClassParams::HkpVehicleCastBatchingManager(map.next_value()?)
+
                                     },
                                     "hkpVehicleDataWheelComponentParams" => {
                                                         ClassParams::HkpVehicleDataWheelComponentParams(map.next_value()?)
+
                                     },
                                     "hkpVehicleData" => {
                                                         ClassParams::HkpVehicleData(map.next_value()?)
+
                                     },
                                     "hkpVehicleDefaultAerodynamics" => {
                                                         ClassParams::HkpVehicleDefaultAerodynamics(map.next_value()?)
+
                                     },
                                     "hkpVehicleDefaultAnalogDriverInput" => {
                                                         ClassParams::HkpVehicleDefaultAnalogDriverInput(map.next_value()?)
+
                                     },
                                     "hkpVehicleDefaultBrakeWheelBrakingProperties" => {
                                                         ClassParams::HkpVehicleDefaultBrakeWheelBrakingProperties(map.next_value()?)
+
                                     },
                                     "hkpVehicleDefaultBrake" => {
                                                         ClassParams::HkpVehicleDefaultBrake(map.next_value()?)
+
                                     },
                                     "hkpVehicleDefaultEngine" => {
                                                         ClassParams::HkpVehicleDefaultEngine(map.next_value()?)
+
                                     },
                                     "hkpVehicleDefaultSteering" => {
                                                         ClassParams::HkpVehicleDefaultSteering(map.next_value()?)
+
                                     },
                                     "hkpVehicleDefaultSuspensionWheelSpringSuspensionParameters" => {
                                                         ClassParams::HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters(map.next_value()?)
+
                                     },
                                     "hkpVehicleDefaultSuspension" => {
                                                         ClassParams::HkpVehicleDefaultSuspension(map.next_value()?)
+
                                     },
                                     "hkpVehicleDefaultTransmission" => {
                                                         ClassParams::HkpVehicleDefaultTransmission(map.next_value()?)
+
                                     },
                                     "hkpVehicleDefaultVelocityDamper" => {
                                                         ClassParams::HkpVehicleDefaultVelocityDamper(map.next_value()?)
+
                                     },
                                     "hkpVehicleDriverInputAnalogStatus" => {
                                                         ClassParams::HkpVehicleDriverInputAnalogStatus(map.next_value()?)
+
                                     },
                                     "hkpVehicleDriverInputStatus" => {
                                                         ClassParams::HkpVehicleDriverInputStatus(map.next_value()?)
+
                                     },
                                     "hkpVehicleDriverInput" => {
                                                         ClassParams::HkpVehicleDriverInput(map.next_value()?)
+
                                     },
                                     "hkpVehicleEngine" => {
                                                         ClassParams::HkpVehicleEngine(map.next_value()?)
+
                                     },
                                     "hkpVehicleFrictionDescriptionAxisDescription" => {
                                                         ClassParams::HkpVehicleFrictionDescriptionAxisDescription(map.next_value()?)
+
                                     },
                                     "hkpVehicleFrictionDescription" => {
                                                         ClassParams::HkpVehicleFrictionDescription(map.next_value()?)
+
                                     },
                                     "hkpVehicleFrictionStatusAxisStatus" => {
                                                         ClassParams::HkpVehicleFrictionStatusAxisStatus(map.next_value()?)
+
                                     },
                                     "hkpVehicleFrictionStatus" => {
                                                         ClassParams::HkpVehicleFrictionStatus(map.next_value()?)
+
                                     },
                                     "hkpVehicleInstanceWheelInfo" => {
                                                         ClassParams::HkpVehicleInstanceWheelInfo(map.next_value()?)
+
                                     },
                                     "hkpVehicleInstance" => {
                                                         ClassParams::HkpVehicleInstance(map.next_value()?)
+
                                     },
                                     "hkpVehicleLinearCastBatchingManager" => {
                                                         ClassParams::HkpVehicleLinearCastBatchingManager(map.next_value()?)
+
                                     },
                                     "hkpVehicleLinearCastWheelCollideWheelState" => {
                                                         ClassParams::HkpVehicleLinearCastWheelCollideWheelState(map.next_value()?)
+
                                     },
                                     "hkpVehicleLinearCastWheelCollide" => {
                                                         ClassParams::HkpVehicleLinearCastWheelCollide(map.next_value()?)
+
                                     },
                                     "hkpVehicleManager" => {
                                                         ClassParams::HkpVehicleManager(map.next_value()?)
+
                                     },
                                     "hkpVehicleRayCastBatchingManager" => {
                                                         ClassParams::HkpVehicleRayCastBatchingManager(map.next_value()?)
+
                                     },
                                     "hkpVehicleRayCastWheelCollide" => {
                                                         ClassParams::HkpVehicleRayCastWheelCollide(map.next_value()?)
+
                                     },
                                     "hkpVehicleSteering" => {
                                                         ClassParams::HkpVehicleSteering(map.next_value()?)
+
                                     },
                                     "hkpVehicleSuspensionSuspensionWheelParameters" => {
                                                         ClassParams::HkpVehicleSuspensionSuspensionWheelParameters(map.next_value()?)
+
                                     },
                                     "hkpVehicleSuspension" => {
                                                         ClassParams::HkpVehicleSuspension(map.next_value()?)
+
                                     },
                                     "hkpVehicleTransmission" => {
                                                         ClassParams::HkpVehicleTransmission(map.next_value()?)
+
                                     },
                                     "hkpVehicleVelocityDamper" => {
                                                         ClassParams::HkpVehicleVelocityDamper(map.next_value()?)
+
                                     },
                                     "hkpVehicleWheelCollide" => {
                                                         ClassParams::HkpVehicleWheelCollide(map.next_value()?)
+
                                     },
                                     "hkpVelocityConstraintMotor" => {
                                                         ClassParams::HkpVelocityConstraintMotor(map.next_value()?)
+
                                     },
                                     "hkpViscousSurfaceModifierConstraintAtom" => {
                                                         ClassParams::HkpViscousSurfaceModifierConstraintAtom(map.next_value()?)
+
                                     },
                                     "hkpWeldingUtility" => {
                                                         ClassParams::HkpWeldingUtility(map.next_value()?)
+
                                     },
                                     "hkpWorldCinfo" => {
                                                         ClassParams::HkpWorldCinfo(map.next_value()?)
+
                                     },
                                     "hkpWorldObject" => {
                                                         ClassParams::HkpWorldObject(map.next_value()?)
+
                                     },
                                     "hkpWorld" => {
                                                         ClassParams::HkpWorld(map.next_value()?)
+
                                     },
                                     "hkQTransform" => {
                                                         ClassParams::HkQTransform(map.next_value()?)
+
                                     },
                                     "hkRangeInt32Attribute" => {
                                                         ClassParams::HkRangeInt32Attribute(map.next_value()?)
+
                                     },
                                     "hkRangeRealAttribute" => {
                                                         ClassParams::HkRangeRealAttribute(map.next_value()?)
+
                                     },
                                     "hkReferencedObject" => {
                                                         ClassParams::HkReferencedObject(map.next_value()?)
+
                                     },
                                     "hkReflectedFileAttribute" => {
                                                         ClassParams::HkReflectedFileAttribute(map.next_value()?)
+
                                     },
                                     "hkResourceBase" => {
                                                         ClassParams::HkResourceBase(map.next_value()?)
+
                                     },
                                     "hkResourceContainer" => {
                                                         ClassParams::HkResourceContainer(map.next_value()?)
+
                                     },
                                     "hkResourceHandle" => {
                                                         ClassParams::HkResourceHandle(map.next_value()?)
+
                                     },
                                     "hkRootLevelContainerNamedVariant" => {
                                                         ClassParams::HkRootLevelContainerNamedVariant(map.next_value()?)
+
                                     },
                                     "hkRootLevelContainer" => {
                                                         ClassParams::HkRootLevelContainer(map.next_value()?)
+
                                     },
                                     "hkSemanticsAttribute" => {
                                                         ClassParams::HkSemanticsAttribute(map.next_value()?)
+
                                     },
                                     "hkSimpleLocalFrame" => {
                                                         ClassParams::HkSimpleLocalFrame(map.next_value()?)
+
                                     },
                                     "hkSphere" => {
                                                         ClassParams::HkSphere(map.next_value()?)
+
                                     },
                                     "hkSweptTransform" => {
                                                         ClassParams::HkSweptTransform(map.next_value()?)
+
                                     },
                                     "hkTraceStreamTitle" => {
                                                         ClassParams::HkTraceStreamTitle(map.next_value()?)
+
                                     },
                                     "hkTrackerSerializableScanSnapshotAllocation" => {
                                                         ClassParams::HkTrackerSerializableScanSnapshotAllocation(map.next_value()?)
+
                                     },
                                     "hkTrackerSerializableScanSnapshotBlock" => {
                                                         ClassParams::HkTrackerSerializableScanSnapshotBlock(map.next_value()?)
+
                                     },
                                     "hkTrackerSerializableScanSnapshot" => {
                                                         ClassParams::HkTrackerSerializableScanSnapshot(map.next_value()?)
+
                                     },
                                     "hkUiAttribute" => {
                                                         ClassParams::HkUiAttribute(map.next_value()?)
+
                                     },
                                     "hkVertexFormatElement" => {
                                                         ClassParams::HkVertexFormatElement(map.next_value()?)
+
                                     },
                                     "hkVertexFormat" => {
                                                         ClassParams::HkVertexFormat(map.next_value()?)
+
                                     },
                                     "hkWorldMemoryAvailableWatchDog" => {
                                                         ClassParams::HkWorldMemoryAvailableWatchDog(map.next_value()?)
+
                                     },
                                     "hkxAnimatedFloat" => {
                                                         ClassParams::HkxAnimatedFloat(map.next_value()?)
+
                                     },
                                     "hkxAnimatedMatrix" => {
                                                         ClassParams::HkxAnimatedMatrix(map.next_value()?)
+
                                     },
                                     "hkxAnimatedQuaternion" => {
                                                         ClassParams::HkxAnimatedQuaternion(map.next_value()?)
+
                                     },
                                     "hkxAnimatedVector" => {
                                                         ClassParams::HkxAnimatedVector(map.next_value()?)
+
                                     },
                                     "hkxAttributeGroup" => {
                                                         ClassParams::HkxAttributeGroup(map.next_value()?)
+
                                     },
                                     "hkxAttributeHolder" => {
                                                         ClassParams::HkxAttributeHolder(map.next_value()?)
+
                                     },
                                     "hkxAttribute" => {
                                                         ClassParams::HkxAttribute(map.next_value()?)
+
                                     },
                                     "hkxCamera" => {
                                                         ClassParams::HkxCamera(map.next_value()?)
+
                                     },
                                     "hkxEdgeSelectionChannel" => {
                                                         ClassParams::HkxEdgeSelectionChannel(map.next_value()?)
+
                                     },
                                     "hkxEnumItem" => {
                                                         ClassParams::HkxEnumItem(map.next_value()?)
+
                                     },
                                     "hkxEnum" => {
                                                         ClassParams::HkxEnum(map.next_value()?)
+
                                     },
                                     "hkxEnvironmentVariable" => {
                                                         ClassParams::HkxEnvironmentVariable(map.next_value()?)
+
                                     },
                                     "hkxEnvironment" => {
                                                         ClassParams::HkxEnvironment(map.next_value()?)
+
                                     },
                                     "hkxIndexBuffer" => {
                                                         ClassParams::HkxIndexBuffer(map.next_value()?)
+
                                     },
                                     "hkxLight" => {
                                                         ClassParams::HkxLight(map.next_value()?)
+
                                     },
                                     "hkxMaterialEffect" => {
                                                         ClassParams::HkxMaterialEffect(map.next_value()?)
+
                                     },
                                     "hkxMaterialProperty" => {
                                                         ClassParams::HkxMaterialProperty(map.next_value()?)
+
                                     },
                                     "hkxMaterialShaderSet" => {
                                                         ClassParams::HkxMaterialShaderSet(map.next_value()?)
+
                                     },
                                     "hkxMaterialShader" => {
                                                         ClassParams::HkxMaterialShader(map.next_value()?)
+
                                     },
                                     "hkxMaterialTextureStage" => {
                                                         ClassParams::HkxMaterialTextureStage(map.next_value()?)
+
                                     },
                                     "hkxMaterial" => {
                                                         ClassParams::HkxMaterial(map.next_value()?)
+
                                     },
                                     "hkxMeshSection" => {
                                                         ClassParams::HkxMeshSection(map.next_value()?)
+
                                     },
                                     "hkxMeshUserChannelInfo" => {
                                                         ClassParams::HkxMeshUserChannelInfo(map.next_value()?)
+
                                     },
                                     "hkxMesh" => {
                                                         ClassParams::HkxMesh(map.next_value()?)
+
                                     },
                                     "hkxNodeAnnotationData" => {
                                                         ClassParams::HkxNodeAnnotationData(map.next_value()?)
+
                                     },
                                     "hkxNodeSelectionSet" => {
                                                         ClassParams::HkxNodeSelectionSet(map.next_value()?)
+
                                     },
                                     "hkxNode" => {
                                                         ClassParams::HkxNode(map.next_value()?)
+
                                     },
                                     "hkxScene" => {
                                                         ClassParams::HkxScene(map.next_value()?)
+
                                     },
                                     "hkxSkinBinding" => {
                                                         ClassParams::HkxSkinBinding(map.next_value()?)
+
                                     },
                                     "hkxSparselyAnimatedBool" => {
                                                         ClassParams::HkxSparselyAnimatedBool(map.next_value()?)
+
                                     },
                                     "hkxSparselyAnimatedEnum" => {
                                                         ClassParams::HkxSparselyAnimatedEnum(map.next_value()?)
+
                                     },
                                     "hkxSparselyAnimatedInt" => {
                                                         ClassParams::HkxSparselyAnimatedInt(map.next_value()?)
+
                                     },
                                     "hkxSparselyAnimatedString" => {
                                                         ClassParams::HkxSparselyAnimatedString(map.next_value()?)
+
                                     },
                                     "hkxTextureFile" => {
                                                         ClassParams::HkxTextureFile(map.next_value()?)
+
                                     },
                                     "hkxTextureInplace" => {
                                                         ClassParams::HkxTextureInplace(map.next_value()?)
+
                                     },
                                     "hkxTriangleSelectionChannel" => {
                                                         ClassParams::HkxTriangleSelectionChannel(map.next_value()?)
+
                                     },
                                     "hkxVertexBufferVertexData" => {
                                                         ClassParams::HkxVertexBufferVertexData(map.next_value()?)
+
                                     },
                                     "hkxVertexBuffer" => {
                                                         ClassParams::HkxVertexBuffer(map.next_value()?)
+
                                     },
                                     "hkxVertexDescriptionElementDecl" => {
                                                         ClassParams::HkxVertexDescriptionElementDecl(map.next_value()?)
+
                                     },
                                     "hkxVertexDescription" => {
                                                         ClassParams::HkxVertexDescription(map.next_value()?)
+
                                     },
                                     "hkxVertexFloatDataChannel" => {
                                                         ClassParams::HkxVertexFloatDataChannel(map.next_value()?)
+
                                     },
                                     "hkxVertexIntDataChannel" => {
                                                         ClassParams::HkxVertexIntDataChannel(map.next_value()?)
+
                                     },
                                     "hkxVertexSelectionChannel" => {
                                                         ClassParams::HkxVertexSelectionChannel(map.next_value()?)
+
                                     },
                                     "hkxVertexVectorDataChannel" => {
                                                         ClassParams::HkxVertexVectorDataChannel(map.next_value()?)
+
                                     },
 
                                     unknown => {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,14 +34,14 @@ pub struct HkpOverwritePivotConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    _type: AtomType,
+    pub _type: AtomType,
 
     /// # C++ Class Fields Info
     /// -   name:`"copyToPivotBFromPivotA"`
     /// -   type: `hkUint8`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    copy_to_pivot_b_from_pivot_a: u8,
+    pub copy_to_pivot_b_from_pivot_a: u8,
 }
 
 impl Serialize for HkpOverwritePivotConstraintAtom {

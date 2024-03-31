@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,43 +33,43 @@ pub struct HkpPrismaticConstraintDataAtoms<'a> {
     /// -   type: `struct hkpSetLocalTransformsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    transforms: SingleClass<HkpSetLocalTransformsConstraintAtom>,
+    pub transforms: SingleClass<HkpSetLocalTransformsConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"motor"`
     /// -   type: `struct hkpLinMotorConstraintAtom`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    motor: SingleClass<HkpLinMotorConstraintAtom<'a>>,
+    pub motor: SingleClass<HkpLinMotorConstraintAtom<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"friction"`
     /// -   type: `struct hkpLinFrictionConstraintAtom`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    friction: SingleClass<HkpLinFrictionConstraintAtom>,
+    pub friction: SingleClass<HkpLinFrictionConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"ang"`
     /// -   type: `struct hkpAngConstraintAtom`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE`
-    ang: SingleClass<HkpAngConstraintAtom>,
+    pub ang: SingleClass<HkpAngConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"lin0"`
     /// -   type: `struct hkpLinConstraintAtom`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE`
-    lin_0: SingleClass<HkpLinConstraintAtom>,
+    pub lin_0: SingleClass<HkpLinConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"lin1"`
     /// -   type: `struct hkpLinConstraintAtom`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
-    lin_1: SingleClass<HkpLinConstraintAtom>,
+    pub lin_1: SingleClass<HkpLinConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"linLimit"`
     /// -   type: `struct hkpLinLimitConstraintAtom`
     /// - offset: 180
     /// -  flags: `FLAGS_NONE`
-    lin_limit: SingleClass<HkpLinLimitConstraintAtom>,
+    pub lin_limit: SingleClass<HkpLinLimitConstraintAtom>,
 }
 
 impl Serialize for HkpPrismaticConstraintDataAtoms<'_> {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,26 +34,26 @@ pub struct HkpVehicleLinearCastWheelCollide<'a> {
     /// -   type: `hkBool`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    already_used: bool,
+    pub already_used: bool,
     /// # C++ Parent class(`hkpVehicleWheelCollide` => parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 9
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    _type: (),
+    pub _type: (),
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -57,31 +62,31 @@ pub struct HkpVehicleLinearCastWheelCollide<'a> {
     /// -   type: `hkUint32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    wheel_collision_filter_info: u32,
+    pub wheel_collision_filter_info: u32,
     /// # C++ Class Fields Info
     /// -   name:`"wheelStates"`
     /// -   type: `hkArray<struct hkpVehicleLinearCastWheelCollideWheelState>`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    wheel_states: HkArrayClass<HkpVehicleLinearCastWheelCollideWheelState<'a>>,
+    pub wheel_states: HkArrayClass<HkpVehicleLinearCastWheelCollideWheelState<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"rejectChassisListener"`
     /// -   type: `struct hkpRejectChassisListener`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    reject_chassis_listener: SingleClass<HkpRejectChassisListener<'a>>,
+    pub reject_chassis_listener: SingleClass<HkpRejectChassisListener<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"maxExtraPenetration"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    max_extra_penetration: f32,
+    pub max_extra_penetration: f32,
     /// # C++ Class Fields Info
     /// -   name:`"startPointTolerance"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    start_point_tolerance: f32,
+    pub start_point_tolerance: f32,
 }
 
 impl Serialize for HkpVehicleLinearCastWheelCollide<'_> {

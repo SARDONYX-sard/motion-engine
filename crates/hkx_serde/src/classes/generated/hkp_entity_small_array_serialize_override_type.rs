@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,19 +33,19 @@ pub struct HkpEntitySmallArraySerializeOverrideType<'a> {
     /// -   type: `void*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    data: Cow<'a, str>,
+    pub data: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"size"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    size: u16,
+    pub size: u16,
     /// # C++ Class Fields Info
     /// -   name:`"capacityAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    capacity_and_flags: u16,
+    pub capacity_and_flags: u16,
 }
 
 impl Serialize for HkpEntitySmallArraySerializeOverrideType<'_> {

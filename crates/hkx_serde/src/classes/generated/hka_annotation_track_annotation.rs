@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkaAnnotationTrackAnnotation<'a> {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    time: f32,
+    pub time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"text"`
     /// -   type: `hkStringPtr`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    text: Cow<'a, str>,
+    pub text: Cow<'a, str>,
 }
 
 impl Serialize for HkaAnnotationTrackAnnotation<'_> {

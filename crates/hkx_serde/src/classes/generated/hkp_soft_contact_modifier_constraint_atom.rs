@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,45 +34,45 @@ pub struct HkpSoftContactModifierConstraintAtom<'a> {
     /// -   type: `hkUint16`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE|ALIGN16`
-    modifier_atom_size: u16,
+    pub modifier_atom_size: u16,
     /// # C++ Parent class(`hkpModifierConstraintAtom` => parent: `hkpConstraintAtom`) field Info
     /// -   name:`"childSize"`
     /// -   type: `hkUint16`
     /// - offset: 18
     /// -  flags: `FLAGS_NONE`
-    child_size: u16,
+    pub child_size: u16,
     /// # C++ Parent class(`hkpModifierConstraintAtom` => parent: `hkpConstraintAtom`) field Info
     /// -   name:`"child"`
     /// -   type: `struct hkpConstraintAtom*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    child: Cow<'a, str>,
+    pub child: Cow<'a, str>,
     /// # C++ Parent class(`hkpModifierConstraintAtom` => parent: `hkpConstraintAtom`) field Info
     /// -   name:`"pad"`
     /// -   type: `hkUint32[2]`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    pad: CStyleArray<[u32; 2]>,
+    pub pad: CStyleArray<[u32; 2]>,
 
     /// # C++ Parent class(`hkpConstraintAtom` => parent: `None`) field Info
     /// -   name:`"type"`
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    _type: AtomType,
+    pub _type: AtomType,
 
     /// # C++ Class Fields Info
     /// -   name:`"tau"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    tau: f32,
+    pub tau: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxAcceleration"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    max_acceleration: f32,
+    pub max_acceleration: f32,
 }
 
 impl Serialize for HkpSoftContactModifierConstraintAtom<'_> {

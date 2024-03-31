@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkaSplineCompressedAnimationAnimationCompressionParams {
     /// -   type: `hkUint16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    max_frames_per_block: u16,
+    pub max_frames_per_block: u16,
     /// # C++ Class Fields Info
     /// -   name:`"enableSampleSingleTracks"`
     /// -   type: `hkBool`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    enable_sample_single_tracks: bool,
+    pub enable_sample_single_tracks: bool,
 }
 
 impl Serialize for HkaSplineCompressedAnimationAnimationCompressionParams {

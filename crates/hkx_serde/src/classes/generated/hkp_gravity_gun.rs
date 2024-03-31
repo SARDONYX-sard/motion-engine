@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,38 +34,38 @@ pub struct HkpGravityGun<'a> {
     /// -   type: `enum unknown`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    _type: (),
+    pub _type: (),
     /// # C++ Parent class(`hkpFirstPersonGun` => parent: `hkReferencedObject`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Parent class(`hkpFirstPersonGun` => parent: `hkReferencedObject`) field Info
     /// -   name:`"keyboardKey"`
     /// -   type: `enum KeyboardKey`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    keyboard_key: KeyboardKey,
+    pub keyboard_key: KeyboardKey,
     /// # C++ Parent class(`hkpFirstPersonGun` => parent: `hkReferencedObject`) field Info
     /// -   name:`"listeners"`
     /// -   type: `hkArray<void*>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    listeners: HkArrayRef<Cow<'a, str>>,
+    pub listeners: HkArrayRef<Cow<'a, str>>,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -69,49 +74,49 @@ pub struct HkpGravityGun<'a> {
     /// -   type: `hkArray<void*>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    grabbed_bodies: HkArrayRef<Cow<'a, str>>,
+    pub grabbed_bodies: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"maxNumObjectsPicked"`
     /// -   type: `hkInt32`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    max_num_objects_picked: i32,
+    pub max_num_objects_picked: i32,
     /// # C++ Class Fields Info
     /// -   name:`"maxMassOfObjectPicked"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    max_mass_of_object_picked: f32,
+    pub max_mass_of_object_picked: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxDistOfObjectPicked"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    max_dist_of_object_picked: f32,
+    pub max_dist_of_object_picked: f32,
     /// # C++ Class Fields Info
     /// -   name:`"impulseAppliedWhenObjectNotPicked"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    impulse_applied_when_object_not_picked: f32,
+    pub impulse_applied_when_object_not_picked: f32,
     /// # C++ Class Fields Info
     /// -   name:`"throwVelocity"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    throw_velocity: f32,
+    pub throw_velocity: f32,
     /// # C++ Class Fields Info
     /// -   name:`"capturedObjectPosition"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    captured_object_position: Vector4<f32>,
+    pub captured_object_position: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"capturedObjectsOffset"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    captured_objects_offset: Vector4<f32>,
+    pub captured_objects_offset: Vector4<f32>,
 }
 
 impl Serialize for HkpGravityGun<'_> {

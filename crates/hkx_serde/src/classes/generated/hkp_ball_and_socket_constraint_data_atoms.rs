@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,19 +33,19 @@ pub struct HkpBallAndSocketConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTranslationsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    pivots: SingleClass<HkpSetLocalTranslationsConstraintAtom>,
+    pub pivots: SingleClass<HkpSetLocalTranslationsConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"setupStabilization"`
     /// -   type: `struct hkpSetupStabilizationAtom`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    setup_stabilization: SingleClass<HkpSetupStabilizationAtom>,
+    pub setup_stabilization: SingleClass<HkpSetupStabilizationAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"ballSocket"`
     /// -   type: `struct hkpBallSocketConstraintAtom`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    ball_socket: SingleClass<HkpBallSocketConstraintAtom>,
+    pub ball_socket: SingleClass<HkpBallSocketConstraintAtom>,
 }
 
 impl Serialize for HkpBallAndSocketConstraintDataAtoms {

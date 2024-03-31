@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkaFootstepAnalysisInfo {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,85 +49,85 @@ pub struct HkaFootstepAnalysisInfo {
     /// -   type: `hkArray<hkChar>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    name: HkArrayRef<char>,
+    pub name: HkArrayRef<char>,
     /// # C++ Class Fields Info
     /// -   name:`"nameStrike"`
     /// -   type: `hkArray<hkChar>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    name_strike: HkArrayRef<char>,
+    pub name_strike: HkArrayRef<char>,
     /// # C++ Class Fields Info
     /// -   name:`"nameLift"`
     /// -   type: `hkArray<hkChar>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    name_lift: HkArrayRef<char>,
+    pub name_lift: HkArrayRef<char>,
     /// # C++ Class Fields Info
     /// -   name:`"nameLock"`
     /// -   type: `hkArray<hkChar>`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    name_lock: HkArrayRef<char>,
+    pub name_lock: HkArrayRef<char>,
     /// # C++ Class Fields Info
     /// -   name:`"nameUnlock"`
     /// -   type: `hkArray<hkChar>`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    name_unlock: HkArrayRef<char>,
+    pub name_unlock: HkArrayRef<char>,
     /// # C++ Class Fields Info
     /// -   name:`"minPos"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    min_pos: HkArrayNum<f32>,
+    pub min_pos: HkArrayNum<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"maxPos"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    max_pos: HkArrayNum<f32>,
+    pub max_pos: HkArrayNum<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"minVel"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    min_vel: HkArrayNum<f32>,
+    pub min_vel: HkArrayNum<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"maxVel"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    max_vel: HkArrayNum<f32>,
+    pub max_vel: HkArrayNum<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"allBonesDown"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    all_bones_down: HkArrayNum<f32>,
+    pub all_bones_down: HkArrayNum<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"anyBonesDown"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    any_bones_down: HkArrayNum<f32>,
+    pub any_bones_down: HkArrayNum<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"posTol"`
     /// -   type: `hkReal`
     /// - offset: 140
     /// -  flags: `FLAGS_NONE`
-    pos_tol: f32,
+    pub pos_tol: f32,
     /// # C++ Class Fields Info
     /// -   name:`"velTol"`
     /// -   type: `hkReal`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    vel_tol: f32,
+    pub vel_tol: f32,
     /// # C++ Class Fields Info
     /// -   name:`"duration"`
     /// -   type: `hkReal`
     /// - offset: 148
     /// -  flags: `FLAGS_NONE`
-    duration: f32,
+    pub duration: f32,
 }
 
 impl Serialize for HkaFootstepAnalysisInfo {

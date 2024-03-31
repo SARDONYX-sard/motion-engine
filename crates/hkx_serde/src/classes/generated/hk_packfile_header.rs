@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,73 +33,73 @@ pub struct HkPackfileHeader {
     /// -   type: `hkInt32[2]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    magic: CStyleArray<[i32; 2]>,
+    pub magic: CStyleArray<[i32; 2]>,
     /// # C++ Class Fields Info
     /// -   name:`"userTag"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    user_tag: i32,
+    pub user_tag: i32,
     /// # C++ Class Fields Info
     /// -   name:`"fileVersion"`
     /// -   type: `hkInt32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    file_version: i32,
+    pub file_version: i32,
     /// # C++ Class Fields Info
     /// -   name:`"layoutRules"`
     /// -   type: `hkUint8[4]`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    layout_rules: CStyleArray<[u8; 4]>,
+    pub layout_rules: CStyleArray<[u8; 4]>,
     /// # C++ Class Fields Info
     /// -   name:`"numSections"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    num_sections: i32,
+    pub num_sections: i32,
     /// # C++ Class Fields Info
     /// -   name:`"contentsSectionIndex"`
     /// -   type: `hkInt32`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    contents_section_index: i32,
+    pub contents_section_index: i32,
     /// # C++ Class Fields Info
     /// -   name:`"contentsSectionOffset"`
     /// -   type: `hkInt32`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    contents_section_offset: i32,
+    pub contents_section_offset: i32,
     /// # C++ Class Fields Info
     /// -   name:`"contentsClassNameSectionIndex"`
     /// -   type: `hkInt32`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    contents_class_name_section_index: i32,
+    pub contents_class_name_section_index: i32,
     /// # C++ Class Fields Info
     /// -   name:`"contentsClassNameSectionOffset"`
     /// -   type: `hkInt32`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    contents_class_name_section_offset: i32,
+    pub contents_class_name_section_offset: i32,
     /// # C++ Class Fields Info
     /// -   name:`"contentsVersion"`
     /// -   type: `hkChar[16]`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    contents_version: CStyleArray<[char; 16]>,
+    pub contents_version: CStyleArray<[char; 16]>,
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `hkInt32`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    flags: i32,
+    pub flags: i32,
     /// # C++ Class Fields Info
     /// -   name:`"pad"`
     /// -   type: `hkInt32[1]`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    pad: CStyleArray<[i32; 1]>,
+    pub pad: CStyleArray<[i32; 1]>,
 }
 
 impl Serialize for HkPackfileHeader {

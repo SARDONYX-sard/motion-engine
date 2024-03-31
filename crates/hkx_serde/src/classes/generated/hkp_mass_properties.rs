@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,25 +33,25 @@ pub struct HkpMassProperties {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    volume: f32,
+    pub volume: f32,
     /// # C++ Class Fields Info
     /// -   name:`"mass"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    mass: f32,
+    pub mass: f32,
     /// # C++ Class Fields Info
     /// -   name:`"centerOfMass"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    center_of_mass: Vector4<f32>,
+    pub center_of_mass: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"inertiaTensor"`
     /// -   type: `hkMatrix3`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    inertia_tensor: Matrix3<f32>,
+    pub inertia_tensor: Matrix3<f32>,
 }
 
 impl Serialize for HkpMassProperties {
@@ -108,7 +113,7 @@ impl From<&HkpMassProperties> for Vec<HkpMassPropertiesVisitor> {
             HkpMassPropertiesVisitor::Volume(data.volume.into()),
             HkpMassPropertiesVisitor::Mass(data.mass.into()),
             HkpMassPropertiesVisitor::CenterOfMass(data.center_of_mass.into()),
-            HkpMassPropertiesVisitor::InertiaTensor(data.inertia_tensor.clone().into()),
+            HkpMassPropertiesVisitor::InertiaTensor(data.inertia_tensor.into()),
 
         ]
     }

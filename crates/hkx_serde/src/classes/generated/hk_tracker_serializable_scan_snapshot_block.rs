@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,37 +33,37 @@ pub struct HkTrackerSerializableScanSnapshotBlock {
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    type_index: i32,
+    pub type_index: i32,
     /// # C++ Class Fields Info
     /// -   name:`"start"`
     /// -   type: `hkUlong`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    start: usize,
+    pub start: usize,
     /// # C++ Class Fields Info
     /// -   name:`"size"`
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    size: usize,
+    pub size: usize,
     /// # C++ Class Fields Info
     /// -   name:`"arraySize"`
     /// -   type: `hkInt32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    array_size: i32,
+    pub array_size: i32,
     /// # C++ Class Fields Info
     /// -   name:`"startReferenceIndex"`
     /// -   type: `hkInt32`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    start_reference_index: i32,
+    pub start_reference_index: i32,
     /// # C++ Class Fields Info
     /// -   name:`"numReferences"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    num_references: i32,
+    pub num_references: i32,
 }
 
 impl Serialize for HkTrackerSerializableScanSnapshotBlock {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkMemoryResourceHandleExternalLink<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    member_name: Cow<'a, str>,
+    pub member_name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"externalId"`
     /// -   type: `hkStringPtr`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    external_id: Cow<'a, str>,
+    pub external_id: Cow<'a, str>,
 }
 
 impl Serialize for HkMemoryResourceHandleExternalLink<'_> {

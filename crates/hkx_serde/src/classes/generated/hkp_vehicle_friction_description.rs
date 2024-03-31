@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,19 +33,19 @@ pub struct HkpVehicleFrictionDescription {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    wheel_distance: f32,
+    pub wheel_distance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"chassisMassInv"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    chassis_mass_inv: f32,
+    pub chassis_mass_inv: f32,
     /// # C++ Class Fields Info
     /// -   name:`"axleDescr"`
     /// -   type: `struct hkpVehicleFrictionDescriptionAxisDescription[2]`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    axle_descr: CStyleArrayClass<HkpVehicleFrictionDescriptionAxisDescription, 2>,
+    pub axle_descr: CStyleArrayClass<HkpVehicleFrictionDescriptionAxisDescription, 2>,
 }
 
 impl Serialize for HkpVehicleFrictionDescription {

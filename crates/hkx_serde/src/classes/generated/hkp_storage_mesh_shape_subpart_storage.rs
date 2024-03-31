@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkpStorageMeshShapeSubpartStorage {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,37 +49,37 @@ pub struct HkpStorageMeshShapeSubpartStorage {
     /// -   type: `hkArray<hkReal>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    vertices: HkArrayNum<f32>,
+    pub vertices: HkArrayNum<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"indices16"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    indices_16: HkArrayNum<u16>,
+    pub indices_16: HkArrayNum<u16>,
     /// # C++ Class Fields Info
     /// -   name:`"indices32"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    indices_32: HkArrayNum<u32>,
+    pub indices_32: HkArrayNum<u32>,
     /// # C++ Class Fields Info
     /// -   name:`"materialIndices"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    material_indices: HkArrayNum<u8>,
+    pub material_indices: HkArrayNum<u8>,
     /// # C++ Class Fields Info
     /// -   name:`"materials"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    materials: HkArrayNum<u32>,
+    pub materials: HkArrayNum<u32>,
     /// # C++ Class Fields Info
     /// -   name:`"materialIndices16"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    material_indices_16: HkArrayNum<u16>,
+    pub material_indices_16: HkArrayNum<u16>,
 }
 
 impl Serialize for HkpStorageMeshShapeSubpartStorage {

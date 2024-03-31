@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkbCompiledExpressionSet {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,19 +49,19 @@ pub struct HkbCompiledExpressionSet {
     /// -   type: `hkArray<struct hkbCompiledExpressionSetToken>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    rpn: HkArrayClass<HkbCompiledExpressionSetToken>,
+    pub rpn: HkArrayClass<HkbCompiledExpressionSetToken>,
     /// # C++ Class Fields Info
     /// -   name:`"expressionToRpnIndex"`
     /// -   type: `hkArray<hkInt32>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    expression_to_rpn_index: HkArrayNum<i32>,
+    pub expression_to_rpn_index: HkArrayNum<i32>,
     /// # C++ Class Fields Info
     /// -   name:`"numExpressions"`
     /// -   type: `hkInt8`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    num_expressions: i8,
+    pub num_expressions: i8,
 }
 
 impl Serialize for HkbCompiledExpressionSet {

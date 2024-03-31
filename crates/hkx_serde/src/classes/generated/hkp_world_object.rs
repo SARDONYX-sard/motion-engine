@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkpWorldObject<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,43 +49,43 @@ pub struct HkpWorldObject<'a> {
     /// -   type: `void*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    world: Cow<'a, str>,
+    pub world: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Class Fields Info
     /// -   name:`"collidable"`
     /// -   type: `struct hkpLinkedCollidable`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    collidable: SingleClass<HkpLinkedCollidable<'a>>,
+    pub collidable: SingleClass<HkpLinkedCollidable<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"multiThreadCheck"`
     /// -   type: `struct hkMultiThreadCheck`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
-    multi_thread_check: SingleClass<HkMultiThreadCheck>,
+    pub multi_thread_check: SingleClass<HkMultiThreadCheck>,
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"properties"`
     /// -   type: `hkArray<struct hkpProperty>`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
-    properties: HkArrayClass<HkpProperty>,
+    pub properties: HkArrayClass<HkpProperty>,
     /// # C++ Class Fields Info
     /// -   name:`"treeData"`
     /// -   type: `void*`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    tree_data: Cow<'a, str>,
+    pub tree_data: Cow<'a, str>,
 }
 
 impl Serialize for HkpWorldObject<'_> {

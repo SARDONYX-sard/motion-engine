@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,19 +33,19 @@ pub struct HkpPairCollisionFilterMapPairFilterKeyOverrideType<'a> {
     /// -   type: `void*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    elem: Cow<'a, str>,
+    pub elem: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"numElems"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    num_elems: i32,
+    pub num_elems: i32,
     /// # C++ Class Fields Info
     /// -   name:`"hashMod"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    hash_mod: i32,
+    pub hash_mod: i32,
 }
 
 impl Serialize for HkpPairCollisionFilterMapPairFilterKeyOverrideType<'_> {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkpPulleyConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTranslationsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    translations: SingleClass<HkpSetLocalTranslationsConstraintAtom>,
+    pub translations: SingleClass<HkpSetLocalTranslationsConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"pulley"`
     /// -   type: `struct hkpPulleyConstraintAtom`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    pulley: SingleClass<HkpPulleyConstraintAtom>,
+    pub pulley: SingleClass<HkpPulleyConstraintAtom>,
 }
 
 impl Serialize for HkpPulleyConstraintDataAtoms {

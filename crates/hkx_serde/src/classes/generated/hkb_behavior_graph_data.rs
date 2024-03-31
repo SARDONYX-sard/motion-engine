@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkbBehaviorGraphData<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,49 +49,49 @@ pub struct HkbBehaviorGraphData<'a> {
     /// -   type: `hkArray<hkReal>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    attribute_defaults: HkArrayNum<f32>,
+    pub attribute_defaults: HkArrayNum<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"variableInfos"`
     /// -   type: `hkArray<struct hkbVariableInfo>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    variable_infos: HkArrayClass<HkbVariableInfo>,
+    pub variable_infos: HkArrayClass<HkbVariableInfo>,
     /// # C++ Class Fields Info
     /// -   name:`"characterPropertyInfos"`
     /// -   type: `hkArray<struct hkbVariableInfo>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    character_property_infos: HkArrayClass<HkbVariableInfo>,
+    pub character_property_infos: HkArrayClass<HkbVariableInfo>,
     /// # C++ Class Fields Info
     /// -   name:`"eventInfos"`
     /// -   type: `hkArray<struct hkbEventInfo>`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    event_infos: HkArrayClass<HkbEventInfo>,
+    pub event_infos: HkArrayClass<HkbEventInfo>,
     /// # C++ Class Fields Info
     /// -   name:`"wordMinVariableValues"`
     /// -   type: `hkArray<struct hkbVariableValue>`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    word_min_variable_values: HkArrayClass<HkbVariableValue>,
+    pub word_min_variable_values: HkArrayClass<HkbVariableValue>,
     /// # C++ Class Fields Info
     /// -   name:`"wordMaxVariableValues"`
     /// -   type: `hkArray<struct hkbVariableValue>`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    word_max_variable_values: HkArrayClass<HkbVariableValue>,
+    pub word_max_variable_values: HkArrayClass<HkbVariableValue>,
     /// # C++ Class Fields Info
     /// -   name:`"variableInitialValues"`
     /// -   type: `struct hkbVariableValueSet*`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    variable_initial_values: Cow<'a, str>,
+    pub variable_initial_values: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"stringData"`
     /// -   type: `struct hkbBehaviorGraphStringData*`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    string_data: Cow<'a, str>,
+    pub string_data: Cow<'a, str>,
 }
 
 impl Serialize for HkbBehaviorGraphData<'_> {

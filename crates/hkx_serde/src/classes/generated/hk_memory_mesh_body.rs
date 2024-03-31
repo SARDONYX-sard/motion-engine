@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -31,13 +36,13 @@ pub struct HkMemoryMeshBody<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -46,31 +51,31 @@ pub struct HkMemoryMeshBody<'a> {
     /// -   type: `hkMatrix4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    transform: Matrix4<f32>,
+    pub transform: Matrix4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"transformSet"`
     /// -   type: `struct hkIndexedTransformSet*`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    transform_set: Cow<'a, str>,
+    pub transform_set: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"shape"`
     /// -   type: `struct hkMeshShape*`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    shape: Cow<'a, str>,
+    pub shape: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"vertexBuffers"`
     /// -   type: `hkArray<hkMeshVertexBuffer*>`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    vertex_buffers: HkArrayRef<Cow<'a, str>>,
+    pub vertex_buffers: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
 }
 
 impl Serialize for HkMemoryMeshBody<'_> {
@@ -140,7 +145,7 @@ impl<'a> From<&HkMemoryMeshBody<'a>> for Vec<HkMemoryMeshBodyVisitor<'a>> {
         vec![
             HkMemoryMeshBodyVisitor::MemSizeAndFlags(data.mem_size_and_flags.into()),
             HkMemoryMeshBodyVisitor::ReferenceCount(data.reference_count.into()),
-            HkMemoryMeshBodyVisitor::Transform(data.transform.clone().into()),
+            HkMemoryMeshBodyVisitor::Transform(data.transform.into()),
             HkMemoryMeshBodyVisitor::TransformSet(data.transform_set.clone().into()),
             HkMemoryMeshBodyVisitor::Shape(data.shape.clone().into()),
             HkMemoryMeshBodyVisitor::VertexBuffers(data.vertex_buffers.clone()),

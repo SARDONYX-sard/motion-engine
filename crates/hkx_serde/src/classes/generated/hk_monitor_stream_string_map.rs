@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,7 +33,7 @@ pub struct HkMonitorStreamStringMap<'a> {
     /// -   type: `hkArray<struct hkMonitorStreamStringMapStringMap>`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    map: HkArrayClass<HkMonitorStreamStringMapStringMap<'a>>,
+    pub map: HkArrayClass<HkMonitorStreamStringMapStringMap<'a>>,
 }
 
 impl Serialize for HkMonitorStreamStringMap<'_> {

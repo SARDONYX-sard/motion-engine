@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,37 +33,37 @@ pub struct HkpCompressedMeshShapeConvexPiece {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    offset: Vector4<f32>,
+    pub offset: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"vertices"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    vertices: HkArrayNum<u16>,
+    pub vertices: HkArrayNum<u16>,
     /// # C++ Class Fields Info
     /// -   name:`"faceVertices"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    face_vertices: HkArrayNum<u8>,
+    pub face_vertices: HkArrayNum<u8>,
     /// # C++ Class Fields Info
     /// -   name:`"faceOffsets"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    face_offsets: HkArrayNum<u16>,
+    pub face_offsets: HkArrayNum<u16>,
     /// # C++ Class Fields Info
     /// -   name:`"reference"`
     /// -   type: `hkUint16`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    reference: u16,
+    pub reference: u16,
     /// # C++ Class Fields Info
     /// -   name:`"transformIndex"`
     /// -   type: `hkUint16`
     /// - offset: 54
     /// -  flags: `FLAGS_NONE`
-    transform_index: u16,
+    pub transform_index: u16,
 }
 
 impl Serialize for HkpCompressedMeshShapeConvexPiece {

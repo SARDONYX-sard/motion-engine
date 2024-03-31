@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -31,63 +36,63 @@ pub struct HkbBehaviorGraph<'a> {
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    id: i16,
+    pub id: i16,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    clone_state: (),
+    pub clone_state: (),
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pad_node: CStyleArray<[bool; 1]>,
+    pub pad_node: CStyleArray<[bool; 1]>,
 
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"variableBindingSet"`
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    variable_binding_set: Cow<'a, str>,
+    pub variable_binding_set: Cow<'a, str>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray<void>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    cached_bindables: HkArrayRef<()>,
+    pub cached_bindables: HkArrayRef<()>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    are_bindables_cached: bool,
+    pub are_bindables_cached: bool,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -96,181 +101,181 @@ pub struct HkbBehaviorGraph<'a> {
     /// -   type: `enum VariableMode`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    variable_mode: VariableMode,
+    pub variable_mode: VariableMode,
     /// # C++ Class Fields Info
     /// -   name:`"uniqueIdPool"`
     /// -   type: `hkArray<void>`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    unique_id_pool: HkArrayRef<()>,
+    pub unique_id_pool: HkArrayRef<()>,
     /// # C++ Class Fields Info
     /// -   name:`"idToStateMachineTemplateMap"`
     /// -   type: `void*`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    id_to_state_machine_template_map: Cow<'a, str>,
+    pub id_to_state_machine_template_map: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"mirroredExternalIdMap"`
     /// -   type: `hkArray<void>`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mirrored_external_id_map: HkArrayRef<()>,
+    pub mirrored_external_id_map: HkArrayRef<()>,
     /// # C++ Class Fields Info
     /// -   name:`"pseudoRandomGenerator"`
     /// -   type: `void*`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pseudo_random_generator: Cow<'a, str>,
+    pub pseudo_random_generator: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"rootGenerator"`
     /// -   type: `struct hkbGenerator*`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    root_generator: Cow<'a, str>,
+    pub root_generator: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `struct hkbBehaviorGraphData*`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    data: Cow<'a, str>,
+    pub data: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"rootGeneratorClone"`
     /// -   type: `void*`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    root_generator_clone: Cow<'a, str>,
+    pub root_generator_clone: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"activeNodes"`
     /// -   type: `void*`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    active_nodes: Cow<'a, str>,
+    pub active_nodes: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"activeNodeTemplateToIndexMap"`
     /// -   type: `void*`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    active_node_template_to_index_map: Cow<'a, str>,
+    pub active_node_template_to_index_map: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"activeNodesChildrenIndices"`
     /// -   type: `void*`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    active_nodes_children_indices: Cow<'a, str>,
+    pub active_nodes_children_indices: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"globalTransitionData"`
     /// -   type: `void*`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    global_transition_data: Cow<'a, str>,
+    pub global_transition_data: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"eventIdMap"`
     /// -   type: `void*`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    event_id_map: Cow<'a, str>,
+    pub event_id_map: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"attributeIdMap"`
     /// -   type: `void*`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    attribute_id_map: Cow<'a, str>,
+    pub attribute_id_map: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"variableIdMap"`
     /// -   type: `void*`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    variable_id_map: Cow<'a, str>,
+    pub variable_id_map: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"characterPropertyIdMap"`
     /// -   type: `void*`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    character_property_id_map: Cow<'a, str>,
+    pub character_property_id_map: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"variableValueSet"`
     /// -   type: `void*`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    variable_value_set: Cow<'a, str>,
+    pub variable_value_set: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"nodeTemplateToCloneMap"`
     /// -   type: `void*`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    node_template_to_clone_map: Cow<'a, str>,
+    pub node_template_to_clone_map: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"nodeCloneToTemplateMap"`
     /// -   type: `void*`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    node_clone_to_template_map: Cow<'a, str>,
+    pub node_clone_to_template_map: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"stateListenerTemplateToCloneMap"`
     /// -   type: `void*`
     /// - offset: 132
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    state_listener_template_to_clone_map: Cow<'a, str>,
+    pub state_listener_template_to_clone_map: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"nodePartitionInfo"`
     /// -   type: `void*`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    node_partition_info: Cow<'a, str>,
+    pub node_partition_info: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"numIntermediateOutputs"`
     /// -   type: `hkInt32`
     /// - offset: 140
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    num_intermediate_outputs: i32,
+    pub num_intermediate_outputs: i32,
     /// # C++ Class Fields Info
     /// -   name:`"jobs"`
     /// -   type: `hkArray<void*>`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    jobs: HkArrayRef<Cow<'a, str>>,
+    pub jobs: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"allPartitionMemory"`
     /// -   type: `hkArray<void*>`
     /// - offset: 156
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    all_partition_memory: HkArrayRef<Cow<'a, str>>,
+    pub all_partition_memory: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"numStaticNodes"`
     /// -   type: `hkInt16`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    num_static_nodes: i16,
+    pub num_static_nodes: i16,
     /// # C++ Class Fields Info
     /// -   name:`"nextUniqueId"`
     /// -   type: `hkInt16`
     /// - offset: 170
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    next_unique_id: i16,
+    pub next_unique_id: i16,
     /// # C++ Class Fields Info
     /// -   name:`"isActive"`
     /// -   type: `hkBool`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    is_active: bool,
+    pub is_active: bool,
     /// # C++ Class Fields Info
     /// -   name:`"isLinked"`
     /// -   type: `hkBool`
     /// - offset: 173
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    is_linked: bool,
+    pub is_linked: bool,
     /// # C++ Class Fields Info
     /// -   name:`"updateActiveNodes"`
     /// -   type: `hkBool`
     /// - offset: 174
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    update_active_nodes: bool,
+    pub update_active_nodes: bool,
     /// # C++ Class Fields Info
     /// -   name:`"stateOrTransitionChanged"`
     /// -   type: `hkBool`
     /// - offset: 175
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    state_or_transition_changed: bool,
+    pub state_or_transition_changed: bool,
 }
 
 impl Serialize for HkbBehaviorGraph<'_> {

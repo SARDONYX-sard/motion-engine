@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -31,13 +36,13 @@ pub struct HkpVehicleDefaultTransmission {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -46,43 +51,43 @@ pub struct HkpVehicleDefaultTransmission {
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    downshift_rpm: f32,
+    pub downshift_rpm: f32,
     /// # C++ Class Fields Info
     /// -   name:`"upshiftRPM"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    upshift_rpm: f32,
+    pub upshift_rpm: f32,
     /// # C++ Class Fields Info
     /// -   name:`"primaryTransmissionRatio"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    primary_transmission_ratio: f32,
+    pub primary_transmission_ratio: f32,
     /// # C++ Class Fields Info
     /// -   name:`"clutchDelayTime"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    clutch_delay_time: f32,
+    pub clutch_delay_time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"reverseGearRatio"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    reverse_gear_ratio: f32,
+    pub reverse_gear_ratio: f32,
     /// # C++ Class Fields Info
     /// -   name:`"gearsRatio"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    gears_ratio: HkArrayNum<f32>,
+    pub gears_ratio: HkArrayNum<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"wheelsTorqueRatio"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    wheels_torque_ratio: HkArrayNum<f32>,
+    pub wheels_torque_ratio: HkArrayNum<f32>,
 }
 
 impl Serialize for HkpVehicleDefaultTransmission {

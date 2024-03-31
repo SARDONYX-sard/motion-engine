@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -31,13 +36,13 @@ pub struct HkpCharacterRigidBodyCinfo<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -46,97 +51,97 @@ pub struct HkpCharacterRigidBodyCinfo<'a> {
     /// -   type: `hkUint32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    collision_filter_info: u32,
+    pub collision_filter_info: u32,
     /// # C++ Class Fields Info
     /// -   name:`"shape"`
     /// -   type: `struct hkpShape*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    shape: Cow<'a, str>,
+    pub shape: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"position"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    position: Vector4<f32>,
+    pub position: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"rotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    rotation: Quaternion<f32>,
+    pub rotation: Quaternion<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"mass"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    mass: f32,
+    pub mass: f32,
     /// # C++ Class Fields Info
     /// -   name:`"friction"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    friction: f32,
+    pub friction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxLinearVelocity"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    max_linear_velocity: f32,
+    pub max_linear_velocity: f32,
     /// # C++ Class Fields Info
     /// -   name:`"allowedPenetrationDepth"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    allowed_penetration_depth: f32,
+    pub allowed_penetration_depth: f32,
     /// # C++ Class Fields Info
     /// -   name:`"up"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    up: Vector4<f32>,
+    pub up: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"maxSlope"`
     /// -   type: `hkReal`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    max_slope: f32,
+    pub max_slope: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxForce"`
     /// -   type: `hkReal`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    max_force: f32,
+    pub max_force: f32,
     /// # C++ Class Fields Info
     /// -   name:`"unweldingHeightOffsetFactor"`
     /// -   type: `hkReal`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    unwelding_height_offset_factor: f32,
+    pub unwelding_height_offset_factor: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxSpeedForSimplexSolver"`
     /// -   type: `hkReal`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    max_speed_for_simplex_solver: f32,
+    pub max_speed_for_simplex_solver: f32,
     /// # C++ Class Fields Info
     /// -   name:`"supportDistance"`
     /// -   type: `hkReal`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    support_distance: f32,
+    pub support_distance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"hardSupportDistance"`
     /// -   type: `hkReal`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
-    hard_support_distance: f32,
+    pub hard_support_distance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"vdbColor"`
     /// -   type: `hkInt32`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    vdb_color: i32,
+    pub vdb_color: i32,
 }
 
 impl Serialize for HkpCharacterRigidBodyCinfo<'_> {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,37 +33,37 @@ pub struct HkaDeltaCompressedAnimationQuantizationFormat {
     /// -   type: `hkUint8`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    max_bit_width: u8,
+    pub max_bit_width: u8,
     /// # C++ Class Fields Info
     /// -   name:`"preserved"`
     /// -   type: `hkUint8`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
-    preserved: u8,
+    pub preserved: u8,
     /// # C++ Class Fields Info
     /// -   name:`"numD"`
     /// -   type: `hkUint32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    num_d: u32,
+    pub num_d: u32,
     /// # C++ Class Fields Info
     /// -   name:`"offsetIdx"`
     /// -   type: `hkUint32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    offset_idx: u32,
+    pub offset_idx: u32,
     /// # C++ Class Fields Info
     /// -   name:`"scaleIdx"`
     /// -   type: `hkUint32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    scale_idx: u32,
+    pub scale_idx: u32,
     /// # C++ Class Fields Info
     /// -   name:`"bitWidthIdx"`
     /// -   type: `hkUint32`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    bit_width_idx: u32,
+    pub bit_width_idx: u32,
 }
 
 impl Serialize for HkaDeltaCompressedAnimationQuantizationFormat {

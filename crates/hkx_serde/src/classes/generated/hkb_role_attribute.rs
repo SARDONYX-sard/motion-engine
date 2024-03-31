@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkbRoleAttribute {
     /// -   type: `enum Role`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    role: Role,
+    pub role: Role,
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `flags RoleFlags`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    flags: RoleFlags,
+    pub flags: RoleFlags,
 }
 
 impl Serialize for HkbRoleAttribute {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,73 +33,73 @@ pub struct HkbHandIkControlData<'a> {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    target_position: Vector4<f32>,
+    pub target_position: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"targetRotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    target_rotation: Quaternion<f32>,
+    pub target_rotation: Quaternion<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"targetNormal"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    target_normal: Vector4<f32>,
+    pub target_normal: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"targetHandle"`
     /// -   type: `struct hkbHandle*`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    target_handle: Cow<'a, str>,
+    pub target_handle: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"transformOnFraction"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    transform_on_fraction: f32,
+    pub transform_on_fraction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"normalOnFraction"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    normal_on_fraction: f32,
+    pub normal_on_fraction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"fadeInDuration"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    fade_in_duration: f32,
+    pub fade_in_duration: f32,
     /// # C++ Class Fields Info
     /// -   name:`"fadeOutDuration"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    fade_out_duration: f32,
+    pub fade_out_duration: f32,
     /// # C++ Class Fields Info
     /// -   name:`"extrapolationTimeStep"`
     /// -   type: `hkReal`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    extrapolation_time_step: f32,
+    pub extrapolation_time_step: f32,
     /// # C++ Class Fields Info
     /// -   name:`"handleChangeSpeed"`
     /// -   type: `hkReal`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    handle_change_speed: f32,
+    pub handle_change_speed: f32,
     /// # C++ Class Fields Info
     /// -   name:`"handleChangeMode"`
     /// -   type: `enum HandleChangeMode`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    handle_change_mode: HandleChangeMode,
+    pub handle_change_mode: HandleChangeMode,
     /// # C++ Class Fields Info
     /// -   name:`"fixUp"`
     /// -   type: `hkBool`
     /// - offset: 77
     /// -  flags: `FLAGS_NONE`
-    fix_up: bool,
+    pub fix_up: bool,
 }
 
 impl Serialize for HkbHandIkControlData<'_> {

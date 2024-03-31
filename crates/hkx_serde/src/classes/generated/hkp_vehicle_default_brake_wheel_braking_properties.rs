@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,19 +33,19 @@ pub struct HkpVehicleDefaultBrakeWheelBrakingProperties {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    max_breaking_torque: f32,
+    pub max_breaking_torque: f32,
     /// # C++ Class Fields Info
     /// -   name:`"minPedalInputToBlock"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    min_pedal_input_to_block: f32,
+    pub min_pedal_input_to_block: f32,
     /// # C++ Class Fields Info
     /// -   name:`"isConnectedToHandbrake"`
     /// -   type: `hkBool`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    is_connected_to_handbrake: bool,
+    pub is_connected_to_handbrake: bool,
 }
 
 impl Serialize for HkpVehicleDefaultBrakeWheelBrakingProperties {

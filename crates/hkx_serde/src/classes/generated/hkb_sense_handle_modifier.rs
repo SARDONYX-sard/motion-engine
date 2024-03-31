@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,76 +34,76 @@ pub struct HkbSenseHandleModifier<'a> {
     /// -   type: `hkBool`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    enable: bool,
+    pub enable: bool,
     /// # C++ Parent class(`hkbModifier` => parent: `hkbNode`) field Info
     /// -   name:`"padModifier"`
     /// -   type: `hkBool[3]`
     /// - offset: 41
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pad_modifier: CStyleArray<[bool; 3]>,
+    pub pad_modifier: CStyleArray<[bool; 3]>,
 
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    id: i16,
+    pub id: i16,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    clone_state: (),
+    pub clone_state: (),
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pad_node: CStyleArray<[bool; 1]>,
+    pub pad_node: CStyleArray<[bool; 1]>,
 
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"variableBindingSet"`
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    variable_binding_set: Cow<'a, str>,
+    pub variable_binding_set: Cow<'a, str>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray<void>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    cached_bindables: HkArrayRef<()>,
+    pub cached_bindables: HkArrayRef<()>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    are_bindables_cached: bool,
+    pub are_bindables_cached: bool,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -107,115 +112,115 @@ pub struct HkbSenseHandleModifier<'a> {
     /// -   type: `struct hkbHandle`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    handle: SingleClass<HkbHandle<'a>>,
+    pub handle: SingleClass<HkbHandle<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"sensorLocalOffset"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    sensor_local_offset: Vector4<f32>,
+    pub sensor_local_offset: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"ranges"`
     /// -   type: `hkArray<struct hkbSenseHandleModifierRange>`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    ranges: HkArrayClass<HkbSenseHandleModifierRange<'a>>,
+    pub ranges: HkArrayClass<HkbSenseHandleModifierRange<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"handleOut"`
     /// -   type: `struct hkbHandle*`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
-    handle_out: Cow<'a, str>,
+    pub handle_out: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"handleIn"`
     /// -   type: `struct hkbHandle*`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    handle_in: Cow<'a, str>,
+    pub handle_in: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"localFrameName"`
     /// -   type: `hkStringPtr`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    local_frame_name: Cow<'a, str>,
+    pub local_frame_name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"sensorLocalFrameName"`
     /// -   type: `hkStringPtr`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
-    sensor_local_frame_name: Cow<'a, str>,
+    pub sensor_local_frame_name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"minDistance"`
     /// -   type: `hkReal`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
-    min_distance: f32,
+    pub min_distance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxDistance"`
     /// -   type: `hkReal`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    max_distance: f32,
+    pub max_distance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"distanceOut"`
     /// -   type: `hkReal`
     /// - offset: 132
     /// -  flags: `FLAGS_NONE`
-    distance_out: f32,
+    pub distance_out: f32,
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilterInfo"`
     /// -   type: `hkUint32`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE`
-    collision_filter_info: u32,
+    pub collision_filter_info: u32,
     /// # C++ Class Fields Info
     /// -   name:`"sensorRagdollBoneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 140
     /// -  flags: `FLAGS_NONE`
-    sensor_ragdoll_bone_index: i16,
+    pub sensor_ragdoll_bone_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"sensorAnimationBoneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 142
     /// -  flags: `FLAGS_NONE`
-    sensor_animation_bone_index: i16,
+    pub sensor_animation_bone_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"sensingMode"`
     /// -   type: `enum SensingMode`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    sensing_mode: SensingMode,
+    pub sensing_mode: SensingMode,
     /// # C++ Class Fields Info
     /// -   name:`"extrapolateSensorPosition"`
     /// -   type: `hkBool`
     /// - offset: 145
     /// -  flags: `FLAGS_NONE`
-    extrapolate_sensor_position: bool,
+    pub extrapolate_sensor_position: bool,
     /// # C++ Class Fields Info
     /// -   name:`"keepFirstSensedHandle"`
     /// -   type: `hkBool`
     /// - offset: 146
     /// -  flags: `FLAGS_NONE`
-    keep_first_sensed_handle: bool,
+    pub keep_first_sensed_handle: bool,
     /// # C++ Class Fields Info
     /// -   name:`"foundHandleOut"`
     /// -   type: `hkBool`
     /// - offset: 147
     /// -  flags: `FLAGS_NONE`
-    found_handle_out: bool,
+    pub found_handle_out: bool,
     /// # C++ Class Fields Info
     /// -   name:`"timeSinceLastModify"`
     /// -   type: `hkReal`
     /// - offset: 148
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    time_since_last_modify: f32,
+    pub time_since_last_modify: f32,
     /// # C++ Class Fields Info
     /// -   name:`"rangeIndexForEventToSendNextUpdate"`
     /// -   type: `hkInt32`
     /// - offset: 152
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    range_index_for_event_to_send_next_update: i32,
+    pub range_index_for_event_to_send_next_update: i32,
 }
 
 impl Serialize for HkbSenseHandleModifier<'_> {

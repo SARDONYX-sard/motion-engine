@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkVertexFormat {
     /// -   type: `struct hkVertexFormatElement[32]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    elements: CStyleArrayClass<HkVertexFormatElement, 32>,
+    pub elements: CStyleArrayClass<HkVertexFormatElement, 32>,
     /// # C++ Class Fields Info
     /// -   name:`"numElements"`
     /// -   type: `hkInt32`
     /// - offset: 256
     /// -  flags: `FLAGS_NONE`
-    num_elements: i32,
+    pub num_elements: i32,
 }
 
 impl Serialize for HkVertexFormat {

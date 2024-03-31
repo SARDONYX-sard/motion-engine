@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,26 +34,26 @@ pub struct HkpStorageExtendedMeshShapeMaterial {
     /// -   type: `hkUint32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    filter_info: u32,
+    pub filter_info: u32,
 
     /// # C++ Class Fields Info
     /// -   name:`"restitution"`
     /// -   type: `hkHalf`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    restitution: f32,
+    pub restitution: f32,
     /// # C++ Class Fields Info
     /// -   name:`"friction"`
     /// -   type: `hkHalf`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    friction: f32,
+    pub friction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
 }
 
 impl Serialize for HkpStorageExtendedMeshShapeMaterial {

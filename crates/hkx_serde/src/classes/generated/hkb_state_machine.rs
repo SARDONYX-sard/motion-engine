@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -31,63 +36,63 @@ pub struct HkbStateMachine<'a> {
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    id: i16,
+    pub id: i16,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    clone_state: (),
+    pub clone_state: (),
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pad_node: CStyleArray<[bool; 1]>,
+    pub pad_node: CStyleArray<[bool; 1]>,
 
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"variableBindingSet"`
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    variable_binding_set: Cow<'a, str>,
+    pub variable_binding_set: Cow<'a, str>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray<void>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    cached_bindables: HkArrayRef<()>,
+    pub cached_bindables: HkArrayRef<()>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    are_bindables_cached: bool,
+    pub are_bindables_cached: bool,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -96,169 +101,169 @@ pub struct HkbStateMachine<'a> {
     /// -   type: `struct hkbEvent`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    event_to_send_when_state_or_transition_changes: SingleClass<HkbEvent<'a>>,
+    pub event_to_send_when_state_or_transition_changes: SingleClass<HkbEvent<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"startStateChooser"`
     /// -   type: `struct hkbStateChooser*`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    start_state_chooser: Cow<'a, str>,
+    pub start_state_chooser: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"startStateId"`
     /// -   type: `hkInt32`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    start_state_id: i32,
+    pub start_state_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"returnToPreviousStateEventId"`
     /// -   type: `hkInt32`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    return_to_previous_state_event_id: i32,
+    pub return_to_previous_state_event_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"randomTransitionEventId"`
     /// -   type: `hkInt32`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    random_transition_event_id: i32,
+    pub random_transition_event_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"transitionToNextHigherStateEventId"`
     /// -   type: `hkInt32`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    transition_to_next_higher_state_event_id: i32,
+    pub transition_to_next_higher_state_event_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"transitionToNextLowerStateEventId"`
     /// -   type: `hkInt32`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    transition_to_next_lower_state_event_id: i32,
+    pub transition_to_next_lower_state_event_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"syncVariableIndex"`
     /// -   type: `hkInt32`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    sync_variable_index: i32,
+    pub sync_variable_index: i32,
     /// # C++ Class Fields Info
     /// -   name:`"currentStateId"`
     /// -   type: `hkInt32`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    current_state_id: i32,
+    pub current_state_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"wrapAroundStateId"`
     /// -   type: `hkBool`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    wrap_around_state_id: bool,
+    pub wrap_around_state_id: bool,
     /// # C++ Class Fields Info
     /// -   name:`"maxSimultaneousTransitions"`
     /// -   type: `hkInt8`
     /// - offset: 85
     /// -  flags: `FLAGS_NONE`
-    max_simultaneous_transitions: i8,
+    pub max_simultaneous_transitions: i8,
     /// # C++ Class Fields Info
     /// -   name:`"startStateMode"`
     /// -   type: `enum StartStateMode`
     /// - offset: 86
     /// -  flags: `FLAGS_NONE`
-    start_state_mode: StartStateMode,
+    pub start_state_mode: StartStateMode,
     /// # C++ Class Fields Info
     /// -   name:`"selfTransitionMode"`
     /// -   type: `enum StateMachineSelfTransitionMode`
     /// - offset: 87
     /// -  flags: `FLAGS_NONE`
-    self_transition_mode: StateMachineSelfTransitionMode,
+    pub self_transition_mode: StateMachineSelfTransitionMode,
     /// # C++ Class Fields Info
     /// -   name:`"isActive"`
     /// -   type: `hkBool`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    is_active: bool,
+    pub is_active: bool,
     /// # C++ Class Fields Info
     /// -   name:`"states"`
     /// -   type: `hkArray<hkbStateMachineStateInfo*>`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    states: HkArrayRef<Cow<'a, str>>,
+    pub states: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"wildcardTransitions"`
     /// -   type: `struct hkbStateMachineTransitionInfoArray*`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    wildcard_transitions: Cow<'a, str>,
+    pub wildcard_transitions: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"stateIdToIndexMap"`
     /// -   type: `void*`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    state_id_to_index_map: Cow<'a, str>,
+    pub state_id_to_index_map: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"activeTransitions"`
     /// -   type: `hkArray<void>`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    active_transitions: HkArrayRef<()>,
+    pub active_transitions: HkArrayRef<()>,
     /// # C++ Class Fields Info
     /// -   name:`"transitionFlags"`
     /// -   type: `hkArray<void>`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    transition_flags: HkArrayRef<()>,
+    pub transition_flags: HkArrayRef<()>,
     /// # C++ Class Fields Info
     /// -   name:`"wildcardTransitionFlags"`
     /// -   type: `hkArray<void>`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    wildcard_transition_flags: HkArrayRef<()>,
+    pub wildcard_transition_flags: HkArrayRef<()>,
     /// # C++ Class Fields Info
     /// -   name:`"delayedTransitions"`
     /// -   type: `hkArray<void>`
     /// - offset: 148
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    delayed_transitions: HkArrayRef<()>,
+    pub delayed_transitions: HkArrayRef<()>,
     /// # C++ Class Fields Info
     /// -   name:`"timeInState"`
     /// -   type: `hkReal`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    time_in_state: f32,
+    pub time_in_state: f32,
     /// # C++ Class Fields Info
     /// -   name:`"lastLocalTime"`
     /// -   type: `hkReal`
     /// - offset: 164
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    last_local_time: f32,
+    pub last_local_time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"previousStateId"`
     /// -   type: `hkInt32`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    previous_state_id: i32,
+    pub previous_state_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"nextStartStateIndexOverride"`
     /// -   type: `hkInt32`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    next_start_state_index_override: i32,
+    pub next_start_state_index_override: i32,
     /// # C++ Class Fields Info
     /// -   name:`"stateOrTransitionChanged"`
     /// -   type: `hkBool`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    state_or_transition_changed: bool,
+    pub state_or_transition_changed: bool,
     /// # C++ Class Fields Info
     /// -   name:`"echoNextUpdate"`
     /// -   type: `hkBool`
     /// - offset: 177
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    echo_next_update: bool,
+    pub echo_next_update: bool,
     /// # C++ Class Fields Info
     /// -   name:`"sCurrentStateIndexAndEntered"`
     /// -   type: `hkUint16`
     /// - offset: 178
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    s_current_state_index_and_entered: u16,
+    pub s_current_state_index_and_entered: u16,
 }
 
 impl Serialize for HkbStateMachine<'_> {

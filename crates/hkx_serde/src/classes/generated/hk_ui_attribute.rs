@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,49 +33,49 @@ pub struct HkUiAttribute<'a> {
     /// -   type: `hkBool`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    visible: bool,
+    pub visible: bool,
     /// # C++ Class Fields Info
     /// -   name:`"hideInModeler"`
     /// -   type: `enum HideInModeler`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
-    hide_in_modeler: HideInModeler,
+    pub hide_in_modeler: HideInModeler,
     /// # C++ Class Fields Info
     /// -   name:`"label"`
     /// -   type: `char*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    label: Cow<'a, str>,
+    pub label: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"group"`
     /// -   type: `char*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    group: Cow<'a, str>,
+    pub group: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"hideBaseClassMembers"`
     /// -   type: `char*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    hide_base_class_members: Cow<'a, str>,
+    pub hide_base_class_members: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"endGroup"`
     /// -   type: `hkBool`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    end_group: bool,
+    pub end_group: bool,
     /// # C++ Class Fields Info
     /// -   name:`"endGroup2"`
     /// -   type: `hkBool`
     /// - offset: 17
     /// -  flags: `FLAGS_NONE`
-    end_group_2: bool,
+    pub end_group_2: bool,
     /// # C++ Class Fields Info
     /// -   name:`"advanced"`
     /// -   type: `hkBool`
     /// - offset: 18
     /// -  flags: `FLAGS_NONE`
-    advanced: bool,
+    pub advanced: bool,
 }
 
 impl Serialize for HkUiAttribute<'_> {

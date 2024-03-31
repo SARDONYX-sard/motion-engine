@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkMonitorStreamStringMapStringMap<'a> {
     /// -   type: `hkUint64`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE|ALIGN8`
-    id: u64,
+    pub id: u64,
     /// # C++ Class Fields Info
     /// -   name:`"string"`
     /// -   type: `hkStringPtr`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    string: Cow<'a, str>,
+    pub string: Cow<'a, str>,
 }
 
 impl Serialize for HkMonitorStreamStringMapStringMap<'_> {

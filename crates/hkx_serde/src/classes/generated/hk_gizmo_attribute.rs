@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,19 +33,19 @@ pub struct HkGizmoAttribute<'a> {
     /// -   type: `hkBool`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    visible: bool,
+    pub visible: bool,
     /// # C++ Class Fields Info
     /// -   name:`"label"`
     /// -   type: `char*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    label: Cow<'a, str>,
+    pub label: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum GizmoType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    _type: GizmoType,
+    pub _type: GizmoType,
 }
 
 impl Serialize for HkGizmoAttribute<'_> {

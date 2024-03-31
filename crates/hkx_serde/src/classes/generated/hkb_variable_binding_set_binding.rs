@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,67 +33,67 @@ pub struct HkbVariableBindingSetBinding<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    member_path: Cow<'a, str>,
+    pub member_path: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"memberClass"`
     /// -   type: `void*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    member_class: Cow<'a, str>,
+    pub member_class: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"offsetInObjectPlusOne"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    offset_in_object_plus_one: i32,
+    pub offset_in_object_plus_one: i32,
     /// # C++ Class Fields Info
     /// -   name:`"offsetInArrayPlusOne"`
     /// -   type: `hkInt32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    offset_in_array_plus_one: i32,
+    pub offset_in_array_plus_one: i32,
     /// # C++ Class Fields Info
     /// -   name:`"rootVariableIndex"`
     /// -   type: `hkInt32`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    root_variable_index: i32,
+    pub root_variable_index: i32,
     /// # C++ Class Fields Info
     /// -   name:`"variableIndex"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    variable_index: i32,
+    pub variable_index: i32,
     /// # C++ Class Fields Info
     /// -   name:`"bitIndex"`
     /// -   type: `hkInt8`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    bit_index: i8,
+    pub bit_index: i8,
     /// # C++ Class Fields Info
     /// -   name:`"bindingType"`
     /// -   type: `enum BindingType`
     /// - offset: 25
     /// -  flags: `FLAGS_NONE`
-    binding_type: BindingType,
+    pub binding_type: BindingType,
     /// # C++ Class Fields Info
     /// -   name:`"memberType"`
     /// -   type: `enum unknown`
     /// - offset: 26
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    member_type: (),
+    pub member_type: (),
     /// # C++ Class Fields Info
     /// -   name:`"variableType"`
     /// -   type: `hkInt8`
     /// - offset: 27
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    variable_type: i8,
+    pub variable_type: i8,
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `flags unknown`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    flags: (),
+    pub flags: (),
 }
 
 impl Serialize for HkbVariableBindingSetBinding<'_> {

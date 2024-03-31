@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,25 +33,25 @@ pub struct HkpSimpleMeshShapeTriangle {
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    a: i32,
+    pub a: i32,
     /// # C++ Class Fields Info
     /// -   name:`"b"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    b: i32,
+    pub b: i32,
     /// # C++ Class Fields Info
     /// -   name:`"c"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    c: i32,
+    pub c: i32,
     /// # C++ Class Fields Info
     /// -   name:`"weldingInfo"`
     /// -   type: `hkUint16`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    welding_info: u16,
+    pub welding_info: u16,
 }
 
 impl Serialize for HkpSimpleMeshShapeTriangle {

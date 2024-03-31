@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,25 +33,25 @@ pub struct HkbStateMachineTimeInterval {
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    enter_event_id: i32,
+    pub enter_event_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"exitEventId"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    exit_event_id: i32,
+    pub exit_event_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"enterTime"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    enter_time: f32,
+    pub enter_time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"exitTime"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    exit_time: f32,
+    pub exit_time: f32,
 }
 
 impl Serialize for HkbStateMachineTimeInterval {

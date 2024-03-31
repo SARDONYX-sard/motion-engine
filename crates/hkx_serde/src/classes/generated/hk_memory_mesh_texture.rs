@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -31,13 +36,13 @@ pub struct HkMemoryMeshTexture<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -46,43 +51,43 @@ pub struct HkMemoryMeshTexture<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    filename: Cow<'a, str>,
+    pub filename: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    data: HkArrayNum<u8>,
+    pub data: HkArrayNum<u8>,
     /// # C++ Class Fields Info
     /// -   name:`"format"`
     /// -   type: `enum Format`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    format: Format,
+    pub format: Format,
     /// # C++ Class Fields Info
     /// -   name:`"hasMipMaps"`
     /// -   type: `hkBool`
     /// - offset: 25
     /// -  flags: `FLAGS_NONE`
-    has_mip_maps: bool,
+    pub has_mip_maps: bool,
     /// # C++ Class Fields Info
     /// -   name:`"filterMode"`
     /// -   type: `enum FilterMode`
     /// - offset: 26
     /// -  flags: `FLAGS_NONE`
-    filter_mode: FilterMode,
+    pub filter_mode: FilterMode,
     /// # C++ Class Fields Info
     /// -   name:`"usageHint"`
     /// -   type: `enum TextureUsageType`
     /// - offset: 27
     /// -  flags: `FLAGS_NONE`
-    usage_hint: TextureUsageType,
+    pub usage_hint: TextureUsageType,
     /// # C++ Class Fields Info
     /// -   name:`"textureCoordChannel"`
     /// -   type: `hkInt32`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    texture_coord_channel: i32,
+    pub texture_coord_channel: i32,
 }
 
 impl Serialize for HkMemoryMeshTexture<'_> {

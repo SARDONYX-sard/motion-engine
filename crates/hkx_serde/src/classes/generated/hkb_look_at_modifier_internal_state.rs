@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkbLookAtModifierInternalState {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,19 +49,19 @@ pub struct HkbLookAtModifierInternalState {
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    look_at_last_target_ws: Vector4<f32>,
+    pub look_at_last_target_ws: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"lookAtWeight"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    look_at_weight: f32,
+    pub look_at_weight: f32,
     /// # C++ Class Fields Info
     /// -   name:`"isTargetInsideLimitCone"`
     /// -   type: `hkBool`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    is_target_inside_limit_cone: bool,
+    pub is_target_inside_limit_cone: bool,
 }
 
 impl Serialize for HkbLookAtModifierInternalState {

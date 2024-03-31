@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkbEventSequencedDataSequencedEvent<'a> {
     /// -   type: `struct hkbEvent`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    event: SingleClass<HkbEvent<'a>>,
+    pub event: SingleClass<HkbEvent<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"time"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    time: f32,
+    pub time: f32,
 }
 
 impl Serialize for HkbEventSequencedDataSequencedEvent<'_> {

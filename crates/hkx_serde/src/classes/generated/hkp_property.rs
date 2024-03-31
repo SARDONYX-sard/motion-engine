@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,19 +33,19 @@ pub struct HkpProperty {
     /// -   type: `hkUint32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    key: u32,
+    pub key: u32,
     /// # C++ Class Fields Info
     /// -   name:`"alignmentPadding"`
     /// -   type: `hkUint32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    alignment_padding: u32,
+    pub alignment_padding: u32,
     /// # C++ Class Fields Info
     /// -   name:`"value"`
     /// -   type: `struct hkpPropertyValue`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    value: SingleClass<HkpPropertyValue>,
+    pub value: SingleClass<HkpPropertyValue>,
 }
 
 impl Serialize for HkpProperty {

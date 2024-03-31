@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,20 +34,20 @@ pub struct HkpSetLocalTransformsConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    _type: AtomType,
+    pub _type: AtomType,
 
     /// # C++ Class Fields Info
     /// -   name:`"transformA"`
     /// -   type: `hkTransform`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    transform_a: Transform<f32>,
+    pub transform_a: Transform<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"transformB"`
     /// -   type: `hkTransform`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    transform_b: Transform<f32>,
+    pub transform_b: Transform<f32>,
 }
 
 impl Serialize for HkpSetLocalTransformsConstraintAtom {

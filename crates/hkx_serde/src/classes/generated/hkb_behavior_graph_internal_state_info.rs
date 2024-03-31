@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkbBehaviorGraphInternalStateInfo<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,31 +49,31 @@ pub struct HkbBehaviorGraphInternalStateInfo<'a> {
     /// -   type: `hkUint64`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    character_id: u64,
+    pub character_id: u64,
     /// # C++ Class Fields Info
     /// -   name:`"internalState"`
     /// -   type: `struct hkbBehaviorGraphInternalState*`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    internal_state: Cow<'a, str>,
+    pub internal_state: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"auxiliaryNodeInfo"`
     /// -   type: `hkArray<hkbAuxiliaryNodeInfo*>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    auxiliary_node_info: HkArrayRef<Cow<'a, str>>,
+    pub auxiliary_node_info: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"activeEventIds"`
     /// -   type: `hkArray<hkInt16>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    active_event_ids: HkArrayNum<i16>,
+    pub active_event_ids: HkArrayNum<i16>,
     /// # C++ Class Fields Info
     /// -   name:`"activeVariableIds"`
     /// -   type: `hkArray<hkInt16>`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    active_variable_ids: HkArrayNum<i16>,
+    pub active_variable_ids: HkArrayNum<i16>,
 }
 
 impl Serialize for HkbBehaviorGraphInternalStateInfo<'_> {

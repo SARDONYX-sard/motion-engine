@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,19 +33,19 @@ pub struct HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    strength: f32,
+    pub strength: f32,
     /// # C++ Class Fields Info
     /// -   name:`"dampingCompression"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    damping_compression: f32,
+    pub damping_compression: f32,
     /// # C++ Class Fields Info
     /// -   name:`"dampingRelaxation"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    damping_relaxation: f32,
+    pub damping_relaxation: f32,
 }
 
 impl Serialize for HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters {

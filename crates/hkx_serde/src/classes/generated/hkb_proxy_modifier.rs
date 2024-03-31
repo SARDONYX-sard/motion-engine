@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,76 +34,76 @@ pub struct HkbProxyModifier<'a> {
     /// -   type: `hkBool`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    enable: bool,
+    pub enable: bool,
     /// # C++ Parent class(`hkbModifier` => parent: `hkbNode`) field Info
     /// -   name:`"padModifier"`
     /// -   type: `hkBool[3]`
     /// - offset: 41
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pad_modifier: CStyleArray<[bool; 3]>,
+    pub pad_modifier: CStyleArray<[bool; 3]>,
 
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    id: i16,
+    pub id: i16,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    clone_state: (),
+    pub clone_state: (),
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pad_node: CStyleArray<[bool; 1]>,
+    pub pad_node: CStyleArray<[bool; 1]>,
 
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"variableBindingSet"`
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    variable_binding_set: Cow<'a, str>,
+    pub variable_binding_set: Cow<'a, str>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray<void>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    cached_bindables: HkArrayRef<()>,
+    pub cached_bindables: HkArrayRef<()>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    are_bindables_cached: bool,
+    pub are_bindables_cached: bool,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -107,175 +112,175 @@ pub struct HkbProxyModifier<'a> {
     /// -   type: `struct hkbProxyModifierProxyInfo`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    proxy_info: SingleClass<HkbProxyModifierProxyInfo>,
+    pub proxy_info: SingleClass<HkbProxyModifierProxyInfo>,
     /// # C++ Class Fields Info
     /// -   name:`"linearVelocity"`
     /// -   type: `hkVector4`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    linear_velocity: Vector4<f32>,
+    pub linear_velocity: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"horizontalGain"`
     /// -   type: `hkReal`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    horizontal_gain: f32,
+    pub horizontal_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"verticalGain"`
     /// -   type: `hkReal`
     /// - offset: 148
     /// -  flags: `FLAGS_NONE`
-    vertical_gain: f32,
+    pub vertical_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxHorizontalSeparation"`
     /// -   type: `hkReal`
     /// - offset: 152
     /// -  flags: `FLAGS_NONE`
-    max_horizontal_separation: f32,
+    pub max_horizontal_separation: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxVerticalSeparation"`
     /// -   type: `hkReal`
     /// - offset: 156
     /// -  flags: `FLAGS_NONE`
-    max_vertical_separation: f32,
+    pub max_vertical_separation: f32,
     /// # C++ Class Fields Info
     /// -   name:`"verticalDisplacementError"`
     /// -   type: `hkReal`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    vertical_displacement_error: f32,
+    pub vertical_displacement_error: f32,
     /// # C++ Class Fields Info
     /// -   name:`"verticalDisplacementErrorGain"`
     /// -   type: `hkReal`
     /// - offset: 164
     /// -  flags: `FLAGS_NONE`
-    vertical_displacement_error_gain: f32,
+    pub vertical_displacement_error_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxVerticalDisplacement"`
     /// -   type: `hkReal`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE`
-    max_vertical_displacement: f32,
+    pub max_vertical_displacement: f32,
     /// # C++ Class Fields Info
     /// -   name:`"minVerticalDisplacement"`
     /// -   type: `hkReal`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE`
-    min_vertical_displacement: f32,
+    pub min_vertical_displacement: f32,
     /// # C++ Class Fields Info
     /// -   name:`"capsuleHeight"`
     /// -   type: `hkReal`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
-    capsule_height: f32,
+    pub capsule_height: f32,
     /// # C++ Class Fields Info
     /// -   name:`"capsuleRadius"`
     /// -   type: `hkReal`
     /// - offset: 180
     /// -  flags: `FLAGS_NONE`
-    capsule_radius: f32,
+    pub capsule_radius: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxSlopeForRotation"`
     /// -   type: `hkReal`
     /// - offset: 184
     /// -  flags: `FLAGS_NONE`
-    max_slope_for_rotation: f32,
+    pub max_slope_for_rotation: f32,
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilterInfo"`
     /// -   type: `hkUint32`
     /// - offset: 188
     /// -  flags: `FLAGS_NONE`
-    collision_filter_info: u32,
+    pub collision_filter_info: u32,
     /// # C++ Class Fields Info
     /// -   name:`"phantomType"`
     /// -   type: `enum PhantomType`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE`
-    phantom_type: PhantomType,
+    pub phantom_type: PhantomType,
     /// # C++ Class Fields Info
     /// -   name:`"linearVelocityMode"`
     /// -   type: `enum LinearVelocityMode`
     /// - offset: 193
     /// -  flags: `FLAGS_NONE`
-    linear_velocity_mode: LinearVelocityMode,
+    pub linear_velocity_mode: LinearVelocityMode,
     /// # C++ Class Fields Info
     /// -   name:`"ignoreIncomingRotation"`
     /// -   type: `hkBool`
     /// - offset: 194
     /// -  flags: `FLAGS_NONE`
-    ignore_incoming_rotation: bool,
+    pub ignore_incoming_rotation: bool,
     /// # C++ Class Fields Info
     /// -   name:`"ignoreCollisionDuringRotation"`
     /// -   type: `hkBool`
     /// - offset: 195
     /// -  flags: `FLAGS_NONE`
-    ignore_collision_during_rotation: bool,
+    pub ignore_collision_during_rotation: bool,
     /// # C++ Class Fields Info
     /// -   name:`"ignoreIncomingTranslation"`
     /// -   type: `hkBool`
     /// - offset: 196
     /// -  flags: `FLAGS_NONE`
-    ignore_incoming_translation: bool,
+    pub ignore_incoming_translation: bool,
     /// # C++ Class Fields Info
     /// -   name:`"includeDownwardMomentum"`
     /// -   type: `hkBool`
     /// - offset: 197
     /// -  flags: `FLAGS_NONE`
-    include_downward_momentum: bool,
+    pub include_downward_momentum: bool,
     /// # C++ Class Fields Info
     /// -   name:`"followWorldFromModel"`
     /// -   type: `hkBool`
     /// - offset: 198
     /// -  flags: `FLAGS_NONE`
-    follow_world_from_model: bool,
+    pub follow_world_from_model: bool,
     /// # C++ Class Fields Info
     /// -   name:`"isTouchingGround"`
     /// -   type: `hkBool`
     /// - offset: 199
     /// -  flags: `FLAGS_NONE`
-    is_touching_ground: bool,
+    pub is_touching_ground: bool,
     /// # C++ Class Fields Info
     /// -   name:`"characterProxy"`
     /// -   type: `void*`
     /// - offset: 200
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    character_proxy: Cow<'a, str>,
+    pub character_proxy: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"phantom"`
     /// -   type: `void*`
     /// - offset: 204
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    phantom: Cow<'a, str>,
+    pub phantom: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"phantomShape"`
     /// -   type: `void*`
     /// - offset: 208
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    phantom_shape: Cow<'a, str>,
+    pub phantom_shape: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"horizontalDisplacement"`
     /// -   type: `hkVector4`
     /// - offset: 224
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    horizontal_displacement: Vector4<f32>,
+    pub horizontal_displacement: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"verticalDisplacement"`
     /// -   type: `hkReal`
     /// - offset: 240
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    vertical_displacement: f32,
+    pub vertical_displacement: f32,
     /// # C++ Class Fields Info
     /// -   name:`"timestep"`
     /// -   type: `hkReal`
     /// - offset: 244
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    timestep: f32,
+    pub timestep: f32,
     /// # C++ Class Fields Info
     /// -   name:`"previousFrameFollowWorldFromModel"`
     /// -   type: `hkBool`
     /// - offset: 248
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    previous_frame_follow_world_from_model: bool,
+    pub previous_frame_follow_world_from_model: bool,
 }
 
 impl Serialize for HkbProxyModifier<'_> {

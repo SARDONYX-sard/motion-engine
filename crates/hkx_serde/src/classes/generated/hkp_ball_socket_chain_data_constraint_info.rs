@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkpBallSocketChainDataConstraintInfo {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    pivot_in_a: Vector4<f32>,
+    pub pivot_in_a: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"pivotInB"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    pivot_in_b: Vector4<f32>,
+    pub pivot_in_b: Vector4<f32>,
 }
 
 impl Serialize for HkpBallSocketChainDataConstraintInfo {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,115 +33,115 @@ pub struct HkbFootIkModifierLeg<'a> {
     /// -   type: `hkQsTransform`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    original_ankle_transform_ms: QsTransform<f32>,
+    pub original_ankle_transform_ms: QsTransform<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"prevAnkleRotLS"`
     /// -   type: `hkQuaternion`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    prev_ankle_rot_ls: Quaternion<f32>,
+    pub prev_ankle_rot_ls: Quaternion<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"kneeAxisLS"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    knee_axis_ls: Vector4<f32>,
+    pub knee_axis_ls: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"footEndLS"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    foot_end_ls: Vector4<f32>,
+    pub foot_end_ls: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"ungroundedEvent"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    ungrounded_event: SingleClass<HkbEventProperty<'a>>,
+    pub ungrounded_event: SingleClass<HkbEventProperty<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"footPlantedAnkleHeightMS"`
     /// -   type: `hkReal`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    foot_planted_ankle_height_ms: f32,
+    pub foot_planted_ankle_height_ms: f32,
     /// # C++ Class Fields Info
     /// -   name:`"footRaisedAnkleHeightMS"`
     /// -   type: `hkReal`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
-    foot_raised_ankle_height_ms: f32,
+    pub foot_raised_ankle_height_ms: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxAnkleHeightMS"`
     /// -   type: `hkReal`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    max_ankle_height_ms: f32,
+    pub max_ankle_height_ms: f32,
     /// # C++ Class Fields Info
     /// -   name:`"minAnkleHeightMS"`
     /// -   type: `hkReal`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    min_ankle_height_ms: f32,
+    pub min_ankle_height_ms: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxKneeAngleDegrees"`
     /// -   type: `hkReal`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
-    max_knee_angle_degrees: f32,
+    pub max_knee_angle_degrees: f32,
     /// # C++ Class Fields Info
     /// -   name:`"minKneeAngleDegrees"`
     /// -   type: `hkReal`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
-    min_knee_angle_degrees: f32,
+    pub min_knee_angle_degrees: f32,
     /// # C++ Class Fields Info
     /// -   name:`"verticalError"`
     /// -   type: `hkReal`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    vertical_error: f32,
+    pub vertical_error: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxAnkleAngleDegrees"`
     /// -   type: `hkReal`
     /// - offset: 132
     /// -  flags: `FLAGS_NONE`
-    max_ankle_angle_degrees: f32,
+    pub max_ankle_angle_degrees: f32,
     /// # C++ Class Fields Info
     /// -   name:`"hipIndex"`
     /// -   type: `hkInt16`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE`
-    hip_index: i16,
+    pub hip_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"kneeIndex"`
     /// -   type: `hkInt16`
     /// - offset: 138
     /// -  flags: `FLAGS_NONE`
-    knee_index: i16,
+    pub knee_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"ankleIndex"`
     /// -   type: `hkInt16`
     /// - offset: 140
     /// -  flags: `FLAGS_NONE`
-    ankle_index: i16,
+    pub ankle_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"hitSomething"`
     /// -   type: `hkBool`
     /// - offset: 142
     /// -  flags: `FLAGS_NONE`
-    hit_something: bool,
+    pub hit_something: bool,
     /// # C++ Class Fields Info
     /// -   name:`"isPlantedMS"`
     /// -   type: `hkBool`
     /// - offset: 143
     /// -  flags: `FLAGS_NONE`
-    is_planted_ms: bool,
+    pub is_planted_ms: bool,
     /// # C++ Class Fields Info
     /// -   name:`"isOriginalAnkleTransformMSSet"`
     /// -   type: `hkBool`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    is_original_ankle_transform_ms_set: bool,
+    pub is_original_ankle_transform_ms_set: bool,
 }
 
 impl Serialize for HkbFootIkModifierLeg<'_> {

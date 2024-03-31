@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkpEntityExtendedListeners<'a> {
     /// -   type: `struct hkpEntitySmallArraySerializeOverrideType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    activation_listeners: SingleClass<HkpEntitySmallArraySerializeOverrideType<'a>>,
+    pub activation_listeners: SingleClass<HkpEntitySmallArraySerializeOverrideType<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"entityListeners"`
     /// -   type: `struct hkpEntitySmallArraySerializeOverrideType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    entity_listeners: SingleClass<HkpEntitySmallArraySerializeOverrideType<'a>>,
+    pub entity_listeners: SingleClass<HkpEntitySmallArraySerializeOverrideType<'a>>,
 }
 
 impl Serialize for HkpEntityExtendedListeners<'_> {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,7 +34,7 @@ pub struct HkpConvexListShape<'a> {
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    radius: f32,
+    pub radius: f32,
 
     // C++ Parent class(`hkpSphereRepShape` => parent: `hkpShape`) has no fields
     //
@@ -38,26 +43,26 @@ pub struct HkpConvexListShape<'a> {
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    _type: (),
+    pub _type: (),
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -66,31 +71,31 @@ pub struct HkpConvexListShape<'a> {
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    min_distance_to_use_convex_hull_for_get_closest_points: f32,
+    pub min_distance_to_use_convex_hull_for_get_closest_points: f32,
     /// # C++ Class Fields Info
     /// -   name:`"aabbHalfExtents"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    aabb_half_extents: Vector4<f32>,
+    pub aabb_half_extents: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"aabbCenter"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    aabb_center: Vector4<f32>,
+    pub aabb_center: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"useCachedAabb"`
     /// -   type: `hkBool`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    use_cached_aabb: bool,
+    pub use_cached_aabb: bool,
     /// # C++ Class Fields Info
     /// -   name:`"childShapes"`
     /// -   type: `hkArray<hkpConvexShape*>`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    child_shapes: HkArrayRef<Cow<'a, str>>,
+    pub child_shapes: HkArrayRef<Cow<'a, str>>,
 }
 
 impl Serialize for HkpConvexListShape<'_> {

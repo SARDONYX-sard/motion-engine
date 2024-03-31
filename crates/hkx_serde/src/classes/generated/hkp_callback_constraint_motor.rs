@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,33 +34,33 @@ pub struct HkpCallbackConstraintMotor<'a> {
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    min_force: f32,
+    pub min_force: f32,
     /// # C++ Parent class(`hkpLimitedForceConstraintMotor` => parent: `hkpConstraintMotor`) field Info
     /// -   name:`"maxForce"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    max_force: f32,
+    pub max_force: f32,
 
     /// # C++ Parent class(`hkpConstraintMotor` => parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum MotorType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    _type: MotorType,
+    pub _type: MotorType,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -64,31 +69,31 @@ pub struct HkpCallbackConstraintMotor<'a> {
     /// -   type: `void*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    callback_func: Cow<'a, str>,
+    pub callback_func: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"callbackType"`
     /// -   type: `enum CallbackType`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    callback_type: CallbackType,
+    pub callback_type: CallbackType,
     /// # C++ Class Fields Info
     /// -   name:`"userData0"`
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    user_data_0: usize,
+    pub user_data_0: usize,
     /// # C++ Class Fields Info
     /// -   name:`"userData1"`
     /// -   type: `hkUlong`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    user_data_1: usize,
+    pub user_data_1: usize,
     /// # C++ Class Fields Info
     /// -   name:`"userData2"`
     /// -   type: `hkUlong`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    user_data_2: usize,
+    pub user_data_2: usize,
 }
 
 impl Serialize for HkpCallbackConstraintMotor<'_> {

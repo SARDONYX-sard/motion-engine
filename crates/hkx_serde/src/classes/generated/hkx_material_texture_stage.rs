@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,19 +33,19 @@ pub struct HkxMaterialTextureStage<'a> {
     /// -   type: `struct hkReferencedObject*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    texture: Cow<'a, str>,
+    pub texture: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"usageHint"`
     /// -   type: `enum TextureType`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    usage_hint: TextureType,
+    pub usage_hint: TextureType,
     /// # C++ Class Fields Info
     /// -   name:`"tcoordChannel"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    tcoord_channel: i32,
+    pub tcoord_channel: i32,
 }
 
 impl Serialize for HkxMaterialTextureStage<'_> {

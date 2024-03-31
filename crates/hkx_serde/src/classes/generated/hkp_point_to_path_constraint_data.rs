@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,31 +34,31 @@ pub struct HkpPointToPathConstraintData<'a> {
     /// -   type: `struct hkpBridgeAtoms`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    atoms: SingleClass<HkpBridgeAtoms<'a>>,
+    pub atoms: SingleClass<HkpBridgeAtoms<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"path"`
     /// -   type: `struct hkpParametricCurve*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    path: Cow<'a, str>,
+    pub path: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"maxFrictionForce"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    max_friction_force: f32,
+    pub max_friction_force: f32,
     /// # C++ Class Fields Info
     /// -   name:`"angularConstrainedDOF"`
     /// -   type: `enum OrientationConstraintType`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    angular_constrained_dof: OrientationConstraintType,
+    pub angular_constrained_dof: OrientationConstraintType,
     /// # C++ Class Fields Info
     /// -   name:`"transform_OS_KS"`
     /// -   type: `hkTransform[2]`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    transform_os_ks: CStyleArrayVector<Transform<f32>, 2>,
+    pub transform_os_ks: CStyleArrayVector<Transform<f32>, 2>,
 }
 
 impl Serialize for HkpPointToPathConstraintData<'_> {

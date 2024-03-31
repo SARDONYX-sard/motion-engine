@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkpSerializedTrack1NInfo<'a> {
     /// -   type: `hkArray<hkpAgent1nSector*>`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    sectors: HkArrayRef<Cow<'a, str>>,
+    pub sectors: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"subTracks"`
     /// -   type: `hkArray<hkpSerializedSubTrack1nInfo*>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    sub_tracks: HkArrayRef<Cow<'a, str>>,
+    pub sub_tracks: HkArrayRef<Cow<'a, str>>,
 }
 
 impl Serialize for HkpSerializedTrack1NInfo<'_> {

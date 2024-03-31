@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkbSetWordVariableCommand {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,37 +49,37 @@ pub struct HkbSetWordVariableCommand {
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    quad_value: Vector4<f32>,
+    pub quad_value: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"characterId"`
     /// -   type: `hkUint64`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    character_id: u64,
+    pub character_id: u64,
     /// # C++ Class Fields Info
     /// -   name:`"variableId"`
     /// -   type: `hkInt32`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    variable_id: i32,
+    pub variable_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"value"`
     /// -   type: `struct hkbVariableValue`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    value: SingleClass<HkbVariableValue>,
+    pub value: SingleClass<HkbVariableValue>,
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum VariableType`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    _type: VariableType,
+    pub _type: VariableType,
     /// # C++ Class Fields Info
     /// -   name:`"global"`
     /// -   type: `hkBool`
     /// - offset: 49
     /// -  flags: `FLAGS_NONE`
-    global: bool,
+    pub global: bool,
 }
 
 impl Serialize for HkbSetWordVariableCommand {

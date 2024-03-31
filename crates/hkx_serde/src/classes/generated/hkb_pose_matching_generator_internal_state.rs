@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkbPoseMatchingGeneratorInternalState {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,31 +49,31 @@ pub struct HkbPoseMatchingGeneratorInternalState {
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    current_match: i32,
+    pub current_match: i32,
     /// # C++ Class Fields Info
     /// -   name:`"bestMatch"`
     /// -   type: `hkInt32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    best_match: i32,
+    pub best_match: i32,
     /// # C++ Class Fields Info
     /// -   name:`"timeSinceBetterMatch"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    time_since_better_match: f32,
+    pub time_since_better_match: f32,
     /// # C++ Class Fields Info
     /// -   name:`"error"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    error: f32,
+    pub error: f32,
     /// # C++ Class Fields Info
     /// -   name:`"resetCurrentMatchLocalTime"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    reset_current_match_local_time: bool,
+    pub reset_current_match_local_time: bool,
 }
 
 impl Serialize for HkbPoseMatchingGeneratorInternalState {

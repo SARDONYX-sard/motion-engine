@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,32 +34,32 @@ pub struct HkpModifierConstraintAtom<'a> {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    _type: AtomType,
+    pub _type: AtomType,
 
     /// # C++ Class Fields Info
     /// -   name:`"modifierAtomSize"`
     /// -   type: `hkUint16`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE|ALIGN16`
-    modifier_atom_size: u16,
+    pub modifier_atom_size: u16,
     /// # C++ Class Fields Info
     /// -   name:`"childSize"`
     /// -   type: `hkUint16`
     /// - offset: 18
     /// -  flags: `FLAGS_NONE`
-    child_size: u16,
+    pub child_size: u16,
     /// # C++ Class Fields Info
     /// -   name:`"child"`
     /// -   type: `struct hkpConstraintAtom*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    child: Cow<'a, str>,
+    pub child: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"pad"`
     /// -   type: `hkUint32[2]`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    pad: CStyleArray<[u32; 2]>,
+    pub pad: CStyleArray<[u32; 2]>,
 }
 
 impl Serialize for HkpModifierConstraintAtom<'_> {

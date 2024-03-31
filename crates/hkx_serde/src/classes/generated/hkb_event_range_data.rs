@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,19 +33,19 @@ pub struct HkbEventRangeData<'a> {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    upper_bound: f32,
+    pub upper_bound: f32,
     /// # C++ Class Fields Info
     /// -   name:`"event"`
     /// -   type: `struct hkbEventProperty`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    event: SingleClass<HkbEventProperty<'a>>,
+    pub event: SingleClass<HkbEventProperty<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"eventMode"`
     /// -   type: `enum EventRangeMode`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    event_mode: EventRangeMode,
+    pub event_mode: EventRangeMode,
 }
 
 impl Serialize for HkbEventRangeData<'_> {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,49 +33,49 @@ pub struct HkMeshSectionCinfo<'a> {
     /// -   type: `struct hkMeshVertexBuffer*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    vertex_buffer: Cow<'a, str>,
+    pub vertex_buffer: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"material"`
     /// -   type: `struct hkMeshMaterial*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    material: Cow<'a, str>,
+    pub material: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"primitiveType"`
     /// -   type: `enum PrimitiveType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    primitive_type: PrimitiveType,
+    pub primitive_type: PrimitiveType,
     /// # C++ Class Fields Info
     /// -   name:`"numPrimitives"`
     /// -   type: `hkInt32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    num_primitives: i32,
+    pub num_primitives: i32,
     /// # C++ Class Fields Info
     /// -   name:`"indexType"`
     /// -   type: `enum MeshSectionIndexType`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    index_type: MeshSectionIndexType,
+    pub index_type: MeshSectionIndexType,
     /// # C++ Class Fields Info
     /// -   name:`"indices"`
     /// -   type: `void*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    indices: Cow<'a, str>,
+    pub indices: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"vertexStartIndex"`
     /// -   type: `hkInt32`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    vertex_start_index: i32,
+    pub vertex_start_index: i32,
     /// # C++ Class Fields Info
     /// -   name:`"transformIndex"`
     /// -   type: `hkInt32`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    transform_index: i32,
+    pub transform_index: i32,
 }
 
 impl Serialize for HkMeshSectionCinfo<'_> {

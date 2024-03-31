@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkAlignSceneToNodeOptions<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,55 +49,55 @@ pub struct HkAlignSceneToNodeOptions<'a> {
     /// -   type: `hkBool`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    invert: bool,
+    pub invert: bool,
     /// # C++ Class Fields Info
     /// -   name:`"transformPositionX"`
     /// -   type: `hkBool`
     /// - offset: 9
     /// -  flags: `FLAGS_NONE`
-    transform_position_x: bool,
+    pub transform_position_x: bool,
     /// # C++ Class Fields Info
     /// -   name:`"transformPositionY"`
     /// -   type: `hkBool`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
-    transform_position_y: bool,
+    pub transform_position_y: bool,
     /// # C++ Class Fields Info
     /// -   name:`"transformPositionZ"`
     /// -   type: `hkBool`
     /// - offset: 11
     /// -  flags: `FLAGS_NONE`
-    transform_position_z: bool,
+    pub transform_position_z: bool,
     /// # C++ Class Fields Info
     /// -   name:`"transformRotation"`
     /// -   type: `hkBool`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    transform_rotation: bool,
+    pub transform_rotation: bool,
     /// # C++ Class Fields Info
     /// -   name:`"transformScale"`
     /// -   type: `hkBool`
     /// - offset: 13
     /// -  flags: `FLAGS_NONE`
-    transform_scale: bool,
+    pub transform_scale: bool,
     /// # C++ Class Fields Info
     /// -   name:`"transformSkew"`
     /// -   type: `hkBool`
     /// - offset: 14
     /// -  flags: `FLAGS_NONE`
-    transform_skew: bool,
+    pub transform_skew: bool,
     /// # C++ Class Fields Info
     /// -   name:`"keyframe"`
     /// -   type: `hkInt32`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    keyframe: i32,
+    pub keyframe: i32,
     /// # C++ Class Fields Info
     /// -   name:`"nodeName"`
     /// -   type: `hkStringPtr`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    node_name: Cow<'a, str>,
+    pub node_name: Cow<'a, str>,
 }
 
 impl Serialize for HkAlignSceneToNodeOptions<'_> {

@@ -53,7 +53,7 @@ where
         struct Inner<'a> {
             #[serde(rename = "@numelements")]
             numelements: usize,
-            #[serde(rename = "$value", borrow, default)]
+            #[serde(rename = "$text", borrow, default)]
             value: Cow<'a, str>,
         }
 

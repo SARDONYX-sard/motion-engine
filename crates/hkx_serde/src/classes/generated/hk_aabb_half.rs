@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkAabbHalf {
     /// -   type: `hkUint16[6]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    data: CStyleArray<[u16; 6]>,
+    pub data: CStyleArray<[u16; 6]>,
     /// # C++ Class Fields Info
     /// -   name:`"extras"`
     /// -   type: `hkUint16[2]`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    extras: CStyleArray<[u16; 2]>,
+    pub extras: CStyleArray<[u16; 2]>,
 }
 
 impl Serialize for HkAabbHalf {

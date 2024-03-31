@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -31,13 +36,13 @@ pub struct HkbParticleSystemEventPayload {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -46,37 +51,37 @@ pub struct HkbParticleSystemEventPayload {
     /// -   type: `enum SystemType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    _type: SystemType,
+    pub _type: SystemType,
     /// # C++ Class Fields Info
     /// -   name:`"emitBoneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
-    emit_bone_index: i16,
+    pub emit_bone_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"offset"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    offset: Vector4<f32>,
+    pub offset: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"direction"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    direction: Vector4<f32>,
+    pub direction: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"numParticles"`
     /// -   type: `hkInt32`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    num_particles: i32,
+    pub num_particles: i32,
     /// # C++ Class Fields Info
     /// -   name:`"speed"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    speed: f32,
+    pub speed: f32,
 }
 
 impl Serialize for HkbParticleSystemEventPayload {

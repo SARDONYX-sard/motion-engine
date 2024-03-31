@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkTrackerSerializableScanSnapshot {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,43 +49,43 @@ pub struct HkTrackerSerializableScanSnapshot {
     /// -   type: `hkArray<struct hkTrackerSerializableScanSnapshotAllocation>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    allocations: HkArrayClass<HkTrackerSerializableScanSnapshotAllocation>,
+    pub allocations: HkArrayClass<HkTrackerSerializableScanSnapshotAllocation>,
     /// # C++ Class Fields Info
     /// -   name:`"blocks"`
     /// -   type: `hkArray<struct hkTrackerSerializableScanSnapshotBlock>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    blocks: HkArrayClass<HkTrackerSerializableScanSnapshotBlock>,
+    pub blocks: HkArrayClass<HkTrackerSerializableScanSnapshotBlock>,
     /// # C++ Class Fields Info
     /// -   name:`"refs"`
     /// -   type: `hkArray<hkInt32>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    refs: HkArrayNum<i32>,
+    pub refs: HkArrayNum<i32>,
     /// # C++ Class Fields Info
     /// -   name:`"typeNames"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    type_names: HkArrayNum<u8>,
+    pub type_names: HkArrayNum<u8>,
     /// # C++ Class Fields Info
     /// -   name:`"traceText"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    trace_text: HkArrayNum<u8>,
+    pub trace_text: HkArrayNum<u8>,
     /// # C++ Class Fields Info
     /// -   name:`"traceAddrs"`
     /// -   type: `hkArray<hkUint64>`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    trace_addrs: HkArrayNum<u64>,
+    pub trace_addrs: HkArrayNum<u64>,
     /// # C++ Class Fields Info
     /// -   name:`"traceParents"`
     /// -   type: `hkArray<hkInt32>`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    trace_parents: HkArrayNum<i32>,
+    pub trace_parents: HkArrayNum<i32>,
 }
 
 impl Serialize for HkTrackerSerializableScanSnapshot {

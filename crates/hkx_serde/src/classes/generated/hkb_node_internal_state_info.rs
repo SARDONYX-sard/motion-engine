@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkbNodeInternalStateInfo<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,31 +49,31 @@ pub struct HkbNodeInternalStateInfo<'a> {
     /// -   type: `struct hkbGeneratorSyncInfo`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    sync_info: SingleClass<HkbGeneratorSyncInfo>,
+    pub sync_info: SingleClass<HkbGeneratorSyncInfo>,
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"internalState"`
     /// -   type: `struct hkReferencedObject*`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    internal_state: Cow<'a, str>,
+    pub internal_state: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"nodeId"`
     /// -   type: `hkInt16`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    node_id: i16,
+    pub node_id: i16,
     /// # C++ Class Fields Info
     /// -   name:`"hasActivateBeenCalled"`
     /// -   type: `hkBool`
     /// - offset: 98
     /// -  flags: `FLAGS_NONE`
-    has_activate_been_called: bool,
+    pub has_activate_been_called: bool,
 }
 
 impl Serialize for HkbNodeInternalStateInfo<'_> {

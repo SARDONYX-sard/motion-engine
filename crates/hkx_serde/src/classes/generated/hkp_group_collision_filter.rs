@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,32 +34,32 @@ pub struct HkpGroupCollisionFilter {
     /// -   type: `hkUint32[2]`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    prepad: CStyleArray<[u32; 2]>,
+    pub prepad: CStyleArray<[u32; 2]>,
     /// # C++ Parent class(`hkpCollisionFilter` => parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum hkpFilterType`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    _type: HkpFilterType,
+    pub _type: HkpFilterType,
     /// # C++ Parent class(`hkpCollisionFilter` => parent: `hkReferencedObject`) field Info
     /// -   name:`"postpad"`
     /// -   type: `hkUint32[3]`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    postpad: CStyleArray<[u32; 3]>,
+    pub postpad: CStyleArray<[u32; 3]>,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -63,13 +68,13 @@ pub struct HkpGroupCollisionFilter {
     /// -   type: `hkBool`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    no_group_collision_enabled: bool,
+    pub no_group_collision_enabled: bool,
     /// # C++ Class Fields Info
     /// -   name:`"collisionGroups"`
     /// -   type: `hkUint32[32]`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    collision_groups: CStyleArray<[u32; 32]>,
+    pub collision_groups: CStyleArray<[u32; 32]>,
 }
 
 impl Serialize for HkpGroupCollisionFilter {

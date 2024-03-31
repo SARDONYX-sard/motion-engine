@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -31,63 +36,63 @@ pub struct HkbClipGenerator<'a> {
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    id: i16,
+    pub id: i16,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    clone_state: (),
+    pub clone_state: (),
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pad_node: CStyleArray<[bool; 1]>,
+    pub pad_node: CStyleArray<[bool; 1]>,
 
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"variableBindingSet"`
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    variable_binding_set: Cow<'a, str>,
+    pub variable_binding_set: Cow<'a, str>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray<void>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    cached_bindables: HkArrayRef<()>,
+    pub cached_bindables: HkArrayRef<()>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    are_bindables_cached: bool,
+    pub are_bindables_cached: bool,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -96,163 +101,163 @@ pub struct HkbClipGenerator<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    animation_name: Cow<'a, str>,
+    pub animation_name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"triggers"`
     /// -   type: `struct hkbClipTriggerArray*`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    triggers: Cow<'a, str>,
+    pub triggers: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"cropStartAmountLocalTime"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    crop_start_amount_local_time: f32,
+    pub crop_start_amount_local_time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"cropEndAmountLocalTime"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    crop_end_amount_local_time: f32,
+    pub crop_end_amount_local_time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"startTime"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    start_time: f32,
+    pub start_time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"playbackSpeed"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    playback_speed: f32,
+    pub playback_speed: f32,
     /// # C++ Class Fields Info
     /// -   name:`"enforcedDuration"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    enforced_duration: f32,
+    pub enforced_duration: f32,
     /// # C++ Class Fields Info
     /// -   name:`"userControlledTimeFraction"`
     /// -   type: `hkReal`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    user_controlled_time_fraction: f32,
+    pub user_controlled_time_fraction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"animationBindingIndex"`
     /// -   type: `hkInt16`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    animation_binding_index: i16,
+    pub animation_binding_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"mode"`
     /// -   type: `enum PlaybackMode`
     /// - offset: 74
     /// -  flags: `FLAGS_NONE`
-    mode: PlaybackMode,
+    pub mode: PlaybackMode,
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `hkInt8`
     /// - offset: 75
     /// -  flags: `FLAGS_NONE`
-    flags: i8,
+    pub flags: i8,
     /// # C++ Class Fields Info
     /// -   name:`"animDatas"`
     /// -   type: `hkArray<void>`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    anim_datas: HkArrayRef<()>,
+    pub anim_datas: HkArrayRef<()>,
     /// # C++ Class Fields Info
     /// -   name:`"animationControl"`
     /// -   type: `void*`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    animation_control: Cow<'a, str>,
+    pub animation_control: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"originalTriggers"`
     /// -   type: `void*`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    original_triggers: Cow<'a, str>,
+    pub original_triggers: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"mapperData"`
     /// -   type: `void*`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mapper_data: Cow<'a, str>,
+    pub mapper_data: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"binding"`
     /// -   type: `void*`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    binding: Cow<'a, str>,
+    pub binding: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"mirroredAnimation"`
     /// -   type: `void*`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mirrored_animation: Cow<'a, str>,
+    pub mirrored_animation: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"extractedMotion"`
     /// -   type: `hkQsTransform`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    extracted_motion: QsTransform<f32>,
+    pub extracted_motion: QsTransform<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"echos"`
     /// -   type: `hkArray<void>`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    echos: HkArrayRef<()>,
+    pub echos: HkArrayRef<()>,
     /// # C++ Class Fields Info
     /// -   name:`"localTime"`
     /// -   type: `hkReal`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    local_time: f32,
+    pub local_time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"time"`
     /// -   type: `hkReal`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    time: f32,
+    pub time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"previousUserControlledTimeFraction"`
     /// -   type: `hkReal`
     /// - offset: 180
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    previous_user_controlled_time_fraction: f32,
+    pub previous_user_controlled_time_fraction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"bufferSize"`
     /// -   type: `hkInt32`
     /// - offset: 184
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    buffer_size: i32,
+    pub buffer_size: i32,
     /// # C++ Class Fields Info
     /// -   name:`"echoBufferSize"`
     /// -   type: `hkInt32`
     /// - offset: 188
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    echo_buffer_size: i32,
+    pub echo_buffer_size: i32,
     /// # C++ Class Fields Info
     /// -   name:`"atEnd"`
     /// -   type: `hkBool`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    at_end: bool,
+    pub at_end: bool,
     /// # C++ Class Fields Info
     /// -   name:`"ignoreStartTime"`
     /// -   type: `hkBool`
     /// - offset: 193
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    ignore_start_time: bool,
+    pub ignore_start_time: bool,
     /// # C++ Class Fields Info
     /// -   name:`"pingPongBackward"`
     /// -   type: `hkBool`
     /// - offset: 194
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    ping_pong_backward: bool,
+    pub ping_pong_backward: bool,
 }
 
 impl Serialize for HkbClipGenerator<'_> {

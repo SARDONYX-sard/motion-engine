@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,25 +33,25 @@ pub struct HkClassEnum<'a> {
     /// -   type: `char*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"items"`
     /// -   type: `hkSimpleArray<struct hkClassEnumItem>`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    items: HkArrayClass<HkClassEnumItem<'a>>,
+    pub items: HkArrayClass<HkClassEnumItem<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"attributes"`
     /// -   type: `struct hkCustomAttributes*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    attributes: Cow<'a, str>,
+    pub attributes: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `flags FlagValues`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    flags: FlagValues,
+    pub flags: FlagValues,
 }
 
 impl Serialize for HkClassEnum<'_> {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkxScene<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,79 +49,79 @@ pub struct HkxScene<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    modeller: Cow<'a, str>,
+    pub modeller: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"asset"`
     /// -   type: `hkStringPtr`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    asset: Cow<'a, str>,
+    pub asset: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"sceneLength"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    scene_length: f32,
+    pub scene_length: f32,
     /// # C++ Class Fields Info
     /// -   name:`"rootNode"`
     /// -   type: `struct hkxNode*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    root_node: Cow<'a, str>,
+    pub root_node: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"selectionSets"`
     /// -   type: `hkArray<hkxNodeSelectionSet*>`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    selection_sets: HkArrayRef<Cow<'a, str>>,
+    pub selection_sets: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"cameras"`
     /// -   type: `hkArray<hkxCamera*>`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    cameras: HkArrayRef<Cow<'a, str>>,
+    pub cameras: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"lights"`
     /// -   type: `hkArray<hkxLight*>`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    lights: HkArrayRef<Cow<'a, str>>,
+    pub lights: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"meshes"`
     /// -   type: `hkArray<hkxMesh*>`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    meshes: HkArrayRef<Cow<'a, str>>,
+    pub meshes: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"materials"`
     /// -   type: `hkArray<hkxMaterial*>`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    materials: HkArrayRef<Cow<'a, str>>,
+    pub materials: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"inplaceTextures"`
     /// -   type: `hkArray<hkxTextureInplace*>`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    inplace_textures: HkArrayRef<Cow<'a, str>>,
+    pub inplace_textures: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"externalTextures"`
     /// -   type: `hkArray<hkxTextureFile*>`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    external_textures: HkArrayRef<Cow<'a, str>>,
+    pub external_textures: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"skinBindings"`
     /// -   type: `hkArray<hkxSkinBinding*>`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
-    skin_bindings: HkArrayRef<Cow<'a, str>>,
+    pub skin_bindings: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"appliedTransform"`
     /// -   type: `hkMatrix3`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    applied_transform: Matrix3<f32>,
+    pub applied_transform: Matrix3<f32>,
 }
 
 impl Serialize for HkxScene<'_> {
@@ -222,7 +227,7 @@ impl<'a> From<&HkxScene<'a>> for Vec<HkxSceneVisitor<'a>> {
             HkxSceneVisitor::InplaceTextures(data.inplace_textures.clone()),
             HkxSceneVisitor::ExternalTextures(data.external_textures.clone()),
             HkxSceneVisitor::SkinBindings(data.skin_bindings.clone()),
-            HkxSceneVisitor::AppliedTransform(data.applied_transform.clone().into()),
+            HkxSceneVisitor::AppliedTransform(data.applied_transform.into()),
 
         ]
     }

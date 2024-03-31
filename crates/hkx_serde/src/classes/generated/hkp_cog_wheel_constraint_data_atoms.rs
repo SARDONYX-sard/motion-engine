@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkpCogWheelConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTransformsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    transforms: SingleClass<HkpSetLocalTransformsConstraintAtom>,
+    pub transforms: SingleClass<HkpSetLocalTransformsConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"cogWheels"`
     /// -   type: `struct hkpCogWheelConstraintAtom`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    cog_wheels: SingleClass<HkpCogWheelConstraintAtom>,
+    pub cog_wheels: SingleClass<HkpCogWheelConstraintAtom>,
 }
 
 impl Serialize for HkpCogWheelConstraintDataAtoms {

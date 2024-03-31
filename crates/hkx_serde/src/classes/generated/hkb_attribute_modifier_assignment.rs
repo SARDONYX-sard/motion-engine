@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkbAttributeModifierAssignment {
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    attribute_index: i32,
+    pub attribute_index: i32,
     /// # C++ Class Fields Info
     /// -   name:`"attributeValue"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    attribute_value: f32,
+    pub attribute_value: f32,
 }
 
 impl Serialize for HkbAttributeModifierAssignment {

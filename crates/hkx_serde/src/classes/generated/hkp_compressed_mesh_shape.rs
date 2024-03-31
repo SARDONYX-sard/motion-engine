@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,39 +34,39 @@ pub struct HkpCompressedMeshShape<'a> {
     /// -   type: `hkBool`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    disable_welding: bool,
+    pub disable_welding: bool,
     /// # C++ Parent class(`hkpShapeCollection` => parent: `hkpShape`) field Info
     /// -   name:`"collectionType"`
     /// -   type: `enum CollectionType`
     /// - offset: 21
     /// -  flags: `FLAGS_NONE`
-    collection_type: CollectionType,
+    pub collection_type: CollectionType,
 
     /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkpShape` => parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum unknown`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    _type: (),
+    pub _type: (),
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -70,133 +75,133 @@ pub struct HkpCompressedMeshShape<'a> {
     /// -   type: `hkInt32`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    bits_per_index: i32,
+    pub bits_per_index: i32,
     /// # C++ Class Fields Info
     /// -   name:`"bitsPerWIndex"`
     /// -   type: `hkInt32`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    bits_per_w_index: i32,
+    pub bits_per_w_index: i32,
     /// # C++ Class Fields Info
     /// -   name:`"wIndexMask"`
     /// -   type: `hkInt32`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    w_index_mask: i32,
+    pub w_index_mask: i32,
     /// # C++ Class Fields Info
     /// -   name:`"indexMask"`
     /// -   type: `hkInt32`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    index_mask: i32,
+    pub index_mask: i32,
     /// # C++ Class Fields Info
     /// -   name:`"radius"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    radius: f32,
+    pub radius: f32,
     /// # C++ Class Fields Info
     /// -   name:`"weldingType"`
     /// -   type: `enum WeldingType`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    welding_type: WeldingType,
+    pub welding_type: WeldingType,
     /// # C++ Class Fields Info
     /// -   name:`"materialType"`
     /// -   type: `enum MaterialType`
     /// - offset: 45
     /// -  flags: `FLAGS_NONE`
-    material_type: MaterialType,
+    pub material_type: MaterialType,
     /// # C++ Class Fields Info
     /// -   name:`"materials"`
     /// -   type: `hkArray<hkUint32>`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    materials: HkArrayNum<u32>,
+    pub materials: HkArrayNum<u32>,
     /// # C++ Class Fields Info
     /// -   name:`"materials16"`
     /// -   type: `hkArray<hkUint16>`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    materials_16: HkArrayNum<u16>,
+    pub materials_16: HkArrayNum<u16>,
     /// # C++ Class Fields Info
     /// -   name:`"materials8"`
     /// -   type: `hkArray<hkUint8>`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    materials_8: HkArrayNum<u8>,
+    pub materials_8: HkArrayNum<u8>,
     /// # C++ Class Fields Info
     /// -   name:`"transforms"`
     /// -   type: `hkArray<hkQsTransform>`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    transforms: HkArrayMatrix3<QsTransform<f32>>,
+    pub transforms: HkArrayMatrix3<QsTransform<f32>>,
     /// # C++ Class Fields Info
     /// -   name:`"bigVertices"`
     /// -   type: `hkArray<hkVector4>`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    big_vertices: HkArrayVector<Vector4<f32>>,
+    pub big_vertices: HkArrayVector<Vector4<f32>>,
     /// # C++ Class Fields Info
     /// -   name:`"bigTriangles"`
     /// -   type: `hkArray<struct hkpCompressedMeshShapeBigTriangle>`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
-    big_triangles: HkArrayClass<HkpCompressedMeshShapeBigTriangle>,
+    pub big_triangles: HkArrayClass<HkpCompressedMeshShapeBigTriangle>,
     /// # C++ Class Fields Info
     /// -   name:`"chunks"`
     /// -   type: `hkArray<struct hkpCompressedMeshShapeChunk>`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
-    chunks: HkArrayClass<HkpCompressedMeshShapeChunk>,
+    pub chunks: HkArrayClass<HkpCompressedMeshShapeChunk>,
     /// # C++ Class Fields Info
     /// -   name:`"convexPieces"`
     /// -   type: `hkArray<struct hkpCompressedMeshShapeConvexPiece>`
     /// - offset: 132
     /// -  flags: `FLAGS_NONE`
-    convex_pieces: HkArrayClass<HkpCompressedMeshShapeConvexPiece>,
+    pub convex_pieces: HkArrayClass<HkpCompressedMeshShapeConvexPiece>,
     /// # C++ Class Fields Info
     /// -   name:`"error"`
     /// -   type: `hkReal`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    error: f32,
+    pub error: f32,
     /// # C++ Class Fields Info
     /// -   name:`"bounds"`
     /// -   type: `struct hkAabb`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    bounds: SingleClass<HkAabb>,
+    pub bounds: SingleClass<HkAabb>,
     /// # C++ Class Fields Info
     /// -   name:`"defaultCollisionFilterInfo"`
     /// -   type: `hkUint32`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE`
-    default_collision_filter_info: u32,
+    pub default_collision_filter_info: u32,
     /// # C++ Class Fields Info
     /// -   name:`"meshMaterials"`
     /// -   type: `void*`
     /// - offset: 196
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mesh_materials: Cow<'a, str>,
+    pub mesh_materials: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"materialStriding"`
     /// -   type: `hkUint16`
     /// - offset: 200
     /// -  flags: `FLAGS_NONE`
-    material_striding: u16,
+    pub material_striding: u16,
     /// # C++ Class Fields Info
     /// -   name:`"numMaterials"`
     /// -   type: `hkUint16`
     /// - offset: 202
     /// -  flags: `FLAGS_NONE`
-    num_materials: u16,
+    pub num_materials: u16,
     /// # C++ Class Fields Info
     /// -   name:`"namedMaterials"`
     /// -   type: `hkArray<struct hkpNamedMeshMaterial>`
     /// - offset: 204
     /// -  flags: `FLAGS_NONE`
-    named_materials: HkArrayClass<HkpNamedMeshMaterial<'a>>,
+    pub named_materials: HkArrayClass<HkpNamedMeshMaterial<'a>>,
 }
 
 impl Serialize for HkpCompressedMeshShape<'_> {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,20 +34,20 @@ pub struct HkpVehicleCastBatchingManager<'a> {
     /// -   type: `hkArray<hkpVehicleInstance*>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    registered_vehicles: HkArrayRef<Cow<'a, str>>,
+    pub registered_vehicles: HkArrayRef<Cow<'a, str>>,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -51,7 +56,7 @@ pub struct HkpVehicleCastBatchingManager<'a> {
     /// -   type: `hkUint16`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    total_num_wheels: u16,
+    pub total_num_wheels: u16,
 }
 
 impl Serialize for HkpVehicleCastBatchingManager<'_> {

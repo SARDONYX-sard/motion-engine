@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkbProjectStringData<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,55 +49,55 @@ pub struct HkbProjectStringData<'a> {
     /// -   type: `hkArray<hkStringPtr>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    animation_filenames: HkArrayStringPtr<'a>,
+    pub animation_filenames: HkArrayStringPtr<'a>,
     /// # C++ Class Fields Info
     /// -   name:`"behaviorFilenames"`
     /// -   type: `hkArray<hkStringPtr>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    behavior_filenames: HkArrayStringPtr<'a>,
+    pub behavior_filenames: HkArrayStringPtr<'a>,
     /// # C++ Class Fields Info
     /// -   name:`"characterFilenames"`
     /// -   type: `hkArray<hkStringPtr>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    character_filenames: HkArrayStringPtr<'a>,
+    pub character_filenames: HkArrayStringPtr<'a>,
     /// # C++ Class Fields Info
     /// -   name:`"eventNames"`
     /// -   type: `hkArray<hkStringPtr>`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    event_names: HkArrayStringPtr<'a>,
+    pub event_names: HkArrayStringPtr<'a>,
     /// # C++ Class Fields Info
     /// -   name:`"animationPath"`
     /// -   type: `hkStringPtr`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    animation_path: Cow<'a, str>,
+    pub animation_path: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"behaviorPath"`
     /// -   type: `hkStringPtr`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    behavior_path: Cow<'a, str>,
+    pub behavior_path: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"characterPath"`
     /// -   type: `hkStringPtr`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    character_path: Cow<'a, str>,
+    pub character_path: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"fullPathToSource"`
     /// -   type: `hkStringPtr`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    full_path_to_source: Cow<'a, str>,
+    pub full_path_to_source: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"rootPath"`
     /// -   type: `hkStringPtr`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    root_path: Cow<'a, str>,
+    pub root_path: Cow<'a, str>,
 }
 
 impl Serialize for HkbProjectStringData<'_> {

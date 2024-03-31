@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,32 +34,32 @@ pub struct HkpTypedBroadPhaseHandle {
     /// -   type: `hkUint32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    id: u32,
+    pub id: u32,
 
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `hkInt8`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    _type: i8,
+    pub _type: i8,
     /// # C++ Class Fields Info
     /// -   name:`"ownerOffset"`
     /// -   type: `hkInt8`
     /// - offset: 5
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    owner_offset: i8,
+    pub owner_offset: i8,
     /// # C++ Class Fields Info
     /// -   name:`"objectQualityType"`
     /// -   type: `hkInt8`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    object_quality_type: i8,
+    pub object_quality_type: i8,
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilterInfo"`
     /// -   type: `hkUint32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    collision_filter_info: u32,
+    pub collision_filter_info: u32,
 }
 
 impl Serialize for HkpTypedBroadPhaseHandle {

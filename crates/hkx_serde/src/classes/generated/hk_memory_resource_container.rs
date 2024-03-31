@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -33,13 +38,13 @@ pub struct HkMemoryResourceContainer<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -48,25 +53,25 @@ pub struct HkMemoryResourceContainer<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"parent"`
     /// -   type: `struct hkMemoryResourceContainer*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    parent: Cow<'a, str>,
+    pub parent: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"resourceHandles"`
     /// -   type: `hkArray<hkMemoryResourceHandle*>`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    resource_handles: HkArrayRef<Cow<'a, str>>,
+    pub resource_handles: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"children"`
     /// -   type: `hkArray<hkMemoryResourceContainer*>`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    children: HkArrayRef<Cow<'a, str>>,
+    pub children: HkArrayRef<Cow<'a, str>>,
 }
 
 impl Serialize for HkMemoryResourceContainer<'_> {

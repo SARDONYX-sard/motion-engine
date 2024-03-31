@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -31,13 +36,13 @@ pub struct HkpVehicleDefaultAerodynamics {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -46,31 +51,31 @@ pub struct HkpVehicleDefaultAerodynamics {
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    air_density: f32,
+    pub air_density: f32,
     /// # C++ Class Fields Info
     /// -   name:`"frontalArea"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    frontal_area: f32,
+    pub frontal_area: f32,
     /// # C++ Class Fields Info
     /// -   name:`"dragCoefficient"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    drag_coefficient: f32,
+    pub drag_coefficient: f32,
     /// # C++ Class Fields Info
     /// -   name:`"liftCoefficient"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    lift_coefficient: f32,
+    pub lift_coefficient: f32,
     /// # C++ Class Fields Info
     /// -   name:`"extraGravityws"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    extra_gravityws: Vector4<f32>,
+    pub extra_gravityws: Vector4<f32>,
 }
 
 impl Serialize for HkpVehicleDefaultAerodynamics {

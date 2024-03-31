@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkpSerializedDisplayRbTransformsDisplayTransformPair<'a> {
     /// -   type: `struct hkpRigidBody*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    rb: Cow<'a, str>,
+    pub rb: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"localToDisplay"`
     /// -   type: `hkTransform`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    local_to_display: Transform<f32>,
+    pub local_to_display: Transform<f32>,
 }
 
 impl Serialize for HkpSerializedDisplayRbTransformsDisplayTransformPair<'_> {

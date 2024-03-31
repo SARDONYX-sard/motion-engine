@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,38 +34,38 @@ pub struct HkpRackAndPinionConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    _type: AtomType,
+    pub _type: AtomType,
 
     /// # C++ Class Fields Info
     /// -   name:`"pinionRadiusOrScrewPitch"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    pinion_radius_or_screw_pitch: f32,
+    pub pinion_radius_or_screw_pitch: f32,
     /// # C++ Class Fields Info
     /// -   name:`"isScrew"`
     /// -   type: `hkBool`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    is_screw: bool,
+    pub is_screw: bool,
     /// # C++ Class Fields Info
     /// -   name:`"memOffsetToInitialAngleOffset"`
     /// -   type: `hkInt8`
     /// - offset: 9
     /// -  flags: `FLAGS_NONE`
-    mem_offset_to_initial_angle_offset: i8,
+    pub mem_offset_to_initial_angle_offset: i8,
     /// # C++ Class Fields Info
     /// -   name:`"memOffsetToPrevAngle"`
     /// -   type: `hkInt8`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
-    mem_offset_to_prev_angle: i8,
+    pub mem_offset_to_prev_angle: i8,
     /// # C++ Class Fields Info
     /// -   name:`"memOffsetToRevolutionCounter"`
     /// -   type: `hkInt8`
     /// - offset: 11
     /// -  flags: `FLAGS_NONE`
-    mem_offset_to_revolution_counter: i8,
+    pub mem_offset_to_revolution_counter: i8,
 }
 
 impl Serialize for HkpRackAndPinionConstraintAtom {

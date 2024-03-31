@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,25 +33,25 @@ pub struct HkpRagdollLimitsDataAtoms {
     /// -   type: `struct hkpSetLocalRotationsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    rotations: SingleClass<HkpSetLocalRotationsConstraintAtom>,
+    pub rotations: SingleClass<HkpSetLocalRotationsConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"twistLimit"`
     /// -   type: `struct hkpTwistLimitConstraintAtom`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    twist_limit: SingleClass<HkpTwistLimitConstraintAtom>,
+    pub twist_limit: SingleClass<HkpTwistLimitConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"coneLimit"`
     /// -   type: `struct hkpConeLimitConstraintAtom`
     /// - offset: 132
     /// -  flags: `FLAGS_NONE`
-    cone_limit: SingleClass<HkpConeLimitConstraintAtom>,
+    pub cone_limit: SingleClass<HkpConeLimitConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"planesLimit"`
     /// -   type: `struct hkpConeLimitConstraintAtom`
     /// - offset: 152
     /// -  flags: `FLAGS_NONE`
-    planes_limit: SingleClass<HkpConeLimitConstraintAtom>,
+    pub planes_limit: SingleClass<HkpConeLimitConstraintAtom>,
 }
 
 impl Serialize for HkpRagdollLimitsDataAtoms {

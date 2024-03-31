@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkbFootIkModifierInternalLegData<'a> {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    ground_position: Vector4<f32>,
+    pub ground_position: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"footIkSolver"`
     /// -   type: `void*`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    foot_ik_solver: Cow<'a, str>,
+    pub foot_ik_solver: Cow<'a, str>,
 }
 
 impl Serialize for HkbFootIkModifierInternalLegData<'_> {

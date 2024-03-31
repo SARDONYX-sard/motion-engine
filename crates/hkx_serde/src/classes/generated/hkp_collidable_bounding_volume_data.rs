@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,61 +33,61 @@ pub struct HkpCollidableBoundingVolumeData<'a> {
     /// -   type: `hkUint32[3]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    min: CStyleArray<[u32; 3]>,
+    pub min: CStyleArray<[u32; 3]>,
     /// # C++ Class Fields Info
     /// -   name:`"expansionMin"`
     /// -   type: `hkUint8[3]`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    expansion_min: CStyleArray<[u8; 3]>,
+    pub expansion_min: CStyleArray<[u8; 3]>,
     /// # C++ Class Fields Info
     /// -   name:`"expansionShift"`
     /// -   type: `hkUint8`
     /// - offset: 15
     /// -  flags: `FLAGS_NONE`
-    expansion_shift: u8,
+    pub expansion_shift: u8,
     /// # C++ Class Fields Info
     /// -   name:`"max"`
     /// -   type: `hkUint32[3]`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    max: CStyleArray<[u32; 3]>,
+    pub max: CStyleArray<[u32; 3]>,
     /// # C++ Class Fields Info
     /// -   name:`"expansionMax"`
     /// -   type: `hkUint8[3]`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    expansion_max: CStyleArray<[u8; 3]>,
+    pub expansion_max: CStyleArray<[u8; 3]>,
     /// # C++ Class Fields Info
     /// -   name:`"padding"`
     /// -   type: `hkUint8`
     /// - offset: 31
     /// -  flags: `FLAGS_NONE`
-    padding: u8,
+    pub padding: u8,
     /// # C++ Class Fields Info
     /// -   name:`"numChildShapeAabbs"`
     /// -   type: `hkUint16`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    num_child_shape_aabbs: u16,
+    pub num_child_shape_aabbs: u16,
     /// # C++ Class Fields Info
     /// -   name:`"capacityChildShapeAabbs"`
     /// -   type: `hkUint16`
     /// - offset: 34
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    capacity_child_shape_aabbs: u16,
+    pub capacity_child_shape_aabbs: u16,
     /// # C++ Class Fields Info
     /// -   name:`"childShapeAabbs"`
     /// -   type: `void*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    child_shape_aabbs: Cow<'a, str>,
+    pub child_shape_aabbs: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"childShapeKeys"`
     /// -   type: `void*`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    child_shape_keys: Cow<'a, str>,
+    pub child_shape_keys: Cow<'a, str>,
 }
 
 impl Serialize for HkpCollidableBoundingVolumeData<'_> {

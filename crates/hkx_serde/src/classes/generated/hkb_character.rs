@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkbCharacter<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,115 +49,115 @@ pub struct HkbCharacter<'a> {
     /// -   type: `hkArray<hkbCharacter*>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    nearby_characters: HkArrayRef<Cow<'a, str>>,
+    pub nearby_characters: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"currentLod"`
     /// -   type: `hkInt16`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    current_lod: i16,
+    pub current_lod: i16,
     /// # C++ Class Fields Info
     /// -   name:`"numTracksInLod"`
     /// -   type: `hkInt16`
     /// - offset: 22
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    num_tracks_in_lod: i16,
+    pub num_tracks_in_lod: i16,
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"ragdollDriver"`
     /// -   type: `void*`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    ragdoll_driver: Cow<'a, str>,
+    pub ragdoll_driver: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"characterControllerDriver"`
     /// -   type: `void*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    character_controller_driver: Cow<'a, str>,
+    pub character_controller_driver: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"footIkDriver"`
     /// -   type: `void*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    foot_ik_driver: Cow<'a, str>,
+    pub foot_ik_driver: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"handIkDriver"`
     /// -   type: `void*`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    hand_ik_driver: Cow<'a, str>,
+    pub hand_ik_driver: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"setup"`
     /// -   type: `struct hkbCharacterSetup*`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    setup: Cow<'a, str>,
+    pub setup: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"behaviorGraph"`
     /// -   type: `struct hkbBehaviorGraph*`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    behavior_graph: Cow<'a, str>,
+    pub behavior_graph: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"projectData"`
     /// -   type: `struct hkbProjectData*`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    project_data: Cow<'a, str>,
+    pub project_data: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"animationBindingSet"`
     /// -   type: `void*`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    animation_binding_set: Cow<'a, str>,
+    pub animation_binding_set: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"raycastInterface"`
     /// -   type: `void*`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    raycast_interface: Cow<'a, str>,
+    pub raycast_interface: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"world"`
     /// -   type: `void*`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE|NOT_OWNED|SERIALIZE_IGNORED`
-    world: Cow<'a, str>,
+    pub world: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"eventQueue"`
     /// -   type: `void*`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    event_queue: Cow<'a, str>,
+    pub event_queue: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"worldFromModel"`
     /// -   type: `void*`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    world_from_model: Cow<'a, str>,
+    pub world_from_model: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"poseLocal"`
     /// -   type: `hkSimpleArray<void>`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pose_local: HkArrayRef<()>,
+    pub pose_local: HkArrayRef<()>,
     /// # C++ Class Fields Info
     /// -   name:`"deleteWorldFromModel"`
     /// -   type: `hkBool`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    delete_world_from_model: bool,
+    pub delete_world_from_model: bool,
     /// # C++ Class Fields Info
     /// -   name:`"deletePoseLocal"`
     /// -   type: `hkBool`
     /// - offset: 85
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    delete_pose_local: bool,
+    pub delete_pose_local: bool,
 }
 
 impl Serialize for HkbCharacter<'_> {

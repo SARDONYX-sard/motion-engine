@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,19 +34,19 @@ pub struct HkbBlendingTransitionEffect<'a> {
     /// -   type: `enum SelfTransitionMode`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    self_transition_mode: SelfTransitionMode,
+    pub self_transition_mode: SelfTransitionMode,
     /// # C++ Parent class(`hkbTransitionEffect` => parent: `hkbGenerator`) field Info
     /// -   name:`"eventMode"`
     /// -   type: `enum EventMode`
     /// - offset: 41
     /// -  flags: `FLAGS_NONE`
-    event_mode: EventMode,
+    pub event_mode: EventMode,
     /// # C++ Parent class(`hkbTransitionEffect` => parent: `hkbGenerator`) field Info
     /// -   name:`"defaultEventMode"`
     /// -   type: `enum unknown`
     /// - offset: 42
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    default_event_mode: (),
+    pub default_event_mode: (),
 
     // C++ Parent class(`hkbGenerator` => parent: `hkbNode`) has no fields
     //
@@ -50,63 +55,63 @@ pub struct HkbBlendingTransitionEffect<'a> {
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    id: i16,
+    pub id: i16,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    clone_state: (),
+    pub clone_state: (),
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pad_node: CStyleArray<[bool; 1]>,
+    pub pad_node: CStyleArray<[bool; 1]>,
 
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"variableBindingSet"`
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    variable_binding_set: Cow<'a, str>,
+    pub variable_binding_set: Cow<'a, str>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray<void>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    cached_bindables: HkArrayRef<()>,
+    pub cached_bindables: HkArrayRef<()>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    are_bindables_cached: bool,
+    pub are_bindables_cached: bool,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -115,73 +120,73 @@ pub struct HkbBlendingTransitionEffect<'a> {
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    duration: f32,
+    pub duration: f32,
     /// # C++ Class Fields Info
     /// -   name:`"toGeneratorStartTimeFraction"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    to_generator_start_time_fraction: f32,
+    pub to_generator_start_time_fraction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"flags"`
     /// -   type: `flags FlagBits`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    flags: FlagBits,
+    pub flags: FlagBits,
     /// # C++ Class Fields Info
     /// -   name:`"endMode"`
     /// -   type: `enum EndMode`
     /// - offset: 54
     /// -  flags: `FLAGS_NONE`
-    end_mode: EndMode,
+    pub end_mode: EndMode,
     /// # C++ Class Fields Info
     /// -   name:`"blendCurve"`
     /// -   type: `enum BlendCurve`
     /// - offset: 55
     /// -  flags: `FLAGS_NONE`
-    blend_curve: BlendCurve,
+    pub blend_curve: BlendCurve,
     /// # C++ Class Fields Info
     /// -   name:`"fromGenerator"`
     /// -   type: `void*`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    from_generator: Cow<'a, str>,
+    pub from_generator: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"toGenerator"`
     /// -   type: `void*`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    to_generator: Cow<'a, str>,
+    pub to_generator: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"characterPoseAtBeginningOfTransition"`
     /// -   type: `hkArray<void>`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    character_pose_at_beginning_of_transition: HkArrayRef<()>,
+    pub character_pose_at_beginning_of_transition: HkArrayRef<()>,
     /// # C++ Class Fields Info
     /// -   name:`"timeRemaining"`
     /// -   type: `hkReal`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    time_remaining: f32,
+    pub time_remaining: f32,
     /// # C++ Class Fields Info
     /// -   name:`"timeInTransition"`
     /// -   type: `hkReal`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    time_in_transition: f32,
+    pub time_in_transition: f32,
     /// # C++ Class Fields Info
     /// -   name:`"applySelfTransition"`
     /// -   type: `hkBool`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    apply_self_transition: bool,
+    pub apply_self_transition: bool,
     /// # C++ Class Fields Info
     /// -   name:`"initializeCharacterPose"`
     /// -   type: `hkBool`
     /// - offset: 85
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    initialize_character_pose: bool,
+    pub initialize_character_pose: bool,
 }
 
 impl Serialize for HkbBlendingTransitionEffect<'_> {

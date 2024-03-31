@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,26 +34,26 @@ pub struct HkpLinFrictionConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    _type: AtomType,
+    pub _type: AtomType,
 
     /// # C++ Class Fields Info
     /// -   name:`"isEnabled"`
     /// -   type: `hkUint8`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    is_enabled: u8,
+    pub is_enabled: u8,
     /// # C++ Class Fields Info
     /// -   name:`"frictionAxis"`
     /// -   type: `hkUint8`
     /// - offset: 3
     /// -  flags: `FLAGS_NONE`
-    friction_axis: u8,
+    pub friction_axis: u8,
     /// # C++ Class Fields Info
     /// -   name:`"maxFrictionForce"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    max_friction_force: f32,
+    pub max_friction_force: f32,
 }
 
 impl Serialize for HkpLinFrictionConstraintAtom {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,38 +34,38 @@ pub struct HkpRagdollMotorConstraintAtom<'a> {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    _type: AtomType,
+    pub _type: AtomType,
 
     /// # C++ Class Fields Info
     /// -   name:`"isEnabled"`
     /// -   type: `hkBool`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    is_enabled: bool,
+    pub is_enabled: bool,
     /// # C++ Class Fields Info
     /// -   name:`"initializedOffset"`
     /// -   type: `hkInt16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    initialized_offset: i16,
+    pub initialized_offset: i16,
     /// # C++ Class Fields Info
     /// -   name:`"previousTargetAnglesOffset"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    previous_target_angles_offset: i16,
+    pub previous_target_angles_offset: i16,
     /// # C++ Class Fields Info
     /// -   name:`"target_bRca"`
     /// -   type: `hkMatrix3`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    target_b_rca: Matrix3<f32>,
+    pub target_b_rca: Matrix3<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"motors"`
     /// -   type: `struct hkpConstraintMotor*`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    motors: Cow<'a, str>,
+    pub motors: Cow<'a, str>,
 }
 
 impl Serialize for HkpRagdollMotorConstraintAtom<'_> {
@@ -129,7 +134,7 @@ impl<'a> From<&HkpRagdollMotorConstraintAtom<'a>> for Vec<HkpRagdollMotorConstra
             HkpRagdollMotorConstraintAtomVisitor::IsEnabled(data.is_enabled.into()),
             HkpRagdollMotorConstraintAtomVisitor::InitializedOffset(data.initialized_offset.into()),
             HkpRagdollMotorConstraintAtomVisitor::PreviousTargetAnglesOffset(data.previous_target_angles_offset.into()),
-            HkpRagdollMotorConstraintAtomVisitor::TargetBRca(data.target_b_rca.clone().into()),
+            HkpRagdollMotorConstraintAtomVisitor::TargetBRca(data.target_b_rca.into()),
             HkpRagdollMotorConstraintAtomVisitor::Motors(data.motors.clone().into()),
 
         ]

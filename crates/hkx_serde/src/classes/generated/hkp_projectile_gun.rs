@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,38 +34,38 @@ pub struct HkpProjectileGun<'a> {
     /// -   type: `enum unknown`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    _type: (),
+    pub _type: (),
     /// # C++ Parent class(`hkpFirstPersonGun` => parent: `hkReferencedObject`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Parent class(`hkpFirstPersonGun` => parent: `hkReferencedObject`) field Info
     /// -   name:`"keyboardKey"`
     /// -   type: `enum KeyboardKey`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    keyboard_key: KeyboardKey,
+    pub keyboard_key: KeyboardKey,
     /// # C++ Parent class(`hkpFirstPersonGun` => parent: `hkReferencedObject`) field Info
     /// -   name:`"listeners"`
     /// -   type: `hkArray<void*>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    listeners: HkArrayRef<Cow<'a, str>>,
+    pub listeners: HkArrayRef<Cow<'a, str>>,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -69,37 +74,37 @@ pub struct HkpProjectileGun<'a> {
     /// -   type: `hkInt32`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    max_projectiles: i32,
+    pub max_projectiles: i32,
     /// # C++ Class Fields Info
     /// -   name:`"reloadTime"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    reload_time: f32,
+    pub reload_time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"reload"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reload: f32,
+    pub reload: f32,
     /// # C++ Class Fields Info
     /// -   name:`"projectiles"`
     /// -   type: `hkArray<void*>`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    projectiles: HkArrayRef<Cow<'a, str>>,
+    pub projectiles: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"world"`
     /// -   type: `void*`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    world: Cow<'a, str>,
+    pub world: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"destructionWorld"`
     /// -   type: `void*`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    destruction_world: Cow<'a, str>,
+    pub destruction_world: Cow<'a, str>,
 }
 
 impl Serialize for HkpProjectileGun<'_> {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkxCamera {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,43 +49,43 @@ pub struct HkxCamera {
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    from: Vector4<f32>,
+    pub from: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"focus"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    focus: Vector4<f32>,
+    pub focus: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"up"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    up: Vector4<f32>,
+    pub up: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"fov"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    fov: f32,
+    pub fov: f32,
     /// # C++ Class Fields Info
     /// -   name:`"far"`
     /// -   type: `hkReal`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    far: f32,
+    pub far: f32,
     /// # C++ Class Fields Info
     /// -   name:`"near"`
     /// -   type: `hkReal`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    near: f32,
+    pub near: f32,
     /// # C++ Class Fields Info
     /// -   name:`"leftHanded"`
     /// -   type: `hkBool`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    left_handed: bool,
+    pub left_handed: bool,
 }
 
 impl Serialize for HkxCamera {

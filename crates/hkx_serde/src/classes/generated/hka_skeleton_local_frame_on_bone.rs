@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkaSkeletonLocalFrameOnBone<'a> {
     /// -   type: `struct hkLocalFrame*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    local_frame: Cow<'a, str>,
+    pub local_frame: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"boneIndex"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    bone_index: i32,
+    pub bone_index: i32,
 }
 
 impl Serialize for HkaSkeletonLocalFrameOnBone<'_> {

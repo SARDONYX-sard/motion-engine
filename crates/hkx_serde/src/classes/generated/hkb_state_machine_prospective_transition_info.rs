@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,19 +33,19 @@ pub struct HkbStateMachineProspectiveTransitionInfo {
     /// -   type: `struct hkbStateMachineTransitionInfoReference`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    transition_info_reference: SingleClass<HkbStateMachineTransitionInfoReference>,
+    pub transition_info_reference: SingleClass<HkbStateMachineTransitionInfoReference>,
     /// # C++ Class Fields Info
     /// -   name:`"transitionInfoReferenceForTE"`
     /// -   type: `struct hkbStateMachineTransitionInfoReference`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    transition_info_reference_for_te: SingleClass<HkbStateMachineTransitionInfoReference>,
+    pub transition_info_reference_for_te: SingleClass<HkbStateMachineTransitionInfoReference>,
     /// # C++ Class Fields Info
     /// -   name:`"toStateId"`
     /// -   type: `hkInt32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    to_state_id: i32,
+    pub to_state_id: i32,
 }
 
 impl Serialize for HkbStateMachineProspectiveTransitionInfo {

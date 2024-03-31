@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkbRigidBodyRagdollControlData {
     /// -   type: `struct hkaKeyFrameHierarchyUtilityControlData`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE|ALIGN16`
-    key_frame_hierarchy_control_data: SingleClass<HkaKeyFrameHierarchyUtilityControlData>,
+    pub key_frame_hierarchy_control_data: SingleClass<HkaKeyFrameHierarchyUtilityControlData>,
     /// # C++ Class Fields Info
     /// -   name:`"durationToBlend"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    duration_to_blend: f32,
+    pub duration_to_blend: f32,
 }
 
 impl Serialize for HkbRigidBodyRagdollControlData {

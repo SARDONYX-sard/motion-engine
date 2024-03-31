@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,20 +34,20 @@ pub struct HkbEvent<'a> {
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    id: i32,
+    pub id: i32,
     /// # C++ Parent class(`hkbEventBase` => parent: `None`) field Info
     /// -   name:`"payload"`
     /// -   type: `struct hkbEventPayload*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    payload: Cow<'a, str>,
+    pub payload: Cow<'a, str>,
 
     /// # C++ Class Fields Info
     /// -   name:`"sender"`
     /// -   type: `void*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    sender: Cow<'a, str>,
+    pub sender: Cow<'a, str>,
 }
 
 impl Serialize for HkbEvent<'_> {

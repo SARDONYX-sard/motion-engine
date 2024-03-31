@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,56 +34,56 @@ pub struct HkpPhysicsSystemWithContacts<'a> {
     /// -   type: `hkArray<hkpRigidBody*>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    rigid_bodies: HkArrayRef<Cow<'a, str>>,
+    pub rigid_bodies: HkArrayRef<Cow<'a, str>>,
     /// # C++ Parent class(`hkpPhysicsSystem` => parent: `hkReferencedObject`) field Info
     /// -   name:`"constraints"`
     /// -   type: `hkArray<hkpConstraintInstance*>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    constraints: HkArrayRef<Cow<'a, str>>,
+    pub constraints: HkArrayRef<Cow<'a, str>>,
     /// # C++ Parent class(`hkpPhysicsSystem` => parent: `hkReferencedObject`) field Info
     /// -   name:`"actions"`
     /// -   type: `hkArray<hkpAction*>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    actions: HkArrayRef<Cow<'a, str>>,
+    pub actions: HkArrayRef<Cow<'a, str>>,
     /// # C++ Parent class(`hkpPhysicsSystem` => parent: `hkReferencedObject`) field Info
     /// -   name:`"phantoms"`
     /// -   type: `hkArray<hkpPhantom*>`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    phantoms: HkArrayRef<Cow<'a, str>>,
+    pub phantoms: HkArrayRef<Cow<'a, str>>,
     /// # C++ Parent class(`hkpPhysicsSystem` => parent: `hkReferencedObject`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Parent class(`hkpPhysicsSystem` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkpPhysicsSystem` => parent: `hkReferencedObject`) field Info
     /// -   name:`"active"`
     /// -   type: `hkBool`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    active: bool,
+    pub active: bool,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -87,7 +92,7 @@ pub struct HkpPhysicsSystemWithContacts<'a> {
     /// -   type: `hkArray<hkpSerializedAgentNnEntry*>`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    contacts: HkArrayRef<Cow<'a, str>>,
+    pub contacts: HkArrayRef<Cow<'a, str>>,
 }
 
 impl Serialize for HkpPhysicsSystemWithContacts<'_> {

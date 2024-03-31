@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,19 +33,19 @@ pub struct HkTrackerSerializableScanSnapshotAllocation {
     /// -   type: `hkUlong`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    start: usize,
+    pub start: usize,
     /// # C++ Class Fields Info
     /// -   name:`"size"`
     /// -   type: `hkUlong`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    size: usize,
+    pub size: usize,
     /// # C++ Class Fields Info
     /// -   name:`"traceId"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    trace_id: i32,
+    pub trace_id: i32,
 }
 
 impl Serialize for HkTrackerSerializableScanSnapshotAllocation {

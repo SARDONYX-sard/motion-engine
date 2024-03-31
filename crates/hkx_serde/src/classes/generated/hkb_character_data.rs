@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkbCharacterData<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,85 +49,85 @@ pub struct HkbCharacterData<'a> {
     /// -   type: `struct hkbCharacterDataCharacterControllerInfo`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    character_controller_info: SingleClass<HkbCharacterDataCharacterControllerInfo<'a>>,
+    pub character_controller_info: SingleClass<HkbCharacterDataCharacterControllerInfo<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"modelUpMS"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    model_up_ms: Vector4<f32>,
+    pub model_up_ms: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"modelForwardMS"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    model_forward_ms: Vector4<f32>,
+    pub model_forward_ms: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"modelRightMS"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    model_right_ms: Vector4<f32>,
+    pub model_right_ms: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"characterPropertyInfos"`
     /// -   type: `hkArray<struct hkbVariableInfo>`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    character_property_infos: HkArrayClass<HkbVariableInfo>,
+    pub character_property_infos: HkArrayClass<HkbVariableInfo>,
     /// # C++ Class Fields Info
     /// -   name:`"numBonesPerLod"`
     /// -   type: `hkArray<hkInt32>`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    num_bones_per_lod: HkArrayNum<i32>,
+    pub num_bones_per_lod: HkArrayNum<i32>,
     /// # C++ Class Fields Info
     /// -   name:`"characterPropertyValues"`
     /// -   type: `struct hkbVariableValueSet*`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    character_property_values: Cow<'a, str>,
+    pub character_property_values: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"footIkDriverInfo"`
     /// -   type: `struct hkbFootIkDriverInfo*`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
-    foot_ik_driver_info: Cow<'a, str>,
+    pub foot_ik_driver_info: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"handIkDriverInfo"`
     /// -   type: `struct hkbHandIkDriverInfo*`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    hand_ik_driver_info: Cow<'a, str>,
+    pub hand_ik_driver_info: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"stringData"`
     /// -   type: `struct hkbCharacterStringData*`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    string_data: Cow<'a, str>,
+    pub string_data: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"mirroredSkeletonInfo"`
     /// -   type: `struct hkbMirroredSkeletonInfo*`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
-    mirrored_skeleton_info: Cow<'a, str>,
+    pub mirrored_skeleton_info: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"scale"`
     /// -   type: `hkReal`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
-    scale: f32,
+    pub scale: f32,
     /// # C++ Class Fields Info
     /// -   name:`"numHands"`
     /// -   type: `hkInt16`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    num_hands: i16,
+    pub num_hands: i16,
     /// # C++ Class Fields Info
     /// -   name:`"numFloatSlots"`
     /// -   type: `hkInt16`
     /// - offset: 130
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    num_float_slots: i16,
+    pub num_float_slots: i16,
 }
 
 impl Serialize for HkbCharacterData<'_> {

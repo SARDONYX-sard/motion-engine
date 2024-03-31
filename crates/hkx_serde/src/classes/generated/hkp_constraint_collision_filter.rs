@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,45 +34,45 @@ pub struct HkpConstraintCollisionFilter<'a> {
     /// -   type: `struct hkpPairCollisionFilterMapPairFilterKeyOverrideType`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    disabled_pairs: SingleClass<HkpPairCollisionFilterMapPairFilterKeyOverrideType<'a>>,
+    pub disabled_pairs: SingleClass<HkpPairCollisionFilterMapPairFilterKeyOverrideType<'a>>,
     /// # C++ Parent class(`hkpPairCollisionFilter` => parent: `hkpCollisionFilter`) field Info
     /// -   name:`"childFilter"`
     /// -   type: `struct hkpCollisionFilter*`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    child_filter: Cow<'a, str>,
+    pub child_filter: Cow<'a, str>,
 
     /// # C++ Parent class(`hkpCollisionFilter` => parent: `hkReferencedObject`) field Info
     /// -   name:`"prepad"`
     /// -   type: `hkUint32[2]`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    prepad: CStyleArray<[u32; 2]>,
+    pub prepad: CStyleArray<[u32; 2]>,
     /// # C++ Parent class(`hkpCollisionFilter` => parent: `hkReferencedObject`) field Info
     /// -   name:`"type"`
     /// -   type: `enum hkpFilterType`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    _type: HkpFilterType,
+    pub _type: HkpFilterType,
     /// # C++ Parent class(`hkpCollisionFilter` => parent: `hkReferencedObject`) field Info
     /// -   name:`"postpad"`
     /// -   type: `hkUint32[3]`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    postpad: CStyleArray<[u32; 3]>,
+    pub postpad: CStyleArray<[u32; 3]>,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //

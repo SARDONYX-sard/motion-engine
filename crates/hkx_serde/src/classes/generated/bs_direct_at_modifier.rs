@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,76 +34,76 @@ pub struct BsDirectAtModifier<'a> {
     /// -   type: `hkBool`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    enable: bool,
+    pub enable: bool,
     /// # C++ Parent class(`hkbModifier` => parent: `hkbNode`) field Info
     /// -   name:`"padModifier"`
     /// -   type: `hkBool[3]`
     /// - offset: 41
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pad_modifier: CStyleArray<[bool; 3]>,
+    pub pad_modifier: CStyleArray<[bool; 3]>,
 
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    id: i16,
+    pub id: i16,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    clone_state: (),
+    pub clone_state: (),
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pad_node: CStyleArray<[bool; 1]>,
+    pub pad_node: CStyleArray<[bool; 1]>,
 
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"variableBindingSet"`
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    variable_binding_set: Cow<'a, str>,
+    pub variable_binding_set: Cow<'a, str>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray<void>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    cached_bindables: HkArrayRef<()>,
+    pub cached_bindables: HkArrayRef<()>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    are_bindables_cached: bool,
+    pub are_bindables_cached: bool,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -107,145 +112,145 @@ pub struct BsDirectAtModifier<'a> {
     /// -   type: `hkBool`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    direct_at_target: bool,
+    pub direct_at_target: bool,
     /// # C++ Class Fields Info
     /// -   name:`"sourceBoneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 46
     /// -  flags: `FLAGS_NONE`
-    source_bone_index: i16,
+    pub source_bone_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"startBoneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    start_bone_index: i16,
+    pub start_bone_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"endBoneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 50
     /// -  flags: `FLAGS_NONE`
-    end_bone_index: i16,
+    pub end_bone_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"limitHeadingDegrees"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    limit_heading_degrees: f32,
+    pub limit_heading_degrees: f32,
     /// # C++ Class Fields Info
     /// -   name:`"limitPitchDegrees"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    limit_pitch_degrees: f32,
+    pub limit_pitch_degrees: f32,
     /// # C++ Class Fields Info
     /// -   name:`"offsetHeadingDegrees"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    offset_heading_degrees: f32,
+    pub offset_heading_degrees: f32,
     /// # C++ Class Fields Info
     /// -   name:`"offsetPitchDegrees"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    offset_pitch_degrees: f32,
+    pub offset_pitch_degrees: f32,
     /// # C++ Class Fields Info
     /// -   name:`"onGain"`
     /// -   type: `hkReal`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    on_gain: f32,
+    pub on_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"offGain"`
     /// -   type: `hkReal`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    off_gain: f32,
+    pub off_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"targetLocation"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    target_location: Vector4<f32>,
+    pub target_location: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"userInfo"`
     /// -   type: `hkUint32`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    user_info: u32,
+    pub user_info: u32,
     /// # C++ Class Fields Info
     /// -   name:`"directAtCamera"`
     /// -   type: `hkBool`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
-    direct_at_camera: bool,
+    pub direct_at_camera: bool,
     /// # C++ Class Fields Info
     /// -   name:`"directAtCameraX"`
     /// -   type: `hkReal`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    direct_at_camera_x: f32,
+    pub direct_at_camera_x: f32,
     /// # C++ Class Fields Info
     /// -   name:`"directAtCameraY"`
     /// -   type: `hkReal`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
-    direct_at_camera_y: f32,
+    pub direct_at_camera_y: f32,
     /// # C++ Class Fields Info
     /// -   name:`"directAtCameraZ"`
     /// -   type: `hkReal`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    direct_at_camera_z: f32,
+    pub direct_at_camera_z: f32,
     /// # C++ Class Fields Info
     /// -   name:`"active"`
     /// -   type: `hkBool`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    active: bool,
+    pub active: bool,
     /// # C++ Class Fields Info
     /// -   name:`"currentHeadingOffset"`
     /// -   type: `hkReal`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
-    current_heading_offset: f32,
+    pub current_heading_offset: f32,
     /// # C++ Class Fields Info
     /// -   name:`"currentPitchOffset"`
     /// -   type: `hkReal`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
-    current_pitch_offset: f32,
+    pub current_pitch_offset: f32,
     /// # C++ Class Fields Info
     /// -   name:`"timeStep"`
     /// -   type: `hkReal`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    time_step: f32,
+    pub time_step: f32,
     /// # C++ Class Fields Info
     /// -   name:`"pSkeletonMemory"`
     /// -   type: `void*`
     /// - offset: 132
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    p_skeleton_memory: Cow<'a, str>,
+    pub p_skeleton_memory: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"hasTarget"`
     /// -   type: `hkBool`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    has_target: bool,
+    pub has_target: bool,
     /// # C++ Class Fields Info
     /// -   name:`"directAtTargetLocation"`
     /// -   type: `hkVector4`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    direct_at_target_location: Vector4<f32>,
+    pub direct_at_target_location: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"boneChainIndices"`
     /// -   type: `hkArray<void>`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    bone_chain_indices: HkArrayRef<()>,
+    pub bone_chain_indices: HkArrayRef<()>,
 }
 
 impl Serialize for BsDirectAtModifier<'_> {

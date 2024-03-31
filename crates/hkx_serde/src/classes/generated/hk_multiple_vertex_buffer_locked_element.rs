@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,43 +33,43 @@ pub struct HkMultipleVertexBufferLockedElement {
     /// -   type: `hkUint8`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    vertex_buffer_index: u8,
+    pub vertex_buffer_index: u8,
     /// # C++ Class Fields Info
     /// -   name:`"elementIndex"`
     /// -   type: `hkUint8`
     /// - offset: 1
     /// -  flags: `FLAGS_NONE`
-    element_index: u8,
+    pub element_index: u8,
     /// # C++ Class Fields Info
     /// -   name:`"lockedBufferIndex"`
     /// -   type: `hkUint8`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    locked_buffer_index: u8,
+    pub locked_buffer_index: u8,
     /// # C++ Class Fields Info
     /// -   name:`"vertexFormatIndex"`
     /// -   type: `hkUint8`
     /// - offset: 3
     /// -  flags: `FLAGS_NONE`
-    vertex_format_index: u8,
+    pub vertex_format_index: u8,
     /// # C++ Class Fields Info
     /// -   name:`"lockFlags"`
     /// -   type: `hkUint8`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    lock_flags: u8,
+    pub lock_flags: u8,
     /// # C++ Class Fields Info
     /// -   name:`"outputBufferIndex"`
     /// -   type: `hkUint8`
     /// - offset: 5
     /// -  flags: `FLAGS_NONE`
-    output_buffer_index: u8,
+    pub output_buffer_index: u8,
     /// # C++ Class Fields Info
     /// -   name:`"emulatedIndex"`
     /// -   type: `hkInt8`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    emulated_index: i8,
+    pub emulated_index: i8,
 }
 
 impl Serialize for HkMultipleVertexBufferLockedElement {

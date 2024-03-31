@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,61 +33,61 @@ pub struct HkMotionState {
     /// -   type: `hkTransform`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    transform: Transform<f32>,
+    pub transform: Transform<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"sweptTransform"`
     /// -   type: `struct hkSweptTransform`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    swept_transform: SingleClass<HkSweptTransform>,
+    pub swept_transform: SingleClass<HkSweptTransform>,
     /// # C++ Class Fields Info
     /// -   name:`"deltaAngle"`
     /// -   type: `hkVector4`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    delta_angle: Vector4<f32>,
+    pub delta_angle: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"objectRadius"`
     /// -   type: `hkReal`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    object_radius: f32,
+    pub object_radius: f32,
     /// # C++ Class Fields Info
     /// -   name:`"linearDamping"`
     /// -   type: `hkHalf`
     /// - offset: 164
     /// -  flags: `FLAGS_NONE`
-    linear_damping: f32,
+    pub linear_damping: f32,
     /// # C++ Class Fields Info
     /// -   name:`"angularDamping"`
     /// -   type: `hkHalf`
     /// - offset: 166
     /// -  flags: `FLAGS_NONE`
-    angular_damping: f32,
+    pub angular_damping: f32,
     /// # C++ Class Fields Info
     /// -   name:`"timeFactor"`
     /// -   type: `hkHalf`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE`
-    time_factor: f32,
+    pub time_factor: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxLinearVelocity"`
     /// -   type: `hkUint8`
     /// - offset: 170
     /// -  flags: `FLAGS_NONE`
-    max_linear_velocity: u8,
+    pub max_linear_velocity: u8,
     /// # C++ Class Fields Info
     /// -   name:`"maxAngularVelocity"`
     /// -   type: `hkUint8`
     /// - offset: 171
     /// -  flags: `FLAGS_NONE`
-    max_angular_velocity: u8,
+    pub max_angular_velocity: u8,
     /// # C++ Class Fields Info
     /// -   name:`"deactivationClass"`
     /// -   type: `hkUint8`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE`
-    deactivation_class: u8,
+    pub deactivation_class: u8,
 }
 
 impl Serialize for HkMotionState {

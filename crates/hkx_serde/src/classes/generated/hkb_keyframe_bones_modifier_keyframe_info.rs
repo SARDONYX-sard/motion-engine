@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,25 +33,25 @@ pub struct HkbKeyframeBonesModifierKeyframeInfo {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    keyframed_position: Vector4<f32>,
+    pub keyframed_position: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"keyframedRotation"`
     /// -   type: `hkQuaternion`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    keyframed_rotation: Quaternion<f32>,
+    pub keyframed_rotation: Quaternion<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"boneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    bone_index: i16,
+    pub bone_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"isValid"`
     /// -   type: `hkBool`
     /// - offset: 34
     /// -  flags: `FLAGS_NONE`
-    is_valid: bool,
+    pub is_valid: bool,
 }
 
 impl Serialize for HkbKeyframeBonesModifierKeyframeInfo {

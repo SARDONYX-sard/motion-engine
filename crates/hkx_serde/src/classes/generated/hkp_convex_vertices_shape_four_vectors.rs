@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,19 +33,19 @@ pub struct HkpConvexVerticesShapeFourVectors {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    x: Vector4<f32>,
+    pub x: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"y"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    y: Vector4<f32>,
+    pub y: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"z"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    z: Vector4<f32>,
+    pub z: Vector4<f32>,
 }
 
 impl Serialize for HkpConvexVerticesShapeFourVectors {

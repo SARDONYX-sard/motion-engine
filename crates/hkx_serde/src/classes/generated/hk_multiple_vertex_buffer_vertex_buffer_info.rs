@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,19 +33,19 @@ pub struct HkMultipleVertexBufferVertexBufferInfo<'a> {
     /// -   type: `struct hkMeshVertexBuffer*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    vertex_buffer: Cow<'a, str>,
+    pub vertex_buffer: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"lockedVertices"`
     /// -   type: `void*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    locked_vertices: Cow<'a, str>,
+    pub locked_vertices: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"isLocked"`
     /// -   type: `hkBool`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    is_locked: bool,
+    pub is_locked: bool,
 }
 
 impl Serialize for HkMultipleVertexBufferVertexBufferInfo<'_> {

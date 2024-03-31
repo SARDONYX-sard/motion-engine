@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,19 +33,19 @@ pub struct HkpVehicleSuspensionSuspensionWheelParameters {
     /// -   type: `hkVector4`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    hardpoint_chassis_space: Vector4<f32>,
+    pub hardpoint_chassis_space: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"directionChassisSpace"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    direction_chassis_space: Vector4<f32>,
+    pub direction_chassis_space: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"length"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    length: f32,
+    pub length: f32,
 }
 
 impl Serialize for HkpVehicleSuspensionSuspensionWheelParameters {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -31,13 +36,13 @@ pub struct HkpVehicleDriverInputAnalogStatus {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -46,25 +51,25 @@ pub struct HkpVehicleDriverInputAnalogStatus {
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    position_x: f32,
+    pub position_x: f32,
     /// # C++ Class Fields Info
     /// -   name:`"positionY"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    position_y: f32,
+    pub position_y: f32,
     /// # C++ Class Fields Info
     /// -   name:`"handbrakeButtonPressed"`
     /// -   type: `hkBool`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    handbrake_button_pressed: bool,
+    pub handbrake_button_pressed: bool,
     /// # C++ Class Fields Info
     /// -   name:`"reverseButtonPressed"`
     /// -   type: `hkBool`
     /// - offset: 17
     /// -  flags: `FLAGS_NONE`
-    reverse_button_pressed: bool,
+    pub reverse_button_pressed: bool,
 }
 
 impl Serialize for HkpVehicleDriverInputAnalogStatus {

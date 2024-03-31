@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,97 +34,97 @@ pub struct HkbPoseMatchingGenerator<'a> {
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    reference_pose_weight_threshold: f32,
+    pub reference_pose_weight_threshold: f32,
     /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"blendParameter"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    blend_parameter: f32,
+    pub blend_parameter: f32,
     /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"minCyclicBlendParameter"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    min_cyclic_blend_parameter: f32,
+    pub min_cyclic_blend_parameter: f32,
     /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"maxCyclicBlendParameter"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    max_cyclic_blend_parameter: f32,
+    pub max_cyclic_blend_parameter: f32,
     /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"indexOfSyncMasterChild"`
     /// -   type: `hkInt16`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    index_of_sync_master_child: i16,
+    pub index_of_sync_master_child: i16,
     /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"flags"`
     /// -   type: `hkInt16`
     /// - offset: 58
     /// -  flags: `FLAGS_NONE`
-    flags: i16,
+    pub flags: i16,
     /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"subtractLastChild"`
     /// -   type: `hkBool`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    subtract_last_child: bool,
+    pub subtract_last_child: bool,
     /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"children"`
     /// -   type: `hkArray<hkbBlenderGeneratorChild*>`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    children: HkArrayRef<Cow<'a, str>>,
+    pub children: HkArrayRef<Cow<'a, str>>,
     /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"childrenInternalStates"`
     /// -   type: `hkArray<void>`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    children_internal_states: HkArrayRef<()>,
+    pub children_internal_states: HkArrayRef<()>,
     /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"sortedChildren"`
     /// -   type: `hkArray<void>`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    sorted_children: HkArrayRef<()>,
+    pub sorted_children: HkArrayRef<()>,
     /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"endIntervalWeight"`
     /// -   type: `hkReal`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    end_interval_weight: f32,
+    pub end_interval_weight: f32,
     /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"numActiveChildren"`
     /// -   type: `hkInt32`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    num_active_children: i32,
+    pub num_active_children: i32,
     /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"beginIntervalIndex"`
     /// -   type: `hkInt16`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    begin_interval_index: i16,
+    pub begin_interval_index: i16,
     /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"endIntervalIndex"`
     /// -   type: `hkInt16`
     /// - offset: 110
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    end_interval_index: i16,
+    pub end_interval_index: i16,
     /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"initSync"`
     /// -   type: `hkBool`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    init_sync: bool,
+    pub init_sync: bool,
     /// # C++ Parent class(`hkbBlenderGenerator` => parent: `hkbGenerator`) field Info
     /// -   name:`"doSubtractiveBlend"`
     /// -   type: `hkBool`
     /// - offset: 113
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    do_subtractive_blend: bool,
+    pub do_subtractive_blend: bool,
 
     // C++ Parent class(`hkbGenerator` => parent: `hkbNode`) has no fields
     //
@@ -128,63 +133,63 @@ pub struct HkbPoseMatchingGenerator<'a> {
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    id: i16,
+    pub id: i16,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    clone_state: (),
+    pub clone_state: (),
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pad_node: CStyleArray<[bool; 1]>,
+    pub pad_node: CStyleArray<[bool; 1]>,
 
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"variableBindingSet"`
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    variable_binding_set: Cow<'a, str>,
+    pub variable_binding_set: Cow<'a, str>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray<void>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    cached_bindables: HkArrayRef<()>,
+    pub cached_bindables: HkArrayRef<()>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    are_bindables_cached: bool,
+    pub are_bindables_cached: bool,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -193,109 +198,109 @@ pub struct HkbPoseMatchingGenerator<'a> {
     /// -   type: `hkQuaternion`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    world_from_model_rotation: Quaternion<f32>,
+    pub world_from_model_rotation: Quaternion<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"blendSpeed"`
     /// -   type: `hkReal`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    blend_speed: f32,
+    pub blend_speed: f32,
     /// # C++ Class Fields Info
     /// -   name:`"minSpeedToSwitch"`
     /// -   type: `hkReal`
     /// - offset: 148
     /// -  flags: `FLAGS_NONE`
-    min_speed_to_switch: f32,
+    pub min_speed_to_switch: f32,
     /// # C++ Class Fields Info
     /// -   name:`"minSwitchTimeNoError"`
     /// -   type: `hkReal`
     /// - offset: 152
     /// -  flags: `FLAGS_NONE`
-    min_switch_time_no_error: f32,
+    pub min_switch_time_no_error: f32,
     /// # C++ Class Fields Info
     /// -   name:`"minSwitchTimeFullError"`
     /// -   type: `hkReal`
     /// - offset: 156
     /// -  flags: `FLAGS_NONE`
-    min_switch_time_full_error: f32,
+    pub min_switch_time_full_error: f32,
     /// # C++ Class Fields Info
     /// -   name:`"startPlayingEventId"`
     /// -   type: `hkInt32`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    start_playing_event_id: i32,
+    pub start_playing_event_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"startMatchingEventId"`
     /// -   type: `hkInt32`
     /// - offset: 164
     /// -  flags: `FLAGS_NONE`
-    start_matching_event_id: i32,
+    pub start_matching_event_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"rootBoneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE`
-    root_bone_index: i16,
+    pub root_bone_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"otherBoneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 170
     /// -  flags: `FLAGS_NONE`
-    other_bone_index: i16,
+    pub other_bone_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"anotherBoneIndex"`
     /// -   type: `hkInt16`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE`
-    another_bone_index: i16,
+    pub another_bone_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"pelvisIndex"`
     /// -   type: `hkInt16`
     /// - offset: 174
     /// -  flags: `FLAGS_NONE`
-    pelvis_index: i16,
+    pub pelvis_index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"mode"`
     /// -   type: `enum Mode`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
-    mode: Mode,
+    pub mode: Mode,
     /// # C++ Class Fields Info
     /// -   name:`"currentMatch"`
     /// -   type: `hkInt32`
     /// - offset: 180
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    current_match: i32,
+    pub current_match: i32,
     /// # C++ Class Fields Info
     /// -   name:`"bestMatch"`
     /// -   type: `hkInt32`
     /// - offset: 184
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    best_match: i32,
+    pub best_match: i32,
     /// # C++ Class Fields Info
     /// -   name:`"timeSinceBetterMatch"`
     /// -   type: `hkReal`
     /// - offset: 188
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    time_since_better_match: f32,
+    pub time_since_better_match: f32,
     /// # C++ Class Fields Info
     /// -   name:`"error"`
     /// -   type: `hkReal`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    error: f32,
+    pub error: f32,
     /// # C++ Class Fields Info
     /// -   name:`"resetCurrentMatchLocalTime"`
     /// -   type: `hkBool`
     /// - offset: 196
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reset_current_match_local_time: bool,
+    pub reset_current_match_local_time: bool,
     /// # C++ Class Fields Info
     /// -   name:`"poseMatchingUtility"`
     /// -   type: `void*`
     /// - offset: 200
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pose_matching_utility: Cow<'a, str>,
+    pub pose_matching_utility: Cow<'a, str>,
 }
 
 impl Serialize for HkbPoseMatchingGenerator<'_> {

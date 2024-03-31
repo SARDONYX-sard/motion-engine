@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,31 +33,31 @@ pub struct HkxVertexDescriptionElementDecl {
     /// -   type: `hkUint32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    byte_offset: u32,
+    pub byte_offset: u32,
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum DataType`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    _type: DataType,
+    pub _type: DataType,
     /// # C++ Class Fields Info
     /// -   name:`"usage"`
     /// -   type: `enum DataUsage`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    usage: DataUsage,
+    pub usage: DataUsage,
     /// # C++ Class Fields Info
     /// -   name:`"byteStride"`
     /// -   type: `hkUint32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    byte_stride: u32,
+    pub byte_stride: u32,
     /// # C++ Class Fields Info
     /// -   name:`"numElements"`
     /// -   type: `hkUint8`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    num_elements: u8,
+    pub num_elements: u8,
 }
 
 impl Serialize for HkxVertexDescriptionElementDecl {

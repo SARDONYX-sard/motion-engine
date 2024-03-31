@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkbCharacterStringData<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,79 +49,79 @@ pub struct HkbCharacterStringData<'a> {
     /// -   type: `hkArray<hkStringPtr>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    deformable_skin_names: HkArrayStringPtr<'a>,
+    pub deformable_skin_names: HkArrayStringPtr<'a>,
     /// # C++ Class Fields Info
     /// -   name:`"rigidSkinNames"`
     /// -   type: `hkArray<hkStringPtr>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    rigid_skin_names: HkArrayStringPtr<'a>,
+    pub rigid_skin_names: HkArrayStringPtr<'a>,
     /// # C++ Class Fields Info
     /// -   name:`"animationNames"`
     /// -   type: `hkArray<hkStringPtr>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    animation_names: HkArrayStringPtr<'a>,
+    pub animation_names: HkArrayStringPtr<'a>,
     /// # C++ Class Fields Info
     /// -   name:`"animationFilenames"`
     /// -   type: `hkArray<hkStringPtr>`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    animation_filenames: HkArrayStringPtr<'a>,
+    pub animation_filenames: HkArrayStringPtr<'a>,
     /// # C++ Class Fields Info
     /// -   name:`"characterPropertyNames"`
     /// -   type: `hkArray<hkStringPtr>`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    character_property_names: HkArrayStringPtr<'a>,
+    pub character_property_names: HkArrayStringPtr<'a>,
     /// # C++ Class Fields Info
     /// -   name:`"retargetingSkeletonMapperFilenames"`
     /// -   type: `hkArray<hkStringPtr>`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    retargeting_skeleton_mapper_filenames: HkArrayStringPtr<'a>,
+    pub retargeting_skeleton_mapper_filenames: HkArrayStringPtr<'a>,
     /// # C++ Class Fields Info
     /// -   name:`"lodNames"`
     /// -   type: `hkArray<hkStringPtr>`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    lod_names: HkArrayStringPtr<'a>,
+    pub lod_names: HkArrayStringPtr<'a>,
     /// # C++ Class Fields Info
     /// -   name:`"mirroredSyncPointSubstringsA"`
     /// -   type: `hkArray<hkStringPtr>`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    mirrored_sync_point_substrings_a: HkArrayStringPtr<'a>,
+    pub mirrored_sync_point_substrings_a: HkArrayStringPtr<'a>,
     /// # C++ Class Fields Info
     /// -   name:`"mirroredSyncPointSubstringsB"`
     /// -   type: `hkArray<hkStringPtr>`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    mirrored_sync_point_substrings_b: HkArrayStringPtr<'a>,
+    pub mirrored_sync_point_substrings_b: HkArrayStringPtr<'a>,
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"rigName"`
     /// -   type: `hkStringPtr`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
-    rig_name: Cow<'a, str>,
+    pub rig_name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"ragdollName"`
     /// -   type: `hkStringPtr`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
-    ragdoll_name: Cow<'a, str>,
+    pub ragdoll_name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"behaviorFilename"`
     /// -   type: `hkStringPtr`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    behavior_filename: Cow<'a, str>,
+    pub behavior_filename: Cow<'a, str>,
 }
 
 impl Serialize for HkbCharacterStringData<'_> {

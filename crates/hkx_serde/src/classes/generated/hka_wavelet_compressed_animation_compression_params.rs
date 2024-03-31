@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,61 +33,61 @@ pub struct HkaWaveletCompressedAnimationCompressionParams {
     /// -   type: `hkUint16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    quantization_bits: u16,
+    pub quantization_bits: u16,
     /// # C++ Class Fields Info
     /// -   name:`"blockSize"`
     /// -   type: `hkUint16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    block_size: u16,
+    pub block_size: u16,
     /// # C++ Class Fields Info
     /// -   name:`"preserve"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    preserve: u16,
+    pub preserve: u16,
     /// # C++ Class Fields Info
     /// -   name:`"truncProp"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    trunc_prop: f32,
+    pub trunc_prop: f32,
     /// # C++ Class Fields Info
     /// -   name:`"useOldStyleTruncation"`
     /// -   type: `hkBool`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    use_old_style_truncation: bool,
+    pub use_old_style_truncation: bool,
     /// # C++ Class Fields Info
     /// -   name:`"absolutePositionTolerance"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    absolute_position_tolerance: f32,
+    pub absolute_position_tolerance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"relativePositionTolerance"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    relative_position_tolerance: f32,
+    pub relative_position_tolerance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"rotationTolerance"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    rotation_tolerance: f32,
+    pub rotation_tolerance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"scaleTolerance"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    scale_tolerance: f32,
+    pub scale_tolerance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"absoluteFloatTolerance"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    absolute_float_tolerance: f32,
+    pub absolute_float_tolerance: f32,
 }
 
 impl Serialize for HkaWaveletCompressedAnimationCompressionParams {

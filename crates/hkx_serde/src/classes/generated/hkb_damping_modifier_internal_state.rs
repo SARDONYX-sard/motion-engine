@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkbDampingModifierInternalState {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,37 +49,37 @@ pub struct HkbDampingModifierInternalState {
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    damped_vector: Vector4<f32>,
+    pub damped_vector: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"vecErrorSum"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    vec_error_sum: Vector4<f32>,
+    pub vec_error_sum: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"vecPreviousError"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    vec_previous_error: Vector4<f32>,
+    pub vec_previous_error: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"dampedValue"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    damped_value: f32,
+    pub damped_value: f32,
     /// # C++ Class Fields Info
     /// -   name:`"errorSum"`
     /// -   type: `hkReal`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    error_sum: f32,
+    pub error_sum: f32,
     /// # C++ Class Fields Info
     /// -   name:`"previousError"`
     /// -   type: `hkReal`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    previous_error: f32,
+    pub previous_error: f32,
 }
 
 impl Serialize for HkbDampingModifierInternalState {

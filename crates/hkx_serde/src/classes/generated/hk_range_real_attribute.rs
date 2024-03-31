@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,25 +33,25 @@ pub struct HkRangeRealAttribute {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    absmin: f32,
+    pub absmin: f32,
     /// # C++ Class Fields Info
     /// -   name:`"absmax"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    absmax: f32,
+    pub absmax: f32,
     /// # C++ Class Fields Info
     /// -   name:`"softmin"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    softmin: f32,
+    pub softmin: f32,
     /// # C++ Class Fields Info
     /// -   name:`"softmax"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    softmax: f32,
+    pub softmax: f32,
 }
 
 impl Serialize for HkRangeRealAttribute {

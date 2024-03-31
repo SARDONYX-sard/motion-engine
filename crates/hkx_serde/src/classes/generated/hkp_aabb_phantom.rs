@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,69 +34,69 @@ pub struct HkpAabbPhantom<'a> {
     /// -   type: `hkArray<void*>`
     /// - offset: 140
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    overlap_listeners: HkArrayRef<Cow<'a, str>>,
+    pub overlap_listeners: HkArrayRef<Cow<'a, str>>,
     /// # C++ Parent class(`hkpPhantom` => parent: `hkpWorldObject`) field Info
     /// -   name:`"phantomListeners"`
     /// -   type: `hkArray<void*>`
     /// - offset: 152
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    phantom_listeners: HkArrayRef<Cow<'a, str>>,
+    pub phantom_listeners: HkArrayRef<Cow<'a, str>>,
 
     /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"world"`
     /// -   type: `void*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    world: Cow<'a, str>,
+    pub world: Cow<'a, str>,
     /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"collidable"`
     /// -   type: `struct hkpLinkedCollidable`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    collidable: SingleClass<HkpLinkedCollidable<'a>>,
+    pub collidable: SingleClass<HkpLinkedCollidable<'a>>,
     /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"multiThreadCheck"`
     /// -   type: `struct hkMultiThreadCheck`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
-    multi_thread_check: SingleClass<HkMultiThreadCheck>,
+    pub multi_thread_check: SingleClass<HkMultiThreadCheck>,
     /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"properties"`
     /// -   type: `hkArray<struct hkpProperty>`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
-    properties: HkArrayClass<HkpProperty>,
+    pub properties: HkArrayClass<HkpProperty>,
     /// # C++ Parent class(`hkpWorldObject` => parent: `hkReferencedObject`) field Info
     /// -   name:`"treeData"`
     /// -   type: `void*`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    tree_data: Cow<'a, str>,
+    pub tree_data: Cow<'a, str>,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -100,19 +105,19 @@ pub struct HkpAabbPhantom<'a> {
     /// -   type: `struct hkAabb`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
-    aabb: SingleClass<HkAabb>,
+    pub aabb: SingleClass<HkAabb>,
     /// # C++ Class Fields Info
     /// -   name:`"overlappingCollidables"`
     /// -   type: `hkArray<void*>`
     /// - offset: 208
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    overlapping_collidables: HkArrayRef<Cow<'a, str>>,
+    pub overlapping_collidables: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"orderDirty"`
     /// -   type: `hkBool`
     /// - offset: 220
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    order_dirty: bool,
+    pub order_dirty: bool,
 }
 
 impl Serialize for HkpAabbPhantom<'_> {

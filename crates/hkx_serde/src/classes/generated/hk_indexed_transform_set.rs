@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkIndexedTransformSet<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,37 +49,37 @@ pub struct HkIndexedTransformSet<'a> {
     /// -   type: `hkArray<hkMatrix4>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    matrices: HkArrayMatrix4<Matrix4<f32>>,
+    pub matrices: HkArrayMatrix4<Matrix4<f32>>,
     /// # C++ Class Fields Info
     /// -   name:`"inverseMatrices"`
     /// -   type: `hkArray<hkMatrix4>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    inverse_matrices: HkArrayMatrix4<Matrix4<f32>>,
+    pub inverse_matrices: HkArrayMatrix4<Matrix4<f32>>,
     /// # C++ Class Fields Info
     /// -   name:`"matricesOrder"`
     /// -   type: `hkArray<hkInt16>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    matrices_order: HkArrayNum<i16>,
+    pub matrices_order: HkArrayNum<i16>,
     /// # C++ Class Fields Info
     /// -   name:`"matricesNames"`
     /// -   type: `hkArray<hkStringPtr>`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    matrices_names: HkArrayStringPtr<'a>,
+    pub matrices_names: HkArrayStringPtr<'a>,
     /// # C++ Class Fields Info
     /// -   name:`"indexMappings"`
     /// -   type: `hkArray<struct hkMeshBoneIndexMapping>`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    index_mappings: HkArrayClass<HkMeshBoneIndexMapping>,
+    pub index_mappings: HkArrayClass<HkMeshBoneIndexMapping>,
     /// # C++ Class Fields Info
     /// -   name:`"allMatricesAreAffine"`
     /// -   type: `hkBool`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    all_matrices_are_affine: bool,
+    pub all_matrices_are_affine: bool,
 }
 
 impl Serialize for HkIndexedTransformSet<'_> {

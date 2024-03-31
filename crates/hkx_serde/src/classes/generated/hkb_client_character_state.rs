@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkbClientCharacterState<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,115 +49,115 @@ pub struct HkbClientCharacterState<'a> {
     /// -   type: `hkArray<hkUint64>`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    deformable_skin_ids: HkArrayNum<u64>,
+    pub deformable_skin_ids: HkArrayNum<u64>,
     /// # C++ Class Fields Info
     /// -   name:`"rigidSkinIds"`
     /// -   type: `hkArray<hkUint64>`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    rigid_skin_ids: HkArrayNum<u64>,
+    pub rigid_skin_ids: HkArrayNum<u64>,
     /// # C++ Class Fields Info
     /// -   name:`"externalEventIds"`
     /// -   type: `hkArray<hkInt16>`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    external_event_ids: HkArrayNum<i16>,
+    pub external_event_ids: HkArrayNum<i16>,
     /// # C++ Class Fields Info
     /// -   name:`"auxiliaryInfo"`
     /// -   type: `hkArray<hkbAuxiliaryNodeInfo*>`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    auxiliary_info: HkArrayRef<Cow<'a, str>>,
+    pub auxiliary_info: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"activeEventIds"`
     /// -   type: `hkArray<hkInt16>`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    active_event_ids: HkArrayNum<i16>,
+    pub active_event_ids: HkArrayNum<i16>,
     /// # C++ Class Fields Info
     /// -   name:`"activeVariableIds"`
     /// -   type: `hkArray<hkInt16>`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    active_variable_ids: HkArrayNum<i16>,
+    pub active_variable_ids: HkArrayNum<i16>,
     /// # C++ Class Fields Info
     /// -   name:`"characterId"`
     /// -   type: `hkUint64`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    character_id: u64,
+    pub character_id: u64,
     /// # C++ Class Fields Info
     /// -   name:`"instanceName"`
     /// -   type: `hkStringPtr`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    instance_name: Cow<'a, str>,
+    pub instance_name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"templateName"`
     /// -   type: `hkStringPtr`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    template_name: Cow<'a, str>,
+    pub template_name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"fullPathToProject"`
     /// -   type: `hkStringPtr`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    full_path_to_project: Cow<'a, str>,
+    pub full_path_to_project: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"behaviorData"`
     /// -   type: `struct hkbBehaviorGraphData*`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
-    behavior_data: Cow<'a, str>,
+    pub behavior_data: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"behaviorInternalState"`
     /// -   type: `struct hkbBehaviorGraphInternalState*`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    behavior_internal_state: Cow<'a, str>,
+    pub behavior_internal_state: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"nodeIdToInternalStateMap"`
     /// -   type: `void*`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    node_id_to_internal_state_map: Cow<'a, str>,
+    pub node_id_to_internal_state_map: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"visible"`
     /// -   type: `hkBool`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    visible: bool,
+    pub visible: bool,
     /// # C++ Class Fields Info
     /// -   name:`"elapsedSimulationTime"`
     /// -   type: `hkReal`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    elapsed_simulation_time: f32,
+    pub elapsed_simulation_time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"skeleton"`
     /// -   type: `struct hkaSkeleton*`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
-    skeleton: Cow<'a, str>,
+    pub skeleton: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"worldFromModel"`
     /// -   type: `hkQsTransform`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    world_from_model: QsTransform<f32>,
+    pub world_from_model: QsTransform<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"poseModelSpace"`
     /// -   type: `hkArray<hkQsTransform>`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
-    pose_model_space: HkArrayMatrix3<QsTransform<f32>>,
+    pub pose_model_space: HkArrayMatrix3<QsTransform<f32>>,
     /// # C++ Class Fields Info
     /// -   name:`"rigidAttachmentTransforms"`
     /// -   type: `hkArray<hkQsTransform>`
     /// - offset: 188
     /// -  flags: `FLAGS_NONE`
-    rigid_attachment_transforms: HkArrayMatrix3<QsTransform<f32>>,
+    pub rigid_attachment_transforms: HkArrayMatrix3<QsTransform<f32>>,
 }
 
 impl Serialize for HkbClientCharacterState<'_> {

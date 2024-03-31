@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,25 +33,25 @@ pub struct HkpGenericConstraintDataSchemeConstraintInfo {
     /// -   type: `hkInt32`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    max_size_of_schema: i32,
+    pub max_size_of_schema: i32,
     /// # C++ Class Fields Info
     /// -   name:`"sizeOfSchemas"`
     /// -   type: `hkInt32`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    size_of_schemas: i32,
+    pub size_of_schemas: i32,
     /// # C++ Class Fields Info
     /// -   name:`"numSolverResults"`
     /// -   type: `hkInt32`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    num_solver_results: i32,
+    pub num_solver_results: i32,
     /// # C++ Class Fields Info
     /// -   name:`"numSolverElemTemps"`
     /// -   type: `hkInt32`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    num_solver_elem_temps: i32,
+    pub num_solver_elem_temps: i32,
 }
 
 impl Serialize for HkpGenericConstraintDataSchemeConstraintInfo {

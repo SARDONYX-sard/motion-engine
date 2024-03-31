@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,19 +34,19 @@ pub struct HkpMalleableConstraintData<'a> {
     /// -   type: `struct hkpConstraintData*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    constraint_data: Cow<'a, str>,
+    pub constraint_data: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"atoms"`
     /// -   type: `struct hkpBridgeAtoms`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    atoms: SingleClass<HkpBridgeAtoms<'a>>,
+    pub atoms: SingleClass<HkpBridgeAtoms<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"strength"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    strength: f32,
+    pub strength: f32,
 }
 
 impl Serialize for HkpMalleableConstraintData<'_> {

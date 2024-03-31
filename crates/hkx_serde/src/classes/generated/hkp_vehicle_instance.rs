@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,45 +34,45 @@ pub struct HkpVehicleInstance<'a> {
     /// -   type: `struct hkpEntity*`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    entity: Cow<'a, str>,
+    pub entity: Cow<'a, str>,
 
     /// # C++ Parent class(`hkpAction` => parent: `hkReferencedObject`) field Info
     /// -   name:`"world"`
     /// -   type: `void*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    world: Cow<'a, str>,
+    pub world: Cow<'a, str>,
     /// # C++ Parent class(`hkpAction` => parent: `hkReferencedObject`) field Info
     /// -   name:`"island"`
     /// -   type: `void*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    island: Cow<'a, str>,
+    pub island: Cow<'a, str>,
     /// # C++ Parent class(`hkpAction` => parent: `hkReferencedObject`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkpAction` => parent: `hkReferencedObject`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -76,151 +81,151 @@ pub struct HkpVehicleInstance<'a> {
     /// -   type: `struct hkpVehicleData*`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    data: Cow<'a, str>,
+    pub data: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"driverInput"`
     /// -   type: `struct hkpVehicleDriverInput*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    driver_input: Cow<'a, str>,
+    pub driver_input: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"steering"`
     /// -   type: `struct hkpVehicleSteering*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    steering: Cow<'a, str>,
+    pub steering: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"engine"`
     /// -   type: `struct hkpVehicleEngine*`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    engine: Cow<'a, str>,
+    pub engine: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"transmission"`
     /// -   type: `struct hkpVehicleTransmission*`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    transmission: Cow<'a, str>,
+    pub transmission: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"brake"`
     /// -   type: `struct hkpVehicleBrake*`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    brake: Cow<'a, str>,
+    pub brake: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"suspension"`
     /// -   type: `struct hkpVehicleSuspension*`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    suspension: Cow<'a, str>,
+    pub suspension: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"aerodynamics"`
     /// -   type: `struct hkpVehicleAerodynamics*`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    aerodynamics: Cow<'a, str>,
+    pub aerodynamics: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"wheelCollide"`
     /// -   type: `struct hkpVehicleWheelCollide*`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    wheel_collide: Cow<'a, str>,
+    pub wheel_collide: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"tyreMarks"`
     /// -   type: `struct hkpTyremarksInfo*`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    tyre_marks: Cow<'a, str>,
+    pub tyre_marks: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"velocityDamper"`
     /// -   type: `struct hkpVehicleVelocityDamper*`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    velocity_damper: Cow<'a, str>,
+    pub velocity_damper: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"wheelsInfo"`
     /// -   type: `hkArray<struct hkpVehicleInstanceWheelInfo>`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    wheels_info: HkArrayClass<HkpVehicleInstanceWheelInfo<'a>>,
+    pub wheels_info: HkArrayClass<HkpVehicleInstanceWheelInfo<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"frictionStatus"`
     /// -   type: `struct hkpVehicleFrictionStatus`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    friction_status: SingleClass<HkpVehicleFrictionStatus>,
+    pub friction_status: SingleClass<HkpVehicleFrictionStatus>,
     /// # C++ Class Fields Info
     /// -   name:`"deviceStatus"`
     /// -   type: `struct hkpVehicleDriverInputStatus*`
     /// - offset: 156
     /// -  flags: `FLAGS_NONE`
-    device_status: Cow<'a, str>,
+    pub device_status: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"isFixed"`
     /// -   type: `hkArray<hkBool>`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    is_fixed: HkArrayRef<bool>,
+    pub is_fixed: HkArrayRef<bool>,
     /// # C++ Class Fields Info
     /// -   name:`"wheelsTimeSinceMaxPedalInput"`
     /// -   type: `hkReal`
     /// - offset: 172
     /// -  flags: `FLAGS_NONE`
-    wheels_time_since_max_pedal_input: f32,
+    pub wheels_time_since_max_pedal_input: f32,
     /// # C++ Class Fields Info
     /// -   name:`"tryingToReverse"`
     /// -   type: `hkBool`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
-    trying_to_reverse: bool,
+    pub trying_to_reverse: bool,
     /// # C++ Class Fields Info
     /// -   name:`"torque"`
     /// -   type: `hkReal`
     /// - offset: 180
     /// -  flags: `FLAGS_NONE`
-    torque: f32,
+    pub torque: f32,
     /// # C++ Class Fields Info
     /// -   name:`"rpm"`
     /// -   type: `hkReal`
     /// - offset: 184
     /// -  flags: `FLAGS_NONE`
-    rpm: f32,
+    pub rpm: f32,
     /// # C++ Class Fields Info
     /// -   name:`"mainSteeringAngle"`
     /// -   type: `hkReal`
     /// - offset: 188
     /// -  flags: `FLAGS_NONE`
-    main_steering_angle: f32,
+    pub main_steering_angle: f32,
     /// # C++ Class Fields Info
     /// -   name:`"wheelsSteeringAngle"`
     /// -   type: `hkArray<hkReal>`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE`
-    wheels_steering_angle: HkArrayNum<f32>,
+    pub wheels_steering_angle: HkArrayNum<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"isReversing"`
     /// -   type: `hkBool`
     /// - offset: 204
     /// -  flags: `FLAGS_NONE`
-    is_reversing: bool,
+    pub is_reversing: bool,
     /// # C++ Class Fields Info
     /// -   name:`"currentGear"`
     /// -   type: `hkInt8`
     /// - offset: 205
     /// -  flags: `FLAGS_NONE`
-    current_gear: i8,
+    pub current_gear: i8,
     /// # C++ Class Fields Info
     /// -   name:`"delayed"`
     /// -   type: `hkBool`
     /// - offset: 206
     /// -  flags: `FLAGS_NONE`
-    delayed: bool,
+    pub delayed: bool,
     /// # C++ Class Fields Info
     /// -   name:`"clutchDelayCountdown"`
     /// -   type: `hkReal`
     /// - offset: 208
     /// -  flags: `FLAGS_NONE`
-    clutch_delay_countdown: f32,
+    pub clutch_delay_countdown: f32,
 }
 
 impl Serialize for HkpVehicleInstance<'_> {

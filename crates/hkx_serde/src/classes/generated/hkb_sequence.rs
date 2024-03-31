@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,76 +34,76 @@ pub struct HkbSequence<'a> {
     /// -   type: `hkBool`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    enable: bool,
+    pub enable: bool,
     /// # C++ Parent class(`hkbModifier` => parent: `hkbNode`) field Info
     /// -   name:`"padModifier"`
     /// -   type: `hkBool[3]`
     /// - offset: 41
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pad_modifier: CStyleArray<[bool; 3]>,
+    pub pad_modifier: CStyleArray<[bool; 3]>,
 
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"id"`
     /// -   type: `hkInt16`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    id: i16,
+    pub id: i16,
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"cloneState"`
     /// -   type: `enum unknown`
     /// - offset: 38
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    clone_state: (),
+    pub clone_state: (),
     /// # C++ Parent class(`hkbNode` => parent: `hkbBindable`) field Info
     /// -   name:`"padNode"`
     /// -   type: `hkBool[1]`
     /// - offset: 39
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pad_node: CStyleArray<[bool; 1]>,
+    pub pad_node: CStyleArray<[bool; 1]>,
 
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"variableBindingSet"`
     /// -   type: `struct hkbVariableBindingSet*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    variable_binding_set: Cow<'a, str>,
+    pub variable_binding_set: Cow<'a, str>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"cachedBindables"`
     /// -   type: `hkArray<void>`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    cached_bindables: HkArrayRef<()>,
+    pub cached_bindables: HkArrayRef<()>,
     /// # C++ Parent class(`hkbBindable` => parent: `hkReferencedObject`) field Info
     /// -   name:`"areBindablesCached"`
     /// -   type: `hkBool`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    are_bindables_cached: bool,
+    pub are_bindables_cached: bool,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -107,91 +112,91 @@ pub struct HkbSequence<'a> {
     /// -   type: `hkArray<hkbEventSequencedData*>`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    event_sequenced_data: HkArrayRef<Cow<'a, str>>,
+    pub event_sequenced_data: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"realVariableSequencedData"`
     /// -   type: `hkArray<hkbRealVariableSequencedData*>`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    real_variable_sequenced_data: HkArrayRef<Cow<'a, str>>,
+    pub real_variable_sequenced_data: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"boolVariableSequencedData"`
     /// -   type: `hkArray<hkbBoolVariableSequencedData*>`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    bool_variable_sequenced_data: HkArrayRef<Cow<'a, str>>,
+    pub bool_variable_sequenced_data: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"intVariableSequencedData"`
     /// -   type: `hkArray<hkbIntVariableSequencedData*>`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    int_variable_sequenced_data: HkArrayRef<Cow<'a, str>>,
+    pub int_variable_sequenced_data: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"enableEventId"`
     /// -   type: `hkInt32`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    enable_event_id: i32,
+    pub enable_event_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"disableEventId"`
     /// -   type: `hkInt32`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    disable_event_id: i32,
+    pub disable_event_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"stringData"`
     /// -   type: `struct hkbSequenceStringData*`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
-    string_data: Cow<'a, str>,
+    pub string_data: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"variableIdMap"`
     /// -   type: `void*`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    variable_id_map: Cow<'a, str>,
+    pub variable_id_map: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"eventIdMap"`
     /// -   type: `void*`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    event_id_map: Cow<'a, str>,
+    pub event_id_map: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"nextSampleEvents"`
     /// -   type: `hkArray<void>`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    next_sample_events: HkArrayRef<()>,
+    pub next_sample_events: HkArrayRef<()>,
     /// # C++ Class Fields Info
     /// -   name:`"nextSampleReals"`
     /// -   type: `hkArray<void>`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    next_sample_reals: HkArrayRef<()>,
+    pub next_sample_reals: HkArrayRef<()>,
     /// # C++ Class Fields Info
     /// -   name:`"nextSampleBools"`
     /// -   type: `hkArray<void>`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    next_sample_bools: HkArrayRef<()>,
+    pub next_sample_bools: HkArrayRef<()>,
     /// # C++ Class Fields Info
     /// -   name:`"nextSampleInts"`
     /// -   type: `hkArray<void>`
     /// - offset: 148
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    next_sample_ints: HkArrayRef<()>,
+    pub next_sample_ints: HkArrayRef<()>,
     /// # C++ Class Fields Info
     /// -   name:`"time"`
     /// -   type: `hkReal`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    time: f32,
+    pub time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"isEnabled"`
     /// -   type: `hkBool`
     /// - offset: 164
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    is_enabled: bool,
+    pub is_enabled: bool,
 }
 
 impl Serialize for HkbSequence<'_> {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkpConstraintInstance<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,73 +49,73 @@ pub struct HkpConstraintInstance<'a> {
     /// -   type: `void*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    owner: Cow<'a, str>,
+    pub owner: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"data"`
     /// -   type: `struct hkpConstraintData*`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    data: Cow<'a, str>,
+    pub data: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"constraintModifiers"`
     /// -   type: `struct hkpModifierConstraintAtom*`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    constraint_modifiers: Cow<'a, str>,
+    pub constraint_modifiers: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"entities"`
     /// -   type: `struct hkpEntity*`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    entities: Cow<'a, str>,
+    pub entities: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"priority"`
     /// -   type: `enum ConstraintPriority`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    priority: ConstraintPriority,
+    pub priority: ConstraintPriority,
     /// # C++ Class Fields Info
     /// -   name:`"wantRuntime"`
     /// -   type: `hkBool`
     /// - offset: 29
     /// -  flags: `FLAGS_NONE`
-    want_runtime: bool,
+    pub want_runtime: bool,
     /// # C++ Class Fields Info
     /// -   name:`"destructionRemapInfo"`
     /// -   type: `enum OnDestructionRemapInfo`
     /// - offset: 30
     /// -  flags: `FLAGS_NONE`
-    destruction_remap_info: OnDestructionRemapInfo,
+    pub destruction_remap_info: OnDestructionRemapInfo,
     /// # C++ Class Fields Info
     /// -   name:`"listeners"`
     /// -   type: `struct hkpConstraintInstanceSmallArraySerializeOverrideType`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    listeners: SingleClass<HkpConstraintInstanceSmallArraySerializeOverrideType<'a>>,
+    pub listeners: SingleClass<HkpConstraintInstanceSmallArraySerializeOverrideType<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"name"`
     /// -   type: `hkStringPtr`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"userData"`
     /// -   type: `hkUlong`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    user_data: usize,
+    pub user_data: usize,
     /// # C++ Class Fields Info
     /// -   name:`"internal"`
     /// -   type: `void*`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    internal: Cow<'a, str>,
+    pub internal: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"uid"`
     /// -   type: `hkUint32`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    uid: u32,
+    pub uid: u32,
 }
 
 impl Serialize for HkpConstraintInstance<'_> {

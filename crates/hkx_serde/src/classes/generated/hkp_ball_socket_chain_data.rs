@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -31,37 +36,37 @@ pub struct HkpBallSocketChainData<'a> {
     /// -   type: `struct hkpBridgeAtoms`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    atoms: SingleClass<HkpBridgeAtoms<'a>>,
+    pub atoms: SingleClass<HkpBridgeAtoms<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"infos"`
     /// -   type: `hkArray<struct hkpBallSocketChainDataConstraintInfo>`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    infos: HkArrayClass<HkpBallSocketChainDataConstraintInfo>,
+    pub infos: HkArrayClass<HkpBallSocketChainDataConstraintInfo>,
     /// # C++ Class Fields Info
     /// -   name:`"tau"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    tau: f32,
+    pub tau: f32,
     /// # C++ Class Fields Info
     /// -   name:`"damping"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    damping: f32,
+    pub damping: f32,
     /// # C++ Class Fields Info
     /// -   name:`"cfm"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    cfm: f32,
+    pub cfm: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxErrorDistance"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    max_error_distance: f32,
+    pub max_error_distance: f32,
 }
 
 impl Serialize for HkpBallSocketChainData<'_> {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,56 +34,56 @@ pub struct HkpSimpleContactConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    _type: AtomType,
+    pub _type: AtomType,
 
     /// # C++ Class Fields Info
     /// -   name:`"sizeOfAllAtoms"`
     /// -   type: `hkUint16`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    size_of_all_atoms: u16,
+    pub size_of_all_atoms: u16,
     /// # C++ Class Fields Info
     /// -   name:`"numContactPoints"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    num_contact_points: u16,
+    pub num_contact_points: u16,
     /// # C++ Class Fields Info
     /// -   name:`"numReservedContactPoints"`
     /// -   type: `hkUint16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    num_reserved_contact_points: u16,
+    pub num_reserved_contact_points: u16,
     /// # C++ Class Fields Info
     /// -   name:`"numUserDatasForBodyA"`
     /// -   type: `hkUint8`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    num_user_datas_for_body_a: u8,
+    pub num_user_datas_for_body_a: u8,
     /// # C++ Class Fields Info
     /// -   name:`"numUserDatasForBodyB"`
     /// -   type: `hkUint8`
     /// - offset: 9
     /// -  flags: `FLAGS_NONE`
-    num_user_datas_for_body_b: u8,
+    pub num_user_datas_for_body_b: u8,
     /// # C++ Class Fields Info
     /// -   name:`"contactPointPropertiesStriding"`
     /// -   type: `hkUint8`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
-    contact_point_properties_striding: u8,
+    pub contact_point_properties_striding: u8,
     /// # C++ Class Fields Info
     /// -   name:`"maxNumContactPoints"`
     /// -   type: `hkUint16`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    max_num_contact_points: u16,
+    pub max_num_contact_points: u16,
     /// # C++ Class Fields Info
     /// -   name:`"info"`
     /// -   type: `struct hkpSimpleContactConstraintDataInfo`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE|ALIGN16`
-    info: SingleClass<HkpSimpleContactConstraintDataInfo>,
+    pub info: SingleClass<HkpSimpleContactConstraintDataInfo>,
 }
 
 impl Serialize for HkpSimpleContactConstraintAtom {

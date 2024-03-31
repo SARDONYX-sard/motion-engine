@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,43 +33,43 @@ pub struct HkbStateMachineActiveTransitionInfo<'a> {
     /// -   type: `void*`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    transition_effect: Cow<'a, str>,
+    pub transition_effect: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"transitionEffectInternalStateInfo"`
     /// -   type: `struct hkbNodeInternalStateInfo*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    transition_effect_internal_state_info: Cow<'a, str>,
+    pub transition_effect_internal_state_info: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"transitionInfoReference"`
     /// -   type: `struct hkbStateMachineTransitionInfoReference`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    transition_info_reference: SingleClass<HkbStateMachineTransitionInfoReference>,
+    pub transition_info_reference: SingleClass<HkbStateMachineTransitionInfoReference>,
     /// # C++ Class Fields Info
     /// -   name:`"transitionInfoReferenceForTE"`
     /// -   type: `struct hkbStateMachineTransitionInfoReference`
     /// - offset: 14
     /// -  flags: `FLAGS_NONE`
-    transition_info_reference_for_te: SingleClass<HkbStateMachineTransitionInfoReference>,
+    pub transition_info_reference_for_te: SingleClass<HkbStateMachineTransitionInfoReference>,
     /// # C++ Class Fields Info
     /// -   name:`"fromStateId"`
     /// -   type: `hkInt32`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    from_state_id: i32,
+    pub from_state_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"toStateId"`
     /// -   type: `hkInt32`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    to_state_id: i32,
+    pub to_state_id: i32,
     /// # C++ Class Fields Info
     /// -   name:`"isReturnToPreviousState"`
     /// -   type: `hkBool`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    is_return_to_previous_state: bool,
+    pub is_return_to_previous_state: bool,
 }
 
 impl Serialize for HkbStateMachineActiveTransitionInfo<'_> {

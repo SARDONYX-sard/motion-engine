@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,49 +33,49 @@ pub struct HkpRagdollConstraintDataAtoms<'a> {
     /// -   type: `struct hkpSetLocalTransformsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    transforms: SingleClass<HkpSetLocalTransformsConstraintAtom>,
+    pub transforms: SingleClass<HkpSetLocalTransformsConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"setupStabilization"`
     /// -   type: `struct hkpSetupStabilizationAtom`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    setup_stabilization: SingleClass<HkpSetupStabilizationAtom>,
+    pub setup_stabilization: SingleClass<HkpSetupStabilizationAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"ragdollMotors"`
     /// -   type: `struct hkpRagdollMotorConstraintAtom`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    ragdoll_motors: SingleClass<HkpRagdollMotorConstraintAtom<'a>>,
+    pub ragdoll_motors: SingleClass<HkpRagdollMotorConstraintAtom<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"angFriction"`
     /// -   type: `struct hkpAngFrictionConstraintAtom`
     /// - offset: 240
     /// -  flags: `FLAGS_NONE`
-    ang_friction: SingleClass<HkpAngFrictionConstraintAtom>,
+    pub ang_friction: SingleClass<HkpAngFrictionConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"twistLimit"`
     /// -   type: `struct hkpTwistLimitConstraintAtom`
     /// - offset: 252
     /// -  flags: `FLAGS_NONE`
-    twist_limit: SingleClass<HkpTwistLimitConstraintAtom>,
+    pub twist_limit: SingleClass<HkpTwistLimitConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"coneLimit"`
     /// -   type: `struct hkpConeLimitConstraintAtom`
     /// - offset: 272
     /// -  flags: `FLAGS_NONE`
-    cone_limit: SingleClass<HkpConeLimitConstraintAtom>,
+    pub cone_limit: SingleClass<HkpConeLimitConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"planesLimit"`
     /// -   type: `struct hkpConeLimitConstraintAtom`
     /// - offset: 292
     /// -  flags: `FLAGS_NONE`
-    planes_limit: SingleClass<HkpConeLimitConstraintAtom>,
+    pub planes_limit: SingleClass<HkpConeLimitConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"ballSocket"`
     /// -   type: `struct hkpBallSocketConstraintAtom`
     /// - offset: 312
     /// -  flags: `FLAGS_NONE`
-    ball_socket: SingleClass<HkpBallSocketConstraintAtom>,
+    pub ball_socket: SingleClass<HkpBallSocketConstraintAtom>,
 }
 
 impl Serialize for HkpRagdollConstraintDataAtoms<'_> {

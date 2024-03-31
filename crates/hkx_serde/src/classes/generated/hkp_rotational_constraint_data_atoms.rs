@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,13 +33,13 @@ pub struct HkpRotationalConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalRotationsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    rotations: SingleClass<HkpSetLocalRotationsConstraintAtom>,
+    pub rotations: SingleClass<HkpSetLocalRotationsConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"ang"`
     /// -   type: `struct hkpAngConstraintAtom`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    ang: SingleClass<HkpAngConstraintAtom>,
+    pub ang: SingleClass<HkpAngConstraintAtom>,
 }
 
 impl Serialize for HkpRotationalConstraintDataAtoms {

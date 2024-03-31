@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,7 +33,7 @@ pub struct HkPackedVector3 {
     /// -   type: `hkInt16[4]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    values: CStyleArray<[i16; 4]>,
+    pub values: CStyleArray<[i16; 4]>,
 }
 
 impl Serialize for HkPackedVector3 {

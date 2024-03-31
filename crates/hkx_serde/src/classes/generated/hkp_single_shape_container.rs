@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -31,7 +36,7 @@ pub struct HkpSingleShapeContainer<'a> {
     /// -   type: `struct hkpShape*`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    child_shape: Cow<'a, str>,
+    pub child_shape: Cow<'a, str>,
 }
 
 impl Serialize for HkpSingleShapeContainer<'_> {

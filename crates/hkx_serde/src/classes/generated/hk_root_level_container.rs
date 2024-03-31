@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,7 +33,7 @@ pub struct HkRootLevelContainer<'a> {
     /// -   type: `hkArray<struct hkRootLevelContainerNamedVariant>`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    named_variants: HkArrayClass<HkRootLevelContainerNamedVariant<'a>>,
+    pub named_variants: HkArrayClass<HkRootLevelContainerNamedVariant<'a>>,
 }
 
 impl Serialize for HkRootLevelContainer<'_> {

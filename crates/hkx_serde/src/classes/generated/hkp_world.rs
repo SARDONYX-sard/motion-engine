@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,13 +34,13 @@ pub struct HkpWorld<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -44,523 +49,523 @@ pub struct HkpWorld<'a> {
     /// -   type: `struct hkpSimulation*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    simulation: Cow<'a, str>,
+    pub simulation: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"gravity"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    gravity: Vector4<f32>,
+    pub gravity: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"fixedIsland"`
     /// -   type: `void*`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    fixed_island: Cow<'a, str>,
+    pub fixed_island: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"fixedRigidBody"`
     /// -   type: `struct hkpRigidBody*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    fixed_rigid_body: Cow<'a, str>,
+    pub fixed_rigid_body: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"activeSimulationIslands"`
     /// -   type: `hkArray<void*>`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    active_simulation_islands: HkArrayRef<Cow<'a, str>>,
+    pub active_simulation_islands: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"inactiveSimulationIslands"`
     /// -   type: `hkArray<void*>`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    inactive_simulation_islands: HkArrayRef<Cow<'a, str>>,
+    pub inactive_simulation_islands: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"dirtySimulationIslands"`
     /// -   type: `hkArray<void*>`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    dirty_simulation_islands: HkArrayRef<Cow<'a, str>>,
+    pub dirty_simulation_islands: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"maintenanceMgr"`
     /// -   type: `void*`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    maintenance_mgr: Cow<'a, str>,
+    pub maintenance_mgr: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"memoryWatchDog"`
     /// -   type: `void*`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    memory_watch_dog: Cow<'a, str>,
+    pub memory_watch_dog: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"assertOnRunningOutOfSolverMemory"`
     /// -   type: `hkBool`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    assert_on_running_out_of_solver_memory: bool,
+    pub assert_on_running_out_of_solver_memory: bool,
     /// # C++ Class Fields Info
     /// -   name:`"broadPhase"`
     /// -   type: `void*`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    broad_phase: Cow<'a, str>,
+    pub broad_phase: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"kdTreeManager"`
     /// -   type: `void*`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    kd_tree_manager: Cow<'a, str>,
+    pub kd_tree_manager: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"autoUpdateTree"`
     /// -   type: `hkBool`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    auto_update_tree: bool,
+    pub auto_update_tree: bool,
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseDispatcher"`
     /// -   type: `void*`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    broad_phase_dispatcher: Cow<'a, str>,
+    pub broad_phase_dispatcher: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"phantomBroadPhaseListener"`
     /// -   type: `void*`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    phantom_broad_phase_listener: Cow<'a, str>,
+    pub phantom_broad_phase_listener: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"entityEntityBroadPhaseListener"`
     /// -   type: `void*`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    entity_entity_broad_phase_listener: Cow<'a, str>,
+    pub entity_entity_broad_phase_listener: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseBorderListener"`
     /// -   type: `void*`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    broad_phase_border_listener: Cow<'a, str>,
+    pub broad_phase_border_listener: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"multithreadedSimulationJobData"`
     /// -   type: `void*`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    multithreaded_simulation_job_data: Cow<'a, str>,
+    pub multithreaded_simulation_job_data: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"collisionInput"`
     /// -   type: `void*`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    collision_input: Cow<'a, str>,
+    pub collision_input: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"collisionFilter"`
     /// -   type: `void*`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    collision_filter: Cow<'a, str>,
+    pub collision_filter: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"collisionDispatcher"`
     /// -   type: `void*`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    collision_dispatcher: Cow<'a, str>,
+    pub collision_dispatcher: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"convexListFilter"`
     /// -   type: `void*`
     /// - offset: 132
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    convex_list_filter: Cow<'a, str>,
+    pub convex_list_filter: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"pendingOperations"`
     /// -   type: `void*`
     /// - offset: 136
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pending_operations: Cow<'a, str>,
+    pub pending_operations: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"pendingOperationsCount"`
     /// -   type: `hkInt32`
     /// - offset: 140
     /// -  flags: `FLAGS_NONE`
-    pending_operations_count: i32,
+    pub pending_operations_count: i32,
     /// # C++ Class Fields Info
     /// -   name:`"pendingBodyOperationsCount"`
     /// -   type: `hkInt32`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pending_body_operations_count: i32,
+    pub pending_body_operations_count: i32,
     /// # C++ Class Fields Info
     /// -   name:`"criticalOperationsLockCount"`
     /// -   type: `hkInt32`
     /// - offset: 148
     /// -  flags: `FLAGS_NONE`
-    critical_operations_lock_count: i32,
+    pub critical_operations_lock_count: i32,
     /// # C++ Class Fields Info
     /// -   name:`"criticalOperationsLockCountForPhantoms"`
     /// -   type: `hkInt32`
     /// - offset: 152
     /// -  flags: `FLAGS_NONE`
-    critical_operations_lock_count_for_phantoms: i32,
+    pub critical_operations_lock_count_for_phantoms: i32,
     /// # C++ Class Fields Info
     /// -   name:`"blockExecutingPendingOperations"`
     /// -   type: `hkBool`
     /// - offset: 156
     /// -  flags: `FLAGS_NONE`
-    block_executing_pending_operations: bool,
+    pub block_executing_pending_operations: bool,
     /// # C++ Class Fields Info
     /// -   name:`"criticalOperationsAllowed"`
     /// -   type: `hkBool`
     /// - offset: 157
     /// -  flags: `FLAGS_NONE`
-    critical_operations_allowed: bool,
+    pub critical_operations_allowed: bool,
     /// # C++ Class Fields Info
     /// -   name:`"pendingOperationQueues"`
     /// -   type: `void*`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    pending_operation_queues: Cow<'a, str>,
+    pub pending_operation_queues: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"pendingOperationQueueCount"`
     /// -   type: `hkInt32`
     /// - offset: 164
     /// -  flags: `FLAGS_NONE`
-    pending_operation_queue_count: i32,
+    pub pending_operation_queue_count: i32,
     /// # C++ Class Fields Info
     /// -   name:`"multiThreadCheck"`
     /// -   type: `struct hkMultiThreadCheck`
     /// - offset: 168
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    multi_thread_check: SingleClass<HkMultiThreadCheck>,
+    pub multi_thread_check: SingleClass<HkMultiThreadCheck>,
     /// # C++ Class Fields Info
     /// -   name:`"processActionsInSingleThread"`
     /// -   type: `hkBool`
     /// - offset: 180
     /// -  flags: `FLAGS_NONE`
-    process_actions_in_single_thread: bool,
+    pub process_actions_in_single_thread: bool,
     /// # C++ Class Fields Info
     /// -   name:`"allowIntegrationOfIslandsWithoutConstraintsInASeparateJob"`
     /// -   type: `hkBool`
     /// - offset: 181
     /// -  flags: `FLAGS_NONE`
-    allow_integration_of_islands_without_constraints_in_a_separate_job: bool,
+    pub allow_integration_of_islands_without_constraints_in_a_separate_job: bool,
     /// # C++ Class Fields Info
     /// -   name:`"minDesiredIslandSize"`
     /// -   type: `hkUint32`
     /// - offset: 184
     /// -  flags: `FLAGS_NONE`
-    min_desired_island_size: u32,
+    pub min_desired_island_size: u32,
     /// # C++ Class Fields Info
     /// -   name:`"modifyConstraintCriticalSection"`
     /// -   type: `void*`
     /// - offset: 188
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    modify_constraint_critical_section: Cow<'a, str>,
+    pub modify_constraint_critical_section: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"isLocked"`
     /// -   type: `hkInt32`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE`
-    is_locked: i32,
+    pub is_locked: i32,
     /// # C++ Class Fields Info
     /// -   name:`"islandDirtyListCriticalSection"`
     /// -   type: `void*`
     /// - offset: 196
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    island_dirty_list_critical_section: Cow<'a, str>,
+    pub island_dirty_list_critical_section: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"propertyMasterLock"`
     /// -   type: `void*`
     /// - offset: 200
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    property_master_lock: Cow<'a, str>,
+    pub property_master_lock: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"wantSimulationIslands"`
     /// -   type: `hkBool`
     /// - offset: 204
     /// -  flags: `FLAGS_NONE`
-    want_simulation_islands: bool,
+    pub want_simulation_islands: bool,
     /// # C++ Class Fields Info
     /// -   name:`"useHybridBroadphase"`
     /// -   type: `hkBool`
     /// - offset: 205
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    use_hybrid_broadphase: bool,
+    pub use_hybrid_broadphase: bool,
     /// # C++ Class Fields Info
     /// -   name:`"snapCollisionToConvexEdgeThreshold"`
     /// -   type: `hkReal`
     /// - offset: 208
     /// -  flags: `FLAGS_NONE`
-    snap_collision_to_convex_edge_threshold: f32,
+    pub snap_collision_to_convex_edge_threshold: f32,
     /// # C++ Class Fields Info
     /// -   name:`"snapCollisionToConcaveEdgeThreshold"`
     /// -   type: `hkReal`
     /// - offset: 212
     /// -  flags: `FLAGS_NONE`
-    snap_collision_to_concave_edge_threshold: f32,
+    pub snap_collision_to_concave_edge_threshold: f32,
     /// # C++ Class Fields Info
     /// -   name:`"enableToiWeldRejection"`
     /// -   type: `hkBool`
     /// - offset: 216
     /// -  flags: `FLAGS_NONE`
-    enable_toi_weld_rejection: bool,
+    pub enable_toi_weld_rejection: bool,
     /// # C++ Class Fields Info
     /// -   name:`"wantDeactivation"`
     /// -   type: `hkBool`
     /// - offset: 217
     /// -  flags: `FLAGS_NONE`
-    want_deactivation: bool,
+    pub want_deactivation: bool,
     /// # C++ Class Fields Info
     /// -   name:`"shouldActivateOnRigidBodyTransformChange"`
     /// -   type: `hkBool`
     /// - offset: 218
     /// -  flags: `FLAGS_NONE`
-    should_activate_on_rigid_body_transform_change: bool,
+    pub should_activate_on_rigid_body_transform_change: bool,
     /// # C++ Class Fields Info
     /// -   name:`"deactivationReferenceDistance"`
     /// -   type: `hkReal`
     /// - offset: 220
     /// -  flags: `FLAGS_NONE`
-    deactivation_reference_distance: f32,
+    pub deactivation_reference_distance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"toiCollisionResponseRotateNormal"`
     /// -   type: `hkReal`
     /// - offset: 224
     /// -  flags: `FLAGS_NONE`
-    toi_collision_response_rotate_normal: f32,
+    pub toi_collision_response_rotate_normal: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxSectorsPerMidphaseCollideTask"`
     /// -   type: `hkInt32`
     /// - offset: 228
     /// -  flags: `FLAGS_NONE`
-    max_sectors_per_midphase_collide_task: i32,
+    pub max_sectors_per_midphase_collide_task: i32,
     /// # C++ Class Fields Info
     /// -   name:`"maxSectorsPerNarrowphaseCollideTask"`
     /// -   type: `hkInt32`
     /// - offset: 232
     /// -  flags: `FLAGS_NONE`
-    max_sectors_per_narrowphase_collide_task: i32,
+    pub max_sectors_per_narrowphase_collide_task: i32,
     /// # C++ Class Fields Info
     /// -   name:`"processToisMultithreaded"`
     /// -   type: `hkBool`
     /// - offset: 236
     /// -  flags: `FLAGS_NONE`
-    process_tois_multithreaded: bool,
+    pub process_tois_multithreaded: bool,
     /// # C++ Class Fields Info
     /// -   name:`"maxEntriesPerToiMidphaseCollideTask"`
     /// -   type: `hkInt32`
     /// - offset: 240
     /// -  flags: `FLAGS_NONE`
-    max_entries_per_toi_midphase_collide_task: i32,
+    pub max_entries_per_toi_midphase_collide_task: i32,
     /// # C++ Class Fields Info
     /// -   name:`"maxEntriesPerToiNarrowphaseCollideTask"`
     /// -   type: `hkInt32`
     /// - offset: 244
     /// -  flags: `FLAGS_NONE`
-    max_entries_per_toi_narrowphase_collide_task: i32,
+    pub max_entries_per_toi_narrowphase_collide_task: i32,
     /// # C++ Class Fields Info
     /// -   name:`"maxNumToiCollisionPairsSinglethreaded"`
     /// -   type: `hkInt32`
     /// - offset: 248
     /// -  flags: `FLAGS_NONE`
-    max_num_toi_collision_pairs_singlethreaded: i32,
+    pub max_num_toi_collision_pairs_singlethreaded: i32,
     /// # C++ Class Fields Info
     /// -   name:`"simulationType"`
     /// -   type: `enum unknown`
     /// - offset: 252
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    simulation_type: (),
+    pub simulation_type: (),
     /// # C++ Class Fields Info
     /// -   name:`"numToisTillAllowedPenetrationSimplifiedToi"`
     /// -   type: `hkReal`
     /// - offset: 256
     /// -  flags: `FLAGS_NONE`
-    num_tois_till_allowed_penetration_simplified_toi: f32,
+    pub num_tois_till_allowed_penetration_simplified_toi: f32,
     /// # C++ Class Fields Info
     /// -   name:`"numToisTillAllowedPenetrationToi"`
     /// -   type: `hkReal`
     /// - offset: 260
     /// -  flags: `FLAGS_NONE`
-    num_tois_till_allowed_penetration_toi: f32,
+    pub num_tois_till_allowed_penetration_toi: f32,
     /// # C++ Class Fields Info
     /// -   name:`"numToisTillAllowedPenetrationToiHigher"`
     /// -   type: `hkReal`
     /// - offset: 264
     /// -  flags: `FLAGS_NONE`
-    num_tois_till_allowed_penetration_toi_higher: f32,
+    pub num_tois_till_allowed_penetration_toi_higher: f32,
     /// # C++ Class Fields Info
     /// -   name:`"numToisTillAllowedPenetrationToiForced"`
     /// -   type: `hkReal`
     /// - offset: 268
     /// -  flags: `FLAGS_NONE`
-    num_tois_till_allowed_penetration_toi_forced: f32,
+    pub num_tois_till_allowed_penetration_toi_forced: f32,
     /// # C++ Class Fields Info
     /// -   name:`"lastEntityUid"`
     /// -   type: `hkUint32`
     /// - offset: 272
     /// -  flags: `FLAGS_NONE`
-    last_entity_uid: u32,
+    pub last_entity_uid: u32,
     /// # C++ Class Fields Info
     /// -   name:`"lastIslandUid"`
     /// -   type: `hkUint32`
     /// - offset: 276
     /// -  flags: `FLAGS_NONE`
-    last_island_uid: u32,
+    pub last_island_uid: u32,
     /// # C++ Class Fields Info
     /// -   name:`"lastConstraintUid"`
     /// -   type: `hkUint32`
     /// - offset: 280
     /// -  flags: `FLAGS_NONE`
-    last_constraint_uid: u32,
+    pub last_constraint_uid: u32,
     /// # C++ Class Fields Info
     /// -   name:`"phantoms"`
     /// -   type: `hkArray<hkpPhantom*>`
     /// - offset: 284
     /// -  flags: `FLAGS_NONE`
-    phantoms: HkArrayRef<Cow<'a, str>>,
+    pub phantoms: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"actionListeners"`
     /// -   type: `hkArray<void*>`
     /// - offset: 296
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    action_listeners: HkArrayRef<Cow<'a, str>>,
+    pub action_listeners: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"entityListeners"`
     /// -   type: `hkArray<void*>`
     /// - offset: 308
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    entity_listeners: HkArrayRef<Cow<'a, str>>,
+    pub entity_listeners: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"phantomListeners"`
     /// -   type: `hkArray<void*>`
     /// - offset: 320
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    phantom_listeners: HkArrayRef<Cow<'a, str>>,
+    pub phantom_listeners: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"constraintListeners"`
     /// -   type: `hkArray<void*>`
     /// - offset: 332
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    constraint_listeners: HkArrayRef<Cow<'a, str>>,
+    pub constraint_listeners: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"worldDeletionListeners"`
     /// -   type: `hkArray<void*>`
     /// - offset: 344
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    world_deletion_listeners: HkArrayRef<Cow<'a, str>>,
+    pub world_deletion_listeners: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"islandActivationListeners"`
     /// -   type: `hkArray<void*>`
     /// - offset: 356
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    island_activation_listeners: HkArrayRef<Cow<'a, str>>,
+    pub island_activation_listeners: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"worldPostSimulationListeners"`
     /// -   type: `hkArray<void*>`
     /// - offset: 368
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    world_post_simulation_listeners: HkArrayRef<Cow<'a, str>>,
+    pub world_post_simulation_listeners: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"worldPostIntegrateListeners"`
     /// -   type: `hkArray<void*>`
     /// - offset: 380
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    world_post_integrate_listeners: HkArrayRef<Cow<'a, str>>,
+    pub world_post_integrate_listeners: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"worldPostCollideListeners"`
     /// -   type: `hkArray<void*>`
     /// - offset: 392
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    world_post_collide_listeners: HkArrayRef<Cow<'a, str>>,
+    pub world_post_collide_listeners: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"islandPostIntegrateListeners"`
     /// -   type: `hkArray<void*>`
     /// - offset: 404
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    island_post_integrate_listeners: HkArrayRef<Cow<'a, str>>,
+    pub island_post_integrate_listeners: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"islandPostCollideListeners"`
     /// -   type: `hkArray<void*>`
     /// - offset: 416
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    island_post_collide_listeners: HkArrayRef<Cow<'a, str>>,
+    pub island_post_collide_listeners: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"contactListeners"`
     /// -   type: `hkArray<void*>`
     /// - offset: 428
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    contact_listeners: HkArrayRef<Cow<'a, str>>,
+    pub contact_listeners: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"contactImpulseLimitBreachedListeners"`
     /// -   type: `hkArray<void*>`
     /// - offset: 440
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    contact_impulse_limit_breached_listeners: HkArrayRef<Cow<'a, str>>,
+    pub contact_impulse_limit_breached_listeners: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"worldExtensions"`
     /// -   type: `hkArray<void*>`
     /// - offset: 452
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    world_extensions: HkArrayRef<Cow<'a, str>>,
+    pub world_extensions: HkArrayRef<Cow<'a, str>>,
     /// # C++ Class Fields Info
     /// -   name:`"violatedConstraintArray"`
     /// -   type: `void*`
     /// - offset: 464
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    violated_constraint_array: Cow<'a, str>,
+    pub violated_constraint_array: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseBorder"`
     /// -   type: `void*`
     /// - offset: 468
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    broad_phase_border: Cow<'a, str>,
+    pub broad_phase_border: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"destructionWorld"`
     /// -   type: `void*`
     /// - offset: 472
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    destruction_world: Cow<'a, str>,
+    pub destruction_world: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"npWorld"`
     /// -   type: `void*`
     /// - offset: 476
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    np_world: Cow<'a, str>,
+    pub np_world: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseExtents"`
     /// -   type: `hkVector4[2]`
     /// - offset: 800
     /// -  flags: `FLAGS_NONE`
-    broad_phase_extents: CStyleArrayVector<Vector4<f32>, 2>,
+    pub broad_phase_extents: CStyleArrayVector<Vector4<f32>, 2>,
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseNumMarkers"`
     /// -   type: `hkInt32`
     /// - offset: 832
     /// -  flags: `FLAGS_NONE`
-    broad_phase_num_markers: i32,
+    pub broad_phase_num_markers: i32,
     /// # C++ Class Fields Info
     /// -   name:`"sizeOfToiEventQueue"`
     /// -   type: `hkInt32`
     /// - offset: 836
     /// -  flags: `FLAGS_NONE`
-    size_of_toi_event_queue: i32,
+    pub size_of_toi_event_queue: i32,
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseQuerySize"`
     /// -   type: `hkInt32`
     /// - offset: 840
     /// -  flags: `FLAGS_NONE`
-    broad_phase_query_size: i32,
+    pub broad_phase_query_size: i32,
     /// # C++ Class Fields Info
     /// -   name:`"broadPhaseUpdateSize"`
     /// -   type: `hkInt32`
     /// - offset: 844
     /// -  flags: `FLAGS_NONE`
-    broad_phase_update_size: i32,
+    pub broad_phase_update_size: i32,
     /// # C++ Class Fields Info
     /// -   name:`"contactPointGeneration"`
     /// -   type: `enum unknown`
     /// - offset: 848
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    contact_point_generation: (),
+    pub contact_point_generation: (),
 }
 
 impl Serialize for HkpWorld<'_> {

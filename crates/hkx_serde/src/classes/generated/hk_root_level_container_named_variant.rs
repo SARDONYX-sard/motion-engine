@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,19 +33,19 @@ pub struct HkRootLevelContainerNamedVariant<'a> {
     /// -   type: `hkStringPtr`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    name: Cow<'a, str>,
+    pub name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"className"`
     /// -   type: `hkStringPtr`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    class_name: Cow<'a, str>,
+    pub class_name: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"variant"`
     /// -   type: `struct hkReferencedObject*`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    variant: Cow<'a, str>,
+    pub variant: Cow<'a, str>,
 }
 
 impl Serialize for HkRootLevelContainerNamedVariant<'_> {

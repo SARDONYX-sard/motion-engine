@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,43 +33,43 @@ pub struct BsLookAtModifierBoneData {
     /// -   type: `hkInt16`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    index: i16,
+    pub index: i16,
     /// # C++ Class Fields Info
     /// -   name:`"fwdAxisLS"`
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    fwd_axis_ls: Vector4<f32>,
+    pub fwd_axis_ls: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"limitAngleDegrees"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    limit_angle_degrees: f32,
+    pub limit_angle_degrees: f32,
     /// # C++ Class Fields Info
     /// -   name:`"onGain"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    on_gain: f32,
+    pub on_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"offGain"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    off_gain: f32,
+    pub off_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"enabled"`
     /// -   type: `hkBool`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    enabled: bool,
+    pub enabled: bool,
     /// # C++ Class Fields Info
     /// -   name:`"currentFwdAxisLS"`
     /// -   type: `hkVector4`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    current_fwd_axis_ls: Vector4<f32>,
+    pub current_fwd_axis_ls: Vector4<f32>,
 }
 
 impl Serialize for BsLookAtModifierBoneData {

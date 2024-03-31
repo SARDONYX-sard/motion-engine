@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,25 +33,25 @@ pub struct HkpMaterial {
     /// -   type: `enum ResponseType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    response_type: ResponseType,
+    pub response_type: ResponseType,
     /// # C++ Class Fields Info
     /// -   name:`"rollingFrictionMultiplier"`
     /// -   type: `hkHalf`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    rolling_friction_multiplier: f32,
+    pub rolling_friction_multiplier: f32,
     /// # C++ Class Fields Info
     /// -   name:`"friction"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    friction: f32,
+    pub friction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"restitution"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    restitution: f32,
+    pub restitution: f32,
 }
 
 impl Serialize for HkpMaterial {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -31,55 +36,55 @@ pub struct HkpPoweredChainData<'a> {
     /// -   type: `struct hkpBridgeAtoms`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    atoms: SingleClass<HkpBridgeAtoms<'a>>,
+    pub atoms: SingleClass<HkpBridgeAtoms<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"infos"`
     /// -   type: `hkArray<struct hkpPoweredChainDataConstraintInfo>`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    infos: HkArrayClass<HkpPoweredChainDataConstraintInfo<'a>>,
+    pub infos: HkArrayClass<HkpPoweredChainDataConstraintInfo<'a>>,
     /// # C++ Class Fields Info
     /// -   name:`"tau"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    tau: f32,
+    pub tau: f32,
     /// # C++ Class Fields Info
     /// -   name:`"damping"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    damping: f32,
+    pub damping: f32,
     /// # C++ Class Fields Info
     /// -   name:`"cfmLinAdd"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    cfm_lin_add: f32,
+    pub cfm_lin_add: f32,
     /// # C++ Class Fields Info
     /// -   name:`"cfmLinMul"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    cfm_lin_mul: f32,
+    pub cfm_lin_mul: f32,
     /// # C++ Class Fields Info
     /// -   name:`"cfmAngAdd"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    cfm_ang_add: f32,
+    pub cfm_ang_add: f32,
     /// # C++ Class Fields Info
     /// -   name:`"cfmAngMul"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    cfm_ang_mul: f32,
+    pub cfm_ang_mul: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxErrorDistance"`
     /// -   type: `hkReal`
     /// - offset: 60
     /// -  flags: `FLAGS_NONE`
-    max_error_distance: f32,
+    pub max_error_distance: f32,
 }
 
 impl Serialize for HkpPoweredChainData<'_> {

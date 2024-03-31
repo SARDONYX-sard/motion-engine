@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,103 +33,103 @@ pub struct HkpVehicleInstanceWheelInfo<'a> {
     /// -   type: `struct hkContactPoint`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    contact_point: SingleClass<HkContactPoint>,
+    pub contact_point: SingleClass<HkContactPoint>,
     /// # C++ Class Fields Info
     /// -   name:`"contactFriction"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    contact_friction: f32,
+    pub contact_friction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"contactBody"`
     /// -   type: `void*`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    contact_body: Cow<'a, str>,
+    pub contact_body: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"contactShapeKey"`
     /// -   type: `hkUint32[8]`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    contact_shape_key: CStyleArray<[u32; 8]>,
+    pub contact_shape_key: CStyleArray<[u32; 8]>,
     /// # C++ Class Fields Info
     /// -   name:`"hardPointWs"`
     /// -   type: `hkVector4`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    hard_point_ws: Vector4<f32>,
+    pub hard_point_ws: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"rayEndPointWs"`
     /// -   type: `hkVector4`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    ray_end_point_ws: Vector4<f32>,
+    pub ray_end_point_ws: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"currentSuspensionLength"`
     /// -   type: `hkReal`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    current_suspension_length: f32,
+    pub current_suspension_length: f32,
     /// # C++ Class Fields Info
     /// -   name:`"suspensionDirectionWs"`
     /// -   type: `hkVector4`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    suspension_direction_ws: Vector4<f32>,
+    pub suspension_direction_ws: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"spinAxisChassisSpace"`
     /// -   type: `hkVector4`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    spin_axis_chassis_space: Vector4<f32>,
+    pub spin_axis_chassis_space: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"spinAxisWs"`
     /// -   type: `hkVector4`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    spin_axis_ws: Vector4<f32>,
+    pub spin_axis_ws: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"steeringOrientationChassisSpace"`
     /// -   type: `hkQuaternion`
     /// - offset: 176
     /// -  flags: `FLAGS_NONE`
-    steering_orientation_chassis_space: Quaternion<f32>,
+    pub steering_orientation_chassis_space: Quaternion<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"spinVelocity"`
     /// -   type: `hkReal`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE`
-    spin_velocity: f32,
+    pub spin_velocity: f32,
     /// # C++ Class Fields Info
     /// -   name:`"spinAngle"`
     /// -   type: `hkReal`
     /// - offset: 196
     /// -  flags: `FLAGS_NONE`
-    spin_angle: f32,
+    pub spin_angle: f32,
     /// # C++ Class Fields Info
     /// -   name:`"skidEnergyDensity"`
     /// -   type: `hkReal`
     /// - offset: 200
     /// -  flags: `FLAGS_NONE`
-    skid_energy_density: f32,
+    pub skid_energy_density: f32,
     /// # C++ Class Fields Info
     /// -   name:`"sideForce"`
     /// -   type: `hkReal`
     /// - offset: 204
     /// -  flags: `FLAGS_NONE`
-    side_force: f32,
+    pub side_force: f32,
     /// # C++ Class Fields Info
     /// -   name:`"forwardSlipVelocity"`
     /// -   type: `hkReal`
     /// - offset: 208
     /// -  flags: `FLAGS_NONE`
-    forward_slip_velocity: f32,
+    pub forward_slip_velocity: f32,
     /// # C++ Class Fields Info
     /// -   name:`"sideSlipVelocity"`
     /// -   type: `hkReal`
     /// - offset: 212
     /// -  flags: `FLAGS_NONE`
-    side_slip_velocity: f32,
+    pub side_slip_velocity: f32,
 }
 
 impl Serialize for HkpVehicleInstanceWheelInfo<'_> {

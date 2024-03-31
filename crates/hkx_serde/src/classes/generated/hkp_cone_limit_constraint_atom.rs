@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,56 +34,56 @@ pub struct HkpConeLimitConstraintAtom {
     /// -   type: `enum AtomType`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    _type: AtomType,
+    pub _type: AtomType,
 
     /// # C++ Class Fields Info
     /// -   name:`"isEnabled"`
     /// -   type: `hkUint8`
     /// - offset: 2
     /// -  flags: `FLAGS_NONE`
-    is_enabled: u8,
+    pub is_enabled: u8,
     /// # C++ Class Fields Info
     /// -   name:`"twistAxisInA"`
     /// -   type: `hkUint8`
     /// - offset: 3
     /// -  flags: `FLAGS_NONE`
-    twist_axis_in_a: u8,
+    pub twist_axis_in_a: u8,
     /// # C++ Class Fields Info
     /// -   name:`"refAxisInB"`
     /// -   type: `hkUint8`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    ref_axis_in_b: u8,
+    pub ref_axis_in_b: u8,
     /// # C++ Class Fields Info
     /// -   name:`"angleMeasurementMode"`
     /// -   type: `enum MeasurementMode`
     /// - offset: 5
     /// -  flags: `FLAGS_NONE`
-    angle_measurement_mode: MeasurementMode,
+    pub angle_measurement_mode: MeasurementMode,
     /// # C++ Class Fields Info
     /// -   name:`"memOffsetToAngleOffset"`
     /// -   type: `hkUint8`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE`
-    mem_offset_to_angle_offset: u8,
+    pub mem_offset_to_angle_offset: u8,
     /// # C++ Class Fields Info
     /// -   name:`"minAngle"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    min_angle: f32,
+    pub min_angle: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxAngle"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    max_angle: f32,
+    pub max_angle: f32,
     /// # C++ Class Fields Info
     /// -   name:`"angularLimitsTauFactor"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    angular_limits_tau_factor: f32,
+    pub angular_limits_tau_factor: f32,
 }
 
 impl Serialize for HkpConeLimitConstraintAtom {

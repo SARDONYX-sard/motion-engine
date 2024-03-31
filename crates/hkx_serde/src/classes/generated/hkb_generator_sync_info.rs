@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,49 +33,49 @@ pub struct HkbGeneratorSyncInfo {
     /// -   type: `struct hkbGeneratorSyncInfoSyncPoint[8]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    sync_points: CStyleArrayClass<HkbGeneratorSyncInfoSyncPoint, 8>,
+    pub sync_points: CStyleArrayClass<HkbGeneratorSyncInfoSyncPoint, 8>,
     /// # C++ Class Fields Info
     /// -   name:`"baseFrequency"`
     /// -   type: `hkReal`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    base_frequency: f32,
+    pub base_frequency: f32,
     /// # C++ Class Fields Info
     /// -   name:`"localTime"`
     /// -   type: `hkReal`
     /// - offset: 68
     /// -  flags: `FLAGS_NONE`
-    local_time: f32,
+    pub local_time: f32,
     /// # C++ Class Fields Info
     /// -   name:`"playbackSpeed"`
     /// -   type: `hkReal`
     /// - offset: 72
     /// -  flags: `FLAGS_NONE`
-    playback_speed: f32,
+    pub playback_speed: f32,
     /// # C++ Class Fields Info
     /// -   name:`"numSyncPoints"`
     /// -   type: `hkInt8`
     /// - offset: 76
     /// -  flags: `FLAGS_NONE`
-    num_sync_points: i8,
+    pub num_sync_points: i8,
     /// # C++ Class Fields Info
     /// -   name:`"isCyclic"`
     /// -   type: `hkBool`
     /// - offset: 77
     /// -  flags: `FLAGS_NONE`
-    is_cyclic: bool,
+    pub is_cyclic: bool,
     /// # C++ Class Fields Info
     /// -   name:`"isMirrored"`
     /// -   type: `hkBool`
     /// - offset: 78
     /// -  flags: `FLAGS_NONE`
-    is_mirrored: bool,
+    pub is_mirrored: bool,
     /// # C++ Class Fields Info
     /// -   name:`"isAdditive"`
     /// -   type: `hkBool`
     /// - offset: 79
     /// -  flags: `FLAGS_NONE`
-    is_additive: bool,
+    pub is_additive: bool,
 }
 
 impl Serialize for HkbGeneratorSyncInfo {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,19 +33,19 @@ pub struct HkbCompiledExpressionSetToken {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    data: f32,
+    pub data: f32,
     /// # C++ Class Fields Info
     /// -   name:`"type"`
     /// -   type: `enum TokenType`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    _type: TokenType,
+    pub _type: TokenType,
     /// # C++ Class Fields Info
     /// -   name:`"operator"`
     /// -   type: `enum Operator`
     /// - offset: 5
     /// -  flags: `FLAGS_NONE`
-    operator: Operator,
+    pub operator: Operator,
 }
 
 impl Serialize for HkbCompiledExpressionSetToken {

@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,7 +33,7 @@ pub struct HkxVertexDescription {
     /// -   type: `hkArray<struct hkxVertexDescriptionElementDecl>`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    decls: HkArrayClass<HkxVertexDescriptionElementDecl>,
+    pub decls: HkArrayClass<HkxVertexDescriptionElementDecl>,
 }
 
 impl Serialize for HkxVertexDescription {

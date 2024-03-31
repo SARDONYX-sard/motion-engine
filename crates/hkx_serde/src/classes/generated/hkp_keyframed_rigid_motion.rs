@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -29,86 +34,86 @@ pub struct HkpKeyframedRigidMotion<'a> {
     /// -   type: `enum MotionType`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    _type: MotionType,
+    pub _type: MotionType,
     /// # C++ Parent class(`hkpMotion` => parent: `hkReferencedObject`) field Info
     /// -   name:`"deactivationIntegrateCounter"`
     /// -   type: `hkUint8`
     /// - offset: 9
     /// -  flags: `FLAGS_NONE`
-    deactivation_integrate_counter: u8,
+    pub deactivation_integrate_counter: u8,
     /// # C++ Parent class(`hkpMotion` => parent: `hkReferencedObject`) field Info
     /// -   name:`"deactivationNumInactiveFrames"`
     /// -   type: `hkUint16[2]`
     /// - offset: 10
     /// -  flags: `FLAGS_NONE`
-    deactivation_num_inactive_frames: CStyleArray<[u16; 2]>,
+    pub deactivation_num_inactive_frames: CStyleArray<[u16; 2]>,
     /// # C++ Parent class(`hkpMotion` => parent: `hkReferencedObject`) field Info
     /// -   name:`"motionState"`
     /// -   type: `struct hkMotionState`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    motion_state: SingleClass<HkMotionState>,
+    pub motion_state: SingleClass<HkMotionState>,
     /// # C++ Parent class(`hkpMotion` => parent: `hkReferencedObject`) field Info
     /// -   name:`"inertiaAndMassInv"`
     /// -   type: `hkVector4`
     /// - offset: 192
     /// -  flags: `FLAGS_NONE`
-    inertia_and_mass_inv: Vector4<f32>,
+    pub inertia_and_mass_inv: Vector4<f32>,
     /// # C++ Parent class(`hkpMotion` => parent: `hkReferencedObject`) field Info
     /// -   name:`"linearVelocity"`
     /// -   type: `hkVector4`
     /// - offset: 208
     /// -  flags: `FLAGS_NONE`
-    linear_velocity: Vector4<f32>,
+    pub linear_velocity: Vector4<f32>,
     /// # C++ Parent class(`hkpMotion` => parent: `hkReferencedObject`) field Info
     /// -   name:`"angularVelocity"`
     /// -   type: `hkVector4`
     /// - offset: 224
     /// -  flags: `FLAGS_NONE`
-    angular_velocity: Vector4<f32>,
+    pub angular_velocity: Vector4<f32>,
     /// # C++ Parent class(`hkpMotion` => parent: `hkReferencedObject`) field Info
     /// -   name:`"deactivationRefPosition"`
     /// -   type: `hkVector4[2]`
     /// - offset: 240
     /// -  flags: `FLAGS_NONE`
-    deactivation_ref_position: CStyleArrayVector<Vector4<f32>, 2>,
+    pub deactivation_ref_position: CStyleArrayVector<Vector4<f32>, 2>,
     /// # C++ Parent class(`hkpMotion` => parent: `hkReferencedObject`) field Info
     /// -   name:`"deactivationRefOrientation"`
     /// -   type: `hkUint32[2]`
     /// - offset: 272
     /// -  flags: `FLAGS_NONE`
-    deactivation_ref_orientation: CStyleArray<[u32; 2]>,
+    pub deactivation_ref_orientation: CStyleArray<[u32; 2]>,
     /// # C++ Parent class(`hkpMotion` => parent: `hkReferencedObject`) field Info
     /// -   name:`"savedMotion"`
     /// -   type: `struct hkpMaxSizeMotion*`
     /// - offset: 280
     /// -  flags: `FLAGS_NONE`
-    saved_motion: Cow<'a, str>,
+    pub saved_motion: Cow<'a, str>,
     /// # C++ Parent class(`hkpMotion` => parent: `hkReferencedObject`) field Info
     /// -   name:`"savedQualityTypeIndex"`
     /// -   type: `hkUint16`
     /// - offset: 284
     /// -  flags: `FLAGS_NONE`
-    saved_quality_type_index: u16,
+    pub saved_quality_type_index: u16,
     /// # C++ Parent class(`hkpMotion` => parent: `hkReferencedObject`) field Info
     /// -   name:`"gravityFactor"`
     /// -   type: `hkHalf`
     /// - offset: 286
     /// -  flags: `FLAGS_NONE`
-    gravity_factor: f32,
+    pub gravity_factor: f32,
 
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"memSizeAndFlags"`
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //

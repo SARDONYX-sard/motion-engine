@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -31,13 +36,13 @@ pub struct HkpCharacterProxyCinfo<'a> {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    mem_size_and_flags: u16,
+    pub mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    reference_count: i16,
+    pub reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -46,115 +51,115 @@ pub struct HkpCharacterProxyCinfo<'a> {
     /// -   type: `hkVector4`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    position: Vector4<f32>,
+    pub position: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"velocity"`
     /// -   type: `hkVector4`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    velocity: Vector4<f32>,
+    pub velocity: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"dynamicFriction"`
     /// -   type: `hkReal`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    dynamic_friction: f32,
+    pub dynamic_friction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"staticFriction"`
     /// -   type: `hkReal`
     /// - offset: 52
     /// -  flags: `FLAGS_NONE`
-    static_friction: f32,
+    pub static_friction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"keepContactTolerance"`
     /// -   type: `hkReal`
     /// - offset: 56
     /// -  flags: `FLAGS_NONE`
-    keep_contact_tolerance: f32,
+    pub keep_contact_tolerance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"up"`
     /// -   type: `hkVector4`
     /// - offset: 64
     /// -  flags: `FLAGS_NONE`
-    up: Vector4<f32>,
+    pub up: Vector4<f32>,
     /// # C++ Class Fields Info
     /// -   name:`"extraUpStaticFriction"`
     /// -   type: `hkReal`
     /// - offset: 80
     /// -  flags: `FLAGS_NONE`
-    extra_up_static_friction: f32,
+    pub extra_up_static_friction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"extraDownStaticFriction"`
     /// -   type: `hkReal`
     /// - offset: 84
     /// -  flags: `FLAGS_NONE`
-    extra_down_static_friction: f32,
+    pub extra_down_static_friction: f32,
     /// # C++ Class Fields Info
     /// -   name:`"shapePhantom"`
     /// -   type: `struct hkpShapePhantom*`
     /// - offset: 88
     /// -  flags: `FLAGS_NONE`
-    shape_phantom: Cow<'a, str>,
+    pub shape_phantom: Cow<'a, str>,
     /// # C++ Class Fields Info
     /// -   name:`"keepDistance"`
     /// -   type: `hkReal`
     /// - offset: 92
     /// -  flags: `FLAGS_NONE`
-    keep_distance: f32,
+    pub keep_distance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"contactAngleSensitivity"`
     /// -   type: `hkReal`
     /// - offset: 96
     /// -  flags: `FLAGS_NONE`
-    contact_angle_sensitivity: f32,
+    pub contact_angle_sensitivity: f32,
     /// # C++ Class Fields Info
     /// -   name:`"userPlanes"`
     /// -   type: `hkUint32`
     /// - offset: 100
     /// -  flags: `FLAGS_NONE`
-    user_planes: u32,
+    pub user_planes: u32,
     /// # C++ Class Fields Info
     /// -   name:`"maxCharacterSpeedForSolver"`
     /// -   type: `hkReal`
     /// - offset: 104
     /// -  flags: `FLAGS_NONE`
-    max_character_speed_for_solver: f32,
+    pub max_character_speed_for_solver: f32,
     /// # C++ Class Fields Info
     /// -   name:`"characterStrength"`
     /// -   type: `hkReal`
     /// - offset: 108
     /// -  flags: `FLAGS_NONE`
-    character_strength: f32,
+    pub character_strength: f32,
     /// # C++ Class Fields Info
     /// -   name:`"characterMass"`
     /// -   type: `hkReal`
     /// - offset: 112
     /// -  flags: `FLAGS_NONE`
-    character_mass: f32,
+    pub character_mass: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxSlope"`
     /// -   type: `hkReal`
     /// - offset: 116
     /// -  flags: `FLAGS_NONE`
-    max_slope: f32,
+    pub max_slope: f32,
     /// # C++ Class Fields Info
     /// -   name:`"penetrationRecoverySpeed"`
     /// -   type: `hkReal`
     /// - offset: 120
     /// -  flags: `FLAGS_NONE`
-    penetration_recovery_speed: f32,
+    pub penetration_recovery_speed: f32,
     /// # C++ Class Fields Info
     /// -   name:`"maxCastIterations"`
     /// -   type: `hkInt32`
     /// - offset: 124
     /// -  flags: `FLAGS_NONE`
-    max_cast_iterations: i32,
+    pub max_cast_iterations: i32,
     /// # C++ Class Fields Info
     /// -   name:`"refreshManifoldInCheckSupport"`
     /// -   type: `hkBool`
     /// - offset: 128
     /// -  flags: `FLAGS_NONE`
-    refresh_manifold_in_check_support: bool,
+    pub refresh_manifold_in_check_support: bool,
 }
 
 impl Serialize for HkpCharacterProxyCinfo<'_> {

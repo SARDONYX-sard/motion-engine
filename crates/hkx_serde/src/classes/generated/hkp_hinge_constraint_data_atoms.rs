@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,25 +33,25 @@ pub struct HkpHingeConstraintDataAtoms {
     /// -   type: `struct hkpSetLocalTransformsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    transforms: SingleClass<HkpSetLocalTransformsConstraintAtom>,
+    pub transforms: SingleClass<HkpSetLocalTransformsConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"setupStabilization"`
     /// -   type: `struct hkpSetupStabilizationAtom`
     /// - offset: 144
     /// -  flags: `FLAGS_NONE`
-    setup_stabilization: SingleClass<HkpSetupStabilizationAtom>,
+    pub setup_stabilization: SingleClass<HkpSetupStabilizationAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"2dAng"`
     /// -   type: `struct hkp2dAngConstraintAtom`
     /// - offset: 160
     /// -  flags: `FLAGS_NONE`
-    _2_d_ang: SingleClass<Hkp2DAngConstraintAtom>,
+    pub _2_d_ang: SingleClass<Hkp2DAngConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"ballSocket"`
     /// -   type: `struct hkpBallSocketConstraintAtom`
     /// - offset: 164
     /// -  flags: `FLAGS_NONE`
-    ball_socket: SingleClass<HkpBallSocketConstraintAtom>,
+    pub ball_socket: SingleClass<HkpBallSocketConstraintAtom>,
 }
 
 impl Serialize for HkpHingeConstraintDataAtoms {

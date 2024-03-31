@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,73 +33,73 @@ pub struct HkaKeyFrameHierarchyUtilityControlData {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    hierarchy_gain: f32,
+    pub hierarchy_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"velocityDamping"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    velocity_damping: f32,
+    pub velocity_damping: f32,
     /// # C++ Class Fields Info
     /// -   name:`"accelerationGain"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    acceleration_gain: f32,
+    pub acceleration_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"velocityGain"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    velocity_gain: f32,
+    pub velocity_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"positionGain"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    position_gain: f32,
+    pub position_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"positionMaxLinearVelocity"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    position_max_linear_velocity: f32,
+    pub position_max_linear_velocity: f32,
     /// # C++ Class Fields Info
     /// -   name:`"positionMaxAngularVelocity"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    position_max_angular_velocity: f32,
+    pub position_max_angular_velocity: f32,
     /// # C++ Class Fields Info
     /// -   name:`"snapGain"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    snap_gain: f32,
+    pub snap_gain: f32,
     /// # C++ Class Fields Info
     /// -   name:`"snapMaxLinearVelocity"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    snap_max_linear_velocity: f32,
+    pub snap_max_linear_velocity: f32,
     /// # C++ Class Fields Info
     /// -   name:`"snapMaxAngularVelocity"`
     /// -   type: `hkReal`
     /// - offset: 36
     /// -  flags: `FLAGS_NONE`
-    snap_max_angular_velocity: f32,
+    pub snap_max_angular_velocity: f32,
     /// # C++ Class Fields Info
     /// -   name:`"snapMaxLinearDistance"`
     /// -   type: `hkReal`
     /// - offset: 40
     /// -  flags: `FLAGS_NONE`
-    snap_max_linear_distance: f32,
+    pub snap_max_linear_distance: f32,
     /// # C++ Class Fields Info
     /// -   name:`"snapMaxAngularDistance"`
     /// -   type: `hkReal`
     /// - offset: 44
     /// -  flags: `FLAGS_NONE`
-    snap_max_angular_distance: f32,
+    pub snap_max_angular_distance: f32,
 }
 
 impl Serialize for HkaKeyFrameHierarchyUtilityControlData {

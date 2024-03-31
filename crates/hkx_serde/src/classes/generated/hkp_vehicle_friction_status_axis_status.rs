@@ -2,6 +2,11 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
+#![allow(
+  clippy::clone_on_copy,
+  clippy::unit_arg
+)]
+
 #[allow(unused)]
 use super::*;
 #[allow(unused)]
@@ -28,55 +33,55 @@ pub struct HkpVehicleFrictionStatusAxisStatus {
     /// -   type: `hkReal`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    forward_slip_velocity: f32,
+    pub forward_slip_velocity: f32,
     /// # C++ Class Fields Info
     /// -   name:`"side_slip_velocity"`
     /// -   type: `hkReal`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE`
-    side_slip_velocity: f32,
+    pub side_slip_velocity: f32,
     /// # C++ Class Fields Info
     /// -   name:`"skid_energy_density"`
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    skid_energy_density: f32,
+    pub skid_energy_density: f32,
     /// # C++ Class Fields Info
     /// -   name:`"side_force"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    side_force: f32,
+    pub side_force: f32,
     /// # C++ Class Fields Info
     /// -   name:`"delayed_forward_impulse"`
     /// -   type: `hkReal`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    delayed_forward_impulse: f32,
+    pub delayed_forward_impulse: f32,
     /// # C++ Class Fields Info
     /// -   name:`"sideRhs"`
     /// -   type: `hkReal`
     /// - offset: 20
     /// -  flags: `FLAGS_NONE`
-    side_rhs: f32,
+    pub side_rhs: f32,
     /// # C++ Class Fields Info
     /// -   name:`"forwardRhs"`
     /// -   type: `hkReal`
     /// - offset: 24
     /// -  flags: `FLAGS_NONE`
-    forward_rhs: f32,
+    pub forward_rhs: f32,
     /// # C++ Class Fields Info
     /// -   name:`"relativeSideForce"`
     /// -   type: `hkReal`
     /// - offset: 28
     /// -  flags: `FLAGS_NONE`
-    relative_side_force: f32,
+    pub relative_side_force: f32,
     /// # C++ Class Fields Info
     /// -   name:`"relativeForwardForce"`
     /// -   type: `hkReal`
     /// - offset: 32
     /// -  flags: `FLAGS_NONE`
-    relative_forward_force: f32,
+    pub relative_forward_force: f32,
 }
 
 impl Serialize for HkpVehicleFrictionStatusAxisStatus {

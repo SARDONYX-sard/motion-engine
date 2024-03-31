@@ -4,6 +4,7 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+#[allow(unused)]
 use crate::bytes::*; // For hkx binary read/write
 #[allow(unused)]
 use crate::error::{HkxError, Result};
@@ -20,13 +21,15 @@ use crate::havok_types::*;
 /// - signature: `0x25640b46`
 /// -   version: 0
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(tag = "@name")]
-pub enum HkbWorldEnums {
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+pub struct HkbWorldEnums {
 }
 
 impl ByteDeSerialize for HkbWorldEnums {
-    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    fn from_bytes<B>(
+        _bytes: &[u8],
+        _de: &mut packfile_deserializer::PackFileDeserializer,
+    ) -> Result<Self>
     where
         B: ByteOrder,
         Self: Sized,
@@ -35,10 +38,24 @@ impl ByteDeSerialize for HkbWorldEnums {
     }
 }
 
+
+/// # Why use Visitor pattern?
+/// Since the C++ field must be deserialized from the `name` attribute name of the `hkparam` in the XML,
+/// this is accomplished by having the Visitor process the internally tagged enum and convert it.
+/// Leakage of field items may occur if Vec<enum> is left as it is.
+///
+/// struct -> (De)serialize by visitor -> struct
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(tag = "@name")]
+pub enum HkbWorldEnumsVisitor {
+}
+
+#[allow(clippy::enum_variant_names)]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum SimulationState {
     #[serde(rename = "SIMULATION_STATE_PLAY")]
+    #[default]
     SimulationStatePlay = 0,
     #[serde(rename = "SIMULATION_STATE_PAUSE")]
     SimulationStatePause = 1,
@@ -49,9 +66,10 @@ pub enum SimulationState {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum AccumulateMotionState {
     #[serde(rename = "ACCUMULATE_MOTION")]
+    #[default]
     AccumulateMotion = 0,
     #[serde(rename = "DO_NOT_ACCUMULATE_MOTION")]
     DoNotAccumulateMotion = 1,

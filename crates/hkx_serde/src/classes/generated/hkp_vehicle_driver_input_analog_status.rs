@@ -4,6 +4,7 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+#[allow(unused)]
 use crate::bytes::*; // For hkx binary read/write
 #[allow(unused)]
 use crate::error::{HkxError, Result};
@@ -21,9 +22,8 @@ use crate::havok_types::*;
 /// - signature: `0x2b4a5803`
 /// -   version: 0
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize)]
-#[serde(tag = "@name")]
-pub enum HkpVehicleDriverInputAnalogStatus {
+#[derive(Debug, Clone, Default, PartialEq)]
+pub struct HkpVehicleDriverInputAnalogStatus {
     // C++ Parent class(`hkpVehicleDriverInputStatus` => parent: `hkReferencedObject`) has no fields
     //
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
@@ -31,15 +31,13 @@ pub enum HkpVehicleDriverInputAnalogStatus {
     /// -   type: `hkUint16`
     /// - offset: 4
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    #[serde(rename = "memSizeAndFlags", skip_serializing)]
-    MemSizeAndFlags(Primitive<u16>),
+    mem_size_and_flags: u16,
     /// # C++ Parent class(`hkReferencedObject` => parent: `hkBaseObject`) field Info
     /// -   name:`"referenceCount"`
     /// -   type: `hkInt16`
     /// - offset: 6
     /// -  flags: `FLAGS_NONE|SERIALIZE_IGNORED`
-    #[serde(rename = "referenceCount", skip_serializing)]
-    ReferenceCount(Primitive<i16>),
+    reference_count: i16,
 
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
@@ -48,48 +46,156 @@ pub enum HkpVehicleDriverInputAnalogStatus {
     /// -   type: `hkReal`
     /// - offset: 8
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "positionX")]
-    PositionX(Primitive<f32>),
+    position_x: f32,
     /// # C++ Class Fields Info
     /// -   name:`"positionY"`
     /// -   type: `hkReal`
     /// - offset: 12
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "positionY")]
-    PositionY(Primitive<f32>),
+    position_y: f32,
     /// # C++ Class Fields Info
     /// -   name:`"handbrakeButtonPressed"`
     /// -   type: `hkBool`
     /// - offset: 16
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "handbrakeButtonPressed")]
-    HandbrakeButtonPressed(Primitive<bool>),
+    handbrake_button_pressed: bool,
     /// # C++ Class Fields Info
     /// -   name:`"reverseButtonPressed"`
     /// -   type: `hkBool`
     /// - offset: 17
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "reverseButtonPressed")]
-    ReverseButtonPressed(Primitive<bool>),
+    reverse_button_pressed: bool,
 }
 
-// Manual implementation to branch the process using the value of the `name` attribute as the key.
-impl_deserialize_for_internally_tagged_enum! {
-    HkpVehicleDriverInputAnalogStatus, "@name",
-    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
-    ("referenceCount" => ReferenceCount(Primitive<i16>)),
-    ("positionX" => PositionX(Primitive<f32>)),
-    ("positionY" => PositionY(Primitive<f32>)),
-    ("handbrakeButtonPressed" => HandbrakeButtonPressed(Primitive<bool>)),
-    ("reverseButtonPressed" => ReverseButtonPressed(Primitive<bool>)),
+impl Serialize for HkpVehicleDriverInputAnalogStatus {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        // Use `Vec` instead, because the fields of this class are more than 32 and serde only supports up to `[T; 32]`.
+        let visitor: Vec<HkpVehicleDriverInputAnalogStatusVisitor> = self.into();
+        visitor.serialize(serializer)
+    }
+}
+
+impl<'de> Deserialize<'de> for HkpVehicleDriverInputAnalogStatus {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        // Use `Vec` instead, because the fields of this class are more than 32 and serde only supports up to `[T; 32]`.
+        let de = <Vec<HkpVehicleDriverInputAnalogStatusVisitor>>::deserialize(deserializer)?;
+        Ok(de.into())
+    }
+}
+
+impl From<Vec<HkpVehicleDriverInputAnalogStatusVisitor>> for HkpVehicleDriverInputAnalogStatus {
+    fn from(_values: Vec<HkpVehicleDriverInputAnalogStatusVisitor>) -> Self {
+            let mut mem_size_and_flags = None;
+            let mut reference_count = None;
+            let mut position_x = None;
+            let mut position_y = None;
+            let mut handbrake_button_pressed = None;
+            let mut reverse_button_pressed = None;
+
+
+        for _value in _values {
+            match _value {
+                HkpVehicleDriverInputAnalogStatusVisitor::MemSizeAndFlags(m) => mem_size_and_flags = Some(m),
+                HkpVehicleDriverInputAnalogStatusVisitor::ReferenceCount(m) => reference_count = Some(m),
+                HkpVehicleDriverInputAnalogStatusVisitor::PositionX(m) => position_x = Some(m),
+                HkpVehicleDriverInputAnalogStatusVisitor::PositionY(m) => position_y = Some(m),
+                HkpVehicleDriverInputAnalogStatusVisitor::HandbrakeButtonPressed(m) => handbrake_button_pressed = Some(m),
+                HkpVehicleDriverInputAnalogStatusVisitor::ReverseButtonPressed(m) => reverse_button_pressed = Some(m),
+
+            }
+        }
+
+        // This `unwrap_or_default` is never called because it depends on the default value of `Visitor
+        Self {
+            mem_size_and_flags: mem_size_and_flags.unwrap_or_default().into_inner(),
+            reference_count: reference_count.unwrap_or_default().into_inner(),
+            position_x: position_x.unwrap_or_default().into_inner(),
+            position_y: position_y.unwrap_or_default().into_inner(),
+            handbrake_button_pressed: handbrake_button_pressed.unwrap_or_default().into_inner(),
+            reverse_button_pressed: reverse_button_pressed.unwrap_or_default().into_inner(),
+
+        }
+    }
+}
+
+// The only way to create a possessive type from a reference is to `clone` it.
+// This `From` is only used for serialization, so this overhead is only incurred during serialization.
+impl From<&HkpVehicleDriverInputAnalogStatus> for Vec<HkpVehicleDriverInputAnalogStatusVisitor> {
+    fn from(data: &HkpVehicleDriverInputAnalogStatus) -> Self {
+        vec![
+            HkpVehicleDriverInputAnalogStatusVisitor::MemSizeAndFlags(data.mem_size_and_flags.into()),
+            HkpVehicleDriverInputAnalogStatusVisitor::ReferenceCount(data.reference_count.into()),
+            HkpVehicleDriverInputAnalogStatusVisitor::PositionX(data.position_x.into()),
+            HkpVehicleDriverInputAnalogStatusVisitor::PositionY(data.position_y.into()),
+            HkpVehicleDriverInputAnalogStatusVisitor::HandbrakeButtonPressed(data.handbrake_button_pressed.into()),
+            HkpVehicleDriverInputAnalogStatusVisitor::ReverseButtonPressed(data.reverse_button_pressed.into()),
+
+        ]
+    }
 }
 
 impl ByteDeSerialize for HkpVehicleDriverInputAnalogStatus {
-    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    fn from_bytes<B>(
+        _bytes: &[u8],
+        _de: &mut packfile_deserializer::PackFileDeserializer,
+    ) -> Result<Self>
     where
         B: ByteOrder,
         Self: Sized,
     {
         todo!()
     }
+}
+
+
+/// # Why use Visitor pattern?
+/// Since the C++ field must be deserialized from the `name` attribute name of the `hkparam` in the XML,
+/// this is accomplished by having the Visitor process the internally tagged enum and convert it.
+/// Leakage of field items may occur if Vec<enum> is left as it is.
+///
+/// struct -> (De)serialize by visitor -> struct
+#[allow(clippy::enum_variant_names)]
+#[derive(Debug, Clone, PartialEq, Serialize)]
+#[serde(tag = "@name")]
+pub enum HkpVehicleDriverInputAnalogStatusVisitor {
+    // C++ Parent class(`hkpVehicleDriverInputStatus` => parent: `hkReferencedObject`) has no fields
+    //
+    /// Visitor fields
+    #[serde(rename = "memSizeAndFlags", skip_serializing)]
+    MemSizeAndFlags(Primitive<u16>),
+    /// Visitor fields
+    #[serde(rename = "referenceCount", skip_serializing)]
+    ReferenceCount(Primitive<i16>),
+
+    // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
+    //
+    /// Visitor fields
+    #[serde(rename = "positionX")]
+    PositionX(Primitive<f32>),
+    /// Visitor fields
+    #[serde(rename = "positionY")]
+    PositionY(Primitive<f32>),
+    /// Visitor fields
+    #[serde(rename = "handbrakeButtonPressed")]
+    HandbrakeButtonPressed(Primitive<bool>),
+    /// Visitor fields
+    #[serde(rename = "reverseButtonPressed")]
+    ReverseButtonPressed(Primitive<bool>),
+}
+
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
+impl_deserialize_for_internally_tagged_enum! {
+    HkpVehicleDriverInputAnalogStatusVisitor, "@name",
+    ("memSizeAndFlags" => MemSizeAndFlags(Primitive<u16>)),
+    ("referenceCount" => ReferenceCount(Primitive<i16>)),
+    ("positionX" => PositionX(Primitive<f32>)),
+    ("positionY" => PositionY(Primitive<f32>)),
+    ("handbrakeButtonPressed" => HandbrakeButtonPressed(Primitive<bool>)),
+    ("reverseButtonPressed" => ReverseButtonPressed(Primitive<bool>)),
 }

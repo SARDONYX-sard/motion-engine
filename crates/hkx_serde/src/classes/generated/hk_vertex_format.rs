@@ -4,6 +4,7 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+#[allow(unused)]
 use crate::bytes::*; // For hkx binary read/write
 #[allow(unused)]
 use crate::error::{HkxError, Result};
@@ -20,34 +21,84 @@ use crate::havok_types::*;
 /// - signature: `0xf11e3ff7`
 /// -   version: 0
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize)]
-#[serde(tag = "@name")]
-pub enum HkVertexFormat {
+#[derive(Debug, Clone, Default, PartialEq)]
+pub struct HkVertexFormat {
     /// # C++ Class Fields Info
     /// -   name:`"elements"`
     /// -   type: `struct hkVertexFormatElement[32]`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "elements")]
-    Elements(CStyleArrayClass<HkVertexFormatElement, 32>),
+    elements: CStyleArrayClass<HkVertexFormatElement, 32>,
     /// # C++ Class Fields Info
     /// -   name:`"numElements"`
     /// -   type: `hkInt32`
     /// - offset: 256
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "numElements")]
-    NumElements(Primitive<i32>),
+    num_elements: i32,
 }
 
-// Manual implementation to branch the process using the value of the `name` attribute as the key.
-impl_deserialize_for_internally_tagged_enum! {
-    HkVertexFormat, "@name",
-    ("elements" => Elements(CStyleArrayClass<HkVertexFormatElement, 32>)),
-    ("numElements" => NumElements(Primitive<i32>)),
+impl Serialize for HkVertexFormat {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        // Use `Vec` instead, because the fields of this class are more than 32 and serde only supports up to `[T; 32]`.
+        let visitor: Vec<HkVertexFormatVisitor> = self.into();
+        visitor.serialize(serializer)
+    }
+}
+
+impl<'de> Deserialize<'de> for HkVertexFormat {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        // Use `Vec` instead, because the fields of this class are more than 32 and serde only supports up to `[T; 32]`.
+        let de = <Vec<HkVertexFormatVisitor>>::deserialize(deserializer)?;
+        Ok(de.into())
+    }
+}
+
+impl From<Vec<HkVertexFormatVisitor>> for HkVertexFormat {
+    fn from(_values: Vec<HkVertexFormatVisitor>) -> Self {
+            let mut elements = None;
+            let mut num_elements = None;
+
+
+        for _value in _values {
+            match _value {
+                HkVertexFormatVisitor::Elements(m) => elements = Some(m),
+                HkVertexFormatVisitor::NumElements(m) => num_elements = Some(m),
+
+            }
+        }
+
+        // This `unwrap_or_default` is never called because it depends on the default value of `Visitor
+        Self {
+            elements: elements.unwrap_or_default(),
+            num_elements: num_elements.unwrap_or_default().into_inner(),
+
+        }
+    }
+}
+
+// The only way to create a possessive type from a reference is to `clone` it.
+// This `From` is only used for serialization, so this overhead is only incurred during serialization.
+impl From<&HkVertexFormat> for Vec<HkVertexFormatVisitor> {
+    fn from(data: &HkVertexFormat) -> Self {
+        vec![
+            HkVertexFormatVisitor::Elements(data.elements.clone()),
+            HkVertexFormatVisitor::NumElements(data.num_elements.into()),
+
+        ]
+    }
 }
 
 impl ByteDeSerialize for HkVertexFormat {
-    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    fn from_bytes<B>(
+        _bytes: &[u8],
+        _de: &mut packfile_deserializer::PackFileDeserializer,
+    ) -> Result<Self>
     where
         B: ByteOrder,
         Self: Sized,
@@ -56,10 +107,37 @@ impl ByteDeSerialize for HkVertexFormat {
     }
 }
 
+
+/// # Why use Visitor pattern?
+/// Since the C++ field must be deserialized from the `name` attribute name of the `hkparam` in the XML,
+/// this is accomplished by having the Visitor process the internally tagged enum and convert it.
+/// Leakage of field items may occur if Vec<enum> is left as it is.
+///
+/// struct -> (De)serialize by visitor -> struct
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
+#[derive(Debug, Clone, PartialEq, Serialize)]
+#[serde(tag = "@name")]
+pub enum HkVertexFormatVisitor {
+    /// Visitor fields
+    #[serde(rename = "elements")]
+    Elements(CStyleArrayClass<HkVertexFormatElement, 32>),
+    /// Visitor fields
+    #[serde(rename = "numElements")]
+    NumElements(Primitive<i32>),
+}
+
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
+impl_deserialize_for_internally_tagged_enum! {
+    HkVertexFormatVisitor, "@name",
+    ("elements" => Elements(CStyleArrayClass<HkVertexFormatElement, 32>)),
+    ("numElements" => NumElements(Primitive<i32>)),
+}
+
+#[allow(clippy::enum_variant_names)]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum ComponentType {
     #[serde(rename = "TYPE_NONE")]
+    #[default]
     TypeNone = 0,
     #[serde(rename = "TYPE_INT8")]
     TypeInt8 = 1,
@@ -88,9 +166,10 @@ pub enum ComponentType {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum ComponentUsage {
     #[serde(rename = "USAGE_NONE")]
+    #[default]
     UsageNone = 0,
     #[serde(rename = "USAGE_POSITION")]
     UsagePosition = 1,
@@ -250,9 +329,10 @@ impl HintFlags {
 }
 
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, ToPrimitive, FromPrimitive)]
 pub enum SharingType {
     #[serde(rename = "SHARING_ALL_SHARED")]
+    #[default]
     SharingAllShared = 0,
     #[serde(rename = "SHARING_ALL_NOT_SHARED")]
     SharingAllNotShared = 1,

@@ -4,6 +4,7 @@
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
 #[allow(unused)]
 use super::*;
+#[allow(unused)]
 use crate::bytes::*; // For hkx binary read/write
 #[allow(unused)]
 use crate::error::{HkxError, Result};
@@ -20,38 +21,114 @@ use crate::havok_types::*;
 /// - signature: `0x207eb376`
 /// -   version: 0
 #[allow(clippy::enum_variant_names)]
-#[derive(Debug, Clone, PartialEq, Serialize)]
-#[serde(tag = "@name")]
-pub enum HkpStiffSpringConstraintDataAtoms {
+#[derive(Debug, Clone, Default, PartialEq)]
+pub struct HkpStiffSpringConstraintDataAtoms {
     /// # C++ Class Fields Info
     /// -   name:`"pivots"`
     /// -   type: `struct hkpSetLocalTranslationsConstraintAtom`
     /// - offset: 0
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "pivots")]
-    Pivots(SingleClass<HkpSetLocalTranslationsConstraintAtom>),
+    pivots: SingleClass<HkpSetLocalTranslationsConstraintAtom>,
     /// # C++ Class Fields Info
     /// -   name:`"spring"`
     /// -   type: `struct hkpStiffSpringConstraintAtom`
     /// - offset: 48
     /// -  flags: `FLAGS_NONE`
-    #[serde(rename = "spring")]
-    Spring(SingleClass<HkpStiffSpringConstraintAtom>),
+    spring: SingleClass<HkpStiffSpringConstraintAtom>,
 }
 
-// Manual implementation to branch the process using the value of the `name` attribute as the key.
-impl_deserialize_for_internally_tagged_enum! {
-    HkpStiffSpringConstraintDataAtoms, "@name",
-    ("pivots" => Pivots(SingleClass<HkpSetLocalTranslationsConstraintAtom>)),
-    ("spring" => Spring(SingleClass<HkpStiffSpringConstraintAtom>)),
+impl Serialize for HkpStiffSpringConstraintDataAtoms {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        // Use `Vec` instead, because the fields of this class are more than 32 and serde only supports up to `[T; 32]`.
+        let visitor: Vec<HkpStiffSpringConstraintDataAtomsVisitor> = self.into();
+        visitor.serialize(serializer)
+    }
+}
+
+impl<'de> Deserialize<'de> for HkpStiffSpringConstraintDataAtoms {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        // Use `Vec` instead, because the fields of this class are more than 32 and serde only supports up to `[T; 32]`.
+        let de = <Vec<HkpStiffSpringConstraintDataAtomsVisitor>>::deserialize(deserializer)?;
+        Ok(de.into())
+    }
+}
+
+impl From<Vec<HkpStiffSpringConstraintDataAtomsVisitor>> for HkpStiffSpringConstraintDataAtoms {
+    fn from(_values: Vec<HkpStiffSpringConstraintDataAtomsVisitor>) -> Self {
+            let mut pivots = None;
+            let mut spring = None;
+
+
+        for _value in _values {
+            match _value {
+                HkpStiffSpringConstraintDataAtomsVisitor::Pivots(m) => pivots = Some(m),
+                HkpStiffSpringConstraintDataAtomsVisitor::Spring(m) => spring = Some(m),
+
+            }
+        }
+
+        // This `unwrap_or_default` is never called because it depends on the default value of `Visitor
+        Self {
+            pivots: pivots.unwrap_or_default(),
+            spring: spring.unwrap_or_default(),
+
+        }
+    }
+}
+
+// The only way to create a possessive type from a reference is to `clone` it.
+// This `From` is only used for serialization, so this overhead is only incurred during serialization.
+impl From<&HkpStiffSpringConstraintDataAtoms> for Vec<HkpStiffSpringConstraintDataAtomsVisitor> {
+    fn from(data: &HkpStiffSpringConstraintDataAtoms) -> Self {
+        vec![
+            HkpStiffSpringConstraintDataAtomsVisitor::Pivots(data.pivots.clone()),
+            HkpStiffSpringConstraintDataAtomsVisitor::Spring(data.spring.clone()),
+
+        ]
+    }
 }
 
 impl ByteDeSerialize for HkpStiffSpringConstraintDataAtoms {
-    fn from_bytes<B>(bytes: &[u8]) -> Result<Vec<Self>>
+    fn from_bytes<B>(
+        _bytes: &[u8],
+        _de: &mut packfile_deserializer::PackFileDeserializer,
+    ) -> Result<Self>
     where
         B: ByteOrder,
         Self: Sized,
     {
         todo!()
     }
+}
+
+
+/// # Why use Visitor pattern?
+/// Since the C++ field must be deserialized from the `name` attribute name of the `hkparam` in the XML,
+/// this is accomplished by having the Visitor process the internally tagged enum and convert it.
+/// Leakage of field items may occur if Vec<enum> is left as it is.
+///
+/// struct -> (De)serialize by visitor -> struct
+#[allow(clippy::enum_variant_names)]
+#[derive(Debug, Clone, PartialEq, Serialize)]
+#[serde(tag = "@name")]
+pub enum HkpStiffSpringConstraintDataAtomsVisitor {
+    /// Visitor fields
+    #[serde(rename = "pivots")]
+    Pivots(SingleClass<HkpSetLocalTranslationsConstraintAtom>),
+    /// Visitor fields
+    #[serde(rename = "spring")]
+    Spring(SingleClass<HkpStiffSpringConstraintAtom>),
+}
+
+// Manual implementation to branch the process using the value of the `name` attribute as the key.
+impl_deserialize_for_internally_tagged_enum! {
+    HkpStiffSpringConstraintDataAtomsVisitor, "@name",
+    ("pivots" => Pivots(SingleClass<HkpSetLocalTranslationsConstraintAtom>)),
+    ("spring" => Spring(SingleClass<HkpStiffSpringConstraintAtom>)),
 }

@@ -1,7 +1,7 @@
 //! The type of enumeration of all C++ havok class fields.
 use super::*;
-use crate::classes::Class;
 use crate::bytes::*;
+use crate::classes::Class;
 use crate::error::{HkxError, Result};
 use serde::de::{self, Deserializer, MapAccess, Visitor};
 use serde::{Deserialize, Serialize};
@@ -74,12 +74,18 @@ pub enum ClassParams<'a> {
     BsIsActiveModifier(Box<BsIsActiveModifier<'a>>),
 
     #[serde(rename = "0x6b8a15fc")]
-    #[serde(bound(deserialize = "Box<BsiStateManagerModifierBSiStateData<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Box<BsiStateManagerModifierBSiStateData<'a>>: Deserialize<'de>"
+    ))]
     BsiStateManagerModifierBSiStateData(Box<BsiStateManagerModifierBSiStateData<'a>>),
 
     #[serde(rename = "0x99463586")]
-    #[serde(bound(deserialize = "Box<BsiStateManagerModifierBsiStateManagerStateListener<'a>>: Deserialize<'de>"))]
-    BsiStateManagerModifierBsiStateManagerStateListener(Box<BsiStateManagerModifierBsiStateManagerStateListener<'a>>),
+    #[serde(bound(
+        deserialize = "Box<BsiStateManagerModifierBsiStateManagerStateListener<'a>>: Deserialize<'de>"
+    ))]
+    BsiStateManagerModifierBsiStateManagerStateListener(
+        Box<BsiStateManagerModifierBsiStateManagerStateListener<'a>>,
+    ),
 
     #[serde(rename = "0x6cb24f2e")]
     #[serde(bound(deserialize = "Box<BsiStateManagerModifier<'a>>: Deserialize<'de>"))]
@@ -179,7 +185,9 @@ pub enum ClassParams<'a> {
     HkaDefaultAnimatedReferenceFrame(Box<HkaDefaultAnimatedReferenceFrame>),
 
     #[serde(rename = "0x724a7561")]
-    HkaDeltaCompressedAnimationQuantizationFormat(Box<HkaDeltaCompressedAnimationQuantizationFormat>),
+    HkaDeltaCompressedAnimationQuantizationFormat(
+        Box<HkaDeltaCompressedAnimationQuantizationFormat>,
+    ),
 
     #[serde(rename = "0x90a68d40")]
     #[serde(bound(deserialize = "Box<HkaDeltaCompressedAnimation<'a>>: Deserialize<'de>"))]
@@ -193,7 +201,9 @@ pub enum ClassParams<'a> {
     HkaFootstepAnalysisInfo(Box<HkaFootstepAnalysisInfo>),
 
     #[serde(rename = "0x930af031")]
-    #[serde(bound(deserialize = "Box<HkaInterleavedUncompressedAnimation<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Box<HkaInterleavedUncompressedAnimation<'a>>: Deserialize<'de>"
+    ))]
     HkaInterleavedUncompressedAnimation(Box<HkaInterleavedUncompressedAnimation<'a>>),
 
     #[serde(rename = "0xa3d0ac71")]
@@ -250,20 +260,28 @@ pub enum ClassParams<'a> {
     HkaSkeleton(Box<HkaSkeleton<'a>>),
 
     #[serde(rename = "0xde830789")]
-    HkaSplineCompressedAnimationAnimationCompressionParams(Box<HkaSplineCompressedAnimationAnimationCompressionParams>),
+    HkaSplineCompressedAnimationAnimationCompressionParams(
+        Box<HkaSplineCompressedAnimationAnimationCompressionParams>,
+    ),
 
     #[serde(rename = "0x42e878d3")]
-    HkaSplineCompressedAnimationTrackCompressionParams(Box<HkaSplineCompressedAnimationTrackCompressionParams>),
+    HkaSplineCompressedAnimationTrackCompressionParams(
+        Box<HkaSplineCompressedAnimationTrackCompressionParams>,
+    ),
 
     #[serde(rename = "0x792ee0bb")]
     #[serde(bound(deserialize = "Box<HkaSplineCompressedAnimation<'a>>: Deserialize<'de>"))]
     HkaSplineCompressedAnimation(Box<HkaSplineCompressedAnimation<'a>>),
 
     #[serde(rename = "0x27c6cafa")]
-    HkaWaveletCompressedAnimationCompressionParams(Box<HkaWaveletCompressedAnimationCompressionParams>),
+    HkaWaveletCompressedAnimationCompressionParams(
+        Box<HkaWaveletCompressedAnimationCompressionParams>,
+    ),
 
     #[serde(rename = "0x724a7561")]
-    HkaWaveletCompressedAnimationQuantizationFormat(Box<HkaWaveletCompressedAnimationQuantizationFormat>),
+    HkaWaveletCompressedAnimationQuantizationFormat(
+        Box<HkaWaveletCompressedAnimationQuantizationFormat>,
+    ),
 
     #[serde(rename = "0x77cf0962")]
     #[serde(bound(deserialize = "Box<HkaWaveletCompressedAnimation<'a>>: Deserialize<'de>"))]
@@ -388,7 +406,9 @@ pub enum ClassParams<'a> {
     HkbCharacterControllerModifier(Box<HkbCharacterControllerModifier<'a>>),
 
     #[serde(rename = "0xa0f415bf")]
-    #[serde(bound(deserialize = "Box<HkbCharacterDataCharacterControllerInfo<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Box<HkbCharacterDataCharacterControllerInfo<'a>>: Deserialize<'de>"
+    ))]
     HkbCharacterDataCharacterControllerInfo(Box<HkbCharacterDataCharacterControllerInfo<'a>>),
 
     #[serde(rename = "0x300d6808")]
@@ -459,14 +479,20 @@ pub enum ClassParams<'a> {
     HkbComputeDirectionModifier(Box<HkbComputeDirectionModifier<'a>>),
 
     #[serde(rename = "0x71cd1eb0")]
-    HkbComputeRotationFromAxisAngleModifierInternalState(Box<HkbComputeRotationFromAxisAngleModifierInternalState>),
+    HkbComputeRotationFromAxisAngleModifierInternalState(
+        Box<HkbComputeRotationFromAxisAngleModifierInternalState>,
+    ),
 
     #[serde(rename = "0x9b3f6936")]
-    #[serde(bound(deserialize = "Box<HkbComputeRotationFromAxisAngleModifier<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Box<HkbComputeRotationFromAxisAngleModifier<'a>>: Deserialize<'de>"
+    ))]
     HkbComputeRotationFromAxisAngleModifier(Box<HkbComputeRotationFromAxisAngleModifier<'a>>),
 
     #[serde(rename = "0x71cd1eb0")]
-    HkbComputeRotationToTargetModifierInternalState(Box<HkbComputeRotationToTargetModifierInternalState>),
+    HkbComputeRotationToTargetModifierInternalState(
+        Box<HkbComputeRotationToTargetModifierInternalState>,
+    ),
 
     #[serde(rename = "0x47665f1c")]
     #[serde(bound(deserialize = "Box<HkbComputeRotationToTargetModifier<'a>>: Deserialize<'de>"))]
@@ -504,7 +530,9 @@ pub enum ClassParams<'a> {
     HkbDetectCloseToGroundModifier(Box<HkbDetectCloseToGroundModifier<'a>>),
 
     #[serde(rename = "0xb8686f6b")]
-    HkbEvaluateExpressionModifierInternalExpressionData(Box<HkbEvaluateExpressionModifierInternalExpressionData>),
+    HkbEvaluateExpressionModifierInternalExpressionData(
+        Box<HkbEvaluateExpressionModifierInternalExpressionData>,
+    ),
 
     #[serde(rename = "0xb414d58e")]
     HkbEvaluateExpressionModifierInternalState(Box<HkbEvaluateExpressionModifierInternalState>),
@@ -555,7 +583,9 @@ pub enum ClassParams<'a> {
     HkbEventRangeData(Box<HkbEventRangeData<'a>>),
 
     #[serde(rename = "0x9139b821")]
-    #[serde(bound(deserialize = "Box<HkbEventSequencedDataSequencedEvent<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Box<HkbEventSequencedDataSequencedEvent<'a>>: Deserialize<'de>"
+    ))]
     HkbEventSequencedDataSequencedEvent(Box<HkbEventSequencedDataSequencedEvent<'a>>),
 
     #[serde(rename = "0x76798eb8")]
@@ -842,7 +872,9 @@ pub enum ClassParams<'a> {
     HkbRigidBodyRagdollControlData(Box<HkbRigidBodyRagdollControlData>),
 
     #[serde(rename = "0xaa87d1eb")]
-    #[serde(bound(deserialize = "Box<HkbRigidBodyRagdollControlsModifier<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Box<HkbRigidBodyRagdollControlsModifier<'a>>: Deserialize<'de>"
+    ))]
     HkbRigidBodyRagdollControlsModifier(Box<HkbRigidBodyRagdollControlsModifier<'a>>),
 
     #[serde(rename = "0x3eb2e082")]
@@ -908,7 +940,9 @@ pub enum ClassParams<'a> {
     HkbStateListener(Box<HkbStateListener>),
 
     #[serde(rename = "0xbb90d54f")]
-    #[serde(bound(deserialize = "Box<HkbStateMachineActiveTransitionInfo<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Box<HkbStateMachineActiveTransitionInfo<'a>>: Deserialize<'de>"
+    ))]
     HkbStateMachineActiveTransitionInfo(Box<HkbStateMachineActiveTransitionInfo<'a>>),
 
     #[serde(rename = "0x26d5499")]
@@ -923,7 +957,9 @@ pub enum ClassParams<'a> {
     HkbStateMachineInternalState(Box<HkbStateMachineInternalState<'a>>),
 
     #[serde(rename = "0x7358f5da")]
-    #[serde(bound(deserialize = "Box<HkbStateMachineNestedStateMachineData<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Box<HkbStateMachineNestedStateMachineData<'a>>: Deserialize<'de>"
+    ))]
     HkbStateMachineNestedStateMachineData(Box<HkbStateMachineNestedStateMachineData<'a>>),
 
     #[serde(rename = "0x3ab09a2e")]
@@ -1159,7 +1195,9 @@ pub enum ClassParams<'a> {
     HkMultipleVertexBufferLockedElement(Box<HkMultipleVertexBufferLockedElement>),
 
     #[serde(rename = "0xdafbe0e6")]
-    #[serde(bound(deserialize = "Box<HkMultipleVertexBufferVertexBufferInfo<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Box<HkMultipleVertexBufferVertexBufferInfo<'a>>: Deserialize<'de>"
+    ))]
     HkMultipleVertexBufferVertexBufferInfo(Box<HkMultipleVertexBufferVertexBufferInfo<'a>>),
 
     #[serde(rename = "0xde3ab602")]
@@ -1282,8 +1320,12 @@ pub enum ClassParams<'a> {
     HkpCdBody(Box<HkpCdBody<'a>>),
 
     #[serde(rename = "0x1d7dbdd2")]
-    #[serde(bound(deserialize = "Box<HkpCenterOfMassChangerModifierConstraintAtom<'a>>: Deserialize<'de>"))]
-    HkpCenterOfMassChangerModifierConstraintAtom(Box<HkpCenterOfMassChangerModifierConstraintAtom<'a>>),
+    #[serde(bound(
+        deserialize = "Box<HkpCenterOfMassChangerModifierConstraintAtom<'a>>: Deserialize<'de>"
+    ))]
+    HkpCenterOfMassChangerModifierConstraintAtom(
+        Box<HkpCenterOfMassChangerModifierConstraintAtom<'a>>,
+    ),
 
     #[serde(rename = "0xda8c7d7d")]
     HkpCharacterControllerCinfo(Box<HkpCharacterControllerCinfo>),
@@ -1369,8 +1411,12 @@ pub enum ClassParams<'a> {
     HkpConstraintCollisionFilter(Box<HkpConstraintCollisionFilter<'a>>),
 
     #[serde(rename = "0xee3c2aec")]
-    #[serde(bound(deserialize = "Box<HkpConstraintInstanceSmallArraySerializeOverrideType<'a>>: Deserialize<'de>"))]
-    HkpConstraintInstanceSmallArraySerializeOverrideType(Box<HkpConstraintInstanceSmallArraySerializeOverrideType<'a>>),
+    #[serde(bound(
+        deserialize = "Box<HkpConstraintInstanceSmallArraySerializeOverrideType<'a>>: Deserialize<'de>"
+    ))]
+    HkpConstraintInstanceSmallArraySerializeOverrideType(
+        Box<HkpConstraintInstanceSmallArraySerializeOverrideType<'a>>,
+    ),
 
     #[serde(rename = "0x34eba5f")]
     #[serde(bound(deserialize = "Box<HkpConstraintInstance<'a>>: Deserialize<'de>"))]
@@ -1452,7 +1498,9 @@ pub enum ClassParams<'a> {
     HkpEntityExtendedListeners(Box<HkpEntityExtendedListeners<'a>>),
 
     #[serde(rename = "0xee3c2aec")]
-    #[serde(bound(deserialize = "Box<HkpEntitySmallArraySerializeOverrideType<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Box<HkpEntitySmallArraySerializeOverrideType<'a>>: Deserialize<'de>"
+    ))]
     HkpEntitySmallArraySerializeOverrideType(Box<HkpEntitySmallArraySerializeOverrideType<'a>>),
 
     #[serde(rename = "0x81147f05")]
@@ -1472,7 +1520,9 @@ pub enum ClassParams<'a> {
     HkpExtendedMeshShapeSubpart(Box<HkpExtendedMeshShapeSubpart<'a>>),
 
     #[serde(rename = "0x44c32df6")]
-    #[serde(bound(deserialize = "Box<HkpExtendedMeshShapeTrianglesSubpart<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Box<HkpExtendedMeshShapeTrianglesSubpart<'a>>: Deserialize<'de>"
+    ))]
     HkpExtendedMeshShapeTrianglesSubpart(Box<HkpExtendedMeshShapeTrianglesSubpart<'a>>),
 
     #[serde(rename = "0x177114a2")]
@@ -1582,7 +1632,9 @@ pub enum ClassParams<'a> {
     HkpMalleableConstraintData(Box<HkpMalleableConstraintData<'a>>),
 
     #[serde(rename = "0xb6b28240")]
-    #[serde(bound(deserialize = "Box<HkpMassChangerModifierConstraintAtom<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Box<HkpMassChangerModifierConstraintAtom<'a>>: Deserialize<'de>"
+    ))]
     HkpMassChangerModifierConstraintAtom(Box<HkpMassChangerModifierConstraintAtom<'a>>),
 
     #[serde(rename = "0x68a56834")]
@@ -1640,7 +1692,9 @@ pub enum ClassParams<'a> {
     HkpMouseSpringAction(Box<HkpMouseSpringAction<'a>>),
 
     #[serde(rename = "0x79ab517d")]
-    #[serde(bound(deserialize = "Box<HkpMovingSurfaceModifierConstraintAtom<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Box<HkpMovingSurfaceModifierConstraintAtom<'a>>: Deserialize<'de>"
+    ))]
     HkpMovingSurfaceModifierConstraintAtom(Box<HkpMovingSurfaceModifierConstraintAtom<'a>>),
 
     #[serde(rename = "0xffdc0b65")]
@@ -1671,8 +1725,12 @@ pub enum ClassParams<'a> {
     HkpOverwritePivotConstraintAtom(Box<HkpOverwritePivotConstraintAtom>),
 
     #[serde(rename = "0x36195969")]
-    #[serde(bound(deserialize = "Box<HkpPairCollisionFilterMapPairFilterKeyOverrideType<'a>>: Deserialize<'de>"))]
-    HkpPairCollisionFilterMapPairFilterKeyOverrideType(Box<HkpPairCollisionFilterMapPairFilterKeyOverrideType<'a>>),
+    #[serde(bound(
+        deserialize = "Box<HkpPairCollisionFilterMapPairFilterKeyOverrideType<'a>>: Deserialize<'de>"
+    ))]
+    HkpPairCollisionFilterMapPairFilterKeyOverrideType(
+        Box<HkpPairCollisionFilterMapPairFilterKeyOverrideType<'a>>,
+    ),
 
     #[serde(rename = "0x4abc140e")]
     #[serde(bound(deserialize = "Box<HkpPairCollisionFilter<'a>>: Deserialize<'de>"))]
@@ -1829,8 +1887,12 @@ pub enum ClassParams<'a> {
     HkpSerializedDisplayMarker(Box<HkpSerializedDisplayMarker>),
 
     #[serde(rename = "0x94ac5bec")]
-    #[serde(bound(deserialize = "Box<HkpSerializedDisplayRbTransformsDisplayTransformPair<'a>>: Deserialize<'de>"))]
-    HkpSerializedDisplayRbTransformsDisplayTransformPair(Box<HkpSerializedDisplayRbTransformsDisplayTransformPair<'a>>),
+    #[serde(bound(
+        deserialize = "Box<HkpSerializedDisplayRbTransformsDisplayTransformPair<'a>>: Deserialize<'de>"
+    ))]
+    HkpSerializedDisplayRbTransformsDisplayTransformPair(
+        Box<HkpSerializedDisplayRbTransformsDisplayTransformPair<'a>>,
+    ),
 
     #[serde(rename = "0xc18650ac")]
     #[serde(bound(deserialize = "Box<HkpSerializedDisplayRbTransforms<'a>>: Deserialize<'de>"))]
@@ -1892,7 +1954,9 @@ pub enum ClassParams<'a> {
     HkpSimpleMeshShape(Box<HkpSimpleMeshShape>),
 
     #[serde(rename = "0x98bfa6ce")]
-    #[serde(bound(deserialize = "Box<HkpSimpleShapePhantomCollisionDetail<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Box<HkpSimpleShapePhantomCollisionDetail<'a>>: Deserialize<'de>"
+    ))]
     HkpSimpleShapePhantomCollisionDetail(Box<HkpSimpleShapePhantomCollisionDetail<'a>>),
 
     #[serde(rename = "0x32a2a8a8")]
@@ -1908,7 +1972,9 @@ pub enum ClassParams<'a> {
     HkpSingleShapeContainer(Box<HkpSingleShapeContainer<'a>>),
 
     #[serde(rename = "0xecb34e27")]
-    #[serde(bound(deserialize = "Box<HkpSoftContactModifierConstraintAtom<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Box<HkpSoftContactModifierConstraintAtom<'a>>: Deserialize<'de>"
+    ))]
     HkpSoftContactModifierConstraintAtom(Box<HkpSoftContactModifierConstraintAtom<'a>>),
 
     #[serde(rename = "0xbafa2bb7")]
@@ -1948,11 +2014,17 @@ pub enum ClassParams<'a> {
     HkpStorageExtendedMeshShapeMaterial(Box<HkpStorageExtendedMeshShapeMaterial>),
 
     #[serde(rename = "0x5aad4de6")]
-    #[serde(bound(deserialize = "Box<HkpStorageExtendedMeshShapeMeshSubpartStorage<'a>>: Deserialize<'de>"))]
-    HkpStorageExtendedMeshShapeMeshSubpartStorage(Box<HkpStorageExtendedMeshShapeMeshSubpartStorage<'a>>),
+    #[serde(bound(
+        deserialize = "Box<HkpStorageExtendedMeshShapeMeshSubpartStorage<'a>>: Deserialize<'de>"
+    ))]
+    HkpStorageExtendedMeshShapeMeshSubpartStorage(
+        Box<HkpStorageExtendedMeshShapeMeshSubpartStorage<'a>>,
+    ),
 
     #[serde(rename = "0x3f7d804c")]
-    HkpStorageExtendedMeshShapeShapeSubpartStorage(Box<HkpStorageExtendedMeshShapeShapeSubpartStorage>),
+    HkpStorageExtendedMeshShapeShapeSubpartStorage(
+        Box<HkpStorageExtendedMeshShapeShapeSubpartStorage>,
+    ),
 
     #[serde(rename = "0xb469efbc")]
     #[serde(bound(deserialize = "Box<HkpStorageExtendedMeshShape<'a>>: Deserialize<'de>"))]
@@ -1988,7 +2060,9 @@ pub enum ClassParams<'a> {
     HkpTriggerVolume(Box<HkpTriggerVolume<'a>>),
 
     #[serde(rename = "0x58e1e585")]
-    #[serde(bound(deserialize = "Box<HkpTriSampledHeightFieldBvTreeShape<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Box<HkpTriSampledHeightFieldBvTreeShape<'a>>: Deserialize<'de>"
+    ))]
     HkpTriSampledHeightFieldBvTreeShape(Box<HkpTriSampledHeightFieldBvTreeShape<'a>>),
 
     #[serde(rename = "0xc291ddde")]
@@ -2050,7 +2124,9 @@ pub enum ClassParams<'a> {
     HkpVehicleDefaultSteering(Box<HkpVehicleDefaultSteering>),
 
     #[serde(rename = "0x7be5bed1")]
-    HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters(Box<HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters>),
+    HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters(
+        Box<HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters>,
+    ),
 
     #[serde(rename = "0x21735a24")]
     HkpVehicleDefaultSuspension(Box<HkpVehicleDefaultSuspension>),
@@ -2094,11 +2170,15 @@ pub enum ClassParams<'a> {
     HkpVehicleInstance(Box<HkpVehicleInstance<'a>>),
 
     #[serde(rename = "0xed529f13")]
-    #[serde(bound(deserialize = "Box<HkpVehicleLinearCastBatchingManager<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Box<HkpVehicleLinearCastBatchingManager<'a>>: Deserialize<'de>"
+    ))]
     HkpVehicleLinearCastBatchingManager(Box<HkpVehicleLinearCastBatchingManager<'a>>),
 
     #[serde(rename = "0x2a9acf98")]
-    #[serde(bound(deserialize = "Box<HkpVehicleLinearCastWheelCollideWheelState<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Box<HkpVehicleLinearCastWheelCollideWheelState<'a>>: Deserialize<'de>"
+    ))]
     HkpVehicleLinearCastWheelCollideWheelState(Box<HkpVehicleLinearCastWheelCollideWheelState<'a>>),
 
     #[serde(rename = "0xc59399d0")]
@@ -2121,7 +2201,9 @@ pub enum ClassParams<'a> {
     HkpVehicleSteering(Box<HkpVehicleSteering>),
 
     #[serde(rename = "0x358bfe9c")]
-    HkpVehicleSuspensionSuspensionWheelParameters(Box<HkpVehicleSuspensionSuspensionWheelParameters>),
+    HkpVehicleSuspensionSuspensionWheelParameters(
+        Box<HkpVehicleSuspensionSuspensionWheelParameters>,
+    ),
 
     #[serde(rename = "0xaf5056fa")]
     HkpVehicleSuspension(Box<HkpVehicleSuspension>),
@@ -2139,7 +2221,9 @@ pub enum ClassParams<'a> {
     HkpVelocityConstraintMotor(Box<HkpVelocityConstraintMotor>),
 
     #[serde(rename = "0x5c6aa14d")]
-    #[serde(bound(deserialize = "Box<HkpViscousSurfaceModifierConstraintAtom<'a>>: Deserialize<'de>"))]
+    #[serde(bound(
+        deserialize = "Box<HkpViscousSurfaceModifierConstraintAtom<'a>>: Deserialize<'de>"
+    ))]
     HkpViscousSurfaceModifierConstraintAtom(Box<HkpViscousSurfaceModifierConstraintAtom<'a>>),
 
     #[serde(rename = "0xb2b41feb")]
@@ -2383,7 +2467,6 @@ pub enum ClassParams<'a> {
 
     #[serde(rename = "0x2ea63179")]
     HkxVertexVectorDataChannel(Box<HkxVertexVectorDataChannel>),
-
 }
 impl<'a> Serialize for Class<'a> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -2399,7 +2482,6 @@ impl<'a> Serialize for Class<'a> {
 
         // Serialize hkparam based on class(C++ class name)
         match self.class.as_ref() {
-
             "BGSGamebryoSequenceGenerator" => {
                 if let ClassParams::BgsGamebryoSequenceGenerator(ref params) = self.hkparams {
                     state.serialize_field("hkparam", params)?;
@@ -2485,13 +2567,17 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "BSIStateManagerModifierBSiStateData" => {
-                if let ClassParams::BsiStateManagerModifierBSiStateData(ref params) = self.hkparams {
+                if let ClassParams::BsiStateManagerModifierBSiStateData(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "BSIStateManagerModifierBSIStateManagerStateListener" => {
-                if let ClassParams::BsiStateManagerModifierBsiStateManagerStateListener(ref params) = self.hkparams {
+                if let ClassParams::BsiStateManagerModifierBsiStateManagerStateListener(
+                    ref params,
+                ) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -2653,7 +2739,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkaDeltaCompressedAnimationQuantizationFormat" => {
-                if let ClassParams::HkaDeltaCompressedAnimationQuantizationFormat(ref params) = self.hkparams {
+                if let ClassParams::HkaDeltaCompressedAnimationQuantizationFormat(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -2677,13 +2765,16 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkaInterleavedUncompressedAnimation" => {
-                if let ClassParams::HkaInterleavedUncompressedAnimation(ref params) = self.hkparams {
+                if let ClassParams::HkaInterleavedUncompressedAnimation(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkaKeyFrameHierarchyUtilityControlData" => {
-                if let ClassParams::HkaKeyFrameHierarchyUtilityControlData(ref params) = self.hkparams {
+                if let ClassParams::HkaKeyFrameHierarchyUtilityControlData(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -2713,7 +2804,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkaQuantizedAnimationTrackCompressionParams" => {
-                if let ClassParams::HkaQuantizedAnimationTrackCompressionParams(ref params) = self.hkparams {
+                if let ClassParams::HkaQuantizedAnimationTrackCompressionParams(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -2773,13 +2866,18 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkaSplineCompressedAnimationAnimationCompressionParams" => {
-                if let ClassParams::HkaSplineCompressedAnimationAnimationCompressionParams(ref params) = self.hkparams {
+                if let ClassParams::HkaSplineCompressedAnimationAnimationCompressionParams(
+                    ref params,
+                ) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkaSplineCompressedAnimationTrackCompressionParams" => {
-                if let ClassParams::HkaSplineCompressedAnimationTrackCompressionParams(ref params) = self.hkparams {
+                if let ClassParams::HkaSplineCompressedAnimationTrackCompressionParams(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -2791,13 +2889,17 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkaWaveletCompressedAnimationCompressionParams" => {
-                if let ClassParams::HkaWaveletCompressedAnimationCompressionParams(ref params) = self.hkparams {
+                if let ClassParams::HkaWaveletCompressedAnimationCompressionParams(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkaWaveletCompressedAnimationQuantizationFormat" => {
-                if let ClassParams::HkaWaveletCompressedAnimationQuantizationFormat(ref params) = self.hkparams {
+                if let ClassParams::HkaWaveletCompressedAnimationQuantizationFormat(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -2911,7 +3013,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbBlenderGeneratorChildInternalState" => {
-                if let ClassParams::HkbBlenderGeneratorChildInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbBlenderGeneratorChildInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -2935,7 +3039,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbBlendingTransitionEffectInternalState" => {
-                if let ClassParams::HkbBlendingTransitionEffectInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbBlendingTransitionEffectInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -2995,7 +3101,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbCharacterControllerModifierInternalState" => {
-                if let ClassParams::HkbCharacterControllerModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbCharacterControllerModifierInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3007,7 +3115,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbCharacterDataCharacterControllerInfo" => {
-                if let ClassParams::HkbCharacterDataCharacterControllerInfo(ref params) = self.hkparams {
+                if let ClassParams::HkbCharacterDataCharacterControllerInfo(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3091,7 +3201,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbCombineTransformsModifierInternalState" => {
-                if let ClassParams::HkbCombineTransformsModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbCombineTransformsModifierInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3115,7 +3227,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbComputeDirectionModifierInternalState" => {
-                if let ClassParams::HkbComputeDirectionModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbComputeDirectionModifierInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3127,19 +3241,26 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbComputeRotationFromAxisAngleModifierInternalState" => {
-                if let ClassParams::HkbComputeRotationFromAxisAngleModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbComputeRotationFromAxisAngleModifierInternalState(
+                    ref params,
+                ) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkbComputeRotationFromAxisAngleModifier" => {
-                if let ClassParams::HkbComputeRotationFromAxisAngleModifier(ref params) = self.hkparams {
+                if let ClassParams::HkbComputeRotationFromAxisAngleModifier(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkbComputeRotationToTargetModifierInternalState" => {
-                if let ClassParams::HkbComputeRotationToTargetModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbComputeRotationToTargetModifierInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3193,7 +3314,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbDetectCloseToGroundModifierInternalState" => {
-                if let ClassParams::HkbDetectCloseToGroundModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbDetectCloseToGroundModifierInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3205,13 +3328,18 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbEvaluateExpressionModifierInternalExpressionData" => {
-                if let ClassParams::HkbEvaluateExpressionModifierInternalExpressionData(ref params) = self.hkparams {
+                if let ClassParams::HkbEvaluateExpressionModifierInternalExpressionData(
+                    ref params,
+                ) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkbEvaluateExpressionModifierInternalState" => {
-                if let ClassParams::HkbEvaluateExpressionModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbEvaluateExpressionModifierInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3235,7 +3363,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbEventDrivenModifierInternalState" => {
-                if let ClassParams::HkbEventDrivenModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbEventDrivenModifierInternalState(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3289,7 +3418,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbEventSequencedDataSequencedEvent" => {
-                if let ClassParams::HkbEventSequencedDataSequencedEvent(ref params) = self.hkparams {
+                if let ClassParams::HkbEventSequencedDataSequencedEvent(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3301,7 +3431,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbEventsFromRangeModifierInternalState" => {
-                if let ClassParams::HkbEventsFromRangeModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbEventsFromRangeModifierInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3415,7 +3547,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbGeneratorTransitionEffectInternalState" => {
-                if let ClassParams::HkbGeneratorTransitionEffectInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbGeneratorTransitionEffectInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3451,7 +3585,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbGetWorldFromModelModifierInternalState" => {
-                if let ClassParams::HkbGetWorldFromModelModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbGetWorldFromModelModifierInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3535,7 +3671,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbKeyframeBonesModifierKeyframeInfo" => {
-                if let ClassParams::HkbKeyframeBonesModifierKeyframeInfo(ref params) = self.hkparams {
+                if let ClassParams::HkbKeyframeBonesModifierKeyframeInfo(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3565,7 +3702,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbManualSelectorGeneratorInternalState" => {
-                if let ClassParams::HkbManualSelectorGeneratorInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbManualSelectorGeneratorInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3619,7 +3758,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbMoveCharacterModifierInternalState" => {
-                if let ClassParams::HkbMoveCharacterModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbMoveCharacterModifierInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3673,7 +3814,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbPoseMatchingGeneratorInternalState" => {
-                if let ClassParams::HkbPoseMatchingGeneratorInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbPoseMatchingGeneratorInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3763,7 +3906,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbRigidBodyRagdollControlsModifier" => {
-                if let ClassParams::HkbRigidBodyRagdollControlsModifier(ref params) = self.hkparams {
+                if let ClassParams::HkbRigidBodyRagdollControlsModifier(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3775,7 +3919,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbRotateCharacterModifierInternalState" => {
-                if let ClassParams::HkbRotateCharacterModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbRotateCharacterModifierInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3829,7 +3975,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbSetLocalTimeOfClipGeneratorCommand" => {
-                if let ClassParams::HkbSetLocalTimeOfClipGeneratorCommand(ref params) = self.hkparams {
+                if let ClassParams::HkbSetLocalTimeOfClipGeneratorCommand(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3877,13 +4025,15 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbStateMachineActiveTransitionInfo" => {
-                if let ClassParams::HkbStateMachineActiveTransitionInfo(ref params) = self.hkparams {
+                if let ClassParams::HkbStateMachineActiveTransitionInfo(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkbStateMachineDelayedTransitionInfo" => {
-                if let ClassParams::HkbStateMachineDelayedTransitionInfo(ref params) = self.hkparams {
+                if let ClassParams::HkbStateMachineDelayedTransitionInfo(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3901,13 +4051,17 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbStateMachineNestedStateMachineData" => {
-                if let ClassParams::HkbStateMachineNestedStateMachineData(ref params) = self.hkparams {
+                if let ClassParams::HkbStateMachineNestedStateMachineData(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkbStateMachineProspectiveTransitionInfo" => {
-                if let ClassParams::HkbStateMachineProspectiveTransitionInfo(ref params) = self.hkparams {
+                if let ClassParams::HkbStateMachineProspectiveTransitionInfo(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3931,7 +4085,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbStateMachineTransitionInfoReference" => {
-                if let ClassParams::HkbStateMachineTransitionInfoReference(ref params) = self.hkparams {
+                if let ClassParams::HkbStateMachineTransitionInfoReference(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -3979,7 +4135,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkbTransformVectorModifierInternalState" => {
-                if let ClassParams::HkbTransformVectorModifierInternalState(ref params) = self.hkparams {
+                if let ClassParams::HkbTransformVectorModifierInternalState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -4291,13 +4449,16 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkMultipleVertexBufferLockedElement" => {
-                if let ClassParams::HkMultipleVertexBufferLockedElement(ref params) = self.hkparams {
+                if let ClassParams::HkMultipleVertexBufferLockedElement(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkMultipleVertexBufferVertexBufferInfo" => {
-                if let ClassParams::HkMultipleVertexBufferVertexBufferInfo(ref params) = self.hkparams {
+                if let ClassParams::HkMultipleVertexBufferVertexBufferInfo(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -4387,7 +4548,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpBallAndSocketConstraintDataAtoms" => {
-                if let ClassParams::HkpBallAndSocketConstraintDataAtoms(ref params) = self.hkparams {
+                if let ClassParams::HkpBallAndSocketConstraintDataAtoms(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -4405,7 +4567,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpBallSocketChainDataConstraintInfo" => {
-                if let ClassParams::HkpBallSocketChainDataConstraintInfo(ref params) = self.hkparams {
+                if let ClassParams::HkpBallSocketChainDataConstraintInfo(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -4507,7 +4670,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpCenterOfMassChangerModifierConstraintAtom" => {
-                if let ClassParams::HkpCenterOfMassChangerModifierConstraintAtom(ref params) = self.hkparams {
+                if let ClassParams::HkpCenterOfMassChangerModifierConstraintAtom(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -4609,7 +4774,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpCompressedSampledHeightFieldShape" => {
-                if let ClassParams::HkpCompressedSampledHeightFieldShape(ref params) = self.hkparams {
+                if let ClassParams::HkpCompressedSampledHeightFieldShape(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -4657,7 +4823,10 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpConstraintInstanceSmallArraySerializeOverrideType" => {
-                if let ClassParams::HkpConstraintInstanceSmallArraySerializeOverrideType(ref params) = self.hkparams {
+                if let ClassParams::HkpConstraintInstanceSmallArraySerializeOverrideType(
+                    ref params,
+                ) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -4795,7 +4964,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpEntitySmallArraySerializeOverrideType" => {
-                if let ClassParams::HkpEntitySmallArraySerializeOverrideType(ref params) = self.hkparams {
+                if let ClassParams::HkpEntitySmallArraySerializeOverrideType(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -4825,7 +4996,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpExtendedMeshShapeTrianglesSubpart" => {
-                if let ClassParams::HkpExtendedMeshShapeTrianglesSubpart(ref params) = self.hkparams {
+                if let ClassParams::HkpExtendedMeshShapeTrianglesSubpart(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -4855,7 +5027,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpGenericConstraintDataSchemeConstraintInfo" => {
-                if let ClassParams::HkpGenericConstraintDataSchemeConstraintInfo(ref params) = self.hkparams {
+                if let ClassParams::HkpGenericConstraintDataSchemeConstraintInfo(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5011,7 +5185,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpMassChangerModifierConstraintAtom" => {
-                if let ClassParams::HkpMassChangerModifierConstraintAtom(ref params) = self.hkparams {
+                if let ClassParams::HkpMassChangerModifierConstraintAtom(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5107,7 +5282,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpMovingSurfaceModifierConstraintAtom" => {
-                if let ClassParams::HkpMovingSurfaceModifierConstraintAtom(ref params) = self.hkparams {
+                if let ClassParams::HkpMovingSurfaceModifierConstraintAtom(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5161,7 +5338,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpPairCollisionFilterMapPairFilterKeyOverrideType" => {
-                if let ClassParams::HkpPairCollisionFilterMapPairFilterKeyOverrideType(ref params) = self.hkparams {
+                if let ClassParams::HkpPairCollisionFilterMapPairFilterKeyOverrideType(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5323,7 +5502,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpRackAndPinionConstraintDataAtoms" => {
-                if let ClassParams::HkpRackAndPinionConstraintDataAtoms(ref params) = self.hkparams {
+                if let ClassParams::HkpRackAndPinionConstraintDataAtoms(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5431,7 +5611,10 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpSerializedDisplayRbTransformsDisplayTransformPair" => {
-                if let ClassParams::HkpSerializedDisplayRbTransformsDisplayTransformPair(ref params) = self.hkparams {
+                if let ClassParams::HkpSerializedDisplayRbTransformsDisplayTransformPair(
+                    ref params,
+                ) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5461,13 +5644,16 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpSetLocalTransformsConstraintAtom" => {
-                if let ClassParams::HkpSetLocalTransformsConstraintAtom(ref params) = self.hkparams {
+                if let ClassParams::HkpSetLocalTransformsConstraintAtom(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkpSetLocalTranslationsConstraintAtom" => {
-                if let ClassParams::HkpSetLocalTranslationsConstraintAtom(ref params) = self.hkparams {
+                if let ClassParams::HkpSetLocalTranslationsConstraintAtom(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5545,7 +5731,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpSimpleShapePhantomCollisionDetail" => {
-                if let ClassParams::HkpSimpleShapePhantomCollisionDetail(ref params) = self.hkparams {
+                if let ClassParams::HkpSimpleShapePhantomCollisionDetail(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5569,7 +5756,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpSoftContactModifierConstraintAtom" => {
-                if let ClassParams::HkpSoftContactModifierConstraintAtom(ref params) = self.hkparams {
+                if let ClassParams::HkpSoftContactModifierConstraintAtom(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5605,7 +5793,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpStiffSpringChainDataConstraintInfo" => {
-                if let ClassParams::HkpStiffSpringChainDataConstraintInfo(ref params) = self.hkparams {
+                if let ClassParams::HkpStiffSpringChainDataConstraintInfo(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5635,19 +5825,24 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpStorageExtendedMeshShapeMaterial" => {
-                if let ClassParams::HkpStorageExtendedMeshShapeMaterial(ref params) = self.hkparams {
+                if let ClassParams::HkpStorageExtendedMeshShapeMaterial(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkpStorageExtendedMeshShapeMeshSubpartStorage" => {
-                if let ClassParams::HkpStorageExtendedMeshShapeMeshSubpartStorage(ref params) = self.hkparams {
+                if let ClassParams::HkpStorageExtendedMeshShapeMeshSubpartStorage(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkpStorageExtendedMeshShapeShapeSubpartStorage" => {
-                if let ClassParams::HkpStorageExtendedMeshShapeShapeSubpartStorage(ref params) = self.hkparams {
+                if let ClassParams::HkpStorageExtendedMeshShapeShapeSubpartStorage(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5707,7 +5902,8 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpTriSampledHeightFieldBvTreeShape" => {
-                if let ClassParams::HkpTriSampledHeightFieldBvTreeShape(ref params) = self.hkparams {
+                if let ClassParams::HkpTriSampledHeightFieldBvTreeShape(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5797,7 +5993,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpVehicleDefaultBrakeWheelBrakingProperties" => {
-                if let ClassParams::HkpVehicleDefaultBrakeWheelBrakingProperties(ref params) = self.hkparams {
+                if let ClassParams::HkpVehicleDefaultBrakeWheelBrakingProperties(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5821,7 +6019,10 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpVehicleDefaultSuspensionWheelSpringSuspensionParameters" => {
-                if let ClassParams::HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters(ref params) = self.hkparams {
+                if let ClassParams::HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters(
+                    ref params,
+                ) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5869,7 +6070,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpVehicleFrictionDescriptionAxisDescription" => {
-                if let ClassParams::HkpVehicleFrictionDescriptionAxisDescription(ref params) = self.hkparams {
+                if let ClassParams::HkpVehicleFrictionDescriptionAxisDescription(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5905,13 +6108,16 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpVehicleLinearCastBatchingManager" => {
-                if let ClassParams::HkpVehicleLinearCastBatchingManager(ref params) = self.hkparams {
+                if let ClassParams::HkpVehicleLinearCastBatchingManager(ref params) = self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkpVehicleLinearCastWheelCollideWheelState" => {
-                if let ClassParams::HkpVehicleLinearCastWheelCollideWheelState(ref params) = self.hkparams {
+                if let ClassParams::HkpVehicleLinearCastWheelCollideWheelState(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5947,7 +6153,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpVehicleSuspensionSuspensionWheelParameters" => {
-                if let ClassParams::HkpVehicleSuspensionSuspensionWheelParameters(ref params) = self.hkparams {
+                if let ClassParams::HkpVehicleSuspensionSuspensionWheelParameters(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -5983,7 +6191,9 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkpViscousSurfaceModifierConstraintAtom" => {
-                if let ClassParams::HkpViscousSurfaceModifierConstraintAtom(ref params) = self.hkparams {
+                if let ClassParams::HkpViscousSurfaceModifierConstraintAtom(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -6103,13 +6313,17 @@ impl<'a> Serialize for Class<'a> {
             }
 
             "hkTrackerSerializableScanSnapshotAllocation" => {
-                if let ClassParams::HkTrackerSerializableScanSnapshotAllocation(ref params) = self.hkparams {
+                if let ClassParams::HkTrackerSerializableScanSnapshotAllocation(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
 
             "hkTrackerSerializableScanSnapshotBlock" => {
-                if let ClassParams::HkTrackerSerializableScanSnapshotBlock(ref params) = self.hkparams {
+                if let ClassParams::HkTrackerSerializableScanSnapshotBlock(ref params) =
+                    self.hkparams
+                {
                     state.serialize_field("hkparam", params)?;
                 }
             }
@@ -9188,18 +9402,20 @@ impl<'a> ClassParams<'a> {
             "BGSGamebryoSequenceGenerator" => ClassParams::BgsGamebryoSequenceGenerator(Box::new(
                 BgsGamebryoSequenceGenerator::from_bytes::<B>(bytes, de)?,
             )),
-            "BSBoneSwitchGeneratorBoneData" => ClassParams::BsBoneSwitchGeneratorBoneData(Box::new(
-                BsBoneSwitchGeneratorBoneData::from_bytes::<B>(bytes, de)?,
-            )),
+            "BSBoneSwitchGeneratorBoneData" => ClassParams::BsBoneSwitchGeneratorBoneData(
+                Box::new(BsBoneSwitchGeneratorBoneData::from_bytes::<B>(bytes, de)?),
+            ),
             "BSBoneSwitchGenerator" => ClassParams::BsBoneSwitchGenerator(Box::new(
                 BsBoneSwitchGenerator::from_bytes::<B>(bytes, de)?,
             )),
             "BSComputeAddBoneAnimModifier" => ClassParams::BsComputeAddBoneAnimModifier(Box::new(
                 BsComputeAddBoneAnimModifier::from_bytes::<B>(bytes, de)?,
             )),
-            "BSCyclicBlendTransitionGenerator" => ClassParams::BsCyclicBlendTransitionGenerator(Box::new(
-                BsCyclicBlendTransitionGenerator::from_bytes::<B>(bytes, de)?,
-            )),
+            "BSCyclicBlendTransitionGenerator" => {
+                ClassParams::BsCyclicBlendTransitionGenerator(Box::new(
+                    BsCyclicBlendTransitionGenerator::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "BSDecomposeVectorModifier" => ClassParams::BsDecomposeVectorModifier(Box::new(
                 BsDecomposeVectorModifier::from_bytes::<B>(bytes, de)?,
             )),
@@ -9227,12 +9443,18 @@ impl<'a> ClassParams<'a> {
             "BSIsActiveModifier" => ClassParams::BsIsActiveModifier(Box::new(
                 BsIsActiveModifier::from_bytes::<B>(bytes, de)?,
             )),
-            "BSIStateManagerModifierBSiStateData" => ClassParams::BsiStateManagerModifierBSiStateData(Box::new(
-                BsiStateManagerModifierBSiStateData::from_bytes::<B>(bytes, de)?,
-            )),
-            "BSIStateManagerModifierBSIStateManagerStateListener" => ClassParams::BsiStateManagerModifierBsiStateManagerStateListener(Box::new(
-                BsiStateManagerModifierBsiStateManagerStateListener::from_bytes::<B>(bytes, de)?,
-            )),
+            "BSIStateManagerModifierBSiStateData" => {
+                ClassParams::BsiStateManagerModifierBSiStateData(Box::new(
+                    BsiStateManagerModifierBSiStateData::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "BSIStateManagerModifierBSIStateManagerStateListener" => {
+                ClassParams::BsiStateManagerModifierBsiStateManagerStateListener(Box::new(
+                    BsiStateManagerModifierBsiStateManagerStateListener::from_bytes::<B>(
+                        bytes, de,
+                    )?,
+                ))
+            }
             "BSIStateManagerModifier" => ClassParams::BsiStateManagerModifier(Box::new(
                 BsiStateManagerModifier::from_bytes::<B>(bytes, de)?,
             )),
@@ -9254,33 +9476,35 @@ impl<'a> ClassParams<'a> {
             "BSOffsetAnimationGenerator" => ClassParams::BsOffsetAnimationGenerator(Box::new(
                 BsOffsetAnimationGenerator::from_bytes::<B>(bytes, de)?,
             )),
-            "BSPassByTargetTriggerModifier" => ClassParams::BsPassByTargetTriggerModifier(Box::new(
-                BsPassByTargetTriggerModifier::from_bytes::<B>(bytes, de)?,
-            )),
-            "BSRagdollContactListenerModifier" => ClassParams::BsRagdollContactListenerModifier(Box::new(
-                BsRagdollContactListenerModifier::from_bytes::<B>(bytes, de)?,
-            )),
-            "BSSpeedSamplerModifier" => ClassParams::BsSpeedSamplerModifier(Box::new(
-                BsSpeedSamplerModifier::from_bytes::<B>(bytes, de)?,
-            )),
+            "BSPassByTargetTriggerModifier" => ClassParams::BsPassByTargetTriggerModifier(
+                Box::new(BsPassByTargetTriggerModifier::from_bytes::<B>(bytes, de)?),
+            ),
+            "BSRagdollContactListenerModifier" => {
+                ClassParams::BsRagdollContactListenerModifier(Box::new(
+                    BsRagdollContactListenerModifier::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "BSSpeedSamplerModifier" => {
+                ClassParams::BsSpeedSamplerModifier(Box::new(BsSpeedSamplerModifier::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
             "BSSynchronizedClipGenerator" => ClassParams::BsSynchronizedClipGenerator(Box::new(
                 BsSynchronizedClipGenerator::from_bytes::<B>(bytes, de)?,
             )),
-            "BSTimerModifier" => ClassParams::BsTimerModifier(Box::new(
-                BsTimerModifier::from_bytes::<B>(bytes, de)?,
-            )),
+            "BSTimerModifier" => {
+                ClassParams::BsTimerModifier(Box::new(BsTimerModifier::from_bytes::<B>(bytes, de)?))
+            }
             "BSTweenerModifier" => ClassParams::BsTweenerModifier(Box::new(
                 BsTweenerModifier::from_bytes::<B>(bytes, de)?,
             )),
-            "hkAabbHalf" => ClassParams::HkAabbHalf(Box::new(
-                HkAabbHalf::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkAabbUint32" => ClassParams::HkAabbUint32(Box::new(
-                HkAabbUint32::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkAabb" => ClassParams::HkAabb(Box::new(
-                HkAabb::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkAabbHalf" => {
+                ClassParams::HkAabbHalf(Box::new(HkAabbHalf::from_bytes::<B>(bytes, de)?))
+            }
+            "hkAabbUint32" => {
+                ClassParams::HkAabbUint32(Box::new(HkAabbUint32::from_bytes::<B>(bytes, de)?))
+            }
+            "hkAabb" => ClassParams::HkAabb(Box::new(HkAabb::from_bytes::<B>(bytes, de)?)),
             "hkaAnimatedReferenceFrame" => ClassParams::HkaAnimatedReferenceFrame(Box::new(
                 HkaAnimatedReferenceFrame::from_bytes::<B>(bytes, de)?,
             )),
@@ -9290,12 +9514,14 @@ impl<'a> ClassParams<'a> {
             "hkaAnimationContainer" => ClassParams::HkaAnimationContainer(Box::new(
                 HkaAnimationContainer::from_bytes::<B>(bytes, de)?,
             )),
-            "hkaAnimationPreviewColorContainer" => ClassParams::HkaAnimationPreviewColorContainer(Box::new(
-                HkaAnimationPreviewColorContainer::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkaAnimation" => ClassParams::HkaAnimation(Box::new(
-                HkaAnimation::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkaAnimationPreviewColorContainer" => {
+                ClassParams::HkaAnimationPreviewColorContainer(Box::new(
+                    HkaAnimationPreviewColorContainer::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkaAnimation" => {
+                ClassParams::HkaAnimation(Box::new(HkaAnimation::from_bytes::<B>(bytes, de)?))
+            }
             "hkaAnnotationTrackAnnotation" => ClassParams::HkaAnnotationTrackAnnotation(Box::new(
                 HkaAnnotationTrackAnnotation::from_bytes::<B>(bytes, de)?,
             )),
@@ -9305,30 +9531,38 @@ impl<'a> ClassParams<'a> {
             "hkaBoneAttachment" => ClassParams::HkaBoneAttachment(Box::new(
                 HkaBoneAttachment::from_bytes::<B>(bytes, de)?,
             )),
-            "hkaBone" => ClassParams::HkaBone(Box::new(
-                HkaBone::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkaDefaultAnimatedReferenceFrame" => ClassParams::HkaDefaultAnimatedReferenceFrame(Box::new(
-                HkaDefaultAnimatedReferenceFrame::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkaDeltaCompressedAnimationQuantizationFormat" => ClassParams::HkaDeltaCompressedAnimationQuantizationFormat(Box::new(
-                HkaDeltaCompressedAnimationQuantizationFormat::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkaBone" => ClassParams::HkaBone(Box::new(HkaBone::from_bytes::<B>(bytes, de)?)),
+            "hkaDefaultAnimatedReferenceFrame" => {
+                ClassParams::HkaDefaultAnimatedReferenceFrame(Box::new(
+                    HkaDefaultAnimatedReferenceFrame::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkaDeltaCompressedAnimationQuantizationFormat" => {
+                ClassParams::HkaDeltaCompressedAnimationQuantizationFormat(Box::new(
+                    HkaDeltaCompressedAnimationQuantizationFormat::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkaDeltaCompressedAnimation" => ClassParams::HkaDeltaCompressedAnimation(Box::new(
                 HkaDeltaCompressedAnimation::from_bytes::<B>(bytes, de)?,
             )),
-            "hkaFootstepAnalysisInfoContainer" => ClassParams::HkaFootstepAnalysisInfoContainer(Box::new(
-                HkaFootstepAnalysisInfoContainer::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkaFootstepAnalysisInfoContainer" => {
+                ClassParams::HkaFootstepAnalysisInfoContainer(Box::new(
+                    HkaFootstepAnalysisInfoContainer::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkaFootstepAnalysisInfo" => ClassParams::HkaFootstepAnalysisInfo(Box::new(
                 HkaFootstepAnalysisInfo::from_bytes::<B>(bytes, de)?,
             )),
-            "hkaInterleavedUncompressedAnimation" => ClassParams::HkaInterleavedUncompressedAnimation(Box::new(
-                HkaInterleavedUncompressedAnimation::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkaKeyFrameHierarchyUtilityControlData" => ClassParams::HkaKeyFrameHierarchyUtilityControlData(Box::new(
-                HkaKeyFrameHierarchyUtilityControlData::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkaInterleavedUncompressedAnimation" => {
+                ClassParams::HkaInterleavedUncompressedAnimation(Box::new(
+                    HkaInterleavedUncompressedAnimation::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkaKeyFrameHierarchyUtilityControlData" => {
+                ClassParams::HkaKeyFrameHierarchyUtilityControlData(Box::new(
+                    HkaKeyFrameHierarchyUtilityControlData::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkaKeyFrameHierarchyUtility" => ClassParams::HkaKeyFrameHierarchyUtility(Box::new(
                 HkaKeyFrameHierarchyUtility::from_bytes::<B>(bytes, de)?,
             )),
@@ -9338,12 +9572,14 @@ impl<'a> ClassParams<'a> {
             "hkaMeshBindingMapping" => ClassParams::HkaMeshBindingMapping(Box::new(
                 HkaMeshBindingMapping::from_bytes::<B>(bytes, de)?,
             )),
-            "hkaMeshBinding" => ClassParams::HkaMeshBinding(Box::new(
-                HkaMeshBinding::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkaQuantizedAnimationTrackCompressionParams" => ClassParams::HkaQuantizedAnimationTrackCompressionParams(Box::new(
-                HkaQuantizedAnimationTrackCompressionParams::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkaMeshBinding" => {
+                ClassParams::HkaMeshBinding(Box::new(HkaMeshBinding::from_bytes::<B>(bytes, de)?))
+            }
+            "hkaQuantizedAnimationTrackCompressionParams" => {
+                ClassParams::HkaQuantizedAnimationTrackCompressionParams(Box::new(
+                    HkaQuantizedAnimationTrackCompressionParams::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkaQuantizedAnimation" => ClassParams::HkaQuantizedAnimation(Box::new(
                 HkaQuantizedAnimation::from_bytes::<B>(bytes, de)?,
             )),
@@ -9356,51 +9592,65 @@ impl<'a> ClassParams<'a> {
             "hkaSkeletonLocalFrameOnBone" => ClassParams::HkaSkeletonLocalFrameOnBone(Box::new(
                 HkaSkeletonLocalFrameOnBone::from_bytes::<B>(bytes, de)?,
             )),
-            "hkaSkeletonMapperDataChainMapping" => ClassParams::HkaSkeletonMapperDataChainMapping(Box::new(
-                HkaSkeletonMapperDataChainMapping::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkaSkeletonMapperDataSimpleMapping" => ClassParams::HkaSkeletonMapperDataSimpleMapping(Box::new(
-                HkaSkeletonMapperDataSimpleMapping::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkaSkeletonMapperDataChainMapping" => {
+                ClassParams::HkaSkeletonMapperDataChainMapping(Box::new(
+                    HkaSkeletonMapperDataChainMapping::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkaSkeletonMapperDataSimpleMapping" => {
+                ClassParams::HkaSkeletonMapperDataSimpleMapping(Box::new(
+                    HkaSkeletonMapperDataSimpleMapping::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkaSkeletonMapperData" => ClassParams::HkaSkeletonMapperData(Box::new(
                 HkaSkeletonMapperData::from_bytes::<B>(bytes, de)?,
             )),
             "hkaSkeletonMapper" => ClassParams::HkaSkeletonMapper(Box::new(
                 HkaSkeletonMapper::from_bytes::<B>(bytes, de)?,
             )),
-            "hkaSkeleton" => ClassParams::HkaSkeleton(Box::new(
-                HkaSkeleton::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkaSplineCompressedAnimationAnimationCompressionParams" => ClassParams::HkaSplineCompressedAnimationAnimationCompressionParams(Box::new(
-                HkaSplineCompressedAnimationAnimationCompressionParams::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkaSplineCompressedAnimationTrackCompressionParams" => ClassParams::HkaSplineCompressedAnimationTrackCompressionParams(Box::new(
-                HkaSplineCompressedAnimationTrackCompressionParams::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkaSkeleton" => {
+                ClassParams::HkaSkeleton(Box::new(HkaSkeleton::from_bytes::<B>(bytes, de)?))
+            }
+            "hkaSplineCompressedAnimationAnimationCompressionParams" => {
+                ClassParams::HkaSplineCompressedAnimationAnimationCompressionParams(Box::new(
+                    HkaSplineCompressedAnimationAnimationCompressionParams::from_bytes::<B>(
+                        bytes, de,
+                    )?,
+                ))
+            }
+            "hkaSplineCompressedAnimationTrackCompressionParams" => {
+                ClassParams::HkaSplineCompressedAnimationTrackCompressionParams(Box::new(
+                    HkaSplineCompressedAnimationTrackCompressionParams::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkaSplineCompressedAnimation" => ClassParams::HkaSplineCompressedAnimation(Box::new(
                 HkaSplineCompressedAnimation::from_bytes::<B>(bytes, de)?,
             )),
-            "hkaWaveletCompressedAnimationCompressionParams" => ClassParams::HkaWaveletCompressedAnimationCompressionParams(Box::new(
-                HkaWaveletCompressedAnimationCompressionParams::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkaWaveletCompressedAnimationQuantizationFormat" => ClassParams::HkaWaveletCompressedAnimationQuantizationFormat(Box::new(
-                HkaWaveletCompressedAnimationQuantizationFormat::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkaWaveletCompressedAnimation" => ClassParams::HkaWaveletCompressedAnimation(Box::new(
-                HkaWaveletCompressedAnimation::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkBaseObject" => ClassParams::HkBaseObject(Box::new(
-                HkBaseObject::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkaWaveletCompressedAnimationCompressionParams" => {
+                ClassParams::HkaWaveletCompressedAnimationCompressionParams(Box::new(
+                    HkaWaveletCompressedAnimationCompressionParams::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkaWaveletCompressedAnimationQuantizationFormat" => {
+                ClassParams::HkaWaveletCompressedAnimationQuantizationFormat(Box::new(
+                    HkaWaveletCompressedAnimationQuantizationFormat::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkaWaveletCompressedAnimation" => ClassParams::HkaWaveletCompressedAnimation(
+                Box::new(HkaWaveletCompressedAnimation::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkBaseObject" => {
+                ClassParams::HkBaseObject(Box::new(HkBaseObject::from_bytes::<B>(bytes, de)?))
+            }
             "hkbAttachmentModifier" => ClassParams::HkbAttachmentModifier(Box::new(
                 HkbAttachmentModifier::from_bytes::<B>(bytes, de)?,
             )),
             "hkbAttachmentSetup" => ClassParams::HkbAttachmentSetup(Box::new(
                 HkbAttachmentSetup::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbAttributeModifierAssignment" => ClassParams::HkbAttributeModifierAssignment(Box::new(
-                HkbAttributeModifierAssignment::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbAttributeModifierAssignment" => ClassParams::HkbAttributeModifierAssignment(
+                Box::new(HkbAttributeModifierAssignment::from_bytes::<B>(bytes, de)?),
+            ),
             "hkbAttributeModifier" => ClassParams::HkbAttributeModifier(Box::new(
                 HkbAttributeModifier::from_bytes::<B>(bytes, de)?,
             )),
@@ -9413,12 +9663,14 @@ impl<'a> ClassParams<'a> {
             "hkbBehaviorGraphData" => ClassParams::HkbBehaviorGraphData(Box::new(
                 HkbBehaviorGraphData::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbBehaviorGraphInternalStateInfo" => ClassParams::HkbBehaviorGraphInternalStateInfo(Box::new(
-                HkbBehaviorGraphInternalStateInfo::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbBehaviorGraphInternalState" => ClassParams::HkbBehaviorGraphInternalState(Box::new(
-                HkbBehaviorGraphInternalState::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbBehaviorGraphInternalStateInfo" => {
+                ClassParams::HkbBehaviorGraphInternalStateInfo(Box::new(
+                    HkbBehaviorGraphInternalStateInfo::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkbBehaviorGraphInternalState" => ClassParams::HkbBehaviorGraphInternalState(
+                Box::new(HkbBehaviorGraphInternalState::from_bytes::<B>(bytes, de)?),
+            ),
             "hkbBehaviorGraphStringData" => ClassParams::HkbBehaviorGraphStringData(Box::new(
                 HkbBehaviorGraphStringData::from_bytes::<B>(bytes, de)?,
             )),
@@ -9428,33 +9680,39 @@ impl<'a> ClassParams<'a> {
             "hkbBehaviorInfoIdToNamePair" => ClassParams::HkbBehaviorInfoIdToNamePair(Box::new(
                 HkbBehaviorInfoIdToNamePair::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbBehaviorInfo" => ClassParams::HkbBehaviorInfo(Box::new(
-                HkbBehaviorInfo::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbBehaviorReferenceGenerator" => ClassParams::HkbBehaviorReferenceGenerator(Box::new(
-                HkbBehaviorReferenceGenerator::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbBindable" => ClassParams::HkbBindable(Box::new(
-                HkbBindable::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbBehaviorInfo" => {
+                ClassParams::HkbBehaviorInfo(Box::new(HkbBehaviorInfo::from_bytes::<B>(bytes, de)?))
+            }
+            "hkbBehaviorReferenceGenerator" => ClassParams::HkbBehaviorReferenceGenerator(
+                Box::new(HkbBehaviorReferenceGenerator::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkbBindable" => {
+                ClassParams::HkbBindable(Box::new(HkbBindable::from_bytes::<B>(bytes, de)?))
+            }
             "hkbBlendCurveUtils" => ClassParams::HkbBlendCurveUtils(Box::new(
                 HkbBlendCurveUtils::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbBlenderGeneratorChildInternalState" => ClassParams::HkbBlenderGeneratorChildInternalState(Box::new(
-                HkbBlenderGeneratorChildInternalState::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbBlenderGeneratorChildInternalState" => {
+                ClassParams::HkbBlenderGeneratorChildInternalState(Box::new(
+                    HkbBlenderGeneratorChildInternalState::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbBlenderGeneratorChild" => ClassParams::HkbBlenderGeneratorChild(Box::new(
                 HkbBlenderGeneratorChild::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbBlenderGeneratorInternalState" => ClassParams::HkbBlenderGeneratorInternalState(Box::new(
-                HkbBlenderGeneratorInternalState::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbBlenderGeneratorInternalState" => {
+                ClassParams::HkbBlenderGeneratorInternalState(Box::new(
+                    HkbBlenderGeneratorInternalState::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbBlenderGenerator" => ClassParams::HkbBlenderGenerator(Box::new(
                 HkbBlenderGenerator::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbBlendingTransitionEffectInternalState" => ClassParams::HkbBlendingTransitionEffectInternalState(Box::new(
-                HkbBlendingTransitionEffectInternalState::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbBlendingTransitionEffectInternalState" => {
+                ClassParams::HkbBlendingTransitionEffectInternalState(Box::new(
+                    HkbBlendingTransitionEffectInternalState::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbBlendingTransitionEffect" => ClassParams::HkbBlendingTransitionEffect(Box::new(
                 HkbBlendingTransitionEffect::from_bytes::<B>(bytes, de)?,
             )),
@@ -9464,9 +9722,11 @@ impl<'a> ClassParams<'a> {
             "hkbBoneWeightArray" => ClassParams::HkbBoneWeightArray(Box::new(
                 HkbBoneWeightArray::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbBoolVariableSequencedDataSample" => ClassParams::HkbBoolVariableSequencedDataSample(Box::new(
-                HkbBoolVariableSequencedDataSample::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbBoolVariableSequencedDataSample" => {
+                ClassParams::HkbBoolVariableSequencedDataSample(Box::new(
+                    HkbBoolVariableSequencedDataSample::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbBoolVariableSequencedData" => ClassParams::HkbBoolVariableSequencedData(Box::new(
                 HkbBoolVariableSequencedData::from_bytes::<B>(bytes, de)?,
             )),
@@ -9479,18 +9739,24 @@ impl<'a> ClassParams<'a> {
             "hkbCharacterControlCommand" => ClassParams::HkbCharacterControlCommand(Box::new(
                 HkbCharacterControlCommand::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbCharacterControllerControlData" => ClassParams::HkbCharacterControllerControlData(Box::new(
-                HkbCharacterControllerControlData::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbCharacterControllerModifierInternalState" => ClassParams::HkbCharacterControllerModifierInternalState(Box::new(
-                HkbCharacterControllerModifierInternalState::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbCharacterControllerModifier" => ClassParams::HkbCharacterControllerModifier(Box::new(
-                HkbCharacterControllerModifier::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbCharacterDataCharacterControllerInfo" => ClassParams::HkbCharacterDataCharacterControllerInfo(Box::new(
-                HkbCharacterDataCharacterControllerInfo::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbCharacterControllerControlData" => {
+                ClassParams::HkbCharacterControllerControlData(Box::new(
+                    HkbCharacterControllerControlData::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkbCharacterControllerModifierInternalState" => {
+                ClassParams::HkbCharacterControllerModifierInternalState(Box::new(
+                    HkbCharacterControllerModifierInternalState::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkbCharacterControllerModifier" => ClassParams::HkbCharacterControllerModifier(
+                Box::new(HkbCharacterControllerModifier::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkbCharacterDataCharacterControllerInfo" => {
+                ClassParams::HkbCharacterDataCharacterControllerInfo(Box::new(
+                    HkbCharacterDataCharacterControllerInfo::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbCharacterData" => ClassParams::HkbCharacterData(Box::new(
                 HkbCharacterData::from_bytes::<B>(bytes, de)?,
             )),
@@ -9506,156 +9772,192 @@ impl<'a> ClassParams<'a> {
             "hkbCharacterSteppedInfo" => ClassParams::HkbCharacterSteppedInfo(Box::new(
                 HkbCharacterSteppedInfo::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbCharacterStringData" => ClassParams::HkbCharacterStringData(Box::new(
-                HkbCharacterStringData::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbCharacter" => ClassParams::HkbCharacter(Box::new(
-                HkbCharacter::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbCharacterStringData" => {
+                ClassParams::HkbCharacterStringData(Box::new(HkbCharacterStringData::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
+            "hkbCharacter" => {
+                ClassParams::HkbCharacter(Box::new(HkbCharacter::from_bytes::<B>(bytes, de)?))
+            }
             "hkbClientCharacterState" => ClassParams::HkbClientCharacterState(Box::new(
                 HkbClientCharacterState::from_bytes::<B>(bytes, de)?,
             )),
             "hkbClipGeneratorEcho" => ClassParams::HkbClipGeneratorEcho(Box::new(
                 HkbClipGeneratorEcho::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbClipGeneratorInternalState" => ClassParams::HkbClipGeneratorInternalState(Box::new(
-                HkbClipGeneratorInternalState::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbClipGeneratorInternalState" => ClassParams::HkbClipGeneratorInternalState(
+                Box::new(HkbClipGeneratorInternalState::from_bytes::<B>(bytes, de)?),
+            ),
             "hkbClipGenerator" => ClassParams::HkbClipGenerator(Box::new(
                 HkbClipGenerator::from_bytes::<B>(bytes, de)?,
             )),
             "hkbClipTriggerArray" => ClassParams::HkbClipTriggerArray(Box::new(
                 HkbClipTriggerArray::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbClipTrigger" => ClassParams::HkbClipTrigger(Box::new(
-                HkbClipTrigger::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbCombineTransformsModifierInternalState" => ClassParams::HkbCombineTransformsModifierInternalState(Box::new(
-                HkbCombineTransformsModifierInternalState::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbClipTrigger" => {
+                ClassParams::HkbClipTrigger(Box::new(HkbClipTrigger::from_bytes::<B>(bytes, de)?))
+            }
+            "hkbCombineTransformsModifierInternalState" => {
+                ClassParams::HkbCombineTransformsModifierInternalState(Box::new(
+                    HkbCombineTransformsModifierInternalState::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbCombineTransformsModifier" => ClassParams::HkbCombineTransformsModifier(Box::new(
                 HkbCombineTransformsModifier::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbCompiledExpressionSetToken" => ClassParams::HkbCompiledExpressionSetToken(Box::new(
-                HkbCompiledExpressionSetToken::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbCompiledExpressionSetToken" => ClassParams::HkbCompiledExpressionSetToken(
+                Box::new(HkbCompiledExpressionSetToken::from_bytes::<B>(bytes, de)?),
+            ),
             "hkbCompiledExpressionSet" => ClassParams::HkbCompiledExpressionSet(Box::new(
                 HkbCompiledExpressionSet::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbComputeDirectionModifierInternalState" => ClassParams::HkbComputeDirectionModifierInternalState(Box::new(
-                HkbComputeDirectionModifierInternalState::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbComputeDirectionModifierInternalState" => {
+                ClassParams::HkbComputeDirectionModifierInternalState(Box::new(
+                    HkbComputeDirectionModifierInternalState::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbComputeDirectionModifier" => ClassParams::HkbComputeDirectionModifier(Box::new(
                 HkbComputeDirectionModifier::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbComputeRotationFromAxisAngleModifierInternalState" => ClassParams::HkbComputeRotationFromAxisAngleModifierInternalState(Box::new(
-                HkbComputeRotationFromAxisAngleModifierInternalState::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbComputeRotationFromAxisAngleModifier" => ClassParams::HkbComputeRotationFromAxisAngleModifier(Box::new(
-                HkbComputeRotationFromAxisAngleModifier::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbComputeRotationToTargetModifierInternalState" => ClassParams::HkbComputeRotationToTargetModifierInternalState(Box::new(
-                HkbComputeRotationToTargetModifierInternalState::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbComputeRotationToTargetModifier" => ClassParams::HkbComputeRotationToTargetModifier(Box::new(
-                HkbComputeRotationToTargetModifier::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbCondition" => ClassParams::HkbCondition(Box::new(
-                HkbCondition::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbContext" => ClassParams::HkbContext(Box::new(
-                HkbContext::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbDampingModifierInternalState" => ClassParams::HkbDampingModifierInternalState(Box::new(
-                HkbDampingModifierInternalState::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbComputeRotationFromAxisAngleModifierInternalState" => {
+                ClassParams::HkbComputeRotationFromAxisAngleModifierInternalState(Box::new(
+                    HkbComputeRotationFromAxisAngleModifierInternalState::from_bytes::<B>(
+                        bytes, de,
+                    )?,
+                ))
+            }
+            "hkbComputeRotationFromAxisAngleModifier" => {
+                ClassParams::HkbComputeRotationFromAxisAngleModifier(Box::new(
+                    HkbComputeRotationFromAxisAngleModifier::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkbComputeRotationToTargetModifierInternalState" => {
+                ClassParams::HkbComputeRotationToTargetModifierInternalState(Box::new(
+                    HkbComputeRotationToTargetModifierInternalState::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkbComputeRotationToTargetModifier" => {
+                ClassParams::HkbComputeRotationToTargetModifier(Box::new(
+                    HkbComputeRotationToTargetModifier::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkbCondition" => {
+                ClassParams::HkbCondition(Box::new(HkbCondition::from_bytes::<B>(bytes, de)?))
+            }
+            "hkbContext" => {
+                ClassParams::HkbContext(Box::new(HkbContext::from_bytes::<B>(bytes, de)?))
+            }
+            "hkbDampingModifierInternalState" => ClassParams::HkbDampingModifierInternalState(
+                Box::new(HkbDampingModifierInternalState::from_bytes::<B>(bytes, de)?),
+            ),
             "hkbDampingModifier" => ClassParams::HkbDampingModifier(Box::new(
                 HkbDampingModifier::from_bytes::<B>(bytes, de)?,
             )),
             "hkbDefaultMessageLog" => ClassParams::HkbDefaultMessageLog(Box::new(
                 HkbDefaultMessageLog::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbDelayedModifierInternalState" => ClassParams::HkbDelayedModifierInternalState(Box::new(
-                HkbDelayedModifierInternalState::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbDelayedModifierInternalState" => ClassParams::HkbDelayedModifierInternalState(
+                Box::new(HkbDelayedModifierInternalState::from_bytes::<B>(bytes, de)?),
+            ),
             "hkbDelayedModifier" => ClassParams::HkbDelayedModifier(Box::new(
                 HkbDelayedModifier::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbDetectCloseToGroundModifierInternalState" => ClassParams::HkbDetectCloseToGroundModifierInternalState(Box::new(
-                HkbDetectCloseToGroundModifierInternalState::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbDetectCloseToGroundModifier" => ClassParams::HkbDetectCloseToGroundModifier(Box::new(
-                HkbDetectCloseToGroundModifier::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbEvaluateExpressionModifierInternalExpressionData" => ClassParams::HkbEvaluateExpressionModifierInternalExpressionData(Box::new(
-                HkbEvaluateExpressionModifierInternalExpressionData::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbEvaluateExpressionModifierInternalState" => ClassParams::HkbEvaluateExpressionModifierInternalState(Box::new(
-                HkbEvaluateExpressionModifierInternalState::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbEvaluateExpressionModifier" => ClassParams::HkbEvaluateExpressionModifier(Box::new(
-                HkbEvaluateExpressionModifier::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbDetectCloseToGroundModifierInternalState" => {
+                ClassParams::HkbDetectCloseToGroundModifierInternalState(Box::new(
+                    HkbDetectCloseToGroundModifierInternalState::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkbDetectCloseToGroundModifier" => ClassParams::HkbDetectCloseToGroundModifier(
+                Box::new(HkbDetectCloseToGroundModifier::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkbEvaluateExpressionModifierInternalExpressionData" => {
+                ClassParams::HkbEvaluateExpressionModifierInternalExpressionData(Box::new(
+                    HkbEvaluateExpressionModifierInternalExpressionData::from_bytes::<B>(
+                        bytes, de,
+                    )?,
+                ))
+            }
+            "hkbEvaluateExpressionModifierInternalState" => {
+                ClassParams::HkbEvaluateExpressionModifierInternalState(Box::new(
+                    HkbEvaluateExpressionModifierInternalState::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkbEvaluateExpressionModifier" => ClassParams::HkbEvaluateExpressionModifier(
+                Box::new(HkbEvaluateExpressionModifier::from_bytes::<B>(bytes, de)?),
+            ),
             "hkbEvaluateHandleModifier" => ClassParams::HkbEvaluateHandleModifier(Box::new(
                 HkbEvaluateHandleModifier::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbEventBase" => ClassParams::HkbEventBase(Box::new(
-                HkbEventBase::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbEventDrivenModifierInternalState" => ClassParams::HkbEventDrivenModifierInternalState(Box::new(
-                HkbEventDrivenModifierInternalState::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbEventDrivenModifier" => ClassParams::HkbEventDrivenModifier(Box::new(
-                HkbEventDrivenModifier::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbEventInfo" => ClassParams::HkbEventInfo(Box::new(
-                HkbEventInfo::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbEventBase" => {
+                ClassParams::HkbEventBase(Box::new(HkbEventBase::from_bytes::<B>(bytes, de)?))
+            }
+            "hkbEventDrivenModifierInternalState" => {
+                ClassParams::HkbEventDrivenModifierInternalState(Box::new(
+                    HkbEventDrivenModifierInternalState::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkbEventDrivenModifier" => {
+                ClassParams::HkbEventDrivenModifier(Box::new(HkbEventDrivenModifier::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
+            "hkbEventInfo" => {
+                ClassParams::HkbEventInfo(Box::new(HkbEventInfo::from_bytes::<B>(bytes, de)?))
+            }
             "hkbEventPayloadList" => ClassParams::HkbEventPayloadList(Box::new(
                 HkbEventPayloadList::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbEventPayload" => ClassParams::HkbEventPayload(Box::new(
-                HkbEventPayload::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbEventPayload" => {
+                ClassParams::HkbEventPayload(Box::new(HkbEventPayload::from_bytes::<B>(bytes, de)?))
+            }
             "hkbEventProperty" => ClassParams::HkbEventProperty(Box::new(
                 HkbEventProperty::from_bytes::<B>(bytes, de)?,
             )),
             "hkbEventRaisedInfo" => ClassParams::HkbEventRaisedInfo(Box::new(
                 HkbEventRaisedInfo::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbEventRangeDataArray" => ClassParams::HkbEventRangeDataArray(Box::new(
-                HkbEventRangeDataArray::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbEventRangeDataArray" => {
+                ClassParams::HkbEventRangeDataArray(Box::new(HkbEventRangeDataArray::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
             "hkbEventRangeData" => ClassParams::HkbEventRangeData(Box::new(
                 HkbEventRangeData::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbEventSequencedDataSequencedEvent" => ClassParams::HkbEventSequencedDataSequencedEvent(Box::new(
-                HkbEventSequencedDataSequencedEvent::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbEventSequencedDataSequencedEvent" => {
+                ClassParams::HkbEventSequencedDataSequencedEvent(Box::new(
+                    HkbEventSequencedDataSequencedEvent::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbEventSequencedData" => ClassParams::HkbEventSequencedData(Box::new(
                 HkbEventSequencedData::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbEventsFromRangeModifierInternalState" => ClassParams::HkbEventsFromRangeModifierInternalState(Box::new(
-                HkbEventsFromRangeModifierInternalState::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbEventsFromRangeModifierInternalState" => {
+                ClassParams::HkbEventsFromRangeModifierInternalState(Box::new(
+                    HkbEventsFromRangeModifierInternalState::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbEventsFromRangeModifier" => ClassParams::HkbEventsFromRangeModifier(Box::new(
                 HkbEventsFromRangeModifier::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbEvent" => ClassParams::HkbEvent(Box::new(
-                HkbEvent::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbExpressionCondition" => ClassParams::HkbExpressionCondition(Box::new(
-                HkbExpressionCondition::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbExpressionDataArray" => ClassParams::HkbExpressionDataArray(Box::new(
-                HkbExpressionDataArray::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbEvent" => ClassParams::HkbEvent(Box::new(HkbEvent::from_bytes::<B>(bytes, de)?)),
+            "hkbExpressionCondition" => {
+                ClassParams::HkbExpressionCondition(Box::new(HkbExpressionCondition::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
+            "hkbExpressionDataArray" => {
+                ClassParams::HkbExpressionDataArray(Box::new(HkbExpressionDataArray::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
             "hkbExpressionData" => ClassParams::HkbExpressionData(Box::new(
                 HkbExpressionData::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbExtractRagdollPoseModifier" => ClassParams::HkbExtractRagdollPoseModifier(Box::new(
-                HkbExtractRagdollPoseModifier::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbExtractRagdollPoseModifier" => ClassParams::HkbExtractRagdollPoseModifier(
+                Box::new(HkbExtractRagdollPoseModifier::from_bytes::<B>(bytes, de)?),
+            ),
             "hkbFootIkControlData" => ClassParams::HkbFootIkControlData(Box::new(
                 HkbFootIkControlData::from_bytes::<B>(bytes, de)?,
             )),
@@ -9665,18 +9967,22 @@ impl<'a> ClassParams<'a> {
             "hkbFootIkControlsModifier" => ClassParams::HkbFootIkControlsModifier(Box::new(
                 HkbFootIkControlsModifier::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbFootIkDriverInfoLeg" => ClassParams::HkbFootIkDriverInfoLeg(Box::new(
-                HkbFootIkDriverInfoLeg::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbFootIkDriverInfoLeg" => {
+                ClassParams::HkbFootIkDriverInfoLeg(Box::new(HkbFootIkDriverInfoLeg::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
             "hkbFootIkDriverInfo" => ClassParams::HkbFootIkDriverInfo(Box::new(
                 HkbFootIkDriverInfo::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbFootIkGains" => ClassParams::HkbFootIkGains(Box::new(
-                HkbFootIkGains::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbFootIkModifierInternalLegData" => ClassParams::HkbFootIkModifierInternalLegData(Box::new(
-                HkbFootIkModifierInternalLegData::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbFootIkGains" => {
+                ClassParams::HkbFootIkGains(Box::new(HkbFootIkGains::from_bytes::<B>(bytes, de)?))
+            }
+            "hkbFootIkModifierInternalLegData" => {
+                ClassParams::HkbFootIkModifierInternalLegData(Box::new(
+                    HkbFootIkModifierInternalLegData::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbFootIkModifierLeg" => ClassParams::HkbFootIkModifierLeg(Box::new(
                 HkbFootIkModifierLeg::from_bytes::<B>(bytes, de)?,
             )),
@@ -9686,42 +9992,46 @@ impl<'a> ClassParams<'a> {
             "hkbGeneratorOutputListener" => ClassParams::HkbGeneratorOutputListener(Box::new(
                 HkbGeneratorOutputListener::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbGeneratorSyncInfoSyncPoint" => ClassParams::HkbGeneratorSyncInfoSyncPoint(Box::new(
-                HkbGeneratorSyncInfoSyncPoint::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbGeneratorSyncInfoSyncPoint" => ClassParams::HkbGeneratorSyncInfoSyncPoint(
+                Box::new(HkbGeneratorSyncInfoSyncPoint::from_bytes::<B>(bytes, de)?),
+            ),
             "hkbGeneratorSyncInfo" => ClassParams::HkbGeneratorSyncInfo(Box::new(
                 HkbGeneratorSyncInfo::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbGeneratorTransitionEffectInternalState" => ClassParams::HkbGeneratorTransitionEffectInternalState(Box::new(
-                HkbGeneratorTransitionEffectInternalState::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbGeneratorTransitionEffectInternalState" => {
+                ClassParams::HkbGeneratorTransitionEffectInternalState(Box::new(
+                    HkbGeneratorTransitionEffectInternalState::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbGeneratorTransitionEffect" => ClassParams::HkbGeneratorTransitionEffect(Box::new(
                 HkbGeneratorTransitionEffect::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbGenerator" => ClassParams::HkbGenerator(Box::new(
-                HkbGenerator::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbGenerator" => {
+                ClassParams::HkbGenerator(Box::new(HkbGenerator::from_bytes::<B>(bytes, de)?))
+            }
             "hkbGetHandleOnBoneModifier" => ClassParams::HkbGetHandleOnBoneModifier(Box::new(
                 HkbGetHandleOnBoneModifier::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbGetUpModifierInternalState" => ClassParams::HkbGetUpModifierInternalState(Box::new(
-                HkbGetUpModifierInternalState::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbGetUpModifierInternalState" => ClassParams::HkbGetUpModifierInternalState(
+                Box::new(HkbGetUpModifierInternalState::from_bytes::<B>(bytes, de)?),
+            ),
             "hkbGetUpModifier" => ClassParams::HkbGetUpModifier(Box::new(
                 HkbGetUpModifier::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbGetWorldFromModelModifierInternalState" => ClassParams::HkbGetWorldFromModelModifierInternalState(Box::new(
-                HkbGetWorldFromModelModifierInternalState::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbGetWorldFromModelModifierInternalState" => {
+                ClassParams::HkbGetWorldFromModelModifierInternalState(Box::new(
+                    HkbGetWorldFromModelModifierInternalState::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbGetWorldFromModelModifier" => ClassParams::HkbGetWorldFromModelModifier(Box::new(
                 HkbGetWorldFromModelModifier::from_bytes::<B>(bytes, de)?,
             )),
             "hkbHandIkControlData" => ClassParams::HkbHandIkControlData(Box::new(
                 HkbHandIkControlData::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbHandIkControlsModifierHand" => ClassParams::HkbHandIkControlsModifierHand(Box::new(
-                HkbHandIkControlsModifierHand::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbHandIkControlsModifierHand" => ClassParams::HkbHandIkControlsModifierHand(
+                Box::new(HkbHandIkControlsModifierHand::from_bytes::<B>(bytes, de)?),
+            ),
             "hkbHandIkControlsModifier" => ClassParams::HkbHandIkControlsModifier(Box::new(
                 HkbHandIkControlsModifier::from_bytes::<B>(bytes, de)?,
             )),
@@ -9737,45 +10047,49 @@ impl<'a> ClassParams<'a> {
             "hkbHandIkModifier" => ClassParams::HkbHandIkModifier(Box::new(
                 HkbHandIkModifier::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbHandle" => ClassParams::HkbHandle(Box::new(
-                HkbHandle::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbHandle" => ClassParams::HkbHandle(Box::new(HkbHandle::from_bytes::<B>(bytes, de)?)),
             "hkbIntEventPayload" => ClassParams::HkbIntEventPayload(Box::new(
                 HkbIntEventPayload::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbIntVariableSequencedDataSample" => ClassParams::HkbIntVariableSequencedDataSample(Box::new(
-                HkbIntVariableSequencedDataSample::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbIntVariableSequencedDataSample" => {
+                ClassParams::HkbIntVariableSequencedDataSample(Box::new(
+                    HkbIntVariableSequencedDataSample::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbIntVariableSequencedData" => ClassParams::HkbIntVariableSequencedData(Box::new(
                 HkbIntVariableSequencedData::from_bytes::<B>(bytes, de)?,
             )),
-            "hkBitField" => ClassParams::HkBitField(Box::new(
-                HkBitField::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbKeyframeBonesModifierKeyframeInfo" => ClassParams::HkbKeyframeBonesModifierKeyframeInfo(Box::new(
-                HkbKeyframeBonesModifierKeyframeInfo::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkBitField" => {
+                ClassParams::HkBitField(Box::new(HkBitField::from_bytes::<B>(bytes, de)?))
+            }
+            "hkbKeyframeBonesModifierKeyframeInfo" => {
+                ClassParams::HkbKeyframeBonesModifierKeyframeInfo(Box::new(
+                    HkbKeyframeBonesModifierKeyframeInfo::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbKeyframeBonesModifier" => ClassParams::HkbKeyframeBonesModifier(Box::new(
                 HkbKeyframeBonesModifier::from_bytes::<B>(bytes, de)?,
             )),
             "hkbLinkedSymbolInfo" => ClassParams::HkbLinkedSymbolInfo(Box::new(
                 HkbLinkedSymbolInfo::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbLookAtModifierInternalState" => ClassParams::HkbLookAtModifierInternalState(Box::new(
-                HkbLookAtModifierInternalState::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbLookAtModifierInternalState" => ClassParams::HkbLookAtModifierInternalState(
+                Box::new(HkbLookAtModifierInternalState::from_bytes::<B>(bytes, de)?),
+            ),
             "hkbLookAtModifier" => ClassParams::HkbLookAtModifier(Box::new(
                 HkbLookAtModifier::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbManualSelectorGeneratorInternalState" => ClassParams::HkbManualSelectorGeneratorInternalState(Box::new(
-                HkbManualSelectorGeneratorInternalState::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbManualSelectorGeneratorInternalState" => {
+                ClassParams::HkbManualSelectorGeneratorInternalState(Box::new(
+                    HkbManualSelectorGeneratorInternalState::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbManualSelectorGenerator" => ClassParams::HkbManualSelectorGenerator(Box::new(
                 HkbManualSelectorGenerator::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbMessageLog" => ClassParams::HkbMessageLog(Box::new(
-                HkbMessageLog::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbMessageLog" => {
+                ClassParams::HkbMessageLog(Box::new(HkbMessageLog::from_bytes::<B>(bytes, de)?))
+            }
             "hkbMirroredSkeletonInfo" => ClassParams::HkbMirroredSkeletonInfo(Box::new(
                 HkbMirroredSkeletonInfo::from_bytes::<B>(bytes, de)?,
             )),
@@ -9785,18 +10099,20 @@ impl<'a> ClassParams<'a> {
             "hkbModifierGenerator" => ClassParams::HkbModifierGenerator(Box::new(
                 HkbModifierGenerator::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbModifierList" => ClassParams::HkbModifierList(Box::new(
-                HkbModifierList::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbModifierList" => {
+                ClassParams::HkbModifierList(Box::new(HkbModifierList::from_bytes::<B>(bytes, de)?))
+            }
             "hkbModifierWrapper" => ClassParams::HkbModifierWrapper(Box::new(
                 HkbModifierWrapper::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbModifier" => ClassParams::HkbModifier(Box::new(
-                HkbModifier::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbMoveCharacterModifierInternalState" => ClassParams::HkbMoveCharacterModifierInternalState(Box::new(
-                HkbMoveCharacterModifierInternalState::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbModifier" => {
+                ClassParams::HkbModifier(Box::new(HkbModifier::from_bytes::<B>(bytes, de)?))
+            }
+            "hkbMoveCharacterModifierInternalState" => {
+                ClassParams::HkbMoveCharacterModifierInternalState(Box::new(
+                    HkbMoveCharacterModifierInternalState::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbMoveCharacterModifier" => ClassParams::HkbMoveCharacterModifier(Box::new(
                 HkbMoveCharacterModifier::from_bytes::<B>(bytes, de)?,
             )),
@@ -9815,27 +10131,29 @@ impl<'a> ClassParams<'a> {
             "hkbNodeInternalStateInfo" => ClassParams::HkbNodeInternalStateInfo(Box::new(
                 HkbNodeInternalStateInfo::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbNode" => ClassParams::HkbNode(Box::new(
-                HkbNode::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbParticleSystemEventPayload" => ClassParams::HkbParticleSystemEventPayload(Box::new(
-                HkbParticleSystemEventPayload::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbPoseMatchingGeneratorInternalState" => ClassParams::HkbPoseMatchingGeneratorInternalState(Box::new(
-                HkbPoseMatchingGeneratorInternalState::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbNode" => ClassParams::HkbNode(Box::new(HkbNode::from_bytes::<B>(bytes, de)?)),
+            "hkbParticleSystemEventPayload" => ClassParams::HkbParticleSystemEventPayload(
+                Box::new(HkbParticleSystemEventPayload::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkbPoseMatchingGeneratorInternalState" => {
+                ClassParams::HkbPoseMatchingGeneratorInternalState(Box::new(
+                    HkbPoseMatchingGeneratorInternalState::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbPoseMatchingGenerator" => ClassParams::HkbPoseMatchingGenerator(Box::new(
                 HkbPoseMatchingGenerator::from_bytes::<B>(bytes, de)?,
             )),
             "hkbPoweredRagdollControlData" => ClassParams::HkbPoweredRagdollControlData(Box::new(
                 HkbPoweredRagdollControlData::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbPoweredRagdollControlsModifier" => ClassParams::HkbPoweredRagdollControlsModifier(Box::new(
-                HkbPoweredRagdollControlsModifier::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbProjectData" => ClassParams::HkbProjectData(Box::new(
-                HkbProjectData::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbPoweredRagdollControlsModifier" => {
+                ClassParams::HkbPoweredRagdollControlsModifier(Box::new(
+                    HkbPoweredRagdollControlsModifier::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkbProjectData" => {
+                ClassParams::HkbProjectData(Box::new(HkbProjectData::from_bytes::<B>(bytes, de)?))
+            }
             "hkbProjectStringData" => ClassParams::HkbProjectStringData(Box::new(
                 HkbProjectStringData::from_bytes::<B>(bytes, de)?,
             )),
@@ -9851,39 +10169,49 @@ impl<'a> ClassParams<'a> {
             "hkbRealEventPayload" => ClassParams::HkbRealEventPayload(Box::new(
                 HkbRealEventPayload::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbRealVariableSequencedDataSample" => ClassParams::HkbRealVariableSequencedDataSample(Box::new(
-                HkbRealVariableSequencedDataSample::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbRealVariableSequencedDataSample" => {
+                ClassParams::HkbRealVariableSequencedDataSample(Box::new(
+                    HkbRealVariableSequencedDataSample::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbRealVariableSequencedData" => ClassParams::HkbRealVariableSequencedData(Box::new(
                 HkbRealVariableSequencedData::from_bytes::<B>(bytes, de)?,
             )),
             "hkbReferencePoseGenerator" => ClassParams::HkbReferencePoseGenerator(Box::new(
                 HkbReferencePoseGenerator::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbRegisteredGenerator" => ClassParams::HkbRegisteredGenerator(Box::new(
-                HkbRegisteredGenerator::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbRigidBodyRagdollControlData" => ClassParams::HkbRigidBodyRagdollControlData(Box::new(
-                HkbRigidBodyRagdollControlData::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbRigidBodyRagdollControlsModifier" => ClassParams::HkbRigidBodyRagdollControlsModifier(Box::new(
-                HkbRigidBodyRagdollControlsModifier::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbRegisteredGenerator" => {
+                ClassParams::HkbRegisteredGenerator(Box::new(HkbRegisteredGenerator::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
+            "hkbRigidBodyRagdollControlData" => ClassParams::HkbRigidBodyRagdollControlData(
+                Box::new(HkbRigidBodyRagdollControlData::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkbRigidBodyRagdollControlsModifier" => {
+                ClassParams::HkbRigidBodyRagdollControlsModifier(Box::new(
+                    HkbRigidBodyRagdollControlsModifier::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbRoleAttribute" => ClassParams::HkbRoleAttribute(Box::new(
                 HkbRoleAttribute::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbRotateCharacterModifierInternalState" => ClassParams::HkbRotateCharacterModifierInternalState(Box::new(
-                HkbRotateCharacterModifierInternalState::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbRotateCharacterModifierInternalState" => {
+                ClassParams::HkbRotateCharacterModifierInternalState(Box::new(
+                    HkbRotateCharacterModifierInternalState::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbRotateCharacterModifier" => ClassParams::HkbRotateCharacterModifier(Box::new(
                 HkbRotateCharacterModifier::from_bytes::<B>(bytes, de)?,
             )),
             "hkbSenseHandleModifierRange" => ClassParams::HkbSenseHandleModifierRange(Box::new(
                 HkbSenseHandleModifierRange::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbSenseHandleModifier" => ClassParams::HkbSenseHandleModifier(Box::new(
-                HkbSenseHandleModifier::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbSenseHandleModifier" => {
+                ClassParams::HkbSenseHandleModifier(Box::new(HkbSenseHandleModifier::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
             "hkbSequencedData" => ClassParams::HkbSequencedData(Box::new(
                 HkbSequencedData::from_bytes::<B>(bytes, de)?,
             )),
@@ -9893,15 +10221,17 @@ impl<'a> ClassParams<'a> {
             "hkbSequenceStringData" => ClassParams::HkbSequenceStringData(Box::new(
                 HkbSequenceStringData::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbSequence" => ClassParams::HkbSequence(Box::new(
-                HkbSequence::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbSequence" => {
+                ClassParams::HkbSequence(Box::new(HkbSequence::from_bytes::<B>(bytes, de)?))
+            }
             "hkbSetBehaviorCommand" => ClassParams::HkbSetBehaviorCommand(Box::new(
                 HkbSetBehaviorCommand::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbSetLocalTimeOfClipGeneratorCommand" => ClassParams::HkbSetLocalTimeOfClipGeneratorCommand(Box::new(
-                HkbSetLocalTimeOfClipGeneratorCommand::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbSetLocalTimeOfClipGeneratorCommand" => {
+                ClassParams::HkbSetLocalTimeOfClipGeneratorCommand(Box::new(
+                    HkbSetLocalTimeOfClipGeneratorCommand::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbSetNodePropertyCommand" => ClassParams::HkbSetNodePropertyCommand(Box::new(
                 HkbSetNodePropertyCommand::from_bytes::<B>(bytes, de)?,
             )),
@@ -9914,51 +10244,67 @@ impl<'a> ClassParams<'a> {
             "hkbSimulationControlCommand" => ClassParams::HkbSimulationControlCommand(Box::new(
                 HkbSimulationControlCommand::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbSimulationStateInfo" => ClassParams::HkbSimulationStateInfo(Box::new(
-                HkbSimulationStateInfo::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbStateChooser" => ClassParams::HkbStateChooser(Box::new(
-                HkbStateChooser::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbSimulationStateInfo" => {
+                ClassParams::HkbSimulationStateInfo(Box::new(HkbSimulationStateInfo::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
+            "hkbStateChooser" => {
+                ClassParams::HkbStateChooser(Box::new(HkbStateChooser::from_bytes::<B>(bytes, de)?))
+            }
             "hkbStateListener" => ClassParams::HkbStateListener(Box::new(
                 HkbStateListener::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbStateMachineActiveTransitionInfo" => ClassParams::HkbStateMachineActiveTransitionInfo(Box::new(
-                HkbStateMachineActiveTransitionInfo::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbStateMachineDelayedTransitionInfo" => ClassParams::HkbStateMachineDelayedTransitionInfo(Box::new(
-                HkbStateMachineDelayedTransitionInfo::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbStateMachineEventPropertyArray" => ClassParams::HkbStateMachineEventPropertyArray(Box::new(
-                HkbStateMachineEventPropertyArray::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbStateMachineActiveTransitionInfo" => {
+                ClassParams::HkbStateMachineActiveTransitionInfo(Box::new(
+                    HkbStateMachineActiveTransitionInfo::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkbStateMachineDelayedTransitionInfo" => {
+                ClassParams::HkbStateMachineDelayedTransitionInfo(Box::new(
+                    HkbStateMachineDelayedTransitionInfo::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkbStateMachineEventPropertyArray" => {
+                ClassParams::HkbStateMachineEventPropertyArray(Box::new(
+                    HkbStateMachineEventPropertyArray::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbStateMachineInternalState" => ClassParams::HkbStateMachineInternalState(Box::new(
                 HkbStateMachineInternalState::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbStateMachineNestedStateMachineData" => ClassParams::HkbStateMachineNestedStateMachineData(Box::new(
-                HkbStateMachineNestedStateMachineData::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbStateMachineProspectiveTransitionInfo" => ClassParams::HkbStateMachineProspectiveTransitionInfo(Box::new(
-                HkbStateMachineProspectiveTransitionInfo::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbStateMachineNestedStateMachineData" => {
+                ClassParams::HkbStateMachineNestedStateMachineData(Box::new(
+                    HkbStateMachineNestedStateMachineData::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkbStateMachineProspectiveTransitionInfo" => {
+                ClassParams::HkbStateMachineProspectiveTransitionInfo(Box::new(
+                    HkbStateMachineProspectiveTransitionInfo::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbStateMachineStateInfo" => ClassParams::HkbStateMachineStateInfo(Box::new(
                 HkbStateMachineStateInfo::from_bytes::<B>(bytes, de)?,
             )),
             "hkbStateMachineTimeInterval" => ClassParams::HkbStateMachineTimeInterval(Box::new(
                 HkbStateMachineTimeInterval::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbStateMachineTransitionInfoArray" => ClassParams::HkbStateMachineTransitionInfoArray(Box::new(
-                HkbStateMachineTransitionInfoArray::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbStateMachineTransitionInfoReference" => ClassParams::HkbStateMachineTransitionInfoReference(Box::new(
-                HkbStateMachineTransitionInfoReference::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbStateMachineTransitionInfo" => ClassParams::HkbStateMachineTransitionInfo(Box::new(
-                HkbStateMachineTransitionInfo::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkbStateMachine" => ClassParams::HkbStateMachine(Box::new(
-                HkbStateMachine::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbStateMachineTransitionInfoArray" => {
+                ClassParams::HkbStateMachineTransitionInfoArray(Box::new(
+                    HkbStateMachineTransitionInfoArray::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkbStateMachineTransitionInfoReference" => {
+                ClassParams::HkbStateMachineTransitionInfoReference(Box::new(
+                    HkbStateMachineTransitionInfoReference::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkbStateMachineTransitionInfo" => ClassParams::HkbStateMachineTransitionInfo(
+                Box::new(HkbStateMachineTransitionInfo::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkbStateMachine" => {
+                ClassParams::HkbStateMachine(Box::new(HkbStateMachine::from_bytes::<B>(bytes, de)?))
+            }
             "hkbStringCondition" => ClassParams::HkbStringCondition(Box::new(
                 HkbStringCondition::from_bytes::<B>(bytes, de)?,
             )),
@@ -9968,15 +10314,17 @@ impl<'a> ClassParams<'a> {
             "hkbTestStateChooser" => ClassParams::HkbTestStateChooser(Box::new(
                 HkbTestStateChooser::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbTimerModifierInternalState" => ClassParams::HkbTimerModifierInternalState(Box::new(
-                HkbTimerModifierInternalState::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbTimerModifierInternalState" => ClassParams::HkbTimerModifierInternalState(
+                Box::new(HkbTimerModifierInternalState::from_bytes::<B>(bytes, de)?),
+            ),
             "hkbTimerModifier" => ClassParams::HkbTimerModifier(Box::new(
                 HkbTimerModifier::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbTransformVectorModifierInternalState" => ClassParams::HkbTransformVectorModifierInternalState(Box::new(
-                HkbTransformVectorModifierInternalState::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbTransformVectorModifierInternalState" => {
+                ClassParams::HkbTransformVectorModifierInternalState(Box::new(
+                    HkbTransformVectorModifierInternalState::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkbTransformVectorModifier" => ClassParams::HkbTransformVectorModifier(Box::new(
                 HkbTransformVectorModifier::from_bytes::<B>(bytes, de)?,
             )),
@@ -9992,33 +10340,35 @@ impl<'a> ClassParams<'a> {
             "hkbVariableBindingSet" => ClassParams::HkbVariableBindingSet(Box::new(
                 HkbVariableBindingSet::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbVariableInfo" => ClassParams::HkbVariableInfo(Box::new(
-                HkbVariableInfo::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbVariableInfo" => {
+                ClassParams::HkbVariableInfo(Box::new(HkbVariableInfo::from_bytes::<B>(bytes, de)?))
+            }
             "hkbVariableValueSet" => ClassParams::HkbVariableValueSet(Box::new(
                 HkbVariableValueSet::from_bytes::<B>(bytes, de)?,
             )),
             "hkbVariableValue" => ClassParams::HkbVariableValue(Box::new(
                 HkbVariableValue::from_bytes::<B>(bytes, de)?,
             )),
-            "hkbWorldEnums" => ClassParams::HkbWorldEnums(Box::new(
-                HkbWorldEnums::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkbWorldEnums" => {
+                ClassParams::HkbWorldEnums(Box::new(HkbWorldEnums::from_bytes::<B>(bytes, de)?))
+            }
             "hkbWorldFromModelModeData" => ClassParams::HkbWorldFromModelModeData(Box::new(
                 HkbWorldFromModelModeData::from_bytes::<B>(bytes, de)?,
             )),
-            "hkClassEnumItem" => ClassParams::HkClassEnumItem(Box::new(
-                HkClassEnumItem::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkClassEnum" => ClassParams::HkClassEnum(Box::new(
-                HkClassEnum::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkContactPointMaterial" => ClassParams::HkContactPointMaterial(Box::new(
-                HkContactPointMaterial::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkContactPoint" => ClassParams::HkContactPoint(Box::new(
-                HkContactPoint::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkClassEnumItem" => {
+                ClassParams::HkClassEnumItem(Box::new(HkClassEnumItem::from_bytes::<B>(bytes, de)?))
+            }
+            "hkClassEnum" => {
+                ClassParams::HkClassEnum(Box::new(HkClassEnum::from_bytes::<B>(bytes, de)?))
+            }
+            "hkContactPointMaterial" => {
+                ClassParams::HkContactPointMaterial(Box::new(HkContactPointMaterial::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
+            "hkContactPoint" => {
+                ClassParams::HkContactPoint(Box::new(HkContactPoint::from_bytes::<B>(bytes, de)?))
+            }
             "hkCustomAttributesAttribute" => ClassParams::HkCustomAttributesAttribute(Box::new(
                 HkCustomAttributesAttribute::from_bytes::<B>(bytes, de)?,
             )),
@@ -10028,36 +10378,36 @@ impl<'a> ClassParams<'a> {
             "hkDataObjectTypeAttribute" => ClassParams::HkDataObjectTypeAttribute(Box::new(
                 HkDataObjectTypeAttribute::from_bytes::<B>(bytes, de)?,
             )),
-            "hkDescriptionAttribute" => ClassParams::HkDescriptionAttribute(Box::new(
-                HkDescriptionAttribute::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkDescriptionAttribute" => {
+                ClassParams::HkDescriptionAttribute(Box::new(HkDescriptionAttribute::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
             "hkDocumentationAttribute" => ClassParams::HkDocumentationAttribute(Box::new(
                 HkDocumentationAttribute::from_bytes::<B>(bytes, de)?,
             )),
             "hkGeometryTriangle" => ClassParams::HkGeometryTriangle(Box::new(
                 HkGeometryTriangle::from_bytes::<B>(bytes, de)?,
             )),
-            "hkGeometry" => ClassParams::HkGeometry(Box::new(
-                HkGeometry::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkGeometry" => {
+                ClassParams::HkGeometry(Box::new(HkGeometry::from_bytes::<B>(bytes, de)?))
+            }
             "hkGizmoAttribute" => ClassParams::HkGizmoAttribute(Box::new(
                 HkGizmoAttribute::from_bytes::<B>(bytes, de)?,
             )),
-            "hkHalf8" => ClassParams::HkHalf8(Box::new(
-                HkHalf8::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkHalf8" => ClassParams::HkHalf8(Box::new(HkHalf8::from_bytes::<B>(bytes, de)?)),
             "hkIndexedTransformSet" => ClassParams::HkIndexedTransformSet(Box::new(
                 HkIndexedTransformSet::from_bytes::<B>(bytes, de)?,
             )),
-            "hkLinkAttribute" => ClassParams::HkLinkAttribute(Box::new(
-                HkLinkAttribute::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkLinkAttribute" => {
+                ClassParams::HkLinkAttribute(Box::new(HkLinkAttribute::from_bytes::<B>(bytes, de)?))
+            }
             "hkLocalFrameGroup" => ClassParams::HkLocalFrameGroup(Box::new(
                 HkLocalFrameGroup::from_bytes::<B>(bytes, de)?,
             )),
-            "hkLocalFrame" => ClassParams::HkLocalFrame(Box::new(
-                HkLocalFrame::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkLocalFrame" => {
+                ClassParams::HkLocalFrame(Box::new(HkLocalFrame::from_bytes::<B>(bytes, de)?))
+            }
             "hkMemoryMeshBody" => ClassParams::HkMemoryMeshBody(Box::new(
                 HkMemoryMeshBody::from_bytes::<B>(bytes, de)?,
             )),
@@ -10076,36 +10426,42 @@ impl<'a> ClassParams<'a> {
             "hkMemoryResourceContainer" => ClassParams::HkMemoryResourceContainer(Box::new(
                 HkMemoryResourceContainer::from_bytes::<B>(bytes, de)?,
             )),
-            "hkMemoryResourceHandleExternalLink" => ClassParams::HkMemoryResourceHandleExternalLink(Box::new(
-                HkMemoryResourceHandleExternalLink::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkMemoryResourceHandle" => ClassParams::HkMemoryResourceHandle(Box::new(
-                HkMemoryResourceHandle::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkMemoryResourceHandleExternalLink" => {
+                ClassParams::HkMemoryResourceHandleExternalLink(Box::new(
+                    HkMemoryResourceHandleExternalLink::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkMemoryResourceHandle" => {
+                ClassParams::HkMemoryResourceHandle(Box::new(HkMemoryResourceHandle::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
             "hkMemoryTrackerAttribute" => ClassParams::HkMemoryTrackerAttribute(Box::new(
                 HkMemoryTrackerAttribute::from_bytes::<B>(bytes, de)?,
             )),
-            "hkMeshBody" => ClassParams::HkMeshBody(Box::new(
-                HkMeshBody::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkMeshBoneIndexMapping" => ClassParams::HkMeshBoneIndexMapping(Box::new(
-                HkMeshBoneIndexMapping::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkMeshMaterial" => ClassParams::HkMeshMaterial(Box::new(
-                HkMeshMaterial::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkMeshBody" => {
+                ClassParams::HkMeshBody(Box::new(HkMeshBody::from_bytes::<B>(bytes, de)?))
+            }
+            "hkMeshBoneIndexMapping" => {
+                ClassParams::HkMeshBoneIndexMapping(Box::new(HkMeshBoneIndexMapping::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
+            "hkMeshMaterial" => {
+                ClassParams::HkMeshMaterial(Box::new(HkMeshMaterial::from_bytes::<B>(bytes, de)?))
+            }
             "hkMeshSectionCinfo" => ClassParams::HkMeshSectionCinfo(Box::new(
                 HkMeshSectionCinfo::from_bytes::<B>(bytes, de)?,
             )),
-            "hkMeshSection" => ClassParams::HkMeshSection(Box::new(
-                HkMeshSection::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkMeshShape" => ClassParams::HkMeshShape(Box::new(
-                HkMeshShape::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkMeshTexture" => ClassParams::HkMeshTexture(Box::new(
-                HkMeshTexture::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkMeshSection" => {
+                ClassParams::HkMeshSection(Box::new(HkMeshSection::from_bytes::<B>(bytes, de)?))
+            }
+            "hkMeshShape" => {
+                ClassParams::HkMeshShape(Box::new(HkMeshShape::from_bytes::<B>(bytes, de)?))
+            }
+            "hkMeshTexture" => {
+                ClassParams::HkMeshTexture(Box::new(HkMeshTexture::from_bytes::<B>(bytes, de)?))
+            }
             "hkMeshVertexBuffer" => ClassParams::HkMeshVertexBuffer(Box::new(
                 HkMeshVertexBuffer::from_bytes::<B>(bytes, de)?,
             )),
@@ -10115,51 +10471,61 @@ impl<'a> ClassParams<'a> {
             "hkMonitorStreamFrameInfo" => ClassParams::HkMonitorStreamFrameInfo(Box::new(
                 HkMonitorStreamFrameInfo::from_bytes::<B>(bytes, de)?,
             )),
-            "hkMonitorStreamStringMapStringMap" => ClassParams::HkMonitorStreamStringMapStringMap(Box::new(
-                HkMonitorStreamStringMapStringMap::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkMonitorStreamStringMapStringMap" => {
+                ClassParams::HkMonitorStreamStringMapStringMap(Box::new(
+                    HkMonitorStreamStringMapStringMap::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkMonitorStreamStringMap" => ClassParams::HkMonitorStreamStringMap(Box::new(
                 HkMonitorStreamStringMap::from_bytes::<B>(bytes, de)?,
             )),
             "hkMoppBvTreeShapeBase" => ClassParams::HkMoppBvTreeShapeBase(Box::new(
                 HkMoppBvTreeShapeBase::from_bytes::<B>(bytes, de)?,
             )),
-            "hkMotionState" => ClassParams::HkMotionState(Box::new(
-                HkMotionState::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkMultipleVertexBufferElementInfo" => ClassParams::HkMultipleVertexBufferElementInfo(Box::new(
-                HkMultipleVertexBufferElementInfo::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkMultipleVertexBufferLockedElement" => ClassParams::HkMultipleVertexBufferLockedElement(Box::new(
-                HkMultipleVertexBufferLockedElement::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkMultipleVertexBufferVertexBufferInfo" => ClassParams::HkMultipleVertexBufferVertexBufferInfo(Box::new(
-                HkMultipleVertexBufferVertexBufferInfo::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkMultipleVertexBuffer" => ClassParams::HkMultipleVertexBuffer(Box::new(
-                HkMultipleVertexBuffer::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkMotionState" => {
+                ClassParams::HkMotionState(Box::new(HkMotionState::from_bytes::<B>(bytes, de)?))
+            }
+            "hkMultipleVertexBufferElementInfo" => {
+                ClassParams::HkMultipleVertexBufferElementInfo(Box::new(
+                    HkMultipleVertexBufferElementInfo::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkMultipleVertexBufferLockedElement" => {
+                ClassParams::HkMultipleVertexBufferLockedElement(Box::new(
+                    HkMultipleVertexBufferLockedElement::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkMultipleVertexBufferVertexBufferInfo" => {
+                ClassParams::HkMultipleVertexBufferVertexBufferInfo(Box::new(
+                    HkMultipleVertexBufferVertexBufferInfo::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkMultipleVertexBuffer" => {
+                ClassParams::HkMultipleVertexBuffer(Box::new(HkMultipleVertexBuffer::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
             "hkMultiThreadCheck" => ClassParams::HkMultiThreadCheck(Box::new(
                 HkMultiThreadCheck::from_bytes::<B>(bytes, de)?,
             )),
-            "hkp2dAngConstraintAtom" => ClassParams::Hkp2DAngConstraintAtom(Box::new(
-                Hkp2DAngConstraintAtom::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpAabbPhantom" => ClassParams::HkpAabbPhantom(Box::new(
-                HkpAabbPhantom::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkPackedVector3" => ClassParams::HkPackedVector3(Box::new(
-                HkPackedVector3::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkp2dAngConstraintAtom" => {
+                ClassParams::Hkp2DAngConstraintAtom(Box::new(Hkp2DAngConstraintAtom::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
+            "hkpAabbPhantom" => {
+                ClassParams::HkpAabbPhantom(Box::new(HkpAabbPhantom::from_bytes::<B>(bytes, de)?))
+            }
+            "hkPackedVector3" => {
+                ClassParams::HkPackedVector3(Box::new(HkPackedVector3::from_bytes::<B>(bytes, de)?))
+            }
             "hkPackfileHeader" => ClassParams::HkPackfileHeader(Box::new(
                 HkPackfileHeader::from_bytes::<B>(bytes, de)?,
             )),
             "hkPackfileSectionHeader" => ClassParams::HkPackfileSectionHeader(Box::new(
                 HkPackfileSectionHeader::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpAction" => ClassParams::HkpAction(Box::new(
-                HkpAction::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpAction" => ClassParams::HkpAction(Box::new(HkpAction::from_bytes::<B>(bytes, de)?)),
             "hkpAngConstraintAtom" => ClassParams::HkpAngConstraintAtom(Box::new(
                 HkpAngConstraintAtom::from_bytes::<B>(bytes, de)?,
             )),
@@ -10175,123 +10541,143 @@ impl<'a> ClassParams<'a> {
             "hkpAngularDashpotAction" => ClassParams::HkpAngularDashpotAction(Box::new(
                 HkpAngularDashpotAction::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpArrayAction" => ClassParams::HkpArrayAction(Box::new(
-                HkpArrayAction::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpBallAndSocketConstraintDataAtoms" => ClassParams::HkpBallAndSocketConstraintDataAtoms(Box::new(
-                HkpBallAndSocketConstraintDataAtoms::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpBallAndSocketConstraintData" => ClassParams::HkpBallAndSocketConstraintData(Box::new(
-                HkpBallAndSocketConstraintData::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpBallGun" => ClassParams::HkpBallGun(Box::new(
-                HkpBallGun::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpBallSocketChainDataConstraintInfo" => ClassParams::HkpBallSocketChainDataConstraintInfo(Box::new(
-                HkpBallSocketChainDataConstraintInfo::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpBallSocketChainData" => ClassParams::HkpBallSocketChainData(Box::new(
-                HkpBallSocketChainData::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpArrayAction" => {
+                ClassParams::HkpArrayAction(Box::new(HkpArrayAction::from_bytes::<B>(bytes, de)?))
+            }
+            "hkpBallAndSocketConstraintDataAtoms" => {
+                ClassParams::HkpBallAndSocketConstraintDataAtoms(Box::new(
+                    HkpBallAndSocketConstraintDataAtoms::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpBallAndSocketConstraintData" => ClassParams::HkpBallAndSocketConstraintData(
+                Box::new(HkpBallAndSocketConstraintData::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkpBallGun" => {
+                ClassParams::HkpBallGun(Box::new(HkpBallGun::from_bytes::<B>(bytes, de)?))
+            }
+            "hkpBallSocketChainDataConstraintInfo" => {
+                ClassParams::HkpBallSocketChainDataConstraintInfo(Box::new(
+                    HkpBallSocketChainDataConstraintInfo::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpBallSocketChainData" => {
+                ClassParams::HkpBallSocketChainData(Box::new(HkpBallSocketChainData::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
             "hkpBallSocketConstraintAtom" => ClassParams::HkpBallSocketConstraintAtom(Box::new(
                 HkpBallSocketConstraintAtom::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpBinaryAction" => ClassParams::HkpBinaryAction(Box::new(
-                HkpBinaryAction::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpBoxMotion" => ClassParams::HkpBoxMotion(Box::new(
-                HkpBoxMotion::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpBoxShape" => ClassParams::HkpBoxShape(Box::new(
-                HkpBoxShape::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpBinaryAction" => {
+                ClassParams::HkpBinaryAction(Box::new(HkpBinaryAction::from_bytes::<B>(bytes, de)?))
+            }
+            "hkpBoxMotion" => {
+                ClassParams::HkpBoxMotion(Box::new(HkpBoxMotion::from_bytes::<B>(bytes, de)?))
+            }
+            "hkpBoxShape" => {
+                ClassParams::HkpBoxShape(Box::new(HkpBoxShape::from_bytes::<B>(bytes, de)?))
+            }
             "hkpBreakableBody" => ClassParams::HkpBreakableBody(Box::new(
                 HkpBreakableBody::from_bytes::<B>(bytes, de)?,
             )),
             "hkpBreakableConstraintData" => ClassParams::HkpBreakableConstraintData(Box::new(
                 HkpBreakableConstraintData::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpBridgeAtoms" => ClassParams::HkpBridgeAtoms(Box::new(
-                HkpBridgeAtoms::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpBridgeAtoms" => {
+                ClassParams::HkpBridgeAtoms(Box::new(HkpBridgeAtoms::from_bytes::<B>(bytes, de)?))
+            }
             "hkpBridgeConstraintAtom" => ClassParams::HkpBridgeConstraintAtom(Box::new(
                 HkpBridgeConstraintAtom::from_bytes::<B>(bytes, de)?,
             )),
             "hkpBroadPhaseHandle" => ClassParams::HkpBroadPhaseHandle(Box::new(
                 HkpBroadPhaseHandle::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpBvShape" => ClassParams::HkpBvShape(Box::new(
-                HkpBvShape::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpBvTreeShape" => ClassParams::HkpBvTreeShape(Box::new(
-                HkpBvTreeShape::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpCachingShapePhantom" => ClassParams::HkpCachingShapePhantom(Box::new(
-                HkpCachingShapePhantom::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpBvShape" => {
+                ClassParams::HkpBvShape(Box::new(HkpBvShape::from_bytes::<B>(bytes, de)?))
+            }
+            "hkpBvTreeShape" => {
+                ClassParams::HkpBvTreeShape(Box::new(HkpBvTreeShape::from_bytes::<B>(bytes, de)?))
+            }
+            "hkpCachingShapePhantom" => {
+                ClassParams::HkpCachingShapePhantom(Box::new(HkpCachingShapePhantom::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
             "hkpCallbackConstraintMotor" => ClassParams::HkpCallbackConstraintMotor(Box::new(
                 HkpCallbackConstraintMotor::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpCapsuleShape" => ClassParams::HkpCapsuleShape(Box::new(
-                HkpCapsuleShape::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpCdBody" => ClassParams::HkpCdBody(Box::new(
-                HkpCdBody::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpCenterOfMassChangerModifierConstraintAtom" => ClassParams::HkpCenterOfMassChangerModifierConstraintAtom(Box::new(
-                HkpCenterOfMassChangerModifierConstraintAtom::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpCapsuleShape" => {
+                ClassParams::HkpCapsuleShape(Box::new(HkpCapsuleShape::from_bytes::<B>(bytes, de)?))
+            }
+            "hkpCdBody" => ClassParams::HkpCdBody(Box::new(HkpCdBody::from_bytes::<B>(bytes, de)?)),
+            "hkpCenterOfMassChangerModifierConstraintAtom" => {
+                ClassParams::HkpCenterOfMassChangerModifierConstraintAtom(Box::new(
+                    HkpCenterOfMassChangerModifierConstraintAtom::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpCharacterControllerCinfo" => ClassParams::HkpCharacterControllerCinfo(Box::new(
                 HkpCharacterControllerCinfo::from_bytes::<B>(bytes, de)?,
             )),
             "hkpCharacterMotion" => ClassParams::HkpCharacterMotion(Box::new(
                 HkpCharacterMotion::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpCharacterProxyCinfo" => ClassParams::HkpCharacterProxyCinfo(Box::new(
-                HkpCharacterProxyCinfo::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpCharacterProxyCinfo" => {
+                ClassParams::HkpCharacterProxyCinfo(Box::new(HkpCharacterProxyCinfo::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
             "hkpCharacterRigidBodyCinfo" => ClassParams::HkpCharacterRigidBodyCinfo(Box::new(
                 HkpCharacterRigidBodyCinfo::from_bytes::<B>(bytes, de)?,
             )),
             "hkpCogWheelConstraintAtom" => ClassParams::HkpCogWheelConstraintAtom(Box::new(
                 HkpCogWheelConstraintAtom::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpCogWheelConstraintDataAtoms" => ClassParams::HkpCogWheelConstraintDataAtoms(Box::new(
-                HkpCogWheelConstraintDataAtoms::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpCogWheelConstraintDataAtoms" => ClassParams::HkpCogWheelConstraintDataAtoms(
+                Box::new(HkpCogWheelConstraintDataAtoms::from_bytes::<B>(bytes, de)?),
+            ),
             "hkpCogWheelConstraintData" => ClassParams::HkpCogWheelConstraintData(Box::new(
                 HkpCogWheelConstraintData::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpCollidableBoundingVolumeData" => ClassParams::HkpCollidableBoundingVolumeData(Box::new(
-                HkpCollidableBoundingVolumeData::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpCollidableCollidableFilter" => ClassParams::HkpCollidableCollidableFilter(Box::new(
-                HkpCollidableCollidableFilter::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpCollidable" => ClassParams::HkpCollidable(Box::new(
-                HkpCollidable::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpCollisionFilterList" => ClassParams::HkpCollisionFilterList(Box::new(
-                HkpCollisionFilterList::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpCollidableBoundingVolumeData" => ClassParams::HkpCollidableBoundingVolumeData(
+                Box::new(HkpCollidableBoundingVolumeData::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkpCollidableCollidableFilter" => ClassParams::HkpCollidableCollidableFilter(
+                Box::new(HkpCollidableCollidableFilter::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkpCollidable" => {
+                ClassParams::HkpCollidable(Box::new(HkpCollidable::from_bytes::<B>(bytes, de)?))
+            }
+            "hkpCollisionFilterList" => {
+                ClassParams::HkpCollisionFilterList(Box::new(HkpCollisionFilterList::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
             "hkpCollisionFilter" => ClassParams::HkpCollisionFilter(Box::new(
                 HkpCollisionFilter::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpCompressedMeshShapeBigTriangle" => ClassParams::HkpCompressedMeshShapeBigTriangle(Box::new(
-                HkpCompressedMeshShapeBigTriangle::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpCompressedMeshShapeBigTriangle" => {
+                ClassParams::HkpCompressedMeshShapeBigTriangle(Box::new(
+                    HkpCompressedMeshShapeBigTriangle::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpCompressedMeshShapeChunk" => ClassParams::HkpCompressedMeshShapeChunk(Box::new(
                 HkpCompressedMeshShapeChunk::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpCompressedMeshShapeConvexPiece" => ClassParams::HkpCompressedMeshShapeConvexPiece(Box::new(
-                HkpCompressedMeshShapeConvexPiece::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpCompressedMeshShape" => ClassParams::HkpCompressedMeshShape(Box::new(
-                HkpCompressedMeshShape::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpCompressedSampledHeightFieldShape" => ClassParams::HkpCompressedSampledHeightFieldShape(Box::new(
-                HkpCompressedSampledHeightFieldShape::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpCompressedMeshShapeConvexPiece" => {
+                ClassParams::HkpCompressedMeshShapeConvexPiece(Box::new(
+                    HkpCompressedMeshShapeConvexPiece::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpCompressedMeshShape" => {
+                ClassParams::HkpCompressedMeshShape(Box::new(HkpCompressedMeshShape::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
+            "hkpCompressedSampledHeightFieldShape" => {
+                ClassParams::HkpCompressedSampledHeightFieldShape(Box::new(
+                    HkpCompressedSampledHeightFieldShape::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpConeLimitConstraintAtom" => ClassParams::HkpConeLimitConstraintAtom(Box::new(
                 HkpConeLimitConstraintAtom::from_bytes::<B>(bytes, de)?,
             )),
@@ -10301,21 +10687,29 @@ impl<'a> ClassParams<'a> {
             "hkpConstraintAtom" => ClassParams::HkpConstraintAtom(Box::new(
                 HkpConstraintAtom::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpConstraintChainData" => ClassParams::HkpConstraintChainData(Box::new(
-                HkpConstraintChainData::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpConstraintChainInstanceAction" => ClassParams::HkpConstraintChainInstanceAction(Box::new(
-                HkpConstraintChainInstanceAction::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpConstraintChainData" => {
+                ClassParams::HkpConstraintChainData(Box::new(HkpConstraintChainData::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
+            "hkpConstraintChainInstanceAction" => {
+                ClassParams::HkpConstraintChainInstanceAction(Box::new(
+                    HkpConstraintChainInstanceAction::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpConstraintChainInstance" => ClassParams::HkpConstraintChainInstance(Box::new(
                 HkpConstraintChainInstance::from_bytes::<B>(bytes, de)?,
             )),
             "hkpConstraintCollisionFilter" => ClassParams::HkpConstraintCollisionFilter(Box::new(
                 HkpConstraintCollisionFilter::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpConstraintInstanceSmallArraySerializeOverrideType" => ClassParams::HkpConstraintInstanceSmallArraySerializeOverrideType(Box::new(
-                HkpConstraintInstanceSmallArraySerializeOverrideType::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpConstraintInstanceSmallArraySerializeOverrideType" => {
+                ClassParams::HkpConstraintInstanceSmallArraySerializeOverrideType(Box::new(
+                    HkpConstraintInstanceSmallArraySerializeOverrideType::from_bytes::<B>(
+                        bytes, de,
+                    )?,
+                ))
+            }
             "hkpConstraintInstance" => ClassParams::HkpConstraintInstance(Box::new(
                 HkpConstraintInstance::from_bytes::<B>(bytes, de)?,
             )),
@@ -10334,9 +10728,9 @@ impl<'a> ClassParams<'a> {
             "hkpConvexPieceStreamData" => ClassParams::HkpConvexPieceStreamData(Box::new(
                 HkpConvexPieceStreamData::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpConvexShape" => ClassParams::HkpConvexShape(Box::new(
-                HkpConvexShape::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpConvexShape" => {
+                ClassParams::HkpConvexShape(Box::new(HkpConvexShape::from_bytes::<B>(bytes, de)?))
+            }
             "hkpConvexTransformShapeBase" => ClassParams::HkpConvexTransformShapeBase(Box::new(
                 HkpConvexTransformShapeBase::from_bytes::<B>(bytes, de)?,
             )),
@@ -10346,15 +10740,19 @@ impl<'a> ClassParams<'a> {
             "hkpConvexTranslateShape" => ClassParams::HkpConvexTranslateShape(Box::new(
                 HkpConvexTranslateShape::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpConvexVerticesConnectivity" => ClassParams::HkpConvexVerticesConnectivity(Box::new(
-                HkpConvexVerticesConnectivity::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpConvexVerticesShapeFourVectors" => ClassParams::HkpConvexVerticesShapeFourVectors(Box::new(
-                HkpConvexVerticesShapeFourVectors::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpConvexVerticesShape" => ClassParams::HkpConvexVerticesShape(Box::new(
-                HkpConvexVerticesShape::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpConvexVerticesConnectivity" => ClassParams::HkpConvexVerticesConnectivity(
+                Box::new(HkpConvexVerticesConnectivity::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkpConvexVerticesShapeFourVectors" => {
+                ClassParams::HkpConvexVerticesShapeFourVectors(Box::new(
+                    HkpConvexVerticesShapeFourVectors::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpConvexVerticesShape" => {
+                ClassParams::HkpConvexVerticesShape(Box::new(HkpConvexVerticesShape::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
             "hkpCylinderShape" => ClassParams::HkpCylinderShape(Box::new(
                 HkpCylinderShape::from_bytes::<B>(bytes, de)?,
             )),
@@ -10364,42 +10762,48 @@ impl<'a> ClassParams<'a> {
             "hkpDefaultConvexListFilter" => ClassParams::HkpDefaultConvexListFilter(Box::new(
                 HkpDefaultConvexListFilter::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpDefaultWorldMemoryWatchDog" => ClassParams::HkpDefaultWorldMemoryWatchDog(Box::new(
-                HkpDefaultWorldMemoryWatchDog::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpDisableEntityCollisionFilter" => ClassParams::HkpDisableEntityCollisionFilter(Box::new(
-                HkpDisableEntityCollisionFilter::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpDisplayBindingDataPhysicsSystem" => ClassParams::HkpDisplayBindingDataPhysicsSystem(Box::new(
-                HkpDisplayBindingDataPhysicsSystem::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpDisplayBindingDataRigidBody" => ClassParams::HkpDisplayBindingDataRigidBody(Box::new(
-                HkpDisplayBindingDataRigidBody::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpDefaultWorldMemoryWatchDog" => ClassParams::HkpDefaultWorldMemoryWatchDog(
+                Box::new(HkpDefaultWorldMemoryWatchDog::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkpDisableEntityCollisionFilter" => ClassParams::HkpDisableEntityCollisionFilter(
+                Box::new(HkpDisableEntityCollisionFilter::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkpDisplayBindingDataPhysicsSystem" => {
+                ClassParams::HkpDisplayBindingDataPhysicsSystem(Box::new(
+                    HkpDisplayBindingDataPhysicsSystem::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpDisplayBindingDataRigidBody" => ClassParams::HkpDisplayBindingDataRigidBody(
+                Box::new(HkpDisplayBindingDataRigidBody::from_bytes::<B>(bytes, de)?),
+            ),
             "hkpDisplayBindingData" => ClassParams::HkpDisplayBindingData(Box::new(
                 HkpDisplayBindingData::from_bytes::<B>(bytes, de)?,
             )),
             "hkpEntityExtendedListeners" => ClassParams::HkpEntityExtendedListeners(Box::new(
                 HkpEntityExtendedListeners::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpEntitySmallArraySerializeOverrideType" => ClassParams::HkpEntitySmallArraySerializeOverrideType(Box::new(
-                HkpEntitySmallArraySerializeOverrideType::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpEntitySpuCollisionCallback" => ClassParams::HkpEntitySpuCollisionCallback(Box::new(
-                HkpEntitySpuCollisionCallback::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpEntity" => ClassParams::HkpEntity(Box::new(
-                HkpEntity::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpExtendedMeshShapeShapesSubpart" => ClassParams::HkpExtendedMeshShapeShapesSubpart(Box::new(
-                HkpExtendedMeshShapeShapesSubpart::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpEntitySmallArraySerializeOverrideType" => {
+                ClassParams::HkpEntitySmallArraySerializeOverrideType(Box::new(
+                    HkpEntitySmallArraySerializeOverrideType::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpEntitySpuCollisionCallback" => ClassParams::HkpEntitySpuCollisionCallback(
+                Box::new(HkpEntitySpuCollisionCallback::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkpEntity" => ClassParams::HkpEntity(Box::new(HkpEntity::from_bytes::<B>(bytes, de)?)),
+            "hkpExtendedMeshShapeShapesSubpart" => {
+                ClassParams::HkpExtendedMeshShapeShapesSubpart(Box::new(
+                    HkpExtendedMeshShapeShapesSubpart::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpExtendedMeshShapeSubpart" => ClassParams::HkpExtendedMeshShapeSubpart(Box::new(
                 HkpExtendedMeshShapeSubpart::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpExtendedMeshShapeTrianglesSubpart" => ClassParams::HkpExtendedMeshShapeTrianglesSubpart(Box::new(
-                HkpExtendedMeshShapeTrianglesSubpart::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpExtendedMeshShapeTrianglesSubpart" => {
+                ClassParams::HkpExtendedMeshShapeTrianglesSubpart(Box::new(
+                    HkpExtendedMeshShapeTrianglesSubpart::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpExtendedMeshShape" => ClassParams::HkpExtendedMeshShape(Box::new(
                 HkpExtendedMeshShape::from_bytes::<B>(bytes, de)?,
             )),
@@ -10412,54 +10816,60 @@ impl<'a> ClassParams<'a> {
             "hkpFixedRigidMotion" => ClassParams::HkpFixedRigidMotion(Box::new(
                 HkpFixedRigidMotion::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpGenericConstraintDataSchemeConstraintInfo" => ClassParams::HkpGenericConstraintDataSchemeConstraintInfo(Box::new(
-                HkpGenericConstraintDataSchemeConstraintInfo::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpGenericConstraintDataScheme" => ClassParams::HkpGenericConstraintDataScheme(Box::new(
-                HkpGenericConstraintDataScheme::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpGenericConstraintDataSchemeConstraintInfo" => {
+                ClassParams::HkpGenericConstraintDataSchemeConstraintInfo(Box::new(
+                    HkpGenericConstraintDataSchemeConstraintInfo::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpGenericConstraintDataScheme" => ClassParams::HkpGenericConstraintDataScheme(
+                Box::new(HkpGenericConstraintDataScheme::from_bytes::<B>(bytes, de)?),
+            ),
             "hkpGenericConstraintData" => ClassParams::HkpGenericConstraintData(Box::new(
                 HkpGenericConstraintData::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpGravityGun" => ClassParams::HkpGravityGun(Box::new(
-                HkpGravityGun::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpGravityGun" => {
+                ClassParams::HkpGravityGun(Box::new(HkpGravityGun::from_bytes::<B>(bytes, de)?))
+            }
             "hkpGroupCollisionFilter" => ClassParams::HkpGroupCollisionFilter(Box::new(
                 HkpGroupCollisionFilter::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpGroupFilter" => ClassParams::HkpGroupFilter(Box::new(
-                HkpGroupFilter::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpGroupFilter" => {
+                ClassParams::HkpGroupFilter(Box::new(HkpGroupFilter::from_bytes::<B>(bytes, de)?))
+            }
             "hkpHeightFieldShape" => ClassParams::HkpHeightFieldShape(Box::new(
                 HkpHeightFieldShape::from_bytes::<B>(bytes, de)?,
             )),
             "hkpHingeConstraintDataAtoms" => ClassParams::HkpHingeConstraintDataAtoms(Box::new(
                 HkpHingeConstraintDataAtoms::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpHingeConstraintData" => ClassParams::HkpHingeConstraintData(Box::new(
-                HkpHingeConstraintData::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpHingeConstraintData" => {
+                ClassParams::HkpHingeConstraintData(Box::new(HkpHingeConstraintData::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
             "hkpHingeLimitsDataAtoms" => ClassParams::HkpHingeLimitsDataAtoms(Box::new(
                 HkpHingeLimitsDataAtoms::from_bytes::<B>(bytes, de)?,
             )),
             "hkpHingeLimitsData" => ClassParams::HkpHingeLimitsData(Box::new(
                 HkpHingeLimitsData::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpIgnoreModifierConstraintAtom" => ClassParams::HkpIgnoreModifierConstraintAtom(Box::new(
-                HkpIgnoreModifierConstraintAtom::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpIgnoreModifierConstraintAtom" => ClassParams::HkpIgnoreModifierConstraintAtom(
+                Box::new(HkpIgnoreModifierConstraintAtom::from_bytes::<B>(bytes, de)?),
+            ),
             "hkpKeyframedRigidMotion" => ClassParams::HkpKeyframedRigidMotion(Box::new(
                 HkpKeyframedRigidMotion::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpLimitedForceConstraintMotor" => ClassParams::HkpLimitedForceConstraintMotor(Box::new(
-                HkpLimitedForceConstraintMotor::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpLimitedHingeConstraintDataAtoms" => ClassParams::HkpLimitedHingeConstraintDataAtoms(Box::new(
-                HkpLimitedHingeConstraintDataAtoms::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpLimitedHingeConstraintData" => ClassParams::HkpLimitedHingeConstraintData(Box::new(
-                HkpLimitedHingeConstraintData::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpLimitedForceConstraintMotor" => ClassParams::HkpLimitedForceConstraintMotor(
+                Box::new(HkpLimitedForceConstraintMotor::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkpLimitedHingeConstraintDataAtoms" => {
+                ClassParams::HkpLimitedHingeConstraintDataAtoms(Box::new(
+                    HkpLimitedHingeConstraintDataAtoms::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpLimitedHingeConstraintData" => ClassParams::HkpLimitedHingeConstraintData(
+                Box::new(HkpLimitedHingeConstraintData::from_bytes::<B>(bytes, de)?),
+            ),
             "hkpLinConstraintAtom" => ClassParams::HkpLinConstraintAtom(Box::new(
                 HkpLinConstraintAtom::from_bytes::<B>(bytes, de)?,
             )),
@@ -10484,33 +10894,35 @@ impl<'a> ClassParams<'a> {
             "hkpListShapeChildInfo" => ClassParams::HkpListShapeChildInfo(Box::new(
                 HkpListShapeChildInfo::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpListShape" => ClassParams::HkpListShape(Box::new(
-                HkpListShape::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpListShape" => {
+                ClassParams::HkpListShape(Box::new(HkpListShape::from_bytes::<B>(bytes, de)?))
+            }
             "hkpMalleableConstraintData" => ClassParams::HkpMalleableConstraintData(Box::new(
                 HkpMalleableConstraintData::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpMassChangerModifierConstraintAtom" => ClassParams::HkpMassChangerModifierConstraintAtom(Box::new(
-                HkpMassChangerModifierConstraintAtom::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpMassChangerModifierConstraintAtom" => {
+                ClassParams::HkpMassChangerModifierConstraintAtom(Box::new(
+                    HkpMassChangerModifierConstraintAtom::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpMassProperties" => ClassParams::HkpMassProperties(Box::new(
                 HkpMassProperties::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpMaterial" => ClassParams::HkpMaterial(Box::new(
-                HkpMaterial::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpMaterial" => {
+                ClassParams::HkpMaterial(Box::new(HkpMaterial::from_bytes::<B>(bytes, de)?))
+            }
             "hkpMaxSizeMotion" => ClassParams::HkpMaxSizeMotion(Box::new(
                 HkpMaxSizeMotion::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpMeshMaterial" => ClassParams::HkpMeshMaterial(Box::new(
-                HkpMeshMaterial::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpMeshMaterial" => {
+                ClassParams::HkpMeshMaterial(Box::new(HkpMeshMaterial::from_bytes::<B>(bytes, de)?))
+            }
             "hkpMeshShapeSubpart" => ClassParams::HkpMeshShapeSubpart(Box::new(
                 HkpMeshShapeSubpart::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpMeshShape" => ClassParams::HkpMeshShape(Box::new(
-                HkpMeshShape::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpMeshShape" => {
+                ClassParams::HkpMeshShape(Box::new(HkpMeshShape::from_bytes::<B>(bytes, de)?))
+            }
             "hkpModifierConstraintAtom" => ClassParams::HkpModifierConstraintAtom(Box::new(
                 HkpModifierConstraintAtom::from_bytes::<B>(bytes, de)?,
             )),
@@ -10523,24 +10935,24 @@ impl<'a> ClassParams<'a> {
             "hkpMoppCodeReindexedTerminal" => ClassParams::HkpMoppCodeReindexedTerminal(Box::new(
                 HkpMoppCodeReindexedTerminal::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpMoppCode" => ClassParams::HkpMoppCode(Box::new(
-                HkpMoppCode::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpMotion" => ClassParams::HkpMotion(Box::new(
-                HkpMotion::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpMotorAction" => ClassParams::HkpMotorAction(Box::new(
-                HkpMotorAction::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpMoppCode" => {
+                ClassParams::HkpMoppCode(Box::new(HkpMoppCode::from_bytes::<B>(bytes, de)?))
+            }
+            "hkpMotion" => ClassParams::HkpMotion(Box::new(HkpMotion::from_bytes::<B>(bytes, de)?)),
+            "hkpMotorAction" => {
+                ClassParams::HkpMotorAction(Box::new(HkpMotorAction::from_bytes::<B>(bytes, de)?))
+            }
             "hkpMountedBallGun" => ClassParams::HkpMountedBallGun(Box::new(
                 HkpMountedBallGun::from_bytes::<B>(bytes, de)?,
             )),
             "hkpMouseSpringAction" => ClassParams::HkpMouseSpringAction(Box::new(
                 HkpMouseSpringAction::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpMovingSurfaceModifierConstraintAtom" => ClassParams::HkpMovingSurfaceModifierConstraintAtom(Box::new(
-                HkpMovingSurfaceModifierConstraintAtom::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpMovingSurfaceModifierConstraintAtom" => {
+                ClassParams::HkpMovingSurfaceModifierConstraintAtom(Box::new(
+                    HkpMovingSurfaceModifierConstraintAtom::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpMultiRayShapeRay" => ClassParams::HkpMultiRayShapeRay(Box::new(
                 HkpMultiRayShapeRay::from_bytes::<B>(bytes, de)?,
             )),
@@ -10550,78 +10962,88 @@ impl<'a> ClassParams<'a> {
             "hkpMultiSphereShape" => ClassParams::HkpMultiSphereShape(Box::new(
                 HkpMultiSphereShape::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpMultithreadedVehicleManager" => ClassParams::HkpMultithreadedVehicleManager(Box::new(
-                HkpMultithreadedVehicleManager::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpMultithreadedVehicleManager" => ClassParams::HkpMultithreadedVehicleManager(
+                Box::new(HkpMultithreadedVehicleManager::from_bytes::<B>(bytes, de)?),
+            ),
             "hkpNamedMeshMaterial" => ClassParams::HkpNamedMeshMaterial(Box::new(
                 HkpNamedMeshMaterial::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpNullCollisionFilter" => ClassParams::HkpNullCollisionFilter(Box::new(
-                HkpNullCollisionFilter::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpNullCollisionFilter" => {
+                ClassParams::HkpNullCollisionFilter(Box::new(HkpNullCollisionFilter::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
             "hkPostFinishAttribute" => ClassParams::HkPostFinishAttribute(Box::new(
                 HkPostFinishAttribute::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpOverwritePivotConstraintAtom" => ClassParams::HkpOverwritePivotConstraintAtom(Box::new(
-                HkpOverwritePivotConstraintAtom::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpPairCollisionFilterMapPairFilterKeyOverrideType" => ClassParams::HkpPairCollisionFilterMapPairFilterKeyOverrideType(Box::new(
-                HkpPairCollisionFilterMapPairFilterKeyOverrideType::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpPairCollisionFilter" => ClassParams::HkpPairCollisionFilter(Box::new(
-                HkpPairCollisionFilter::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpOverwritePivotConstraintAtom" => ClassParams::HkpOverwritePivotConstraintAtom(
+                Box::new(HkpOverwritePivotConstraintAtom::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkpPairCollisionFilterMapPairFilterKeyOverrideType" => {
+                ClassParams::HkpPairCollisionFilterMapPairFilterKeyOverrideType(Box::new(
+                    HkpPairCollisionFilterMapPairFilterKeyOverrideType::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpPairCollisionFilter" => {
+                ClassParams::HkpPairCollisionFilter(Box::new(HkpPairCollisionFilter::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
             "hkpParametricCurve" => ClassParams::HkpParametricCurve(Box::new(
                 HkpParametricCurve::from_bytes::<B>(bytes, de)?,
             )),
             "hkpPhantomCallbackShape" => ClassParams::HkpPhantomCallbackShape(Box::new(
                 HkpPhantomCallbackShape::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpPhantom" => ClassParams::HkpPhantom(Box::new(
-                HkpPhantom::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpPhysicsData" => ClassParams::HkpPhysicsData(Box::new(
-                HkpPhysicsData::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpPhantom" => {
+                ClassParams::HkpPhantom(Box::new(HkpPhantom::from_bytes::<B>(bytes, de)?))
+            }
+            "hkpPhysicsData" => {
+                ClassParams::HkpPhysicsData(Box::new(HkpPhysicsData::from_bytes::<B>(bytes, de)?))
+            }
             "hkpPhysicsSystemWithContacts" => ClassParams::HkpPhysicsSystemWithContacts(Box::new(
                 HkpPhysicsSystemWithContacts::from_bytes::<B>(bytes, de)?,
             )),
             "hkpPhysicsSystem" => ClassParams::HkpPhysicsSystem(Box::new(
                 HkpPhysicsSystem::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpPlaneShape" => ClassParams::HkpPlaneShape(Box::new(
-                HkpPlaneShape::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpPlaneShape" => {
+                ClassParams::HkpPlaneShape(Box::new(HkpPlaneShape::from_bytes::<B>(bytes, de)?))
+            }
             "hkpPointToPathConstraintData" => ClassParams::HkpPointToPathConstraintData(Box::new(
                 HkpPointToPathConstraintData::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpPointToPlaneConstraintDataAtoms" => ClassParams::HkpPointToPlaneConstraintDataAtoms(Box::new(
-                HkpPointToPlaneConstraintDataAtoms::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpPointToPlaneConstraintData" => ClassParams::HkpPointToPlaneConstraintData(Box::new(
-                HkpPointToPlaneConstraintData::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpPointToPlaneConstraintDataAtoms" => {
+                ClassParams::HkpPointToPlaneConstraintDataAtoms(Box::new(
+                    HkpPointToPlaneConstraintDataAtoms::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpPointToPlaneConstraintData" => ClassParams::HkpPointToPlaneConstraintData(
+                Box::new(HkpPointToPlaneConstraintData::from_bytes::<B>(bytes, de)?),
+            ),
             "hkpPositionConstraintMotor" => ClassParams::HkpPositionConstraintMotor(Box::new(
                 HkpPositionConstraintMotor::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpPoweredChainDataConstraintInfo" => ClassParams::HkpPoweredChainDataConstraintInfo(Box::new(
-                HkpPoweredChainDataConstraintInfo::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpPoweredChainDataConstraintInfo" => {
+                ClassParams::HkpPoweredChainDataConstraintInfo(Box::new(
+                    HkpPoweredChainDataConstraintInfo::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpPoweredChainData" => ClassParams::HkpPoweredChainData(Box::new(
                 HkpPoweredChainData::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpPoweredChainMapperLinkInfo" => ClassParams::HkpPoweredChainMapperLinkInfo(Box::new(
-                HkpPoweredChainMapperLinkInfo::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpPoweredChainMapperLinkInfo" => ClassParams::HkpPoweredChainMapperLinkInfo(
+                Box::new(HkpPoweredChainMapperLinkInfo::from_bytes::<B>(bytes, de)?),
+            ),
             "hkpPoweredChainMapperTarget" => ClassParams::HkpPoweredChainMapperTarget(Box::new(
                 HkpPoweredChainMapperTarget::from_bytes::<B>(bytes, de)?,
             )),
             "hkpPoweredChainMapper" => ClassParams::HkpPoweredChainMapper(Box::new(
                 HkpPoweredChainMapper::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpPrismaticConstraintDataAtoms" => ClassParams::HkpPrismaticConstraintDataAtoms(Box::new(
-                HkpPrismaticConstraintDataAtoms::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpPrismaticConstraintDataAtoms" => ClassParams::HkpPrismaticConstraintDataAtoms(
+                Box::new(HkpPrismaticConstraintDataAtoms::from_bytes::<B>(bytes, de)?),
+            ),
             "hkpPrismaticConstraintData" => ClassParams::HkpPrismaticConstraintData(Box::new(
                 HkpPrismaticConstraintData::from_bytes::<B>(bytes, de)?,
             )),
@@ -10631,9 +11053,9 @@ impl<'a> ClassParams<'a> {
             "hkpPropertyValue" => ClassParams::HkpPropertyValue(Box::new(
                 HkpPropertyValue::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpProperty" => ClassParams::HkpProperty(Box::new(
-                HkpProperty::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpProperty" => {
+                ClassParams::HkpProperty(Box::new(HkpProperty::from_bytes::<B>(bytes, de)?))
+            }
             "hkpPulleyConstraintAtom" => ClassParams::HkpPulleyConstraintAtom(Box::new(
                 HkpPulleyConstraintAtom::from_bytes::<B>(bytes, de)?,
             )),
@@ -10643,18 +11065,20 @@ impl<'a> ClassParams<'a> {
             "hkpPulleyConstraintData" => ClassParams::HkpPulleyConstraintData(Box::new(
                 HkpPulleyConstraintData::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpRackAndPinionConstraintAtom" => ClassParams::HkpRackAndPinionConstraintAtom(Box::new(
-                HkpRackAndPinionConstraintAtom::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpRackAndPinionConstraintDataAtoms" => ClassParams::HkpRackAndPinionConstraintDataAtoms(Box::new(
-                HkpRackAndPinionConstraintDataAtoms::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpRackAndPinionConstraintData" => ClassParams::HkpRackAndPinionConstraintData(Box::new(
-                HkpRackAndPinionConstraintData::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpRagdollConstraintDataAtoms" => ClassParams::HkpRagdollConstraintDataAtoms(Box::new(
-                HkpRagdollConstraintDataAtoms::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpRackAndPinionConstraintAtom" => ClassParams::HkpRackAndPinionConstraintAtom(
+                Box::new(HkpRackAndPinionConstraintAtom::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkpRackAndPinionConstraintDataAtoms" => {
+                ClassParams::HkpRackAndPinionConstraintDataAtoms(Box::new(
+                    HkpRackAndPinionConstraintDataAtoms::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpRackAndPinionConstraintData" => ClassParams::HkpRackAndPinionConstraintData(
+                Box::new(HkpRackAndPinionConstraintData::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkpRagdollConstraintDataAtoms" => ClassParams::HkpRagdollConstraintDataAtoms(
+                Box::new(HkpRagdollConstraintDataAtoms::from_bytes::<B>(bytes, de)?),
+            ),
             "hkpRagdollConstraintData" => ClassParams::HkpRagdollConstraintData(Box::new(
                 HkpRagdollConstraintData::from_bytes::<B>(bytes, de)?,
             )),
@@ -10664,63 +11088,79 @@ impl<'a> ClassParams<'a> {
             "hkpRagdollLimitsData" => ClassParams::HkpRagdollLimitsData(Box::new(
                 HkpRagdollLimitsData::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpRagdollMotorConstraintAtom" => ClassParams::HkpRagdollMotorConstraintAtom(Box::new(
-                HkpRagdollMotorConstraintAtom::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpRayCollidableFilter" => ClassParams::HkpRayCollidableFilter(Box::new(
-                HkpRayCollidableFilter::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpRagdollMotorConstraintAtom" => ClassParams::HkpRagdollMotorConstraintAtom(
+                Box::new(HkpRagdollMotorConstraintAtom::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkpRayCollidableFilter" => {
+                ClassParams::HkpRayCollidableFilter(Box::new(HkpRayCollidableFilter::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
             "hkpRayShapeCollectionFilter" => ClassParams::HkpRayShapeCollectionFilter(Box::new(
                 HkpRayShapeCollectionFilter::from_bytes::<B>(bytes, de)?,
             )),
             "hkpRejectChassisListener" => ClassParams::HkpRejectChassisListener(Box::new(
                 HkpRejectChassisListener::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpRemoveTerminalsMoppModifier" => ClassParams::HkpRemoveTerminalsMoppModifier(Box::new(
-                HkpRemoveTerminalsMoppModifier::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpRemoveTerminalsMoppModifier" => ClassParams::HkpRemoveTerminalsMoppModifier(
+                Box::new(HkpRemoveTerminalsMoppModifier::from_bytes::<B>(bytes, de)?),
+            ),
             "hkpReorientAction" => ClassParams::HkpReorientAction(Box::new(
                 HkpReorientAction::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpRigidBody" => ClassParams::HkpRigidBody(Box::new(
-                HkpRigidBody::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpRotationalConstraintDataAtoms" => ClassParams::HkpRotationalConstraintDataAtoms(Box::new(
-                HkpRotationalConstraintDataAtoms::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpRigidBody" => {
+                ClassParams::HkpRigidBody(Box::new(HkpRigidBody::from_bytes::<B>(bytes, de)?))
+            }
+            "hkpRotationalConstraintDataAtoms" => {
+                ClassParams::HkpRotationalConstraintDataAtoms(Box::new(
+                    HkpRotationalConstraintDataAtoms::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpRotationalConstraintData" => ClassParams::HkpRotationalConstraintData(Box::new(
                 HkpRotationalConstraintData::from_bytes::<B>(bytes, de)?,
             )),
             "hkpSampledHeightFieldShape" => ClassParams::HkpSampledHeightFieldShape(Box::new(
                 HkpSampledHeightFieldShape::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpSerializedDisplayMarkerList" => ClassParams::HkpSerializedDisplayMarkerList(Box::new(
-                HkpSerializedDisplayMarkerList::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpSerializedDisplayMarkerList" => ClassParams::HkpSerializedDisplayMarkerList(
+                Box::new(HkpSerializedDisplayMarkerList::from_bytes::<B>(bytes, de)?),
+            ),
             "hkpSerializedDisplayMarker" => ClassParams::HkpSerializedDisplayMarker(Box::new(
                 HkpSerializedDisplayMarker::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpSerializedDisplayRbTransformsDisplayTransformPair" => ClassParams::HkpSerializedDisplayRbTransformsDisplayTransformPair(Box::new(
-                HkpSerializedDisplayRbTransformsDisplayTransformPair::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpSerializedDisplayRbTransforms" => ClassParams::HkpSerializedDisplayRbTransforms(Box::new(
-                HkpSerializedDisplayRbTransforms::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpSerializedDisplayRbTransformsDisplayTransformPair" => {
+                ClassParams::HkpSerializedDisplayRbTransformsDisplayTransformPair(Box::new(
+                    HkpSerializedDisplayRbTransformsDisplayTransformPair::from_bytes::<B>(
+                        bytes, de,
+                    )?,
+                ))
+            }
+            "hkpSerializedDisplayRbTransforms" => {
+                ClassParams::HkpSerializedDisplayRbTransforms(Box::new(
+                    HkpSerializedDisplayRbTransforms::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpSerializedSubTrack1nInfo" => ClassParams::HkpSerializedSubTrack1NInfo(Box::new(
                 HkpSerializedSubTrack1NInfo::from_bytes::<B>(bytes, de)?,
             )),
             "hkpSerializedTrack1nInfo" => ClassParams::HkpSerializedTrack1NInfo(Box::new(
                 HkpSerializedTrack1NInfo::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpSetLocalRotationsConstraintAtom" => ClassParams::HkpSetLocalRotationsConstraintAtom(Box::new(
-                HkpSetLocalRotationsConstraintAtom::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpSetLocalTransformsConstraintAtom" => ClassParams::HkpSetLocalTransformsConstraintAtom(Box::new(
-                HkpSetLocalTransformsConstraintAtom::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpSetLocalTranslationsConstraintAtom" => ClassParams::HkpSetLocalTranslationsConstraintAtom(Box::new(
-                HkpSetLocalTranslationsConstraintAtom::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpSetLocalRotationsConstraintAtom" => {
+                ClassParams::HkpSetLocalRotationsConstraintAtom(Box::new(
+                    HkpSetLocalRotationsConstraintAtom::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpSetLocalTransformsConstraintAtom" => {
+                ClassParams::HkpSetLocalTransformsConstraintAtom(Box::new(
+                    HkpSetLocalTransformsConstraintAtom::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpSetLocalTranslationsConstraintAtom" => {
+                ClassParams::HkpSetLocalTranslationsConstraintAtom(Box::new(
+                    HkpSetLocalTranslationsConstraintAtom::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpSetupStabilizationAtom" => ClassParams::HkpSetupStabilizationAtom(Box::new(
                 HkpSetupStabilizationAtom::from_bytes::<B>(bytes, de)?,
             )),
@@ -10733,96 +11173,114 @@ impl<'a> ClassParams<'a> {
             "hkpShapeContainer" => ClassParams::HkpShapeContainer(Box::new(
                 HkpShapeContainer::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpShapeInfo" => ClassParams::HkpShapeInfo(Box::new(
-                HkpShapeInfo::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpShapeInfo" => {
+                ClassParams::HkpShapeInfo(Box::new(HkpShapeInfo::from_bytes::<B>(bytes, de)?))
+            }
             "hkpShapeModifier" => ClassParams::HkpShapeModifier(Box::new(
                 HkpShapeModifier::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpShapePhantom" => ClassParams::HkpShapePhantom(Box::new(
-                HkpShapePhantom::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpShape" => ClassParams::HkpShape(Box::new(
-                HkpShape::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpSimpleContactConstraintAtom" => ClassParams::HkpSimpleContactConstraintAtom(Box::new(
-                HkpSimpleContactConstraintAtom::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpSimpleContactConstraintDataInfo" => ClassParams::HkpSimpleContactConstraintDataInfo(Box::new(
-                HkpSimpleContactConstraintDataInfo::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpShapePhantom" => {
+                ClassParams::HkpShapePhantom(Box::new(HkpShapePhantom::from_bytes::<B>(bytes, de)?))
+            }
+            "hkpShape" => ClassParams::HkpShape(Box::new(HkpShape::from_bytes::<B>(bytes, de)?)),
+            "hkpSimpleContactConstraintAtom" => ClassParams::HkpSimpleContactConstraintAtom(
+                Box::new(HkpSimpleContactConstraintAtom::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkpSimpleContactConstraintDataInfo" => {
+                ClassParams::HkpSimpleContactConstraintDataInfo(Box::new(
+                    HkpSimpleContactConstraintDataInfo::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpSimpleMeshShapeTriangle" => ClassParams::HkpSimpleMeshShapeTriangle(Box::new(
                 HkpSimpleMeshShapeTriangle::from_bytes::<B>(bytes, de)?,
             )),
             "hkpSimpleMeshShape" => ClassParams::HkpSimpleMeshShape(Box::new(
                 HkpSimpleMeshShape::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpSimpleShapePhantomCollisionDetail" => ClassParams::HkpSimpleShapePhantomCollisionDetail(Box::new(
-                HkpSimpleShapePhantomCollisionDetail::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpSimpleShapePhantomCollisionDetail" => {
+                ClassParams::HkpSimpleShapePhantomCollisionDetail(Box::new(
+                    HkpSimpleShapePhantomCollisionDetail::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpSimpleShapePhantom" => ClassParams::HkpSimpleShapePhantom(Box::new(
                 HkpSimpleShapePhantom::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpSimulation" => ClassParams::HkpSimulation(Box::new(
-                HkpSimulation::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpSimulation" => {
+                ClassParams::HkpSimulation(Box::new(HkpSimulation::from_bytes::<B>(bytes, de)?))
+            }
             "hkpSingleShapeContainer" => ClassParams::HkpSingleShapeContainer(Box::new(
                 HkpSingleShapeContainer::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpSoftContactModifierConstraintAtom" => ClassParams::HkpSoftContactModifierConstraintAtom(Box::new(
-                HkpSoftContactModifierConstraintAtom::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpSphereMotion" => ClassParams::HkpSphereMotion(Box::new(
-                HkpSphereMotion::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpSoftContactModifierConstraintAtom" => {
+                ClassParams::HkpSoftContactModifierConstraintAtom(Box::new(
+                    HkpSoftContactModifierConstraintAtom::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpSphereMotion" => {
+                ClassParams::HkpSphereMotion(Box::new(HkpSphereMotion::from_bytes::<B>(bytes, de)?))
+            }
             "hkpSphereRepShape" => ClassParams::HkpSphereRepShape(Box::new(
                 HkpSphereRepShape::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpSphereShape" => ClassParams::HkpSphereShape(Box::new(
-                HkpSphereShape::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpSpringAction" => ClassParams::HkpSpringAction(Box::new(
-                HkpSpringAction::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpSpringDamperConstraintMotor" => ClassParams::HkpSpringDamperConstraintMotor(Box::new(
-                HkpSpringDamperConstraintMotor::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpStiffSpringChainDataConstraintInfo" => ClassParams::HkpStiffSpringChainDataConstraintInfo(Box::new(
-                HkpStiffSpringChainDataConstraintInfo::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpSphereShape" => {
+                ClassParams::HkpSphereShape(Box::new(HkpSphereShape::from_bytes::<B>(bytes, de)?))
+            }
+            "hkpSpringAction" => {
+                ClassParams::HkpSpringAction(Box::new(HkpSpringAction::from_bytes::<B>(bytes, de)?))
+            }
+            "hkpSpringDamperConstraintMotor" => ClassParams::HkpSpringDamperConstraintMotor(
+                Box::new(HkpSpringDamperConstraintMotor::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkpStiffSpringChainDataConstraintInfo" => {
+                ClassParams::HkpStiffSpringChainDataConstraintInfo(Box::new(
+                    HkpStiffSpringChainDataConstraintInfo::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpStiffSpringChainData" => ClassParams::HkpStiffSpringChainData(Box::new(
                 HkpStiffSpringChainData::from_bytes::<B>(bytes, de)?,
             )),
             "hkpStiffSpringConstraintAtom" => ClassParams::HkpStiffSpringConstraintAtom(Box::new(
                 HkpStiffSpringConstraintAtom::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpStiffSpringConstraintDataAtoms" => ClassParams::HkpStiffSpringConstraintDataAtoms(Box::new(
-                HkpStiffSpringConstraintDataAtoms::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpStiffSpringConstraintDataAtoms" => {
+                ClassParams::HkpStiffSpringConstraintDataAtoms(Box::new(
+                    HkpStiffSpringConstraintDataAtoms::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpStiffSpringConstraintData" => ClassParams::HkpStiffSpringConstraintData(Box::new(
                 HkpStiffSpringConstraintData::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpStorageExtendedMeshShapeMaterial" => ClassParams::HkpStorageExtendedMeshShapeMaterial(Box::new(
-                HkpStorageExtendedMeshShapeMaterial::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpStorageExtendedMeshShapeMeshSubpartStorage" => ClassParams::HkpStorageExtendedMeshShapeMeshSubpartStorage(Box::new(
-                HkpStorageExtendedMeshShapeMeshSubpartStorage::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpStorageExtendedMeshShapeShapeSubpartStorage" => ClassParams::HkpStorageExtendedMeshShapeShapeSubpartStorage(Box::new(
-                HkpStorageExtendedMeshShapeShapeSubpartStorage::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpStorageExtendedMeshShapeMaterial" => {
+                ClassParams::HkpStorageExtendedMeshShapeMaterial(Box::new(
+                    HkpStorageExtendedMeshShapeMaterial::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpStorageExtendedMeshShapeMeshSubpartStorage" => {
+                ClassParams::HkpStorageExtendedMeshShapeMeshSubpartStorage(Box::new(
+                    HkpStorageExtendedMeshShapeMeshSubpartStorage::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpStorageExtendedMeshShapeShapeSubpartStorage" => {
+                ClassParams::HkpStorageExtendedMeshShapeShapeSubpartStorage(Box::new(
+                    HkpStorageExtendedMeshShapeShapeSubpartStorage::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpStorageExtendedMeshShape" => ClassParams::HkpStorageExtendedMeshShape(Box::new(
                 HkpStorageExtendedMeshShape::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpStorageMeshShapeSubpartStorage" => ClassParams::HkpStorageMeshShapeSubpartStorage(Box::new(
-                HkpStorageMeshShapeSubpartStorage::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpStorageMeshShapeSubpartStorage" => {
+                ClassParams::HkpStorageMeshShapeSubpartStorage(Box::new(
+                    HkpStorageMeshShapeSubpartStorage::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpStorageMeshShape" => ClassParams::HkpStorageMeshShape(Box::new(
                 HkpStorageMeshShape::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpStorageSampledHeightFieldShape" => ClassParams::HkpStorageSampledHeightFieldShape(Box::new(
-                HkpStorageSampledHeightFieldShape::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpStorageSampledHeightFieldShape" => {
+                ClassParams::HkpStorageSampledHeightFieldShape(Box::new(
+                    HkpStorageSampledHeightFieldShape::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpThinBoxMotion" => ClassParams::HkpThinBoxMotion(Box::new(
                 HkpThinBoxMotion::from_bytes::<B>(bytes, de)?,
             )),
@@ -10838,12 +11296,16 @@ impl<'a> ClassParams<'a> {
             "hkpTriggerVolume" => ClassParams::HkpTriggerVolume(Box::new(
                 HkpTriggerVolume::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpTriSampledHeightFieldBvTreeShape" => ClassParams::HkpTriSampledHeightFieldBvTreeShape(Box::new(
-                HkpTriSampledHeightFieldBvTreeShape::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpTriSampledHeightFieldCollection" => ClassParams::HkpTriSampledHeightFieldCollection(Box::new(
-                HkpTriSampledHeightFieldCollection::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpTriSampledHeightFieldBvTreeShape" => {
+                ClassParams::HkpTriSampledHeightFieldBvTreeShape(Box::new(
+                    HkpTriSampledHeightFieldBvTreeShape::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpTriSampledHeightFieldCollection" => {
+                ClassParams::HkpTriSampledHeightFieldCollection(Box::new(
+                    HkpTriSampledHeightFieldCollection::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpTwistLimitConstraintAtom" => ClassParams::HkpTwistLimitConstraintAtom(Box::new(
                 HkpTwistLimitConstraintAtom::from_bytes::<B>(bytes, de)?,
             )),
@@ -10859,57 +11321,73 @@ impl<'a> ClassParams<'a> {
             "hkpTyremarksWheel" => ClassParams::HkpTyremarksWheel(Box::new(
                 HkpTyremarksWheel::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpUnaryAction" => ClassParams::HkpUnaryAction(Box::new(
-                HkpUnaryAction::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpVehicleAerodynamics" => ClassParams::HkpVehicleAerodynamics(Box::new(
-                HkpVehicleAerodynamics::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpVehicleBrake" => ClassParams::HkpVehicleBrake(Box::new(
-                HkpVehicleBrake::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpVehicleCastBatchingManager" => ClassParams::HkpVehicleCastBatchingManager(Box::new(
-                HkpVehicleCastBatchingManager::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpVehicleDataWheelComponentParams" => ClassParams::HkpVehicleDataWheelComponentParams(Box::new(
-                HkpVehicleDataWheelComponentParams::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpVehicleData" => ClassParams::HkpVehicleData(Box::new(
-                HkpVehicleData::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpVehicleDefaultAerodynamics" => ClassParams::HkpVehicleDefaultAerodynamics(Box::new(
-                HkpVehicleDefaultAerodynamics::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpVehicleDefaultAnalogDriverInput" => ClassParams::HkpVehicleDefaultAnalogDriverInput(Box::new(
-                HkpVehicleDefaultAnalogDriverInput::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpVehicleDefaultBrakeWheelBrakingProperties" => ClassParams::HkpVehicleDefaultBrakeWheelBrakingProperties(Box::new(
-                HkpVehicleDefaultBrakeWheelBrakingProperties::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpVehicleDefaultBrake" => ClassParams::HkpVehicleDefaultBrake(Box::new(
-                HkpVehicleDefaultBrake::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpUnaryAction" => {
+                ClassParams::HkpUnaryAction(Box::new(HkpUnaryAction::from_bytes::<B>(bytes, de)?))
+            }
+            "hkpVehicleAerodynamics" => {
+                ClassParams::HkpVehicleAerodynamics(Box::new(HkpVehicleAerodynamics::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
+            "hkpVehicleBrake" => {
+                ClassParams::HkpVehicleBrake(Box::new(HkpVehicleBrake::from_bytes::<B>(bytes, de)?))
+            }
+            "hkpVehicleCastBatchingManager" => ClassParams::HkpVehicleCastBatchingManager(
+                Box::new(HkpVehicleCastBatchingManager::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkpVehicleDataWheelComponentParams" => {
+                ClassParams::HkpVehicleDataWheelComponentParams(Box::new(
+                    HkpVehicleDataWheelComponentParams::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpVehicleData" => {
+                ClassParams::HkpVehicleData(Box::new(HkpVehicleData::from_bytes::<B>(bytes, de)?))
+            }
+            "hkpVehicleDefaultAerodynamics" => ClassParams::HkpVehicleDefaultAerodynamics(
+                Box::new(HkpVehicleDefaultAerodynamics::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkpVehicleDefaultAnalogDriverInput" => {
+                ClassParams::HkpVehicleDefaultAnalogDriverInput(Box::new(
+                    HkpVehicleDefaultAnalogDriverInput::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpVehicleDefaultBrakeWheelBrakingProperties" => {
+                ClassParams::HkpVehicleDefaultBrakeWheelBrakingProperties(Box::new(
+                    HkpVehicleDefaultBrakeWheelBrakingProperties::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpVehicleDefaultBrake" => {
+                ClassParams::HkpVehicleDefaultBrake(Box::new(HkpVehicleDefaultBrake::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
             "hkpVehicleDefaultEngine" => ClassParams::HkpVehicleDefaultEngine(Box::new(
                 HkpVehicleDefaultEngine::from_bytes::<B>(bytes, de)?,
             )),
             "hkpVehicleDefaultSteering" => ClassParams::HkpVehicleDefaultSteering(Box::new(
                 HkpVehicleDefaultSteering::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpVehicleDefaultSuspensionWheelSpringSuspensionParameters" => ClassParams::HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters(Box::new(
-                HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpVehicleDefaultSuspensionWheelSpringSuspensionParameters" => {
+                ClassParams::HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters(Box::new(
+                    HkpVehicleDefaultSuspensionWheelSpringSuspensionParameters::from_bytes::<B>(
+                        bytes, de,
+                    )?,
+                ))
+            }
             "hkpVehicleDefaultSuspension" => ClassParams::HkpVehicleDefaultSuspension(Box::new(
                 HkpVehicleDefaultSuspension::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpVehicleDefaultTransmission" => ClassParams::HkpVehicleDefaultTransmission(Box::new(
-                HkpVehicleDefaultTransmission::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpVehicleDefaultVelocityDamper" => ClassParams::HkpVehicleDefaultVelocityDamper(Box::new(
-                HkpVehicleDefaultVelocityDamper::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpVehicleDriverInputAnalogStatus" => ClassParams::HkpVehicleDriverInputAnalogStatus(Box::new(
-                HkpVehicleDriverInputAnalogStatus::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpVehicleDefaultTransmission" => ClassParams::HkpVehicleDefaultTransmission(
+                Box::new(HkpVehicleDefaultTransmission::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkpVehicleDefaultVelocityDamper" => ClassParams::HkpVehicleDefaultVelocityDamper(
+                Box::new(HkpVehicleDefaultVelocityDamper::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkpVehicleDriverInputAnalogStatus" => {
+                ClassParams::HkpVehicleDriverInputAnalogStatus(Box::new(
+                    HkpVehicleDriverInputAnalogStatus::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpVehicleDriverInputStatus" => ClassParams::HkpVehicleDriverInputStatus(Box::new(
                 HkpVehicleDriverInputStatus::from_bytes::<B>(bytes, de)?,
             )),
@@ -10919,15 +11397,19 @@ impl<'a> ClassParams<'a> {
             "hkpVehicleEngine" => ClassParams::HkpVehicleEngine(Box::new(
                 HkpVehicleEngine::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpVehicleFrictionDescriptionAxisDescription" => ClassParams::HkpVehicleFrictionDescriptionAxisDescription(Box::new(
-                HkpVehicleFrictionDescriptionAxisDescription::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpVehicleFrictionDescription" => ClassParams::HkpVehicleFrictionDescription(Box::new(
-                HkpVehicleFrictionDescription::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpVehicleFrictionStatusAxisStatus" => ClassParams::HkpVehicleFrictionStatusAxisStatus(Box::new(
-                HkpVehicleFrictionStatusAxisStatus::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpVehicleFrictionDescriptionAxisDescription" => {
+                ClassParams::HkpVehicleFrictionDescriptionAxisDescription(Box::new(
+                    HkpVehicleFrictionDescriptionAxisDescription::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpVehicleFrictionDescription" => ClassParams::HkpVehicleFrictionDescription(
+                Box::new(HkpVehicleFrictionDescription::from_bytes::<B>(bytes, de)?),
+            ),
+            "hkpVehicleFrictionStatusAxisStatus" => {
+                ClassParams::HkpVehicleFrictionStatusAxisStatus(Box::new(
+                    HkpVehicleFrictionStatusAxisStatus::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpVehicleFrictionStatus" => ClassParams::HkpVehicleFrictionStatus(Box::new(
                 HkpVehicleFrictionStatus::from_bytes::<B>(bytes, de)?,
             )),
@@ -10937,63 +11419,77 @@ impl<'a> ClassParams<'a> {
             "hkpVehicleInstance" => ClassParams::HkpVehicleInstance(Box::new(
                 HkpVehicleInstance::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpVehicleLinearCastBatchingManager" => ClassParams::HkpVehicleLinearCastBatchingManager(Box::new(
-                HkpVehicleLinearCastBatchingManager::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpVehicleLinearCastWheelCollideWheelState" => ClassParams::HkpVehicleLinearCastWheelCollideWheelState(Box::new(
-                HkpVehicleLinearCastWheelCollideWheelState::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpVehicleLinearCastWheelCollide" => ClassParams::HkpVehicleLinearCastWheelCollide(Box::new(
-                HkpVehicleLinearCastWheelCollide::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpVehicleLinearCastBatchingManager" => {
+                ClassParams::HkpVehicleLinearCastBatchingManager(Box::new(
+                    HkpVehicleLinearCastBatchingManager::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpVehicleLinearCastWheelCollideWheelState" => {
+                ClassParams::HkpVehicleLinearCastWheelCollideWheelState(Box::new(
+                    HkpVehicleLinearCastWheelCollideWheelState::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpVehicleLinearCastWheelCollide" => {
+                ClassParams::HkpVehicleLinearCastWheelCollide(Box::new(
+                    HkpVehicleLinearCastWheelCollide::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpVehicleManager" => ClassParams::HkpVehicleManager(Box::new(
                 HkpVehicleManager::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpVehicleRayCastBatchingManager" => ClassParams::HkpVehicleRayCastBatchingManager(Box::new(
-                HkpVehicleRayCastBatchingManager::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpVehicleRayCastWheelCollide" => ClassParams::HkpVehicleRayCastWheelCollide(Box::new(
-                HkpVehicleRayCastWheelCollide::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpVehicleRayCastBatchingManager" => {
+                ClassParams::HkpVehicleRayCastBatchingManager(Box::new(
+                    HkpVehicleRayCastBatchingManager::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkpVehicleRayCastWheelCollide" => ClassParams::HkpVehicleRayCastWheelCollide(
+                Box::new(HkpVehicleRayCastWheelCollide::from_bytes::<B>(bytes, de)?),
+            ),
             "hkpVehicleSteering" => ClassParams::HkpVehicleSteering(Box::new(
                 HkpVehicleSteering::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpVehicleSuspensionSuspensionWheelParameters" => ClassParams::HkpVehicleSuspensionSuspensionWheelParameters(Box::new(
-                HkpVehicleSuspensionSuspensionWheelParameters::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpVehicleSuspensionSuspensionWheelParameters" => {
+                ClassParams::HkpVehicleSuspensionSuspensionWheelParameters(Box::new(
+                    HkpVehicleSuspensionSuspensionWheelParameters::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpVehicleSuspension" => ClassParams::HkpVehicleSuspension(Box::new(
                 HkpVehicleSuspension::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpVehicleTransmission" => ClassParams::HkpVehicleTransmission(Box::new(
-                HkpVehicleTransmission::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpVehicleTransmission" => {
+                ClassParams::HkpVehicleTransmission(Box::new(HkpVehicleTransmission::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
             "hkpVehicleVelocityDamper" => ClassParams::HkpVehicleVelocityDamper(Box::new(
                 HkpVehicleVelocityDamper::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpVehicleWheelCollide" => ClassParams::HkpVehicleWheelCollide(Box::new(
-                HkpVehicleWheelCollide::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpVehicleWheelCollide" => {
+                ClassParams::HkpVehicleWheelCollide(Box::new(HkpVehicleWheelCollide::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
             "hkpVelocityConstraintMotor" => ClassParams::HkpVelocityConstraintMotor(Box::new(
                 HkpVelocityConstraintMotor::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpViscousSurfaceModifierConstraintAtom" => ClassParams::HkpViscousSurfaceModifierConstraintAtom(Box::new(
-                HkpViscousSurfaceModifierConstraintAtom::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpViscousSurfaceModifierConstraintAtom" => {
+                ClassParams::HkpViscousSurfaceModifierConstraintAtom(Box::new(
+                    HkpViscousSurfaceModifierConstraintAtom::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkpWeldingUtility" => ClassParams::HkpWeldingUtility(Box::new(
                 HkpWeldingUtility::from_bytes::<B>(bytes, de)?,
             )),
-            "hkpWorldCinfo" => ClassParams::HkpWorldCinfo(Box::new(
-                HkpWorldCinfo::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpWorldObject" => ClassParams::HkpWorldObject(Box::new(
-                HkpWorldObject::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkpWorld" => ClassParams::HkpWorld(Box::new(
-                HkpWorld::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkQTransform" => ClassParams::HkQTransform(Box::new(
-                HkQTransform::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkpWorldCinfo" => {
+                ClassParams::HkpWorldCinfo(Box::new(HkpWorldCinfo::from_bytes::<B>(bytes, de)?))
+            }
+            "hkpWorldObject" => {
+                ClassParams::HkpWorldObject(Box::new(HkpWorldObject::from_bytes::<B>(bytes, de)?))
+            }
+            "hkpWorld" => ClassParams::HkpWorld(Box::new(HkpWorld::from_bytes::<B>(bytes, de)?)),
+            "hkQTransform" => {
+                ClassParams::HkQTransform(Box::new(HkQTransform::from_bytes::<B>(bytes, de)?))
+            }
             "hkRangeInt32Attribute" => ClassParams::HkRangeInt32Attribute(Box::new(
                 HkRangeInt32Attribute::from_bytes::<B>(bytes, de)?,
             )),
@@ -11006,18 +11502,20 @@ impl<'a> ClassParams<'a> {
             "hkReflectedFileAttribute" => ClassParams::HkReflectedFileAttribute(Box::new(
                 HkReflectedFileAttribute::from_bytes::<B>(bytes, de)?,
             )),
-            "hkResourceBase" => ClassParams::HkResourceBase(Box::new(
-                HkResourceBase::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkResourceBase" => {
+                ClassParams::HkResourceBase(Box::new(HkResourceBase::from_bytes::<B>(bytes, de)?))
+            }
             "hkResourceContainer" => ClassParams::HkResourceContainer(Box::new(
                 HkResourceContainer::from_bytes::<B>(bytes, de)?,
             )),
             "hkResourceHandle" => ClassParams::HkResourceHandle(Box::new(
                 HkResourceHandle::from_bytes::<B>(bytes, de)?,
             )),
-            "hkRootLevelContainerNamedVariant" => ClassParams::HkRootLevelContainerNamedVariant(Box::new(
-                HkRootLevelContainerNamedVariant::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkRootLevelContainerNamedVariant" => {
+                ClassParams::HkRootLevelContainerNamedVariant(Box::new(
+                    HkRootLevelContainerNamedVariant::from_bytes::<B>(bytes, de)?,
+                ))
+            }
             "hkRootLevelContainer" => ClassParams::HkRootLevelContainer(Box::new(
                 HkRootLevelContainer::from_bytes::<B>(bytes, de)?,
             )),
@@ -11027,36 +11525,40 @@ impl<'a> ClassParams<'a> {
             "hkSimpleLocalFrame" => ClassParams::HkSimpleLocalFrame(Box::new(
                 HkSimpleLocalFrame::from_bytes::<B>(bytes, de)?,
             )),
-            "hkSphere" => ClassParams::HkSphere(Box::new(
-                HkSphere::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkSphere" => ClassParams::HkSphere(Box::new(HkSphere::from_bytes::<B>(bytes, de)?)),
             "hkSweptTransform" => ClassParams::HkSweptTransform(Box::new(
                 HkSweptTransform::from_bytes::<B>(bytes, de)?,
             )),
             "hkTraceStreamTitle" => ClassParams::HkTraceStreamTitle(Box::new(
                 HkTraceStreamTitle::from_bytes::<B>(bytes, de)?,
             )),
-            "hkTrackerSerializableScanSnapshotAllocation" => ClassParams::HkTrackerSerializableScanSnapshotAllocation(Box::new(
-                HkTrackerSerializableScanSnapshotAllocation::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkTrackerSerializableScanSnapshotBlock" => ClassParams::HkTrackerSerializableScanSnapshotBlock(Box::new(
-                HkTrackerSerializableScanSnapshotBlock::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkTrackerSerializableScanSnapshot" => ClassParams::HkTrackerSerializableScanSnapshot(Box::new(
-                HkTrackerSerializableScanSnapshot::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkUiAttribute" => ClassParams::HkUiAttribute(Box::new(
-                HkUiAttribute::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkTrackerSerializableScanSnapshotAllocation" => {
+                ClassParams::HkTrackerSerializableScanSnapshotAllocation(Box::new(
+                    HkTrackerSerializableScanSnapshotAllocation::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkTrackerSerializableScanSnapshotBlock" => {
+                ClassParams::HkTrackerSerializableScanSnapshotBlock(Box::new(
+                    HkTrackerSerializableScanSnapshotBlock::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkTrackerSerializableScanSnapshot" => {
+                ClassParams::HkTrackerSerializableScanSnapshot(Box::new(
+                    HkTrackerSerializableScanSnapshot::from_bytes::<B>(bytes, de)?,
+                ))
+            }
+            "hkUiAttribute" => {
+                ClassParams::HkUiAttribute(Box::new(HkUiAttribute::from_bytes::<B>(bytes, de)?))
+            }
             "hkVertexFormatElement" => ClassParams::HkVertexFormatElement(Box::new(
                 HkVertexFormatElement::from_bytes::<B>(bytes, de)?,
             )),
-            "hkVertexFormat" => ClassParams::HkVertexFormat(Box::new(
-                HkVertexFormat::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkWorldMemoryAvailableWatchDog" => ClassParams::HkWorldMemoryAvailableWatchDog(Box::new(
-                HkWorldMemoryAvailableWatchDog::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkVertexFormat" => {
+                ClassParams::HkVertexFormat(Box::new(HkVertexFormat::from_bytes::<B>(bytes, de)?))
+            }
+            "hkWorldMemoryAvailableWatchDog" => ClassParams::HkWorldMemoryAvailableWatchDog(
+                Box::new(HkWorldMemoryAvailableWatchDog::from_bytes::<B>(bytes, de)?),
+            ),
             "hkxAnimatedFloat" => ClassParams::HkxAnimatedFloat(Box::new(
                 HkxAnimatedFloat::from_bytes::<B>(bytes, de)?,
             )),
@@ -11075,33 +11577,29 @@ impl<'a> ClassParams<'a> {
             "hkxAttributeHolder" => ClassParams::HkxAttributeHolder(Box::new(
                 HkxAttributeHolder::from_bytes::<B>(bytes, de)?,
             )),
-            "hkxAttribute" => ClassParams::HkxAttribute(Box::new(
-                HkxAttribute::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkxCamera" => ClassParams::HkxCamera(Box::new(
-                HkxCamera::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkxAttribute" => {
+                ClassParams::HkxAttribute(Box::new(HkxAttribute::from_bytes::<B>(bytes, de)?))
+            }
+            "hkxCamera" => ClassParams::HkxCamera(Box::new(HkxCamera::from_bytes::<B>(bytes, de)?)),
             "hkxEdgeSelectionChannel" => ClassParams::HkxEdgeSelectionChannel(Box::new(
                 HkxEdgeSelectionChannel::from_bytes::<B>(bytes, de)?,
             )),
-            "hkxEnumItem" => ClassParams::HkxEnumItem(Box::new(
-                HkxEnumItem::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkxEnum" => ClassParams::HkxEnum(Box::new(
-                HkxEnum::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkxEnvironmentVariable" => ClassParams::HkxEnvironmentVariable(Box::new(
-                HkxEnvironmentVariable::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkxEnvironment" => ClassParams::HkxEnvironment(Box::new(
-                HkxEnvironment::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkxIndexBuffer" => ClassParams::HkxIndexBuffer(Box::new(
-                HkxIndexBuffer::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkxLight" => ClassParams::HkxLight(Box::new(
-                HkxLight::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkxEnumItem" => {
+                ClassParams::HkxEnumItem(Box::new(HkxEnumItem::from_bytes::<B>(bytes, de)?))
+            }
+            "hkxEnum" => ClassParams::HkxEnum(Box::new(HkxEnum::from_bytes::<B>(bytes, de)?)),
+            "hkxEnvironmentVariable" => {
+                ClassParams::HkxEnvironmentVariable(Box::new(HkxEnvironmentVariable::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
+            "hkxEnvironment" => {
+                ClassParams::HkxEnvironment(Box::new(HkxEnvironment::from_bytes::<B>(bytes, de)?))
+            }
+            "hkxIndexBuffer" => {
+                ClassParams::HkxIndexBuffer(Box::new(HkxIndexBuffer::from_bytes::<B>(bytes, de)?))
+            }
+            "hkxLight" => ClassParams::HkxLight(Box::new(HkxLight::from_bytes::<B>(bytes, de)?)),
             "hkxMaterialEffect" => ClassParams::HkxMaterialEffect(Box::new(
                 HkxMaterialEffect::from_bytes::<B>(bytes, de)?,
             )),
@@ -11117,48 +11615,46 @@ impl<'a> ClassParams<'a> {
             "hkxMaterialTextureStage" => ClassParams::HkxMaterialTextureStage(Box::new(
                 HkxMaterialTextureStage::from_bytes::<B>(bytes, de)?,
             )),
-            "hkxMaterial" => ClassParams::HkxMaterial(Box::new(
-                HkxMaterial::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkxMeshSection" => ClassParams::HkxMeshSection(Box::new(
-                HkxMeshSection::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkxMeshUserChannelInfo" => ClassParams::HkxMeshUserChannelInfo(Box::new(
-                HkxMeshUserChannelInfo::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkxMesh" => ClassParams::HkxMesh(Box::new(
-                HkxMesh::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkxMaterial" => {
+                ClassParams::HkxMaterial(Box::new(HkxMaterial::from_bytes::<B>(bytes, de)?))
+            }
+            "hkxMeshSection" => {
+                ClassParams::HkxMeshSection(Box::new(HkxMeshSection::from_bytes::<B>(bytes, de)?))
+            }
+            "hkxMeshUserChannelInfo" => {
+                ClassParams::HkxMeshUserChannelInfo(Box::new(HkxMeshUserChannelInfo::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
+            "hkxMesh" => ClassParams::HkxMesh(Box::new(HkxMesh::from_bytes::<B>(bytes, de)?)),
             "hkxNodeAnnotationData" => ClassParams::HkxNodeAnnotationData(Box::new(
                 HkxNodeAnnotationData::from_bytes::<B>(bytes, de)?,
             )),
             "hkxNodeSelectionSet" => ClassParams::HkxNodeSelectionSet(Box::new(
                 HkxNodeSelectionSet::from_bytes::<B>(bytes, de)?,
             )),
-            "hkxNode" => ClassParams::HkxNode(Box::new(
-                HkxNode::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkxScene" => ClassParams::HkxScene(Box::new(
-                HkxScene::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkxSkinBinding" => ClassParams::HkxSkinBinding(Box::new(
-                HkxSkinBinding::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkxNode" => ClassParams::HkxNode(Box::new(HkxNode::from_bytes::<B>(bytes, de)?)),
+            "hkxScene" => ClassParams::HkxScene(Box::new(HkxScene::from_bytes::<B>(bytes, de)?)),
+            "hkxSkinBinding" => {
+                ClassParams::HkxSkinBinding(Box::new(HkxSkinBinding::from_bytes::<B>(bytes, de)?))
+            }
             "hkxSparselyAnimatedBool" => ClassParams::HkxSparselyAnimatedBool(Box::new(
                 HkxSparselyAnimatedBool::from_bytes::<B>(bytes, de)?,
             )),
             "hkxSparselyAnimatedEnum" => ClassParams::HkxSparselyAnimatedEnum(Box::new(
                 HkxSparselyAnimatedEnum::from_bytes::<B>(bytes, de)?,
             )),
-            "hkxSparselyAnimatedInt" => ClassParams::HkxSparselyAnimatedInt(Box::new(
-                HkxSparselyAnimatedInt::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkxSparselyAnimatedInt" => {
+                ClassParams::HkxSparselyAnimatedInt(Box::new(HkxSparselyAnimatedInt::from_bytes::<
+                    B,
+                >(bytes, de)?))
+            }
             "hkxSparselyAnimatedString" => ClassParams::HkxSparselyAnimatedString(Box::new(
                 HkxSparselyAnimatedString::from_bytes::<B>(bytes, de)?,
             )),
-            "hkxTextureFile" => ClassParams::HkxTextureFile(Box::new(
-                HkxTextureFile::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkxTextureFile" => {
+                ClassParams::HkxTextureFile(Box::new(HkxTextureFile::from_bytes::<B>(bytes, de)?))
+            }
             "hkxTextureInplace" => ClassParams::HkxTextureInplace(Box::new(
                 HkxTextureInplace::from_bytes::<B>(bytes, de)?,
             )),
@@ -11168,12 +11664,12 @@ impl<'a> ClassParams<'a> {
             "hkxVertexBufferVertexData" => ClassParams::HkxVertexBufferVertexData(Box::new(
                 HkxVertexBufferVertexData::from_bytes::<B>(bytes, de)?,
             )),
-            "hkxVertexBuffer" => ClassParams::HkxVertexBuffer(Box::new(
-                HkxVertexBuffer::from_bytes::<B>(bytes, de)?,
-            )),
-            "hkxVertexDescriptionElementDecl" => ClassParams::HkxVertexDescriptionElementDecl(Box::new(
-                HkxVertexDescriptionElementDecl::from_bytes::<B>(bytes, de)?,
-            )),
+            "hkxVertexBuffer" => {
+                ClassParams::HkxVertexBuffer(Box::new(HkxVertexBuffer::from_bytes::<B>(bytes, de)?))
+            }
+            "hkxVertexDescriptionElementDecl" => ClassParams::HkxVertexDescriptionElementDecl(
+                Box::new(HkxVertexDescriptionElementDecl::from_bytes::<B>(bytes, de)?),
+            ),
             "hkxVertexDescription" => ClassParams::HkxVertexDescription(Box::new(
                 HkxVertexDescription::from_bytes::<B>(bytes, de)?,
             )),

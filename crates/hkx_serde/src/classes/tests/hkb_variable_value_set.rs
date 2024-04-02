@@ -4,7 +4,7 @@ mod tests {
         class_params::ClassParams, HkbVariableValue, HkbVariableValueSet,
     };
     use crate::classes::Class;
-    use crate::havok_types::{HkArrayClass, HkArrayClassParam, HkArrayRef, HkArrayVector};
+    use crate::havok_types::{HkArrayClass, HkArrayRef, HkArrayVector};
     use pretty_assertions::assert_eq;
 
     #[test]
@@ -13,33 +13,32 @@ mod tests {
             name: "#0064".into(),
             class: "hkbVariableValueSet".into(),
             signature: "0x27812d8d".into(),
-            hkparams: ClassParams::HkbVariableValueSet(vec![
-                HkbVariableValueSet::WordVariableValues(HkArrayClass {
+            hkparams: ClassParams::HkbVariableValueSet(Box::new(HkbVariableValueSet {
+                word_variable_values: HkArrayClass {
                     numelements: 3,
-                    classes: Some(vec![
-                        HkArrayClassParam {
-                            hkparams: vec![HkbVariableValue::Value(1045220557.into())],
-                        },
-                        HkArrayClassParam {
-                            hkparams: vec![HkbVariableValue::Value(0.into())],
-                        },
-                        HkArrayClassParam {
-                            hkparams: vec![HkbVariableValue::Value(0.into())],
-                        },
-                    ]),
-                }),
-                HkbVariableValueSet::QuadVariableValues(HkArrayVector {
+                    classes: vec![
+                        HkbVariableValue {
+                            value: 1045220557,
+                        }
+                        .into(),
+                        HkbVariableValue { value: 0 }.into(),
+                        HkbVariableValue { value: 0 }.into(),
+                    ],
+                },
+                quad_variable_values: HkArrayVector {
                     numelements: 2,
                     values: vec![
                         (63.0, 64.0, 65.0, 66.0).into(),
                         (63.0, 64.0, 65.0, 66.0).into(),
                     ],
-                }),
-                HkbVariableValueSet::VariantVariableValues(HkArrayRef {
+                },
+
+                variant_variable_values: HkArrayRef {
                     numelements: 2,
                     values: vec!["#0063".into(), "#0064".into()],
-                }),
-            ]),
+                },
+                ..Default::default()
+            })),
         })
         .unwrap();
 
@@ -94,33 +93,32 @@ mod tests {
                 name: "#0064".into(),
                 class: "hkbVariableValueSet".into(),
                 signature: "0x27812d8d".into(),
-                hkparams: ClassParams::HkbVariableValueSet(vec![
-                    HkbVariableValueSet::WordVariableValues(HkArrayClass {
+                hkparams: ClassParams::HkbVariableValueSet(Box::new(HkbVariableValueSet {
+                    word_variable_values: HkArrayClass {
                         numelements: 3,
-                        classes: Some(vec![
-                            HkArrayClassParam {
-                                hkparams: vec![HkbVariableValue::Value(1045220557.into())],
-                            },
-                            HkArrayClassParam {
-                                hkparams: vec![HkbVariableValue::Value(0.into())]
-                            },
-                            HkArrayClassParam {
-                                hkparams: vec![HkbVariableValue::Value(0.into())]
-                            },
-                        ])
-                    },),
-                    HkbVariableValueSet::QuadVariableValues(HkArrayVector {
+                        classes: vec![
+                            HkbVariableValue {
+                                value: 1045220557,
+                            }
+                            .into(),
+                            HkbVariableValue { value: 0 }.into(),
+                            HkbVariableValue { value: 0 }.into(),
+                        ],
+                    },
+                    quad_variable_values: HkArrayVector {
                         numelements: 2,
                         values: vec![
-                            (0.000000, 1.000000, 0.000000, 0.000000).into(),
-                            (0.000000, 0.000000, -1.000000, 0.000000).into()
+                            (63.0, 64.0, 65.0, 66.0).into(),
+                            (63.0, 64.0, 65.0, 66.0).into(),
                         ],
-                    },),
-                    HkbVariableValueSet::VariantVariableValues(HkArrayRef {
+                    },
+
+                    variant_variable_values: HkArrayRef {
                         numelements: 2,
                         values: vec!["#0063".into(), "#0064".into()],
-                    },),
-                ]),
+                    },
+                    ..Default::default()
+                })),
             }
         );
     }

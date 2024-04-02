@@ -6,23 +6,20 @@ mod tests {
 
     #[test]
     fn should_serialize() {
-        let data = Class {
+        let class = Class {
             name: "#0085".into(),
             class: "hkbBehaviorGraphStringData".into(),
             signature: "0xc713064e".into(),
-            hkparams: ClassParams::HkbBehaviorGraphStringData(vec![
-                HkbBehaviorGraphStringData::EventNames(
-                    vec![
+            hkparams: ClassParams::HkbBehaviorGraphStringData(Box::new(
+                HkbBehaviorGraphStringData {
+                    event_names: vec![
                         "cannedTurnRight90Flee",
                         "cannedTurnRight180Flee",
                         "cannedTurnLeft90Flee",
                         "cannedTurnLeft180Flee",
                     ]
                     .into(),
-                ),
-                HkbBehaviorGraphStringData::AttributeNames(Default::default()),
-                HkbBehaviorGraphStringData::VariableNames(
-                    vec![
+                    variable_names: vec![
                         "blendDefault",
                         "blendFast",
                         "blendSlow",
@@ -31,11 +28,11 @@ mod tests {
                         "Speed",
                     ]
                     .into(),
-                ),
-                HkbBehaviorGraphStringData::CharacterPropertyNames(Default::default()),
-            ]),
+                    ..Default::default()
+                },
+            )),
         };
-        let serialized = quick_xml::se::to_string(&data).unwrap();
+        let serialized = quick_xml::se::to_string(&class).unwrap();
 
         let expected = "\
 <Class name=\"#0085\" class=\"hkbBehaviorGraphStringData\" signature=\"0xc713064e\">\
@@ -88,19 +85,16 @@ mod tests {
             name: "#0085".into(),
             class: "hkbBehaviorGraphStringData".into(),
             signature: "0xc713064e".into(),
-            hkparams: ClassParams::HkbBehaviorGraphStringData(vec![
-                HkbBehaviorGraphStringData::EventNames(
-                    vec![
+            hkparams: ClassParams::HkbBehaviorGraphStringData(Box::new(
+                HkbBehaviorGraphStringData {
+                    event_names: vec![
                         "cannedTurnRight90Flee",
                         "cannedTurnRight180Flee",
                         "cannedTurnLeft90Flee",
                         "cannedTurnLeft180Flee",
                     ]
                     .into(),
-                ),
-                HkbBehaviorGraphStringData::AttributeNames(Default::default()),
-                HkbBehaviorGraphStringData::VariableNames(
-                    vec![
+                    variable_names: vec![
                         "blendDefault",
                         "blendFast",
                         "blendSlow",
@@ -109,9 +103,9 @@ mod tests {
                         "Speed",
                     ]
                     .into(),
-                ),
-                HkbBehaviorGraphStringData::CharacterPropertyNames(Default::default()),
-            ]),
+                    ..Default::default()
+                },
+            )),
         };
         assert_eq!(deserialized, expected);
     }

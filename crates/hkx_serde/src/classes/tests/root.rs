@@ -1,104 +1,17 @@
 #[cfg(test)]
 mod tests {
-    use crate::havok_types::{
-        HkArrayClass, HkArrayClassParam, HkArrayStringPtr, Primitive, Vector4,
+    use crate::classes::{
+        class_params::ClassParams,
+        root::{HkSection, Hkx},
+        Class, EventMode, HkRootLevelContainer, HkRootLevelContainerNamedVariant, HkbProjectData,
+        HkbProjectStringData,
     };
-    use crate::{
-        classes::{
-            class_params::ClassParams,
-            root::{HkSection, Hkx},
-            Class, EventMode, HkRootLevelContainer, HkRootLevelContainerNamedVariant,
-            HkbProjectStringData,
-        },
-        helpers::serde::to_string_pretty_xml,
-    };
+    use crate::havok_types::{HkArrayClass, HkArrayClassParam, HkArrayStringPtr, Vector4};
+    use crate::helpers::serde::to_string_pretty_xml;
     use ordered_float::OrderedFloat;
     use pretty_assertions::assert_eq;
-    use std::borrow::Cow;
 
-    #[test]
-    fn should_serialize() {
-        let class = Hkx {
-            class_version: 8,
-            content_version: "hk_2010.2.0-r1".into(),
-            top_level_object: "#0050".into(),
-            hk_section: HkSection {
-                name: "__data__".into(),
-                classes: vec![
-                    Class {
-                        name: "#0050".into(),
-                        class: "hkRootLevelContainer".into(),
-                        signature: "0x2772c11e".into(),
-                        hkparams: ClassParams::HkRootLevelContainer(Box::new(
-                            HkRootLevelContainer {
-                                named_variants: HkArrayClass {
-                                    numelements: 1,
-                                    classes: vec![HkArrayClassParam {
-                                        hkparams: HkRootLevelContainerNamedVariant {
-                                            name: Cow::from("hkbProjectData"),
-                                            class_name: Cow::from("hkbProjectData"),
-                                            variant: Cow::from("#0051"),
-                                        },
-                                    }],
-                                },
-                            },
-                        )),
-                    },
-                    // Class {
-                    //     name: "#0051".into(),
-                    //     class: "hkbProjectData".into(),
-                    //     signature: "0x13a39ba7".into(),
-                    //     hkparams: ClassParams::HkbProjectData(vec![
-                    //         HkbProjectDataVisiter::WorldUpWs(Primitive {
-                    //             value: Vector4 {
-                    //                 x: OrderedFloat(0.0),
-                    //                 y: OrderedFloat(0.0),
-                    //                 z: OrderedFloat(1.0),
-                    //                 w: OrderedFloat(0.0),
-                    //             },
-                    //         }),
-                    //         HkbProjectDataVisiter::StringData(Primitive {
-                    //             value: "#0052".into(),
-                    //         }),
-                    //         HkbProjectDataVisiter::DefaultEventMode(Primitive {
-                    //             value: EventMode::EventModeIgnoreFromGenerator,
-                    //         }),
-                    //     ]),
-                    // },
-                    // Class {
-                    //     name: "#0052".into(),
-                    //     class: "hkbProjectStringData".into(),
-                    //     signature: "0x076ad60a".into(),
-                    //     hkparams: ClassParams::HkbProjectStringData(vec![
-                    //         HkbProjectStringData::AnimationFilenames(HkArrayStringPtr {
-                    //             numelements: 0,
-                    //             hkcstrings: vec![],
-                    //         }),
-                    //         HkbProjectStringData::BehaviorFilenames(HkArrayStringPtr {
-                    //             numelements: 0,
-                    //             hkcstrings: vec![],
-                    //         }),
-                    //         HkbProjectStringData::CharacterFilenames(HkArrayStringPtr {
-                    //             numelements: 1,
-                    //             hkcstrings: vec!["Characters\\DefaultMale.hkx".into()],
-                    //         }),
-                    //         HkbProjectStringData::EventNames(HkArrayStringPtr {
-                    //             numelements: 0,
-                    //             hkcstrings: vec![],
-                    //         }),
-                    //         HkbProjectStringData::AnimationPath(Primitive { value: "".into() }),
-                    //         HkbProjectStringData::BehaviorPath(Primitive { value: "".into() }),
-                    //         HkbProjectStringData::CharacterPath(Primitive { value: "".into() }),
-                    //         HkbProjectStringData::FullPathToSource(Primitive { value: "".into() }),
-                    //     //     ]),
-                    //     },
-                ],
-            },
-        };
-
-        let result = to_string_pretty_xml(&class, ' ', 2).unwrap();
-        println!("{}", &result);
-        let expected_xml = r##"<hkpackfile classversion="8" contentsversion="hk_2010.2.0-r1" toplevelobject="#0050">
+    const DEFAULT_MALE_XML: &str = r##"<hkpackfile classversion="8" contentsversion="hk_2010.2.0-r1" toplevelobject="#0050">
       <hksection name="__data__">
         <hkobject name="#0050" class="hkRootLevelContainer" signature="0x2772c11e">
           <hkparam name="namedVariants" numelements="1">
@@ -140,7 +53,74 @@ mod tests {
         </hkobject>
       </hksection>
     </hkpackfile>"##;
-        // assert_eq!(result, expected_xml);
+
+    #[test]
+    fn should_serialize() {
+        let class = Hkx {
+            class_version: 8,
+            content_version: "hk_2010.2.0-r1".into(),
+            top_level_object: "#0050".into(),
+            hk_section: HkSection {
+                name: "__data__".into(),
+                classes: [
+                    Class {
+                        name: "#0050".into(),
+                        class: "hkRootLevelContainer".into(),
+                        signature: "0x2772c11e".into(),
+                        hkparams: ClassParams::HkRootLevelContainer(Box::new(
+                            HkRootLevelContainer {
+                                named_variants: HkArrayClass {
+                                    numelements: 1,
+                                    classes: [HkArrayClassParam {
+                                        hkparams: HkRootLevelContainerNamedVariant {
+                                            name: "hkbProjectData".into(),
+                                            class_name: "hkbProjectData".into(),
+                                            variant: "#0051".into(),
+                                        },
+                                    }]
+                                    .to_vec(),
+                                },
+                            },
+                        )),
+                    },
+                    Class {
+                        name: "#0051".into(),
+                        class: "hkbProjectData".into(),
+                        signature: "0x13a39ba7".into(),
+                        hkparams: ClassParams::HkbProjectData(Box::new(HkbProjectData {
+                            mem_size_and_flags: 0,
+                            reference_count: 0,
+                            world_up_ws: Vector4 {
+                                x: OrderedFloat(0.0),
+                                y: OrderedFloat(0.0),
+                                z: OrderedFloat(1.0),
+                                w: OrderedFloat(0.0),
+                            },
+                            string_data: "#0052".into(),
+                            default_event_mode: EventMode::EventModeIgnoreFromGenerator,
+                        })),
+                    },
+                    Class {
+                        name: "#0052".into(),
+                        class: "hkbProjectStringData".into(),
+                        signature: "0x076ad60a".into(),
+                        hkparams: ClassParams::HkbProjectStringData(Box::new(
+                            HkbProjectStringData {
+                                character_filenames: HkArrayStringPtr {
+                                    numelements: 1,
+                                    hkcstrings: ["Characters\\DefaultMale.hkx".into()].to_vec(),
+                                },
+                                ..Default::default()
+                            },
+                        )),
+                    },
+                ]
+                .to_vec(),
+            },
+        };
+
+        let result = to_string_pretty_xml(&class, ' ', 2).unwrap();
+        assert_eq!(result, DEFAULT_MALE_XML);
     }
 
     #[test]
@@ -153,95 +133,77 @@ mod tests {
         let test_path = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
             .join("../..")
             .join("tests")
-            // .join("defaultmale.xml");
-            .join("1hm_behavior_x86.xml");
+            .join("defaultmale.xml");
+        // .join("1hm_behavior_x86.xml");
 
         let xml = std::fs::read_to_string(test_path)?;
         let result: Hkx = quick_xml::de::from_str(&xml)?;
 
-        // let expected = Hkx {
-        //     class_version: 8,
-        //     content_version: "hk_2010.2.0-r1".into(),
-        //     top_level_object: "#0050".into(),
-        //     hk_section: HkSection {
-        //         name: "__data__".into(),
-        //         classes: vec![
-        //             Class {
-        //                 name: "#0050".into(),
-        //                 class: "hkRootLevelContainer".into(),
-        //                 signature: "0x2772c11e".into(),
-        //                 hkparams: ClassParams::HkRootLevelContainer(vec![
-        //                     HkRootLevelContainer::NamedVariants(HkArrayClass {
-        //                         numelements: 1,
-        //                         classes: Some(vec![HkArrayClassParam {
-        //                             hkparams: vec![
-        //                                 HkRootLevelContainerNamedVariant::Name(
-        //                                     Cow::from("hkbProjectData").into(),
-        //                                 ),
-        //                                 HkRootLevelContainerNamedVariant::ClassName(
-        //                                     Cow::from("hkbProjectData").into(),
-        //                                 ),
-        //                                 HkRootLevelContainerNamedVariant::Variant(Primitive {
-        //                                     value: Cow::from("#0051"),
-        //                                 }),
-        //                             ],
-        //                         }]),
-        //                     }),
-        //                 ]),
-        //             },
-        //             // Class {
-        //             //     name: "#0051".into(),
-        //             //     class: "hkbProjectData".into(),
-        //             //     signature: "0x13a39ba7".into(),
-        //             //     hkparams: ClassParams::HkbProjectData(vec![
-        //             //         HkbProjectDataVisiter::WorldUpWs(Primitive {
-        //             //             value: Vector4 {
-        //             //                 x: OrderedFloat(0.0),
-        //             //                 y: OrderedFloat(0.0),
-        //             //                 z: OrderedFloat(1.0),
-        //             //                 w: OrderedFloat(0.0),
-        //             //             },
-        //             //         }),
-        //             //         HkbProjectDataVisiter::StringData(Primitive {
-        //             //             value: "#0052".into(),
-        //             //         }),
-        //             //         HkbProjectDataVisiter::DefaultEventMode(Primitive {
-        //             //             value: EventMode::EventModeIgnoreFromGenerator,
-        //             //         }),
-        //             //     ]),
-        //             // },
-        //             Class {
-        //                 name: "#0052".into(),
-        //                 class: "hkbProjectStringData".into(),
-        //                 signature: "0x076ad60a".into(),
-        //                 hkparams: ClassParams::HkbProjectStringData(vec![
-        //                     HkbProjectStringData::AnimationFilenames(HkArrayStringPtr {
-        //                         numelements: 0,
-        //                         hkcstrings: vec![],
-        //                     }),
-        //                     HkbProjectStringData::BehaviorFilenames(HkArrayStringPtr {
-        //                         numelements: 0,
-        //                         hkcstrings: vec![],
-        //                     }),
-        //                     HkbProjectStringData::CharacterFilenames(HkArrayStringPtr {
-        //                         numelements: 1,
-        //                         hkcstrings: vec!["Characters\\DefaultMale.hkx".into()],
-        //                     }),
-        //                     HkbProjectStringData::EventNames(HkArrayStringPtr {
-        //                         numelements: 0,
-        //                         hkcstrings: vec![],
-        //                     }),
-        //                     HkbProjectStringData::AnimationPath(Primitive { value: "".into() }),
-        //                     HkbProjectStringData::BehaviorPath(Primitive { value: "".into() }),
-        //                     HkbProjectStringData::CharacterPath(Primitive { value: "".into() }),
-        //                     HkbProjectStringData::FullPathToSource(Primitive { value: "".into() }),
-        //                 ]),
-        //             },
-        //         ],
-        //     },
-        // };
-        // assert_eq!(result, expected);
-        tracing::debug!("{:#?}", result);
+        let expected = Hkx {
+            class_version: 8,
+            content_version: "hk_2010.2.0-r1".into(),
+            top_level_object: "#0050".into(),
+            hk_section: HkSection {
+                name: "__data__".into(),
+                classes: [
+                    Class {
+                        name: "#0050".into(),
+                        class: "hkRootLevelContainer".into(),
+                        signature: "0x2772c11e".into(),
+                        hkparams: ClassParams::HkRootLevelContainer(Box::new(
+                            HkRootLevelContainer {
+                                named_variants: HkArrayClass {
+                                    numelements: 1,
+                                    classes: [HkArrayClassParam {
+                                        hkparams: HkRootLevelContainerNamedVariant {
+                                            name: "hkbProjectData".into(),
+                                            class_name: "hkbProjectData".into(),
+                                            variant: "#0051".into(),
+                                        },
+                                    }]
+                                    .to_vec(),
+                                },
+                            },
+                        )),
+                    },
+                    Class {
+                        name: "#0051".into(),
+                        class: "hkbProjectData".into(),
+                        signature: "0x13a39ba7".into(),
+                        hkparams: ClassParams::HkbProjectData(Box::new(HkbProjectData {
+                            mem_size_and_flags: 0,
+                            reference_count: 0,
+                            world_up_ws: Vector4 {
+                                x: OrderedFloat(0.0),
+                                y: OrderedFloat(0.0),
+                                z: OrderedFloat(1.0),
+                                w: OrderedFloat(0.0),
+                            },
+                            string_data: "#0052".into(),
+                            default_event_mode: EventMode::EventModeIgnoreFromGenerator,
+                        })),
+                    },
+                    Class {
+                        name: "#0052".into(),
+                        class: "hkbProjectStringData".into(),
+                        signature: "0x076ad60a".into(),
+                        hkparams: ClassParams::HkbProjectStringData(Box::new(
+                            HkbProjectStringData {
+                                character_filenames: HkArrayStringPtr {
+                                    numelements: 1,
+                                    hkcstrings: ["Characters\\DefaultMale.hkx".into()].to_vec(),
+                                },
+                                ..Default::default()
+                            },
+                        )),
+                    },
+                ]
+                .to_vec(),
+            },
+        };
+
+        tracing::debug!("{:#?}", &result);
+        assert_eq!(result, expected);
         Ok(())
     }
 }

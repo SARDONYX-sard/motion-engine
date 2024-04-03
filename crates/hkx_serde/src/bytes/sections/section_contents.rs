@@ -76,7 +76,7 @@ impl WriteFixup for GlobalFixup {
 pub struct VirtualFixup {
     pub src: u32,
     pub section_index: u32,
-    /// Havok Class name offset.
+    /// Havok Class name start position.
     ///
     /// # How do we use this?
     /// The value is the same as the starting position of each class name
@@ -120,7 +120,9 @@ pub struct SectionContents<'bytes> {
     pub global_map: IndexMap<u32, GlobalFixup>,
     pub local_map: IndexMap<u32, LocalFixup>,
     pub virtual_map: IndexMap<u32, VirtualFixup>,
-    /// Each section bytes data
+    /// Each section bytes data.
+    ///
+    /// `== &bytes[absolute_data_start..absolute_data_start + local_fixups_offset]`
     pub section_data: &'bytes [u8],
     ///  Index Section ID
     ///

@@ -72,7 +72,7 @@ mod tests {
                                 named_variants: HkArrayClass {
                                     numelements: 1,
                                     classes: [HkArrayClassParam {
-                                        hkparams: HkRootLevelContainerNamedVariant {
+                                        hkparam: HkRootLevelContainerNamedVariant {
                                             name: "hkbProjectData".into(),
                                             class_name: "hkbProjectData".into(),
                                             variant: "#0051".into(),
@@ -155,7 +155,7 @@ mod tests {
                                 named_variants: HkArrayClass {
                                     numelements: 1,
                                     classes: [HkArrayClassParam {
-                                        hkparams: HkRootLevelContainerNamedVariant {
+                                        hkparam: HkRootLevelContainerNamedVariant {
                                             name: "hkbProjectData".into(),
                                             class_name: "hkbProjectData".into(),
                                             variant: "#0051".into(),

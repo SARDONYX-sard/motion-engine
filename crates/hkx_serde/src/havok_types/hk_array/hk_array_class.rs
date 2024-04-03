@@ -73,26 +73,26 @@ impl<T> From<Vec<T>> for HkArrayClass<T> {
     }
 }
 
-/// Fields of a class in `HkArray`
+/// A field wrapper of a class in `HkArray`
 ///
 /// ```xml
 /// <hkobject>
-///     <!--     This lines     -->
-///     <hkparam>#0063</hkparam>
-///     <hkparam>#0064</hkparam>
-///     <!--     This lines     -->
+///     <hkparam>#0063</hkparam> <!-- This lines -->
+///     <hkparam>#0064</hkparam> <!-- This lines -->
 /// </hkobject>
 /// ````
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct HkArrayClassParam<T> {
-    /// Fields of the class.
+    /// A field of the class.
+    ///
+    /// In XML `hkparam`
     #[serde(rename = "hkparam")]
-    pub hkparams: T,
+    pub hkparam: T,
 }
 
 impl<T> From<T> for HkArrayClassParam<T> {
     fn from(value: T) -> Self {
-        Self { hkparams: value }
+        Self { hkparam: value }
     }
 }
 
@@ -143,10 +143,10 @@ mod tests {
             numelements: 2,
             classes: vec![
                 HkArrayClassParam {
-                    hkparams: vec!["#0063", "#0063"],
+                    hkparam: vec!["#0063", "#0063"],
                 },
                 HkArrayClassParam {
-                    hkparams: vec!["#0064"],
+                    hkparam: vec!["#0064"],
                 },
             ],
         };

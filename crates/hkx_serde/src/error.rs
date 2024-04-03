@@ -1,4 +1,5 @@
 use crate::bytes::hkx_header::HkxHeaderError;
+use crate::bytes::packfile_deserializer::BytesDeError;
 use crate::bytes::sections::class_name_section::ClassNamesSectionHeaderError;
 use crate::bytes::sections::section_header::SectionHeaderError;
 use std::ffi::FromBytesUntilNulError;
@@ -9,9 +10,9 @@ pub type Result<T, E = HkxError> = core::result::Result<T, E>;
 /// All Error of hkx_serde crate
 #[derive(Debug, thiserror::Error)]
 pub enum HkxError {
-    /// Failed to parse {actual} as {expected}.
-    #[error("Failed to parse {actual} as {expected}.")]
-    ParseError { expected: String, actual: String },
+    /// Binary data deserialization
+    #[error(transparent)]
+    BytesDeError(#[from] BytesDeError),
 
     /// Unknown havok class {0}
     #[error("Unknown havok class {0}")]

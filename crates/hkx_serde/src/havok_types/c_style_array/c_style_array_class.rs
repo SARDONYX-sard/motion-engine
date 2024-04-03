@@ -68,7 +68,7 @@ where
     }
 }
 
-/// Field(`hkparam`) of C++ Class(`hkobject`)
+/// A field(`hkparam`) wrapper of C++ Class(`hkobject`)
 ///
 /// ```xml
 /// <hkobject>
@@ -77,6 +77,9 @@ where
 /// ````
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct CStyleArrayClassParam<T> {
+    /// A field of the class.
+    ///
+    /// In XML `hkparam`
     #[serde(rename = "hkparam")]
     pub hkparam: T,
 }

@@ -89,14 +89,14 @@ impl From<&HkHalf8> for Vec<HkHalf8Visitor> {
     }
 }
 
-impl ByteDeSerialize for HkHalf8 {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkHalf8 {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -112,7 +112,7 @@ impl ByteDeSerialize for HkHalf8 {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkHalf8Visitor {
+enum HkHalf8Visitor {
     /// Visitor fields
     #[serde(rename = "quad")]
     Quad(CStyleArray<[f32; 8]>),

@@ -154,14 +154,14 @@ impl From<&HkpGroupCollisionFilter> for Vec<HkpGroupCollisionFilterVisitor> {
     }
 }
 
-impl ByteDeSerialize for HkpGroupCollisionFilter {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkpGroupCollisionFilter {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -177,7 +177,7 @@ impl ByteDeSerialize for HkpGroupCollisionFilter {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpGroupCollisionFilterVisitor {
+enum HkpGroupCollisionFilterVisitor {
     /// Visitor fields
     #[serde(rename = "prepad")]
     Prepad(CStyleArray<[u32; 2]>),

@@ -89,14 +89,14 @@ impl<'a> From<&HkMonitorStreamStringMap<'a>> for Vec<HkMonitorStreamStringMapVis
     }
 }
 
-impl ByteDeSerialize for HkMonitorStreamStringMap<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkMonitorStreamStringMap<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -112,7 +112,7 @@ impl ByteDeSerialize for HkMonitorStreamStringMap<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkMonitorStreamStringMapVisitor<'a> {
+enum HkMonitorStreamStringMapVisitor<'a> {
     /// Visitor fields
     #[serde(rename = "map")]
     Map(HkArrayClass<HkMonitorStreamStringMapStringMap<'a>>),

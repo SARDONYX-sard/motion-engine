@@ -406,14 +406,14 @@ impl<'a> From<&HkbLookAtModifier<'a>> for Vec<HkbLookAtModifierVisitor<'a>> {
     }
 }
 
-impl ByteDeSerialize for HkbLookAtModifier<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkbLookAtModifier<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -429,7 +429,7 @@ impl ByteDeSerialize for HkbLookAtModifier<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbLookAtModifierVisitor<'a> {
+enum HkbLookAtModifierVisitor<'a> {
     /// Visitor fields
     #[serde(rename = "enable")]
     Enable(Primitive<bool>),

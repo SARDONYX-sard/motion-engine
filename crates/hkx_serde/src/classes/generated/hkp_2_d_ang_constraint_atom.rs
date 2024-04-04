@@ -101,14 +101,14 @@ impl From<&Hkp2DAngConstraintAtom> for Vec<Hkp2DAngConstraintAtomVisitor> {
     }
 }
 
-impl ByteDeSerialize for Hkp2DAngConstraintAtom {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for Hkp2DAngConstraintAtom {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -124,7 +124,7 @@ impl ByteDeSerialize for Hkp2DAngConstraintAtom {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum Hkp2DAngConstraintAtomVisitor {
+enum Hkp2DAngConstraintAtomVisitor {
     /// Visitor fields
     #[serde(rename = "type")]
     Type(Primitive<AtomType>),

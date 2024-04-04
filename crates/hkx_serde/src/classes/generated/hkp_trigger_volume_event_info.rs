@@ -109,14 +109,14 @@ impl<'a> From<&HkpTriggerVolumeEventInfo<'a>> for Vec<HkpTriggerVolumeEventInfoV
     }
 }
 
-impl ByteDeSerialize for HkpTriggerVolumeEventInfo<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkpTriggerVolumeEventInfo<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -132,7 +132,7 @@ impl ByteDeSerialize for HkpTriggerVolumeEventInfo<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpTriggerVolumeEventInfoVisitor<'a> {
+enum HkpTriggerVolumeEventInfoVisitor<'a> {
     /// Visitor fields
     #[serde(rename = "sortValue")]
     SortValue(Primitive<u64>),

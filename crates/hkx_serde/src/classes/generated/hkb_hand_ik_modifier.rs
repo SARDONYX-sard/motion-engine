@@ -236,14 +236,14 @@ impl<'a> From<&HkbHandIkModifier<'a>> for Vec<HkbHandIkModifierVisitor<'a>> {
     }
 }
 
-impl ByteDeSerialize for HkbHandIkModifier<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkbHandIkModifier<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -259,7 +259,7 @@ impl ByteDeSerialize for HkbHandIkModifier<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbHandIkModifierVisitor<'a> {
+enum HkbHandIkModifierVisitor<'a> {
     /// Visitor fields
     #[serde(rename = "enable")]
     Enable(Primitive<bool>),

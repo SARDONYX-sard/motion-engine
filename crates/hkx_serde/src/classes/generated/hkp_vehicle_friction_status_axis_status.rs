@@ -169,14 +169,14 @@ impl From<&HkpVehicleFrictionStatusAxisStatus> for Vec<HkpVehicleFrictionStatusA
     }
 }
 
-impl ByteDeSerialize for HkpVehicleFrictionStatusAxisStatus {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkpVehicleFrictionStatusAxisStatus {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -192,7 +192,7 @@ impl ByteDeSerialize for HkpVehicleFrictionStatusAxisStatus {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpVehicleFrictionStatusAxisStatusVisitor {
+enum HkpVehicleFrictionStatusAxisStatusVisitor {
     /// Visitor fields
     #[serde(rename = "forward_slip_velocity")]
     ForwardSlipVelocity(Primitive<f32>),

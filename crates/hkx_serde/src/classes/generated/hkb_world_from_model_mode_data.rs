@@ -119,14 +119,14 @@ impl From<&HkbWorldFromModelModeData> for Vec<HkbWorldFromModelModeDataVisitor> 
     }
 }
 
-impl ByteDeSerialize for HkbWorldFromModelModeData {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkbWorldFromModelModeData {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -142,7 +142,7 @@ impl ByteDeSerialize for HkbWorldFromModelModeData {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbWorldFromModelModeDataVisitor {
+enum HkbWorldFromModelModeDataVisitor {
     /// Visitor fields
     #[serde(rename = "poseMatchingBone0")]
     PoseMatchingBone0(Primitive<i16>),

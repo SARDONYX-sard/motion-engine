@@ -99,14 +99,14 @@ impl From<&HkbRoleAttribute> for Vec<HkbRoleAttributeVisitor> {
     }
 }
 
-impl ByteDeSerialize for HkbRoleAttribute {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkbRoleAttribute {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -122,7 +122,7 @@ impl ByteDeSerialize for HkbRoleAttribute {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbRoleAttributeVisitor {
+enum HkbRoleAttributeVisitor {
     /// Visitor fields
     #[serde(rename = "role")]
     Role(Primitive<Role>),

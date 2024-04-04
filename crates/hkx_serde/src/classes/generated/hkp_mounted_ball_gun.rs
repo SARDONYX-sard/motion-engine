@@ -225,14 +225,14 @@ impl<'a> From<&HkpMountedBallGun<'a>> for Vec<HkpMountedBallGunVisitor<'a>> {
     }
 }
 
-impl ByteDeSerialize for HkpMountedBallGun<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkpMountedBallGun<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -248,7 +248,7 @@ impl ByteDeSerialize for HkpMountedBallGun<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpMountedBallGunVisitor<'a> {
+enum HkpMountedBallGunVisitor<'a> {
     /// Visitor fields
     #[serde(rename = "bulletRadius")]
     BulletRadius(Primitive<f32>),

@@ -90,14 +90,14 @@ impl<'a> From<&HkpRagdollConstraintData<'a>> for Vec<HkpRagdollConstraintDataVis
     }
 }
 
-impl ByteDeSerialize for HkpRagdollConstraintData<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkpRagdollConstraintData<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -113,7 +113,7 @@ impl ByteDeSerialize for HkpRagdollConstraintData<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpRagdollConstraintDataVisitor<'a> {
+enum HkpRagdollConstraintDataVisitor<'a> {
     /// Visitor fields
     #[serde(rename = "atoms")]
     Atoms(SingleClass<HkpRagdollConstraintDataAtoms<'a>>),

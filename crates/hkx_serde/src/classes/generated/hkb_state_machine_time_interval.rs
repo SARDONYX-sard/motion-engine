@@ -119,14 +119,14 @@ impl From<&HkbStateMachineTimeInterval> for Vec<HkbStateMachineTimeIntervalVisit
     }
 }
 
-impl ByteDeSerialize for HkbStateMachineTimeInterval {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkbStateMachineTimeInterval {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -142,7 +142,7 @@ impl ByteDeSerialize for HkbStateMachineTimeInterval {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbStateMachineTimeIntervalVisitor {
+enum HkbStateMachineTimeIntervalVisitor {
     /// Visitor fields
     #[serde(rename = "enterEventId")]
     EnterEventId(Primitive<i32>),

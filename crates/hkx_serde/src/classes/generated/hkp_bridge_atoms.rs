@@ -89,14 +89,14 @@ impl<'a> From<&HkpBridgeAtoms<'a>> for Vec<HkpBridgeAtomsVisitor<'a>> {
     }
 }
 
-impl ByteDeSerialize for HkpBridgeAtoms<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkpBridgeAtoms<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -112,7 +112,7 @@ impl ByteDeSerialize for HkpBridgeAtoms<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpBridgeAtomsVisitor<'a> {
+enum HkpBridgeAtomsVisitor<'a> {
     /// Visitor fields
     #[serde(rename = "bridgeAtom")]
     BridgeAtom(SingleClass<HkpBridgeConstraintAtom<'a>>),

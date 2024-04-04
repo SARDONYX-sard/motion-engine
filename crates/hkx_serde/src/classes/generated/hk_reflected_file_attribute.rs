@@ -89,14 +89,14 @@ impl<'a> From<&HkReflectedFileAttribute<'a>> for Vec<HkReflectedFileAttributeVis
     }
 }
 
-impl ByteDeSerialize for HkReflectedFileAttribute<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkReflectedFileAttribute<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -112,7 +112,7 @@ impl ByteDeSerialize for HkReflectedFileAttribute<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkReflectedFileAttributeVisitor<'a> {
+enum HkReflectedFileAttributeVisitor<'a> {
     /// Visitor fields
     #[serde(rename = "value")]
     Value(Primitive<Cow<'a, str>>),

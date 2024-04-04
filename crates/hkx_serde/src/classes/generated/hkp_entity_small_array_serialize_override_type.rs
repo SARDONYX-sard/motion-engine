@@ -109,14 +109,14 @@ impl<'a> From<&HkpEntitySmallArraySerializeOverrideType<'a>> for Vec<HkpEntitySm
     }
 }
 
-impl ByteDeSerialize for HkpEntitySmallArraySerializeOverrideType<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkpEntitySmallArraySerializeOverrideType<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -132,7 +132,7 @@ impl ByteDeSerialize for HkpEntitySmallArraySerializeOverrideType<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpEntitySmallArraySerializeOverrideTypeVisitor<'a> {
+enum HkpEntitySmallArraySerializeOverrideTypeVisitor<'a> {
     /// Visitor fields
     #[serde(rename = "data", skip_serializing)]
     Data(Primitive<Cow<'a, str>>),

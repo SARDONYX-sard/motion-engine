@@ -99,14 +99,14 @@ impl From<&HkbRealVariableSequencedDataSample> for Vec<HkbRealVariableSequencedD
     }
 }
 
-impl ByteDeSerialize for HkbRealVariableSequencedDataSample {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkbRealVariableSequencedDataSample {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -122,7 +122,7 @@ impl ByteDeSerialize for HkbRealVariableSequencedDataSample {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbRealVariableSequencedDataSampleVisitor {
+enum HkbRealVariableSequencedDataSampleVisitor {
     /// Visitor fields
     #[serde(rename = "time")]
     Time(Primitive<f32>),

@@ -119,14 +119,14 @@ impl<'a> From<&HkbSenseHandleModifierRange<'a>> for Vec<HkbSenseHandleModifierRa
     }
 }
 
-impl ByteDeSerialize for HkbSenseHandleModifierRange<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkbSenseHandleModifierRange<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -142,7 +142,7 @@ impl ByteDeSerialize for HkbSenseHandleModifierRange<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbSenseHandleModifierRangeVisitor<'a> {
+enum HkbSenseHandleModifierRangeVisitor<'a> {
     /// Visitor fields
     #[serde(rename = "event")]
     Event(SingleClass<HkbEventProperty<'a>>),

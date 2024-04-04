@@ -90,14 +90,14 @@ impl From<&HkpHingeLimitsData> for Vec<HkpHingeLimitsDataVisitor> {
     }
 }
 
-impl ByteDeSerialize for HkpHingeLimitsData {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkpHingeLimitsData {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -113,7 +113,7 @@ impl ByteDeSerialize for HkpHingeLimitsData {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpHingeLimitsDataVisitor {
+enum HkpHingeLimitsDataVisitor {
     /// Visitor fields
     #[serde(rename = "atoms")]
     Atoms(SingleClass<HkpHingeLimitsDataAtoms>),

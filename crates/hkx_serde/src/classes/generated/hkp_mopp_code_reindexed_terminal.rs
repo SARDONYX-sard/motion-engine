@@ -99,14 +99,14 @@ impl From<&HkpMoppCodeReindexedTerminal> for Vec<HkpMoppCodeReindexedTerminalVis
     }
 }
 
-impl ByteDeSerialize for HkpMoppCodeReindexedTerminal {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkpMoppCodeReindexedTerminal {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -122,7 +122,7 @@ impl ByteDeSerialize for HkpMoppCodeReindexedTerminal {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpMoppCodeReindexedTerminalVisitor {
+enum HkpMoppCodeReindexedTerminalVisitor {
     /// Visitor fields
     #[serde(rename = "origShapeKey")]
     OrigShapeKey(Primitive<u32>),

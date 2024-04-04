@@ -147,14 +147,14 @@ impl From<&HkpBoxShape> for Vec<HkpBoxShapeVisitor> {
     }
 }
 
-impl ByteDeSerialize for HkpBoxShape {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkpBoxShape {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -170,7 +170,7 @@ impl ByteDeSerialize for HkpBoxShape {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpBoxShapeVisitor {
+enum HkpBoxShapeVisitor {
     /// Visitor fields
     #[serde(rename = "radius")]
     Radius(Primitive<f32>),

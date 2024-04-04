@@ -257,14 +257,14 @@ impl From<&HkpCompressedSampledHeightFieldShape> for Vec<HkpCompressedSampledHei
     }
 }
 
-impl ByteDeSerialize for HkpCompressedSampledHeightFieldShape {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkpCompressedSampledHeightFieldShape {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -280,7 +280,7 @@ impl ByteDeSerialize for HkpCompressedSampledHeightFieldShape {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpCompressedSampledHeightFieldShapeVisitor {
+enum HkpCompressedSampledHeightFieldShapeVisitor {
     /// Visitor fields
     #[serde(rename = "xRes")]
     XRes(Primitive<i32>),

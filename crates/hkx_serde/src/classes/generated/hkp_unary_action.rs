@@ -154,14 +154,14 @@ impl<'a> From<&HkpUnaryAction<'a>> for Vec<HkpUnaryActionVisitor<'a>> {
     }
 }
 
-impl ByteDeSerialize for HkpUnaryAction<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkpUnaryAction<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -177,7 +177,7 @@ impl ByteDeSerialize for HkpUnaryAction<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpUnaryActionVisitor<'a> {
+enum HkpUnaryActionVisitor<'a> {
     /// Visitor fields
     #[serde(rename = "world", skip_serializing)]
     World(Primitive<Cow<'a, str>>),

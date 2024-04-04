@@ -226,14 +226,14 @@ impl<'a> From<&HkbKeyframeBonesModifier<'a>> for Vec<HkbKeyframeBonesModifierVis
     }
 }
 
-impl ByteDeSerialize for HkbKeyframeBonesModifier<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkbKeyframeBonesModifier<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -249,7 +249,7 @@ impl ByteDeSerialize for HkbKeyframeBonesModifier<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbKeyframeBonesModifierVisitor<'a> {
+enum HkbKeyframeBonesModifierVisitor<'a> {
     /// Visitor fields
     #[serde(rename = "enable")]
     Enable(Primitive<bool>),

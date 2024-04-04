@@ -195,14 +195,14 @@ impl From<&HkpSimpleMeshShape> for Vec<HkpSimpleMeshShapeVisitor> {
     }
 }
 
-impl ByteDeSerialize for HkpSimpleMeshShape {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkpSimpleMeshShape {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -218,7 +218,7 @@ impl ByteDeSerialize for HkpSimpleMeshShape {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpSimpleMeshShapeVisitor {
+enum HkpSimpleMeshShapeVisitor {
     /// Visitor fields
     #[serde(rename = "disableWelding")]
     DisableWelding(Primitive<bool>),

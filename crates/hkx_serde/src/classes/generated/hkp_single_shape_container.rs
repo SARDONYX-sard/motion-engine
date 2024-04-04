@@ -92,14 +92,14 @@ impl<'a> From<&HkpSingleShapeContainer<'a>> for Vec<HkpSingleShapeContainerVisit
     }
 }
 
-impl ByteDeSerialize for HkpSingleShapeContainer<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkpSingleShapeContainer<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -115,7 +115,7 @@ impl ByteDeSerialize for HkpSingleShapeContainer<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpSingleShapeContainerVisitor<'a> {
+enum HkpSingleShapeContainerVisitor<'a> {
     // C++ Parent class(`hkpShapeContainer` => parent: `None`) has no fields
     //
     /// Visitor fields

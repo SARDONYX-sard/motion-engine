@@ -139,14 +139,14 @@ impl<'a> From<&HkbExpressionData<'a>> for Vec<HkbExpressionDataVisitor<'a>> {
     }
 }
 
-impl ByteDeSerialize for HkbExpressionData<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkbExpressionData<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -162,7 +162,7 @@ impl ByteDeSerialize for HkbExpressionData<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbExpressionDataVisitor<'a> {
+enum HkbExpressionDataVisitor<'a> {
     /// Visitor fields
     #[serde(rename = "expression")]
     Expression(Primitive<Cow<'a, str>>),

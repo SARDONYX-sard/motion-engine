@@ -99,14 +99,14 @@ impl<'a> From<&HkbMessageLog<'a>> for Vec<HkbMessageLogVisitor<'a>> {
     }
 }
 
-impl ByteDeSerialize for HkbMessageLog<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkbMessageLog<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -122,7 +122,7 @@ impl ByteDeSerialize for HkbMessageLog<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbMessageLogVisitor<'a> {
+enum HkbMessageLogVisitor<'a> {
     /// Visitor fields
     #[serde(rename = "messages", skip_serializing)]
     Messages(Primitive<Cow<'a, str>>),

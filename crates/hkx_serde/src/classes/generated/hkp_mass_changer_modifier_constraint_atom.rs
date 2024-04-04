@@ -152,14 +152,14 @@ impl<'a> From<&HkpMassChangerModifierConstraintAtom<'a>> for Vec<HkpMassChangerM
     }
 }
 
-impl ByteDeSerialize for HkpMassChangerModifierConstraintAtom<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkpMassChangerModifierConstraintAtom<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -175,7 +175,7 @@ impl ByteDeSerialize for HkpMassChangerModifierConstraintAtom<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpMassChangerModifierConstraintAtomVisitor<'a> {
+enum HkpMassChangerModifierConstraintAtomVisitor<'a> {
     /// Visitor fields
     #[serde(rename = "modifierAtomSize")]
     ModifierAtomSize(Primitive<u16>),

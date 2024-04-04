@@ -89,14 +89,14 @@ impl From<&HkPackedVector3> for Vec<HkPackedVector3Visitor> {
     }
 }
 
-impl ByteDeSerialize for HkPackedVector3 {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkPackedVector3 {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -112,7 +112,7 @@ impl ByteDeSerialize for HkPackedVector3 {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkPackedVector3Visitor {
+enum HkPackedVector3Visitor {
     /// Visitor fields
     #[serde(rename = "values")]
     Values(CStyleArray<[i16; 4]>),

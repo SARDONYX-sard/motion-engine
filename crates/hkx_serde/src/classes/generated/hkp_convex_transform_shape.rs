@@ -168,14 +168,14 @@ impl<'a> From<&HkpConvexTransformShape<'a>> for Vec<HkpConvexTransformShapeVisit
     }
 }
 
-impl ByteDeSerialize for HkpConvexTransformShape<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkpConvexTransformShape<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -191,7 +191,7 @@ impl ByteDeSerialize for HkpConvexTransformShape<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpConvexTransformShapeVisitor<'a> {
+enum HkpConvexTransformShapeVisitor<'a> {
     /// Visitor fields
     #[serde(rename = "childShape")]
     ChildShape(SingleClass<HkpSingleShapeContainer<'a>>),

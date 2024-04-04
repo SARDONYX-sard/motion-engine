@@ -113,14 +113,14 @@ impl From<&HkbManualSelectorGeneratorInternalState> for Vec<HkbManualSelectorGen
     }
 }
 
-impl ByteDeSerialize for HkbManualSelectorGeneratorInternalState {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkbManualSelectorGeneratorInternalState {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -136,7 +136,7 @@ impl ByteDeSerialize for HkbManualSelectorGeneratorInternalState {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbManualSelectorGeneratorInternalStateVisitor {
+enum HkbManualSelectorGeneratorInternalStateVisitor {
     /// Visitor fields
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),

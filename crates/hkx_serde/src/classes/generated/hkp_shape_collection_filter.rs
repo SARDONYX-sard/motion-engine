@@ -30,14 +30,14 @@ use crate::havok_types::*;
 pub struct HkpShapeCollectionFilter {
 }
 
-impl ByteDeSerialize for HkpShapeCollectionFilter {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkpShapeCollectionFilter {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -53,5 +53,5 @@ impl ByteDeSerialize for HkpShapeCollectionFilter {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(tag = "@name")]
-pub enum HkpShapeCollectionFilterVisitor {
+enum HkpShapeCollectionFilterVisitor {
 }

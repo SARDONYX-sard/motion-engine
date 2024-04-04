@@ -215,14 +215,14 @@ impl<'a> From<&HkMultipleVertexBuffer<'a>> for Vec<HkMultipleVertexBufferVisitor
     }
 }
 
-impl ByteDeSerialize for HkMultipleVertexBuffer<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkMultipleVertexBuffer<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -238,7 +238,7 @@ impl ByteDeSerialize for HkMultipleVertexBuffer<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkMultipleVertexBufferVisitor<'a> {
+enum HkMultipleVertexBufferVisitor<'a> {
     // C++ Parent class(`hkMeshVertexBuffer` => parent: `hkReferencedObject`) has no fields
     //
     /// Visitor fields

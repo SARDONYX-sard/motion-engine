@@ -139,14 +139,14 @@ impl From<&HkpSimpleContactConstraintDataInfo> for Vec<HkpSimpleContactConstrain
     }
 }
 
-impl ByteDeSerialize for HkpSimpleContactConstraintDataInfo {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkpSimpleContactConstraintDataInfo {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -162,7 +162,7 @@ impl ByteDeSerialize for HkpSimpleContactConstraintDataInfo {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpSimpleContactConstraintDataInfoVisitor {
+enum HkpSimpleContactConstraintDataInfoVisitor {
     /// Visitor fields
     #[serde(rename = "flags")]
     Flags(Primitive<u16>),

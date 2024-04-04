@@ -155,14 +155,14 @@ impl<'a> From<&HkMemoryMeshBody<'a>> for Vec<HkMemoryMeshBodyVisitor<'a>> {
     }
 }
 
-impl ByteDeSerialize for HkMemoryMeshBody<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkMemoryMeshBody<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -178,7 +178,7 @@ impl ByteDeSerialize for HkMemoryMeshBody<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkMemoryMeshBodyVisitor<'a> {
+enum HkMemoryMeshBodyVisitor<'a> {
     // C++ Parent class(`hkMeshBody` => parent: `hkReferencedObject`) has no fields
     //
     /// Visitor fields

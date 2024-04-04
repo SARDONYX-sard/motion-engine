@@ -173,14 +173,14 @@ impl<'a> From<&HkpPhysicsSystem<'a>> for Vec<HkpPhysicsSystemVisitor<'a>> {
     }
 }
 
-impl ByteDeSerialize for HkpPhysicsSystem<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkpPhysicsSystem<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -196,7 +196,7 @@ impl ByteDeSerialize for HkpPhysicsSystem<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpPhysicsSystemVisitor<'a> {
+enum HkpPhysicsSystemVisitor<'a> {
     /// Visitor fields
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),

@@ -119,14 +119,14 @@ impl From<&HkMultiThreadCheck> for Vec<HkMultiThreadCheckVisitor> {
     }
 }
 
-impl ByteDeSerialize for HkMultiThreadCheck {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkMultiThreadCheck {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -142,7 +142,7 @@ impl ByteDeSerialize for HkMultiThreadCheck {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkMultiThreadCheckVisitor {
+enum HkMultiThreadCheckVisitor {
     /// Visitor fields
     #[serde(rename = "threadId", skip_serializing)]
     ThreadId(Primitive<u32>),

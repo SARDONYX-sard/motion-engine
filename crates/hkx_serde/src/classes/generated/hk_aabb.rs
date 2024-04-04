@@ -99,14 +99,14 @@ impl From<&HkAabb> for Vec<HkAabbVisitor> {
     }
 }
 
-impl ByteDeSerialize for HkAabb {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkAabb {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -122,7 +122,7 @@ impl ByteDeSerialize for HkAabb {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkAabbVisitor {
+enum HkAabbVisitor {
     /// Visitor fields
     #[serde(rename = "min")]
     Min(Primitive<Vector4<f32>>),

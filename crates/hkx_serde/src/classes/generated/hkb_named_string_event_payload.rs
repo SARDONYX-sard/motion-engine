@@ -126,14 +126,14 @@ impl<'a> From<&HkbNamedStringEventPayload<'a>> for Vec<HkbNamedStringEventPayloa
     }
 }
 
-impl ByteDeSerialize for HkbNamedStringEventPayload<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkbNamedStringEventPayload<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -149,7 +149,7 @@ impl ByteDeSerialize for HkbNamedStringEventPayload<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbNamedStringEventPayloadVisitor<'a> {
+enum HkbNamedStringEventPayloadVisitor<'a> {
     /// Visitor fields
     #[serde(rename = "name")]
     Name(Primitive<Cow<'a, str>>),

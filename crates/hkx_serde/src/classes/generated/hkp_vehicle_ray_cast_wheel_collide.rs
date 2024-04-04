@@ -154,14 +154,14 @@ impl<'a> From<&HkpVehicleRayCastWheelCollide<'a>> for Vec<HkpVehicleRayCastWheel
     }
 }
 
-impl ByteDeSerialize for HkpVehicleRayCastWheelCollide<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkpVehicleRayCastWheelCollide<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -177,7 +177,7 @@ impl ByteDeSerialize for HkpVehicleRayCastWheelCollide<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpVehicleRayCastWheelCollideVisitor<'a> {
+enum HkpVehicleRayCastWheelCollideVisitor<'a> {
     /// Visitor fields
     #[serde(rename = "alreadyUsed")]
     AlreadyUsed(Primitive<bool>),

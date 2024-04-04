@@ -137,14 +137,14 @@ impl<'a> From<&HkMemoryResourceHandle<'a>> for Vec<HkMemoryResourceHandleVisitor
     }
 }
 
-impl ByteDeSerialize for HkMemoryResourceHandle<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkMemoryResourceHandle<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -160,7 +160,7 @@ impl ByteDeSerialize for HkMemoryResourceHandle<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkMemoryResourceHandleVisitor<'a> {
+enum HkMemoryResourceHandleVisitor<'a> {
     // C++ Parent class(`hkResourceHandle` => parent: `hkResourceBase`) has no fields
     //
     // C++ Parent class(`hkResourceBase` => parent: `hkReferencedObject`) has no fields

@@ -151,14 +151,14 @@ impl From<&HkpTwistLimitConstraintAtom> for Vec<HkpTwistLimitConstraintAtomVisit
     }
 }
 
-impl ByteDeSerialize for HkpTwistLimitConstraintAtom {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkpTwistLimitConstraintAtom {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -174,7 +174,7 @@ impl ByteDeSerialize for HkpTwistLimitConstraintAtom {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkpTwistLimitConstraintAtomVisitor {
+enum HkpTwistLimitConstraintAtomVisitor {
     /// Visitor fields
     #[serde(rename = "type")]
     Type(Primitive<AtomType>),

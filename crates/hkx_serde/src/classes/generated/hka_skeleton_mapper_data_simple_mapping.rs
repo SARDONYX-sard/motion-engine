@@ -109,14 +109,14 @@ impl From<&HkaSkeletonMapperDataSimpleMapping> for Vec<HkaSkeletonMapperDataSimp
     }
 }
 
-impl ByteDeSerialize for HkaSkeletonMapperDataSimpleMapping {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkaSkeletonMapperDataSimpleMapping {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -132,7 +132,7 @@ impl ByteDeSerialize for HkaSkeletonMapperDataSimpleMapping {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkaSkeletonMapperDataSimpleMappingVisitor {
+enum HkaSkeletonMapperDataSimpleMappingVisitor {
     /// Visitor fields
     #[serde(rename = "boneA")]
     BoneA(Primitive<i16>),

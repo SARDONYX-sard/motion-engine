@@ -179,14 +179,14 @@ impl From<&HkaWaveletCompressedAnimationCompressionParams> for Vec<HkaWaveletCom
     }
 }
 
-impl ByteDeSerialize for HkaWaveletCompressedAnimationCompressionParams {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkaWaveletCompressedAnimationCompressionParams {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -202,7 +202,7 @@ impl ByteDeSerialize for HkaWaveletCompressedAnimationCompressionParams {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkaWaveletCompressedAnimationCompressionParamsVisitor {
+enum HkaWaveletCompressedAnimationCompressionParamsVisitor {
     /// Visitor fields
     #[serde(rename = "quantizationBits")]
     QuantizationBits(Primitive<u16>),

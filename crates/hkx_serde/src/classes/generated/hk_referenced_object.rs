@@ -102,14 +102,14 @@ impl From<&HkReferencedObject> for Vec<HkReferencedObjectVisitor> {
     }
 }
 
-impl ByteDeSerialize for HkReferencedObject {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkReferencedObject {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -125,7 +125,7 @@ impl ByteDeSerialize for HkReferencedObject {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkReferencedObjectVisitor {
+enum HkReferencedObjectVisitor {
     // C++ Parent class(`hkBaseObject` => parent: `None`) has no fields
     //
     /// Visitor fields

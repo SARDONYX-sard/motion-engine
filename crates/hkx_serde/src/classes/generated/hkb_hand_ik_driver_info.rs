@@ -123,14 +123,14 @@ impl<'a> From<&HkbHandIkDriverInfo<'a>> for Vec<HkbHandIkDriverInfoVisitor<'a>> 
     }
 }
 
-impl ByteDeSerialize for HkbHandIkDriverInfo<'_> {
+impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkbHandIkDriverInfo<'de> {
     fn from_bytes<B>(
-        _bytes: &[u8],
-        _de: &mut packfile_deserializer::PackFileDeserializer,
+        _bytes: &'bytes [u8],
+        _de: &mut PackFileDeserializer,
     ) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized,
+        Self: Sized + 'de
     {
         todo!()
     }
@@ -146,7 +146,7 @@ impl ByteDeSerialize for HkbHandIkDriverInfo<'_> {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-pub enum HkbHandIkDriverInfoVisitor<'a> {
+enum HkbHandIkDriverInfoVisitor<'a> {
     /// Visitor fields
     #[serde(rename = "memSizeAndFlags", skip_serializing)]
     MemSizeAndFlags(Primitive<u16>),

@@ -2,10 +2,7 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
-#![allow(
-  clippy::clone_on_copy,
-  clippy::unit_arg
-)]
+#![allow(clippy::clone_on_copy, clippy::unit_arg)]
 
 #[allow(unused)]
 use super::*;
@@ -70,19 +67,19 @@ impl<'de> Deserialize<'de> for HkRootLevelContainerNamedVariant<'de> {
     }
 }
 
-impl<'a> From<Vec<HkRootLevelContainerNamedVariantVisitor<'a>>> for HkRootLevelContainerNamedVariant<'a> {
+impl<'a> From<Vec<HkRootLevelContainerNamedVariantVisitor<'a>>>
+    for HkRootLevelContainerNamedVariant<'a>
+{
     fn from(_values: Vec<HkRootLevelContainerNamedVariantVisitor<'a>>) -> Self {
-            let mut name = None;
-            let mut class_name = None;
-            let mut variant = None;
-
+        let mut name = None;
+        let mut class_name = None;
+        let mut variant = None;
 
         for _value in _values {
             match _value {
                 HkRootLevelContainerNamedVariantVisitor::Name(m) => name = Some(m),
                 HkRootLevelContainerNamedVariantVisitor::ClassName(m) => class_name = Some(m),
                 HkRootLevelContainerNamedVariantVisitor::Variant(m) => variant = Some(m),
-
             }
         }
 
@@ -91,37 +88,44 @@ impl<'a> From<Vec<HkRootLevelContainerNamedVariantVisitor<'a>>> for HkRootLevelC
             name: name.unwrap_or_default().into_inner(),
             class_name: class_name.unwrap_or_default().into_inner(),
             variant: variant.unwrap_or_default().into_inner(),
-
         }
     }
 }
 
 // The only way to create a possessive type from a reference is to `clone` it.
 // This `From` is only used for serialization, so this overhead is only incurred during serialization.
-impl<'a> From<&HkRootLevelContainerNamedVariant<'a>> for Vec<HkRootLevelContainerNamedVariantVisitor<'a>> {
+impl<'a> From<&HkRootLevelContainerNamedVariant<'a>>
+    for Vec<HkRootLevelContainerNamedVariantVisitor<'a>>
+{
     fn from(data: &HkRootLevelContainerNamedVariant<'a>) -> Self {
         vec![
             HkRootLevelContainerNamedVariantVisitor::Name(data.name.clone().into()),
             HkRootLevelContainerNamedVariantVisitor::ClassName(data.class_name.clone().into()),
             HkRootLevelContainerNamedVariantVisitor::Variant(data.variant.clone().into()),
-
         ]
     }
 }
 
-impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkRootLevelContainerNamedVariant<'de> {
-    fn from_bytes<B>(
-        _bytes: &'bytes [u8],
-        _de: &mut PackFileDeserializer,
-    ) -> Result<Self>
+impl<'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkRootLevelContainerNamedVariant<'de> {
+    fn from_bytes<B>(bytes: &'bytes [u8], de: &mut PackFileDeserializer) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized + 'de
+        Self: Sized + 'de,
     {
-        todo!()
+        let name = de.read_string_ptr(bytes)?;
+        de.move_current_position_usize();
+        let class_name = de.read_string_ptr(bytes)?;
+        de.move_current_position_usize();
+        let variant = de.read_class_ptr()?;
+        de.move_current_position_usize();
+
+        Ok(Self {
+            name,
+            class_name,
+            variant,
+        })
     }
 }
-
 
 /// # Why use Visitor pattern?
 /// Since the C++ field must be deserialized from the `name` attribute name of the `hkparam` in the XML,

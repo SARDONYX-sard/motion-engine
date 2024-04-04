@@ -2,10 +2,7 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
-#![allow(
-  clippy::clone_on_copy,
-  clippy::unit_arg
-)]
+#![allow(clippy::clone_on_copy, clippy::unit_arg)]
 
 #[allow(unused)]
 use super::*;
@@ -60,20 +57,17 @@ impl<'de> Deserialize<'de> for HkRootLevelContainer<'de> {
 
 impl<'a> From<Vec<HkRootLevelContainerVisitor<'a>>> for HkRootLevelContainer<'a> {
     fn from(_values: Vec<HkRootLevelContainerVisitor<'a>>) -> Self {
-            let mut named_variants = None;
-
+        let mut named_variants = None;
 
         for _value in _values {
             match _value {
                 HkRootLevelContainerVisitor::NamedVariants(m) => named_variants = Some(m),
-
             }
         }
 
         // This `unwrap_or_default` is never called because it depends on the default value of `Visitor
         Self {
             named_variants: named_variants.unwrap_or_default(),
-
         }
     }
 }
@@ -82,26 +76,23 @@ impl<'a> From<Vec<HkRootLevelContainerVisitor<'a>>> for HkRootLevelContainer<'a>
 // This `From` is only used for serialization, so this overhead is only incurred during serialization.
 impl<'a> From<&HkRootLevelContainer<'a>> for Vec<HkRootLevelContainerVisitor<'a>> {
     fn from(data: &HkRootLevelContainer<'a>) -> Self {
-        vec![
-            HkRootLevelContainerVisitor::NamedVariants(data.named_variants.clone()),
-
-        ]
+        vec![HkRootLevelContainerVisitor::NamedVariants(
+            data.named_variants.clone(),
+        )]
     }
 }
 
-impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkRootLevelContainer<'de> {
-    fn from_bytes<B>(
-        _bytes: &'bytes [u8],
-        _de: &mut PackFileDeserializer,
-    ) -> Result<Self>
+impl<'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkRootLevelContainer<'de> {
+    fn from_bytes<B>(bytes: &'bytes [u8], de: &mut PackFileDeserializer<'de>) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized + 'de
+        Self: Sized + 'de,
     {
-        todo!()
+        Ok(Self {
+            named_variants: de.read_class_array::<B, HkRootLevelContainerNamedVariant>(bytes)?,
+        })
     }
 }
-
 
 /// # Why use Visitor pattern?
 /// Since the C++ field must be deserialized from the `name` attribute name of the `hkparam` in the XML,
@@ -112,7 +103,7 @@ impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkRootLevelContainer<'d
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, PartialEq, Serialize)]
 #[serde(tag = "@name")]
-enum HkRootLevelContainerVisitor<'a> {
+pub enum HkRootLevelContainerVisitor<'a> {
     /// Visitor fields
     #[serde(rename = "namedVariants")]
     NamedVariants(HkArrayClass<HkRootLevelContainerNamedVariant<'a>>),

@@ -67,18 +67,18 @@ pub fn generate_classes(output_dir: impl AsRef<Path>, rpt_dir: impl AsRef<Path>)
         // The binary deserializer implementation process requires only four classes, but only parses them for parent class information.
         class_map.insert(class.name.clone(), class.clone());
 
-        // #[cfg(debug_assertions)]
-        // // To extract only defaultmale.kkx classes for debugging purposes during the binary deserializer implementation process
-        // if !matches!(
-        //     rpt_file_name,
-        //     "hkRootLevelContainer"
-        //         | "hkRootLevelContainerNamedVariant" // depended by `hkRootLevelContainer`
-        //         | "hkbProjectStringData"
-        //         | "hkbProjectData"
-        //         | "hkbTransitionEffect" // For enum EventMode(depended by `hkbProjectData`)
-        // ) {
-        //     continue;
-        // }
+        #[cfg(debug_assertions)]
+        // To extract only defaultmale.kkx classes for debugging purposes during the binary deserializer implementation process
+        if !matches!(
+            rpt_file_name,
+            "hkRootLevelContainer"
+                | "hkRootLevelContainerNamedVariant" // depended by `hkRootLevelContainer`
+                | "hkbProjectStringData"
+                | "hkbProjectData"
+                | "hkbTransitionEffect" // For enum EventMode(depended by `hkbProjectData`)
+        ) {
+            continue;
+        }
 
         let rust_file_name = rpt_file_name.to_case(Case::Snake);
         let import_code = format!("mod {rust_file_name};\npub use {rust_file_name}::*;\n");

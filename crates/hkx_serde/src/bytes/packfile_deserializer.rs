@@ -5,9 +5,10 @@ use super::sections::{
 };
 use crate::classes::class_params::ClassParams;
 use crate::error::Result;
-use crate::havok_types::HkArrayClass;
+use crate::havok_types::{HkArrayClass, HkArrayStringPtr};
 use core::mem::size_of;
-use std::collections::HashMap;
+use indexmap::IndexMap;
+use std::borrow::Cow;
 use std::ffi::CStr;
 use std::str::from_utf8;
 use zerocopy::{BigEndian, ByteOrder, FromBytes, LittleEndian};
@@ -19,12 +20,12 @@ pub trait ByteSerialize {
 }
 
 /// Deserialize trait for HKX binaries for C++ Havok class.
-pub trait ByteDeSerialize {
+pub trait ByteDeSerialize<'bytes: 'de, 'de> {
     /// Create a new instance from bytes slice(HKX binary).
-    fn from_bytes<B>(bytes: &[u8], de: &mut PackFileDeserializer) -> Result<Self>
+    fn from_bytes<B>(bytes: &'bytes [u8], de: &mut PackFileDeserializer<'de>) -> Result<Self>
     where
         B: ByteOrder,
-        Self: Sized;
+        Self: Sized + 'de;
 }
 
 #[derive(Debug, Clone, PartialEq)]
@@ -47,96 +48,139 @@ pub struct PackFileDeserializer<'bytes> {
     ///
     /// This is used to indicate up to which class field binary data was read during deserialization of each C++ Havok Class.
     pub current_position: u32,
-    pub deserialized_objects: HashMap<u32, ClassParams<'bytes>>,
+    pub deserialized_objects: IndexMap<u32, ClassParams<'bytes>>,
 }
 
 impl<'bytes> PackFileDeserializer<'bytes> {
     /// Ptr size
     /// - 32 => [`ByteOrder::read_u32`]
     /// - 64 => [`ByteOrder::read_u64`]
-    fn read_usize<B>(&self, bytes: &[u8]) -> Result<usize>
+    pub fn read_usize<B>(&self, bytes: &[u8]) -> Result<usize>
     where
         B: ByteOrder,
     {
         Ok(match self.ptr_size {
-            32 => B::read_u32(bytes) as usize,
-            64 => B::read_u64(bytes) as usize,
+            4 => B::read_u32(bytes) as usize,
+            8 => B::read_u64(bytes) as usize,
             _ => return Err(BytesDeError::InvalidPtrSize(self.ptr_size).into()),
         })
     }
 
-    fn read_class_array<B, T>(&mut self, bytes: &[u8]) -> Result<HkArrayClass<T>>
+    /// Move the current position by the usize amount.
+    /// - 32 => += 4bytes
+    /// - 64 =>  += 8bytes
+    pub fn move_current_position_usize(&mut self) {
+        match self.ptr_size {
+            4 => self.current_position += 4,
+            8 => self.current_position += 8,
+            _ => {}
+        }
+    }
+
+    /// Reads array information & Advance position(usize + 8bytes)
+    ///
+    /// # Move position bytes size
+    /// - 32bit => 12bytes
+    /// - 64bit => 16bytes
+    ///
+    /// # Returns
+    /// Array size
+    pub fn read_array_size_and_info<B>(&mut self, bytes: &[u8]) -> Result<u32>
     where
         B: ByteOrder,
-        T: ByteDeSerialize,
     {
-        let read_start = self.current_position as usize;
-
         self.read_usize::<B>(bytes)?; // Consume pointer(u32|u64 == usize) assert 0
-        let size = B::read_u32(bytes);
-        B::read_u32(bytes); // Capacity and flags
-        self.current_position += 16; // ptr(4|8 bytes) + size(4bytes) + cap(4bytes)
+        self.move_current_position_usize();
 
-        // flag assertion
-        let size_cap_and_flags = size | (0x80 << 24);
-        if size == size_cap_and_flags {
-            return Err(BytesDeError::ParseError {
-                expected: size_cap_and_flags.to_string(),
-                actual: size.to_string(),
+        let size = B::read_u32(&bytes[self.current_position as usize..]);
+        self.current_position += 4; // size(4bytes)
+
+        let cap_flags = B::read_u32(&bytes[self.current_position as usize..]); // Capacity and flags
+        self.current_position += 4; // cap(4bytes)
+
+        let size_cap_flags = size | (0x80 << 24);
+        if cap_flags != size_cap_flags {
+            return Err(BytesDeError::MismatchCapacityAndSize {
+                expected: size_cap_flags.to_string(),
+                actual: cap_flags.to_string(),
             }
             .into());
         }
+        Ok(size)
+    }
+
+    pub fn read_string_ptr_array<'a, B, T>(
+        &mut self,
+        bytes: &'a [u8],
+    ) -> Result<HkArrayStringPtr<'a>>
+    where
+        B: ByteOrder,
+        T: ByteDeSerialize<'bytes, 'bytes>,
+    {
+        let current_start = self.current_position;
+        let mut strings = Vec::new();
+
+        let size = self.read_array_size_and_info::<B>(bytes)?;
+        if size > 0 {
+            let local_dst = self.data_section.local_map[&current_start].dst as usize;
+            for _ in 0..size {
+                strings.push(self.read_string_ptr(&bytes[local_dst..])?);
+            }
+        }
+
+        Ok(strings.into())
+    }
+
+    pub fn read_class_array<'a, B, T>(&mut self, bytes: &'bytes [u8]) -> Result<HkArrayClass<T>>
+    where
+        B: ByteOrder,
+        T: ByteDeSerialize<'bytes, 'bytes> + 'bytes,
+    {
+        let size = self.read_array_size_and_info::<B>(bytes)?;
+        tracing::debug!("class array size: {:?}", size);
 
         let mut res = Vec::new();
         if size > 0 {
-            let local_dst = self.data_section.local_map[read_start].dst as usize;
             for _ in 0..size {
-                res.push(T::from_bytes::<B>(&bytes[local_dst..], self)?);
+                res.push(T::from_bytes::<B>(bytes, self)?);
             }
         }
 
         Ok(res.into())
     }
 
-    fn read_class_ptr<B, T>(&mut self, bytes: &[u8]) -> Result<T>
-    where
-        B: ByteOrder,
-        T: ByteDeSerialize,
-    {
-        if !self
-            .data_section
-            .local_map
-            .contains_key(&self.current_position)
-        {
-            self.current_position += 8;
-            return T::from_bytes::<B>(bytes, self);
+    pub fn read_class_ptr<'a>(&mut self) -> Result<Cow<'a, str>> {
+        let current_start = self.current_position;
+
+        if !self.data_section.global_map.contains_key(&current_start) {
+            return Ok("".into());
         }
 
-        let global_dst = self.data_section.global_map[&self.current_position].dst;
-        // self.deserialize_virtual_class(&bytes, global_dst)
-        todo!()
+        let global_dst = self.data_section.global_map[&current_start].dst;
+        let class_index = self.data_section.virtual_map.get_index_of(&global_dst);
+        Ok(format!("#{:04}", 50 + class_index.unwrap()).into())
     }
 
-    fn read_string_ptr<'a>(&mut self, bytes: &'a [u8]) -> Result<&'a str> {
-        if !self
-            .data_section
-            .local_map
-            .contains_key(&self.current_position)
-        {
-            self.current_position += 8;
-            return Ok("");
+    /// # Expected bytes
+    /// The first of string ptr is the address of the pointer size, then comes the null terminated string.
+    pub fn read_string_ptr<'a>(&self, bytes: &'a [u8]) -> Result<Cow<'a, str>> {
+        let current_start = self.current_position;
+
+        if !self.data_section.local_map.contains_key(&current_start) {
+            return Ok("".into());
         }
 
-        let local_dst = self.data_section.local_map[&self.current_position].dst as usize;
-        let c_str = CStr::from_bytes_until_nul(&bytes[local_dst..])?;
-        let s = from_utf8(c_str.to_bytes())?;
+        let local_dst = self.data_section.local_map[&current_start].dst;
+        tracing::debug!("string ptr:current_start = {}", current_start);
+        tracing::debug!("string ptr:local_dst = {}", local_dst);
 
-        self.current_position += s.len() as u32;
-        Ok(s)
+        let c_str = CStr::from_bytes_until_nul(&bytes[local_dst as usize..])?;
+        let s = from_utf8(c_str.to_bytes())?;
+        Ok(s.into())
     }
 
     /// Create a new instance from hkx class fields.
-    fn deserialize_virtual_class<B>(&mut self, bytes: &[u8], offset: u32) -> Result<()>
+    pub fn deserialize_virtual_class<B>(&mut self, bytes: &'bytes [u8], offset: u32) -> Result<()>
     where
         B: ByteOrder,
     {
@@ -208,26 +252,26 @@ impl<'bytes> PackFileDeserializer<'bytes> {
             data_section,
             type_section,
             class_names,
-            current_position: data_header.absolute_data_start.get(),
-            deserialized_objects: HashMap::new(),
+            current_position: 0,
+            deserialized_objects: IndexMap::new(),
         })
     }
 
-    pub fn deserialize(bytes: &'bytes [u8]) -> Result<()> {
-        match HkxHeader::is_big_endian(bytes) {
+    pub fn deserialize(bytes: &'bytes [u8]) -> Result<IndexMap<u32, ClassParams<'bytes>>> {
+        Ok(match HkxHeader::is_big_endian(bytes) {
             true => {
                 let mut de = Self::deserialize_headers_and_map::<BigEndian>(bytes)?;
                 let data_section = de.data_section.section_data;
                 de.deserialize_virtual_class::<BigEndian>(data_section, 0)?;
+                de.deserialized_objects
             }
             false => {
                 let mut de = Self::deserialize_headers_and_map::<LittleEndian>(bytes)?;
                 let data_section = de.data_section.section_data;
                 de.deserialize_virtual_class::<LittleEndian>(data_section, 0)?;
+                de.deserialized_objects
             }
-        };
-
-        Ok(())
+        })
     }
 }
 
@@ -238,16 +282,15 @@ pub enum BytesDeError {
     #[error("Expected pointer size 4 or 8 byte. But got {0}.")]
     InvalidPtrSize(u8),
 
-    /// Failed to parse {actual} as {expected}.
-    #[error("Failed to parse {actual} as {expected}.")]
-    ParseError { expected: String, actual: String },
+    /// Mismatch array capacity and size. actual: {actual}, expected: {expected}.
+    #[error("Mismatch array capacity and size. actual: {actual}, expected: {expected}.")]
+    MismatchCapacityAndSize { expected: String, actual: String },
 }
 
 #[cfg(test)]
 mod tests {
-    use hkx_serde_tracing::init_tracing;
-
     use super::*;
+    use hkx_serde_tracing::init_tracing;
     #[allow(unused)]
     use pretty_assertions::assert_eq;
     use tracing::Level;
@@ -258,8 +301,13 @@ mod tests {
         // let bytes = include_bytes!("../../../../tests/1hm_behavior_x86_64.hkx");
         let bytes = include_bytes!("../../../../tests/defaultmale.hkx");
 
-        if let Err(e) = PackFileDeserializer::deserialize(bytes.as_slice()) {
-            print!("{e}");
+        match PackFileDeserializer::deserialize(bytes.as_slice()) {
+            Ok(obj) => {
+                dbg!(obj);
+            }
+            Err(e) => {
+                println!("{e}");
+            }
         };
     }
 }

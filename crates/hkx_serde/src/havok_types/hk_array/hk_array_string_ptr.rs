@@ -54,6 +54,15 @@ impl<'a> From<Vec<String>> for HkArrayStringPtr<'a> {
     }
 }
 
+impl<'a> From<Vec<Cow<'a, str>>> for HkArrayStringPtr<'a> {
+    fn from(value: Vec<Cow<'a, str>>) -> Self {
+        Self {
+            numelements: value.len(),
+            hkcstrings: value
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

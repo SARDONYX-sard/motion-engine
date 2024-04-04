@@ -17,9 +17,15 @@ trait WriteFixup {
     fn write_bytes<B: ByteOrder>(&self, bytes: &mut [u8]) -> std::io::Result<()>;
 }
 
+/// This information indicates where the data of the field in the Class will be placed.
 #[derive(Debug, Clone, Default, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct LocalFixup {
     pub src: u32,
+    /// This position indicates where the data of the field in the Class will be placed.
+    ///
+    /// Example: the start of `StringPtr`, etc.
+    /// - Relative position from `section_data`(This is start with `absolute_data_offset` position).
+    /// `section_data[dst]` == The field's content in Class
     pub dst: u32,
 }
 
@@ -41,10 +47,25 @@ impl WriteFixup for LocalFixup {
     }
 }
 
+/// Location information needed when referencing class pointer, etc.
 #[derive(Debug, Clone, Default, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct GlobalFixup {
     pub src: u32,
+    ///  Index Section ID
+    ///
+    /// # Examples
+    /// - `__class_names__`: 1
+    /// - `__type__`: 2
+    /// - `__data__`: 3
     pub dst_section_index: u32,
+    /// Location information needed when referencing class pointer, etc.
+    ///
+    /// # Examples
+    /// - When global map dst is 128
+    ///
+    /// `128` =>
+    /// If `virtualFixup.src == 128` => `virtualFixup.class_name_offset` =>
+    /// `class_names[class_name_offset]` => class name
     pub dst: u32,
 }
 
@@ -72,18 +93,22 @@ impl WriteFixup for GlobalFixup {
     }
 }
 
+/// Location information for the name of the C++ class that must call the constructor
 #[derive(Debug, Clone, Default, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VirtualFixup {
+    /// It is partially the same as the value in `globalFixup.dst`.
     pub src: u32,
+    ///  Index Section ID
+    ///
+    /// # Examples
+    /// - `__class_names__`: 1
+    /// - `__type__`: 2
+    /// - `__data__`: 3
     pub section_index: u32,
     /// Havok Class name start position.
     ///
     /// # How do we use this?
-    /// The value is the same as the starting position of each class name
-    /// in the `__classnames__` section.
-    ///
-    /// This means that we can use this offset in `virtual_fixup_map`
-    /// to find out which class name constructor is needed.
+    /// `ClassNames[name_offset]` => class name
     pub name_offset: u32,
 }
 

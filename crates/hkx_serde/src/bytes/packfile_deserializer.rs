@@ -11,7 +11,7 @@ use indexmap::IndexMap;
 use std::borrow::Cow;
 use std::ffi::CStr;
 use std::str::from_utf8;
-use zerocopy::{BigEndian, ByteOrder, FromBytes, LittleEndian};
+use zerocopy::{BigEndian, ByteOrder, LittleEndian};
 
 /// Serialize trait for HKX binaries for C++ Havok class.
 pub trait ByteSerialize {
@@ -209,7 +209,7 @@ impl<'bytes> PackFileDeserializer<'bytes> {
         let mut start = 0;
 
         // 1. Read 64bytes hkx file header.
-        let header = HkxHeader::<B>::ref_from(&bytes[start..size_of::<HkxHeader<B>>()]).unwrap();
+        let header = HkxHeader::<B>::ref_from_bytes(&bytes[start..size_of::<HkxHeader<B>>()])?;
         start += size_of::<HkxHeader<B>>();
 
         // 2. Skip padding

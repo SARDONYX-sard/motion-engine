@@ -110,19 +110,21 @@ impl<O: ByteOrder> core::fmt::Display for SectionHeader<O> {
             r#"
           section tag: {section_tag}
 section tag separator: {section_tag_separator:#02X}
+
+Offsets:
   absolute data start: {absolute_data_start:#02X}
-  local fixups offset: {local_fixups_offset:#02X}
- global fixups offset: {global_fixups_offset:#02X}
-virtual fixups offset: {virtual_fixups_offset:#02X}
-       exports offset: {exports_offset:#02X}
-       imports offset; {imports_offset:#02X}
-           end offset: {end_offset:#02X}
-       abs  +   local: {l_offset:#02X}
-       abs  +  global: {g_offset:#02X}
-       abs  + virtual: {v_offset:#02X}
-       abs  + exports: {e_offset:#02X}
-       abs  + imports: {i_offset:#02X}
-      abs   +     end: {end_off:#02X}
+         local fixups: {local_fixups_offset:#02X}
+        global fixups: {global_fixups_offset:#02X}
+       virtual fixups: {virtual_fixups_offset:#02X}
+              exports: {exports_offset:#02X}
+              imports; {imports_offset:#02X}
+                  end: {end_offset:#02X}
+        abs +   local: {l_offset:#02X}
+        abs +  global: {g_offset:#02X}
+        abs + virtual: {v_offset:#02X}
+        abs + exports: {e_offset:#02X}
+        abs + imports: {i_offset:#02X}
+        abs +     end: {end_off:#02X}
 "#
         )
     }

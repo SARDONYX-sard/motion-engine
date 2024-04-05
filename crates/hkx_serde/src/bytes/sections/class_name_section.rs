@@ -33,7 +33,7 @@ impl<'a> ClassPair<'a> {
         offset += 1;
 
         if separator != Self::SIGNATURE_SEPARATOR {
-            return Err(ClassNamesSectionHeaderError::InvalidSignatureSeparator {
+            return Err(ClassNamesSectionError::InvalidSignatureSeparator {
                 signature,
                 wrong_separator: separator,
             });
@@ -63,8 +63,11 @@ impl<'a> ClassPair<'a> {
         // signature(4 bytes) + separator(1 bytes) + class name
         let class_info_bytes_len = 4 + 1 + class_name_len;
 
-        if bytes.len() < 5 + class_info_bytes_len {
-            return Err(ClassNamesSectionHeaderError::InsufficientWriteBufferSize);
+        if bytes.len() < class_info_bytes_len {
+            return Err(ClassNamesSectionError::InsufficientWriteBufferSize {
+                expected: bytes.len(),
+                actual: class_info_bytes_len,
+            });
         }
 
         B::write_u32(&mut bytes[0..4], self.signature);
@@ -136,14 +139,16 @@ impl<'a> ClassNames<'a> {
 }
 
 /// Hkx ClassNames section header Error Result
-type Result<T, E = ClassNamesSectionHeaderError> = core::result::Result<T, E>;
+type Result<T, E = ClassNamesSectionError> = core::result::Result<T, E>;
 
-/// Hkx ClassNames section header Error
+/// Hkx ClassNames section Error
 #[derive(Debug, thiserror::Error)]
-pub enum ClassNamesSectionHeaderError {
+pub enum ClassNamesSectionError {
     /// Insufficient buffer size to write class info
-    #[error("Insufficient buffer size to write class info")]
-    InsufficientWriteBufferSize,
+    #[error(
+        "Insufficient buffer size to write class info. expected: {expected}, actual: {actual}"
+    )]
+    InsufficientWriteBufferSize { expected: usize, actual: usize },
 
     /// Binary data is interpreted as a header, but it was less than 64bytes.
     #[error("Invalid separator byte: ClassName expected `0x09` after u32 signature (`0x{signature:x}`), but got `0x{wrong_separator:2x}`.")]
@@ -160,4 +165,64 @@ pub enum ClassNamesSectionHeaderError {
     /// Cstr non terminated string.
     #[error(transparent)]
     FromBytesUntilNulError(#[from] FromBytesUntilNulError),
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use pretty_assertions::assert_eq;
+
+    #[test]
+    fn test_class_pair_from_bytes_and_write_bytes() {
+        // Create some sample bytes to test with
+        let bytes = b"\x11\x22\x33\x44\x09test_class\0";
+
+        // Test reading from bytes
+        let (class_pair, read_size) =
+            ClassPair::from_bytes::<zerocopy::LittleEndian>(bytes).unwrap();
+        assert_eq!(class_pair.signature, 0x44332211);
+        assert_eq!(class_pair.class_name.to_str().unwrap(), "test_class");
+        assert_eq!(read_size, 16); // 4 bytes signature + 1 byte separator + 10 bytes class name + 1 byte null terminator
+
+        // Test writing to bytes
+        let mut output_bytes = [0u8; 16];
+        let written_size = class_pair
+            .write_bytes::<zerocopy::LittleEndian>(&mut output_bytes)
+            .unwrap();
+        assert_eq!(written_size, 16);
+        assert_eq!(output_bytes.as_slice(), bytes.as_slice());
+    }
+
+    #[test]
+    fn test_class_names_from_bytes_and_write_bytes() {
+        let bytes = b"\x11\x22\x33\x44\x09test_class1\0\x44\x55\x66\x77\x09test_class2\0\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff";
+
+        let class_names = ClassNames::from_bytes::<zerocopy::LittleEndian>(bytes).unwrap();
+        assert_eq!(class_names.offset_class_names_map.len(), 2);
+
+        let test_class1_start = 5;
+        let ClassPair {
+            signature,
+            class_name,
+        } = class_names.offset_class_names_map[&test_class1_start];
+        assert_eq!(signature, 0x44332211);
+        assert_eq!(class_name, c"test_class1");
+
+        let test_class2_start = 22;
+        let ClassPair {
+            signature,
+            class_name,
+        } = class_names.offset_class_names_map[&test_class2_start];
+        assert_eq!(signature, 0x77665544);
+        assert_eq!(class_name, c"test_class2");
+
+        // Test writing to bytes
+        let mut output_bytes = [0u8; 64];
+        class_names
+            .write_bytes::<zerocopy::LittleEndian>(&mut output_bytes)
+            .unwrap();
+        assert_eq!(&output_bytes[0..38], &bytes[0..38]);
+        assert_eq!(&output_bytes[38..48], &[0xff; 10]); // Alignment is done by filling in with 0xFF up to multiples of 16bytes.
+        assert_eq!(&output_bytes[48..], &[0x00; 16]); // Check after padding bytes
+    }
 }

@@ -1,6 +1,6 @@
 use crate::bytes::hkx_header::HkxHeaderError;
 use crate::bytes::packfile_deserializer::BytesDeError;
-use crate::bytes::sections::class_name_section::ClassNamesSectionHeaderError;
+use crate::bytes::sections::class_name_section::ClassNamesSectionError;
 use crate::bytes::sections::section_header::SectionHeaderError;
 use std::ffi::FromBytesUntilNulError;
 
@@ -25,7 +25,7 @@ pub enum HkxError {
     SectionHeaderError(#[from] SectionHeaderError),
 
     #[error(transparent)]
-    ClassNamesSectionHeaderError(#[from] ClassNamesSectionHeaderError),
+    ClassNamesSectionHeaderError(#[from] ClassNamesSectionError),
 
     /// Cstr must be non terminated string.
     #[error(transparent)]

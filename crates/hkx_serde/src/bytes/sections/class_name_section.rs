@@ -23,6 +23,12 @@ impl<'a> ClassPair<'a> {
     /// # Returns
     /// (Class name & signature, read bytes size)
     pub fn from_bytes<B: ByteOrder>(bytes: &'a [u8]) -> Result<(Self, usize)> {
+        if bytes.len() < 5 {
+            return Err(ClassNamesSectionError::InsufficientReadBufferSize(
+                bytes.len(),
+            ));
+        };
+
         let mut offset = 0;
 
         // LE Example: F6 5E 58 75
@@ -150,8 +156,12 @@ pub enum ClassNamesSectionError {
     )]
     InsufficientWriteBufferSize { expected: usize, actual: usize },
 
-    /// Binary data is interpreted as a header, but it was less than 64bytes.
-    #[error("Invalid separator byte: ClassName expected `0x09` after u32 signature (`0x{signature:x}`), but got `0x{wrong_separator:2x}`.")]
+    /// 4bytes(signature) + 1bytes(separator) + any bytes(className) = At least 5bytes required, but got {0}.
+    #[error("4bytes(signature) + 1bytes(separator) + any bytes(className) = At least 5bytes required, but got {0}.")]
+    InsufficientReadBufferSize(usize),
+
+    /// Invalid separator byte: ClassName expected `0x09` after u32 signature (`{signature:#x}`), but got `{wrong_separator:#2x}`.
+    #[error("Invalid separator byte: ClassName expected `0x09` after u32 signature (`{signature:#x}`), but got `{wrong_separator:#2x}`.")]
     InvalidSignatureSeparator { signature: u32, wrong_separator: u8 },
 
     /// Invalid str.
@@ -200,19 +210,19 @@ mod tests {
         let class_names = ClassNames::from_bytes::<zerocopy::LittleEndian>(bytes).unwrap();
         assert_eq!(class_names.offset_class_names_map.len(), 2);
 
-        let test_class1_start = 5;
+        let test_class1_name_start = 5;
         let ClassPair {
             signature,
             class_name,
-        } = class_names.offset_class_names_map[&test_class1_start];
+        } = class_names.offset_class_names_map[&test_class1_name_start];
         assert_eq!(signature, 0x44332211);
         assert_eq!(class_name, c"test_class1");
 
-        let test_class2_start = 22;
+        let test_class2_name_start = 22;
         let ClassPair {
             signature,
             class_name,
-        } = class_names.offset_class_names_map[&test_class2_start];
+        } = class_names.offset_class_names_map[&test_class2_name_start];
         assert_eq!(signature, 0x77665544);
         assert_eq!(class_name, c"test_class2");
 

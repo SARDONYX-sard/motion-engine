@@ -23,8 +23,8 @@
 //! | ContentsClassNameSectionOffset | Offset of the contents class name section within the file      | 4            | 36             |
 //! | ContentsVersionString          | Version string of the contents (fixed-size string, 16 bytes)   | 16           | 40             |
 //! | Flags                          | Various flags used in the file                                 | 4            | 56             |
-//! | MaxPredicate                   | Maximum predicate value                                        | 2            | 60             |
-//! | SectionOffset                  | Section offset within the file                                 | 2            | 62             |
+//! | MaxPredicate                   | Maximum predicate value. None if -1.                           | 2            | 60             |
+//! | SectionOffset                  | Section offset within the file. None if -1.                    | 2            | 62             |
 //!
 //! ## Paddings
 //! If SectionOffset number is 16, read 64bytes header + an extra 16bytes as padding.
@@ -36,7 +36,7 @@
 //! | Unk44                          | Unknown field (Hex offset: 44)                                 | 4            | 68             |
 //! | Unk48                          | Unknown field (Hex offset: 48)                                 | 4            | 72             |
 //! | Unk4C                          | Unknown field (Hex offset: 4C)                                 | 4            | 76             |
-use zerocopy::{AsBytes, BigEndian, ByteOrder, FromBytes, FromZeroes, LittleEndian, I16, I32, U32};
+use zerocopy::{AsBytes, ByteOrder, FromBytes, FromZeroes, LittleEndian, I16, I32, U32};
 
 /// The 64bytes HKX header contains metadata information about the HKX file.
 #[derive(Debug, Clone, Default, Eq, PartialEq, Hash, FromBytes, AsBytes, FromZeroes)]
@@ -95,7 +95,7 @@ pub struct HkxHeader<O: ByteOrder> {
     pub section_offset: I16<O>,
 }
 
-static_assertions::assert_eq_size!(HkxHeader<LittleEndian>, [u8; 64]);
+static_assertions::assert_eq_size!(HkxHeader<LittleEndian>, [u8; 64]); // Must be 64 bytes.
 
 impl HkxHeader<LittleEndian> {
     /// Create a new `HkXHeader` instance with default values for Skyrim Special Edition.
@@ -143,43 +143,43 @@ impl HkxHeader<LittleEndian> {
         bytes[17] == 0
     }
 
-    /// Parse bytes as a any little endian target header with non coping.
+    /// Get header length.
+    pub const fn len() -> usize {
+        core::mem::size_of::<Self>()
+    }
+}
+
+impl<O: ByteOrder> HkxHeader<O> {
+    /// Interprets the given `bytes` as a `&Self` without copying.
     ///
-    /// # Return
-    /// Remain bytes(Next expected section headers or padding), Referenced bytes header
-    ///
-    /// # Errors
-    /// - If the header is big-endian.
-    /// - Parse error.
-    pub fn parse_as(target: ParseTarget, bytes: &[u8]) -> Result<(&[u8], &Self)> {
-        if bytes.len() < 64 {
+    /// If `bytes.len() != size_of::<Self>()` or `bytes` is not aligned to
+    /// `align_of::<Self>()`, this returns `Result::Err`.
+    #[inline]
+    pub fn ref_from_bytes(bytes: &[u8]) -> Result<&Self> {
+        if bytes.len() < core::mem::size_of::<Self>() {
             return Err(HkxHeaderError::InsufficientLength);
         }
-        // Safety: The fact that length is sufficient is confirmed immediately above.
-        let (bytes, remain) = bytes.split_at(64);
-
-        match Self::is_big_endian(bytes) {
-            true => Err(HkxHeaderError::UnexpectedBigEndian),
-            false => {
-                let header = Self::ref_from(bytes).ok_or(HkxHeaderError::UnAlignment)?;
-                if header == &target.le_header() {
-                    Ok((remain, header))
-                } else {
-                    Err(HkxHeaderError::UnexpectedTarget(target))
-                }
-            }
-        }
+        Self::ref_from(bytes).ok_or(HkxHeaderError::UnAlignment)
     }
 
-    /// Trim padding by header's `section_offset`.
+    /// Get padding size.
     ///
-    /// # Returns
-    /// Remain bytes(Next expected section headers), padding bytes
-    pub fn trim_padding<'a>(&'a self, bytes: &'a [u8]) -> (&[u8], &[u8]) {
-        bytes.split_at(self.section_offset.get() as usize)
+    /// # Note
+    /// If `Self.section_offset` is negative, 0 is returned.
+    pub fn padding_size(&self) -> usize {
+        let padding = self.section_offset.get();
+        if padding < 0 {
+            0
+        } else {
+            padding as usize
+        }
     }
 
     /// Get version string of the contents that trimmed null str.
+    ///
+    /// # Errors
+    ///
+    /// Returns `Err` if the slice is not UTF-8.
     ///
     /// # Value Examples
     /// - SkyrimSE
@@ -189,53 +189,6 @@ impl HkxHeader<LittleEndian> {
     /// ```
     pub fn contents_version_string_as_str(&self) -> Result<&str> {
         Ok(core::str::from_utf8(&self.contents_version_string)?.trim_matches(char::from(0)))
-    }
-}
-
-/// Parse targets
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
-pub enum ParseTarget {
-    /// Skyrim Special Edition
-    SkyrimSE,
-}
-
-impl ParseTarget {
-    /// Get the target game little endian header.
-    const fn le_header(&self) -> HkxHeader<LittleEndian> {
-        match &self {
-            Self::SkyrimSE => HkxHeader::new_skyrim_se(),
-        }
-    }
-}
-
-/// Big or little endian representation header
-pub enum HkxEndianHeader<'bytes> {
-    /// Big endian header
-    BigEndian(&'bytes HkxHeader<BigEndian>),
-    /// Little endian header
-    LittleEndian(&'bytes HkxHeader<LittleEndian>),
-}
-
-impl<'bytes> HkxEndianHeader<'bytes> {
-    /// Parse with zero copy big or little endianness header.
-    pub fn parse(bytes: &'bytes [u8]) -> Result<(&'bytes [u8], Self)> {
-        if bytes.len() < 64 {
-            return Err(HkxHeaderError::InsufficientLength);
-        }
-
-        let (bytes, remain) = bytes.split_at(64);
-        match HkxHeader::is_big_endian(bytes) {
-            true => {
-                let header =
-                    HkxHeader::<BigEndian>::ref_from(bytes).ok_or(HkxHeaderError::UnAlignment)?;
-                Ok((remain, Self::BigEndian(header)))
-            }
-            false => {
-                let header = HkxHeader::<LittleEndian>::ref_from(bytes)
-                    .ok_or(HkxHeaderError::UnAlignment)?;
-                Ok((remain, Self::LittleEndian(header)))
-            }
-        }
     }
 }
 
@@ -253,10 +206,6 @@ pub enum HkxHeaderError {
 
     #[error(transparent)]
     Utf8Error(#[from] core::str::Utf8Error),
-
-    /// Expected target header format. But got another header file format.
-    #[error("Expected {0:?} header format. But got another header file format.")]
-    UnexpectedTarget(ParseTarget),
 
     /// Expected little endian header, but got big endian header.
     #[error("Expected little endian header, but got big endian header")]
@@ -286,26 +235,23 @@ mod tests {
         // contents version: b"hk_2010.2.0-r1\0\0" ([u8;16])
         0x68, 0x6B, 0x5F, 0x32, 0x30, 0x31, 0x30, 0x2E, 0x32, 0x2E, 0x30, 0x2D, 0x72, 0x31, 0x00, 0x00,
         0x00, 0x00, 0x00, 0x00, // flags
-        0xFF, 0xFF, // max predicate: -1 as i16
-        0xFF, 0xFF, // section offset: -1 as i16
+        0xFF, 0xFF, //  max predicate: -1 as i16. This means is none.
+        0xFF, 0xFF, // section offset: -1 as i16. This means is none.
     ];
 
     #[test]
     fn should_read_hkx_bytes() {
-        let (remain, actual) =
-            HkxHeader::parse_as(ParseTarget::SkyrimSE, &SKYRIM_SE_ROW_HEADER).unwrap();
-        let (remain, padding) = actual.trim_padding(remain);
+        let header = HkxHeader::ref_from_bytes(&SKYRIM_SE_ROW_HEADER).unwrap();
+        assert_eq!(header, &HkxHeader::new_skyrim_se());
 
-        assert_eq!((remain, padding), ([].as_slice(), [].as_slice()));
-        assert_eq!(actual, &HkxHeader::new_skyrim_se());
+        assert_eq!(header.padding_size(), 0); // SkyrimSE, no padding.
 
-        let content_ver_str = actual.contents_version_string_as_str().unwrap();
+        let content_ver_str = header.contents_version_string_as_str().unwrap();
         assert_eq!(content_ver_str, "hk_2010.2.0-r1");
     }
 
     #[test]
     fn should_write_hkx_bytes() {
-        let actual = HkxHeader::new_skyrim_se();
-        assert_eq!(actual.as_bytes(), &SKYRIM_SE_ROW_HEADER);
+        assert_eq!(HkxHeader::new_skyrim_se().as_bytes(), &SKYRIM_SE_ROW_HEADER);
     }
 }

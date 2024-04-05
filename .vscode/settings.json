@@ -1,4 +1,5 @@
 {
+  "cSpell.spellCheckOnlyWorkspaceFiles": true,
   "editor.codeActionsOnSave": {
     "source.addMissingImports": "explicit",
     "source.fixAll.eslint": "explicit",
@@ -8,16 +9,17 @@
   // "rust-analyzer.checkOnSave": false,
   // "editor.formatOnSave": false
   "files.exclude": {
-    "**/node_modules": true, // optional
-    ".swc": true
+    ".swc": true,
+    "**/node_modules": true // optional
   },
   "files.trimTrailingWhitespace": true,
   "files.watcherExclude": {
     "**/.git/objects/**": true,
     "**/node_modules/**": true,
-    "**/target/**": true
+    "**/out/**": true, // Frountend build files
+    "**/target/**": true // Backend build files
   },
-  "rust-analyzer.check.command": "clippy",
   "i18n-ally.localesPaths": ["locales"],
+  "rust-analyzer.check.command": "clippy",
   "rust-analyzer.showUnlinkedFileNotification": false
 }

@@ -211,11 +211,9 @@ impl<'bytes> PackFileDeserializer<'bytes> {
         // 1. Read 64bytes hkx file header.
         let header = HkxHeader::<B>::ref_from(&bytes[start..size_of::<HkxHeader<B>>()]).unwrap();
         start += size_of::<HkxHeader<B>>();
+
         // 2. Skip padding
-        let padding = header.section_offset.get();
-        if padding > 0 {
-            start += padding as usize;
-        }
+        start += header.padding_size();
 
         // 3. Read 48bytes * 3 section headers
         let section_next_pos = start + size_of::<SectionHeader<B>>();

@@ -20,6 +20,7 @@ trait WriteFixup {
 /// This information indicates where the data of the field in the Class will be placed.
 #[derive(Debug, Clone, Default, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct LocalFixup {
+    /// Current reader seek position
     pub src: u32,
     /// This position indicates where the data of the field in the Class will be placed.
     ///
@@ -50,6 +51,7 @@ impl WriteFixup for LocalFixup {
 /// Location information needed when referencing class pointer, etc.
 #[derive(Debug, Clone, Default, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct GlobalFixup {
+    /// Current reader seek position
     pub src: u32,
     ///  Index Section ID
     ///
@@ -96,6 +98,8 @@ impl WriteFixup for GlobalFixup {
 /// Location information for the name of the C++ class that must call the constructor
 #[derive(Debug, Clone, Default, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VirtualFixup {
+    /// Current reader seek position
+    ///
     /// It is partially the same as the value in `globalFixup.dst`.
     pub src: u32,
     ///  Index Section ID

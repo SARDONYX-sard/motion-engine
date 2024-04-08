@@ -162,7 +162,7 @@ impl<'bytes> PackFileDeserializer<'bytes> {
     }
 
     /// # Expected bytes
-    /// The first of string ptr is the address of the pointer size, then comes the null terminated string.
+    /// Jump to local_map.dst by current position, then read null terminated string.
     pub fn read_string_ptr<'a>(&self, bytes: &'a [u8]) -> Result<Cow<'a, str>> {
         let current_start = self.current_position;
 

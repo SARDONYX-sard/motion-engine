@@ -240,6 +240,13 @@ mod tests {
     ];
 
     #[test]
+    fn should_parse_endian_bytes() {
+        assert_eq!(SKYRIM_SE_ROW_HEADER[16], 0x08); // pointer size
+        assert_eq!(SKYRIM_SE_ROW_HEADER[17], 0x01); // endian
+        assert_eq!(HkxHeader::is_big_endian(&SKYRIM_SE_ROW_HEADER), false);
+    }
+
+    #[test]
     fn should_read_hkx_bytes() {
         let header = HkxHeader::ref_from_bytes(&SKYRIM_SE_ROW_HEADER).unwrap();
         assert_eq!(header, &HkxHeader::new_skyrim_se());

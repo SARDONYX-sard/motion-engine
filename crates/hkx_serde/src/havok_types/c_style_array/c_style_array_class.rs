@@ -35,6 +35,36 @@ use serde::{Deserialize, Serialize};
 ///   And to do that, we need the parent enum that wraps this structure.
 pub type CStyleArrayClass<T, const N: usize> = CStyleArrayClassT<[CStyleArrayClassParam<T>; N]>;
 
+impl<T, const N: usize> CStyleArrayClass<T, N>
+where
+    T: core::fmt::Debug,
+{
+    /// Take value from wrapper
+    pub fn into_inner(self) -> [T; N] {
+        let t = self
+            .classes
+            .into_iter()
+            .map(|param| param.into_inner())
+            .collect::<Vec<_>>();
+        t.try_into().unwrap()
+    }
+}
+
+impl<T, const N: usize> From<[T; N]> for CStyleArrayClass<T, N>
+where
+    T: core::fmt::Debug,
+{
+    fn from(classes: [T; N]) -> Self {
+        let classes = classes
+            .into_iter()
+            .map(|value| CStyleArrayClassParam::from(value))
+            .collect::<Vec<_>>();
+        CStyleArrayClass {
+            classes: classes.try_into().unwrap(),
+        }
+    }
+}
+
 /// # Use the associated type.
 /// The reason for using associated types is that trying to hold `[T; N]` in `classes` results in a trait bound error.
 ///
@@ -53,21 +83,6 @@ where
     pub classes: T,
 }
 
-impl<T, const N: usize> From<[T; N]> for CStyleArrayClass<T, N>
-where
-    T: core::fmt::Debug,
-{
-    fn from(classes: [T; N]) -> Self {
-        let classes = classes
-            .into_iter()
-            .map(|value| CStyleArrayClassParam::from(value))
-            .collect::<Vec<_>>();
-        CStyleArrayClass {
-            classes: classes.try_into().unwrap(),
-        }
-    }
-}
-
 /// A field(`hkparam`) wrapper of C++ Class(`hkobject`)
 ///
 /// ```xml
@@ -82,6 +97,13 @@ pub struct CStyleArrayClassParam<T> {
     /// In XML `hkparam`
     #[serde(rename = "hkparam")]
     pub hkparam: T,
+}
+
+impl<T> CStyleArrayClassParam<T> {
+    /// Take inner hkparam
+    fn into_inner(self) -> T {
+        self.hkparam
+    }
 }
 
 impl<T> From<T> for CStyleArrayClassParam<T> {

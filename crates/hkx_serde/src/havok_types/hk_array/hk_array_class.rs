@@ -55,6 +55,16 @@ impl<T> Default for HkArrayClass<T> {
     }
 }
 
+impl<T> HkArrayClass<T> {
+    /// Take inner value.
+    pub fn into_inner(self) -> Vec<T> {
+        self.classes
+            .into_iter()
+            .map(|param_wrapper| param_wrapper.into_inner())
+            .collect()
+    }
+}
+
 impl<T> From<Vec<HkArrayClassParam<T>>> for HkArrayClass<T> {
     fn from(classes: Vec<HkArrayClassParam<T>>) -> Self {
         Self {
@@ -88,6 +98,13 @@ pub struct HkArrayClassParam<T> {
     /// In XML `hkparam`
     #[serde(rename = "hkparam")]
     pub hkparam: T,
+}
+
+impl<T> HkArrayClassParam<T> {
+    /// Takes inner hkparam value from wrapper.
+    pub fn into_inner(self) -> T {
+        self.hkparam
+    }
 }
 
 impl<T> From<T> for HkArrayClassParam<T> {

@@ -31,6 +31,16 @@ macro_rules! impl_serde_for_c_style_array {
             }
         }
 
+        impl<T, const N: usize> $struct_name<T, N>
+        where
+            T: Default + Copy + Serialize + core::fmt::Display,
+        {
+            /// Take inner value.
+            pub fn into_inner(self) -> [T; N] {
+                self.value
+            }
+        }
+
         impl<T, const N: usize> From<[T; N]> for $struct_name<T, N>
         where
             T: Default + Copy + Serialize + core::fmt::Display,

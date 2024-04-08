@@ -24,6 +24,13 @@ pub struct HkArrayRef<T> {
     pub values: Vec<T>,
 }
 
+impl<T> HkArrayRef<T> {
+    /// Take inner value.
+    pub fn into_inner(self) -> Vec<T> {
+        self.values
+    }
+}
+
 impl<T> From<Vec<T>> for HkArrayRef<T> {
     fn from(values: Vec<T>) -> Self {
         Self {

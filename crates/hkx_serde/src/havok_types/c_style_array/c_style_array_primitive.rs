@@ -28,6 +28,13 @@ pub struct CStyleArray<T> {
     pub value: T,
 }
 
+impl<T> CStyleArray<T> {
+    /// Take inner value.
+    pub fn into_inner(self) -> T {
+        self.value
+    }
+}
+
 impl<T> From<T> for CStyleArray<T> {
     fn from(value: T) -> Self {
         Self { value }

@@ -4,6 +4,12 @@ use std::borrow::Cow;
 /// Implement `From<Vec<T>>` & [`serde::Serialize`]/[`serde::Deserialize`]  for `HkArray`
 macro_rules! impl_serde_for_hk_array {
   ($struct_name:ident, $sep:literal, $chunk_size:literal) => {
+impl<T> $struct_name<T> {
+    /// Take inner value.
+    pub fn into_inner(self) -> Vec<T> {
+        self.values
+    }
+}
 
 impl<T> From<Vec<T>> for $struct_name<T> {
     fn from(values: Vec<T>) -> Self {

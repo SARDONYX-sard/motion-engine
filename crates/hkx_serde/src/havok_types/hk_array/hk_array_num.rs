@@ -39,6 +39,13 @@ pub struct HkArrayNum<T: Num> {
     pub values: Vec<T>,
 }
 
+impl<T: Num> HkArrayNum<T> {
+    /// Take inner value.
+    pub fn into_inner(self) -> Vec<T> {
+        self.values
+    }
+}
+
 // ! Quick_xml's `$text` made an error involving multiple numbers when taking a floating point mixed with tab.
 // ! To avoid the error, implement the deserializer manually.
 impl<'de, T> Deserialize<'de> for HkArrayNum<T>

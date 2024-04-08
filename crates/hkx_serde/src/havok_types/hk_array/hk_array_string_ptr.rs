@@ -36,6 +36,13 @@ pub struct HkArrayStringPtr<'a> {
     pub hkcstrings: Vec<Cow<'a, str>>,
 }
 
+impl<'a> HkArrayStringPtr<'a> {
+    /// Take inner value.
+    pub fn into_inner(self) -> Vec<Cow<'a, str>> {
+        self.hkcstrings
+    }
+}
+
 impl<'a> From<Vec<&'a str>> for HkArrayStringPtr<'a> {
     fn from(value: Vec<&'a str>) -> Self {
         Self {
@@ -58,7 +65,7 @@ impl<'a> From<Vec<Cow<'a, str>>> for HkArrayStringPtr<'a> {
     fn from(value: Vec<Cow<'a, str>>) -> Self {
         Self {
             numelements: value.len(),
-            hkcstrings: value
+            hkcstrings: value,
         }
     }
 }

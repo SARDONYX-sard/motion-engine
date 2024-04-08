@@ -201,7 +201,7 @@ impl<'bytes> PackFileDeserializer<'bytes> {
     ///
     /// # Note
     /// This method does not yet read the binary data information of the fields of the C++ Havok Class.
-    fn deserialize_headers_and_map<B>(bytes: &'bytes [u8]) -> Result<Self>
+    fn from_bytes<B>(bytes: &'bytes [u8]) -> Result<Self>
     where
         B: ByteOrder,
     {
@@ -254,23 +254,23 @@ impl<'bytes> PackFileDeserializer<'bytes> {
             deserialized_objects: IndexMap::new(),
         })
     }
+}
 
-    pub fn deserialize(bytes: &'bytes [u8]) -> Result<IndexMap<u32, ClassParams<'bytes>>> {
-        Ok(match HkxHeader::is_big_endian(bytes) {
-            true => {
-                let mut de = Self::deserialize_headers_and_map::<BigEndian>(bytes)?;
-                let data_section = de.data_section.section_data;
-                de.deserialize_virtual_class::<BigEndian>(data_section, 0)?;
-                de.deserialized_objects
-            }
-            false => {
-                let mut de = Self::deserialize_headers_and_map::<LittleEndian>(bytes)?;
-                let data_section = de.data_section.section_data;
-                de.deserialize_virtual_class::<LittleEndian>(data_section, 0)?;
-                de.deserialized_objects
-            }
-        })
-    }
+pub fn deserialize(bytes: &[u8]) -> Result<IndexMap<u32, ClassParams<'_>>> {
+    Ok(match HkxHeader::is_big_endian(bytes) {
+        true => {
+            let mut de = PackFileDeserializer::from_bytes::<BigEndian>(bytes)?;
+            let data_section = de.data_section.section_data;
+            de.deserialize_virtual_class::<BigEndian>(data_section, 0)?;
+            de.deserialized_objects
+        }
+        false => {
+            let mut de = PackFileDeserializer::from_bytes::<LittleEndian>(bytes)?;
+            let data_section = de.data_section.section_data;
+            de.deserialize_virtual_class::<LittleEndian>(data_section, 0)?;
+            de.deserialized_objects
+        }
+    })
 }
 
 /// Error type for binary data deserialization.
@@ -297,9 +297,16 @@ mod tests {
     fn should_deserialize() {
         let _guard = init_tracing(Some("deserialize_hkx_bytes"), false, Level::DEBUG);
         // let bytes = include_bytes!("../../../../tests/1hm_behavior_x86_64.hkx");
-        let bytes = include_bytes!("../../../../tests/defaultmale.hkx");
+        // let bytes = include_bytes!("../../../../tests/defaultmale.hkx");
 
-        match PackFileDeserializer::deserialize(bytes.as_slice()) {
+        let hkx_path = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+            .join("..")
+            .join("..")
+            .join("tests")
+            .join("defaultmale.hkx");
+        let bytes = std::fs::read(hkx_path).unwrap();
+
+        match deserialize(bytes.as_slice()) {
             Ok(obj) => {
                 dbg!(obj);
             }

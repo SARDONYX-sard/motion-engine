@@ -1,7 +1,7 @@
 use crate::{
+    cpp_type_parser::cpp_type_parser_for_xml,
     generators::{
         aliases::{FieldMap, LifeTimeMap},
-        cpp_type_parser::parse_cpp_type,
         lifetime_manager::{add_lifetime_to_array, get_type_with_lifetime},
     },
     hkxcmd_parser::{FlagValues, MemberInfo},
@@ -38,7 +38,7 @@ pub fn generate_visitor_fields<'a>(
             skip_serializing_attr.push_str(", skip_serializing")
         }
 
-        let (_, rust_type) = parse_cpp_type(type_name).unwrap();
+        let (_, rust_type) = cpp_type_parser_for_xml::parse_cpp_type(type_name).unwrap();
         let rust_type =
             match rust_type.starts_with("HkArray") || rust_type.starts_with("SingleClass") {
                 true => add_lifetime_to_array(&rust_type, life_time_map),

@@ -1,7 +1,5 @@
 use crate::generators::{
-    aliases::FieldMap,
-    lifetime_manager::get_lifetime_from_fields,
-    utils::{is_copyable, trim_primitive},
+    aliases::FieldMap, lifetime_manager::get_lifetime_from_fields, utils::is_copyable,
 };
 use convert_case::Casing;
 
@@ -34,27 +32,18 @@ pub fn generate_impl_from(rust_struct_name: &str, fields: &FieldMap) -> String {
 "#
     ));
 
-        let cast_method = if field_type.starts_with("Primitive") {
-            ".into_inner()"
-        } else {
-            ""
-        };
         visitor_to_struct_fields.push_str(&format!(
-            r#"            {struct_field}: {struct_field}.unwrap_or_default(){cast_method},
+            r#"            {struct_field}: {struct_field}.unwrap_or_default().into_inner(),
 "#
         ));
 
-        let cast_method = if field_type.starts_with("Primitive") {
-            if is_copyable(trim_primitive(field_type)) {
-                ".into()"
-            } else {
-                ".clone().into()"
-            }
+        let clone_method = if is_copyable(field_type) {
+            ""
         } else {
             ".clone()"
         };
         struct_ref_to_visitor_fields.push_str(&format!(
-            r#"            {rust_struct_name}Visitor::{enum_field}(data.{struct_field}{cast_method}),
+            r#"            {rust_struct_name}Visitor::{enum_field}(data.{struct_field}{clone_method}.into()),
 "#
         ));
     }

@@ -22,9 +22,3 @@ pub fn is_copyable(input: &str) -> bool {
             | "Matrix4<f32>"
     )
 }
-
-pub fn trim_primitive(input: &str) -> &str {
-    let start_index = input.find('<').unwrap() + 1;
-    let end_index = input.rfind('>').unwrap();
-    &input[start_index..end_index]
-}

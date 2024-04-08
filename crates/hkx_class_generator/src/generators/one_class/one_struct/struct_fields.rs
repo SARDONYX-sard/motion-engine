@@ -1,9 +1,8 @@
 use crate::{
+    cpp_type_parser::cpp_type_parser_for_struct::parse_cpp_type_to_non_wrapper,
     generators::{
         aliases::{FieldMap, LifeTimeMap},
-        cpp_type_parser::parse_cpp_type,
         lifetime_manager::{add_lifetime_to_array, get_type_with_lifetime},
-        utils::trim_primitive,
     },
     hkxcmd_parser::MemberInfo,
 };
@@ -35,14 +34,16 @@ pub fn generate_struct_fields<'a>(
             ..
         } = member;
 
-        let (_, rust_type) = parse_cpp_type(type_name).unwrap();
-        let rust_type =
-            match rust_type.starts_with("HkArray") || rust_type.starts_with("SingleClass") {
-                true => add_lifetime_to_array(&rust_type, life_time_map),
-                false => get_type_with_lifetime(&rust_type, life_time_map)
-                    .unwrap_or(rust_type.to_string())
-                    .to_string(),
-            };
+        // Rust Field type is non wrapper type
+        // e.g. `i16`
+        let (_, rust_type) = parse_cpp_type_to_non_wrapper(type_name).unwrap();
+
+        let rust_type = match type_name.starts_with("hkArray") || type_name.starts_with("struct") {
+            true => add_lifetime_to_array(&rust_type, life_time_map),
+            false => get_type_with_lifetime(&rust_type, life_time_map)
+                .unwrap_or(rust_type.to_string())
+                .to_string(),
+        };
 
         // These used for documentation purposes only
         let flags = flags.human_readable();
@@ -51,11 +52,6 @@ pub fn generate_struct_fields<'a>(
             tracing::debug!("\"{type_name}\" | ");
         };
         let type_name = type_name.replace("&lt;", "<").replace("&gt;", ">");
-        let rust_type_ = if rust_type.starts_with("Primitive<") {
-            trim_primitive(&rust_type).to_string()
-        } else {
-            rust_type.to_owned()
-        };
 
         let tag_name = member_name.to_case(Case::Snake);
         // Enum tag name(If the first letter is a number, escape it with `_`.)
@@ -71,7 +67,7 @@ pub fn generate_struct_fields<'a>(
     /// -   type: `{type_name}`
     /// - offset: {offset}
     /// -  flags: `{flags}`
-    pub {tag_name}: {rust_type_},
+    pub {tag_name}: {rust_type},
 "#
         ));
         fields.insert(member_name, (tag_name, rust_type.into()));

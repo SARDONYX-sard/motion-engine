@@ -1,3 +1,4 @@
+mod cpp_type_parser;
 pub mod generators;
 pub mod hkxcmd_parser;
 

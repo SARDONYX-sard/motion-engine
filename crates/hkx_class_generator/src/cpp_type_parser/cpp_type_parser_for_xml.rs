@@ -1,4 +1,11 @@
-//! C++ type => Rust type conversion
+//! C++ type => Rust type with wrapper conversion
+//!
+//! To (De)Serialize a Havok C++ Class as XML, the name attribute value must be a class field, so the only way is to use an internally tagged enum.
+//! Therefore, the type is wrapped in a wrapper.
+//!
+//! # Example
+//! `hkUint16` -> `Primitive<i16>`
+use super::cpp_type_parser_for_struct::parse_primitive_type_non_wrapper;
 use convert_case::{Case, Casing};
 use nom::{
     branch::alt,
@@ -13,7 +20,14 @@ use std::borrow::Cow;
 /// - example: `IResult<&str, Cow<'_, str>>`
 type IResult<I, O, E = nom::error::VerboseError<I>> = Result<(I, O), nom::Err<E>>;
 
-/// C++ type to Rust type conversion
+/// C++ type to Rust type conversion with wrapper type
+///
+/// This creates a wrapper type that is needed for the convenience of (de)serialization by quick_xml.
+///
+/// Therefore, it is used in the `Visitor`.
+///
+/// # Example
+/// `hkUint16` -> `Primitive<i16>`
 pub fn parse_cpp_type(input: &str) -> IResult<&str, Cow<'_, str>> {
     match input {
         "char*" | "hkBool" | "hkChar" | "hkHalf" | "hkInt16" | "hkInt32" | "hkInt8" | "hkReal"
@@ -30,7 +44,7 @@ pub fn parse_cpp_type(input: &str) -> IResult<&str, Cow<'_, str>> {
         input if input.ends_with('*') => Ok(("", "Primitive<Cow<'a, str>>".into())),
 
         input if input.starts_with("hkArray&lt;") || input.starts_with("hkSimpleArray&lt;") => {
-            parse_hk_array_type(input)
+            parse_hk_array_to_wrapper(input)
         }
 
         // `unknown` means that the information does not exist and is passed over with `()` and ignored.
@@ -39,7 +53,7 @@ pub fn parse_cpp_type(input: &str) -> IResult<&str, Cow<'_, str>> {
 
         input if input.starts_with("enum") => parse_enum_type(input),
         input if input.starts_with("flag") => parse_flags_type(input),
-        input if input.ends_with(']') => parse_array_type(input),
+        input if input.ends_with(']') => parse_array_to_wrapper_type(input),
         input => {
             let (input, struct_name) = parse_struct_type(input)?;
             let struct_name = format!("SingleClass<{struct_name}>");
@@ -78,41 +92,11 @@ fn parse_primitive_type(input: &str) -> IResult<&str, Cow<'_, str>> {
     )(input)
 }
 
-/// primitive non wrapper
+/// vector.
 ///
-/// Need a wrapper structure to get the value directly under the value tag in quick_xml,
-/// but you don't need a wrapper for the fixed array `[T; N]` in CStyle.
-fn parse_primitive_type_non_wrapper(input: &str) -> IResult<&str, Cow<'_, str>> {
-    map(
-        alt((
-            map(tag("hkBool"), |_| "bool"),
-            map(tag("hkChar"), |_| "char"),
-            //
-            map(tag("hkInt8"), |_| "i8"),
-            map(tag("hkInt16"), |_| "i16"),
-            map(tag("hkInt32"), |_| "i32"),
-            //
-            map(tag("hkHalf"), |_| "f32"), // f16
-            map(tag("hkReal"), |_| "f32"), // C++ float
-            //
-            map(tag("hkUint8"), |_| "u8"),
-            map(tag("hkUint16"), |_| "u16"),
-            map(tag("hkUint32"), |_| "u32"),
-            map(tag("hkUint64"), |_| "u64"),
-            map(tag("hkUlong"), |_| "usize"),
-            //
-            map(tag("char*"), |_| "Cow<'a, str>"),
-            map(tag("hkStringPtr"), |_| "Cow<'a, str>"),
-            //
-            map(tag("hkVariant"), |_| "u64"), // Fill in appropriate type for Variant
-            map(tag("void"), |_| "()"),
-        )),
-        Cow::from,
-    )(input)
-}
-
-/// vector
-fn parse_vector(input: &str) -> IResult<&str, Cow<'_, str>> {
+/// # Examples
+/// `hkMatrix3` -> `Matrix3<f32>`
+pub fn parse_vector(input: &str) -> IResult<&str, Cow<'_, str>> {
     map(
         alt((
             map(tag("hkMatrix3"), |_| "Matrix3<f32>"),
@@ -128,7 +112,7 @@ fn parse_vector(input: &str) -> IResult<&str, Cow<'_, str>> {
 }
 
 /// Has limit array. like `[3]`
-fn parse_array_type(input: &str) -> IResult<&str, Cow<'_, str>> {
+fn parse_array_to_wrapper_type(input: &str) -> IResult<&str, Cow<'_, str>> {
     fn parse_array_len(input: &str) -> IResult<&str, usize> {
         let (input, _) = tag("[")(input)?;
         let (input, size) = map_res(digit1, str::parse)(input)?;
@@ -168,7 +152,7 @@ fn parse_array_type(input: &str) -> IResult<&str, Cow<'_, str>> {
 }
 
 /// Convert to [`Vec`] since `hkArray` has no length limit.
-fn parse_hk_array_type(input: &str) -> IResult<&str, Cow<'_, str>> {
+fn parse_hk_array_to_wrapper(input: &str) -> IResult<&str, Cow<'_, str>> {
     let (input, _) = alt((tag("hkArray&lt;"), tag("hkSimpleArray&lt;")))(input)?;
     let (input, generics) = take_while(|c| c != '&')(input)?;
 
@@ -224,7 +208,11 @@ fn parse_hk_array_type(input: &str) -> IResult<&str, Cow<'_, str>> {
 }
 
 /// struct
-fn parse_struct_type(input: &str) -> IResult<&str, Cow<'_, str>> {
+///
+/// # Examples
+/// - `struct Foo` -> `Foo`
+/// - `struct Foo*` -> `Foo`
+pub fn parse_struct_type(input: &str) -> IResult<&str, Cow<'_, str>> {
     let (input, _) = opt(tag("struct"))(input)?;
     let (input, struct_name) = take_while(|c| c != '[' && c != '*')(input)?;
     let (input, _is_ptr) = opt(char('*'))(input)?;
@@ -295,9 +283,7 @@ pub fn generate_all_mapping_types(rpt_dir: impl AsRef<std::path::Path>) -> Strin
     let types_len = types.len();
 
     format!(
-        "//! This file is generated by `crate/src/generators/cpp_type_parser.rs`
-//! Please do not edit this file.
-
+        "//! This file is generated. Please do not edit this file.
 #[allow(unused)]
 #[rustfmt::skip]
 /// Mapping tuple between C++ Havok alias type-inclusive types and Rust types.
@@ -308,21 +294,21 @@ pub const HK_TYPES: [(&str, &str); {types_len}] = {types:#?};\n"
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::generators::generated_types::HK_TYPES;
+    use crate::cpp_type_parser::generated_types_for_xml::HK_TYPES;
     use hkx_serde_tracing::init_tracing;
     use pretty_assertions::assert_eq;
 
     #[test]
     fn should_parse_array() {
         let input = "hkArray&lt;BSBoneSwitchGeneratorBoneData*&gt;";
-        let (_, rust_array) = parse_hk_array_type(input).unwrap();
+        let (_, rust_array) = parse_hk_array_to_wrapper(input).unwrap();
         assert_eq!(rust_array, "HkArrayRef<Cow<'a, str>>");
     }
 
     #[test]
     fn should_parse_c_style_array() {
         let input = "struct hkpVehicleFrictionStatusAxisStatus[2]";
-        let (_, rust_array) = parse_array_type(input).unwrap();
+        let (_, rust_array) = parse_array_to_wrapper_type(input).unwrap();
 
         let expected = "CStyleArrayClass<HkpVehicleFrictionStatusAxisStatus, 2>";
         assert_eq!(rust_array, expected);
@@ -365,7 +351,8 @@ mod tests {
         let output_file = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
             .join("src")
             .join("generators")
-            .join("generated_types.rs");
+            .join("generated_types_for_xml.rs");
+
         std::fs::write(output_file, generate_all_mapping_types(rpt_dir)).unwrap();
     }
 }

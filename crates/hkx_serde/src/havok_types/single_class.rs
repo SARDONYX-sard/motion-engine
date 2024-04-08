@@ -34,6 +34,13 @@ pub struct SingleClass<T> {
     pub class: SingleClassParam<T>,
 }
 
+impl<T> SingleClass<T> {
+    /// Take inner value.
+    pub fn into_inner(self) -> T {
+        self.class.hkparam
+    }
+}
+
 impl<T> From<SingleClassParam<T>> for SingleClass<T> {
     fn from(class: SingleClassParam<T>) -> Self {
         Self { class }
@@ -58,6 +65,7 @@ impl<T> From<T> for SingleClass<T> {
 /// ````
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct SingleClassParam<T> {
+    /// Expected [`Vec<&str>`], [`i16`], etc.
     #[serde(rename = "hkparam")]
     pub hkparam: T,
 }

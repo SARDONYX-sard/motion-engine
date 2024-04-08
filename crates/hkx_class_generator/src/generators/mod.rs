@@ -5,8 +5,6 @@
 // subs
 mod aliases;
 mod class_params;
-mod cpp_type_parser;
-mod generated_types;
 mod lifetime_manager;
 
 mod all_class;

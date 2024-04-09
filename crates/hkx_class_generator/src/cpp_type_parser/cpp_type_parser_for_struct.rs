@@ -34,7 +34,7 @@ pub fn parse_cpp_type_to_non_wrapper(input: &str) -> IResult<&str, Cow<'_, str>>
             Ok((input, format!("Primitive<{vec_type}>").into()))
         }
 
-        input if input.ends_with('*') => Ok(("", "Primitive<Cow<'a, str>>".into())),
+        input if input.ends_with('*') => Ok(("", "Cow<'a, str>".into())),
 
         input if input.starts_with("hkArray&lt;") || input.starts_with("hkSimpleArray&lt;") => {
             parse_hk_array_to_non_wrapper(input)
@@ -42,7 +42,7 @@ pub fn parse_cpp_type_to_non_wrapper(input: &str) -> IResult<&str, Cow<'_, str>>
 
         // `unknown` means that the information does not exist and is passed over with `()` and ignored.
         // All `unknown` type C++ class fields have `SKIP_SERIALIZE` flag, so this operation may be safe.
-        "flags unknown" | "enum unknown" => Ok(("", "Primitive<()>".into())),
+        "flags unknown" | "enum unknown" => Ok(("", "()".into())),
 
         input if input.starts_with("enum") => parse_enum_to_non_wrapper(input),
         input if input.starts_with("flag") => parse_flags_to_non_wrapper(input),
@@ -240,8 +240,9 @@ pub const HK_TYPES: [(&str, &str); {types_len}] = {types:#?};\n"
 
         let output_file = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
             .join("src")
-            .join("generators")
-            .join("generated_types_for_struct_fields.rs");
+            .join("cpp_type_parser")
+            .join("generated")
+            .join("types_for_struct_fields.rs");
         std::fs::write(output_file, generate_all_mapping_types(rpt_dir)).unwrap();
     }
 }

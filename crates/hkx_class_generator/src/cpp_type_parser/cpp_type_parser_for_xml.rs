@@ -294,7 +294,7 @@ pub const HK_TYPES: [(&str, &str); {types_len}] = {types:#?};\n"
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::cpp_type_parser::generated_types_for_xml::HK_TYPES;
+    use crate::cpp_type_parser::generated::types_for_xml::HK_TYPES;
     use hkx_serde_tracing::init_tracing;
     use pretty_assertions::assert_eq;
 
@@ -350,8 +350,9 @@ mod tests {
 
         let output_file = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
             .join("src")
-            .join("generators")
-            .join("generated_types_for_xml.rs");
+            .join("cpp_type_parser")
+            .join("generated")
+            .join("types_for_xml.rs");
 
         std::fs::write(output_file, generate_all_mapping_types(rpt_dir)).unwrap();
     }

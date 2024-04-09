@@ -1,5 +1,7 @@
 mod cpp_type_parser;
 pub mod generators;
+#[cfg(test)]
+mod generators_tests;
 pub mod hkxcmd_parser;
 
 pub use generators::generate_classes;

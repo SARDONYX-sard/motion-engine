@@ -163,34 +163,3 @@ impl {enum_name} {{
 
     rust_code
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    #[allow(unused)]
-    use pretty_assertions::assert_eq;
-
-    #[test]
-    fn test_generate_bitflags() {
-        // Define an example enum info
-        let enum_info = (
-            "FlagValues".into(),
-            vec![
-                ("FLAGS_NONE", 0),
-                ("ALIGN8", 1 << 7),
-                ("ALIGN16", 1 << 8),
-                ("NOT_OWNED", 1 << 9),
-                ("SERIALIZE_IGNORED", 1 << 10),
-            ]
-            .into_iter()
-            .map(|(tag, value)| (tag.into(), value))
-            .collect(),
-        );
-        let generated_code = generate_bitflags(&enum_info);
-
-        let expected = include_str!("../../../src/hkxcmd_parser/flag_values.rs");
-        let expected = &expected[..expected.find("#[cfg(test").unwrap()];
-        assert_eq!(generated_code, expected);
-        tracing::debug!("{generated_code}");
-    }
-}

@@ -25,3 +25,4 @@ tracing = "0.1"                                    # Logger
 hkx_serde_tracing = { path = "../hkx_serde_tracing" }
 pretty_assertions = "1.4"
 quick-xml = { version = "0.31", features = ["serialize", "serde-types"] }
+insta = { version = "1.38" }

@@ -1,5 +1,5 @@
 mod all_fields;
-mod bitflags;
+pub mod bitflags;
 pub mod enum_tagged;
 pub mod generate_enum;
 mod one_struct;

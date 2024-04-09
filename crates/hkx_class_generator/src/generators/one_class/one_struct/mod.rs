@@ -38,7 +38,7 @@ pub fn generate_struct(
 
     let parent_doc = parent
         .as_ref()
-        .map(|(name, signature)| format!("\n/// -    parent: `{name}`/`0x{signature:x}`"))
+        .map(|(name, signature)| format!("\n/// -    parent: `{name}`/`{signature:#x}`"))
         .unwrap_or_default();
 
     // ! The lifetime annotation of a structure cannot be made without first calculating whether or not the fields has a lifetime.
@@ -73,7 +73,7 @@ pub fn generate_struct(
 /// # C++ Class Info
 /// -      size: {size}
 /// -    vtable: {vtable}{parent_doc}
-/// - signature: `0x{signature:x}`
+/// - signature: `{signature:#x}`
 /// -   version: {version}
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, Default, PartialEq{derive_serde})]

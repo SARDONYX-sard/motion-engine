@@ -46,11 +46,6 @@ pub fn generate_struct_fields<'a>(
         };
 
         // These used for documentation purposes only
-        let flags = flags.human_readable();
-        #[cfg(test)]
-        if type_name.starts_with("flags") && type_name != "flags unknown" {
-            tracing::debug!("\"{type_name}\" | ");
-        };
         let type_name = type_name.replace("&lt;", "<").replace("&gt;", ">");
 
         let tag_name = member_name.to_case(Case::Snake);

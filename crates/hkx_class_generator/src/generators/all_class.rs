@@ -2,7 +2,7 @@ use super::{
     class_params::generate_class_params,
     lifetime_manager::get_lifetime_from_fields,
     one_class::{
-        generate_all_fields, generate_one_class, visitor::visitor_fields::generate_visitor_fields,
+        generate_all_fields, generate_one_class, enum_tagged::tagged_fields::generate_tagged_fields,
     },
 };
 use crate::hkxcmd_parser::parse_class;
@@ -94,7 +94,7 @@ pub fn generate_classes(output_dir: impl AsRef<Path>, rpt_dir: impl AsRef<Path>)
     for (_sig, class) in class_map.clone().into_iter() {
         // fields = IndexMap<"C++ field name", ("rust enum tag name", "rust type name")>
         let (_rust_fields_code, fields) =
-            generate_all_fields(&class, &class_map, None, generate_visitor_fields);
+            generate_all_fields(&class, &class_map, None, generate_tagged_fields);
 
         let life_time = get_lifetime_from_fields(&fields);
         let rust_struct_name = class.name.to_case(Case::Pascal);
@@ -111,7 +111,7 @@ pub fn generate_classes(output_dir: impl AsRef<Path>, rpt_dir: impl AsRef<Path>)
             class,
             &class_map,
             Some(&life_time_name_map),
-            generate_visitor_fields,
+            generate_tagged_fields,
         );
 
         let life_time = get_lifetime_from_fields(&fields);

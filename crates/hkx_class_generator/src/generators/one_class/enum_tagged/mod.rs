@@ -1,4 +1,4 @@
-use self::{impl_deserialize::generate_impl_deserialize, visitor_fields::generate_visitor_fields};
+use self::{impl_deserialize::generate_impl_deserialize, tagged_fields::generate_tagged_fields};
 use super::all_fields::generate_all_fields;
 use crate::generators::{
     aliases::{ClassMap, LifeTimeMap},
@@ -7,10 +7,12 @@ use crate::generators::{
 use convert_case::{Case, Casing as _};
 
 mod impl_deserialize;
-pub mod visitor_fields;
+pub mod tagged_fields;
+
+pub const ENUM_UNIQUE_NAME: &str = "Tagged";
 
 /// Generate Rust XML Serialize/Deserialize structs code from C++ class info>
-pub fn generate_visitor(
+pub fn generate_tagged_enum(
     cpp_class_name: &str,
     classes_map: &ClassMap,
     life_time_map: &LifeTimeMap,
@@ -25,13 +27,13 @@ pub fn generate_visitor(
         class,
         classes_map,
         Some(life_time_map),
-        generate_visitor_fields,
+        generate_tagged_fields,
     );
 
     // e.g. `HkColor<'a>`
     let rust_enum_name = class_name.to_case(Case::Pascal);
     let life_time = get_lifetime_from_fields(&fields);
-    let rust_enum_name_with_life_time = format!("{rust_enum_name}Visitor{life_time}");
+    let rust_enum_name_with_life_time = format!("{rust_enum_name}{ENUM_UNIQUE_NAME}{life_time}");
 
     // Because the manual deserializer cannot be implemented if there is nothing in the tag of the enum representing all fields in the C++ Class.
     // Derive `serde::Deserialize`.
@@ -45,9 +47,9 @@ pub fn generate_visitor(
     rust_code.push_str(&format!(
         r#"
 
-/// # Why use Visitor pattern?
+/// # Why use this?
 /// Since the C++ field must be deserialized from the `name` attribute name of the `hkparam` in the XML,
-/// this is accomplished by having the Visitor process the internally tagged enum and convert it.
+/// this is accomplished by having the process the internally tagged enum and convert it.
 /// Leakage of field items may occur if Vec<enum> is left as it is.
 ///
 /// struct -> (De)serialize by visitor -> struct

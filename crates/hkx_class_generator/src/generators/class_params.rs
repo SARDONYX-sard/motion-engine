@@ -1,7 +1,7 @@
 use super::{
     aliases::{ClassMap, LifeTimeMap},
     lifetime_manager::get_lifetime_from_fields,
-    one_class::{generate_all_fields, visitor::visitor_fields::generate_visitor_fields},
+    one_class::{generate_all_fields, enum_tagged::tagged_fields::generate_tagged_fields},
 };
 use convert_case::{Case, Casing as _};
 
@@ -41,7 +41,7 @@ pub fn generate_class_params(class_map: &ClassMap, life_time_map: &LifeTimeMap) 
             class,
             class_map,
             Some(life_time_map),
-            generate_visitor_fields,
+            generate_tagged_fields,
         );
         let life_time = get_lifetime_from_fields(&fields);
         let rust_class_name_with_life_time = format!("{rust_enum_name}{life_time}");

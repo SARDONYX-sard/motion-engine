@@ -1,9 +1,10 @@
 use crate::generators::{
-    aliases::FieldMap, lifetime_manager::get_lifetime_from_fields, utils::is_copyable,
+    aliases::FieldMap, lifetime_manager::get_lifetime_from_fields,
+    one_class::enum_tagged::ENUM_UNIQUE_NAME, utils::is_copyable,
 };
 use convert_case::Casing;
 
-/// Generate code to define the conversion for `Visitor` <-> `Struct`.
+/// Generate code to define the conversion for `Tagged enum for XML` <-> `Struct`.
 pub fn generate_impl_from(rust_struct_name: &str, fields: &FieldMap) -> String {
     let mut return_rust_code = String::new();
 
@@ -13,7 +14,7 @@ pub fn generate_impl_from(rust_struct_name: &str, fields: &FieldMap) -> String {
     let mut fields_values_code = String::new();
     let mut enum_match_inner = String::new();
     let mut visitor_to_struct_fields = String::new();
-    let mut struct_ref_to_visitor_fields = String::new();
+    let mut struct_ref_to_enum_fields = String::new();
 
     for (_, (struct_field, field_type)) in fields {
         let enum_field = struct_field.to_case(convert_case::Case::Pascal);
@@ -28,7 +29,7 @@ pub fn generate_impl_from(rust_struct_name: &str, fields: &FieldMap) -> String {
         ));
 
         enum_match_inner.push_str(&format!(
-        r#"                {rust_struct_name}Visitor::{enum_field}(m) => {struct_field} = Some(m),
+        r#"                {rust_struct_name}{ENUM_UNIQUE_NAME}::{enum_field}(m) => {struct_field} = Some(m),
 "#
     ));
 
@@ -42,24 +43,24 @@ pub fn generate_impl_from(rust_struct_name: &str, fields: &FieldMap) -> String {
         } else {
             ".clone()"
         };
-        struct_ref_to_visitor_fields.push_str(&format!(
-            r#"            {rust_struct_name}Visitor::{enum_field}(data.{struct_field}{clone_method}.into()),
+        struct_ref_to_enum_fields.push_str(&format!(
+            r#"            {rust_struct_name}{ENUM_UNIQUE_NAME}::{enum_field}(data.{struct_field}{clone_method}.into()),
 "#
         ));
     }
 
     // serde only supports up to `[T; 32]`, so use `Vec` if it is larger than that.
-    let visitor_array_type = if fields_len > 0 {
-        format!("Vec<{rust_struct_name}Visitor{lifetime}>")
+    let enum_array_type = if fields_len > 0 {
+        format!("Vec<{rust_struct_name}{ENUM_UNIQUE_NAME}{lifetime}>")
     } else {
-        format!("[{rust_struct_name}Visitor{lifetime}; {fields_len}]")
+        format!("[{rust_struct_name}{ENUM_UNIQUE_NAME}{lifetime}; {fields_len}]")
     };
     let vec_macro = if fields_len > 0 { "vec!" } else { "" };
-    // Visitor to Struct Code
+    // Tagged enum to Struct Code
     return_rust_code.push_str(&format!(
         r#"
-impl{lifetime} From<{visitor_array_type}> for {rust_struct_name}{lifetime} {{
-    fn from(_values: {visitor_array_type}) -> Self {{
+impl{lifetime} From<{enum_array_type}> for {rust_struct_name}{lifetime} {{
+    fn from(_values: {enum_array_type}) -> Self {{
 {fields_values_code}
 
         for _value in _values {{
@@ -68,7 +69,7 @@ impl{lifetime} From<{visitor_array_type}> for {rust_struct_name}{lifetime} {{
             }}
         }}
 
-        // This `unwrap_or_default` is never called because it depends on the default value of `Visitor
+        // This `unwrap_or_default` is never called because it depends on the default value of `{ENUM_UNIQUE_NAME}
         Self {{
 {visitor_to_struct_fields}
         }}
@@ -77,10 +78,10 @@ impl{lifetime} From<{visitor_array_type}> for {rust_struct_name}{lifetime} {{
 
 // The only way to create a possessive type from a reference is to `clone` it.
 // This `From` is only used for serialization, so this overhead is only incurred during serialization.
-impl{lifetime} From<&{rust_struct_name}{lifetime}> for {visitor_array_type} {{
+impl{lifetime} From<&{rust_struct_name}{lifetime}> for {enum_array_type} {{
     fn from(data: &{rust_struct_name}{lifetime}) -> Self {{
         {vec_macro}[
-{struct_ref_to_visitor_fields}
+{struct_ref_to_enum_fields}
         ]
     }}
 }}

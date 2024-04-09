@@ -1,12 +1,12 @@
 mod all_fields;
 mod bitflags;
+pub mod enum_tagged;
 pub mod generate_enum;
 mod one_struct;
-pub mod visitor;
 
 use self::{
-    bitflags::generate_bitflags, generate_enum::generate_enums, one_struct::generate_struct,
-    visitor::generate_visitor,
+    bitflags::generate_bitflags, enum_tagged::generate_tagged_enum, generate_enum::generate_enums,
+    one_struct::generate_struct,
 };
 use super::aliases::{ClassMap, LifeTimeMap};
 pub use all_fields::generate_all_fields;
@@ -42,7 +42,7 @@ use crate::havok_types::*;
 "#));
 
     rust_code.push_str(&generate_struct(cpp_class_name, classes_map, life_time_map));
-    let visitor_code = generate_visitor(cpp_class_name, classes_map, life_time_map);
+    let visitor_code = generate_tagged_enum(cpp_class_name, classes_map, life_time_map);
     rust_code.push_str(&visitor_code);
 
     // Generate flags and enum

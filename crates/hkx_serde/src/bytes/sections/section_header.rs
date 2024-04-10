@@ -55,6 +55,13 @@ pub struct SectionHeader<O: ByteOrder> {
     pub end_offset: U32<O>,
 }
 
+impl SectionHeader<LittleEndian> {
+    /// Get header length. 48(bytes)
+    pub const fn len() -> usize {
+        core::mem::size_of::<Self>()
+    }
+}
+
 impl<O: ByteOrder> SectionHeader<O> {
     /// Interprets the given `bytes` as a `&Self` without copying.
     ///
@@ -65,7 +72,7 @@ impl<O: ByteOrder> SectionHeader<O> {
         if bytes.len() < core::mem::size_of::<Self>() {
             return Err(SectionHeaderError::InsufficientLength);
         }
-        let ref_header = Self::ref_from(bytes).ok_or(SectionHeaderError::UnAlignment)?;
+        let ref_header = Self::ref_from_prefix(bytes).ok_or(SectionHeaderError::UnAlignment)?;
 
         // Separator must set `0xFF`.
         let separator = ref_header.section_tag_separator;

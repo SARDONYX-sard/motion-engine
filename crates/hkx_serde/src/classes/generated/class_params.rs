@@ -1,7 +1,7 @@
 //! The type of enumeration of all C++ havok class fields.
 use super::*;
 use crate::bytes::*;
-use crate::classes::Class;
+use crate::classes::{Class, Name, Signature};
 use crate::error::{HkxError, Result};
 use serde::de::{self, Deserializer, MapAccess, Visitor};
 use serde::{Deserialize, Serialize};
@@ -37,6 +37,31 @@ pub enum ClassParams<'a> {
     #[serde(bound(deserialize = "Box<HkRootLevelContainer<'a>>: Deserialize<'de>"))]
     HkRootLevelContainer(Box<HkRootLevelContainer<'a>>),
 }
+
+impl ClassParams<'_> {
+    pub fn class_name(&self) -> &'static str {
+        match &self {
+            ClassParams::Unknown => todo!(),
+            ClassParams::HkbProjectData(_) => "hkbProjectData",
+            ClassParams::HkbProjectStringData(_) => "hkbProjectStringData",
+            ClassParams::HkbTransitionEffect(_) => "hkbTransitionEffect",
+            ClassParams::HkRootLevelContainerNamedVariant(_) => "hkRootLevelContainerNamedVariant",
+            ClassParams::HkRootLevelContainer(_) => "hkRootLevelContainer",
+        }
+    }
+
+    pub fn signature(&self) -> u32 {
+        match &self {
+            ClassParams::Unknown => todo!(),
+            ClassParams::HkbProjectData(_) => 0x13a39ba7,
+            ClassParams::HkbProjectStringData(_) => 0x76ad60a,
+            ClassParams::HkbTransitionEffect(_) => 0x945da157,
+            ClassParams::HkRootLevelContainerNamedVariant(_) => 0xb103a2cd,
+            ClassParams::HkRootLevelContainer(_) => 0x2772c11e,
+        }
+    }
+}
+
 impl<'a> Serialize for Class<'a> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -108,9 +133,9 @@ impl<'de> Deserialize<'de> for Class<'de> {
             where
                 M: MapAccess<'de>,
             {
-                let mut name: Option<Cow<'de, str>> = None;
+                let mut name: Option<Name> = None;
                 let mut class: Option<Cow<'de, str>> = None;
-                let mut signature: Option<Cow<'de, str>> = None;
+                let mut signature: Option<Signature> = None;
                 let mut hkparam: Option<ClassParams<'de>> = None;
 
                 while let Some(key) = map.next_key::<Cow<'_, str>>()? {
@@ -194,31 +219,29 @@ impl<'a> ClassParams<'a> {
     /// # Assumptions
     /// - The starting point of `bytes` must be the binary data position of the fields
     ///   of the class(`class_name`) to be deserialized.
-    pub fn from_class_name_and_bytes<B>(
+    pub fn from_bytes(
         class_name: &str,
-        bytes: &'a [u8],
-        de: &mut PackFileDeserializer<'a>,
-    ) -> Result<Self>
-    where
-        B: ByteOrder,
-    {
+        deserializer: &'a impl ByteDeserializer,
+        position: &mut u32,
+    ) -> Result<Self> {
         Ok(match class_name {
-            "hkbProjectData" => {
-                ClassParams::HkbProjectData(Box::new(HkbProjectData::from_bytes::<B>(bytes, de)?))
-            }
+            "hkbProjectData" => ClassParams::HkbProjectData(Box::new(HkbProjectData::from_bytes(
+                deserializer,
+                position,
+            )?)),
             "hkbProjectStringData" => ClassParams::HkbProjectStringData(Box::new(
-                HkbProjectStringData::from_bytes::<B>(bytes, de)?,
+                HkbProjectStringData::from_bytes(deserializer, position)?,
             )),
             "hkbTransitionEffect" => ClassParams::HkbTransitionEffect(Box::new(
-                HkbTransitionEffect::from_bytes::<B>(bytes, de)?,
+                HkbTransitionEffect::from_bytes(deserializer, position)?,
             )),
             "hkRootLevelContainerNamedVariant" => {
                 ClassParams::HkRootLevelContainerNamedVariant(Box::new(
-                    HkRootLevelContainerNamedVariant::from_bytes::<B>(bytes, de)?,
+                    HkRootLevelContainerNamedVariant::from_bytes(deserializer, position)?,
                 ))
             }
             "hkRootLevelContainer" => ClassParams::HkRootLevelContainer(Box::new(
-                HkRootLevelContainer::from_bytes::<B>(bytes, de)?,
+                HkRootLevelContainer::from_bytes(deserializer, position)?,
             )),
 
             unknown => return Err(HkxError::UnknownHavokClass(unknown.into())),

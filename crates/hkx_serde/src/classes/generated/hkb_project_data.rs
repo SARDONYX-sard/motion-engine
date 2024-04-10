@@ -2,10 +2,7 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
-#![allow(
-  clippy::clone_on_copy,
-  clippy::unit_arg
-)]
+#![allow(clippy::clone_on_copy, clippy::unit_arg)]
 
 #[allow(unused)]
 use super::*;
@@ -88,12 +85,11 @@ impl<'de> Deserialize<'de> for HkbProjectData<'de> {
 
 impl<'a> From<Vec<HkbProjectDataVisitor<'a>>> for HkbProjectData<'a> {
     fn from(_values: Vec<HkbProjectDataVisitor<'a>>) -> Self {
-            let mut mem_size_and_flags = None;
-            let mut reference_count = None;
-            let mut world_up_ws = None;
-            let mut string_data = None;
-            let mut default_event_mode = None;
-
+        let mut mem_size_and_flags = None;
+        let mut reference_count = None;
+        let mut world_up_ws = None;
+        let mut string_data = None;
+        let mut default_event_mode = None;
 
         for _value in _values {
             match _value {
@@ -102,7 +98,6 @@ impl<'a> From<Vec<HkbProjectDataVisitor<'a>>> for HkbProjectData<'a> {
                 HkbProjectDataVisitor::WorldUpWs(m) => world_up_ws = Some(m),
                 HkbProjectDataVisitor::StringData(m) => string_data = Some(m),
                 HkbProjectDataVisitor::DefaultEventMode(m) => default_event_mode = Some(m),
-
             }
         }
 
@@ -113,7 +108,6 @@ impl<'a> From<Vec<HkbProjectDataVisitor<'a>>> for HkbProjectData<'a> {
             world_up_ws: world_up_ws.unwrap_or_default().into_inner(),
             string_data: string_data.unwrap_or_default().into_inner(),
             default_event_mode: default_event_mode.unwrap_or_default().into_inner(),
-
         }
     }
 }
@@ -123,29 +117,44 @@ impl<'a> From<Vec<HkbProjectDataVisitor<'a>>> for HkbProjectData<'a> {
 impl<'a> From<&HkbProjectData<'a>> for Vec<HkbProjectDataVisitor<'a>> {
     fn from(data: &HkbProjectData<'a>) -> Self {
         vec![
-            HkbProjectDataVisitor::MemSizeAndFlags(data.mem_size_and_flags.into()),
-            HkbProjectDataVisitor::ReferenceCount(data.reference_count.into()),
+            // HkbProjectDataVisitor::MemSizeAndFlags(data.mem_size_and_flags.into()),
+            // HkbProjectDataVisitor::ReferenceCount(data.reference_count.into()),
             HkbProjectDataVisitor::WorldUpWs(data.world_up_ws.into()),
             HkbProjectDataVisitor::StringData(data.string_data.clone().into()),
             HkbProjectDataVisitor::DefaultEventMode(data.default_event_mode.clone().into()),
-
         ]
     }
 }
 
-impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkbProjectData<'de> {
-    fn from_bytes<B>(
-        _bytes: &'bytes [u8],
-        _de: &mut PackFileDeserializer,
-    ) -> Result<Self>
+impl<'de> ByteDeSerialize<'de> for HkbProjectData<'de> {
+    fn from_bytes<D>(deserializer: &'de D, position: &mut u32) -> Result<Self>
     where
-        B: ByteOrder,
-        Self: Sized + 'de
+        D: ByteDeserializer,
+        Self: Sized + 'de,
     {
-        todo!()
+        // `hkBaseObject`
+        deserializer.read_usize(position)?; // offset: 0
+
+        // `hkReferencedObject`
+        let mem_size_and_flags = deserializer.read_u16(position)?; // offset: 8
+        let reference_count = deserializer.read_i16(position)?; // offset: 10
+        deserializer.read_usize(position)?; // offset: 12
+
+        // `hkbProjectData`
+        let world_up_ws = deserializer.read_vector4(position)?; // offset: 20
+        let string_data = deserializer.read_class_ptr(position)?; // offset: 36
+        let default_event_mode = EventMode::from_u8(deserializer.read_u8(position)?).unwrap(); // offset: 44
+        *position += 7;
+
+        Ok(Self {
+            mem_size_and_flags,
+            reference_count,
+            world_up_ws,
+            string_data,
+            default_event_mode,
+        })
     }
 }
-
 
 /// # Why use Visitor pattern?
 /// Since the C++ field must be deserialized from the `name` attribute name of the `hkparam` in the XML,

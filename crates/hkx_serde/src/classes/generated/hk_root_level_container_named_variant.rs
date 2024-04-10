@@ -106,18 +106,15 @@ impl<'a> From<&HkRootLevelContainerNamedVariant<'a>>
     }
 }
 
-impl<'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkRootLevelContainerNamedVariant<'de> {
-    fn from_bytes<B>(bytes: &'bytes [u8], de: &mut PackFileDeserializer) -> Result<Self>
+impl<'de> ByteDeSerialize<'de> for HkRootLevelContainerNamedVariant<'de> {
+    fn from_bytes<D>(deserializer: &'de D, position: &mut u32) -> Result<Self>
     where
-        B: ByteOrder,
+        D: ByteDeserializer,
         Self: Sized + 'de,
     {
-        let name = de.read_string_ptr(bytes)?;
-        de.move_current_position_usize();
-        let class_name = de.read_string_ptr(bytes)?;
-        de.move_current_position_usize();
-        let variant = de.read_class_ptr()?;
-        de.move_current_position_usize();
+        let name = deserializer.read_string_ptr(position)?;
+        let class_name = deserializer.read_string_ptr(position)?;
+        let variant = deserializer.read_class_ptr(position)?;
 
         Ok(Self {
             name,

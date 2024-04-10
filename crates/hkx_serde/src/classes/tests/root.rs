@@ -64,9 +64,9 @@ mod tests {
                 name: "__data__".into(),
                 classes: [
                     Class {
-                        name: "#0050".into(),
+                        name: 50.into(),
                         class: "hkRootLevelContainer".into(),
-                        signature: "0x2772c11e".into(),
+                        signature: 0x2772c11e.into(),
                         hkparams: ClassParams::HkRootLevelContainer(Box::new(
                             HkRootLevelContainer {
                                 named_variants: HkArrayClass {
@@ -84,9 +84,9 @@ mod tests {
                         )),
                     },
                     Class {
-                        name: "#0051".into(),
+                        name: 51.into(),
                         class: "hkbProjectData".into(),
-                        signature: "0x13a39ba7".into(),
+                        signature: 0x13a39ba7.into(),
                         hkparams: ClassParams::HkbProjectData(Box::new(HkbProjectData {
                             mem_size_and_flags: 0,
                             reference_count: 0,
@@ -101,9 +101,9 @@ mod tests {
                         })),
                     },
                     Class {
-                        name: "#0052".into(),
+                        name: 52.into(),
                         class: "hkbProjectStringData".into(),
-                        signature: "0x076ad60a".into(),
+                        signature: 0x076ad60a.into(),
                         hkparams: ClassParams::HkbProjectStringData(Box::new(
                             HkbProjectStringData {
                                 character_filenames: HkArrayStringPtr {
@@ -147,9 +147,9 @@ mod tests {
                 name: "__data__".into(),
                 classes: [
                     Class {
-                        name: "#0050".into(),
+                        name: 50.into(),
                         class: "hkRootLevelContainer".into(),
-                        signature: "0x2772c11e".into(),
+                        signature: 0x2772c11e.into(),
                         hkparams: ClassParams::HkRootLevelContainer(Box::new(
                             HkRootLevelContainer {
                                 named_variants: HkArrayClass {
@@ -167,9 +167,9 @@ mod tests {
                         )),
                     },
                     Class {
-                        name: "#0051".into(),
+                        name: 51.into(),
                         class: "hkbProjectData".into(),
-                        signature: "0x13a39ba7".into(),
+                        signature: 0x13a39ba7.into(),
                         hkparams: ClassParams::HkbProjectData(Box::new(HkbProjectData {
                             mem_size_and_flags: 0,
                             reference_count: 0,
@@ -184,9 +184,9 @@ mod tests {
                         })),
                     },
                     Class {
-                        name: "#0052".into(),
+                        name: 52.into(),
                         class: "hkbProjectStringData".into(),
-                        signature: "0x076ad60a".into(),
+                        signature: 0x076ad60a.into(),
                         hkparams: ClassParams::HkbProjectStringData(Box::new(
                             HkbProjectStringData {
                                 character_filenames: HkArrayStringPtr {

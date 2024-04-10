@@ -24,7 +24,7 @@ pub fn generate_impl_from(rust_struct_name: &str, fields: &FieldMap) -> String {
         };
 
         fields_values_code.push_str(&format!(
-            r#"            let mut {struct_field} = None;
+            r#"        let mut {struct_field} = None;
 "#,
         ));
 

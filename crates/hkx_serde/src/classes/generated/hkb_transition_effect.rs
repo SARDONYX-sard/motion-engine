@@ -2,10 +2,7 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
-#![allow(
-  clippy::clone_on_copy,
-  clippy::unit_arg
-)]
+#![allow(clippy::clone_on_copy, clippy::unit_arg)]
 
 #[allow(unused)]
 use super::*;
@@ -140,20 +137,19 @@ impl<'de> Deserialize<'de> for HkbTransitionEffect<'de> {
 
 impl<'a> From<Vec<HkbTransitionEffectVisitor<'a>>> for HkbTransitionEffect<'a> {
     fn from(_values: Vec<HkbTransitionEffectVisitor<'a>>) -> Self {
-            let mut user_data = None;
-            let mut name = None;
-            let mut id = None;
-            let mut clone_state = None;
-            let mut pad_node = None;
-            let mut variable_binding_set = None;
-            let mut cached_bindables = None;
-            let mut are_bindables_cached = None;
-            let mut mem_size_and_flags = None;
-            let mut reference_count = None;
-            let mut self_transition_mode = None;
-            let mut event_mode = None;
-            let mut default_event_mode = None;
-
+        let mut user_data = None;
+        let mut name = None;
+        let mut id = None;
+        let mut clone_state = None;
+        let mut pad_node = None;
+        let mut variable_binding_set = None;
+        let mut cached_bindables = None;
+        let mut are_bindables_cached = None;
+        let mut mem_size_and_flags = None;
+        let mut reference_count = None;
+        let mut self_transition_mode = None;
+        let mut event_mode = None;
+        let mut default_event_mode = None;
 
         for _value in _values {
             match _value {
@@ -170,7 +166,6 @@ impl<'a> From<Vec<HkbTransitionEffectVisitor<'a>>> for HkbTransitionEffect<'a> {
                 HkbTransitionEffectVisitor::SelfTransitionMode(m) => self_transition_mode = Some(m),
                 HkbTransitionEffectVisitor::EventMode(m) => event_mode = Some(m),
                 HkbTransitionEffectVisitor::DefaultEventMode(m) => default_event_mode = Some(m),
-
             }
         }
 
@@ -189,7 +184,6 @@ impl<'a> From<Vec<HkbTransitionEffectVisitor<'a>>> for HkbTransitionEffect<'a> {
             self_transition_mode: self_transition_mode.unwrap_or_default().into_inner(),
             event_mode: event_mode.unwrap_or_default().into_inner(),
             default_event_mode: default_event_mode.unwrap_or_default().into_inner(),
-
         }
     }
 }
@@ -204,32 +198,31 @@ impl<'a> From<&HkbTransitionEffect<'a>> for Vec<HkbTransitionEffectVisitor<'a>> 
             HkbTransitionEffectVisitor::Id(data.id.into()),
             HkbTransitionEffectVisitor::CloneState(data.clone_state.into()),
             HkbTransitionEffectVisitor::PadNode(data.pad_node.clone()),
-            HkbTransitionEffectVisitor::VariableBindingSet(data.variable_binding_set.clone().into()),
+            HkbTransitionEffectVisitor::VariableBindingSet(
+                data.variable_binding_set.clone().into(),
+            ),
             HkbTransitionEffectVisitor::CachedBindables(data.cached_bindables.clone()),
             HkbTransitionEffectVisitor::AreBindablesCached(data.are_bindables_cached.into()),
             HkbTransitionEffectVisitor::MemSizeAndFlags(data.mem_size_and_flags.into()),
             HkbTransitionEffectVisitor::ReferenceCount(data.reference_count.into()),
-            HkbTransitionEffectVisitor::SelfTransitionMode(data.self_transition_mode.clone().into()),
+            HkbTransitionEffectVisitor::SelfTransitionMode(
+                data.self_transition_mode.clone().into(),
+            ),
             HkbTransitionEffectVisitor::EventMode(data.event_mode.clone().into()),
             HkbTransitionEffectVisitor::DefaultEventMode(data.default_event_mode.into()),
-
         ]
     }
 }
 
-impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkbTransitionEffect<'de> {
-    fn from_bytes<B>(
-        _bytes: &'bytes [u8],
-        _de: &mut PackFileDeserializer,
-    ) -> Result<Self>
+impl<'de> ByteDeSerialize<'de> for HkbTransitionEffect<'de> {
+    fn from_bytes<D>(deserializer: &D, position: &mut u32) -> Result<Self>
     where
-        B: ByteOrder,
-        Self: Sized + 'de
+        D: ByteDeserializer,
+        Self: Sized + 'de,
     {
         todo!()
     }
 }
-
 
 /// # Why use Visitor pattern?
 /// Since the C++ field must be deserialized from the `name` attribute name of the `hkparam` in the XML,

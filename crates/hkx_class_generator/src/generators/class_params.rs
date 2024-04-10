@@ -1,7 +1,7 @@
 use super::{
     aliases::{ClassMap, LifeTimeMap},
     lifetime_manager::get_lifetime_from_fields,
-    one_class::{generate_all_fields, enum_tagged::tagged_fields::generate_tagged_fields},
+    one_class::{enum_tagged::tagged_fields::generate_tagged_fields, generate_all_fields},
 };
 use convert_case::{Case, Casing as _};
 
@@ -19,6 +19,8 @@ pub fn generate_class_params(class_map: &ClassMap, life_time_map: &LifeTimeMap) 
     let mut serialize_match_inner_code = String::new();
     let mut deserialize_match_inner_code = String::new();
     let mut bytes_deserialize_match_inner_code = String::new();
+    let mut name_match_inner_code = String::new();
+    let mut signature_match_inner_code = String::new();
 
     // The number of loops is reduced to one by generating the code inside first.
     for (cpp_class_name, class) in class_map {
@@ -54,9 +56,18 @@ pub fn generate_class_params(class_map: &ClassMap, life_time_map: &LifeTimeMap) 
         };
 
         enum_variants_code.push_str(&format!(
-            r#"    #[serde(rename = "0x{signature:x}")]{life_time_bound}
+            r#"    #[serde(rename = "{signature:#x}")]{life_time_bound}
     {rust_enum_name}(Box<{rust_class_name_with_life_time}>),
 
+"#
+        ));
+
+        name_match_inner_code.push_str(&format!(
+            r#"            "ClassParams::{rust_enum_name}(_) => "{cpp_class_name}"
+"#
+        ));
+        signature_match_inner_code.push_str(&format!(
+            r#"            "ClassParams::{rust_enum_name}(_) => {signature:#x}
 "#
         ));
 
@@ -87,6 +98,12 @@ pub fn generate_class_params(class_map: &ClassMap, life_time_map: &LifeTimeMap) 
     }
 
     class_params_code.push_str(&generate_class_params_enum(&enum_variants_code));
+
+    class_params_code.push_str(&generate_impl_self(
+        &name_match_inner_code,
+        &signature_match_inner_code,
+    ));
+
     class_params_code.push_str(&generate_impl_serialize(
         &serialize_match_inner_code,
         class_map.len(),
@@ -108,12 +125,12 @@ fn generate_class_params_enum(variants_code: &str) -> String {
     class_params_code.push_str(
         r#"//! The type of enumeration of all C++ havok class fields.
 use super::*;
-use crate::classes::Class;
 use crate::bytes::*;
+use crate::classes::{Class, Name, Signature};
 use crate::error::{HkxError, Result};
 use serde::de::{self, Deserializer, MapAccess, Visitor};
 use serde::{Deserialize, Serialize};
-use std::borrow::Cow;
+use std::borrow::Cow
 
 /// Pattern enumeration of all C++ havok class fields.
 ///
@@ -132,6 +149,29 @@ pub enum ClassParams<'a> {
     class_params_code.push('}');
 
     class_params_code
+}
+
+/// Generate name getter & signature getter.
+fn generate_impl_self(name_match_inner_code: &str, signature_match_inner_code: &str) -> String {
+    format!(
+        r##"
+impl ClassParams<'_> {{
+    pub fn class_name(&self) -> &'static str {{
+        match &self {{
+            ClassParams::Unknown => "Unknown",
+{name_match_inner_code}
+        }}
+    }}
+
+    pub fn signature(&self) -> u32 {{
+        match &self {{
+            ClassParams::Unknown => 0x0,
+{signature_match_inner_code}
+        }}
+    }}
+}}
+"##
+    )
 }
 
 /// Generate `impl Serialize` code

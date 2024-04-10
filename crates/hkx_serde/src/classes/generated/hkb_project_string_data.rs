@@ -2,10 +2,7 @@
 //!
 //! # NOTE
 //! This file is generated automatically by parsing the rpt files obtained by executing the `hkxcmd Report` command.
-#![allow(
-  clippy::clone_on_copy,
-  clippy::unit_arg
-)]
+#![allow(clippy::clone_on_copy, clippy::unit_arg)]
 
 #[allow(unused)]
 use super::*;
@@ -124,18 +121,17 @@ impl<'de> Deserialize<'de> for HkbProjectStringData<'de> {
 
 impl<'a> From<Vec<HkbProjectStringDataVisitor<'a>>> for HkbProjectStringData<'a> {
     fn from(_values: Vec<HkbProjectStringDataVisitor<'a>>) -> Self {
-            let mut mem_size_and_flags = None;
-            let mut reference_count = None;
-            let mut animation_filenames = None;
-            let mut behavior_filenames = None;
-            let mut character_filenames = None;
-            let mut event_names = None;
-            let mut animation_path = None;
-            let mut behavior_path = None;
-            let mut character_path = None;
-            let mut full_path_to_source = None;
-            let mut root_path = None;
-
+        let mut mem_size_and_flags = None;
+        let mut reference_count = None;
+        let mut animation_filenames = None;
+        let mut behavior_filenames = None;
+        let mut character_filenames = None;
+        let mut event_names = None;
+        let mut animation_path = None;
+        let mut behavior_path = None;
+        let mut character_path = None;
+        let mut full_path_to_source = None;
+        let mut root_path = None;
 
         for _value in _values {
             match _value {
@@ -150,7 +146,6 @@ impl<'a> From<Vec<HkbProjectStringDataVisitor<'a>>> for HkbProjectStringData<'a>
                 HkbProjectStringDataVisitor::CharacterPath(m) => character_path = Some(m),
                 HkbProjectStringDataVisitor::FullPathToSource(m) => full_path_to_source = Some(m),
                 HkbProjectStringDataVisitor::RootPath(m) => root_path = Some(m),
-
             }
         }
 
@@ -167,7 +162,6 @@ impl<'a> From<Vec<HkbProjectStringDataVisitor<'a>>> for HkbProjectStringData<'a>
             character_path: character_path.unwrap_or_default().into_inner(),
             full_path_to_source: full_path_to_source.unwrap_or_default().into_inner(),
             root_path: root_path.unwrap_or_default().into_inner(),
-
         }
     }
 }
@@ -177,8 +171,8 @@ impl<'a> From<Vec<HkbProjectStringDataVisitor<'a>>> for HkbProjectStringData<'a>
 impl<'a> From<&HkbProjectStringData<'a>> for Vec<HkbProjectStringDataVisitor<'a>> {
     fn from(data: &HkbProjectStringData<'a>) -> Self {
         vec![
-            HkbProjectStringDataVisitor::MemSizeAndFlags(data.mem_size_and_flags.into()),
-            HkbProjectStringDataVisitor::ReferenceCount(data.reference_count.into()),
+            // HkbProjectStringDataVisitor::MemSizeAndFlags(data.mem_size_and_flags.into()),
+            // HkbProjectStringDataVisitor::ReferenceCount(data.reference_count.into()),
             HkbProjectStringDataVisitor::AnimationFilenames(data.animation_filenames.clone()),
             HkbProjectStringDataVisitor::BehaviorFilenames(data.behavior_filenames.clone()),
             HkbProjectStringDataVisitor::CharacterFilenames(data.character_filenames.clone()),
@@ -187,25 +181,52 @@ impl<'a> From<&HkbProjectStringData<'a>> for Vec<HkbProjectStringDataVisitor<'a>
             HkbProjectStringDataVisitor::BehaviorPath(data.behavior_path.clone().into()),
             HkbProjectStringDataVisitor::CharacterPath(data.character_path.clone().into()),
             HkbProjectStringDataVisitor::FullPathToSource(data.full_path_to_source.clone().into()),
-            HkbProjectStringDataVisitor::RootPath(data.root_path.clone().into()),
-
+            // HkbProjectStringDataVisitor::RootPath(data.root_path.clone().into()),
         ]
     }
 }
 
-impl <'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkbProjectStringData<'de> {
-    fn from_bytes<B>(
-        _bytes: &'bytes [u8],
-        _de: &mut PackFileDeserializer,
-    ) -> Result<Self>
+impl<'de> ByteDeSerialize<'de> for HkbProjectStringData<'de> {
+    fn from_bytes<D>(deserializer: &'de D, position: &mut u32) -> Result<Self>
     where
-        B: ByteOrder,
-        Self: Sized + 'de
+        D: ByteDeserializer,
+        Self: Sized,
     {
-        todo!()
+        // `hkBaseObject`
+        deserializer.read_usize(position)?;
+
+        // `hkReferencedObject`
+        let mem_size_and_flags = deserializer.read_u16(position)?;
+        let reference_count = deserializer.read_i16(position)?;
+        deserializer.read_usize(position)?;
+        dbg!(*position);
+        *position -= 4;
+
+        let animation_filenames = deserializer.read_string_ptr_array(position)?;
+        let behavior_filenames = deserializer.read_string_ptr_array(position)?;
+        let character_filenames = deserializer.read_string_ptr_array(position)?;
+        let event_names = deserializer.read_string_ptr_array(position)?;
+        let animation_path = deserializer.read_string_ptr(position)?;
+        let behavior_path = deserializer.read_string_ptr(position)?;
+        let character_path = deserializer.read_string_ptr(position)?;
+        let full_path_to_source = deserializer.read_string_ptr(position)?;
+        let root_path = deserializer.read_string_ptr(position)?;
+
+        Ok(Self {
+            mem_size_and_flags,
+            reference_count,
+            animation_filenames,
+            behavior_filenames,
+            character_filenames,
+            event_names,
+            animation_path,
+            behavior_path,
+            character_path,
+            full_path_to_source,
+            root_path,
+        })
     }
 }
-
 
 /// # Why use Visitor pattern?
 /// Since the C++ field must be deserialized from the `name` attribute name of the `hkparam` in the XML,

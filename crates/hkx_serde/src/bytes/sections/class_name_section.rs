@@ -86,11 +86,7 @@ impl<'a> ClassPair<'a> {
 
 /// IndexMap for each class name start position & (signature, class name)
 #[derive(Debug, Clone, Default, PartialEq, Eq)]
-pub struct ClassNames<'bytes> {
-    /// - key: class name start position
-    /// - value: (signature, class name)
-    pub offset_class_names_map: IndexMap<usize, ClassPair<'bytes>>,
-}
+pub struct ClassNames<'bytes>(pub IndexMap<usize, ClassPair<'bytes>>);
 
 impl<'a> ClassNames<'a> {
     /// For 16 bytes alignment
@@ -117,15 +113,13 @@ impl<'a> ClassNames<'a> {
             }
         }
 
-        Ok(ClassNames {
-            offset_class_names_map,
-        })
+        Ok(ClassNames(offset_class_names_map))
     }
 
     pub fn write_bytes<B: ByteOrder>(&self, bytes: &mut [u8]) -> Result<()> {
         let mut offset = 0;
 
-        for (_, class) in &self.offset_class_names_map {
+        for (_, class) in &self.0 {
             let next = class.write_bytes::<B>(&mut bytes[offset..])?;
             offset += next;
         }
@@ -140,7 +134,7 @@ impl<'a> ClassNames<'a> {
 
     /// Converts the offset-based HashMap into a Vec.
     pub fn as_vec_ref<'this: 'a>(&'this self) -> Vec<&'a ClassPair<'a>> {
-        self.offset_class_names_map.values().collect()
+        self.0.values().collect()
     }
 }
 
@@ -208,13 +202,13 @@ mod tests {
         let bytes = b"\x11\x22\x33\x44\x09test_class1\0\x44\x55\x66\x77\x09test_class2\0\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff";
 
         let class_names = ClassNames::from_bytes::<zerocopy::LittleEndian>(bytes).unwrap();
-        assert_eq!(class_names.offset_class_names_map.len(), 2);
+        assert_eq!(class_names.0.len(), 2);
 
         let test_class1_name_start = 5;
         let ClassPair {
             signature,
             class_name,
-        } = class_names.offset_class_names_map[&test_class1_name_start];
+        } = class_names.0[&test_class1_name_start];
         assert_eq!(signature, 0x44332211);
         assert_eq!(class_name, c"test_class1");
 
@@ -222,7 +216,7 @@ mod tests {
         let ClassPair {
             signature,
             class_name,
-        } = class_names.offset_class_names_map[&test_class2_name_start];
+        } = class_names.0[&test_class2_name_start];
         assert_eq!(signature, 0x77665544);
         assert_eq!(class_name, c"test_class2");
 

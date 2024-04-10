@@ -13,6 +13,7 @@ rust-version = "1.60"
 [dependencies]
 bitflags = "2.4"
 byteorder = "1.5"
+derive-new = "0.6"
 indexmap = "2.2"
 num-derive = "0.4"
 num-traits = "0.2"

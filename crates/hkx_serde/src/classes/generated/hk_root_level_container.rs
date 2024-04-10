@@ -82,15 +82,15 @@ impl<'a> From<&HkRootLevelContainer<'a>> for Vec<HkRootLevelContainerVisitor<'a>
     }
 }
 
-impl<'bytes: 'de, 'de> ByteDeSerialize<'bytes, 'de> for HkRootLevelContainer<'de> {
-    fn from_bytes<B>(bytes: &'bytes [u8], de: &mut PackFileDeserializer<'de>) -> Result<Self>
+impl<'de> ByteDeSerialize<'de> for HkRootLevelContainer<'de> {
+    fn from_bytes<D>(deserializer: &'de D, position: &mut u32) -> Result<Self>
     where
-        B: ByteOrder,
+        D: ByteDeserializer,
         Self: Sized + 'de,
     {
-        Ok(Self {
-            named_variants: de.read_class_array::<B, HkRootLevelContainerNamedVariant>(bytes)?,
-        })
+        let named_variants = deserializer.read_class_array(position)?;
+
+        Ok(Self { named_variants })
     }
 }
 

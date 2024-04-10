@@ -33,6 +33,7 @@ pub fn generate_struct(
         parent,
         size,
         version,
+        members,
         ..
     } = class;
 
@@ -89,7 +90,8 @@ pub struct {rust_struct_name_with_life_time} {{
         rust_code.push_str(&impl_serde_code);
         rust_code.push_str(&generate_impl_from(&rust_struct_name, &fields));
     }
-    let impl_bytes_de_code = generate_impl_bytes_deserialize(&rust_struct_name_with_life_time);
+    let impl_bytes_de_code =
+        generate_impl_bytes_deserialize(&rust_struct_name_with_life_time, members, &fields);
     rust_code.push_str(&impl_bytes_de_code);
 
     rust_code

@@ -74,14 +74,14 @@ pub struct HkxHeader<O: ByteOrder> {
     pub contents_class_name_section_index: I32<O>,
     /// Offset of the contents class name section.
     pub contents_class_name_section_offset: I32<O>,
-    /// Version string of the contents.
+    /// Version string of the contents. + separator(0xFF)
     ///
     /// # Bytes Example
     /// - SkyrimSE
     /// ```rust
     /// assert_eq!(
-    ///   *b"hk_2010.2.0-r1\0\0",
-    ///   [0x68, 0x6B, 0x5F, 0x32, 0x30, 0x31, 0x30, 0x2E, 0x32, 0x2E, 0x30, 0x2D, 0x72, 0x31, 0x00, 0x00]
+    ///   *b"hk_2010.2.0-r1\0\xFF",
+    ///   [0x68, 0x6B, 0x5F, 0x32, 0x30, 0x31, 0x30, 0x2E, 0x32, 0x2E, 0x30, 0x2D, 0x72, 0x31, 0x00, 0xFF]
     /// );
     /// ```
     pub contents_version_string: [u8; 16],
@@ -125,11 +125,22 @@ impl HkxHeader<LittleEndian> {
             contents_section_offset: I32::ZERO,
             contents_class_name_section_index: I32::ZERO,
             contents_class_name_section_offset: I32::from_bytes([0x4B, 0x00, 0x00, 0x00]),
-            contents_version_string: *b"hk_2010.2.0-r1\0\0",
+            contents_version_string: *b"hk_2010.2.0-r1\0\xFF",
             flags: I32::ZERO,
             max_predicate: I16::from_bytes([0xFF, 0xFF]),
             section_offset: I16::from_bytes([0xFF, 0xFF]),
         }
+    }
+
+    /// Get pointer size of this hkx file from header information.
+    ///
+    /// # Assumptions
+    /// Passed argument bytes are first hkx header bytes.
+    ///
+    /// # Panics
+    /// - If `bytes` < 17(bytes)
+    pub const fn ptr_size(bytes: &[u8]) -> bool {
+        bytes[16] == 0
     }
 
     /// Is the binary in the Hkx file big-endian?
@@ -138,12 +149,12 @@ impl HkxHeader<LittleEndian> {
     /// Passed argument bytes are first hkx header bytes.
     ///
     /// # Panics
-    /// - If bytes data < 17bytes
+    /// - If `bytes` < 18(bytes)
     pub const fn is_big_endian(bytes: &[u8]) -> bool {
         bytes[17] == 0
     }
 
-    /// Get header length.
+    /// Get header length. 64(bytes)
     pub const fn len() -> usize {
         core::mem::size_of::<Self>()
     }
@@ -159,7 +170,7 @@ impl<O: ByteOrder> HkxHeader<O> {
         if bytes.len() < core::mem::size_of::<Self>() {
             return Err(HkxHeaderError::InsufficientLength);
         }
-        Self::ref_from(bytes).ok_or(HkxHeaderError::UnAlignment)
+        Self::ref_from_prefix(bytes).ok_or(HkxHeaderError::UnAlignment)
     }
 
     /// Get padding size.
@@ -175,7 +186,7 @@ impl<O: ByteOrder> HkxHeader<O> {
         }
     }
 
-    /// Get version string of the contents that trimmed null str.
+    /// Get version string of the contents that trimmed null str and separator(0xFF).
     ///
     /// # Errors
     ///
@@ -188,7 +199,15 @@ impl<O: ByteOrder> HkxHeader<O> {
     /// [0x68, 0x6B, 0x5F, 0x32, 0x30, 0x31, 0x30, 0x2E, 0x32, 0x2E, 0x30, 0x2D, 0x72, 0x31];
     /// ```
     pub fn contents_version_string_as_str(&self) -> Result<&str> {
-        Ok(core::str::from_utf8(&self.contents_version_string)?.trim_matches(char::from(0)))
+        let end_position = self
+            .contents_version_string
+            .iter()
+            .position(|c| *c == 0 || *c == 0xFF) // Search null str or separator byte.
+            .unwrap_or(self.contents_version_string.len() - 1); // If not present, all.
+
+        Ok(core::str::from_utf8(
+            &self.contents_version_string[..end_position],
+        )?)
     }
 }
 
@@ -232,8 +251,8 @@ mod tests {
         0x00, 0x00, 0x00, 0x00, // content section offset
         0x00, 0x00, 0x00, 0x00, // contents class name section index
         0x4b, 0x00, 0x00, 0x00, // contents class name section offset
-        // contents version: b"hk_2010.2.0-r1\0\0" ([u8;16])
-        0x68, 0x6B, 0x5F, 0x32, 0x30, 0x31, 0x30, 0x2E, 0x32, 0x2E, 0x30, 0x2D, 0x72, 0x31, 0x00, 0x00,
+        // contents version: b"hk_2010.2.0-r1\0\0" + separator 0xFF =  ([u8;16])
+        0x68, 0x6B, 0x5F, 0x32, 0x30, 0x31, 0x30, 0x2E, 0x32, 0x2E, 0x30, 0x2D, 0x72, 0x31, 0x00, 0xFF,
         0x00, 0x00, 0x00, 0x00, // flags
         0xFF, 0xFF, //  max predicate: -1 as i16. This means is none.
         0xFF, 0xFF, // section offset: -1 as i16. This means is none.

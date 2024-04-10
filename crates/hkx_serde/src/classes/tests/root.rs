@@ -12,47 +12,47 @@ mod tests {
     use pretty_assertions::assert_eq;
 
     const DEFAULT_MALE_XML: &str = r##"<hkpackfile classversion="8" contentsversion="hk_2010.2.0-r1" toplevelobject="#0050">
-      <hksection name="__data__">
-        <hkobject name="#0050" class="hkRootLevelContainer" signature="0x2772c11e">
-          <hkparam name="namedVariants" numelements="1">
-            <hkobject>
-              <hkparam name="name">
-                hkbProjectData
-              </hkparam>
-              <hkparam name="className">
-                hkbProjectData
-              </hkparam>
-              <hkparam name="variant">
-                #0051
-              </hkparam>
-            </hkobject>
+  <hksection name="__data__">
+    <hkobject name="#0050" class="hkRootLevelContainer" signature="0x2772c11e">
+      <hkparam name="namedVariants" numelements="1">
+        <hkobject>
+          <hkparam name="name">
+            hkbProjectData
+          </hkparam>
+          <hkparam name="className">
+            hkbProjectData
+          </hkparam>
+          <hkparam name="variant">
+            #0051
           </hkparam>
         </hkobject>
-        <hkobject name="#0051" class="hkbProjectData" signature="0x13a39ba7">
-          <hkparam name="worldUpWS">
-            (0.000000 0.000000 1.000000 0.000000)
-          </hkparam>
-          <hkparam name="stringData">
-            #0052
-          </hkparam>
-          <hkparam name="defaultEventMode">
-            EVENT_MODE_IGNORE_FROM_GENERATOR
-          </hkparam>
-        </hkobject>
-        <hkobject name="#0052" class="hkbProjectStringData" signature="0x076ad60a">
-          <hkparam name="animationFilenames" numelements="0"/>
-          <hkparam name="behaviorFilenames" numelements="0"/>
-          <hkparam name="characterFilenames" numelements="1">
-            <hkcstring>Characters\DefaultMale.hkx</hkcstring>
-          </hkparam>
-          <hkparam name="eventNames" numelements="0"/>
-          <hkparam name="animationPath"/>
-          <hkparam name="behaviorPath"/>
-          <hkparam name="characterPath"/>
-          <hkparam name="fullPathToSource"/>
-        </hkobject>
-      </hksection>
-    </hkpackfile>"##;
+      </hkparam>
+    </hkobject>
+    <hkobject name="#0051" class="hkbProjectData" signature="0x13a39ba7">
+      <hkparam name="worldUpWS">
+        (0.000000 0.000000 1.000000 0.000000)
+      </hkparam>
+      <hkparam name="stringData">
+        #0052
+      </hkparam>
+      <hkparam name="defaultEventMode">
+        EVENT_MODE_IGNORE_FROM_GENERATOR
+      </hkparam>
+    </hkobject>
+    <hkobject name="#0052" class="hkbProjectStringData" signature="0x076ad60a">
+      <hkparam name="animationFilenames" numelements="0"/>
+      <hkparam name="behaviorFilenames" numelements="0"/>
+      <hkparam name="characterFilenames" numelements="1">
+        <hkcstring>Characters\DefaultMale.hkx</hkcstring>
+      </hkparam>
+      <hkparam name="eventNames" numelements="0"/>
+      <hkparam name="animationPath"/>
+      <hkparam name="behaviorPath"/>
+      <hkparam name="characterPath"/>
+      <hkparam name="fullPathToSource"/>
+    </hkobject>
+  </hksection>
+</hkpackfile>"##;
 
     #[test]
     fn should_serialize() {

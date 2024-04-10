@@ -136,7 +136,8 @@ pub struct Signature(u32);
 
 impl core::fmt::Display for Signature {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{:#x}", self.0)
+        // NOTE: `0x` is counted length. Therefore, non use alternative(`{:#}`)
+        write!(f, "0x{:08x}", self.0)
     }
 }
 

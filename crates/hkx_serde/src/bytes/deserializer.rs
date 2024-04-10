@@ -6,7 +6,7 @@ use super::sections::{
 use crate::classes::class_params::ClassParams;
 use crate::classes::Hkx;
 use crate::error::Result;
-use crate::havok_types::{HkArrayClass, HkArrayStringPtr, Vector4};
+use crate::havok_types::*;
 use core::mem::size_of;
 use indexmap::IndexMap;
 use std::borrow::Cow;
@@ -31,6 +31,14 @@ pub trait ByteDeSerialize<'de> {
 
 pub trait ByteDeserializer {
     fn bytes(&self, position: u32) -> &[u8];
+
+    /// Read ptr size.
+    /// - 4 => [`ByteOrder::read_u32`]
+    /// - 8 => [`ByteOrder::read_u64`]
+    ///
+    /// # Move position size
+    /// [`usize`] (4 or 8 bytes)
+    fn read_usize(&self, position: &mut u32) -> Result<usize>;
 
     fn read_bool(&self, position: &mut u32) -> Result<bool>;
     fn read_bool_array(&self, position: &mut u32) -> Result<Vec<bool>>;
@@ -61,13 +69,11 @@ pub trait ByteDeserializer {
     fn read_f32_array(&self, position: &mut u32) -> Result<Vec<f32>>;
     fn read_f64_array(&self, position: &mut u32) -> Result<Vec<f64>>;
 
-    /// Read ptr size.
-    /// - 4 => [`ByteOrder::read_u32`]
-    /// - 8 => [`ByteOrder::read_u64`]
-    ///
-    /// # Move position size
-    /// [`usize`] (4 or 8 bytes)
-    fn read_usize(&self, position: &mut u32) -> Result<usize>;
+    fn read_vector3(&self, position: &mut u32) -> Result<Vector3<f32>>;
+    fn read_vector4(&self, position: &mut u32) -> Result<Vector4<f32>>;
+    fn read_matrix4(&self, position: &mut u32) -> Result<Matrix4<f32>>;
+    fn read_quaternion(&self, position: &mut u32) -> Result<Quaternion<f32>>;
+    fn read_qs_transform(&self, position: &mut u32) -> Result<QsTransform<f32>>;
 
     /// Reads array information & Advance position(usize + 8bytes)
     ///
@@ -84,8 +90,6 @@ pub trait ByteDeserializer {
     fn read_class_array<'a, T>(&'a self, position: &mut u32) -> Result<HkArrayClass<T>>
     where
         T: ByteDeSerialize<'a> + 'a;
-
-    fn read_vector4(&self, position: &mut u32) -> Result<Vector4<f32>>;
 
     /// Read class ptr
     fn read_class_ptr<'a>(&'a self, position: &mut u32) -> Result<Cow<'a, str>>;
@@ -186,12 +190,44 @@ impl<'de, B: ByteOrder> ByteDeserializer for HkxDeserializer<'de, B> {
 
     impl_primitive_array!(read_bool_array, read_bool, bool);
 
+    fn read_vector3(&self, position: &mut u32) -> Result<Vector3<f32>> {
+        Ok(Vector3::new(
+            self.read_f32(position)?,
+            self.read_f32(position)?,
+            self.read_f32(position)?,
+        ))
+    }
+
     fn read_vector4(&self, position: &mut u32) -> Result<Vector4<f32>> {
         Ok(Vector4::new(
             self.read_f32(position)?,
             self.read_f32(position)?,
             self.read_f32(position)?,
             self.read_f32(position)?,
+        ))
+    }
+
+    fn read_matrix4(&self, position: &mut u32) -> Result<Matrix4<f32>> {
+        Ok(Matrix4::from_cols(
+            self.read_vector4(position)?,
+            self.read_vector4(position)?,
+            self.read_vector4(position)?,
+            self.read_vector4(position)?,
+        ))
+    }
+
+    fn read_quaternion(&self, position: &mut u32) -> Result<Quaternion<f32>> {
+        Ok(Quaternion::from_sv(
+            self.read_f32(position)?,
+            self.read_vector3(position)?,
+        ))
+    }
+
+    fn read_qs_transform(&self, position: &mut u32) -> Result<QsTransform<f32>> {
+        Ok(QsTransform::from_cols(
+            self.read_vector4(position)?,
+            self.read_quaternion(position)?,
+            self.read_vector4(position)?,
         ))
     }
 
@@ -231,9 +267,8 @@ impl<'de, B: ByteOrder> ByteDeserializer for HkxDeserializer<'de, B> {
         T: ByteDeSerialize<'a> + 'a,
     {
         let size = self.read_array_size(position)?;
-        tracing::debug!("class array size: {:?}", size);
-
         let mut res = Vec::new();
+
         if size > 0 {
             for _ in 0..size {
                 res.push(T::from_bytes(self, position)?);

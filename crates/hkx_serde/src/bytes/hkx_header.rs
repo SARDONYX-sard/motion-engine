@@ -139,8 +139,8 @@ impl HkxHeader<LittleEndian> {
     ///
     /// # Panics
     /// - If `bytes` < 17(bytes)
-    pub const fn ptr_size(bytes: &[u8]) -> bool {
-        bytes[16] == 0
+    pub const fn ptr_size(bytes: &[u8]) -> u8 {
+        bytes[16]
     }
 
     /// Is the binary in the Hkx file big-endian?

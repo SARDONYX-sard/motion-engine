@@ -1,6 +1,6 @@
 //! Vector normalization
 
-use super::float::cpp_to_rust_float_str;
+use super::number::cpp_to_rust_float_str;
 use std::borrow::Cow;
 
 /// Separate vectors classified by `()`, `,` space, etc.

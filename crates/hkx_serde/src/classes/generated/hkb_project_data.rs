@@ -138,13 +138,13 @@ impl<'de> ByteDeSerialize<'de> for HkbProjectData<'de> {
         // `hkReferencedObject`
         let mem_size_and_flags = deserializer.read_u16(position)?; // offset: 8
         let reference_count = deserializer.read_i16(position)?; // offset: 10
-        deserializer.read_usize(position)?; // offset: 12
+        deserializer.align_usize(position); // offset: 12
 
         // `hkbProjectData`
         let world_up_ws = deserializer.read_vector4(position)?; // offset: 20
         let string_data = deserializer.read_class_ptr(position)?; // offset: 36
         let default_event_mode = EventMode::from_u8(deserializer.read_u8(position)?).unwrap(); // offset: 44
-        *position += 7;
+        *position += 7; // C ++ size is 48, current 45 = 3
 
         Ok(Self {
             mem_size_and_flags,

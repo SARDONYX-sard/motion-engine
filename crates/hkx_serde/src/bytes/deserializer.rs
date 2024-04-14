@@ -7,6 +7,7 @@ use crate::classes::class_params::ClassParams;
 use crate::classes::Hkx;
 use crate::error::Result;
 use crate::havok_types::*;
+use crate::helpers::number::align;
 use core::mem::size_of;
 use indexmap::IndexMap;
 use std::borrow::Cow;
@@ -26,10 +27,12 @@ pub trait ByteDeSerialize<'de> {
     fn from_bytes<D>(deserializer: &'de D, position: &mut u32) -> Result<Self>
     where
         D: ByteDeserializer,
-        Self: Sized + 'de;
+        Self: Sized;
 }
 
 pub trait ByteDeserializer {
+    /// Aligned by the header pointer size.
+    fn align_usize(&self, position: &mut u32);
     fn bytes(&self, position: u32) -> &[u8];
 
     /// Read ptr size.
@@ -92,31 +95,30 @@ pub trait ByteDeserializer {
         T: ByteDeSerialize<'a> + 'a;
 
     /// Read class ptr
+    /// - move usize
     fn read_class_ptr<'a>(&'a self, position: &mut u32) -> Result<Cow<'a, str>>;
 
     /// # Expected bytes
     /// Jump to local_map.dst by current position, then read null terminated string.
-    ///
-    /// # Advanced Position size
-    /// - usize
+    /// - move usize
     fn read_string_ptr<'a>(&'a self, position: &mut u32) -> Result<Cow<'a, str>>;
 }
 
-macro_rules! impl_primitive_array {
+macro_rules! impl_array {
     ($method:ident, $func:ident, $ret:ty) => {
         fn $method(&self, position: &mut u32) -> Result<Vec<$ret>> {
-            let current_start = *position as u32;
-            let mut strings = Vec::new();
+            let current_start = *position;
+            let mut array = Vec::new();
 
             let size = self.read_array_size(position)?;
             if size > 0 {
                 let mut local_dst = self.data_section.local_map[&current_start].dst;
                 for _ in 0..size {
-                    strings.push(self.$func(&mut local_dst)?);
+                    array.push(self.$func(&mut local_dst)?);
                 }
             }
 
-            Ok(strings)
+            Ok(array)
         }
     };
 }
@@ -132,6 +134,10 @@ macro_rules! impl_primitive {
 }
 
 impl<'de, B: ByteOrder> ByteDeserializer for HkxDeserializer<'de, B> {
+    fn align_usize(&self, position: &mut u32) {
+        *position = align(*position, self.header.pointer_size as u32);
+    }
+
     fn bytes(&self, position: u32) -> &[u8] {
         &self.data_section.section_data[position as usize..]
     }
@@ -149,9 +155,7 @@ impl<'de, B: ByteOrder> ByteDeserializer for HkxDeserializer<'de, B> {
     }
 
     fn read_bool(&self, position: &mut u32) -> Result<bool> {
-        let num = self.bytes(*position)[0];
-        *position += 1;
-        Ok(num == 1)
+        Ok(self.read_u8(position)? == 1)
     }
 
     fn read_usize(&self, position: &mut u32) -> Result<usize> {
@@ -175,20 +179,19 @@ impl<'de, B: ByteOrder> ByteDeserializer for HkxDeserializer<'de, B> {
     impl_primitive!(read_f32, f32, 4);
     impl_primitive!(read_f64, f64, 8);
 
-    impl_primitive_array!(read_i8_array, read_i8, i8);
-    impl_primitive_array!(read_i16_array, read_i16, i16);
-    impl_primitive_array!(read_i32_array, read_i32, i32);
-    impl_primitive_array!(read_i64_array, read_i64, i64);
+    impl_array!(read_bool_array, read_bool, bool);
+    impl_array!(read_i8_array, read_i8, i8);
+    impl_array!(read_i16_array, read_i16, i16);
+    impl_array!(read_i32_array, read_i32, i32);
+    impl_array!(read_i64_array, read_i64, i64);
 
-    impl_primitive_array!(read_u8_array, read_u8, u8);
-    impl_primitive_array!(read_u16_array, read_u16, u16);
-    impl_primitive_array!(read_u32_array, read_u32, u32);
-    impl_primitive_array!(read_u64_array, read_u64, u64);
+    impl_array!(read_u8_array, read_u8, u8);
+    impl_array!(read_u16_array, read_u16, u16);
+    impl_array!(read_u32_array, read_u32, u32);
+    impl_array!(read_u64_array, read_u64, u64);
 
-    impl_primitive_array!(read_f32_array, read_f32, f32);
-    impl_primitive_array!(read_f64_array, read_f64, f64);
-
-    impl_primitive_array!(read_bool_array, read_bool, bool);
+    impl_array!(read_f32_array, read_f32, f32);
+    impl_array!(read_f64_array, read_f64, f64);
 
     fn read_vector3(&self, position: &mut u32) -> Result<Vector3<f32>> {
         Ok(Vector3::new(
@@ -300,13 +303,14 @@ impl<'de, B: ByteOrder> ByteDeserializer for HkxDeserializer<'de, B> {
         }
 
         let local_dst = self.data_section.local_map[&current_start].dst;
-        tracing::debug!("string ptr:current_start = {}", current_start);
-        tracing::debug!("string ptr:local_dst = {}", local_dst);
+        tracing::debug!("string ptr:current_start = {current_start}");
+        tracing::debug!("string ptr:local_dst = {local_dst}");
 
         let c_str = CStr::from_bytes_until_nul(self.bytes(local_dst))?;
+        let s = from_utf8(c_str.to_bytes())?;
 
         self.read_usize(position)?; // consume ptr usize.
-        Ok(from_utf8(c_str.to_bytes())?.into())
+        Ok(s.into())
     }
 }
 

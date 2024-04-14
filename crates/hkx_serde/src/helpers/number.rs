@@ -1,7 +1,29 @@
-//! C++ float display to Rust and vice versa
+//! Number utils.
+//!
+//! # Examples
+//! - C++ float display to Rust
+//! - Alignment functions
 use core::fmt;
 use ordered_float::FloatCore;
 use std::borrow::Cow;
+
+///  Get the aligned value.
+///
+/// # Examples
+///
+/// ```rust
+/// use hkx_serde::helpers::number::align;
+///
+/// assert_eq!(align(10, 4), 12);
+/// assert_eq!(align(10, 8), 16);
+/// ```
+pub const fn align(value: u32, align: u32) -> u32 {
+    if value % align > 0 {
+        value + align - (value % align)
+    } else {
+        value
+    }
+}
 
 /// The XML representation of Not a number, infinity is different from the Rust representation.
 pub fn cpp_to_rust_float_str(s: &str) -> &str {

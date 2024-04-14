@@ -18,7 +18,7 @@
 // limitations under the License.
 
 use super::{Vector3, Vector4};
-use crate::helpers::{float::rust_to_cpp_float_str, vector::normalize};
+use crate::helpers::{number::rust_to_cpp_float_str, vector::normalize};
 use core::{fmt, str::FromStr};
 use ordered_float::FloatCore;
 use serde::{Deserialize, Serialize, Serializer};

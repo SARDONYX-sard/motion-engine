@@ -193,16 +193,14 @@ impl<'de> ByteDeSerialize<'de> for HkbProjectStringData<'de> {
         Self: Sized,
     {
         // `hkBaseObject`
-        deserializer.read_usize(position)?;
+        deserializer.read_usize(position)?; // 0
 
         // `hkReferencedObject`
-        let mem_size_and_flags = deserializer.read_u16(position)?;
-        let reference_count = deserializer.read_i16(position)?;
-        deserializer.read_usize(position)?;
-        dbg!(*position);
-        *position -= 4;
+        let mem_size_and_flags = deserializer.read_u16(position)?; // 8
+        let reference_count = deserializer.read_i16(position)?; // 10
+        deserializer.align_usize(position); // 12
 
-        let animation_filenames = deserializer.read_string_ptr_array(position)?;
+        let animation_filenames = deserializer.read_string_ptr_array(position)?; // 20
         let behavior_filenames = deserializer.read_string_ptr_array(position)?;
         let character_filenames = deserializer.read_string_ptr_array(position)?;
         let event_names = deserializer.read_string_ptr_array(position)?;

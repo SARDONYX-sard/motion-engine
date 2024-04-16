@@ -146,8 +146,11 @@ impl WriteFixup for VirtualFixup {
 /// of the string `hkRootLevelContainer` in the `__classnames__` section.
 #[derive(Debug, Clone, Default, PartialEq, Eq)]
 pub struct SectionContents<'bytes> {
+    /// Location information needed when referencing class pointer, etc.
     pub global_map: IndexMap<u32, GlobalFixup>,
+    /// This information indicates where the data of the field in the Class will be placed.
     pub local_map: IndexMap<u32, LocalFixup>,
+    /// Location information for the name of the C++ class that must call the constructor.
     pub virtual_map: IndexMap<u32, VirtualFixup>,
     /// Each section bytes data.
     ///

@@ -102,18 +102,17 @@ impl<'a> ClassNames<'a> {
         let mut offset_class_names_map = IndexMap::new();
         let mut offset = 0;
 
-        while bytes[offset] != Self::CLASSNAMES_END_PADDING {
-            let (class_pair, read_size) = ClassPair::from_bytes::<B>(&bytes[offset..])?;
+        while let Ok((class_pair, read_size)) = ClassPair::from_bytes::<B>(&bytes[offset..]) {
             let class_name_start = offset + 5; // after 4bytes signature + separator 1 byte
             offset_class_names_map.insert(class_name_start, class_pair);
             offset += read_size;
 
-            if offset > bytes.len() {
+            if offset + 5 > bytes.len() {
                 break;
             }
         }
 
-        Ok(ClassNames(offset_class_names_map))
+        Ok(Self(offset_class_names_map))
     }
 
     pub fn write_bytes<B: ByteOrder>(&self, bytes: &mut [u8]) -> Result<()> {

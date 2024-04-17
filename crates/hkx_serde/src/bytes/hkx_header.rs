@@ -225,10 +225,6 @@ pub enum HkxHeaderError {
 
     #[error(transparent)]
     Utf8Error(#[from] core::str::Utf8Error),
-
-    /// Expected little endian header, but got big endian header.
-    #[error("Expected little endian header, but got big endian header")]
-    UnexpectedBigEndian,
 }
 
 #[cfg(test)]

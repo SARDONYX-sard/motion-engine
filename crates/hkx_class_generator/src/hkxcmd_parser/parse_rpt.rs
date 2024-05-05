@@ -452,7 +452,7 @@ fn parse_enum(input: &str) -> IResult<&str, (&str, Vec<EnumPair>)> {
     let (input, _) = space0(input)?;
 
     // hkxcmd report seems to indicate that nothing but 0 exists, so this information is discarded.
-    // Regular expression tried to find the enum flags in the report: \{[1-9]+\}
+    // Regular expression tried to find the enum flags in the report: \{(?!0{8})[0-9]{8}\}
     // ref: https://github.com/figment/hkxcmd/blob/dc4c75bf44303d874cc2656f56f107527f79ac29/Addins/Report.cpp#L142
     //
     // {00000000}

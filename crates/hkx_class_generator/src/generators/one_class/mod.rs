@@ -1,4 +1,4 @@
-mod all_fields;
+pub mod all_fields;
 pub mod bitflags;
 pub mod enum_tagged;
 pub mod generate_enum;

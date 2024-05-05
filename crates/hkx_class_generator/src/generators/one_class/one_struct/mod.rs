@@ -31,7 +31,7 @@ pub fn generate_struct(
         vtable,
         name: class_name,
         parent,
-        size,
+        size_x86: size,
         version,
         members,
         ..

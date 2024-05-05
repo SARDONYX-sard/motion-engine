@@ -200,14 +200,23 @@ impl<'de> ByteDeSerialize<'de> for HkbProjectStringData<'de> {
         let reference_count = deserializer.read_i16(position)?; // 10
         deserializer.align_usize(position); // 12
 
+        tracing::debug!("animation_filenames position = {position}");
         let animation_filenames = deserializer.read_string_ptr_array(position)?; // 20
+        tracing::debug!("behavior_filenames position = {position}");
         let behavior_filenames = deserializer.read_string_ptr_array(position)?;
+        tracing::debug!("character_filenames position = {position}");
         let character_filenames = deserializer.read_string_ptr_array(position)?;
+        tracing::debug!("event_names position = {position}");
         let event_names = deserializer.read_string_ptr_array(position)?;
+        tracing::debug!("animation_path position = {position}");
         let animation_path = deserializer.read_string_ptr(position)?;
+        tracing::debug!("behavior_path position = {position}");
         let behavior_path = deserializer.read_string_ptr(position)?;
+        tracing::debug!("character_path  position = {position}");
         let character_path = deserializer.read_string_ptr(position)?;
+        tracing::debug!("full_path_to_source position = {position}");
         let full_path_to_source = deserializer.read_string_ptr(position)?;
+        tracing::debug!("root_path position = {position}");
         let root_path = deserializer.read_string_ptr(position)?;
 
         Ok(Self {

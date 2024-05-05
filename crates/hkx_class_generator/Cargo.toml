@@ -19,10 +19,12 @@ num-derive = "0.4"
 num-traits = "0.2"
 parse_int = { version = "0.6" }
 serde = { version = "1.0", features = ["derive"] } # Implement (De)Serializer
+serde_json = { version = "1.0.116" }
+topo_sort = "0.4.0"
 tracing = "0.1"                                    # Logger
 
 [dev-dependencies]
 hkx_serde_tracing = { path = "../hkx_serde_tracing" }
+insta = { version = "1.38" }
 pretty_assertions = "1.4"
 quick-xml = { version = "0.31", features = ["serialize", "serde-types"] }
-insta = { version = "1.38" }

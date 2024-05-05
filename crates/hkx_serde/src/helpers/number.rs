@@ -9,6 +9,8 @@ use std::borrow::Cow;
 
 ///  Get the aligned value.
 ///
+/// <https://github.com/rust-lang/rust/blob/1.30.0/src/libcore/alloc.rs#L199-L219>
+///
 /// # Examples
 ///
 /// ```rust
@@ -17,12 +19,8 @@ use std::borrow::Cow;
 /// assert_eq!(align(10, 4), 12);
 /// assert_eq!(align(10, 8), 16);
 /// ```
-pub const fn align(value: u32, align: u32) -> u32 {
-    if value % align > 0 {
-        value + align - (value % align)
-    } else {
-        value
-    }
+pub const fn align(offset: u32, align: u32) -> u32 {
+    offset.wrapping_add(align).wrapping_sub(1) & !align.wrapping_sub(1)
 }
 
 /// The XML representation of Not a number, infinity is different from the Rust representation.

@@ -29,7 +29,7 @@ pub fn generate_struct_fields<'a>(
         let MemberInfo {
             name: member_name,
             type_name,
-            offset,
+            offset_x86: offset,
             flags,
             ..
         } = member;

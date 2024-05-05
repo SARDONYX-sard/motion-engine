@@ -30,7 +30,7 @@ pub fn generate_tagged_fields<'a>(
             name: member_name,
             type_name,
             flags,
-            offset,
+            offset_x86: offset,
             ..
         } = member;
 

@@ -37,7 +37,7 @@
 //!
 //! NEWLINE ::= '\n'
 //! ```
-use super::{flag_values::FlagValues, hk_types::Type};
+use super::{flag_values::FlagValues, hk_types::Type, serde_helper::*};
 use nom::{
     branch::alt,
     bytes::complete::{tag, take_while1},
@@ -60,49 +60,185 @@ pub type Enum = (String, Vec<EnumPair>);
 /// C++ class information from `hkxcmd Report`.
 ///
 /// ref: https://github.com/figment/hkxcmd/blob/dc4c75bf44303d874cc2656f56f107527f79ac29/Addins/Report.cpp#L144
-#[derive(Debug, Clone, Default, PartialEq)]
+#[derive(Debug, Clone, Default, PartialEq, serde::Serialize, serde::Deserialize)]
 pub struct ClassInfo {
-    /// Class signature
-    pub signature: u32,
-    /// Is virtual table C++ class?
-    pub vtable: bool,
     /// Class name(e.g. `"BGSGamebryoSequenceGenerator"`)
     pub name: String,
-    /// Super class name & signature
-    pub parent: Option<(String, u32)>,
-    /// Class size
-    pub size: u32,
-    /// Vector of enum names & enum fields
-    pub enums: Vec<Enum>,
-    /// C++ Class member Information
-    pub members: Vec<MemberInfo>,
+
     /// Havok engine revision version(Maybe)
     pub version: u32,
+
+    #[serde(with = "serde_signature")]
+    /// Class signature
+    pub signature: u32,
+
+    /// Class size for x86
+    pub size_x86: u32,
+
+    /// Class size for x86_64
+    pub size_x86_64: u32,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(serialize_with = "serialize_first_element_of_option_tuple")]
+    /// Super class name & signature
+    pub parent: Option<(String, u32)>,
+
+    /// Is virtual table C++ class?
+    pub vtable: bool,
+
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    #[serde(serialize_with = "serialize_enum")]
+    /// Vector of enum names & enum fields
+    pub enums: Vec<Enum>,
+
+    /// C++ Class member Information
+    pub members: Vec<MemberInfo>,
 }
 
 /// C++ Class member Information
-#[derive(Debug, Clone, Default, PartialEq)]
+#[derive(Debug, Clone, Default, PartialEq, serde::Serialize, serde::Deserialize)]
 pub struct MemberInfo {
     /// Member(Field) name
     pub name: String,
+
+    /// Member offset for x86
+    pub offset_x86: u32,
+
+    /// Member offset for x86_64
+    pub offset_x86_64: u32,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     /// Used class name
     pub class_ref: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     /// Used enum name
     pub enum_ref: Option<String>,
+
+    #[serde(rename = "ctype")]
     /// C++ Type
     pub type_name: String,
+
+    #[serde(rename = "vtype")]
     /// Havok Type enumeration (Rough category of `Self::type_name`.)
     pub hk_type: Type,
+
+    #[serde(rename = "vsubtype")]
     /// Type in generics when arrays, etc. come in.
     pub sub_type: Type,
+
+    #[serde(rename = "arrsize")]
     /// If an array is used, its size .
     pub c_style_array_size: usize,
+
     /// Flags for field alignment needs, skipping serialization, etc.
     pub flags: FlagValues,
-    /// Member offset
-    pub offset: u32,
+
+    #[serde(rename = "default", default)]
+    #[serde(serialize_with = "serialize_option_i32")]
     /// default member value
     pub default_value: Option<i32>,
+}
+
+impl MemberInfo {
+    /// Byte size that must be read. Used to calculate the padding of the structure representing the Havok class.
+    pub fn type_size(&self, hk_type: &Type, ptr_size: u32) -> u32 {
+        match hk_type {
+            Type::Bool => 1,
+            Type::Char => 1,
+            Type::Int8 => 1,
+            Type::Uint8 => 1,
+            Type::Int16 => 2,
+            Type::Uint16 => 2,
+            Type::Int32 => 4,
+            Type::Uint32 => 4,
+            Type::Int64 => 8,
+            Type::Uint64 => 8,
+            Type::Real => 4,
+
+            Type::Vector4 => 16,
+            Type::Quaternion => 16,  // Vector3<f32>(12) + Scalar<f32>(4) = 16
+            Type::QsTransform => 48, // Vector4<f32>(16) + Quaternion<f32>(16) + Vector4<f32>(16)
+            Type::Rotation => 48,    // Vector4<f32>(12) * 3
+            Type::Matrix3 => 48,     // Vector4<f32> * 3
+            Type::Matrix4 => 64,     // Vector4<f32>(16) * 4
+            Type::Transform => 64,   // Matrix3<f32>(48) + Vector4<f32>(16)
+
+            Type::Array => match ptr_size {
+                4 => 12,
+                8 => 16,
+                _ => panic!("Supported array ptr size is 4 or 8 bytes"),
+            },
+            Type::Struct => todo!(),
+            Type::SimpleArray => match ptr_size {
+                4 => 8,
+                8 => 12,
+                _ => panic!("Supported SimpleArray ptr size is 4 or 8 bytes"),
+            },
+            Type::Enum | Type::Flags => self.type_size(&self.sub_type, ptr_size),
+            Type::Half => 2,
+
+            Type::Pointer | Type::Ulong | Type::CString | Type::StringPtr => ptr_size,
+            Type::Variant => ptr_size * 2,
+
+            Type::Void
+            | Type::Zero
+            | Type::FnPtr
+            | Type::InplaceArray
+            | Type::HomogeneousArray
+            | Type::RelArray
+            | Type::Max => unimplemented!("Unsupported {:?}", self.sub_type),
+        }
+    }
+
+    ///Returns information on the maximum size of the fields required at the end of the structure.
+    ///
+    /// # Note
+    /// Most types are the same as the size type, but composite types are the size of the inner type. `Vector4<f32>` -> f32 -> 4
+    pub fn max_size(&self, hk_type: &Type, ptr_size: u32) -> u32 {
+        match hk_type {
+            Type::Bool => 1,
+            Type::Char => 1,
+            Type::Int8 => 1,
+            Type::Uint8 => 1,
+            Type::Int16 => 2,
+            Type::Uint16 => 2,
+            Type::Int32 => 4,
+            Type::Uint32 => 4,
+            Type::Int64 => 8,
+            Type::Uint64 => 8,
+            Type::Real => 4,
+
+            // Normally, f32 => 4bytes is considered, but in the C++ definition, `align(16)` exists in Vector4, so it needs to be aligned at 16 bytes.
+            Type::Vector4
+            | Type::Quaternion
+            | Type::QsTransform
+            | Type::Rotation
+            | Type::Matrix3
+            | Type::Matrix4
+            | Type::Transform => 16,
+
+            Type::Array | Type::SimpleArray => match ptr_size > 4 {
+                true => ptr_size, // T* m_data size
+                false => 4,       // flag is int
+            },
+            Type::Struct => panic!("Unsupported Struct."),
+            Type::Enum | Type::Flags => self.type_size(&self.sub_type, ptr_size),
+            Type::Half => 2,
+
+            Type::Pointer | Type::Ulong | Type::CString | Type::StringPtr | Type::Variant => {
+                ptr_size
+            }
+
+            Type::Void
+            | Type::Zero
+            | Type::FnPtr
+            | Type::InplaceArray
+            | Type::HomogeneousArray
+            | Type::RelArray
+            | Type::Max => unimplemented!("Unsupported {:?}", self.sub_type),
+        }
+    }
 }
 
 /// Parser that parses strings in rpt files obtained by `hkxcmd Report` and obtains C++ living information.
@@ -173,7 +309,8 @@ pub fn parse_class(input: &str) -> IResult<&str, ClassInfo> {
             vtable,
             name: name.into(),
             parent: parent.map(|(s, i)| (s.into(), i)),
-            size,
+            size_x86: size,
+            size_x86_64: 0,
             enums: enums.into_iter().map(|(s, i)| (s.into(), i)).collect(),
             members,
             version,
@@ -405,12 +542,13 @@ fn parse_member(input: &str) -> IResult<&str, MemberInfo> {
         name: field_name.into(),
         class_ref,
         enum_ref,
-        type_name: type_name.into(),
+        type_name: type_name.replace("&lt;", "<").replace("&gt;", ">"),
         hk_type,
         sub_type,
         c_style_array_size: cstyle_array_size,
         flags,
-        offset,
+        offset_x86: offset,
+        offset_x86_64: 0,
         default_value,
     };
 
@@ -420,9 +558,29 @@ fn parse_member(input: &str) -> IResult<&str, MemberInfo> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use tracing::level_filters::LevelFilter;
+
+    fn parse_hkx_cmd_report(input: &str) -> ClassInfo {
+        match parse_class(input) {
+            Ok((_, class_info)) => class_info,
+            Err(e) => {
+                let e = match e {
+                    nom::Err::Incomplete(e) => panic!("{:?}", e),
+                    nom::Err::Error(err) | nom::Err::Failure(err) => err,
+                };
+                panic!("Error: {}", nom::error::convert_error(input, e));
+            }
+        }
+    }
 
     #[test]
     fn should_parse_one_class() {
+        let _guard = hkx_serde_tracing::init_tracing(
+            Some("should_parse_one_class"),
+            false,
+            LevelFilter::DEBUG,
+        );
+
         let input = r#"Signature:    c8df2d77
 VTable:    TRUE
 Name:    BGSGamebryoSequenceGenerator
@@ -441,17 +599,50 @@ Size:    72
  006    bLooping,HK_NULL,HK_NULL,hkBool,00000001,00000000,0,00000400,69,HK_NULL,HK_NULL
 Version:    2"#;
 
-        match parse_class(input) {
-            Ok((_, class_info)) => {
-                println!("{:#?}", class_info);
+        tracing::debug!("{:#?}", parse_hkx_cmd_report(input));
+    }
+
+    #[test]
+    fn should_parse_all_class() {
+        let _guard = hkx_serde_tracing::init_tracing(
+            Some("should_parse_all_class"),
+            false,
+            LevelFilter::DEBUG,
+        );
+
+        let rpt_dir = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+            .join("assets")
+            .join("hkxcmd_help")
+            .join("rpt");
+
+        for entry in jwalk::WalkDir::new(rpt_dir).into_iter() {
+            let path = entry.unwrap().path();
+            let path = path.as_path();
+            if !path.is_file() && path.extension() != Some(std::ffi::OsStr::new("xml")) {
+                continue;
             }
-            Err(e) => {
-                let e = match e {
-                    nom::Err::Incomplete(e) => panic!("{:?}", e),
-                    nom::Err::Error(err) | nom::Err::Failure(err) => err,
-                };
-                panic!("Error: {}", nom::error::convert_error(input, e));
-            }
+
+            // Exclude some problematic classes that aren't needed
+            let file_name = path.file_stem().unwrap().to_str().unwrap();
+
+            // Remove tailing version(e.g. _1)
+            let file = file_name.rsplit('_').collect::<Vec<_>>();
+            let rpt_file_name = *file.last().unwrap();
+
+            let content = std::fs::read_to_string(path).unwrap();
+            let class_info = parse_hkx_cmd_report(&content);
+            let json = serde_json::to_string_pretty(&class_info).unwrap();
+
+            let output_dir = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+                .join("assets")
+                .join("classes");
+            std::fs::create_dir_all(&output_dir).unwrap();
+            let mut output_file = output_dir.join(rpt_file_name);
+            output_file.set_extension("json");
+
+            std::fs::write(output_file, json).unwrap();
         }
     }
 }
+
+// Vector4, Quaternion, QsTransform, Rotation, Matrix3, Matrix4, Transform

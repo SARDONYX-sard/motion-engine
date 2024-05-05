@@ -21,8 +21,7 @@ pub fn generate_all_fields<'a>(
     //? - All parent class fields of Current C++ class if exists.
     if let Some((current_parent_class_name, _)) = &class.parent {
         // 1. Get & The oldest parent class should be first.
-        let mut parents = get_all_parents_info(current_parent_class_name, classes_map);
-        parents.reverse(); // This is because binary reads must be read from the most root parent class.
+        let parents = get_all_parents_info(current_parent_class_name, classes_map);
 
         // 2. Generate all parents
         //
@@ -65,7 +64,10 @@ pub fn generate_all_fields<'a>(
 }
 
 /// Enumerate C++ parent class information by recursively tracing from the parent class name of the current class.
-fn get_all_parents_info<'a>(
+///
+/// # Returns
+/// Vec sorted by deepest parent class.
+pub fn get_all_parents_info<'a>(
     current_parent_name: &String,
     classes_map: &'a ClassMap,
 ) -> Vec<&'a ClassInfo> {
@@ -75,13 +77,14 @@ fn get_all_parents_info<'a>(
 
     // Get all parents
     while let Some(parent_class) = classes_map.get(current_parent_class_name) {
+        parents.push(parent_class);
         if let Some((parent_name, _parent_signature)) = &parent_class.parent {
             current_parent_class_name = parent_name;
-            parents.push(parent_class);
         } else {
             break; // No more parent to process
         }
     }
 
+    parents.reverse(); // This is because binary reads must be read from the most root parent class.
     parents
 }

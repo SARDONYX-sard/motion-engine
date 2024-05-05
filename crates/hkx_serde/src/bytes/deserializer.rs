@@ -42,7 +42,7 @@ pub trait ByteDeserializer {
     /// # Move position size
     /// [`usize`] (4 or 8 bytes)
     fn read_usize(&self, position: &mut u32) -> Result<usize>;
-
+    /// Read 1 byte as bool.
     fn read_bool(&self, position: &mut u32) -> Result<bool>;
     fn read_bool_array(&self, position: &mut u32) -> Result<Vec<bool>>;
 
@@ -78,22 +78,6 @@ pub trait ByteDeserializer {
     fn read_quaternion(&self, position: &mut u32) -> Result<Quaternion<f32>>;
     fn read_qs_transform(&self, position: &mut u32) -> Result<QsTransform<f32>>;
 
-    /// Reads array information & Advance position(usize + 8bytes)
-    ///
-    /// # Move position bytes size
-    /// - 32bit => 12bytes
-    /// - 64bit => 16bytes
-    ///
-    /// # Returns
-    /// Array size
-    fn read_array_size(&self, position: &mut u32) -> Result<u32>;
-
-    fn read_string_ptr_array<'a>(&'a self, position: &mut u32) -> Result<HkArrayStringPtr<'a>>;
-
-    fn read_class_array<'a, T>(&'a self, position: &mut u32) -> Result<HkArrayClass<T>>
-    where
-        T: ByteDeSerialize<'a> + 'a;
-
     /// Read class ptr
     /// - move usize
     fn read_class_ptr<'a>(&'a self, position: &mut u32) -> Result<Cow<'a, str>>;
@@ -102,6 +86,22 @@ pub trait ByteDeserializer {
     /// Jump to local_map.dst by current position, then read null terminated string.
     /// - move usize
     fn read_string_ptr<'a>(&'a self, position: &mut u32) -> Result<Cow<'a, str>>;
+
+    /// Reads array information & Advance position(usize + 8bytes)
+    ///
+    /// This is the common code part that is first read by other Array types (except Matrix, etc.).
+    ///
+    /// # Move position bytes size
+    /// - 32bit => 12bytes
+    /// - 64bit => 16bytes
+    ///
+    /// # Returns
+    /// Array size
+    fn read_array_size(&self, position: &mut u32) -> Result<u32>;
+    fn read_string_ptr_array<'a>(&'a self, position: &mut u32) -> Result<HkArrayStringPtr<'a>>;
+    fn read_class_array<'a, T>(&'a self, position: &mut u32) -> Result<HkArrayClass<T>>
+    where
+        T: ByteDeSerialize<'a> + 'a;
 }
 
 macro_rules! impl_array {
@@ -299,6 +299,7 @@ impl<'de, B: ByteOrder> ByteDeserializer for HkxDeserializer<'de, B> {
         let current_start = *position;
 
         if !self.data_section.local_map.contains_key(&current_start) {
+            tracing::debug!("Not found local_map.dst. string ptr:current_start = {current_start}");
             return Ok("".into());
         }
 
@@ -433,14 +434,15 @@ mod tests {
     #[test]
     fn should_deserialize() -> anyhow::Result<()> {
         let _guard = init_tracing(Some("deserialize_hkx_bytes"), false, Level::DEBUG);
-        // let bytes = include_bytes!("../../../../tests/1hm_behavior_x86_64.hkx");
-        // let bytes = include_bytes!("../../../../tests/defaultmale.hkx");
 
         let test_dir = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
             .join("..")
             .join("..")
             .join("tests");
-        let bytes = std::fs::read(test_dir.join("defaultmale.hkx")).unwrap();
+        // let bytes = include_bytes!("../../../../tests/1hm_behavior_x86_64.hkx");
+        // let bytes = include_bytes!("../../../../tests/defaultmale.hkx");
+        let bytes = include_bytes!("../../../../tests/wisp_skeleton.hkx");
+        // let bytes = std::fs::read(test_dir.join("defaultmale.hkx")).unwrap();
         let bytes = bytes.as_slice();
 
         match HkxHeader::is_big_endian(bytes) {

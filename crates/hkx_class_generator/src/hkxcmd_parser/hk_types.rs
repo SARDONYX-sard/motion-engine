@@ -1,5 +1,6 @@
 /// Enumerator to determine which C++ type from enum
 use core::fmt;
+use core::str::FromStr;
 use num_derive::{FromPrimitive, ToPrimitive};
 
 /// NOTE: The enum usize must be in this order and cannot be added or removed in between.
@@ -122,7 +123,7 @@ impl Type {
     }
 }
 
-impl std::str::FromStr for Type {
+impl FromStr for Type {
     type Err = String;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
@@ -193,5 +194,24 @@ impl TryFrom<usize> for Type {
     fn try_from(value: usize) -> Result<Self, Self::Error> {
         num_traits::FromPrimitive::from_usize(value)
             .ok_or_else(|| format!("Invalid type: {}", value))
+    }
+}
+
+impl serde::Serialize for Type {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        serializer.serialize_str(&self.to_string())
+    }
+}
+
+impl<'de> serde::Deserialize<'de> for Type {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        let s: &str = serde::Deserialize::deserialize(deserializer)?;
+        Type::from_str(s).map_err(serde::de::Error::custom)
     }
 }

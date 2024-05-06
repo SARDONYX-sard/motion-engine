@@ -1,5 +1,5 @@
 use super::{aliases::ClassMap, one_class::all_fields::get_all_parents_info};
-use crate::hkxcmd_parser::{hk_types::Type, parse_class, FlagValues};
+use crate::{hkx2lib_parser::parse_txt::get_x64_classes_info, hkxcmd_parser::{hk_types::Type, parse_class, FlagValues}};
 use indexmap::IndexMap;
 use std::{collections::HashMap, path::Path};
 use topo_sort::TopoSort;
@@ -37,6 +37,7 @@ pub fn generate_classes_json(output_dir: impl AsRef<Path>, rpt_dir: impl AsRef<P
 pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) {
     let ptr_size = 8;
     let mut topo_sort = TopoSort::with_capacity(class_map.len());
+    let x64_classes_info = get_x64_classes_info();
 
     for (cpp_class_name, class_info) in class_map {
         let mut deps: Vec<&String> = if let Some(ref parent) = class_info.parent {
@@ -64,10 +65,11 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
         topo_sort::SortResults::Full(sorted_classes) => {
             let mut size_map = HashMap::new();
             let mut max_size_map = HashMap::new();
+            let mut first_struct_field_size_map = HashMap::new();
 
             // Get C++ class information from vec sorted by root order of dependencies and make json.
             for cpp_class_name in sorted_classes {
-                tracing::debug!("cpp_class_name: {:?}", &cpp_class_name);
+                tracing::debug!("cpp_class_name: {cpp_class_name:?}");
                 let mut class_info = class_map[cpp_class_name].clone();
                 let mut current_offset = 0;
                 let mut max_member_size = 0; // Need this item for struct tailing alignment.
@@ -83,6 +85,9 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
                     // Even if it is an empty field, in the case of a vtable, there is a ptr to the vtable, so this is taken into account.
                     current_offset = ptr_size;
                     max_member_size = ptr_size;
+                    first_struct_field_size_map.insert(cpp_class_name, ptr_size);
+                } else if class_info.members.is_empty() && !class_info.vtable {
+                    first_struct_field_size_map.insert(cpp_class_name, 0);
                 };
 
                 let mut prev_size = 0; // The previous field size is needed to align the next field.
@@ -90,7 +95,6 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
                     let (mut current_member_size, mut current_max_size) =
                         if member.hk_type == Type::Struct {
                             let cpp_struct_name = member.class_ref.as_ref().unwrap();
-
                             (size_map[cpp_struct_name], max_size_map[cpp_struct_name])
                         } else {
                             (
@@ -104,10 +108,23 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
                     };
 
                     // Perform offset calculation for the current member.
-                    if index != 0 {
-                        current_offset += prev_size;
-                        // The next field must be a multiple of the current size.
-                        current_offset = align(current_offset, current_max_size);
+                    //
+                    // The next field must be a multiple of the current size.
+                    if index == 0 {
+                        if class_info.parent.is_some() {
+                            let align_size = if member.hk_type == Type::Struct {
+                                let field_class_info =
+                                    &class_map[member.class_ref.as_ref().unwrap()];
+                                get_first_field_size(&field_class_info.name, class_map, ptr_size)
+                                    .unwrap_or(current_max_size)
+                            } else {
+                                current_max_size
+                            };
+                            first_struct_field_size_map.insert(cpp_class_name, align_size);
+                            current_offset = align(current_offset, align_size);
+                        };
+                    } else {
+                        current_offset = align(current_offset + prev_size, current_max_size);
                     };
 
                     // Alignment flags are enforced even in the first field.
@@ -154,37 +171,36 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
                 std::fs::write(path, json).unwrap();
             }
 
-            tracing::debug!("size_map = {:#?}", size_map);
-            tracing::debug!("max_size_map = {:#?}", max_size_map);
+            tracing::debug!("size_map = {size_map:#?}");
+            tracing::debug!("max_size_map = {max_size_map:#?}");
+            tracing::debug!("first_struct_field_size_map = {first_struct_field_size_map:#?}",);
         }
         topo_sort::SortResults::Partial(_) => todo!(),
     }
 }
 
-#[allow(unused)]
-#[repr(C, align(16))]
-struct Vector4 {
-    v: [u32; 4],
-}
+/// Determine the size of the first field from the given C++ Class name and C++ Classes data.
+///
+/// - If inherited from a parent class -> First field size of the oldest parent class
+/// - No field but vtable ptr is present -> ptr size
+/// - Other -> 0
+fn get_first_field_size(class_name: &str, class_map: &ClassMap, ptr_size: u32) -> Option<u32> {
+    let class_info = class_map.get(class_name)?;
+    if let Some((parent_name, _)) = &class_info.parent {
+        let parent_info = get_all_parents_info(parent_name, class_map)[0];
 
-#[allow(unused)]
-#[repr(C)]
-struct T {
-    // 0
-    t: u64, // 8bytes
-
-    count: u16,     // 2bytes
-    ref_count: u16, // 2bytes
-
-    // 0x10
-    t2: Vector4, // 16bytes
-    // 0x20
-    t3: u16, // 2bytes
-
-    // 0x22
-    _pad0: u64, // 8bytes
-
-                // 0x30
+        if let Some(first_member) = parent_info.members.first() {
+            Some(first_member.max_size(&first_member.hk_type, ptr_size))
+        } else if parent_info.members.is_empty() && class_info.vtable {
+            Some(ptr_size)
+        } else {
+            None
+        }
+    } else if class_info.members.is_empty() && class_info.vtable {
+        Some(ptr_size)
+    } else {
+        None
+    }
 }
 
 #[cfg(test)]

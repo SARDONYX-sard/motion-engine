@@ -1,5 +1,6 @@
 //! Flags for field alignment needs, skipping serialization, etc.(The original C++ code is u16 bit flags)
 //! - ref: havok_2010_2_0/Source/Common/Base/Refection/hkClassMember.h#L112
+use std::str::FromStr;
 
 bitflags::bitflags! {
     /// # Bit flags that represented enum.
@@ -68,40 +69,49 @@ impl<'de> serde::Deserialize<'de> for FlagValues {
         let value = Option::<std::borrow::Cow<'de, str>>::deserialize(deserializer)?;
 
         match value {
-            Some(s) => {
-                if s.as_ref() == "0" {
-                    return Ok(Self::NULL);
-                };
-                let mut flags = Self::empty();
-                for token in s.split('|') {
-                    match token.trim() {
-                        "FLAGS_NONE" => flags |= Self::FLAGS_NONE,
-                        "ALIGN8" => flags |= Self::ALIGN8,
-                        "ALIGN16" => flags |= Self::ALIGN16,
-                        "NOT_OWNED" => flags |= Self::NOT_OWNED,
-                        "SERIALIZE_IGNORED" => flags |= Self::SERIALIZE_IGNORED,
-                        unknown => match parse_int::parse(unknown) {
-                            Ok(int) => {
-                                if let Some(bits) = Self::from_bits(int) {
-                                    flags |= bits
-                                } else {
-                                    return Err(serde::de::Error::custom(format!(
-                                        "Expected FlagValues flags but got '{unknown}'",
-                                    )));
-                                };
-                            }
-                            Err(_err) => {
-                                return Err(serde::de::Error::custom(format!(
-                                    "Expected FlagValues flags or integer, but got '{unknown}'"
-                                )))
-                            }
-                        },
-                    }
-                }
-                Ok(flags)
-            }
+            Some(s) => match FlagValues::from_str(&s) {
+                Ok(flags) => Ok(flags),
+                Err(err) => Err(serde::de::Error::custom(err)),
+            },
             None => Ok(Self::NULL),
         }
+    }
+}
+
+impl FromStr for FlagValues {
+    type Err = String;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        if s == "0" {
+            return Ok(FlagValues::NULL);
+        }
+
+        let mut flags = FlagValues::empty();
+        for token in s.split('|') {
+            match token.trim() {
+                "FLAGS_NONE" => flags |= FlagValues::FLAGS_NONE,
+                "ALIGN_8" | "ALIGN8" => flags |= FlagValues::ALIGN8,
+                "ALIGN_16" | "ALIGN16" => flags |= FlagValues::ALIGN16,
+                "NOT_OWNED" => flags |= FlagValues::NOT_OWNED,
+                "SERIALIZE_IGNORED" => flags |= FlagValues::SERIALIZE_IGNORED,
+                unknown => match parse_int::parse(unknown) {
+                    Ok(int) => {
+                        if let Some(bits) = FlagValues::from_bits(int) {
+                            flags |= bits
+                        } else {
+                            return Err(format!("Expected FlagValues flags but got '{}'", unknown));
+                        };
+                    }
+                    Err(_) => {
+                        return Err(format!(
+                            "Expected FlagValues flags or integer, but got '{}'",
+                            unknown
+                        ))
+                    }
+                },
+            }
+        }
+        Ok(flags)
     }
 }
 

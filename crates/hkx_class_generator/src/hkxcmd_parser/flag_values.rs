@@ -16,9 +16,9 @@ bitflags::bitflags! {
 
         const FLAGS_NONE = 0;
         /// Member has forced 8 byte alignment. 1 << 7
-        const ALIGN8 = 128;
+        const ALIGN_8 = 128;
         /// Member has forced 16 byte alignment. 1 << 8
-        const ALIGN16 = 256;
+        const ALIGN_16 = 256;
         /// The members memory contents is not owned by this object 1 << 9
         const NOT_OWNED = 512;
         /// This member should not be written when serializing 1 << 10
@@ -90,8 +90,8 @@ impl FromStr for FlagValues {
         for token in s.split('|') {
             match token.trim() {
                 "FLAGS_NONE" => flags |= FlagValues::FLAGS_NONE,
-                "ALIGN_8" | "ALIGN8" => flags |= FlagValues::ALIGN8,
-                "ALIGN_16" | "ALIGN16" => flags |= FlagValues::ALIGN16,
+                "ALIGN_8" => flags |= FlagValues::ALIGN_8,
+                "ALIGN_16" => flags |= FlagValues::ALIGN_16,
                 "NOT_OWNED" => flags |= FlagValues::NOT_OWNED,
                 "SERIALIZE_IGNORED" => flags |= FlagValues::SERIALIZE_IGNORED,
                 unknown => match parse_int::parse(unknown) {
@@ -136,11 +136,11 @@ impl FlagValues {
         if self.contains(Self::FLAGS_NONE) {
             flags.push("FLAGS_NONE");
         }
-        if self.contains(Self::ALIGN8) {
-            flags.push("ALIGN8");
+        if self.contains(Self::ALIGN_8) {
+            flags.push("ALIGN_8");
         }
-        if self.contains(Self::ALIGN16) {
-            flags.push("ALIGN16");
+        if self.contains(Self::ALIGN_16) {
+            flags.push("ALIGN_16");
         }
         if self.contains(Self::NOT_OWNED) {
             flags.push("NOT_OWNED");
@@ -181,11 +181,11 @@ mod tests {
 
     #[test]
     fn should_serialize_multiple_flags() {
-        let flags = FlagValues::ALIGN8 | FlagValues::ALIGN16 | FlagValues::SERIALIZE_IGNORED;
+        let flags = FlagValues::ALIGN_8 | FlagValues::ALIGN_16 | FlagValues::SERIALIZE_IGNORED;
         let serialized = to_string(&TestRoot(flags)).unwrap();
         assert_eq!(
             serialized,
-            "<hkparam>ALIGN8|ALIGN16|SERIALIZE_IGNORED</hkparam>"
+            "<hkparam>ALIGN_8|ALIGN_16|SERIALIZE_IGNORED</hkparam>"
         );
     }
 
@@ -204,8 +204,8 @@ mod tests {
     #[test]
     fn should_deserialize_str_flags_some() {
         let deserialized: FlagValues =
-            from_str("<hkparam>ALIGN8|ALIGN16|SERIALIZE_IGNORED</hkparam>").unwrap();
-        let expected = FlagValues::ALIGN8 | FlagValues::ALIGN16 | FlagValues::SERIALIZE_IGNORED;
+            from_str("<hkparam>ALIGN_8|ALIGN_16|SERIALIZE_IGNORED</hkparam>").unwrap();
+        let expected = FlagValues::ALIGN_8 | FlagValues::ALIGN_16 | FlagValues::SERIALIZE_IGNORED;
         assert_eq!(deserialized, expected);
     }
 }

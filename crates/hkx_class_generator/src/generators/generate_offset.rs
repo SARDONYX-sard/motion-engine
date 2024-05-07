@@ -131,12 +131,12 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
                     };
 
                     // Alignment flags are enforced even in the first field.
-                    if member.flags.contains(FlagValues::ALIGN16) {
+                    if member.flags.contains(FlagValues::ALIGN_16) {
                         current_offset = align(current_offset, 16);
                         if current_max_size < 16 {
                             current_max_size = 16;
                         }
-                    } else if member.flags.contains(FlagValues::ALIGN8) {
+                    } else if member.flags.contains(FlagValues::ALIGN_8) {
                         current_offset = align(current_offset, 8);
                         if current_max_size < 8 {
                             current_max_size = 8;
@@ -212,6 +212,7 @@ fn get_first_field_size(class_name: &str, class_map: &ClassMap, ptr_size: u32) -
 fn merge_class_info(class_info: &mut ClassInfo, x64_class_info: &ClassInfo) {
     // Merge basic fields
     // class_info.version = x64_class_info.version;
+    class_info.signature = x64_class_info.signature;
     class_info.size_x86_64 = x64_class_info.size_x86_64;
     // class_info.vtable = x64_class_info.vtable;
 
@@ -232,13 +233,13 @@ fn merge_class_info(class_info: &mut ClassInfo, x64_class_info: &ClassInfo) {
         {
             // Update existing member
             existing_member.offset_x86_64 = x64_member.offset_x86_64;
-            // existing_member.class_ref.clone_from(&x64_member.class_ref);
+            existing_member.class_ref.clone_from(&x64_member.class_ref);
             // existing_member.enum_ref.clone_from(&x64_member.enum_ref);
             // existing_member.type_name.clone_from(&x64_member.type_name);
-            // existing_member.hk_type = x64_member.hk_type.clone();
-            // existing_member.sub_type = x64_member.sub_type.clone();
-            // existing_member.c_style_array_size = x64_member.c_style_array_size;
-            // existing_member.flags = x64_member.flags;
+            existing_member.hk_type = x64_member.hk_type.clone();
+            existing_member.sub_type = x64_member.sub_type.clone();
+            existing_member.c_style_array_size = x64_member.c_style_array_size;
+            existing_member.flags = x64_member.flags;
             // existing_member.default_value = x64_member.default_value;
         } else {
             // Add new member

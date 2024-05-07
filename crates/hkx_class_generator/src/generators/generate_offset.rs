@@ -41,14 +41,16 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
     // This block identifies dependencies and inserts data into a topological sort.
     let mut topo_sort = TopoSort::with_capacity(class_map.len());
     for (cpp_class_name, class_info) in class_map {
-        let mut deps: Vec<&String> = if let Some(ref parent) = class_info.parent {
-            get_all_parents_info(&parent.0, class_map)
-                .iter()
-                .map(|info| &info.name)
-                .collect()
-        } else {
-            Vec::new()
-        };
+        let mut deps: Vec<&String> = class_info
+            .parent
+            .as_ref()
+            .map(|parent| {
+                get_all_parents_info(&parent.0, class_map)
+                    .iter()
+                    .map(|info| &info.name)
+                    .collect()
+            })
+            .unwrap_or_default();
 
         for member in &class_info.members {
             if let Some(ref class_ref) = member.class_ref {
@@ -67,7 +69,7 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
     match topo_sort.into_vec_nodes() {
         topo_sort::SortResults::Full(sorted_classes) => {
             let mut size_map = HashMap::new();
-            let mut max_size_map = HashMap::new();
+            let mut max_member_size_map = HashMap::new(); // The largest size map in its class.(For tailing align struct)
             let mut first_struct_field_size_map = HashMap::new();
 
             // Get C++ class information from vec sorted by root order of dependencies and make json.
@@ -77,10 +79,11 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
                 let mut current_offset = 0;
                 let mut max_member_size = 0; // Need this item for struct tailing alignment.
 
-                // When inheriting from a parent class, the starting point is the size of the parent class to .
+                // C++ Parent class size
                 if let Some(ref parent) = class_info.parent {
+                    // When inheriting from a parent class, the starting point is the size of the parent class to .
                     let parent_size = size_map[&parent.0];
-                    let parent_max_size = max_size_map[&parent.0];
+                    let parent_max_size = max_member_size_map[&parent.0];
 
                     current_offset += parent_size;
                     max_member_size = parent_max_size;
@@ -90,15 +93,27 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
                     max_member_size = ptr_size;
                     first_struct_field_size_map.insert(cpp_class_name, ptr_size);
                 } else if class_info.members.is_empty() && !class_info.vtable {
-                    first_struct_field_size_map.insert(cpp_class_name, 0);
+                    // The C++ empty class itself has a size of at least 1 to determine its address,
+                    // because it cannot be addressed by 0.
+                    // See: https://en.cppreference.com/w/cpp/language/ebo
+                    //
+                    // However, when an empty class inherits from another empty class,
+                    // the empty class is treated as having a size of zero, which is called Empty Base Optimization (EBO).
+                    current_offset = 1;
+                    max_member_size = 1;
+                    first_struct_field_size_map.insert(cpp_class_name, 1);
                 };
 
+                // Calculate C++ Members offset
                 let mut prev_size = 0; // The previous field size is needed to align the next field.
                 for (index, member) in &mut class_info.members.iter_mut().enumerate() {
                     let (mut current_member_size, mut current_max_size) =
                         if member.hk_type == Type::Struct {
                             let cpp_struct_name = member.class_ref.as_ref().unwrap();
-                            (size_map[cpp_struct_name], max_size_map[cpp_struct_name])
+                            (
+                                size_map[cpp_struct_name],
+                                max_member_size_map[cpp_struct_name],
+                            )
                         } else {
                             (
                                 member.type_size(&member.hk_type, ptr_size),
@@ -130,7 +145,7 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
                         current_offset = align(current_offset + prev_size, current_max_size);
                     };
 
-                    // Alignment flags are enforced even in the first field.
+                    // Alignment flags are enforced even in the first field if it has align flag.
                     if member.flags.contains(FlagValues::ALIGN_16) {
                         current_offset = align(current_offset, 16);
                         if current_max_size < 16 {
@@ -148,7 +163,7 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
 
                     // Calculate for tailing alignment of struct with max member size.
                     if let Some(ref parent) = class_info.parent {
-                        let parent_max_size = max_size_map[&parent.0];
+                        let parent_max_size = max_member_size_map[&parent.0];
                         if parent_max_size > current_max_size {
                             current_max_size = parent_max_size;
                         }
@@ -159,12 +174,13 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
                     };
                 }
 
-                max_size_map.insert(class_info.name.clone(), max_member_size);
-
                 // Need tailing alignment for struct with max member size.
                 let struct_size = align(current_offset + prev_size, max_member_size);
                 class_info.size_x86_64 = struct_size;
+
+                // Cache class information for next class offset calculation.
                 size_map.insert(class_info.name.clone(), struct_size);
+                max_member_size_map.insert(class_info.name.clone(), max_member_size);
 
                 // If the correct information for x64 already exists, overwrite it there.
                 if let Some(x64_class) = x64_class_map.get(cpp_class_name) {
@@ -175,7 +191,7 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
             }
 
             tracing::debug!("size_map = {size_map:#?}");
-            tracing::debug!("max_size_map = {max_size_map:#?}");
+            tracing::debug!("max_size_map = {max_member_size_map:#?}");
             tracing::debug!("first_struct_field_size_map = {first_struct_field_size_map:#?}",);
         }
         topo_sort::SortResults::Partial(_) => todo!(),
@@ -187,6 +203,8 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
 /// - If inherited from a parent class -> First field size of the oldest parent class
 /// - No field but vtable ptr is present -> ptr size
 /// - Other -> 0
+///
+/// This will reveal the starting point of the offset for target class if there is a parent class.
 fn get_first_field_size(class_name: &str, class_map: &ClassMap, ptr_size: u32) -> Option<u32> {
     let class_info = class_map.get(class_name)?;
     if let Some((parent_name, _)) = &class_info.parent {
@@ -212,7 +230,7 @@ fn get_first_field_size(class_name: &str, class_map: &ClassMap, ptr_size: u32) -
 fn merge_class_info(class_info: &mut ClassInfo, x64_class_info: &ClassInfo) {
     // Merge basic fields
     // class_info.version = x64_class_info.version;
-    class_info.signature = x64_class_info.signature;
+    // class_info.signature = x64_class_info.signature;
     class_info.size_x86_64 = x64_class_info.size_x86_64;
     // class_info.vtable = x64_class_info.vtable;
 

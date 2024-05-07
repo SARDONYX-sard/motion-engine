@@ -6,7 +6,7 @@ use nom::{
     error::context,
     sequence::tuple,
 };
-use std::str::FromStr;
+use std::{collections::HashMap, str::FromStr};
 
 type IResult<I, O, E = nom::error::VerboseError<I>> = Result<(I, O), nom::Err<E>>;
 
@@ -144,12 +144,12 @@ fn report(input: &str) -> ClassInfo {
     }
 }
 
-pub fn get_x64_classes_info() -> Vec<ClassInfo> {
+pub fn get_x64_classes_info() -> HashMap<String, ClassInfo> {
     let rpt_dir = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
         .join("assets")
         .join("hkx2lib");
 
-    let mut vec = Vec::new();
+    let mut map = HashMap::new();
 
     for entry in jwalk::WalkDir::new(rpt_dir).into_iter() {
         let path = entry.unwrap().path();
@@ -160,10 +160,10 @@ pub fn get_x64_classes_info() -> Vec<ClassInfo> {
 
         let content = std::fs::read_to_string(path).unwrap();
         let class_info = report(&content);
-        vec.push(class_info);
+        map.insert(class_info.name.clone(), class_info);
     }
 
-    vec
+    map
 }
 
 #[cfg(test)]

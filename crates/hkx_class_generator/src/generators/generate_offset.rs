@@ -1,7 +1,10 @@
 use super::{aliases::ClassMap, one_class::all_fields::get_all_parents_info};
-use crate::{hkx2lib_parser::parse_txt::get_x64_classes_info, hkxcmd_parser::{hk_types::Type, parse_class, FlagValues}};
+use crate::{
+    hkx2lib_parser::parse_txt::get_x64_classes_info,
+    hkxcmd_parser::{hk_types::Type, parse_class, ClassInfo, FlagValues},
+};
 use indexmap::IndexMap;
-use std::{collections::HashMap, path::Path};
+use std::{collections::HashMap, io, path::Path};
 use topo_sort::TopoSort;
 
 ///  Get the aligned value.
@@ -35,10 +38,8 @@ pub fn generate_classes_json(output_dir: impl AsRef<Path>, rpt_dir: impl AsRef<P
 }
 
 pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) {
-    let ptr_size = 8;
+    // This block identifies dependencies and inserts data into a topological sort.
     let mut topo_sort = TopoSort::with_capacity(class_map.len());
-    let x64_classes_info = get_x64_classes_info();
-
     for (cpp_class_name, class_info) in class_map {
         let mut deps: Vec<&String> = if let Some(ref parent) = class_info.parent {
             get_all_parents_info(&parent.0, class_map)
@@ -61,6 +62,8 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
         topo_sort.insert(cpp_class_name, deps)
     }
 
+    let ptr_size = 8;
+    let x64_class_map = get_x64_classes_info();
     match topo_sort.into_vec_nodes() {
         topo_sort::SortResults::Full(sorted_classes) => {
             let mut size_map = HashMap::new();
@@ -163,12 +166,12 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
                 class_info.size_x86_64 = struct_size;
                 size_map.insert(class_info.name.clone(), struct_size);
 
-                let output_dir = output_dir.as_ref();
-                std::fs::create_dir_all(output_dir).unwrap();
-                let mut path = output_dir.join(class_info.name.clone());
-                path.set_extension("json");
-                let json = serde_json::ser::to_string_pretty(&class_info).unwrap();
-                std::fs::write(path, json).unwrap();
+                // If the correct information for x64 already exists, overwrite it there.
+                if let Some(x64_class) = x64_class_map.get(cpp_class_name) {
+                    merge_class_info(&mut class_info, x64_class);
+                };
+
+                write_json(&output_dir, &class_info).unwrap();
             }
 
             tracing::debug!("size_map = {size_map:#?}");
@@ -201,6 +204,57 @@ fn get_first_field_size(class_name: &str, class_map: &ClassMap, ptr_size: u32) -
     } else {
         None
     }
+}
+
+/// Update x86 class_info with x64 information.
+/// # Note
+/// Update only the offset and size, since the current implementation is unusable except for the x64 offset and size.
+fn merge_class_info(class_info: &mut ClassInfo, x64_class_info: &ClassInfo) {
+    // Merge basic fields
+    // class_info.version = x64_class_info.version;
+    class_info.size_x86_64 = x64_class_info.size_x86_64;
+    // class_info.vtable = x64_class_info.vtable;
+
+    // Merge enums
+    // class_info.enums.extend_from_slice(&x64_class_info.enums);
+
+    // Merge parent class
+    // if let Some(parent) = &x64_class_info.parent {
+    //     class_info.parent = Some(parent.clone());
+    // }
+
+    // Merge members by name
+    for x64_member in &x64_class_info.members {
+        if let Some(existing_member) = class_info
+            .members
+            .iter_mut()
+            .find(|m| m.name == x64_member.name)
+        {
+            // Update existing member
+            existing_member.offset_x86_64 = x64_member.offset_x86_64;
+            // existing_member.class_ref.clone_from(&x64_member.class_ref);
+            // existing_member.enum_ref.clone_from(&x64_member.enum_ref);
+            // existing_member.type_name.clone_from(&x64_member.type_name);
+            // existing_member.hk_type = x64_member.hk_type.clone();
+            // existing_member.sub_type = x64_member.sub_type.clone();
+            // existing_member.c_style_array_size = x64_member.c_style_array_size;
+            // existing_member.flags = x64_member.flags;
+            // existing_member.default_value = x64_member.default_value;
+        } else {
+            // Add new member
+            // class_info.members.push(x64_member.clone());
+        }
+    }
+}
+
+fn write_json(output_dir: impl AsRef<Path>, class_info: &ClassInfo) -> io::Result<()> {
+    let output_dir = output_dir.as_ref();
+    std::fs::create_dir_all(output_dir)?;
+    let mut path = output_dir.join(class_info.name.clone());
+    path.set_extension("json");
+    let json = serde_json::ser::to_string_pretty(&class_info).unwrap();
+    std::fs::write(path, json)?;
+    Ok(())
 }
 
 #[cfg(test)]

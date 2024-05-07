@@ -5,7 +5,6 @@
 // subs
 pub mod aliases;
 pub mod class_params;
-pub mod generate_offset;
 pub mod lifetime_manager;
 pub mod utils;
 

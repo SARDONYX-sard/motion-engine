@@ -1,4 +1,4 @@
-use super::{aliases::ClassMap, one_class::all_fields::get_all_parents_info};
+use crate::generators::{aliases::ClassMap, one_class::all_fields::get_all_parents_info};
 use crate::{
     hkx2lib_parser::parse_txt::get_x64_classes_info,
     hkxcmd_parser::{hk_types::Type, parse_class, ClassInfo, FlagValues},

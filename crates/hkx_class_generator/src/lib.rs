@@ -4,6 +4,7 @@ pub mod generators;
 mod generators_tests;
 pub mod hkx2lib_parser;
 pub mod hkxcmd_parser;
+pub mod reflection_generator;
 
 pub use generators::generate_classes;
 

@@ -142,6 +142,15 @@ pub struct MemberInfo {
 
 impl MemberInfo {
     /// Byte size that must be read. Used to calculate the padding of the structure representing the Havok class.
+    ///
+    /// # Panics
+    /// If entered `Type::Void | Type::Zero | Type::FnPtr | Type::InplaceArray | Type::HomogeneousArray | Type::RelArray | Type::Max`.
+    ///
+    /// These are not used inside the 2010 Havok Class.
+    ///
+    /// `Type::Array` > 8: Unsupported
+    ///
+    /// `Type::Struct`: This cannot be calculated here. It is calculated externally using `HashMap` or similar.
     pub fn type_size(&self, hk_type: &Type, ptr_size: u32) -> u32 {
         match hk_type {
             Type::Bool => 1,
@@ -191,11 +200,24 @@ impl MemberInfo {
         }
     }
 
-    ///Returns information on the maximum size of the fields required at the end of the structure.
+    /// Returns the alignment size of the type.
+    ///
+    /// This returns information about the internal maximum size needed for offset calculations and tail alignment of structures.
     ///
     /// # Note
-    /// Most types are the same as the size type, but composite types are the size of the inner type. `Vector4<f32>` -> f32 -> 4
-    pub fn max_size(&self, hk_type: &Type, ptr_size: u32) -> u32 {
+    /// Most types are the same as the size type, but composite types are the size of the inner type.
+    ///
+    /// - You might think that `Matrix3` and `Vector4` would be 4 bytes because they use f32 internally,
+    ///   but in fact they are 16 bytes aligned for SIMD and alignment. `Vector4<f32>` -> 16
+    /// - `Variant` -> ptr size
+    ///
+    /// # Panics
+    /// If entered `Type::Void | Type::Zero | Type::FnPtr | Type::InplaceArray | Type::HomogeneousArray | Type::RelArray | Type::Max`.
+    ///
+    /// These are not used inside the 2010 Havok Class.
+    ///
+    /// `Type::Struct`: This cannot be calculated here. It is calculated externally using `HashMap` or similar.
+    pub fn size_of_align(&self, hk_type: &Type, ptr_size: u32) -> u32 {
         match hk_type {
             Type::Bool => 1,
             Type::Char => 1,

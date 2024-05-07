@@ -117,7 +117,7 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
                         } else {
                             (
                                 member.type_size(&member.hk_type, ptr_size),
-                                member.max_size(&member.hk_type, ptr_size),
+                                member.size_of_align(&member.hk_type, ptr_size),
                             )
                         };
 
@@ -211,7 +211,7 @@ fn get_first_field_size(class_name: &str, class_map: &ClassMap, ptr_size: u32) -
         let parent_info = get_all_parents_info(parent_name, class_map)[0];
 
         if let Some(first_member) = parent_info.members.first() {
-            Some(first_member.max_size(&first_member.hk_type, ptr_size))
+            Some(first_member.size_of_align(&first_member.hk_type, ptr_size))
         } else if parent_info.members.is_empty() && class_info.vtable {
             Some(ptr_size)
         } else {

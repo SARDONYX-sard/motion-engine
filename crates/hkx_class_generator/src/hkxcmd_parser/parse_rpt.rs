@@ -101,12 +101,6 @@ pub struct MemberInfo {
     /// Member(Field) name
     pub name: String,
 
-    /// Member offset for x86
-    pub offset_x86: u32,
-
-    /// Member offset for x86_64
-    pub offset_x86_64: u32,
-
     #[serde(skip_serializing_if = "Option::is_none")]
     /// Used class name
     pub class_ref: Option<String>,
@@ -126,6 +120,16 @@ pub struct MemberInfo {
     #[serde(rename = "vsubtype")]
     /// Type in generics when arrays, etc. come in.
     pub sub_type: Type,
+
+    /// Member offset for x86
+    pub offset_x86: u32,
+    /// Member offset for x86_64
+    pub offset_x86_64: u32,
+
+    /// Havok Type size
+    pub type_size_x86: u32,
+    /// Havok Type size
+    pub type_size_x86_64: u32,
 
     #[serde(rename = "arrsize")]
     /// If an array is used, its size .
@@ -571,6 +575,8 @@ fn parse_member(input: &str) -> IResult<&str, MemberInfo> {
         flags,
         offset_x86: offset,
         offset_x86_64: 0,
+        type_size_x86: 0,
+        type_size_x86_64: 0,
         default_value,
     };
 

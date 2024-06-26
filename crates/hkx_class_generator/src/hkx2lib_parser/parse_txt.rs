@@ -117,13 +117,15 @@ fn parse_member_info(input: &str) -> IResult<&str, MemberInfo> {
         input,
         MemberInfo {
             name: name.to_string(),
-            offset_x86: 0,
+            offset_x86: 0, // Dummy
             offset_x86_64: offset,
             class_ref,
             enum_ref: None,
             type_name: String::new(),
             hk_type,
             sub_type,
+            type_size_x86: 0,    // Dummy
+            type_size_x86_64: 0, // Dummy
             c_style_array_size,
             flags,
             default_value: None,

@@ -158,7 +158,21 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
                         }
                     };
 
+                    // Correct information
                     member.offset_x86_64 = current_offset;
+                    member.type_size_x86 = match member.hk_type == Type::Struct {
+                        true => class_map[member.class_ref.as_ref().unwrap()].size_x86,
+                        false => {
+                            let type_size = member.type_size(&member.hk_type, 4);
+                            if member.c_style_array_size > 0 {
+                                type_size * (member.c_style_array_size as u32)
+                            } else {
+                                type_size
+                            }
+                        }
+                    };
+                    member.type_size_x86_64 = current_member_size;
+
                     prev_size = current_member_size;
 
                     // Calculate for tailing alignment of struct with max member size.

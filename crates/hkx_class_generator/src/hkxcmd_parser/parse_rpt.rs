@@ -86,6 +86,11 @@ pub struct ClassInfo {
     /// Is virtual table C++ class?
     pub vtable: bool,
 
+    /// Whether `CString` or `StringPtr` is contained in its own member or in a member of its parent?
+    ///
+    /// This information is needed for the lifetime annotation (life of the reference) calculation.
+    pub has_string: bool,
+
     #[serde(skip_serializing_if = "Vec::is_empty")]
     #[serde(serialize_with = "serialize_enum")]
     /// Vector of enum names & enum fields
@@ -337,6 +342,7 @@ pub fn parse_class(input: &str) -> IResult<&str, ClassInfo> {
             parent: parent.map(|(s, i)| (s.into(), i)),
             size_x86: size,
             size_x86_64: 0,
+            has_string: false,
             enums: enums.into_iter().map(|(s, i)| (s.into(), i)).collect(),
             members,
             version,

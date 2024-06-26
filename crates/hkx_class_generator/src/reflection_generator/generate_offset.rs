@@ -200,6 +200,7 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
                 if let Some(x64_class) = x64_class_map.get(cpp_class_name) {
                     merge_class_info(&mut class_info, x64_class);
                 };
+                class_info.has_string = has_string_member(&class_info.name, class_map);
 
                 write_json(&output_dir, &class_info).unwrap();
             }
@@ -235,6 +236,45 @@ fn get_first_field_size(class_name: &str, class_map: &ClassMap, ptr_size: u32) -
         Some(ptr_size)
     } else {
         None
+    }
+}
+
+/// Whether `CString` or `StringPtr` is contained in its own member or in a member of its parent?
+///
+/// This information is needed for the lifetime annotation (life of the reference) calculation.
+fn has_string_member(class_name: &str, class_map: &ClassMap) -> bool {
+    let class_info = match class_map.get(class_name) {
+        Some(class_info) => class_info,
+        None => return false,
+    };
+
+    // Does the current class have a String?
+    for member in &class_info.members {
+        let type_is_string = matches!(member.hk_type, Type::CString | Type::StringPtr);
+        let subtype_is_string = matches!(member.sub_type, Type::CString | Type::StringPtr);
+        if type_is_string || subtype_is_string {
+            return true;
+        }
+    }
+
+    // Does the parent class have a String?
+    if let Some((parent_name, _)) = &class_info.parent {
+        let parent_info = get_all_parents_info(parent_name, class_map)[0];
+
+        if parent_info.members.is_empty() {
+            return false;
+        }
+
+        for member in &parent_info.members {
+            let type_is_string = matches!(member.hk_type, Type::CString | Type::StringPtr);
+            let subtype_is_string = matches!(member.sub_type, Type::CString | Type::StringPtr);
+            if type_is_string || subtype_is_string {
+                return true;
+            }
+        }
+        false
+    } else {
+        false
     }
 }
 

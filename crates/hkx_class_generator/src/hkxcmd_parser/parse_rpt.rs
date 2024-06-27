@@ -86,7 +86,7 @@ pub struct ClassInfo {
     /// Is virtual table C++ class?
     pub vtable: bool,
 
-    /// Whether `CString` or `StringPtr` is contained in its own member or in a member of its parent?
+    /// Does the class in `class_ref` contain a `CString` or `StringPtr`, or `struct containing them` type?
     ///
     /// This information is needed for the lifetime annotation (life of the reference) calculation.
     pub has_string: bool,
@@ -113,6 +113,11 @@ pub struct MemberInfo {
     #[serde(skip_serializing_if = "Option::is_none")]
     /// Used enum name
     pub enum_ref: Option<String>,
+
+    /// When type or subtype is `struct`, does it contain a `CString` or `StringPtr`, or "struct containing them" type?
+    ///
+    /// This information is needed for the lifetime annotation (life of the reference) calculation.
+    pub has_string: bool,
 
     #[serde(rename = "ctype")]
     /// C++ Type
@@ -574,6 +579,7 @@ fn parse_member(input: &str) -> IResult<&str, MemberInfo> {
         name: field_name.into(),
         class_ref,
         enum_ref,
+        has_string: false,
         type_name: type_name.replace("&lt;", "<").replace("&gt;", ">"),
         hk_type,
         sub_type,

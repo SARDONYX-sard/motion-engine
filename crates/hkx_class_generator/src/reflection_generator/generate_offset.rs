@@ -172,6 +172,15 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
                         }
                     };
                     member.type_size_x86_64 = current_member_size;
+                    member.has_string =
+                        if member.hk_type == Type::Struct || member.sub_type == Type::Struct {
+                            class_map[member.class_ref.as_ref().unwrap()].has_string
+                        } else {
+                            member.hk_type == Type::CString
+                                || member.sub_type == Type::CString
+                                || member.hk_type == Type::StringPtr
+                                || member.sub_type == Type::StringPtr
+                        };
 
                     prev_size = current_member_size;
 
@@ -200,7 +209,7 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
                 if let Some(x64_class) = x64_class_map.get(cpp_class_name) {
                     merge_class_info(&mut class_info, x64_class);
                 };
-                class_info.has_string = has_string_member(&class_info.name, class_map);
+                class_info.has_string = has_ref_member(&class_info.name, class_map);
 
                 write_json(&output_dir, &class_info).unwrap();
             }
@@ -242,7 +251,7 @@ fn get_first_field_size(class_name: &str, class_map: &ClassMap, ptr_size: u32) -
 /// Whether `CString` or `StringPtr` is contained in its own member or in a member of its parent?
 ///
 /// This information is needed for the lifetime annotation (life of the reference) calculation.
-fn has_string_member(class_name: &str, class_map: &ClassMap) -> bool {
+fn has_ref_member(class_name: &str, class_map: &ClassMap) -> bool {
     let class_info = match class_map.get(class_name) {
         Some(class_info) => class_info,
         None => return false,

@@ -122,6 +122,7 @@ fn parse_member_info(input: &str) -> IResult<&str, MemberInfo> {
             offset_x86_64: offset,
             class_ref,
             enum_ref: None,
+            has_string: false,
             type_name: String::new(),
             hk_type,
             sub_type,

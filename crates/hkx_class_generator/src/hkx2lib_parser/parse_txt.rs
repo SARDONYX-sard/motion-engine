@@ -52,6 +52,7 @@ pub fn parse_x86_64_class_info(input: &str) -> IResult<&str, ClassInfo> {
             size_x86: 0,
             size_x86_64: size,
             parent: None,
+            parent_has_string: false,
             vtable: false,
             has_string: false,
             enums: Vec::new(),

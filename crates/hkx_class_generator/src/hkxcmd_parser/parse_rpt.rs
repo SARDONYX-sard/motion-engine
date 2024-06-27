@@ -83,6 +83,11 @@ pub struct ClassInfo {
     /// Super class name & signature
     pub parent: Option<(String, u32)>,
 
+    /// Does the parent class in `class_ref` contain a `CString` or `StringPtr`, or `struct containing them` type?
+    ///
+    /// This information is needed for the lifetime annotation (life of the reference) calculation.
+    pub parent_has_string: bool,
+
     /// Is virtual table C++ class?
     pub vtable: bool,
 
@@ -345,6 +350,7 @@ pub fn parse_class(input: &str) -> IResult<&str, ClassInfo> {
             vtable,
             name: name.into(),
             parent: parent.map(|(s, i)| (s.into(), i)),
+            parent_has_string: false,
             size_x86: size,
             size_x86_64: 0,
             has_string: false,

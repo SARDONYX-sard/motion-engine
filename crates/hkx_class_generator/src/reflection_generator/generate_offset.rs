@@ -210,6 +210,9 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
                     merge_class_info(&mut class_info, x64_class);
                 };
                 class_info.has_string = has_ref_member(&class_info.name, class_map);
+                if let Some((name, _)) = &class_info.parent {
+                    class_info.parent_has_string = has_ref_member(name, class_map);
+                }
 
                 write_json(&output_dir, &class_info).unwrap();
             }

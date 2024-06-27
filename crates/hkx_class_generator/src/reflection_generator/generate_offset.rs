@@ -172,15 +172,17 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
                         }
                     };
                     member.type_size_x86_64 = current_member_size;
-                    member.has_string =
-                        if member.hk_type == Type::Struct || member.sub_type == Type::Struct {
-                            class_map[member.class_ref.as_ref().unwrap()].has_string
-                        } else {
-                            member.hk_type == Type::CString
-                                || member.sub_type == Type::CString
-                                || member.hk_type == Type::StringPtr
-                                || member.sub_type == Type::StringPtr
-                        };
+                    member.has_string = if member.hk_type == Type::Struct
+                        || (matches!(member.hk_type, Type::Array | Type::SimpleArray)
+                            && member.sub_type == Type::Struct)
+                    {
+                        has_ref_member(member.class_ref.as_ref().unwrap(), class_map)
+                    } else {
+                        member.hk_type == Type::CString
+                            || member.sub_type == Type::CString
+                            || member.hk_type == Type::StringPtr
+                            || member.sub_type == Type::StringPtr
+                    };
 
                     prev_size = current_member_size;
 
@@ -209,7 +211,7 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
                 if let Some(x64_class) = x64_class_map.get(cpp_class_name) {
                     merge_class_info(&mut class_info, x64_class);
                 };
-                class_info.has_string = has_ref_member(&class_info.name, class_map);
+                class_info.has_string = has_ref_member(cpp_class_name, class_map);
                 if let Some((name, _)) = &class_info.parent {
                     class_info.parent_has_string = has_ref_member(name, class_map);
                 }
@@ -257,7 +259,7 @@ fn get_first_field_size(class_name: &str, class_map: &ClassMap, ptr_size: u32) -
 fn has_ref_member(class_name: &str, class_map: &ClassMap) -> bool {
     let class_info = match class_map.get(class_name) {
         Some(class_info) => class_info,
-        None => return false,
+        None => panic!("classMap get failed {class_name}"),
     };
 
     // Does the current class have a String?
@@ -271,17 +273,15 @@ fn has_ref_member(class_name: &str, class_map: &ClassMap) -> bool {
 
     // Does the parent class have a String?
     if let Some((parent_name, _)) = &class_info.parent {
-        let parent_info = get_all_parents_info(parent_name, class_map)[0];
+        let parents = get_all_parents_info(parent_name, class_map);
 
-        if parent_info.members.is_empty() {
-            return false;
-        }
-
-        for member in &parent_info.members {
-            let type_is_string = matches!(member.hk_type, Type::CString | Type::StringPtr);
-            let subtype_is_string = matches!(member.sub_type, Type::CString | Type::StringPtr);
-            if type_is_string || subtype_is_string {
-                return true;
+        for parent_info in &parents {
+            for member in &parent_info.members {
+                let type_is_string = matches!(member.hk_type, Type::CString | Type::StringPtr);
+                let subtype_is_string = matches!(member.sub_type, Type::CString | Type::StringPtr);
+                if type_is_string || subtype_is_string {
+                    return true;
+                }
             }
         }
         false

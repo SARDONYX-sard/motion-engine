@@ -266,15 +266,16 @@ pub fn generate_offset_info(
                 // Need tailing alignment for struct with max member size.
                 let struct_size = align(current_offset + prev_size, max_member_size);
                 class_info.size_x86_64 = struct_size;
-
-                // Cache class information for next class offset calculation.
-                size_map.insert(class_info.name.clone(), struct_size);
                 max_member_size_map.insert(class_info.name.clone(), max_member_size);
 
                 // If the correct information for x64 already exists, overwrite it there.
                 if let Some(x64_class) = x64_class_map.get(cpp_class_name) {
                     merge_class_info(&mut class_info, x64_class);
                 };
+
+                // Cache class information for next class offset calculation.
+                size_map.insert(class_info.name.clone(), class_info.size_x86_64);
+
                 class_info.has_string = has_ref_member(cpp_class_name, class_map);
                 if let Some((name, _)) = &class_info.parent {
                     class_info.parent_has_string = has_ref_member(name, class_map);
@@ -333,6 +334,14 @@ fn has_ref_member(class_name: &str, class_map: &ClassMap) -> bool {
         if type_is_string || subtype_is_string {
             return true;
         }
+
+        if (member.hk_type == Type::Struct
+            || (matches!(member.hk_type, Type::Array | Type::SimpleArray)
+                && member.sub_type == Type::Struct))
+            && has_ref_member(member.class_ref.as_ref().unwrap(), class_map)
+        {
+            return true;
+        };
     }
 
     // Does the parent class have a String?
@@ -345,7 +354,14 @@ fn has_ref_member(class_name: &str, class_map: &ClassMap) -> bool {
                 let subtype_is_string = matches!(member.sub_type, Type::CString | Type::StringPtr);
                 if type_is_string || subtype_is_string {
                     return true;
-                }
+                };
+                if (member.hk_type == Type::Struct
+                    || (matches!(member.hk_type, Type::Array | Type::SimpleArray)
+                        && member.sub_type == Type::Struct))
+                    && has_ref_member(member.class_ref.as_ref().unwrap(), class_map)
+                {
+                    return true;
+                };
             }
         }
         false

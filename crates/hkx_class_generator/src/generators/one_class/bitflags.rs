@@ -1,11 +1,15 @@
 //! Flags for field alignment needs, skipping serialization, etc.(The original C++ code is u16 bit flags)
 //! - ref: havok_2010_2_0/Source/Common/Base/Refection/hkClassMember.h#L112
-use crate::hkxcmd_parser::Enum;
+use crate::hkxcmd_parser::{Enum, EnumItem};
 
 /// Generate u16 bit flags Rust code
 pub fn generate_bitflags(enum_info: &Enum) -> String {
     let mut rust_code = String::new();
-    let (enum_name, enum_pair_info) = enum_info;
+    let Enum {
+        name: enum_name,
+        enum_item: enum_pair_info,
+        ..
+    } = enum_info;
 
     rust_code.push_str(&format!(
         r#"bitflags::bitflags! {{
@@ -22,7 +26,11 @@ pub fn generate_bitflags(enum_info: &Enum) -> String {
 "#
     ));
 
-    for (enum_tag, enum_value) in enum_pair_info {
+    for EnumItem {
+        name: enum_tag,
+        value: enum_value,
+    } in enum_pair_info
+    {
         rust_code.push_str(&format!("        const {enum_tag} = {enum_value};\n"));
     }
 
@@ -83,7 +91,7 @@ impl<'de> serde::Deserialize<'de> for {enum_name} {{
 "#
     ));
 
-    for (enum_tag, _enum_value) in enum_pair_info {
+    for EnumItem { name: enum_tag, .. } in enum_pair_info {
         rust_code.push_str(&format!(
             "                        \"{enum_tag}\" => flags |= Self::{enum_tag},\n"
         ));
@@ -143,7 +151,7 @@ impl {enum_name} {{
 "#
     ));
 
-    for (enum_tag, _enum_value) in enum_pair_info {
+    for EnumItem { name: enum_tag, .. } in enum_pair_info {
         rust_code.push_str(&format!(
             r#"
         if self.contains(Self::{enum_tag}) {{

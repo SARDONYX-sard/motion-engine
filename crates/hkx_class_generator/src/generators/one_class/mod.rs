@@ -4,6 +4,8 @@ pub mod enum_tagged;
 pub mod generate_enum;
 mod one_struct;
 
+use crate::hkxcmd_parser::Enum;
+
 use self::{
     bitflags::generate_bitflags, enum_tagged::generate_tagged_enum, generate_enum::generate_enums,
     one_struct::generate_struct,
@@ -48,7 +50,9 @@ use crate::havok_types::*;
     // Generate flags and enum
     if !class.enums.is_empty() {
         for enum_info in &class.enums {
-            let (enum_name, _enum_pair) = enum_info;
+            let Enum {
+                name: enum_name, ..
+            } = enum_info;
 
             if matches!(
                 enum_name.as_str(),

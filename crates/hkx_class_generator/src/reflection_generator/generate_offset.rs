@@ -1,4 +1,5 @@
 use crate::generators::{aliases::ClassMap, one_class::all_fields::get_all_parents_info};
+use crate::hkxcmd_parser::MemberInfo;
 use crate::{
     hkx2lib_parser::parse_txt::get_x64_classes_info,
     hkxcmd_parser::{hk_types::Type, parse_class, ClassInfo, FlagValues},
@@ -20,6 +21,7 @@ pub fn generate_classes_json(output_dir: impl AsRef<Path>, rpt_dir: impl AsRef<P
     let rpt_dir = rpt_dir.as_ref();
 
     let mut class_map = IndexMap::new();
+    let mut enum_map = HashMap::new();
     for entry in jwalk::WalkDir::new(rpt_dir).into_iter() {
         let path = entry.unwrap().path();
         let path = path.as_path();
@@ -29,15 +31,74 @@ pub fn generate_classes_json(output_dir: impl AsRef<Path>, rpt_dir: impl AsRef<P
 
         let content = std::fs::read_to_string(path).unwrap();
         let (_remain, class) = parse_class(&content).unwrap();
+        push_one_enum_map(&class.members, &mut enum_map);
 
         // The binary deserializer implementation process requires only four classes, but only parses them for parent class information.
         class_map.insert(class.name.clone(), class.clone());
     }
 
-    generate_offset_info(output_dir, &class_map);
+    generate_offset_info(output_dir, &class_map, &enum_map);
 }
 
-pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) {
+/// key: enum_ref, value: (enum or flag type, storage type)
+type EnumMap = HashMap<String, (Type, Type)>;
+fn push_one_enum_map(members: &[MemberInfo], enum_map: &mut EnumMap) {
+    for member in members {
+        if matches!(member.hk_type, Type::Flags | Type::Enum) {
+            if let Some(ref enum_ref) = member.enum_ref {
+                // Valid enum storage type check
+                if !matches!(
+                    member.sub_type,
+                    Type::Int8
+                        | Type::Uint8
+                        | Type::Int16
+                        | Type::Uint16
+                        | Type::Int32
+                        | Type::Uint32
+                        | Type::Int64
+                        | Type::Uint64
+                ) {
+                    panic!(
+                        "This enum is invalid storage size type: {enum_ref}({})",
+                        member.sub_type
+                    );
+                };
+
+                // Skip if already registered
+                if let Some((hk_type, sub_type)) = enum_map.get(enum_ref) {
+                    if member.hk_type != *hk_type && member.sub_type != *sub_type {
+                        panic!("There are members of the same enum definition with different sizes. expected: {hk_type}(sub: {sub_type}), actual: {}({})", member.hk_type, member.sub_type)
+                    } else {
+                        println!("Enum key already has registered: {enum_ref}");
+                        continue;
+                    };
+                };
+
+                enum_map.insert(
+                    enum_ref.to_string(),
+                    (member.hk_type.clone(), member.sub_type.clone()),
+                );
+            }
+        }
+    }
+}
+
+fn modify_enum(class_info: &mut ClassInfo, enum_map: &EnumMap) {
+    for one_enum in &mut class_info.enums {
+        let (hk_type, subtype) = &enum_map.get(&one_enum.name).unwrap_or_else(|| {
+            println!("Not found key so fallback. : {}", one_enum.name);
+            &(Type::Enum, Type::Void)
+        });
+        one_enum.hk_type = hk_type.clone();
+        one_enum.sub_type = subtype.clone();
+    }
+}
+
+pub fn generate_offset_info(
+    output_dir: impl AsRef<Path>,
+    class_map: &ClassMap,
+    enum_map: &EnumMap,
+) {
     // This block identifies dependencies and inserts data into a topological sort.
     let mut topo_sort = TopoSort::with_capacity(class_map.len());
     for (cpp_class_name, class_info) in class_map {
@@ -78,6 +139,9 @@ pub fn generate_offset_info(output_dir: impl AsRef<Path>, class_map: &ClassMap) 
                 let mut class_info = class_map[cpp_class_name].clone();
                 let mut current_offset = 0;
                 let mut max_member_size = 0; // Need this item for struct tailing alignment.
+
+                // Fix enum type
+                modify_enum(&mut class_info, enum_map);
 
                 // C++ Parent class size
                 if let Some(ref parent) = class_info.parent {

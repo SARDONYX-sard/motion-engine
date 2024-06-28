@@ -52,11 +52,6 @@ use std::borrow::Cow;
 /// Verbose Error Message
 type IResult<I, O, E = nom::error::VerboseError<I>> = Result<(I, O), nom::Err<E>>;
 
-/// C++ Enum tag & value
-type EnumPair = (String, i32);
-/// C++ Enum's identifier name & (C++ Enum tag & C++ value) vector
-pub type Enum = (String, Vec<EnumPair>);
-
 /// C++ class information from `hkxcmd Report`.
 ///
 /// ref: https://github.com/figment/hkxcmd/blob/dc4c75bf44303d874cc2656f56f107527f79ac29/Addins/Report.cpp#L144
@@ -97,12 +92,35 @@ pub struct ClassInfo {
     pub has_string: bool,
 
     #[serde(skip_serializing_if = "Vec::is_empty")]
-    #[serde(serialize_with = "serialize_enum")]
     /// Vector of enum names & enum fields
     pub enums: Vec<Enum>,
 
     /// C++ Class member Information
     pub members: Vec<MemberInfo>,
+}
+
+#[derive(Debug, Clone, Default, PartialEq, serde::Serialize, serde::Deserialize)]
+pub struct Enum {
+    /// enum identifier
+    pub name: String,
+
+    #[serde(rename = "vtype")]
+    /// Havok Type enumeration (Rough category of `Self::type_name`.)
+    pub hk_type: Type,
+    #[serde(rename = "vsubtype")]
+    /// Type in generics when arrays, etc. come in.
+    pub sub_type: Type,
+
+    /// Unknown flags . Always `00000000` in hk2010 version.
+    pub flags: String,
+
+    pub enum_item: Vec<EnumItem>,
+}
+
+#[derive(Debug, Clone, Default, PartialEq, serde::Serialize, serde::Deserialize)]
+pub struct EnumItem {
+    pub name: String,
+    pub value: i32,
 }
 
 /// C++ Class member Information
@@ -322,7 +340,18 @@ pub fn parse_class(input: &str) -> IResult<&str, ClassInfo> {
     if enum_count > 0 {
         let (input, parsed_enums) = parse_lines(enum_count, parse_enum)(input_outer)?;
         let (input, _) = multispace0(input)?;
-        enums = parsed_enums;
+        for (enum_name, enum_item, enum_flags) in parsed_enums {
+            enums.push(Enum {
+                name: enum_name.into(),
+                // NOTE:
+                // The ENUM type cannot be determined here because it is found in MEMBER.
+                // Therefore, the `Enum &`Void` type, is temporarily inserted
+                hk_type: Type::Enum,
+                sub_type: Type::Void,
+                enum_item,
+                flags: enum_flags.into(),
+            });
+        }
         input_outer = input
     }
     let input = input_outer;
@@ -354,7 +383,7 @@ pub fn parse_class(input: &str) -> IResult<&str, ClassInfo> {
             size_x86: size,
             size_x86_64: 0,
             has_string: false,
-            enums: enums.into_iter().map(|(s, i)| (s.into(), i)).collect(),
+            enums,
             members,
             version,
         },
@@ -459,7 +488,7 @@ fn parse_interface(input: &str) -> IResult<&str, &str> {
 /// Parse enum one line
 ///
 /// 000 BlendModeFunction (BMF_NONE=0;BMF_PERCENT=1;BMF_ONE_MINUS_PERCENT=2) {00000000}
-fn parse_enum(input: &str) -> IResult<&str, (&str, Vec<EnumPair>)> {
+fn parse_enum(input: &str) -> IResult<&str, (&str, Vec<EnumItem>, &str)> {
     let (input, _) = space0(input)?;
 
     // 000
@@ -472,7 +501,7 @@ fn parse_enum(input: &str) -> IResult<&str, (&str, Vec<EnumPair>)> {
 
     // (BMF_NONE=0;BMF_PERCENT=1;BMF_ONE_MINUS_PERCENT=2)
     let (input, _) = char('(')(input)?;
-    let mut enum_tags: Vec<EnumPair> = Vec::new();
+    let mut enum_tags: Vec<EnumItem> = Vec::new();
     let mut input_outer = input;
     loop {
         // BMF_NONE=0
@@ -482,7 +511,10 @@ fn parse_enum(input: &str) -> IResult<&str, (&str, Vec<EnumPair>)> {
         let (input, have_next) = opt(tag(";"))(input)?;
 
         input_outer = input;
-        enum_tags.push((enum_tag.into(), enum_value));
+        enum_tags.push(EnumItem {
+            name: enum_tag.into(),
+            value: enum_value,
+        });
         if have_next.is_some() {
             continue;
         } else {
@@ -500,10 +532,12 @@ fn parse_enum(input: &str) -> IResult<&str, (&str, Vec<EnumPair>)> {
     //
     // {00000000}
     let (input, _) = char('{')(input)?;
-    let (input, _enum_flags) = digit1(input)?;
+    // let (input, _enum_flags) = digit1(input)?;
+    // dbg!(_enum_flags);
+    let (input, enum_flags) = tag("00000000")(input)?;
     let (input, _) = char('}')(input)?;
 
-    Ok((input, (enum_name, enum_tags)))
+    Ok((input, (enum_name, enum_tags, enum_flags)))
 }
 
 /// ref: https://github.com/figment/hkxcmd/blob/dc4c75bf44303d874cc2656f56f107527f79ac29/Addins/Report.cpp#L144

@@ -1,12 +1,17 @@
 use convert_case::{Case, Casing as _};
 
-use crate::hkxcmd_parser::Enum;
+use crate::hkxcmd_parser::{Enum, EnumItem};
 
 /// Generate flags and C++ enum(If exists)
 pub fn generate_enums(enum_info: &Enum) -> String {
     let mut rust_code = String::new();
 
-    let (enum_name, enum_pair) = enum_info;
+    let Enum {
+        name: enum_name,
+        enum_item: enum_pair_info,
+        ..
+    } = enum_info;
+
     let enum_name = enum_name.to_case(Case::Pascal);
     // Generate one enum template prefix
     rust_code.push_str(&format!(
@@ -18,7 +23,15 @@ pub enum {enum_name} {{
     ));
 
     // Generate tag & value pairs
-    for (index, (tag_name, enum_value)) in enum_pair.iter().enumerate() {
+    for (
+        index,
+        EnumItem {
+            name: tag_name,
+            value: enum_value,
+            ..
+        },
+    ) in enum_pair_info.iter().enumerate()
+    {
         let rust_enum_field_name = &tag_name.to_case(Case::Pascal);
         let default_attr = if index == 0 { "\n    #[default]" } else { "" };
         rust_code.push_str(&format!(

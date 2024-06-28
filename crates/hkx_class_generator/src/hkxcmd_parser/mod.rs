@@ -5,4 +5,4 @@ mod parse_rpt;
 mod serde_helper;
 
 pub use flag_values::FlagValues;
-pub use parse_rpt::{parse_class, ClassInfo, Enum, MemberInfo};
+pub use parse_rpt::{parse_class, ClassInfo, Enum, EnumItem, MemberInfo};
